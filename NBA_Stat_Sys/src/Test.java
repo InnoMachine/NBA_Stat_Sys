@@ -7,6 +7,7 @@ public class Test {
 	    System.out.println("another test");
 	    System.out.println("...");
 	    System.out.println("once more!");
+	    System.out.println("wjq");
 	}
 
 }
