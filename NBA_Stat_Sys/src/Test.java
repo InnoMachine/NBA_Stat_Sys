@@ -8,6 +8,7 @@ public class Test {
 	    System.out.println("...");
 	    System.out.println("once more!");
 	    System.out.println("wjq");
+	    System.out.println("on windows os test!");
 	}
 
 }
