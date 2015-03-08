@@ -1,12 +1,12 @@
 #Future Highlights
 
-＋ To solve the deployment of NBA_Stat_Sys program integrated with mysql-database.
++ To solve the deployment of NBA_Stat_Sys program integrated with mysql-database.
 
-＋ Mathematical prediction model using python.
++ Mathematical prediction model using python.
 
-＋ PO and VO system design.
++ PO and VO system design.
 
-＋ RMI network communication.
++ RMI network communication.
 
-＋ Apple Inc. products oriented flat-design graphic user interfaces, and ESPN, EA as well.
++ Apple Inc. products oriented flat-design graphic user interfaces, and ESPN, EA as well.
 
