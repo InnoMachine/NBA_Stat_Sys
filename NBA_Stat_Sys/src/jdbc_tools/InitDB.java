@@ -29,8 +29,31 @@ public class InitDB {
 				+ " birthyear varchar(10),"
 				+ " imgPath varchar(40) )";
 		
-		String sql2 = "create table if not exists nba.players( name varchar(30))";
-		String sql3 = "create table if not exists nba.games( hometeam varchar(30))";
+		String sql2 = "create table if not exists nba.players("
+				+ " name varchar(30),"
+				+ " number int,"
+				+ " position varchar(5),"
+				+ " height varchar(5),"
+				+ " weight varchar(5),"
+				+ " birth varchar(15),"
+				+ " age int,"
+				+ " exp int,"
+				+ " school varchar(30),"
+				+ " actionimgpath varchar(40),"
+				+ " portrait varchar(40) )";
+		
+		String sql3 = "create table if not exists nba.games("
+				+ " date varchar(10),"
+				+ " versus varchar(10),"
+				+ " guestteam varchar(5),"
+				+ " hometeam varchar(5),"
+				+ " scoreoverall varchar(10),"
+				+ " score1st varchar(10),"
+				+ " score2nd varchar(10),"
+				+ " score3rd varchar(10),"
+				+ " score4th varchar(10),"
+				+ " guesttp text,"
+				+ " hometp text)";
 		
 		Statement stmt = null;
 		try {
