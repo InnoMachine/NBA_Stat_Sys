@@ -14,9 +14,9 @@ public class InitDB {
 		String sqlOld = "drop database if exists nba";
 		String sqlNew = "create database if not exists nba";
 		
-		String sql1 = "create table if not exists nba.teams()";
-		String sql2 = "create table if not exists nba.players()";
-		String sql3 = "create table if not exists nba.games()";
+		String sql1 = "create table if not exists nba.teams(teamname varchar(30))";
+		String sql2 = "create table if not exists nba.players(name varchar(30))";
+		String sql3 = "create table if not exists nba.games(hometeam varchar(30))";
 		
 		Statement stmt = null;
 		try {
