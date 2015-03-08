@@ -3,7 +3,7 @@
  * 2015年3月8日 上午0:30:55
  * TODO
  */
-package jdbc_tools;
+package database;
 
 import java.sql.Connection;
 import java.sql.SQLException;
