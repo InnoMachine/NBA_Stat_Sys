@@ -43,6 +43,7 @@ public class InitDB {
 				+ " portrait varchar(40) )";
 		
 		String sql3 = "create table if not exists nba.games("
+				+ " gamelabel varchar(40),"
 				+ " date varchar(10),"
 				+ " versus varchar(10),"
 				+ " guestteam varchar(5),"

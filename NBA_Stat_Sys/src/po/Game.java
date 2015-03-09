@@ -7,6 +7,7 @@ package po;
 
 public class Game {
 	
+	private String gameLabel;
 	private String date;
 	private String versus;
 	private String guestTeam;
@@ -110,6 +111,14 @@ public class Game {
 
 	public void setHomeTP(TeamPerformance homeTP) {
 		this.homeTP = homeTP;
+	}
+
+	public String getGameLabel() {
+		return gameLabel;
+	}
+
+	public void setGameLabel(String gameLabel) {
+		this.gameLabel = gameLabel;
 	}
 	
 	

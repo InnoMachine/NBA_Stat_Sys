@@ -15,7 +15,7 @@ public class FileReadTest {
 	private static BufferedReader br;
 
 	public static void main(String[] args) {
-		
+		outputFile("CSEⅢdata/teams/teams");
 	}
 	
 	public static void outputFile(String path){
