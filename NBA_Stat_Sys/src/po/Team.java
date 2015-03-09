@@ -10,8 +10,8 @@ public class Team {
 	private String teamName;
 	private String abbreviation;
 	private String city;
-	private Conference conf;
-	private Division div;
+	private Conference conference;
+	private Division division;
 	private String homeField;
 	private String birthYear;
 	private String imgPath;
@@ -34,17 +34,17 @@ public class Team {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public Conference getConf() {
-		return conf;
+	public Conference getConference() {
+		return conference;
 	}
-	public void setConf(Conference conf) {
-		this.conf = conf;
+	public void setConference(Conference conf) {
+		this.conference = conf;
 	}
-	public Division getDiv() {
-		return div;
+	public Division getDivision() {
+		return division;
 	}
-	public void setDiv(Division div) {
-		this.div = div;
+	public void setDivision(Division div) {
+		this.division = div;
 	}
 	public String getHomeField() {
 		return homeField;
