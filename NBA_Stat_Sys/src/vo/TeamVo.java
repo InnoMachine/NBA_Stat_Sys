@@ -13,15 +13,22 @@ public class TeamVo {
 	private int freeThrowShotNum;
 	private int offensiveRebound;
 	private int defensiveRebound;
-	private int reboundOverall;
-	private int assistance;
-	private int block;
-	private int turnover;
-	private int foul;
-	private int score;
-	private double hitRate;
-	private double threePointHitRate;
-	private double freeThrowRate;
+	private int reboundOverall;      //篮板数
+	private int assistance;          //助攻
+	private int block;               //盖帽数
+	private int turnover;            //失误数
+	private int foul;                //犯规数
+	private int score;               //总得分
+	private double hitRate;          //投篮命中率
+	private double threePointHitRate;//三分球命中率
+	private double freeThrowRate;    //罚球命中率
+	private double winningRate;      //胜率
+	private double roundAttack;      //进攻回合
+	private double attackingEfficiency;//进攻效率
+	private double defensiveEfficiency;//防守效率
+	private double reboundEfficiency;//篮板效率
+	//没有抢断数据？
+	private double assistanceEfficiency;//助攻率
 	
 	public String getTeamName(){
 		return teamName;
@@ -124,5 +131,56 @@ public class TeamVo {
 	}
 	public void setScore(int score) {
 		this.score = score;
+	}
+	public double gethitRate() {
+		return hitRate;
+	}
+	public void sethitRate(double hitRate) {
+		this.hitRate = hitRate;
+	}
+	public double getthreePointHitRate() {
+		return threePointHitRate;
+	}
+	public void setthreePointHitRate(double threePointHitRate) {
+		this.threePointHitRate = threePointHitRate;
+	}
+	public double getfreeThrowRate() {
+		return freeThrowRate;
+	}
+	public void setfreeThrowRate(double freeThrowRate) {
+		this.freeThrowRate = freeThrowRate;
+	}
+	public double getwinningRate() {
+		return winningRate;
+	}
+	public void setwinningRate(double winningRate) {
+		this.winningRate = winningRate;
+	}
+	public double getroundAttack() {
+		return roundAttack;
+	}
+	public void setroundAttack(double roundAttack) {
+		this.roundAttack = roundAttack;
+	}
+	public double getattackingEfficiency() {
+		return attackingEfficiency;
+	}
+	public void setattackingEfficiency(double attackingEfficiency) {
+		this.attackingEfficiency = attackingEfficiency;
+	}public double getdefensiveEfficiency() {
+		return defensiveEfficiency;
+	}
+	public void setdefensiveEfficiency(double defensiveEfficiency) {
+		this.defensiveEfficiency = defensiveEfficiency;
+	}public double getreboundEfficiency() {
+		return reboundEfficiency;
+	}
+	public void setreboundEfficiency(double reboundEfficiency) {
+		this.reboundEfficiency = reboundEfficiency;
+	}public double getassistanceEfficiency() {
+		return assistanceEfficiency;
+	}
+	public void setassistanceEfficiency(double assistanceEfficiency) {
+		this.assistanceEfficiency = assistanceEfficiency;
 	}
 }
