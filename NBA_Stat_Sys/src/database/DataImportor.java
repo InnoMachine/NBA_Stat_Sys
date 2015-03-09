@@ -12,19 +12,22 @@ import po.Team;
 public class DataImportor {
 
 	public static void main(String[] args) {
+		
 		String teamDataPath = new String("CSEⅢdata/teams/teams");
 		new DataImportor().importTeams(teamDataPath);
+		
 	}
 	
 	public void importTeams(String teamDataPath){
 		
 		FileReadTest frt = new FileReadTest();
-		ArrayList<Team> teamList = new ArrayList<Team>(frt.makeTeamList(frt.teamDataSplitor(frt.getFileContext(teamDataPath))));	
+		System.out.println(frt.teamDataSplitor(frt.getFileContext(teamDataPath)).size()+"*******************");
+//		ArrayList<Team> teamList = new ArrayList<Team>(frt.makeTeamList(frt.teamDataSplitor(frt.getFileContext(teamDataPath))));	
 		
-		TeamDao teamDataController = new TeamDaoImpl();
-		for(int i = 0; i < teamList.size(); i ++){
-			teamDataController.add(teamList.get(i));
-		}
+//		TeamDao teamDataController = new TeamDaoImpl();
+//		for(int i = 0; i < teamList.size(); i ++){
+//			teamDataController.add(teamList.get(i));
+//		}
 		
 	}
 	
