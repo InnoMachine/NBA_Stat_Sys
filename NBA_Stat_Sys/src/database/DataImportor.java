@@ -5,43 +5,36 @@
  */
 package database;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 
-import jdbc_tools.DBUtil;
+import po.Team;
 
 public class DataImportor {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Connection conn = DBUtil.open();
+		String teamDataPath = new String("CSEⅢdata/teams/teams");
+		new DataImportor().importTeams(teamDataPath);
+	}
+	
+	public void importTeams(String teamDataPath){
 		
+		FileReadTest frt = new FileReadTest();
+		ArrayList<Team> teamList = new ArrayList<Team>(frt.makeTeamList(frt.teamDataSplitor(frt.getFileContext(teamDataPath))));	
 		
-		String sql1 = "create table if not exists nba.teams"
-				+ "( teamname varchar(20),"
-				+ " abbreviation varchar(5),"
-				+ " city varchar(20),"
-				+ " conference varchar(2),"
-				+ " division varchar(15),"
-				+ " homefield varchar(40),"
-				+ " birthyear varchar(10),"
-				+ " imgPath varchar(40) )";
-		
-		Statement stmt = null;
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		TeamDao teamDataController = new TeamDaoImpl();
+		for(int i = 0; i < teamList.size(); i ++){
+			teamDataController.add(teamList.get(i));
 		}
-		try {
-			stmt.execute(sql1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		DBUtil.close(conn);	
 		
 	}
 	
-
+	public void importPlayers(){
+		
+		
+	}
+	
+	public void importGames(){
+		
+	}
+	
 }

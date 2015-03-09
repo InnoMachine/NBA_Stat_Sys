@@ -10,16 +10,20 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import po.Game;
+import po.Player;
+import po.Team;
+
 public class FileReadTest {
 
-	private static BufferedReader br;
 
 	public static void main(String[] args) {
-		outputFile("CSEⅢdata/teams/teams");
+		new FileReadTest().outputFile("CSEⅢdata/teams/teams");
 	}
-	
-	public static void outputFile(String path){
+
+	public void outputFile(String path){
 		
+		BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader(path));
 			String data = br.readLine();
@@ -33,7 +37,7 @@ public class FileReadTest {
 		
 	}
 	
-	public static ArrayList<String> getFileNameList(String path){
+	public ArrayList<String> getFileNameList(String path){
 		
 		File file = new File(path);
 		File[] fileList = file.listFiles();
@@ -46,6 +50,48 @@ public class FileReadTest {
 			}
 		}
 		return fileNameList;
+		
+	}
+	
+	public String getFileContext(String path){
+		
+		return null;
+		
+	}
+	
+	public ArrayList<ArrayList<String>> teamDataSplitor(String context){
+		
+		return null;
+		
+	}
+	
+	public ArrayList<String> playerDataSplitor(String context){
+		
+		return null;
+		
+	}
+	
+	public ArrayList<String> gameDataSplitor(String context){
+		
+		return null;
+		
+	}
+	
+	public ArrayList<Team> makeTeamList(ArrayList<ArrayList<String>> attriList){
+		
+		return null;
+		
+	}
+	
+	public Player makePlayer(ArrayList<String> attriList){
+		
+		return null;
+		
+	}
+	
+	public Game makeGame(ArrayList<String> attriList){
+		
+		return null;
 		
 	}
 
