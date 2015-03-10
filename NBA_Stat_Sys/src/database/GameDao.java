@@ -7,14 +7,14 @@ package database;
 
 import java.util.ArrayList;
 
-import po.Game;
+import po.GamePO;
 
 public interface GameDao {
 	
-	public void add(Game game);
-	public void update(Game game);
+	public void add(GamePO game);
+	public void update(GamePO game);
 	public void deleteGameByLabel(String label);
-	public Game getGameByLabel(String label);
-	public ArrayList<Game> getAllGames();
+	public GamePO getGameByLabel(String label);
+	public ArrayList<GamePO> getAllGames();
 	
 }

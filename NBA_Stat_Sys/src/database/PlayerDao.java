@@ -7,14 +7,14 @@ package database;
 
 import java.util.ArrayList;
 
-import po.Player;
+import po.PlayerPO;
 
 public interface PlayerDao {
 	
-	public void add(Player player);
-	public void update(Player player);
+	public void add(PlayerPO player);
+	public void update(PlayerPO player);
 	public void deletePlayerByName(String name);
-	public Player getPlayerByName(String name);
-	public ArrayList<Player> getAllPlayers();
+	public PlayerPO getPlayerByName(String name);
+	public ArrayList<PlayerPO> getAllPlayers();
 	
 }

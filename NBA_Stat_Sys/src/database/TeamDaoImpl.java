@@ -15,12 +15,12 @@ import java.util.Locale;
 import jdbc_tools.DBUtil;
 import po.Conference;
 import po.Division;
-import po.Team;
+import po.TeamPO;
 
 public class TeamDaoImpl implements TeamDao {
 
 	@Override
-	public void add(Team team) {
+	public void add(TeamPO team) {
 
 		String sql = "insert into nba.team(teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath)values(?,?,?,?,?,?,?,?)";
 		Connection conn = DBUtil.open();
@@ -44,7 +44,7 @@ public class TeamDaoImpl implements TeamDao {
 	}
 
 	@Override
-	public void update(Team team) {
+	public void update(TeamPO team) {
 		
 		String sql = "update nba.team set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=? where abbr=?";
 		Connection conn = DBUtil.open();
@@ -87,9 +87,9 @@ public class TeamDaoImpl implements TeamDao {
 	}
 
 	@Override
-	public Team getTeamByAbbr(String abbr) {
+	public TeamPO getTeamByAbbr(String abbr) {
 		
-		Team team = new Team();
+		TeamPO team = new TeamPO();
 		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath from nba.team where abbr=?";
 		Connection conn = DBUtil.open();
 		try {
@@ -118,16 +118,16 @@ public class TeamDaoImpl implements TeamDao {
 	}
 
 	@Override
-	public ArrayList<Team> getAllTeams() {
+	public ArrayList<TeamPO> getAllTeams() {
 		
-		ArrayList<Team> teamList = new ArrayList<Team>();
+		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>();
 		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath from nba.team";
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				Team team = new Team();
+				TeamPO team = new TeamPO();
 				team.setTeamName(rs.getString("teamname"));
 				team.setAbbreviation(rs.getString("abbreviation"));
 				team.setCity(rs.getString("city"));

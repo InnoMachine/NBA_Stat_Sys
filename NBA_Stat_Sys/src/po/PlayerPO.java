@@ -5,7 +5,9 @@
  */
 package po;
 
-public class Player {
+import java.util.ArrayList;
+
+public class PlayerPO {
 	
 	private String name;
 	private int number;
@@ -18,6 +20,8 @@ public class Player {
 	private String school;
 	private String ActionImgPath;
 	private String PortraitImgPath;
+	
+	private ArrayList<SinglePerformance> seasonPerformance;
 	
 	public String getName() {
 		return name;
@@ -84,6 +88,12 @@ public class Player {
 	}
 	public void setPortraitImgPath(String portraitImgPath) {
 		PortraitImgPath = portraitImgPath;
+	}
+	public ArrayList<SinglePerformance> getSeasonPerformance() {
+		return seasonPerformance;
+	}
+	public void setSeasonPerformance(ArrayList<SinglePerformance> seasonPerformance) {
+		this.seasonPerformance = seasonPerformance;
 	}
 	
 }

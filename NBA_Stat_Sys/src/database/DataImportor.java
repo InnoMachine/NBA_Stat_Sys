@@ -7,7 +7,7 @@ package database;
 
 import java.util.ArrayList;
 
-import po.Team;
+import po.TeamPO;
 
 public class DataImportor {
 

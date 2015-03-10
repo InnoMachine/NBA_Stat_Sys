@@ -5,7 +5,7 @@
  */
 package po;
 
-public class Team {
+public class TeamPO {
 	
 	private String teamName;
 	private String abbreviation;

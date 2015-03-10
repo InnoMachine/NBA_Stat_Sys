@@ -7,18 +7,18 @@ package database;
 
 import java.util.ArrayList;
 
-import po.Game;
+import po.GamePO;
 
 public class GameDaoImpl implements GameDao {
 
 	@Override
-	public void add(Game game) {
+	public void add(GamePO game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(Game game) {
+	public void update(GamePO game) {
 		// TODO Auto-generated method stub
 
 	}
@@ -30,13 +30,13 @@ public class GameDaoImpl implements GameDao {
 	}
 
 	@Override
-	public Game getGameByLabel(String label) {
+	public GamePO getGameByLabel(String label) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<Game> getAllGames() {
+	public ArrayList<GamePO> getAllGames() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -14,9 +14,9 @@ import java.util.Scanner;
 
 import po.Conference;
 import po.Division;
-import po.Game;
-import po.Player;
-import po.Team;
+import po.GamePO;
+import po.PlayerPO;
+import po.TeamPO;
 
 public class FileReadTest {
 
@@ -139,10 +139,10 @@ public class FileReadTest {
 		
 	}
 	
-	public ArrayList<Team> makeTeamList(ArrayList<ArrayList<String>> attriList){
+	public ArrayList<TeamPO> makeTeamList(ArrayList<ArrayList<String>> attriList){
 		
-		ArrayList<Team> teamList = new ArrayList<Team>();
-		Team team = new Team();
+		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>();
+		TeamPO team = new TeamPO();
 		for(int i = 0; i < attriList.size(); i ++){
 			team.setTeamName(attriList.get(i).get(0));
 			team.setAbbreviation(attriList.get(i).get(1));
@@ -160,13 +160,13 @@ public class FileReadTest {
 		
 	}
 	
-	public Player makePlayer(ArrayList<String> attriList){
+	public PlayerPO makePlayer(ArrayList<String> attriList){
 		
 		return null;
 		
 	}
 	
-	public Game makeGame(ArrayList<String> attriList){
+	public GamePO makeGame(ArrayList<String> attriList){
 		
 		return null;
 		

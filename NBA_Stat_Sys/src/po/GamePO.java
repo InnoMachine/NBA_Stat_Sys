@@ -5,7 +5,7 @@
  */
 package po;
 
-public class Game {
+public class GamePO {
 	
 	private String gameLabel;
 	private String date;
