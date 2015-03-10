@@ -18,6 +18,7 @@ public class TeamVo {
 	private int block;               //盖帽数
 	private int turnover;            //失误数
 	private int foul;                //犯规数
+	private int steal;
 	private int score;               //总得分
 	private double hitRate;          //投篮命中率
 	private double threePointHitRate;//三分球命中率
@@ -27,7 +28,7 @@ public class TeamVo {
 	private double attackingEfficiency;//进攻效率
 	private double defensiveEfficiency;//防守效率
 	private double reboundEfficiency;//篮板效率
-	//没有抢断数据？
+	private double stealEfficiency;//没有抢断数据？
 	private double assistanceEfficiency;//助攻率
 	
 	public String getTeamName(){
@@ -45,7 +46,7 @@ public class TeamVo {
 	public int getGameNum() {
 		return GameNum;
 	}
-	public void setAbbreviation(int GameNum) {
+	public void setGameNum(int GameNum) {
 		this.GameNum = GameNum;
 	}
 	public int getHitNum() {
@@ -126,61 +127,76 @@ public class TeamVo {
 	public void setFoul(int foul) {
 		this.foul = foul;
 	}
+	public int getSteal() {
+		return steal;
+	}
+	public void setSteal(int steal) {
+		this.steal = steal;
+	}
 	public int getScore() {
 		return score;
 	}
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public double gethitRate() {
+	public double getHitRate() {
 		return hitRate;
 	}
-	public void sethitRate(double hitRate) {
+	public void setHitRate(double hitRate) {
 		this.hitRate = hitRate;
 	}
-	public double getthreePointHitRate() {
+	public double getThreePointHitRate() {
 		return threePointHitRate;
 	}
-	public void setthreePointHitRate(double threePointHitRate) {
+	public void setThreePointHitRate(double threePointHitRate) {
 		this.threePointHitRate = threePointHitRate;
 	}
-	public double getfreeThrowRate() {
+	public double getFreeThrowRate() {
 		return freeThrowRate;
 	}
-	public void setfreeThrowRate(double freeThrowRate) {
+	public void setFreeThrowRate(double freeThrowRate) {
 		this.freeThrowRate = freeThrowRate;
 	}
-	public double getwinningRate() {
+	public double getWinningRate() {
 		return winningRate;
 	}
-	public void setwinningRate(double winningRate) {
+	public void setWinningRate(double winningRate) {
 		this.winningRate = winningRate;
 	}
-	public double getroundAttack() {
+	public double getRoundAttack() {
 		return roundAttack;
 	}
-	public void setroundAttack(double roundAttack) {
+	public void setRoundAttack(double roundAttack) {
 		this.roundAttack = roundAttack;
 	}
-	public double getattackingEfficiency() {
+	public double getAttackingEfficiency() {
 		return attackingEfficiency;
 	}
-	public void setattackingEfficiency(double attackingEfficiency) {
+	public void setAttackingEfficiency(double attackingEfficiency) {
 		this.attackingEfficiency = attackingEfficiency;
-	}public double getdefensiveEfficiency() {
+	}
+	public double getDefensiveEfficiency() {
 		return defensiveEfficiency;
 	}
-	public void setdefensiveEfficiency(double defensiveEfficiency) {
+	public void setDefensiveEfficiency(double defensiveEfficiency) {
 		this.defensiveEfficiency = defensiveEfficiency;
-	}public double getreboundEfficiency() {
+	}
+	public double getReboundEfficiency() {
 		return reboundEfficiency;
 	}
-	public void setreboundEfficiency(double reboundEfficiency) {
+	public void setReboundEfficiency(double reboundEfficiency) {
 		this.reboundEfficiency = reboundEfficiency;
-	}public double getassistanceEfficiency() {
+	}
+	public double getStealEfficiency() {
+		return stealEfficiency;
+	}
+	public void setStealEfficiency(double stealEfficiency) {
+		this.stealEfficiency = stealEfficiency;
+	}
+	public double getAssistanceEfficiency() {
 		return assistanceEfficiency;
 	}
-	public void setassistanceEfficiency(double assistanceEfficiency) {
+	public void setAssistanceEfficiency(double assistanceEfficiency) {
 		this.assistanceEfficiency = assistanceEfficiency;
 	}
 }
