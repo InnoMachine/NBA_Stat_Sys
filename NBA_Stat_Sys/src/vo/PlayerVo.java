@@ -8,7 +8,27 @@ public class PlayerVo {
 	private int reboundOverall;
 	private int assistance;
 	private String time;
-	
+	private double hitRate;
+	private double threePointHitRate;//三分球命中率
+	private double freeThrowRate;
+	private int attackingNum;
+	private int defensiveNum;
+	private int block;               //盖帽数
+	private int turnover;            //失误数
+	private int foul;                //犯规数
+	private int steal;
+	private int score;               //总得分
+	private int efficiency;          //效率
+	private double GmSc;
+	private double trueHitRate;
+	private double hitEfficiency;
+	private double reboundOverallRate;
+	private double offensiveReboundRate;
+	private double defensiveReboundRate;
+	private double assistanceRate;          
+	private double blockRate;               
+	private double stealRate;
+	private double useRate;
 	
 	public String getName() {
 		return name;
@@ -45,5 +65,131 @@ public class PlayerVo {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public double gethitRate() {
+		return hitRate;
+	}
+	public void sethitRate(double hitRate) {
+		this.hitRate = hitRate;
+	}
+	public double getthreePointHitRate() {
+		return threePointHitRate;
+	}
+	public void setthreePointHitRate(double threePointHitRate) {
+		this.threePointHitRate = threePointHitRate;
+	}
+	public double getfreeThrowRate() {
+		return freeThrowRate;
+	}
+	public void setfreeThrowRate(double freeThrowRate) {
+		this.freeThrowRate = freeThrowRate;
+	}
+	public int getAttackingNum() {
+		return attackingNum;
+	}
+	public void setAttackingNum(int attackingNum) {
+		this.attackingNum = attackingNum;
+	}
+	public int getDefensiveNum() {
+		return defensiveNum;
+	}
+	public void setDefensiveNum(int defensiveNum) {
+		this.defensiveNum = defensiveNum;
+	}
+	public int getBlock() {
+		return block;
+	}
+	public void setBlock(int block) {
+		this.block = block;
+	}
+	public int getTurnover() {
+		return turnover;
+	}
+	public void setTurnover(int turnover) {
+		this.turnover = turnover;
+	}
+	public int getFoul() {
+		return foul;
+	}
+	public void setFoul(int foul) {
+		this.foul = foul;
+	}
+	public int getSteal() {
+		return steal;
+	}
+	public void setSteal(int steal) {
+		this.steal = steal;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getEfficiency() {
+		return efficiency;
+	}
+	public void setEfficiency(int efficiency) {
+		this.efficiency = efficiency;
+	}
+	public double getGmSc() {
+		return GmSc;
+	}
+	public void setGmSc(double GmSc) {
+		this.GmSc = GmSc;
+	}
+	public double getTrueHitRate() {
+		return trueHitRate;
+	}
+	public void setTrueHitRate(double trueHitRate) {
+		this.trueHitRate = trueHitRate;
+	}
+	public double getHitEfficiency() {
+		return hitEfficiency;
+	}
+	public void setHitEfficiency(double hitEfficiency) {
+		this.hitEfficiency = hitEfficiency;
+	}
+	public double getReboundOverallRate() {
+		return reboundOverallRate;
+	}
+	public void setReboundOverallRate(double reboundOverallRate) {
+		this.reboundOverallRate = reboundOverallRate;
+	}
+	public double getOffensiveReboundRate() {
+		return offensiveReboundRate;
+	}
+	public void setOffensiveReboundRate(double offensiveReboundRate) {
+		this.offensiveReboundRate = offensiveReboundRate;
+	}
+	public double getDefensiveReboundRate() {
+		return defensiveReboundRate;
+	}
+	public void setDefensiveReboundRate(double defensiveReboundRate) {
+		this.defensiveReboundRate = defensiveReboundRate;
+	}
+	public double getAssistanceRate() {
+		return assistanceRate;
+	}
+	public void setAssistanceRate(double assistanceRate) {
+		this.assistanceRate = assistanceRate;
+	}
+	public double getBlockRate() {
+		return blockRate;
+	}
+	public void setBlockRate(double blockRate) {
+		this.blockRate = blockRate;
+	}
+	public double getStealRate() {
+		return stealRate;
+	}
+	public void setStealRate(double stealRate) {
+		this.stealRate = stealRate;
+	}
+	public double getUseRate() {
+		return useRate;
+	}
+	public void setUseRate(double useRate) {
+		this.useRate = useRate;
 	}
 }
