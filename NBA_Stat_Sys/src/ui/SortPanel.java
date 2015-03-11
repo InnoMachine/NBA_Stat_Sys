@@ -1,58 +1,81 @@
 package ui;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.plaf.metal.MetalBorders.Flush3DBorder;
 
-public class SortPanel extends JPanel{
+public class SortPanel extends JPanel {
 	private JTextField criteriatF;
-	public SortPanel(String category){
-		this.setBounds(200, 100, 692, 450);
-		this.setLayout(null);
-		
+    JFrame mainFrame;
+	public SortPanel(String category,JFrame mainFrame) {
+		this.mainFrame=mainFrame;
+		this.setBounds(0,0, 692, 450);
+		this.setVisible(true);
+	    this.setLayout(null);
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(79, 81, 535, 305);
-		add(scrollPane);
-		
+		scrollPane.setBounds(98, 75, 517, 284);
+		this.add(scrollPane);
+
 		JLabel criterialbl = new JLabel("排序依据");
 		criterialbl.setBounds(99, 37, 57, 15);
-		add(criterialbl);
-		
+		this.add(criterialbl);
+
 		criteriatF = new JTextField();
 		criteriatF.setBounds(158, 34, 287, 21);
-		add(criteriatF);
+		this.add(criteriatF);
 		criteriatF.setColumns(10);
-		
+
 		JButton upSortbtn = new JButton("U");
 		upSortbtn.setBounds(455, 33, 22, 23);
-		add(upSortbtn);
-		
+		this.add(upSortbtn);
+
 		JButton downSortbtn = new JButton("D");
 		downSortbtn.setBounds(478, 33, 22, 23);
-		add(downSortbtn);
+		this.add(downSortbtn);
 		
-		JButton btnSort = new JButton("排序");
-		btnSort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSort.setBounds(525, 33, 93, 23);
-		add(btnSort);
-		
+		JButton backbtn = new JButton("返回");
+		backbtn.setBounds(0, 2, 73, 23);
+		backbtn.addActionListener(e->back());
+		this.add(backbtn);
 
-		
-		
-		if(category=="player"){
+		if (category == "player") {
+			JButton btnSort = new JButton("排序");
+			btnSort.addActionListener(e -> sortPlayer());
+			btnSort.setBounds(525, 33, 88, 23);
+			this.add(btnSort);
+
 			JButton screeningbtn = new JButton("显示前50");
-			screeningbtn.setBounds(525, 406, 93, 23);
-			add(screeningbtn);
+			screeningbtn.setBounds(525, 366, 88, 23);
+			screeningbtn.addActionListener(e -> showTopFifty());
+			this.add(screeningbtn);
+
 		}
-		if(category=="team"){}
+		if (category == "team") {
+			JButton btnSort = new JButton("排序");
+			btnSort.addActionListener(e -> sortTeam());
+			btnSort.setBounds(525, 33, 88, 23);
+			this.add(btnSort);
+		}
+		mainFrame.add(this);
+
+	}
+	public void sortPlayer(){
 		
+	}
+	public void showTopFifty(){
 		
+	}
+	public void sortTeam(){		
+		
+	}
+	public void back(){
+	    this.setVisible(false);
+		StartPanel sp=new StartPanel(mainFrame);
+		mainFrame.add(sp);
 	}
 }

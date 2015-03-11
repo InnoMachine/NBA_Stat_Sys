@@ -1,10 +1,13 @@
 package ui;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SearchPanel extends JPanel{
-	public SearchPanel(String category){
-		
+	
+	JFrame mainFrame;
+	public SearchPanel(String category,JFrame mainFrame){
+		this.mainFrame=mainFrame;
 		
 		
 		
