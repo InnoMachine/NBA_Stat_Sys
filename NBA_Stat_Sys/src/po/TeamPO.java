@@ -5,6 +5,8 @@
  */
 package po;
 
+import java.util.ArrayList;
+
 public class TeamPO {
 	
 	private String teamName;
@@ -15,6 +17,7 @@ public class TeamPO {
 	private String homeField;
 	private String birthYear;
 	private String imgPath;
+	private ArrayList<PlayerPO> players;
 	
 	public String getTeamName() {
 		return teamName;
@@ -63,6 +66,12 @@ public class TeamPO {
 	}
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
+	}
+	public ArrayList<PlayerPO> getPlayers() {
+		return players;
+	}
+	public void setPlayers(ArrayList<PlayerPO> players) {
+		this.players = players;
 	}
 	
 }

@@ -5,10 +5,6 @@
  */
 package database;
 
-import java.util.ArrayList;
-
-import po.TeamPO;
-
 public class DataImportor {
 
 	public static void main(String[] args) {

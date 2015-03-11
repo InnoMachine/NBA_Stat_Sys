@@ -25,32 +25,32 @@ public class FileReadTest {
 		
 		FileReadTest frt = new FileReadTest();
 		System.out.println(frt.getFileContext("CSEⅢdata/teams/teams"));
-		System.out.println(frt.teamDataSplitor(frt.getFileContext("CSEⅢdata/teams/teams")));
+//		System.out.println(frt.teamDataSplitor(frt.getFileContext("CSEⅢdata/teams/teams")));
 		
 	}
 
 	public void outputFile(String path){
 		
-		BufferedReader br;
-		try {
-			br = new BufferedReader(new FileReader(path));
-			String data = br.readLine();
-			while(data != null){
-				data = data.replace('╔', ' ');
-				data = data.replace('╤', ' ');
-				data = data.replace('═', ' ');
-				data = data.replace('╗', ' ');
-				data = data.replace('║', ' ');
-				data = data.replace('╚', ' ');
-				data = data.replace('│', ' ');
-				data = data.replace('╝', ' ');
-				data = data.replace('╧', ' ');
-				System.out.println(data);
-				data = br.readLine();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		BufferedReader br;
+//		try {
+//			br = new BufferedReader(new FileReader(path));
+//			String data = br.readLine();
+//			while(data != null){
+//				data = data.replace('╔', ' ');
+//				data = data.replace('╤', ' ');
+//				data = data.replace('═', ' ');
+//				data = data.replace('╗', ' ');
+//				data = data.replace('║', ' ');
+//				data = data.replace('╚', ' ');
+//				data = data.replace('│', ' ');
+//				data = data.replace('╝', ' ');
+//				data = data.replace('╧', ' ');
+//				System.out.println(data);
+//				data = br.readLine();
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 	
@@ -74,21 +74,56 @@ public class FileReadTest {
 		
 		String context = new String();
 		BufferedReader br;
+		String data = new String();
 		try {
 			br = new BufferedReader(new FileReader(path));
-			String data = br.readLine();
+			data = br.readLine();
 			while(data != null){
-				data = data.replace('╔', '\0');
-				data = data.replace('╤', '\0');
-				data = data.replace('═', '\0');
-				data = data.replace('╗', '\0');
-				data = data.replace('║', '\0');
-				data = data.replace('╚', '\0');
-				data = data.replace('│', '\0');
-				data = data.replace('╝', '\0');
-				data = data.replace('╧', '\0');
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("╔", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("╤", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("═", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("╗", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("║", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("╚", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("│", "\n");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("╝", "");
+				System.out.println(data.length());
+				System.out.println(data);
+				data = data.replace("╧", "");
+				System.out.println(data.length());
+				System.out.println("--------------------------------------");
+				System.out.println("*"+data+"*");
+				char[] list = data.toCharArray();
+				System.out.println(list.length);
+				System.out.println((int)list[0]);
 				
-				context += (data + "\n");
+				System.out.println(data == "");
+				System.out.println(data.equals(null));
+				System.out.println(data.equals(""));
+				System.out.println(data == null);
+				System.out.println(data.equals("\0"));
+				System.out.println(data.length());
+				if(data.length() != 0){
+					context += (data + "\n");
+				}
+				
+				
 				data = br.readLine();
 			}
 			br.close();
@@ -109,16 +144,16 @@ public class FileReadTest {
 		String next;
 		while(scannerFull.hasNextLine()){
 			scannerLine = new Scanner(line);
-			System.out.println(line+"!!!!!!!!!thisisline");//
+			System.out.println(line+"-----------------------------thisisline");//
 			while(scannerLine.hasNext()){
 				next = scannerLine.next();
-				System.out.println(next.length()+"===============");
+				System.out.println(next.length()+" as follow");
 				splitedSingleData.add(next);
-				System.out.println(next);
+				System.out.println("*"+next+"*");
+				
 			}
 			scannerLine.close();
 			line = scannerFull.nextLine();
-			System.out.println(splitedSingleData.isEmpty());//
 			splitedFullData.add(splitedSingleData);
 			splitedSingleData = new ArrayList<String>();
 		}
