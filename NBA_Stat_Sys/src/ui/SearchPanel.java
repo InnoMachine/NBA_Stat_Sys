@@ -13,8 +13,12 @@ public class SearchPanel extends JPanel{
 		
 		if(category=="player"){
 			
+			
 		}
-		if(category=="team"){}
+		if(category=="team"){
+			
+			
+		}
 		
 		
 	}
