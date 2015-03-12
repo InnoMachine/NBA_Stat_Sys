@@ -12,9 +12,11 @@ public class StartPanel extends JPanel {
 	SortPanel sortPlayerPanel;
 	SearchPanel searchTeamPanel;
 	SortPanel sortTeamPanel;
-
+    ScreeningPlayerPanel screeningPlayerPanel;
+	
 	JButton searchPlayerbtn;
 	JButton sortPlayerbtn;
+	JButton screeningPlayerbtn;
 	JButton searchTeambtn;
 	JButton sortTeambtn;
 	JFrame mainFrame;
@@ -51,16 +53,24 @@ public class StartPanel extends JPanel {
 		if (searchPlayerbtn instanceof JButton) {
 			searchPlayerbtn.setVisible(true);
 			sortPlayerbtn.setVisible(true);
+			screeningPlayerbtn.setVisible(true);
 		} else {
 			searchPlayerbtn = new JButton("球员查看");
-			searchPlayerbtn.setBounds(380, 162, 93, 23);
+			searchPlayerbtn.setBounds(380, 150, 93, 23);
 			searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
 			this.add(searchPlayerbtn);
 
 			sortPlayerbtn = new JButton("球员排序");
-			sortPlayerbtn.setBounds(380, 187, 93, 23);
+			sortPlayerbtn.setBounds(380, 175, 93, 23);
 			sortPlayerbtn.addActionListener(e -> toSortPlayerPanel());
 			this.add(sortPlayerbtn);
+			
+			
+			screeningPlayerbtn = new JButton("球员筛选");
+			screeningPlayerbtn.setBounds(380, 200, 93, 23);
+			screeningPlayerbtn.addActionListener(e->toScreeningPlayerPanel());
+			this.add(screeningPlayerbtn);
+
 		}
 	}
 
@@ -68,6 +78,7 @@ public class StartPanel extends JPanel {
 		if (searchPlayerbtn instanceof JButton) {
 			searchPlayerbtn.setVisible(false);
 			sortPlayerbtn.setVisible(false);
+			screeningPlayerbtn.setVisible(false);
 		}
 		if (searchTeambtn instanceof JButton) {
 			searchTeambtn.setVisible(true);
@@ -97,6 +108,12 @@ public class StartPanel extends JPanel {
 
 	}
 
+	public void toScreeningPlayerPanel(){
+		this.setVisible(false);
+		screeningPlayerPanel=new ScreeningPlayerPanel(mainFrame);
+		
+	}
+	
 	public void toSearchTeamPanel() {
 		this.setVisible(false);
 		searchTeamPanel = new SearchPanel("team", mainFrame);

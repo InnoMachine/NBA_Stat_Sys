@@ -48,21 +48,19 @@ public class SortPanel extends JPanel {
 		downSortbtn.setBounds(478, 33, 22, 23);
 		this.add(downSortbtn);
 
+		JButton btnSort = new JButton("排序");
+		btnSort.addActionListener(e -> sortPlayer());
+		btnSort.setBounds(525, 33, 88, 23);
+		this.add(btnSort);
+		
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 2, 73, 23);
 		backbtn.addActionListener(e -> back());
 		this.add(backbtn);
 
+		
 		if (category == "player") {
-			JButton btnSort = new JButton("排序");
-			btnSort.addActionListener(e -> sortPlayer());
-			btnSort.setBounds(525, 33, 88, 23);
-			this.add(btnSort);
 
-			JButton screeningbtn = new JButton("显示前50");
-			screeningbtn.setBounds(525, 366, 88, 23);
-			screeningbtn.addActionListener(e -> showTopFifty());
-			this.add(screeningbtn);
 
 			columnNames = new Vector<String>();
 			columnNames.add("姓名");
@@ -80,10 +78,6 @@ public class SortPanel extends JPanel {
 			
 		}
 		if (category == "team") {
-			JButton btnSort = new JButton("排序");
-			btnSort.addActionListener(e -> sortTeam());
-			btnSort.setBounds(525, 33, 88, 23);
-			this.add(btnSort);
 
 			columnNames = new Vector<String>();
 			columnNames.add("球队全名");

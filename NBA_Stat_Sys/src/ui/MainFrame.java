@@ -16,9 +16,9 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		setTitle("NBA信息查询系统");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBounds(200, 100, 692, 450);
+		this.setBounds(200, 100, 709, 488);
 		getContentPane().setLayout(null);
 		StartPanel startPanel=new StartPanel(this);
-        this.add(startPanel);
+        getContentPane().add(startPanel);
 	}
 }
