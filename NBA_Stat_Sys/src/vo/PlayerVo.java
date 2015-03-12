@@ -1,6 +1,19 @@
 package vo;
 
+
 public class PlayerVo {
+	private int number;
+	private String position;
+	private String height;
+	private String weight;
+	private String birth;
+	private int age;
+	private int exp;
+	private String school;
+	private String ActionImgPath;
+	private String PortraitImgPath;
+	
+	
 	private String name;
 	private String team;
 	//先发场数？莫非是时间最长的5个。。
@@ -29,6 +42,71 @@ public class PlayerVo {
 	private double blockRate;               
 	private double stealRate;
 	private double useRate;
+	
+	
+	
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	public String getHeight() {
+		return height;
+	}
+	public void setHeight(String height) {
+		this.height = height;
+	}
+	public String getWeight() {
+		return weight;
+	}
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getExp() {
+		return exp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public String getActionImgPath() {
+		return ActionImgPath;
+	}
+	public void setActionImgPath(String actionImgPath) {
+		ActionImgPath = actionImgPath;
+	}
+	public String getPortraitImgPath() {
+		return PortraitImgPath;
+	}
+	public void setPortraitImgPath(String portraitImgPath) {
+		PortraitImgPath = portraitImgPath;
+	}
+	
+	
 	
 	public String getName() {
 		return name;
@@ -192,4 +270,7 @@ public class PlayerVo {
 	public void setUseRate(double useRate) {
 		this.useRate = useRate;
 	}
+	
+	
+	
 }
