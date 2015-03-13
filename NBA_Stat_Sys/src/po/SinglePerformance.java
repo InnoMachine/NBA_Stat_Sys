@@ -9,7 +9,7 @@ public class SinglePerformance {
 	
 	private String name;
 	private String position;
-	private String time;//sudo
+	private int timeBySeconds;//sudo
 	private int hitNum;
 	private int shotNum;
 	private int threePointHitNum;
@@ -20,13 +20,14 @@ public class SinglePerformance {
 	private int defensiveRebound;
 	private int reboundOverall;
 	private int assistance;
+	private int steal;
 	private int block;
 	private int turnover;
 	private int foul;
 	private int score;
 	
 	public String toString() {
-		return null;
+		return null;//sudo
 	}
 	
 	public String getName() {
@@ -41,11 +42,11 @@ public class SinglePerformance {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public String getTime() {
-		return time;
+	public int getTimeBySeconds() {
+		return timeBySeconds;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setTimeBySeconds(int timeBySeconds) {
+		this.timeBySeconds = timeBySeconds;
 	}
 	public int getHitNum() {
 		return hitNum;
@@ -130,6 +131,14 @@ public class SinglePerformance {
 	}
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public int getSteal() {
+		return steal;
+	}
+
+	public void setSteal(int steal) {
+		this.steal = steal;
 	}
 
 	
