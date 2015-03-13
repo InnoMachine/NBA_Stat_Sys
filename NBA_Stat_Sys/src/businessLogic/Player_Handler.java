@@ -47,8 +47,7 @@ public class Player_Handler {
 			listvo[i].setScore(splist[i].getScore());
 			listvo[i].setEfficiency(splist[i].getScore()+splist[i].getBlock()+splist[i].getReboundOverall()+
 					splist[i].getAssistance()-/*splist[i].getSteal*/splist[i].getFreeThrowShotNum()-
-					splist[i].getShotNum()-splist[i].getThreePointShotNum()+splist[i].getHitNum()+
-					splist[i].getFreeThrowHitNum()+splist[i].getThreePointHitNum()-splist[i].getTurnover());
+					splist[i].getShotNum()+splist[i].getHitNum()+splist[i].getFreeThrowHitNum()-splist[i].getTurnover());
 			listvo[i].setGmSc(splist[i].getScore()+0.4*(splist[i].getHitNum()+splist[i].getThreePointHitNum())
 					-0.7*(splist[i].getShotNum()+splist[i].getThreePointShotNum())-0.4*
 					(splist[i].getFreeThrowShotNum()-splist[i].getFreeThrowHitNum())
@@ -94,6 +93,7 @@ public class Player_Handler {
 			splist[i].setTurnover(0);
 			splist[i].setFoul(0);
 			splist[i].setScore(0);
+			//splist[i].setSteal(0);
 			
 		}
 	}

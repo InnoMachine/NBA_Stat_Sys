@@ -1,14 +1,7 @@
-/**
- * puppy
- * 2015年3月8日 下午3:41:24
- * TODO
- */
-package po;
+package businessLogic;
 
-public class SinglePerformance {
-	
+public class teamGameP {
 	private String name;
-	private String position;
 	private String time;//sudo
 	private int hitNum;
 	private int shotNum;
@@ -24,22 +17,29 @@ public class SinglePerformance {
 	private int turnover;
 	private int foul;
 	private int score;
-	
-	public String toString() {
-		return null;
+	public teamGameP(String name)
+	{
+		this.name =name;
+		hitNum=0;
+		shotNum=0;
+		threePointHitNum=0;
+		threePointShotNum=0;
+		freeThrowHitNum=0;
+		freeThrowShotNum=0;
+		offensiveRebound=0;
+		defensiveRebound=0;
+		reboundOverall=0;
+		assistance=0;
+		block=0;
+		turnover=0;
+		foul=0;
+		score=0;
 	}
-	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getPosition() {
-		return position;
-	}
-	public void setPosition(String position) {
-		this.position = position;
 	}
 	public String getTime() {
 		return time;
@@ -131,6 +131,4 @@ public class SinglePerformance {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
-	
 }
