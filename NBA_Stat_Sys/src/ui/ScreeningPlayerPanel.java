@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.TextField;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -12,6 +11,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
+import businessLogic.Player_BS;
+
 public class ScreeningPlayerPanel extends JPanel {
 	private JTextField screeningtF;
 	JFrame mainFrame;
@@ -21,6 +22,10 @@ public class ScreeningPlayerPanel extends JPanel {
 	private JScrollPane scrollPane;
 	Vector<Vector<String>> rowData;
 	private Vector<String> columnNames;
+	JComboBox positionjcb;
+	JComboBox leaguejcb;
+
+	Player_BS player_BS;
 
 	public ScreeningPlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -57,39 +62,35 @@ public class ScreeningPlayerPanel extends JPanel {
 		columnNames.add("年龄");
 		columnNames.add("球龄");
 		columnNames.add("毕业学校");
-		columnNames.add("具体信息");
+		// columnNames.add("具体信息");
 
 		mainFrame.getContentPane().add(this);
-		
+
 		JLabel label = new JLabel("球员位置");
 		label.setBounds(75, 37, 54, 15);
 		add(label);
-		
+
 		JLabel label_1 = new JLabel("球员联盟");
 		label_1.setBounds(202, 37, 54, 15);
 		add(label_1);
-		
-		
-		positions=new String[4];
-		positions[0]="所有";
-		positions[1]="前锋";
-		positions[2]="中锋";
-		positions[3]="后卫";
-		JComboBox positionjcb = new JComboBox(positions);
+
+		positions = new String[4];
+		positions[0] = "所有";
+		positions[1] = "前锋";
+		positions[2] = "中锋";
+		positions[3] = "后卫";
+		positionjcb = new JComboBox(positions);
 		positionjcb.setBounds(132, 34, 60, 21);
 		this.add(positionjcb);
-		
-		leagues=new String[3];
-		leagues[0]="所有";
-		leagues[1]="东部";
-		leagues[2]="西部";
-		JComboBox leaguejcb = new JComboBox(leagues);
+
+		leagues = new String[3];
+		leagues[0] = "所有";
+		leagues[1] = "东部";
+		leagues[2] = "西部";
+		leaguejcb = new JComboBox(leagues);
 		leaguejcb.setBounds(259, 34, 60, 21);
 		this.add(leaguejcb);
 
-	}
-
-	public void screening() {
 		rowData = new Vector<Vector<String>>();
 		// Vector<String> test=new Vector<String>();
 		// test.add(null);
@@ -106,8 +107,51 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(60, 80, 580, 340);
 
-		table.getColumn("具体信息").setCellEditor(new MyRender());
-		table.getColumn("具体信息").setCellRenderer(new MyRender());
+		// table.getColumn("具体信息").setCellEditor(new MyRender());
+		// table.getColumn("具体信息").setCellRenderer(new MyRender());
+		if (scrollPane != null) {
+			scrollPane.setVisible(false);
+		}
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(60, 80, 580, 340);
+		scrollPane.setVisible(true);
+
+		this.add(scrollPane);
+
+	}
+
+	public void screening() {
+
+		rowData = new Vector<Vector<String>>();
+		Vector<String> playerInfo = new Vector<String>();
+
+		PlayerVo[] player = player_BS.filterPlayerBy(
+				positionjcb.getSelectedItem(), leaguejcb.getSelectedItem(),
+				screeningtF.getText());
+		for (int i = 0; i < player.length; i++) {
+			playerInfo.add(player[i].getName());
+			playerInfo.add(String.valueOf(player[i].getNumber()));
+			playerInfo.add(player[i].getPosition());
+			playerInfo.add(player[i].getHeight());
+			playerInfo.add(player[i].getWeight());
+			playerInfo.add(player[i].getBirth());
+			playerInfo.add(String.valueOf(player[i].getAge()));
+			playerInfo.add(String.valueOf(player[i].getExp()));
+			playerInfo.add(player[i].getSchool());
+			rowData.add(playerInfo);
+		}
+
+		if (table != null) {
+			table.setVisible(false);
+		}
+		table = new JTable(rowData, columnNames);
+		this.add(table);
+		table.setVisible(true);
+		table.setBounds(60, 80, 580, 340);
+
+		// table.getColumn("具体信息").setCellEditor(new MyRender());
+		// table.getColumn("具体信息").setCellRenderer(new MyRender());
+		table.setColumnSelectionAllowed(true);
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -123,4 +167,5 @@ public class ScreeningPlayerPanel extends JPanel {
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 	}
+
 }

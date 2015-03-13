@@ -16,6 +16,11 @@ import javax.swing.JButton;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import vo.PlayerVo;
+import vo.TeamVo;
+import businessLogic.Player_BS;
+import businessLogic.Team_BS;
+
 
 public class SortPanel extends JPanel {
 	private JTextField criteriatF;
@@ -24,6 +29,9 @@ public class SortPanel extends JPanel {
 	private JScrollPane scrollPane;
 	Vector<Vector<String>> rowData;
 	private Vector<String> columnNames;
+	
+	Player_BS player_BS;
+	Team_BS team_BS;
 
 	public SortPanel(String category, JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -72,7 +80,7 @@ public class SortPanel extends JPanel {
 			columnNames.add("年龄");
 			columnNames.add("球龄");
 			columnNames.add("毕业学校");
-			columnNames.add("具体信息");
+//			columnNames.add("具体信息");
 			
 
 			
@@ -87,7 +95,7 @@ public class SortPanel extends JPanel {
 			columnNames.add("分区");
 			columnNames.add("主场");
 			columnNames.add("建立时间");
-			columnNames.add("具体信息");
+//			columnNames.add("具体信息");
 		
 		
 		
@@ -96,15 +104,6 @@ public class SortPanel extends JPanel {
 		
 		}
 
-	
-
-		mainFrame.add(this);
-
-	}
-
-	public void sortPlayer() {
-
-		
 		rowData = new Vector<Vector<String>>();
 //		Vector<String> test=new Vector<String>();
 //		test.add(null);
@@ -122,8 +121,50 @@ public class SortPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(98, 75, 517, 284);
 
-		table.getColumn("具体信息").setCellEditor(new MyRender());
-		table.getColumn("具体信息").setCellRenderer(new MyRender());
+//		table.getColumn("具体信息").setCellEditor(new MyRender());
+//		table.getColumn("具体信息").setCellRenderer(new MyRender());
+		if (scrollPane != null) {
+			scrollPane.setVisible(false);
+		}
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(98, 75, 517, 284);
+		scrollPane.setVisible(true);
+		this.add(scrollPane);
+
+		mainFrame.add(this);
+
+	}
+
+	public void sortPlayer() {
+
+		
+		rowData = new Vector<Vector<String>>();
+		Vector<String> playerInfo=new Vector<String>();
+		PlayerVo[] player = player_BS.sortPlayerBy(criteriatF.getText());
+		for (int i = 0; i < player.length; i++) {
+			playerInfo.add(player[i].getName());
+			playerInfo.add(String.valueOf(player[i].getNumber()));
+			playerInfo.add(player[i].getPosition());
+			playerInfo.add(player[i].getHeight());
+			playerInfo.add(player[i].getWeight());
+			playerInfo.add(player[i].getBirth());
+			playerInfo.add(String.valueOf(player[i].getAge()));
+			playerInfo.add(String.valueOf(player[i].getExp()));
+			playerInfo.add(player[i].getSchool());
+			rowData.add(playerInfo);
+		}
+		
+		
+		if (table != null) {
+			table.setVisible(false);
+		}
+		table = new JTable(rowData, columnNames);
+		this.add(table);
+		table.setVisible(true);
+		table.setBounds(98, 75, 517, 284);
+
+//		table.getColumn("具体信息").setCellEditor(new MyRender());
+//		table.getColumn("具体信息").setCellRenderer(new MyRender());
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -154,8 +195,8 @@ public class SortPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(98, 75, 517, 284);
 
-		table.getColumn("具体信息").setCellEditor(new MyRender());
-		table.getColumn("具体信息").setCellRenderer(new MyRender());
+//		table.getColumn("具体信息").setCellEditor(new MyRender());
+//		table.getColumn("具体信息").setCellRenderer(new MyRender());
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -165,21 +206,23 @@ public class SortPanel extends JPanel {
 		this.add(scrollPane);
 
 		
-		
-		
 	}
 
 	public void sortTeam() {
 
 		rowData = new Vector<Vector<String>>();
-//		Vector<String> test=new Vector<String>();
-//		test.add(null);
-//		test.add(null);
-//		test.add(null);
-//		test.add(null);			
-//		rowData.add(test);
-		
-		
+		Vector<String> teamInfo=new Vector<String>();
+		TeamVo[] team = team_BS.sortTeamBy(criteriatF.getText());
+		for (int i = 0; i < team.length; i++) {
+			teamInfo.add(team[i].getTeamName());
+			teamInfo.add(team[i].getAbbreviation());
+			teamInfo.add(team[i].getCity());
+			teamInfo.add(team[i].getConference().toString());
+			teamInfo.add(team[i].getDivision().toString());
+			teamInfo.add(team[i].getHomeField());
+			teamInfo.add(team[i].getBirthYear());
+			rowData.add(teamInfo);
+		}
 		
 		if (table != null) {
 			table.setVisible(false);
@@ -189,8 +232,8 @@ public class SortPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(98, 75, 517, 284);
 
-		table.getColumn("具体信息").setCellEditor(new MyRender());
-		table.getColumn("具体信息").setCellRenderer(new MyRender());
+//		table.getColumn("具体信息").setCellEditor(new MyRender());
+//		table.getColumn("具体信息").setCellRenderer(new MyRender());
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -207,7 +250,7 @@ public class SortPanel extends JPanel {
 		mainFrame.add(sp);
 	}
 }
-
+/*
 class MyRender extends AbstractCellEditor implements TableCellRenderer,
 		ActionListener, TableCellEditor {
 
@@ -236,15 +279,7 @@ class MyRender extends AbstractCellEditor implements TableCellRenderer,
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-        //show the player's details
- 		
-		
-		
-		
-		
-		
-		
-		
+        //show the player's details		
 		
 
 	}
@@ -257,3 +292,4 @@ class MyRender extends AbstractCellEditor implements TableCellRenderer,
 	}
 
 }
+*/
