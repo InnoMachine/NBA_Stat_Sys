@@ -6,7 +6,10 @@ import vo.PlayerVo;
 public class Player_BL implements Player_BS{
 	Player_Handler player_handler;
 	
-
+	public Player_BL()
+	{
+		player_handler =new Player_Handler(); 
+	}
 	public PlayerVo getPlayerByName(String name) {
 		
 		return null;
