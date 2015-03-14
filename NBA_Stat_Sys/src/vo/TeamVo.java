@@ -14,6 +14,8 @@ public class TeamVo {
 	private String birthYear;
 	private String imgPath;
 	
+	private int time;//sudo
+	private int winningNum;
 	private int GameNum;
 	private int hitNum;
 	private int shotNum;
@@ -40,6 +42,13 @@ public class TeamVo {
 	private double reboundEfficiency;//篮板效率
 	private double stealEfficiency;//没有抢断数据？
 	private double assistanceEfficiency;//助攻率
+	
+	private int opOffensiveRebound;  //对手进攻篮板
+	private int opDefensiveRebound;  //对手防守篮板
+	private int opReboundAll;
+	private double opRoundAttack;       //对手进攻回合
+	private int opTwoPointShotNum;   //对手两分球出手
+	private int opScore;
 	
 	public String getTeamName(){
 		return teamName;
@@ -88,6 +97,18 @@ public class TeamVo {
 	}
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
+	}
+	public int getTime() {
+		return time;
+	}
+	public void setTime(int time) {
+		this.time = time;
+	}
+	public int getWinningNum() {
+		return winningNum;
+	}
+	public void setWiningNum(int winningNum) {
+		this.winningNum = winningNum;
 	}
 	public int getGameNum() {
 		return GameNum;
@@ -244,5 +265,41 @@ public class TeamVo {
 	}
 	public void setAssistanceEfficiency(double assistanceEfficiency) {
 		this.assistanceEfficiency = assistanceEfficiency;
+	}
+	public int getOpOffensiveRebound() {
+		return opOffensiveRebound;
+	}
+	public void setOpOffensiveRebound(int opOffensiveRebound) {
+		this.opOffensiveRebound = opOffensiveRebound;
+	}
+	public int getOpDefensiveRebound() {
+		return opDefensiveRebound;
+	}
+	public void setOpDefensiveRebound(int opDefensiveRebound) {
+		this.opDefensiveRebound = opDefensiveRebound;
+	}
+	public int getOpReboundAll() {
+		return opReboundAll;
+	}
+	public void setOpReboundAll(int opReboundAll) {
+		this.opReboundAll = opReboundAll;
+	}
+	public double getOpRoundAttack() {
+		return opRoundAttack;
+	}
+	public void setOpRoundAttack(double opRoundAttack) {
+		this.opRoundAttack = opRoundAttack;
+	}
+	public int getOpTwoPointShotNum() {
+		return opTwoPointShotNum;
+	}
+	public void setOpTwoPointShotNum(int opTwoPointShotNum) {
+		this.opTwoPointShotNum = opTwoPointShotNum;
+	}
+	public int getOpScore() {
+		return opScore;
+	}
+	public void setOpScore(int opScore) {
+		this.opScore = opScore;
 	}
 }

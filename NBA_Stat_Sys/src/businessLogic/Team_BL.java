@@ -19,7 +19,7 @@ public class Team_BL implements Team_BS{
 	}
 
 	@Override
-	public TeamVo[] sortTeamBy(int option) {
+	public TeamVo[] sortTeamBy(String option) {
 		// TODO Auto-generated method stub
 		return null;
 	}

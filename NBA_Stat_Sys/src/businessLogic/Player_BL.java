@@ -22,13 +22,13 @@ public class Player_BL implements Player_BS{
 	}
 
 	@Override
-	public PlayerVo[] sortPlayerBy(int option) {
+	public PlayerVo[] sortPlayerBy(String option) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public PlayerVo[] filterPlayerBy(String position, Division div, int option) {
+	public PlayerVo[] filterPlayerBy(String position, Division div, String option) {
 		// TODO Auto-generated method stub
 		return null;
 	}

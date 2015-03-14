@@ -20,12 +20,18 @@ public class PlayerVo {
 	private int gameNum;
 	private int reboundOverall;
 	private int assistance;
-	private String time;
+	private int time;
+	private int hitNum;
+	private int shotNum;
+	private int threePointHitNum;
+	private int threePointShotNum;
+	private int freeThrowHitNum;
+	private int freeThrowShotNum;
 	private double hitRate;
 	private double threePointHitRate;//三分球命中率
 	private double freeThrowRate;
-	private int attackingNum;
-	private int defensiveNum;
+	private int attackingNum;        //进攻数=进攻篮板数。。。
+	private int defensiveNum;        //防守数
 	private int block;               //盖帽数
 	private int turnover;            //失误数
 	private int foul;                //犯规数
@@ -35,6 +41,7 @@ public class PlayerVo {
 	private double GmSc;
 	private double trueHitRate;
 	private double hitEfficiency;
+	private double turnOverRate;
 	private double reboundOverallRate;
 	private double offensiveReboundRate;
 	private double defensiveReboundRate;
@@ -43,7 +50,21 @@ public class PlayerVo {
 	private double stealRate;
 	private double useRate;
 	
-	
+	//
+	private double teamRoundAttack;      //进攻回合
+	private int opOffensiveRebound;  //对手进攻篮板
+	private int opDefensiveRebound;  //对手防守篮板
+	private int opReboundAll;
+	private double opRoundAttack;       //对手进攻回合
+	private int opTwoPointShotNum;   //对手两分球出手
+	private int teamTime;            //球队所有球员上场时间
+	private int teamShotNum;
+	private int teamHitNum;
+	private int teamFreeThrowNum;
+	private int teamTurnOver;
+	private int teamRebound;
+	private int teamOffensiveRebound;
+	private int teamDefensiveRebound;
 	
 	public int getNumber() {
 		return number;
@@ -138,28 +159,70 @@ public class PlayerVo {
 	public void setAssistance(int assistance) {
 		this.assistance = assistance;
 	}
-	public String getTime() {
+	public int getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(int time) {
 		this.time = time;
 	}
-	public double gethitRate() {
+	public int getHitNum() {
+		return hitNum;
+	}
+	public void setHitNum(int hitNum) {
+		this.hitNum = hitNum;
+	}
+	public int getShotNum() {
+		return shotNum;
+	}
+	public void setShotNum(int shotNum) {
+		this.shotNum = shotNum;
+	}
+	public int getThreePointHitNum() {
+		return threePointHitNum;
+	}
+	public void setThreePointHitNum(int threePointHitNum) {
+		this.threePointHitNum = threePointHitNum;
+	}
+	public int getThreePointShotNum() {
+		return threePointShotNum;
+	}
+	public void setThreePointShotNum(int threePointShotNum) {
+		this.threePointShotNum = threePointShotNum;
+	}
+	public int getFreeThrowHitNum() {
+		return freeThrowHitNum;
+	}
+	public void setFreeThrowHitNum(int freeThrowHitNum) {
+		this.freeThrowHitNum = freeThrowHitNum;
+	}
+	public int getFreeThrowShotNum() {
+		return freeThrowShotNum;
+	}
+	public void setFreeThrowShotNum(int freeThrowShotNum) {
+		this.freeThrowShotNum = freeThrowShotNum;
+	}
+	public double getHitRate() {
 		return hitRate;
 	}
-	public void sethitRate(double hitRate) {
+	public void setHitRate(double hitRate) {
 		this.hitRate = hitRate;
 	}
-	public double getthreePointHitRate() {
+	public double TurnOverRate() {
+		return turnOverRate;
+	}
+	public void setTurnOverRate(double turnOverRate) {
+		this.turnOverRate = turnOverRate;
+	}
+	public double getThreePointHitRate() {
 		return threePointHitRate;
 	}
-	public void setthreePointHitRate(double threePointHitRate) {
+	public void setThreePointHitRate(double threePointHitRate) {
 		this.threePointHitRate = threePointHitRate;
 	}
-	public double getfreeThrowRate() {
+	public double getFreeThrowRate() {
 		return freeThrowRate;
 	}
-	public void setfreeThrowRate(double freeThrowRate) {
+	public void setFreeThrowRate(double freeThrowRate) {
 		this.freeThrowRate = freeThrowRate;
 	}
 	public int getAttackingNum() {
@@ -271,6 +334,91 @@ public class PlayerVo {
 		this.useRate = useRate;
 	}
 	
+	public double getTeamRoundAttack() {
+		return teamRoundAttack;
+	}
+	public void setTeamRoundAttack(double roundAttack) {
+		this.teamRoundAttack = roundAttack;
+	}
+	public int getOpOffensiveRebound() {
+		return opOffensiveRebound;
+	}
+	public void setOpOffensiveRebound(int opOffensiveRebound) {
+		this.opOffensiveRebound = opOffensiveRebound;
+	}
+	public int getOpDefensiveRebound() {
+		return opDefensiveRebound;
+	}
+	public void setOpDefensiveRebound(int opDefensiveRebound) {
+		this.opDefensiveRebound = opDefensiveRebound;
+	}
+	public double getOpRoundAttack() {
+		return opRoundAttack;
+	}
+	public void setOpRoundAttack(double opRoundAttack) {
+		this.opRoundAttack = opRoundAttack;
+	}
+	public int getOpTwoPointShotNum() {
+		return opTwoPointShotNum;
+	}
+	public void setOpTwoPointShotNum(int opTwoPointShotNum) {
+		this.opTwoPointShotNum = opTwoPointShotNum;
+	}
+	public int getteamTime() {
+		return teamTime;
+	}
+	public void setteamTime(int teamTime) {
+		this.teamTime = teamTime;
+	}
+	public int GetteamShotNum() {
+		return teamShotNum;
+	}
+	public void setteamShotNum(int teamShotNum) {
+		this.teamShotNum = teamShotNum;
+	}
+	public int GetteamHitNum() {
+		return teamHitNum;
+	}
+	public void setteamHitNum(int teamHitNum) {
+		this.teamHitNum = teamHitNum;
+	}
+	public int getteamFreeThrowNum() {
+		return teamFreeThrowNum;
+	}
+	public void setteamFreeThrowNum(int teamFreeThrowNum) {
+		this.teamFreeThrowNum = teamFreeThrowNum;
+	}
 	
+	public int getteamTurnOver() {
+		return teamTurnOver;
+	}
+	public void setteamTurnOver(int teamTurnOver) {
+		this.teamTurnOver = teamTurnOver;
+	}
+	
+	public int getOpReboundAll() {
+		return opReboundAll;
+	}
+	public void setOpReboundAll(int opReboundAll) {
+		this.opReboundAll = opReboundAll;
+	}
+	public int getteamRebound() {
+		return teamRebound;
+	}
+	public void setteamRebound(int teamRebound) {
+		this.teamRebound = teamRebound;
+	}
+	public int getteamOffensiveRebound() {
+		return teamOffensiveRebound;
+	}
+	public void setteamOffensiveRebound(int teamOffensiveRebound) {
+		this.teamOffensiveRebound = teamOffensiveRebound;
+	}
+	public int getteamDefensiveRebound() {
+		return teamDefensiveRebound;
+	}
+	public void setteamDefensiveRebound(int teamDefensiveRebound) {
+		this.teamDefensiveRebound = teamDefensiveRebound;
+	}
 	
 }

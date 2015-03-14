@@ -35,9 +35,9 @@ public class Player_Handler {
 	{
 		for(int i=0;i<splist.length;i++)
 		{
-			listvo[i].sethitRate(splist[i].getHitNum()/splist[i].getShotNum());
-			listvo[i].setthreePointHitRate(splist[i].getThreePointHitNum()/splist[i].getThreePointShotNum());
-			listvo[i].setfreeThrowRate(splist[i].getFreeThrowHitNum()/splist[i].getFreeThrowShotNum());
+			listvo[i].setHitRate(splist[i].getHitNum()/splist[i].getShotNum());
+			listvo[i].setThreePointHitRate(splist[i].getThreePointHitNum()/splist[i].getThreePointShotNum());
+			listvo[i].setFreeThrowRate(splist[i].getFreeThrowHitNum()/splist[i].getFreeThrowShotNum());
 			//listvo[i].setAttackingNum(attackingNum);
 			//listvo[i].
 			listvo[i].setBlock(splist[i].getBlock());
