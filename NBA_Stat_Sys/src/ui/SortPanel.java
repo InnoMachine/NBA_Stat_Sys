@@ -104,7 +104,12 @@ public class SortPanel extends JPanel {
 		
 		}
 
-		rowData = new Vector<Vector<String>>();
+		
+	    rowData = new Vector<Vector<String>>();
+
+		
+		
+		
 //		Vector<String> test=new Vector<String>();
 //		test.add(null);
 //		test.add(null);
@@ -140,6 +145,7 @@ public class SortPanel extends JPanel {
 		
 		rowData = new Vector<Vector<String>>();
 		Vector<String> playerInfo=new Vector<String>();
+	
 		PlayerVo[] player = player_BS.sortPlayerBy(criteriatF.getText());
 		for (int i = 0; i < player.length; i++) {
 			playerInfo.add(player[i].getName());
@@ -153,7 +159,6 @@ public class SortPanel extends JPanel {
 			playerInfo.add(player[i].getSchool());
 			rowData.add(playerInfo);
 		}
-		
 		
 		if (table != null) {
 			table.setVisible(false);
@@ -177,7 +182,7 @@ public class SortPanel extends JPanel {
 
 	public void showTopFifty() {
 
-		rowData = new Vector<Vector<String>>();
+		//rowData = new Vector<Vector<String>>();
 //		Vector<String> test=new Vector<String>();
 //		test.add(null);
 //		test.add(null);
@@ -211,8 +216,11 @@ public class SortPanel extends JPanel {
 	public void sortTeam() {
 
 		rowData = new Vector<Vector<String>>();
+        
 		Vector<String> teamInfo=new Vector<String>();
+	
 		TeamVo[] team = team_BS.sortTeamBy(criteriatF.getText());
+		
 		for (int i = 0; i < team.length; i++) {
 			teamInfo.add(team[i].getTeamName());
 			teamInfo.add(team[i].getAbbreviation());
@@ -223,7 +231,6 @@ public class SortPanel extends JPanel {
 			teamInfo.add(team[i].getBirthYear());
 			rowData.add(teamInfo);
 		}
-		
 		if (table != null) {
 			table.setVisible(false);
 		}
