@@ -10,8 +10,16 @@ import java.util.ArrayList;
 public class TeamPerformance {
 	
 	private String teamNameAbbr;
-	ArrayList<SinglePerformance> tpList = new ArrayList<SinglePerformance>();
+	private ArrayList<SinglePerformance> tpList = new ArrayList<SinglePerformance>();
 	
+	public ArrayList<SinglePerformance> getTpList() {
+		return tpList;
+	}
+
+	public void setTpList(ArrayList<SinglePerformance> tpList) {
+		this.tpList = tpList;
+	}
+
 	public void addSinglePerformance(SinglePerformance sp) {
 		tpList.add(sp);
 	}
