@@ -100,8 +100,8 @@ public class Data_Handler {
 		{
 			TeamPerformance tpg = gamelist.get(i).getGuestTP();
 			TeamPerformance tph = gamelist.get(i).getHomeTP();
-			teamGameP tgpg=setPerformance(tpg);
-			teamGameP tgph=setPerformance(tph);
+			TeamPerformanceInSingleGame tgpg=setPerformance(tpg);
+			TeamPerformanceInSingleGame tgph=setPerformance(tph);
 			tgpg.setOpDefensiveRebound(tgph.getDefensiveRebound());
 			tgpg.setOpOffensiveRebound(tgph.getOffensiveRebound());
 			tgpg.setOpTwoPointShotNum(tgph.getShotNum()-tgph.getThreePointShotNum());
@@ -122,7 +122,7 @@ public class Data_Handler {
 			teamVoPSet(tgph);
 		}
 	}
-	private void teamVoPSet(teamGameP tgp) {
+	private void teamVoPSet(TeamPerformanceInSingleGame tgp) {
 		for(int i=0;i<teamlistvo.length;i++)
 		{
 			
@@ -154,8 +154,8 @@ public class Data_Handler {
 		}
 		
 	}
-	private void playerVoPSet(teamGameP tgp) {
-		for(PlayerGameP temp:tgp.playerlist)
+	private void playerVoPSet(TeamPerformanceInSingleGame tgp) {
+		for(PlayerPerformanceInSingleGame temp:tgp.playerlist)
 		{
 			for(int i=0;i<listvo.length;i++)
 			{
@@ -198,10 +198,10 @@ public class Data_Handler {
 		}
 		
 	}
-	private teamGameP setPerformance(TeamPerformance tp) {
+	private TeamPerformanceInSingleGame setPerformance(TeamPerformance tp) {
 		ArrayList<SinglePerformance> listsp = new ArrayList<SinglePerformance>();//tp.getT
 		String abbr = tp.getTeamNameAbbr();
-		teamGameP tgp = new teamGameP(abbr);
+		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
 		for(SinglePerformance temp:listsp)
 		{
 			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
@@ -224,7 +224,7 @@ public class Data_Handler {
 			{
 				if(temp.getName().equals(listvo[i].getName()))
 				{
-					PlayerGameP pgp = new PlayerGameP(temp.getName());
+					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
 					pgp.setTime(temp.getTimeBySeconds());
 					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
 					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
