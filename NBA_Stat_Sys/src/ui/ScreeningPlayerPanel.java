@@ -11,7 +11,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
+import po.Division;
 import businessLogic.Player_BS;
+import vo.PlayerVo;
 
 public class ScreeningPlayerPanel extends JPanel {
 	private JTextField screeningtF;
@@ -126,7 +128,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		Vector<String> playerInfo = new Vector<String>();
 
 		PlayerVo[] player = player_BS.filterPlayerBy(
-				positionjcb.getSelectedItem(), leaguejcb.getSelectedItem(),
+				String.valueOf(positionjcb.getSelectedItem()), Division.valueOf(String.valueOf(leaguejcb.getSelectedItem())),
 				screeningtF.getText());
 		for (int i = 0; i < player.length; i++) {
 			playerInfo.add(player[i].getName());
