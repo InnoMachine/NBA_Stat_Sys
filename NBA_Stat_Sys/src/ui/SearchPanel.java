@@ -893,20 +893,8 @@ public class SearchPanel extends JPanel{
 		add(textField_32);
 		textField_32.setColumns(10);
 		
-		textField_28 = new JTextField();
-		textField_28.setText("三分命中率");
-		textField_28.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_28.setEditable(false);
-		textField_28.setBounds(181, 242, 66, 21);
-		add(textField_28);
-		textField_28.setColumns(10);
 		
-		textField_36 = new JTextField();
-		textField_36.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_36.setEditable(false);
-		textField_36.setBounds(247, 242, 66, 21);
-		add(textField_36);
-		textField_36.setColumns(10);
+		textField_36.setText(String.valueOf(player.getThreePointHitRate()));
 		
 		textField_29 = new JTextField();
 		textField_29.setText("罚球命中率");
@@ -987,35 +975,11 @@ public class SearchPanel extends JPanel{
 		add(textField_31);
 		textField_31.setColumns(10);
 	
-		textField_54 = new JTextField();
-		textField_54.setText("进攻篮板率");
-		textField_54.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_54.setEditable(false);
-		textField_54.setBounds(445, 368, 66, 21);
-		add(textField_54);
-		textField_54.setColumns(10);
+	
+		textField_69.setText(String.valueOf(player.getOffensiveReboundRate()));
 		
-		textField_69 = new JTextField();
-		textField_69.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_69.setEditable(false);
-		textField_69.setBounds(511, 368, 66, 21);
-		add(textField_69);
-		textField_69.setColumns(10);
 		
-		textField_56 = new JTextField();
-		textField_56.setText("防守篮板率");
-		textField_56.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_56.setEditable(false);
-		textField_56.setBounds(181, 389, 66, 21);
-		add(textField_56);
-		textField_56.setColumns(10);
-
-		textField_40 = new JTextField();
-		textField_40.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_40.setEditable(false);
-		textField_40.setBounds(247, 389, 66, 21);
-		add(textField_40);
-		textField_40.setColumns(10);
+		textField_40.setText(String.valueOf(player.getDefensiveReboundRate()));
 		
 		textField_58 = new JTextField();
 		textField_58.setText("助攻率");
@@ -1047,51 +1011,14 @@ public class SearchPanel extends JPanel{
 		add(textField_70);
 		textField_70.setColumns(10);
 		
-		textField_62 = new JTextField();
-		textField_62.setText("盖帽率");
-		textField_62.setEditable(false);
-		textField_62.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_62.setBounds(181, 410, 66, 21);
-		add(textField_62);
-		textField_62.setColumns(10);		
-	
-		textField_51 = new JTextField();
-		textField_51.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_51.setEditable(false);
-		textField_51.setBounds(247, 410, 66, 21);
-		add(textField_51);
-		textField_51.setColumns(10);
+		
+		textField_51.setText(String.valueOf(player.getBlockRate()));
 
-		textField_64 = new JTextField();
-		textField_64.setText("失误率");
-		textField_64.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_64.setEditable(false);
-		textField_64.setBounds(313, 410, 66, 21);
-		add(textField_64);
-		textField_64.setColumns(10);	
 		
-		textField_57 = new JTextField();
-		textField_57.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_57.setEditable(false);
-		textField_57.setBounds(379, 410, 66, 21);
-		add(textField_57);
-		textField_57.setColumns(10);
+		textField_57.setText(String.valueOf(player.TurnOverRate()));
 		
-
-		textField_66 = new JTextField();
-		textField_66.setText("使用率");
-		textField_66.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_66.setEditable(false);
-		textField_66.setBounds(445, 410, 66, 21);
-		add(textField_66);
-		textField_66.setColumns(10);
 		
-		textField_71 = new JTextField();
-		textField_71.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_71.setEditable(false);
-		textField_71.setBounds(511, 410, 66, 21);
-		add(textField_71);
-		textField_71.setColumns(10);
+		textField_71.setText(String.valueOf(player.getUseRate()));
 		
 	}
 	public void back(){

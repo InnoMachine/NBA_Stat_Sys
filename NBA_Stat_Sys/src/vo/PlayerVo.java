@@ -29,13 +29,13 @@ public class PlayerVo {
 	private int freeThrowShotNum;
 	private double hitRate;
 	private double threePointHitRate;//三分球命中率
-	private double freeThrowRate;
+	private double freeThrowRate;    //罚球命中率
 	private int attackingNum;        //进攻数=进攻篮板数。。。
 	private int defensiveNum;        //防守数
 	private int block;               //盖帽数
 	private int turnover;            //失误数
 	private int foul;                //犯规数
-	private int steal;
+	private int steal;               //抢断
 	private int score;               //总得分
 	private int efficiency;          //效率
 	private double GmSc;
