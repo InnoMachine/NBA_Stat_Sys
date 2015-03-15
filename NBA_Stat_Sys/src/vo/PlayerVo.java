@@ -25,9 +25,9 @@ public class PlayerVo {
 	private int shotNum;
 	private int threePointHitNum;
 	private int threePointShotNum;
-	private int freeThrowHitNum;
+	private int freeThrowHitNum;     //罚球命中数
 	private int freeThrowShotNum;
-	private double hitRate;
+	private double hitRate;          //投篮命中率
 	private double threePointHitRate;//三分球命中率
 	private double freeThrowRate;    //罚球命中率
 	private int attackingNum;        //进攻数=进攻篮板数。。。
@@ -39,8 +39,8 @@ public class PlayerVo {
 	private int score;               //总得分
 	private int efficiency;          //效率
 	private double GmSc;
-	private double trueHitRate;
-	private double hitEfficiency;
+	private double trueHitRate;      //真实命中率
+	private double hitEfficiency;    //投篮效率
 	private double turnOverRate;
 	private double reboundOverallRate;
 	private double offensiveReboundRate;

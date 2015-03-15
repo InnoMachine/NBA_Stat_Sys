@@ -785,42 +785,17 @@ public class SearchPanel extends JPanel{
 	public void showPlayerInfo(String pName){
 		PlayerVo player=player_BS.getPlayerByName(pName);
 		
-		textField_4.setText(player.getName());
-		
+		textField_4.setText(player.getName());	
 		textField_9.setText(player.getHeight());
-			
 		textField_13.setText(player.getBirth());	
-		
 		textField_5.setText(player.getPosition());
-		
-		
-		textField_10.setText(player.getWeight());
-		
+		textField_10.setText(player.getWeight());		
 		textField_73.setText(String.valueOf(player.getExp()));
-				
 		textField_72.setText(String.valueOf(player.getNumber()));
-		
 		textField_14.setText(String.valueOf(player.getAge()));
-	
 		textField_16.setText(player.getSchool());
-		
 		textField_18.setText(String.valueOf(player.getGameNum()));
-		
-		textField_19 = new JTextField();
-		textField_19.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_19.setText("先发场数");
-		textField_19.setEditable(false);
-		textField_19.setBounds(313, 179, 66, 21);
-		add(textField_19);
-		textField_19.setColumns(10);
-		
-		textField_20 = new JTextField();
-		textField_20.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_20.setEditable(false);
-		textField_20.setBounds(379, 179, 66, 21);
-		add(textField_20);
-		textField_20.setColumns(10);
-	
+		textField_20.setText(String.valueOf(player.getFirstOnNum()));	
 		
 //picture		
 		textField_68 = new JTextField();
@@ -828,196 +803,42 @@ public class SearchPanel extends JPanel{
 		add(textField_68);
 		textField_68.setColumns(10);	
 		
+			
+		textField_24.setText(String.valueOf(player.getReboundOverall()));		
+		textField_26.setText(String.valueOf(player.getAssistance()));	
+		textField_30.setText(String.valueOf(player.getTime()));
 		
 		
 		
 		
-		textField_21 = new JTextField();
-		textField_21.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_21.setText("篮板数");
-		textField_21.setEditable(false);
-		textField_21.setBounds(181, 200, 66, 21);
-		add(textField_21);
-		textField_21.setColumns(10);
 		
-		textField_24 = new JTextField();
-		textField_24.setEditable(false);
-		textField_24.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_24.setBounds(247, 200, 66, 21);
-		add(textField_24);
-		textField_24.setColumns(10);
-		
-		textField_23 = new JTextField();
-		textField_23.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_23.setText("助攻数");
-		textField_23.setEditable(false);
-		textField_23.setBounds(313, 200, 66, 21);
-		add(textField_23);
-		textField_23.setColumns(10);
-		
-		textField_26 = new JTextField();
-		textField_26.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_26.setEditable(false);
-		textField_26.setBounds(379, 200, 66, 21);
-		add(textField_26);
-		textField_26.setColumns(10);
-		
-		textField_25 = new JTextField();
-		textField_25.setText("在场时间");
-		textField_25.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_25.setEditable(false);
-		textField_25.setBounds(181, 221, 66, 21);
-		add(textField_25);
-		textField_25.setColumns(10);
-		
-		
-		textField_30 = new JTextField();
-		textField_30.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_30.setEditable(false);
-		textField_30.setBounds(247, 221, 66, 21);
-		add(textField_30);
-		textField_30.setColumns(10);
-		
-		textField_27 = new JTextField();
-		textField_27.setText("投篮命中率");
-		textField_27.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_27.setEditable(false);
-		textField_27.setBounds(313, 221, 66, 21);
-		add(textField_27);
-		textField_27.setColumns(10);
-		
-		textField_32 = new JTextField();
-		textField_32.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_32.setEditable(false);
-		textField_32.setBounds(379, 221, 66, 21);
-		add(textField_32);
-		textField_32.setColumns(10);
+		textField_32.setText(String.valueOf(player.getHitRate()));
 		
 		
 		textField_36.setText(String.valueOf(player.getThreePointHitRate()));
-		
-		textField_29 = new JTextField();
-		textField_29.setText("罚球命中率");
-		textField_29.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_29.setEditable(false);
-		textField_29.setBounds(313, 242, 66, 21);
-		add(textField_29);
-		textField_29.setColumns(10);
-		
-		textField_38 = new JTextField();
-		textField_38.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_38.setEditable(false);
-		textField_38.setBounds(379, 242, 66, 21);
-		add(textField_38);
-		textField_38.setColumns(10);
-	
+		textField_38.setText(String.valueOf(player.getFreeThrowRate()));
 		textField_42.setText(String.valueOf(player.getAttackingNum()));
-		
-		
-		textField_44.setText(String.valueOf(player.getDefensiveNum()));
-		
-		textField_37 = new JTextField();
-		textField_37.setText("抢断数");
-		textField_37.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_37.setEditable(false);
-		textField_37.setBounds(181, 284, 66, 21);
-		add(textField_37);
-		textField_37.setColumns(10);
-		
-		textField_47 = new JTextField();
-		textField_47.setEditable(false);
-		textField_47.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_47.setBounds(247, 284, 66, 21);
-		add(textField_47);
-		textField_47.setColumns(10);	
+		textField_44.setText(String.valueOf(player.getDefensiveNum()));		
+		textField_47.setText(String.valueOf(player.getSteal()));		
+		textField_49.setText(String.valueOf(player.getBlock()));				
+		textField_53.setText(String.valueOf(player.getTurnover()));			
+		textField_55.setText(String.valueOf(player.getFoul()));		
+		textField_59.setText(String.valueOf(player.getScore()));		
+		textField_61.setText(String.valueOf(player.getEfficiency()));		
+		textField_65.setText(String.valueOf(player.getGmSc()));			
+		textField_22.setText(String.valueOf(player.getTrueHitRate()));		
 	
-		textField_49.setText(String.valueOf(player.getBlock()));		
 		
-		textField_53.setText(String.valueOf(player.getTurnover()));	
 		
-		textField_55.setText(String.valueOf(player.getFoul()));
-		
-		textField_59.setText(String.valueOf(player.getScore()));
-		
-		textField_61.setText(String.valueOf(player.getEfficiency()));
-		
-		textField_65.setText(String.valueOf(player.getGmSc()));
-			
-		textField_22.setText(String.valueOf(player.getTrueHitRate()));
-		
-		textField_50 = new JTextField();
-		textField_50.setText("投篮效率");
-		textField_50.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_50.setEditable(false);
-		textField_50.setBounds(181, 368, 66, 21);
-		add(textField_50);
-		textField_50.setColumns(10);
-		
-		textField_34 = new JTextField();
-		textField_34.setEditable(false);
-		textField_34.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_34.setBounds(247, 368, 66, 21);
-		add(textField_34);
-		textField_34.setColumns(10);
-		
-		textField_52 = new JTextField();
-		textField_52.setText("篮板率");
-		textField_52.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_52.setEditable(false);
-		textField_52.setBounds(313, 368, 66, 21);
-		add(textField_52);
-		textField_52.setColumns(10);
+		textField_34.setText(String.valueOf(player.getHitEfficiency()));
 	
-		textField_31 = new JTextField();
-		textField_31.setEditable(false);
-		textField_31.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_31.setBounds(379, 368, 66, 21);
-		add(textField_31);
-		textField_31.setColumns(10);
-	
-	
+		textField_31.setText(String.valueOf(player.getReboundOverallRate()));
 		textField_69.setText(String.valueOf(player.getOffensiveReboundRate()));
-		
-		
-		textField_40.setText(String.valueOf(player.getDefensiveReboundRate()));
-		
-		textField_58 = new JTextField();
-		textField_58.setText("助攻率");
-		textField_58.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_58.setEditable(false);
-		textField_58.setBounds(313, 389, 66, 21);
-		add(textField_58);
-		textField_58.setColumns(10);
-		
-		textField_63 = new JTextField();
-		textField_63.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_63.setEditable(false);
-		textField_63.setBounds(379, 389, 66, 21);
-		add(textField_63);
-		textField_63.setColumns(10);
-		
-		textField_60 = new JTextField();
-		textField_60.setText("抢断率");
-		textField_60.setEditable(false);
-		textField_60.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_60.setBounds(445, 389, 66, 21);
-		add(textField_60);
-		textField_60.setColumns(10);
-		
-		textField_70 = new JTextField();
-		textField_70.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_70.setEditable(false);
-		textField_70.setBounds(511, 389, 66, 21);
-		add(textField_70);
-		textField_70.setColumns(10);
-		
-		
-		textField_51.setText(String.valueOf(player.getBlockRate()));
-
-		
-		textField_57.setText(String.valueOf(player.TurnOverRate()));
-		
-		
+     	textField_40.setText(String.valueOf(player.getDefensiveReboundRate()));
+		textField_63.setText(String.valueOf(player.getAssistanceRate()));		
+		textField_70.setText(String.valueOf(player.getStealRate()));		
+		textField_51.setText(String.valueOf(player.getBlockRate()));		
+		textField_57.setText(String.valueOf(player.getTurnOverRate()));
 		textField_71.setText(String.valueOf(player.getUseRate()));
 		
 	}
