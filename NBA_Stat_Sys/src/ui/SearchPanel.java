@@ -1,12 +1,19 @@
 package ui;
 
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Label;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
+import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
@@ -15,10 +22,20 @@ import javax.swing.SwingConstants;
 import vo.PlayerVo;
 import businessLogic.Player_BS;
 
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+
 public class SearchPanel extends JPanel{
 	
 	JFrame mainFrame;
 	Player_BS player_BS;
+	private JTable table;
+	private DefaultTableModel model;
+	private JScrollPane scrollPane;
+
+	
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -105,6 +122,52 @@ public class SearchPanel extends JPanel{
 		backbtn.setBounds(0, 2, 73, 23);
 		backbtn.addActionListener(e -> back());
 		this.add(backbtn);
+		
+	    DefaultTableModel dm = new DefaultTableModel();
+	    dm.setDataVector(new Object[][]{{"button 1",""},
+	                                    {"button 2",""}},new Object[]{"1","2","3","4","5"});
+	    
+	    table = new JTable(dm);
+	    for(int i=0;i<5;i++){
+	    table.getColumn(String.valueOf(i)).setCellRenderer(new  MyRender());
+	    table.getColumn(String.valueOf(i)).setCellEditor(new MyRender());
+	    }
+		/*
+		model = new DefaultTableModel(6,5);
+		table = new JTable(model);
+		for(int i=0;i<6;i++){
+			for(int j=0;j<5;j++){
+				table.setCellEditor(new MyRender());
+				table.getColumnModel().getgetColumn(1).setCellEditor(new MyRender());// 设置编辑器
+				table.getColumnModel().getColumn(1).setCellRenderer(new MyRender());
+				
+			}
+		}
+		*/
+		
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(71, 47, 552, 367);
+		add(scrollPane);
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		if(category=="player"){
 			String pName="";
@@ -735,6 +798,8 @@ public class SearchPanel extends JPanel{
 			
 		}
 		if(category=="team"){
+
+			/*
 			textField = new JTextField();
 			textField.setText("                                                                                 信息区");
 			textField.setBounds(74, 107, 555, 319);
@@ -778,9 +843,17 @@ public class SearchPanel extends JPanel{
 			rightbtn1.setBounds(573, 26, 42, 59);
 			add(rightbtn1);
 			
+			*/
+			
+			
+			
+			
+			
+			
+			
 		}
 		mainFrame.getContentPane().add(this);
-
+	
 	}
 	public void showPlayerInfo(String pName){
 		PlayerVo player=player_BS.getPlayerByName(pName);
@@ -806,15 +879,8 @@ public class SearchPanel extends JPanel{
 			
 		textField_24.setText(String.valueOf(player.getReboundOverall()));		
 		textField_26.setText(String.valueOf(player.getAssistance()));	
-		textField_30.setText(String.valueOf(player.getTime()));
-		
-		
-		
-		
-		
-		textField_32.setText(String.valueOf(player.getHitRate()));
-		
-		
+		textField_30.setText(String.valueOf(player.getTime()));	
+		textField_32.setText(String.valueOf(player.getHitRate()));	
 		textField_36.setText(String.valueOf(player.getThreePointHitRate()));
 		textField_38.setText(String.valueOf(player.getFreeThrowRate()));
 		textField_42.setText(String.valueOf(player.getAttackingNum()));
@@ -826,12 +892,8 @@ public class SearchPanel extends JPanel{
 		textField_59.setText(String.valueOf(player.getScore()));		
 		textField_61.setText(String.valueOf(player.getEfficiency()));		
 		textField_65.setText(String.valueOf(player.getGmSc()));			
-		textField_22.setText(String.valueOf(player.getTrueHitRate()));		
-	
-		
-		
+		textField_22.setText(String.valueOf(player.getTrueHitRate()));			
 		textField_34.setText(String.valueOf(player.getHitEfficiency()));
-	
 		textField_31.setText(String.valueOf(player.getReboundOverallRate()));
 		textField_69.setText(String.valueOf(player.getOffensiveReboundRate()));
      	textField_40.setText(String.valueOf(player.getDefensiveReboundRate()));
@@ -847,4 +909,48 @@ public class SearchPanel extends JPanel{
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 	}
+}
+
+//渲染 器 编辑器
+class MyRender extends AbstractCellEditor implements TableCellRenderer,
+		ActionListener, TableCellEditor {
+
+	private static final long serialVersionUID = 1L;
+	private JButton button = null;
+	private JPanel panel=null;
+	public MyRender() {
+
+  
+		button = new JButton("确定不？");
+		button.addActionListener(this);
+	}
+
+	@Override
+	public Object getCellEditorValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Component getTableCellRendererComponent(JTable table, Object value,
+			boolean isSelected, boolean hasFocus, int row, int column) {
+		// TODO Auto-generated method stub
+		return button;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(null, "渲染器学期", "消息",
+				JOptionPane.OK_OPTION);
+
+	}
+
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value,
+			boolean isSelected, int row, int column) {
+		// TODO Auto-generated method stub
+		return button;
+	}
+
 }
