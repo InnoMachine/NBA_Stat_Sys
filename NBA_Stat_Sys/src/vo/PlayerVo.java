@@ -16,7 +16,7 @@ public class PlayerVo {
 	
 	private String name;
 	private String team;
-	//先发场数？莫非是时间最长的5个。。
+	private int FirstOnNum;//先发场数？莫非是时间最长的5个。。
 	private int gameNum;
 	private int reboundOverall;
 	private int assistance;
@@ -207,7 +207,7 @@ public class PlayerVo {
 	public void setHitRate(double hitRate) {
 		this.hitRate = hitRate;
 	}
-	public double TurnOverRate() {
+	public double getTurnOverRate() {
 		return turnOverRate;
 	}
 	public void setTurnOverRate(double turnOverRate) {
@@ -419,6 +419,12 @@ public class PlayerVo {
 	}
 	public void setteamDefensiveRebound(int teamDefensiveRebound) {
 		this.teamDefensiveRebound = teamDefensiveRebound;
+	}
+	public int getFirstOnNum() {
+		return FirstOnNum;
+	}
+	public void setFirstOnNum(int firstOnNum) {
+		FirstOnNum = firstOnNum;
 	}
 	
 }
