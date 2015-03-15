@@ -1,33 +1,36 @@
 package businessLogic;
 
+import java.util.ArrayList;
+
 import vo.PlayerVo;
 import vo.TeamVo;
 
 public class Team_BL implements Team_BS{
 	Team_Handler team_handler;
-	
-	@Override
+	Player_BL player_bl;
+	public Team_BL()
+	{
+		team_handler = new Team_Handler();
+		player_bl = new Player_BL();
+	}
 	public TeamVo getTeamByAbbr(String abbr) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return team_handler.getTeamByAbbr(abbr);
 	}
 
 	@Override
-	public TeamVo[] getAllTeam() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<TeamVo> getAllTeam() {
+		return team_handler.getAllTeam();
 	}
 
 	@Override
-	public TeamVo[] sortTeamBy(String option) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<TeamVo> sortTeamBy(String option) {
+		return team_handler.sortTeamBy(option);
 	}
 
 	@Override
-	public PlayerVo[] getPlayers(String abbr) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<PlayerVo> getPlayers(String abbr) {
+		return player_bl.getPlayersByTeam(abbr);
 	}
 
 }

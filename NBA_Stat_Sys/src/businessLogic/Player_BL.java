@@ -1,5 +1,7 @@
 package businessLogic;
 
+import java.util.ArrayList;
+
 import po.Division;
 import vo.PlayerVo;
 
@@ -11,31 +13,25 @@ public class Player_BL implements Player_BS{
 		player_handler =new Player_Handler(); 
 	}
 	public PlayerVo getPlayerByName(String name) {
+		return player_handler.getPlayerByName(name);
+	}
+
+	public ArrayList<PlayerVo> getAllPlayer() {
+		return player_handler.getAllPlayer();
+	}
+
+	public ArrayList<PlayerVo> sortPlayerBy(String option) {
 		
-		return null;
+		return player_handler.sortPlayerBy(option);
 	}
 
-	@Override
-	public PlayerVo[] getAllPlayer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PlayerVo[] sortPlayerBy(String option) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PlayerVo[] filterPlayerBy(String position, Division div, String option) {
-		// TODO Auto-generated method stub
+	public ArrayList<PlayerVo> filterPlayerBy(String position, Division div, String option) {
 		return null;
 	}
 	
-	public PlayerVo getPlayersByTeam(String abbr)
+	public ArrayList<PlayerVo> getPlayersByTeam(String abbr)
 	{
-		return null;
+		return player_handler.getPlayersByTeam(abbr);
 		
 	}
 }

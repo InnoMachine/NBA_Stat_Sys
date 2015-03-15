@@ -1,6 +1,7 @@
 package businessLogic;
 
 import java.util.ArrayList;
+
 import po.GamePO;
 import po.PlayerPO;
 import po.SinglePerformance;
@@ -13,6 +14,7 @@ import database.GameDaoImpl;
 import database.PlayerDao;
 import database.PlayerDaoImpl;
 import database.TeamDao;
+import database.TeamDaoImpl;
 
 public class Data_Handler {
 	private static Data_Handler instance;
@@ -24,7 +26,7 @@ public class Data_Handler {
 	private ArrayList<TeamPO> teamlistpo;
 	private PlayerVo[] listvo;
 	private TeamVo[] teamlistvo;
-	ArrayList<GamePO> gamelist;
+	private ArrayList<GamePO> gamelist;
 	
 	
 	
@@ -32,9 +34,12 @@ public class Data_Handler {
 	{
 		playerdao = new PlayerDaoImpl();
 		gamedao = new GameDaoImpl();
+		teamdao = new TeamDaoImpl();
 		listpo  = playerdao.getAllPlayers();
 		listvo = new PlayerVo[listpo.size()+1];
 		gamelist = gamedao.getAllGames();
+		teamlistpo = teamdao.getAllTeams();
+		
 		SetPlayerVo();
 		SetTeamVo();
 		loadGames();
@@ -49,7 +54,10 @@ public class Data_Handler {
 			teamlistvo[i].setFreeThrowRate(teamlistvo[i].getFreeThrowHitNum()/teamlistvo[i].getFreeThrowShotNum());
 			teamlistvo[i].setWinningRate(teamlistvo[i].getWinningNum()/teamlistvo[i].getGameNum());
 			teamlistvo[i].setAttackingEfficiency(teamlistvo[i].getScore()/teamlistvo[i].getRoundAttack()*100);
-			
+			teamlistvo[i].setDefensiveEfficiency(teamlistvo[i].getOpScore()/teamlistvo[i].getOpRoundAttack()*100);
+			teamlistvo[i].setReboundEfficiency(teamlistvo[i].getReboundOverall()/(teamlistvo[i].getReboundOverall()+teamlistvo[i].getOpReboundAll()));
+			teamlistvo[i].setStealEfficiency(teamlistvo[i].getSteal()/teamlistvo[i].getOpRoundAttack()*100);
+			teamlistvo[i].setAssistanceEfficiency(teamlistvo[i].getAssistance()/teamlistvo[i].getRoundAttack()*100);
 			
 		}
 		
@@ -350,7 +358,14 @@ public class Data_Handler {
 		}
 		
 	}
-	
+	public PlayerVo[] getPlayers() {
+		
+		return listvo;
+	}
+	public TeamVo[] getTeams()
+	{
+		return teamlistvo;
+	}
 
 }
 

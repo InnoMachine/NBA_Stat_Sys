@@ -21,16 +21,16 @@ public class TeamVo {
 	private int shotNum;
 	private int threePointHitNum;
 	private int threePointShotNum;
-	private int freeThrowHitNum;
-	private int freeThrowShotNum;
-	private int offensiveRebound;
-	private int defensiveRebound;
+	private int freeThrowHitNum;//罚球命中
+	private int freeThrowShotNum;//罚球出手
+	private int offensiveRebound;//进攻篮板
+	private int defensiveRebound;//防守篮板
 	private int reboundOverall;      //篮板数
 	private int assistance;          //助攻
 	private int block;               //盖帽数
 	private int turnover;            //失误数
 	private int foul;                //犯规数
-	private int steal;
+	private int steal;               //抢断
 	private int score;               //总得分
 	private double hitRate;          //投篮命中率
 	private double threePointHitRate;//三分球命中率
@@ -40,9 +40,11 @@ public class TeamVo {
 	private double attackingEfficiency;//进攻效率
 	private double defensiveEfficiency;//防守效率
 	private double reboundEfficiency;//篮板效率
-	private double stealEfficiency;//没有抢断数据？
-	private double assistanceEfficiency;//助攻率
+	private double stealEfficiency;//抢断效率？
+	private double assistanceEfficiency;//助攻效率
 	
+	
+	//下面的你们用不到
 	private int opOffensiveRebound;  //对手进攻篮板
 	private int opDefensiveRebound;  //对手防守篮板
 	private int opReboundAll;

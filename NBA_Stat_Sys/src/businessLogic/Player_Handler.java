@@ -2,137 +2,433 @@ package businessLogic;
 
 import java.util.ArrayList;
 
-import po.GamePO;
-import po.PlayerPO;
-import po.SinglePerformance;
-import po.TeamPerformance;
 import vo.PlayerVo;
-import database.GameDao;
-import database.GameDaoImpl;
-import database.PlayerDao;
-import database.PlayerDaoImpl;
 
 public class Player_Handler {
-	protected PlayerDao playerdao;
-	protected GameDao gamedao;
-	private ArrayList<PlayerPO> listpo;
-	ArrayList<GamePO> gamelist;
-	SinglePerformance splist[];
+	private Data_Handler data_handler;
 	private PlayerVo[] listvo;
+	private ArrayList<PlayerVo> arrlistvo;
 	public Player_Handler()
 	{
-		playerdao = new PlayerDaoImpl();
-		gamedao = new GameDaoImpl();
-		listpo  = playerdao.getAllPlayers();
-		listvo = new PlayerVo[listpo.size()+1];
-		splist = new SinglePerformance[listvo.length];
-		gamelist = gamedao.getAllGames();
-		setVo();
-		loadGames();
-		Calculate();
+		data_handler = Data_Handler.getInstance();
+		listvo = data_handler.getPlayers();
+		arrlistvo = new ArrayList<PlayerVo>();
+		ChangeToArrayList();
 	}
-	private void Calculate() 
-	{
-		for(int i=0;i<splist.length;i++)
+	private void ChangeToArrayList() {
+		for(int i=0;i<listvo.length;i++)
 		{
-			listvo[i].setHitRate(splist[i].getHitNum()/splist[i].getShotNum());
-			listvo[i].setThreePointHitRate(splist[i].getThreePointHitNum()/splist[i].getThreePointShotNum());
-			listvo[i].setFreeThrowRate(splist[i].getFreeThrowHitNum()/splist[i].getFreeThrowShotNum());
-			//listvo[i].setAttackingNum(attackingNum);
-			//listvo[i].
-			listvo[i].setBlock(splist[i].getBlock());
-			listvo[i].setTurnover(splist[i].getTurnover());
-			listvo[i].setFoul(splist[i].getFoul());
-			//listvo[i].setSteal(splist[i].gets);
-			listvo[i].setScore(splist[i].getScore());
-			listvo[i].setEfficiency(splist[i].getScore()+splist[i].getBlock()+splist[i].getReboundOverall()+
-					splist[i].getAssistance()-/*splist[i].getSteal*/splist[i].getFreeThrowShotNum()-
-					splist[i].getShotNum()+splist[i].getHitNum()+splist[i].getFreeThrowHitNum()-splist[i].getTurnover());
-			listvo[i].setGmSc(splist[i].getScore()+0.4*(splist[i].getHitNum()+splist[i].getThreePointHitNum())
-					-0.7*(splist[i].getShotNum()+splist[i].getThreePointShotNum())-0.4*
-					(splist[i].getFreeThrowShotNum()-splist[i].getFreeThrowHitNum())
-					+0.7*splist[i].getOffensiveRebound()+0.3*splist[i].getDefensiveRebound()/*splist[i].getsteal()*/
-					+0.7*splist[i].getAssistance()+0.7*splist[i].getBlock()-0.4*splist[i].getFoul()-splist[i].getTurnover());
-			listvo[i].setTrueHitRate(splist[i].getScore()/(2*(splist[i].getShotNum()+splist[i].getThreePointShotNum()+0.44
-					*splist[i].getFreeThrowShotNum())));
-			listvo[i].setHitEfficiency((splist[i].getHitNum()+0.5*splist[i].getThreePointHitNum())/splist[i].getShotNum());
-			//篮板率等。。。需要时间
-			
+			arrlistvo.add(listvo[i]);
 		}
+		
 	}
-	private void setVo()
-	{
-		for(int i=0;i<listpo.size();i++)
+	public PlayerVo getPlayerByName(String name) {
+		for(int i=0;i<listvo.length;i++)
 		{
-			listvo[i].setName(listpo.get(i).getName());
-			listvo[i].setNumber(listpo.get(i).getNumber());
-			listvo[i].setPosition(listpo.get(i).getPosition());
-			listvo[i].setHeight(listpo.get(i).getHeight());
-			listvo[i].setWeight(listpo.get(i).getWeight());
-			listvo[i].setBirth(listpo.get(i).getBirth());
-			listvo[i].setAge(listpo.get(i).getAge());
-			listvo[i].setExp(listpo.get(i).getExp());
-			listvo[i].setSchool(listpo.get(i).getSchool());
-			listvo[i].setActionImgPath(listpo.get(i).getActionImgPath());
-			listvo[i].setPortraitImgPath(listpo.get(i).getPortraitImgPath());
-			
-			
-			splist[i].setName(listpo.get(i).getName());
-			//splist[i].setTime(0);
-			splist[i].setHitNum(0);
-			splist[i].setShotNum(0);
-			splist[i].setThreePointHitNum(0);
-			splist[i].setThreePointShotNum(0);
-			splist[i].setFreeThrowHitNum(0);
-			splist[i].setFreeThrowShotNum(0);
-			splist[i].setOffensiveRebound(0);
-			splist[i].setDefensiveRebound(0);
-			splist[i].setReboundOverall(0);
-			splist[i].setAssistance(0);
-			splist[i].setBlock(0);
-			splist[i].setTurnover(0);
-			splist[i].setFoul(0);
-			splist[i].setScore(0);
-			//splist[i].setSteal(0);
-			
-		}
-	}
-	private void loadGames()
-	{
-		for(int i=0;i<gamelist.size();i++)
-		{
-			TeamPerformance tpg = gamelist.get(i).getGuestTP();
-			TeamPerformance tph = gamelist.get(i).getHomeTP();
-			setPerformance(tpg);
-			setPerformance(tph);
-		}
-	}
-	private void setPerformance(TeamPerformance tp)
-	{
-		ArrayList<SinglePerformance> listsp = new ArrayList<SinglePerformance>();//tp.getT
-		for(SinglePerformance temp:listsp)
-		{
-			for(int i=0;i<listvo.length;i++)
+			if(name.equals(listvo[i].getName()))
 			{
-				if(temp.getName().equals(listvo[i].getName()))
-				{
-					//listvo[i].setTime(temp.getTime());
-					splist[i].setHitNum(splist[i].getHitNum()+temp.getHitNum());
-					splist[i].setShotNum(splist[i].getShotNum()+temp.getShotNum());
-					splist[i].setThreePointHitNum(splist[i].getThreePointHitNum()+temp.getThreePointHitNum());
-					splist[i].setThreePointShotNum(splist[i].getThreePointShotNum()+temp.getThreePointShotNum());
-					splist[i].setFreeThrowHitNum(splist[i].getFreeThrowHitNum()+temp.getFreeThrowHitNum());
-					splist[i].setFreeThrowShotNum(splist[i].getFreeThrowShotNum()+temp.getFreeThrowShotNum());
-					splist[i].setOffensiveRebound(splist[i].getOffensiveRebound()+temp.getOffensiveRebound());
-					splist[i].setDefensiveRebound(splist[i].getDefensiveRebound()+temp.getDefensiveRebound());
-					splist[i].setReboundOverall(splist[i].getReboundOverall()+temp.getReboundOverall());
-					splist[i].setAssistance(splist[i].getAssistance()+temp.getAssistance());
-					splist[i].setBlock(splist[i].getBlock()+temp.getBlock());
-					splist[i].setTurnover(splist[i].getTurnover()+temp.getTurnover());
-					splist[i].setFoul(splist[i].getFoul()+temp.getFoul());
-					splist[i].setScore(splist[i].getScore()+temp.getScore());
-				}
+				return listvo[i];
 			}
 		}
+		return null;
 	}
+	public ArrayList<PlayerVo> getAllPlayer() {
+		return arrlistvo;
+	}
+	public ArrayList<PlayerVo> sortPlayerBy(String option) {
+		if(option.equals("name")){
+			String a[][] = new String [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getName();
+				a[i][1] = i+"";
+			}
+			HeapSortByString.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[Integer.parseInt(a[i][1])]);
+			}
+			return templist;
+		}else if(option.equals("team")){
+			String a[][] = new String [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getTeam();
+				a[i][1] = i+"";
+			}
+			HeapSortByString.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[Integer.parseInt(a[i][1])]);
+			}
+			return templist;
+		}else if(option.equals("FirstOnNum")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getFirstOnNum();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("reboundOverall")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getReboundOverall();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("assistance")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getAssistance();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("hitRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getHitRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("threePointHitRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getThreePointHitRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("freeThrowRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getFreeThrowRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("attackingNum")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getAttackingNum();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("defensiveNum")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getDefensiveNum();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("steal")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getSteal();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("block")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getBlock();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("turnover")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getTurnover();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("foul")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getFoul();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("score")){
+			int a[][] = new int [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getScore();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("efficiency")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getEfficiency();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("GmSc")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getGmSc();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("trueHitRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getTrueHitRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("hitEfficiency")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getHitEfficiency();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("reboundOverallRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getReboundOverallRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("offensiveReboundRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getOffensiveReboundRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("defensiveReboundRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getDefensiveReboundRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("assistanceRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getAssistanceRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("stealRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getFreeThrowRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("blockRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getBlockRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("turnOverRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getTurnOverRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}else if(option.equals("useRate")){
+			double a[][] = new double [listvo.length][2]; 
+			for(int i=0;i<listvo.length;i++)
+			{
+				a[i][0] = listvo[i].getUseRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.length;i++)
+			{
+				templist.add(listvo[(int)a[i][1]]);
+			}
+			return templist;
+		}
+		
+		return null;
+	}
+	public ArrayList<PlayerVo> getPlayersByTeam(String abbr) {
+		ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+		for(PlayerVo temp:arrlistvo) 
+		{
+			if(abbr.equals(temp.getTeam()))
+			{
+				templist.add(temp);
+			}
+		}
+		return templist;
+	}
+	
+	
 }
