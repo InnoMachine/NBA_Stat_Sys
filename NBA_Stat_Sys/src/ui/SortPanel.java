@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -25,7 +26,6 @@ public class SortPanel extends JPanel {
 	Vector<Vector<String>> rowData;
 	private Vector<String> columnNames;
 	JButton criteriabtn;
-	// ScreeningPlayerCriteriaPanel playerCriteriaPanel;
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
@@ -78,7 +78,6 @@ public class SortPanel extends JPanel {
 			columnNames.add("年龄");
 			columnNames.add("球龄");
 			columnNames.add("毕业学校");
-			// columnNames.add("具体信息");
 
 			criteriabtn = new JButton("");
 			criteriabtn.setBounds(166, 33, 271, 23);
@@ -107,13 +106,6 @@ public class SortPanel extends JPanel {
 
 		rowData = new Vector<Vector<String>>();
 
-		// Vector<String> test=new Vector<String>();
-		// test.add(null);
-		// test.add(null);
-		// test.add(null);
-		// test.add(null);
-		// rowData.add(test);
-
 		if (table != null) {
 			table.setVisible(false);
 		}
@@ -122,8 +114,6 @@ public class SortPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(98, 75, 517, 284);
 
-		// table.getColumn("具体信息").setCellEditor(new MyRender());
-		// table.getColumn("具体信息").setCellRenderer(new MyRender());
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -164,8 +154,6 @@ public class SortPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(98, 75, 517, 284);
 
-		// table.getColumn("具体信息").setCellEditor(new MyRender());
-		// table.getColumn("具体信息").setCellRenderer(new MyRender());
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -177,14 +165,6 @@ public class SortPanel extends JPanel {
 	}
 
 	public void showTopFifty() {
-
-		// rowData = new Vector<Vector<String>>();
-		// Vector<String> test=new Vector<String>();
-		// test.add(null);
-		// test.add(null);
-		// test.add(null);
-		// test.add(null);
-		// rowData.add(test);
 
 		if (table != null) {
 			table.setVisible(false);
@@ -262,170 +242,201 @@ public class SortPanel extends JPanel {
 			this.setVisible(true);
 			this.setBounds(166, 56, 361, 187);
 
+			ButtonGroup bg = new ButtonGroup();
+			
 			JRadioButton rdbtnNewRadioButton = new JRadioButton("参赛场数");
 			rdbtnNewRadioButton.setBounds(0, 6, 90, 23);
 			rdbtnNewRadioButton
 					.addActionListener(new SortPlayerCriteriaListener("参赛场数"));
 			add(rdbtnNewRadioButton);
+			bg.add(rdbtnNewRadioButton);
 
 			JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("先发场数");
 			rdbtnNewRadioButton_1.setBounds(90, 6, 90, 23);
 			rdbtnNewRadioButton_1
 					.addActionListener(new SortPlayerCriteriaListener("先发场数"));
 			add(rdbtnNewRadioButton_1);
+			bg.add(rdbtnNewRadioButton_1);
 
 			JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("篮板数");
 			rdbtnNewRadioButton_2.setBounds(180, 31, 90, 23);
 			rdbtnNewRadioButton_2
 					.addActionListener(new SortPlayerCriteriaListener("篮板数"));
 			add(rdbtnNewRadioButton_2);
+			bg.add(rdbtnNewRadioButton_2);
 
 			JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("助攻数");
 			rdbtnNewRadioButton_3.setBounds(270, 31, 90, 23);
 			rdbtnNewRadioButton_3
 					.addActionListener(new SortPlayerCriteriaListener("助攻数"));
 			add(rdbtnNewRadioButton_3);
+			bg.add(rdbtnNewRadioButton_3);
 
 			JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("在场时间");
 			rdbtnNewRadioButton_4.setBounds(180, 6, 90, 23);
 			rdbtnNewRadioButton_4
 					.addActionListener(new SortPlayerCriteriaListener("在场时间"));
 			add(rdbtnNewRadioButton_4);
+			bg.add(rdbtnNewRadioButton_4);
 
 			JRadioButton radioButton = new JRadioButton("投篮命中率");
 			radioButton.setBounds(0, 156, 90, 23);
 			radioButton.addActionListener(new SortPlayerCriteriaListener(
 					"投篮命中率"));
 			add(radioButton);
+			bg.add(radioButton);
 
 			JRadioButton radioButton_1 = new JRadioButton("三分命中率");
 			radioButton_1.setBounds(90, 156, 90, 23);
 			radioButton_1.addActionListener(new SortPlayerCriteriaListener(
 					"三分命中率"));
 			add(radioButton_1);
+			bg.add(radioButton_1);
 
 			JRadioButton radioButton_2 = new JRadioButton("罚球命中率");
 			radioButton_2.setBounds(180, 156, 90, 23);
 			radioButton_2.addActionListener(new SortPlayerCriteriaListener(
 					"罚球命中率"));
 			add(radioButton_2);
+			bg.add(radioButton_2);
 
 			JRadioButton radioButton_3 = new JRadioButton("进攻数");
 			radioButton_3.setBounds(0, 31, 90, 23);
 			radioButton_3.addActionListener(new SortPlayerCriteriaListener(
 					"进攻数"));
 			add(radioButton_3);
+			bg.add(radioButton_3);
 
 			JRadioButton radioButton_4 = new JRadioButton("防守数");
 			radioButton_4.setBounds(90, 31, 90, 23);
 			radioButton_4.addActionListener(new SortPlayerCriteriaListener(
 					"防守数"));
 			add(radioButton_4);
+			bg.add(radioButton_4);
 
 			JRadioButton radioButton_5 = new JRadioButton("抢断数");
 			radioButton_5.setBounds(0, 56, 90, 23);
 			radioButton_5.addActionListener(new SortPlayerCriteriaListener(
 					"抢断数"));
 			add(radioButton_5);
+			bg.add(radioButton_5);
 
 			JRadioButton radioButton_6 = new JRadioButton("盖帽数");
 			radioButton_6.setBounds(90, 56, 90, 23);
 			radioButton_6.addActionListener(new SortPlayerCriteriaListener(
 					"盖帽数"));
 			add(radioButton_6);
+			bg.add(radioButton_6);
 
 			JRadioButton radioButton_7 = new JRadioButton("失误数");
 			radioButton_7.setBounds(180, 56, 90, 23);
 			radioButton_7.addActionListener(new SortPlayerCriteriaListener(
 					"失误数"));
 			add(radioButton_7);
+			bg.add(radioButton_7);
 
 			JRadioButton radioButton_8 = new JRadioButton("犯规数");
 			radioButton_8.setBounds(270, 56, 90, 23);
 			radioButton_8.addActionListener(new SortPlayerCriteriaListener(
 					"犯规数"));
 			add(radioButton_8);
+			bg.add(radioButton_8);
 
 			JRadioButton radioButton_9 = new JRadioButton("得分");
 			radioButton_9.setBounds(0, 81, 90, 23);
 			radioButton_9
 					.addActionListener(new SortPlayerCriteriaListener("得分"));
 			add(radioButton_9);
+			bg.add(radioButton_9);
 
 			JRadioButton radioButton_10 = new JRadioButton("效率");
 			radioButton_10.setBounds(180, 131, 90, 23);
 			radioButton_10.addActionListener(new SortPlayerCriteriaListener(
 					"效率"));
 			add(radioButton_10);
+			bg.add(radioButton_10);
 
 			JRadioButton rdbtnGmsc = new JRadioButton("GmSc效率值");
 			rdbtnGmsc.setBounds(90, 81, 90, 23);
 			rdbtnGmsc.addActionListener(new SortPlayerCriteriaListener(
 					"GmSc效率值"));
 			add(rdbtnGmsc);
+			bg.add(rdbtnGmsc);
 
 			JRadioButton radioButton_11 = new JRadioButton("真实命中率");
 			radioButton_11.setBounds(270, 131, 90, 23);
 			radioButton_11.addActionListener(new SortPlayerCriteriaListener(
 					"真实命中率"));
 			add(radioButton_11);
+			bg.add(radioButton_11);
 
 			JRadioButton radioButton_12 = new JRadioButton("投篮效率");
 			radioButton_12.setBounds(180, 81, 90, 23);
 			radioButton_12.addActionListener(new SortPlayerCriteriaListener(
 					"投篮效率"));
 			add(radioButton_12);
+			bg.add(radioButton_12);
 
 			JRadioButton radioButton_13 = new JRadioButton("篮板率");
 			radioButton_13.setBounds(270, 81, 90, 23);
 			radioButton_13.addActionListener(new SortPlayerCriteriaListener(
 					"篮板率"));
 			add(radioButton_13);
+			bg.add(radioButton_13);
 
 			JRadioButton radioButton_14 = new JRadioButton("进攻篮板率");
 			radioButton_14.setBounds(0, 106, 90, 23);
 			radioButton_14.addActionListener(new SortPlayerCriteriaListener(
 					"进攻篮板率"));
 			add(radioButton_14);
+			bg.add(radioButton_14);
 
 			JRadioButton radioButton_15 = new JRadioButton("防守篮板率");
 			radioButton_15.setBounds(90, 106, 90, 23);
 			radioButton_15.addActionListener(new SortPlayerCriteriaListener(
 					"防守篮板率"));
 			add(radioButton_15);
+			bg.add(radioButton_15);
 
 			JRadioButton radioButton_16 = new JRadioButton("助攻率");
 			radioButton_16.setBounds(180, 106, 90, 23);
 			radioButton_16.addActionListener(new SortPlayerCriteriaListener(
 					"助攻率"));
 			add(radioButton_16);
+			bg.add(radioButton_16);
 
 			JRadioButton radioButton_17 = new JRadioButton("抢断率");
 			radioButton_17.setBounds(270, 106, 90, 23);
 			radioButton_17.addActionListener(new SortPlayerCriteriaListener(
 					"抢断率"));
 			add(radioButton_17);
+			bg.add(radioButton_17);
 
 			JRadioButton radioButton_18 = new JRadioButton("盖帽率");
 			radioButton_18.setBounds(0, 131, 90, 23);
 			radioButton_18.addActionListener(new SortPlayerCriteriaListener(
 					"盖帽率"));
 			add(radioButton_18);
+			bg.add(radioButton_18);
 
 			JRadioButton radioButton_19 = new JRadioButton("失误率");
 			radioButton_19.setBounds(90, 131, 90, 23);
 			radioButton_19.addActionListener(new SortPlayerCriteriaListener(
 					"失误率"));
 			add(radioButton_19);
+			bg.add(radioButton_19);
 
 			JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("使用率");
 			rdbtnNewRadioButton_5.setBounds(270, 6, 90, 23);
 			rdbtnNewRadioButton_5
 					.addActionListener(new SortPlayerCriteriaListener("使用率"));
 			add(rdbtnNewRadioButton_5);
+			bg.add(rdbtnNewRadioButton_5);
 
-			mainFrame.getContentPane().add(this);
+		
 			
+			mainFrame.getContentPane().add(this);
+
 		}
 	}
 
@@ -435,135 +446,163 @@ public class SortPanel extends JPanel {
 			this.setVisible(true);
 			this.setBounds(166, 56, 361, 187);
 
+			ButtonGroup bg1=new ButtonGroup();
+			
 			JRadioButton radioButton = new JRadioButton("比赛场数");
 			radioButton.setBounds(0, 6, 90, 23);
 			radioButton.addActionListener(new SortTeamCriteriaListener("比赛场数"));
 			add(radioButton);
+			bg1.add(radioButton);
 
 			JRadioButton radioButton_1 = new JRadioButton("投篮命中数");
 			radioButton_1.setBounds(0, 31, 90, 23);
 			radioButton_1.addActionListener(new SortTeamCriteriaListener("投篮命中率"));
 			add(radioButton_1);
-
+            bg1.add(radioButton_1);
+            
 			JRadioButton radioButton_2 = new JRadioButton("投篮出手数");
 			radioButton_2.setBounds(90, 31, 90, 23);
 			radioButton_2.addActionListener(new SortTeamCriteriaListener("投篮出手数"));
 			add(radioButton_2);
+			bg1.add(radioButton_2);
 
 			JRadioButton radioButton_3 = new JRadioButton("三分命中数");
 			radioButton_3.setBounds(180, 31, 90, 23);
 			radioButton_3.addActionListener(new SortTeamCriteriaListener("三分命中数"));
 			add(radioButton_3);
+			bg1.add(radioButton_3);
 
 			JRadioButton radioButton_4 = new JRadioButton("三分出手数");
 			radioButton_4.setBounds(270, 31, 90, 23);
 			radioButton_4.addActionListener(new SortTeamCriteriaListener("三分出手数"));
 			add(radioButton_4);
-
+			bg1.add(radioButton_4);
+			
 			JRadioButton radioButton_5 = new JRadioButton("罚球命中数");
 			radioButton_5.setBounds(0, 56, 90, 23);
 			radioButton_5.addActionListener(new SortTeamCriteriaListener("罚球命中数"));
 			add(radioButton_5);
+			bg1.add(radioButton_5);
 
 			JRadioButton radioButton_6 = new JRadioButton("罚球出手数");
 			radioButton_6.setBounds(90, 56, 90, 23);
 			radioButton_6.addActionListener(new SortTeamCriteriaListener("罚球出手数"));
 			add(radioButton_6);
+			bg1.add(radioButton_6);
 
 			JRadioButton radioButton_7 = new JRadioButton("进攻篮板数");
 			radioButton_7.setBounds(90, 6, 90, 23);
 			radioButton_7.addActionListener(new SortTeamCriteriaListener("进攻篮板数"));
 			add(radioButton_7);
+			bg1.add(radioButton_7);
 
 			JRadioButton radioButton_8 = new JRadioButton("防守篮板数");
 			radioButton_8.setBounds(180, 6, 90, 23);
 			radioButton_8.addActionListener(new SortTeamCriteriaListener("防守篮板数"));
 			add(radioButton_8);
+			bg1.add(radioButton_8);
 
 			JRadioButton radioButton_9 = new JRadioButton("篮板数");
 			radioButton_9.setBounds(270, 6, 90, 23);
 			radioButton_9.addActionListener(new SortTeamCriteriaListener("篮板数"));
 			add(radioButton_9);
+			bg1.add(radioButton_9);
 
 			JRadioButton radioButton_10 = new JRadioButton("助攻数");
 			radioButton_10.setBounds(180, 56, 90, 23);
 			radioButton_10.addActionListener(new SortTeamCriteriaListener("助攻数"));
 			add(radioButton_10);
+			bg1.add(radioButton_10);
 
 			JRadioButton radioButton_11 = new JRadioButton("抢断数");
 			radioButton_11.setBounds(270, 56, 90, 23);
 			radioButton_11.addActionListener(new SortTeamCriteriaListener("抢断数"));
 			add(radioButton_11);
+			bg1.add(radioButton_11);
 
 			JRadioButton radioButton_12 = new JRadioButton("盖帽数");
 			radioButton_12.setBounds(0, 81, 90, 23);
 			radioButton_12.addActionListener(new SortTeamCriteriaListener("盖帽数"));
 			add(radioButton_12);
-
+			bg1.add(radioButton_12);
+			
 			JRadioButton radioButton_13 = new JRadioButton("失误数");
 			radioButton_13.setBounds(90, 81, 90, 23);
 			radioButton_13.addActionListener(new SortTeamCriteriaListener("失误数"));
 			add(radioButton_13);
-
+			bg1.add(radioButton_13);
+			
 			JRadioButton radioButton_14 = new JRadioButton("犯规数");
 			radioButton_14.setBounds(180, 81, 90, 23);
 			radioButton_14.addActionListener(new SortTeamCriteriaListener("犯规数"));
 			add(radioButton_14);
-
+			bg1.add(radioButton_14);
+			
 			JRadioButton radioButton_15 = new JRadioButton("比赛得分");
 			radioButton_15.setBounds(270, 81, 90, 23);
 			radioButton_15.addActionListener(new SortTeamCriteriaListener("比赛得分"));
 			add(radioButton_15);
-
+			bg1.add(radioButton_15);
+			
 			JRadioButton radioButton_16 = new JRadioButton("投篮命中率");
 			radioButton_16.setBounds(0, 106, 90, 23);
 			radioButton_16.addActionListener(new SortTeamCriteriaListener("投篮命中率"));
 			add(radioButton_16);
-
+			bg1.add(radioButton_16);
+			
 			JRadioButton radioButton_17 = new JRadioButton("三分命中率");
 			radioButton_17.setBounds(90, 106, 90, 23);
 			radioButton_17.addActionListener(new SortTeamCriteriaListener("三分命中率"));
 			add(radioButton_17);
-
+			bg1.add(radioButton_17);
+			
 			JRadioButton radioButton_18 = new JRadioButton("罚球命中率");
 			radioButton_18.setBounds(180, 106, 90, 23);
 			radioButton_18.addActionListener(new SortTeamCriteriaListener("罚球命中率"));
 			add(radioButton_18);
-
+			bg1.add(radioButton_18);
+			
 			JRadioButton radioButton_19 = new JRadioButton("胜率");
 			radioButton_19.setBounds(270, 106, 90, 23);
 			radioButton_19.addActionListener(new SortTeamCriteriaListener("胜率"));
 			add(radioButton_19);
-
+			bg1.add(radioButton_19);
+			
 			JRadioButton radioButton_20 = new JRadioButton("进攻回合");
 			radioButton_20.setBounds(0, 131, 90, 23);
 			radioButton_20.addActionListener(new SortTeamCriteriaListener("进攻回合"));
 			add(radioButton_20);
-
+			bg1.add(radioButton_20);
+			
 			JRadioButton radioButton_21 = new JRadioButton("进攻效率");
 			radioButton_21.setBounds(90, 131, 90, 23);
 			radioButton_21.addActionListener(new SortTeamCriteriaListener("进攻效率"));
 			add(radioButton_21);
-
+			bg1.add(radioButton_21);
+			
 			JRadioButton radioButton_22 = new JRadioButton("防守效率");
 			radioButton_22.setBounds(180, 131, 90, 23);
 			radioButton_22.addActionListener(new SortTeamCriteriaListener("防守效率"));
 			add(radioButton_22);
-
+			bg1.add(radioButton_22);
+			
 			JRadioButton radioButton_23 = new JRadioButton("篮板效率");
 			radioButton_23.setBounds(270, 131, 90, 23);
 			radioButton_23.addActionListener(new SortTeamCriteriaListener("篮板效率"));
 			add(radioButton_23);
-
+			bg1.add(radioButton_23);
+			
 			JRadioButton radioButton_24 = new JRadioButton("抢断效率");
 			radioButton_24.setBounds(0, 156, 90, 23);
 			radioButton_24.addActionListener(new SortTeamCriteriaListener("抢断效率"));
 			add(radioButton_24);
-
+			bg1.add(radioButton_24);
+			
 			JRadioButton radioButton_25 = new JRadioButton("助攻率");
 			radioButton_25.setBounds(90, 156, 90, 23);
 			radioButton_25.addActionListener(new SortTeamCriteriaListener("助攻率"));
 			add(radioButton_25);
+			bg1.add(radioButton_25);
 			
 			mainFrame.getContentPane().add(this);
 		}
@@ -571,9 +610,6 @@ public class SortPanel extends JPanel {
 	}
 
 	
-
-
-
 	class SortPlayerCriteriaListener implements ActionListener {
 		String criteria;
 
@@ -713,107 +749,107 @@ public class SortPanel extends JPanel {
 			switch (criteria) {
 			case "比赛场数":
 				criteriabtn.setText("比赛场数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中数":
 				criteriabtn.setText("投篮命中数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮出手数":
 				criteriabtn.setText("投篮出手数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中数":
 				criteriabtn.setText("三分命中数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分出手数":
 				criteriabtn.setText("三分出手数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中数":
 				criteriabtn.setText("罚球命中数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球出手数":
 				criteriabtn.setText("罚球出手数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻篮板数":
 				criteriabtn.setText("进攻篮板数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "防守篮板数":
 				criteriabtn.setText("防守篮板数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板数":
 				criteriabtn.setText("篮板数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "助攻数":
 				criteriabtn.setText("助攻数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "抢断数":
 				criteriabtn.setText("抢断数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽数":
 				criteriabtn.setText("盖帽数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "失误数":
 				criteriabtn.setText("失误数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "犯规数":
 				criteriabtn.setText("犯规数");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "比赛得分":
 				criteriabtn.setText("比赛得分");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":
-				criteriabtn.setText("GmSc效率值");
-				sortPlayerCriteriaPanel.setVisible(false);
+				criteriabtn.setText("投篮命中率");
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中率":
 				criteriabtn.setText("三分命中率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中率":
 				criteriabtn.setText("罚球命中率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "胜率":
 				criteriabtn.setText("胜率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻回合":
 				criteriabtn.setText("进攻回合");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻效率":
 				criteriabtn.setText("进攻效率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "防守效率":
 				criteriabtn.setText("防守效率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板效率":
 				criteriabtn.setText("篮板效率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "抢断效率":
 				criteriabtn.setText("抢断效率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "助攻率":
 				criteriabtn.setText("助攻率");
-				sortPlayerCriteriaPanel.setVisible(false);
+				sortTeamCriteriaPanel.setVisible(false);
 				break;
 
 			default:
