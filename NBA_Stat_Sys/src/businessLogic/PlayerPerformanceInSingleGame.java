@@ -20,6 +20,7 @@ public class PlayerPerformanceInSingleGame {
 	private int foul;
 	private int score;
 	
+	private int twoTenNum;
 	public PlayerPerformanceInSingleGame(String name)
 	{
 		this.name =name;
@@ -38,6 +39,7 @@ public class PlayerPerformanceInSingleGame {
 		turnover=0;
 		foul=0;
 		score=0;
+		twoTenNum=0;
 	}
 	public String toString() {
 		return null;
@@ -151,6 +153,12 @@ public class PlayerPerformanceInSingleGame {
 	}
 	public void setScore(int score) {
 		this.score = score;
+	}
+	public int getTwoTenNum() {
+		return twoTenNum;
+	}
+	public void setTwoTenNum(int twoTenNum) {
+		this.twoTenNum = twoTenNum;
 	}
 
 }

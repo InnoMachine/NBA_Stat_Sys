@@ -36,15 +36,32 @@ public class Data_Handler {
 		gamedao = new GameDaoImpl();
 		teamdao = new TeamDaoImpl();
 		listpo  = playerdao.getAllPlayers();
-		listvo = new PlayerVo[listpo.size()+1];
-		gamelist = gamedao.getAllGames();
 		teamlistpo = teamdao.getAllTeams();
+		listvo = new PlayerVo[listpo.size()+1];
+		teamlistvo = new TeamVo[teamlistpo.size()+1];
+		gamelist = gamedao.getAllGames();
 		
 		SetPlayerVo();
 		SetTeamVo();
 		loadGames();
 		playerCalculate();
 		TeamCalculate();
+		PlayerDivisionSet();
+	}
+	private void PlayerDivisionSet() {
+		for(int i=0;i<listvo.length;i++)
+		{
+			for(int k =0;k<teamlistvo.length;k++)
+			{
+				if(teamlistvo[k].getAbbreviation().equals(listvo[i].getTeam()))
+				{
+					listvo[i].setDivision(teamlistvo[i].getDivision());
+					break;
+				}
+			}
+		}
+					
+		
 	}
 	private void TeamCalculate() {
 		for(int i=0;i<teamlistvo.length;i++)
@@ -99,7 +116,7 @@ public class Data_Handler {
 			listvo[i].setUseRate((listvo[i].getShotNum()+0.44*listvo[i].getFreeThrowShotNum()+listvo[i].getTurnover())
 					*(listvo[i].getteamTime()/5)/listvo[i].getTime()/(listvo[i].GetteamShotNum()+
 							0.44*listvo[i].getteamFreeThrowNum()+listvo[i].getteamTurnOver()));
-			
+			listvo[i].setWeighted(listvo[i].getScore()+listvo[i].getReboundOverall()+listvo[i].getBlock());
 			
 		}
 	}
@@ -169,6 +186,8 @@ public class Data_Handler {
 			{
 				if(temp.getName().equals(listvo[i].getName()))
 				{
+					listvo[i].setTeam(tgp.getName());
+					
 					listvo[i].setTime(temp.getTime());
 					listvo[i].setHitNum(listvo[i].getHitNum()+temp.getHitNum());
 					listvo[i].setShotNum(listvo[i].getShotNum()+temp.getShotNum());
@@ -185,6 +204,7 @@ public class Data_Handler {
 					listvo[i].setTurnover(listvo[i].getTurnover()+temp.getTurnover());
 					listvo[i].setFoul(listvo[i].getFoul()+temp.getFoul());
 					listvo[i].setScore(listvo[i].getScore()+temp.getScore());
+					listvo[i].setTwoTenNum(listvo[i].getTwoTenNum()+temp.getTwoTenNum());
 					
 					listvo[i].setTeamRoundAttack(listvo[i].getTeamRoundAttack()+tgp.getRoundAttack());
 					listvo[i].setteamFreeThrowNum(listvo[i].getteamFreeThrowNum()+tgp.getFreeThrowShotNum());
@@ -207,7 +227,7 @@ public class Data_Handler {
 		
 	}
 	private TeamPerformanceInSingleGame setPerformance(TeamPerformance tp) {
-		ArrayList<SinglePerformance> listsp = new ArrayList<SinglePerformance>();//tp.getT
+		ArrayList<SinglePerformance> listsp = new ArrayList<SinglePerformance>();
 		String abbr = tp.getTeamNameAbbr();
 		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
 		for(SinglePerformance temp:listsp)
@@ -249,6 +269,9 @@ public class Data_Handler {
 					pgp.setTurnover(pgp.getTurnover()+temp.getTurnover());
 					pgp.setFoul(pgp.getFoul()+temp.getFoul());
 					pgp.setScore(pgp.getScore()+temp.getScore());
+					if(isTwoTen(temp)){
+						pgp.setTwoTenNum(1);
+					}			
 					tgp.playerlist.add(pgp);
 					break;
 				}
@@ -256,6 +279,22 @@ public class Data_Handler {
 		}
 		return tgp;
 		
+	}
+	private boolean isTwoTen(SinglePerformance temp) {
+		int score = temp.getScore();
+		int assistance = temp.getAssistance();
+		int block=temp.getBlock();
+		int steal = temp.getSteal();
+		int rebound = temp.getReboundOverall();
+		if((score>=10&&assistance>=10)||(score>=10&&block>=10)||(score>=10&&steal>=10)||
+				(score>=10&&rebound>=10)||(block>=10&&assistance>=10)||(steal>=10&&assistance>=10)
+				||(rebound>=10&&assistance>=10)||(block>=10&&steal>=10)||
+				(block>=10&&rebound>=10)||(steal>=10&&rebound>=10))
+		{
+			return true;
+		}
+		else 
+			return false;
 	}
 	public static Data_Handler getInstance()
 	{
@@ -321,7 +360,6 @@ public class Data_Handler {
 			listvo[i].setActionImgPath(listpo.get(i).getActionImgPath());
 			listvo[i].setPortraitImgPath(listpo.get(i).getPortraitImgPath());
 			
-			
 			listvo[i].setName(listpo.get(i).getName());
 			listvo[i].setTime(0);
 			listvo[i].setHitNum(0);
@@ -354,7 +392,7 @@ public class Data_Handler {
 			listvo[i].setOpReboundAll(0);
 			listvo[i].setOpRoundAttack(0);
 			listvo[i].setOpTwoPointShotNum(0);
-			
+			listvo[i].setTwoTenNum(0);
 		}
 		
 	}

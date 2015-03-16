@@ -1,5 +1,7 @@
 package vo;
 
+import po.Division;
+
 
 public class PlayerVo {
 	private int number;
@@ -13,6 +15,7 @@ public class PlayerVo {
 	private String ActionImgPath;
 	private String PortraitImgPath;
 	
+	private Division div;
 	
 	private String name;
 	private String team;
@@ -51,6 +54,8 @@ public class PlayerVo {
 	private double useRate;
 	
 	//
+	private int weighted;
+	private int twoTenNum;//两双数
 	private double teamRoundAttack;      //进攻回合
 	private int opOffensiveRebound;  //对手进攻篮板
 	private int opDefensiveRebound;  //对手防守篮板
@@ -425,6 +430,24 @@ public class PlayerVo {
 	}
 	public void setFirstOnNum(int firstOnNum) {
 		FirstOnNum = firstOnNum;
+	}
+	public Division getDivision() {
+		return div;
+	}
+	public void setDivision(Division div) {
+		this.div = div;
+	}
+	public int getTwoTenNum() {
+		return twoTenNum;
+	}
+	public void setTwoTenNum(int twoTenNum) {
+		this.twoTenNum = twoTenNum;
+	}
+	public int getWeighted() {
+		return weighted;
+	}
+	public void setWeighted(int weighted) {
+		this.weighted = weighted;
 	}
 	
 }
