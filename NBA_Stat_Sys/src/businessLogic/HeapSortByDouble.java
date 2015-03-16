@@ -15,15 +15,17 @@ public class HeapSortByDouble {
         
         heapSort(a);  
         for (int i =0;i<15;i++)  
-            System.out.print((int)a[i][1] + " ");  
-    }  */
+            System.out.print((int)a[i][1] + " ");
+        for (int i =0;i<15;i++)  
+            System.out.print(a[i][0] + " ");
+    } */
 	public static void heapSort(double[][] a) {  
         heapSize = a.length;  
-        buildMaxHeap(a);  
+        buildMinHeap(a);  
         for (int i = a.length - 1; i >= 1; i--) {  
             swap(a, i, 0);  
             heapSize = heapSize - 1;  
-            maxHeapify(a, 0);  
+            minHeapify(a, 0);  
             }  
         }  
   
@@ -33,25 +35,25 @@ public class HeapSortByDouble {
         a[j] = temp;  
         }  
   
-    private static void buildMaxHeap(double[][] a) {  
+    private static void buildMinHeap(double[][] a) {  
         for (int i = a.length / 2; i >= 0; i--) {  
-            maxHeapify(a, i);  
+            minHeapify(a, i);  
         }  
    }  
   
-    private static void maxHeapify(double[][] a, int i) {  
+    private static void minHeapify(double[][] a, int i) {  
         int l = left(i);  
         int r = right(i);  
         int largest = i;  
-        if (l < heapSize && a[l][0] > a[i][0])  
+        if (l < heapSize && a[l][0] < a[i][0])  
             largest = l;  
         else  
            largest = i;  
-        if (r < heapSize && a[r][0] > a[largest][0])  
+        if (r < heapSize && a[r][0] < a[largest][0])  
             largest = r;  
         if (largest != i) {  
             swap(a, i, largest);  
-            maxHeapify(a, largest);  
+            minHeapify(a, largest);  
         }  
     }  
   

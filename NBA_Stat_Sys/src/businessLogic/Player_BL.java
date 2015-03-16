@@ -26,7 +26,7 @@ public class Player_BL implements Player_BS{
 	}
 
 	public ArrayList<PlayerVo> filterPlayerBy(String position, Division div, String option) {
-		return null;
+		return player_handler.filterPlayersBy(position, div, option);
 	}
 	
 	public ArrayList<PlayerVo> getPlayersByTeam(String abbr)
