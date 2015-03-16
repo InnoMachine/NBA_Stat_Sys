@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
 import po.Division;
@@ -30,7 +29,6 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-
 	Player_BS player_BS;
 	private JButton screeningCriteriabtn;
 
@@ -40,12 +38,15 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setVisible(true);
 		this.setLayout(null);
 
+		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
+		playerCriteriaPanel.setVisible(false);
+		
 		JLabel screeninglbl = new JLabel("筛选依据");
-		screeninglbl.setBounds(338, 37, 57, 15);
+		screeninglbl.setBounds(370, 37, 57, 15);
 		this.add(screeninglbl);
 
 		screeningCriteriabtn = new JButton("");
-		screeningCriteriabtn.setBounds(393, 33, 93, 23);
+		screeningCriteriabtn.setBounds(426, 33, 111, 23);
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		add(screeningCriteriabtn);
 
@@ -55,7 +56,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.add(backbtn);
 
 		JButton screeningbtn = new JButton("显示前50名");
-		screeningbtn.setBounds(496, 33, 119, 23);
+		screeningbtn.setBounds(547, 33, 93, 23);
 		screeningbtn.addActionListener(e -> screening());
 		add(screeningbtn);
 
@@ -90,12 +91,16 @@ public class ScreeningPlayerPanel extends JPanel {
 		positionjcb.setBounds(132, 34, 60, 21);
 		this.add(positionjcb);
 
-		leagues = new String[3];
+		leagues = new String[7];
 		leagues[0] = "所有";
-		leagues[1] = "东部";
-		leagues[2] = "西部";
+		leagues[1] = "ATLANTIC";
+		leagues[2] = "CENTRAL";
+		leagues[3] = "SOUTHEAST";
+		leagues[4] = "NORTHWEST";
+		leagues[5] = "SOUTHWEST";
+		leagues[6] = "PACIFIC";
 		leaguejcb = new JComboBox(leagues);
-		leaguejcb.setBounds(259, 34, 60, 21);
+		leaguejcb.setBounds(259, 34, 100, 21);
 		this.add(leaguejcb);
 
 		rowData = new Vector<Vector<String>>();
@@ -114,8 +119,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(60, 80, 580, 340);
 
-		// table.getColumn("具体信息").setCellEditor(new MyRender());
-		// table.getColumn("具体信息").setCellRenderer(new MyRender());
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
@@ -129,7 +132,7 @@ public class ScreeningPlayerPanel extends JPanel {
 
 	public void showScreeningCriteria() {
 
-		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
+		playerCriteriaPanel.setVisible(true);
 
 	}
 
@@ -163,9 +166,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setVisible(true);
 		table.setBounds(60, 80, 580, 340);
 
-		// table.getColumn("具体信息").setCellEditor(new MyRender());
-		// table.getColumn("具体信息").setCellRenderer(new MyRender());
-		table.setColumnSelectionAllowed(true);
 		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
