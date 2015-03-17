@@ -25,7 +25,8 @@ public class SortPanel extends JPanel {
 	private JScrollPane scrollPane;
 	Vector<Vector<String>> rowData;
 	private Vector<String> columnNames;
-	JButton criteriabtn;
+	JButton playerCriteriabtn;
+	JButton teamCriteriabtn;
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
@@ -79,10 +80,10 @@ public class SortPanel extends JPanel {
 			columnNames.add("球龄");
 			columnNames.add("毕业学校");
 
-			criteriabtn = new JButton("");
-			criteriabtn.setBounds(166, 33, 271, 23);
-			criteriabtn.addActionListener(e -> playerCriteriaShow());
-			add(criteriabtn);
+			playerCriteriabtn = new JButton("");
+			playerCriteriabtn.setBounds(166, 33, 271, 23);
+			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
+			add(playerCriteriabtn);
 
 		}
 		if (category == "team") {
@@ -97,10 +98,10 @@ public class SortPanel extends JPanel {
 			columnNames.add("建立时间");
 			// columnNames.add("具体信息");
 
-			criteriabtn = new JButton("");
-			criteriabtn.setBounds(166, 33, 271, 23);
-			criteriabtn.addActionListener(e -> teamCriteriaShow());
-			add(criteriabtn);
+			teamCriteriabtn = new JButton("");
+			teamCriteriabtn.setBounds(166, 33, 271, 23);
+			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
+			add(teamCriteriabtn);
 			
 		}
 
@@ -131,7 +132,7 @@ public class SortPanel extends JPanel {
 		rowData = new Vector<Vector<String>>();
 		Vector<String> playerInfo = new Vector<String>();
 
-		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(criteriabtn
+		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(playerCriteriabtn
 				.getText());
 		for (int i = 0; i < player.size(); i++) {
 			playerInfo.add(player.get(i).getName());
@@ -190,7 +191,7 @@ public class SortPanel extends JPanel {
 
 		Vector<String> teamInfo = new Vector<String>();
 
-		ArrayList<TeamVo> team = team_BS.sortTeamBy(criteriabtn.getText());
+		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteriabtn.getText());
 
 		for (int i = 0; i < team.size(); i++) {
 			teamInfo.add(team.get(i).getTeamName());
@@ -621,112 +622,112 @@ public class SortPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			switch (criteria) {
 			case "参赛场数":
-				criteriabtn.setText("参赛场数");
+				playerCriteriabtn.setText("参赛场数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "先发场数":
-				criteriabtn.setText("先发场数");
+				playerCriteriabtn.setText("先发场数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "篮板数":
-				criteriabtn.setText("篮板数");
+				playerCriteriabtn.setText("篮板数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "助攻数":
-				criteriabtn.setText("助攻数");
+				playerCriteriabtn.setText("助攻数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "在场时间":
-				criteriabtn.setText("在场时间");
+				playerCriteriabtn.setText("在场时间");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":
-				criteriabtn.setText("投篮命中率");
+				playerCriteriabtn.setText("投篮命中率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中率":
-				criteriabtn.setText("三分命中率");
+				playerCriteriabtn.setText("三分命中率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中率":
-				criteriabtn.setText("罚球命中率");
+				playerCriteriabtn.setText("罚球命中率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "进攻数":
-				criteriabtn.setText("进攻数");
+				playerCriteriabtn.setText("进攻数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "防守数":
-				criteriabtn.setText("防守数");
+				playerCriteriabtn.setText("防守数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "抢断数":
-				criteriabtn.setText("抢断数");
+				playerCriteriabtn.setText("抢断数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽数":
-				criteriabtn.setText("盖帽数");
+				playerCriteriabtn.setText("盖帽数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "失误数":
-				criteriabtn.setText("失误数");
+				playerCriteriabtn.setText("失误数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "犯规数":
-				criteriabtn.setText("犯规数");
+				playerCriteriabtn.setText("犯规数");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "得分":
-				criteriabtn.setText("得分");
+				playerCriteriabtn.setText("得分");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "效率":
-				criteriabtn.setText("效率");
+				playerCriteriabtn.setText("效率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "GmSc效率值":
-				criteriabtn.setText("GmSc效率值");
+				playerCriteriabtn.setText("GmSc效率值");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "真实命中率":
-				criteriabtn.setText("真实命中率");
+				playerCriteriabtn.setText("真实命中率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮效率":
-				criteriabtn.setText("投篮效率");
+				playerCriteriabtn.setText("投篮效率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "篮板率":
-				criteriabtn.setText("篮板率");
+				playerCriteriabtn.setText("篮板率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "进攻篮板率":
-				criteriabtn.setText("进攻篮球率");
+				playerCriteriabtn.setText("进攻篮球率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "防守篮板率":
-				criteriabtn.setText("防守篮板率");
+				playerCriteriabtn.setText("防守篮板率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "助攻率":
-				criteriabtn.setText("助攻率");
+				playerCriteriabtn.setText("助攻率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 
 			case "抢断率":
-				criteriabtn.setText("抢断率");
+				playerCriteriabtn.setText("抢断率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽率":
-				criteriabtn.setText("盖帽率");
+				playerCriteriabtn.setText("盖帽率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "失误率":
-				criteriabtn.setText("失误率");
+				playerCriteriabtn.setText("失误率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "使用率":
-				criteriabtn.setText("使用率");
+				playerCriteriabtn.setText("使用率");
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			default:
@@ -748,107 +749,107 @@ public class SortPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			switch (criteria) {
 			case "比赛场数":
-				criteriabtn.setText("比赛场数");
+				teamCriteriabtn.setText("比赛场数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中数":
-				criteriabtn.setText("投篮命中数");
+				teamCriteriabtn.setText("投篮命中数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮出手数":
-				criteriabtn.setText("投篮出手数");
+				teamCriteriabtn.setText("投篮出手数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中数":
-				criteriabtn.setText("三分命中数");
+				teamCriteriabtn.setText("三分命中数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分出手数":
-				criteriabtn.setText("三分出手数");
+				teamCriteriabtn.setText("三分出手数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中数":
-				criteriabtn.setText("罚球命中数");
+				teamCriteriabtn.setText("罚球命中数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球出手数":
-				criteriabtn.setText("罚球出手数");
+				teamCriteriabtn.setText("罚球出手数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻篮板数":
-				criteriabtn.setText("进攻篮板数");
+				teamCriteriabtn.setText("进攻篮板数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "防守篮板数":
-				criteriabtn.setText("防守篮板数");
+				teamCriteriabtn.setText("防守篮板数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板数":
-				criteriabtn.setText("篮板数");
+				teamCriteriabtn.setText("篮板数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "助攻数":
-				criteriabtn.setText("助攻数");
+				teamCriteriabtn.setText("助攻数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "抢断数":
-				criteriabtn.setText("抢断数");
+				teamCriteriabtn.setText("抢断数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽数":
-				criteriabtn.setText("盖帽数");
+				teamCriteriabtn.setText("盖帽数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "失误数":
-				criteriabtn.setText("失误数");
+				teamCriteriabtn.setText("失误数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "犯规数":
-				criteriabtn.setText("犯规数");
+				teamCriteriabtn.setText("犯规数");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "比赛得分":
-				criteriabtn.setText("比赛得分");
+				teamCriteriabtn.setText("比赛得分");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":
-				criteriabtn.setText("投篮命中率");
+				teamCriteriabtn.setText("投篮命中率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中率":
-				criteriabtn.setText("三分命中率");
+				teamCriteriabtn.setText("三分命中率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中率":
-				criteriabtn.setText("罚球命中率");
+				teamCriteriabtn.setText("罚球命中率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "胜率":
-				criteriabtn.setText("胜率");
+				teamCriteriabtn.setText("胜率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻回合":
-				criteriabtn.setText("进攻回合");
+				teamCriteriabtn.setText("进攻回合");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻效率":
-				criteriabtn.setText("进攻效率");
+				teamCriteriabtn.setText("进攻效率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "防守效率":
-				criteriabtn.setText("防守效率");
+				teamCriteriabtn.setText("防守效率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板效率":
-				criteriabtn.setText("篮板效率");
+				teamCriteriabtn.setText("篮板效率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "抢断效率":
-				criteriabtn.setText("抢断效率");
+				teamCriteriabtn.setText("抢断效率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "助攻率":
-				criteriabtn.setText("助攻率");
+				teamCriteriabtn.setText("助攻率");
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 

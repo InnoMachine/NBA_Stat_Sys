@@ -43,11 +43,11 @@ public class ScreeningPlayerPanel extends JPanel {
 		playerCriteriaPanel.setVisible(false);
 		
 		JLabel screeninglbl = new JLabel("筛选依据");
-		screeninglbl.setBounds(370, 37, 57, 15);
+		screeninglbl.setBounds(355, 37, 57, 15);
 		this.add(screeninglbl);
 
 		screeningCriteriabtn = new JButton("");
-		screeningCriteriabtn.setBounds(426, 33, 94, 23);
+		screeningCriteriabtn.setBounds(409, 33, 120, 23);
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		add(screeningCriteriabtn);
 
@@ -76,11 +76,11 @@ public class ScreeningPlayerPanel extends JPanel {
 		mainFrame.getContentPane().add(this);
 
 		JLabel label = new JLabel("球员位置");
-		label.setBounds(75, 37, 54, 15);
+		label.setBounds(60, 37, 54, 15);
 		add(label);
 
 		JLabel label_1 = new JLabel("球员联盟");
-		label_1.setBounds(202, 37, 54, 15);
+		label_1.setBounds(187, 37, 54, 15);
 		add(label_1);
 
 		positions = new String[4];
@@ -89,7 +89,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		positions[2] = "中锋";
 		positions[3] = "后卫";
 		positionjcb = new JComboBox(positions);
-		positionjcb.setBounds(132, 34, 60, 21);
+		positionjcb.setBounds(117, 34, 60, 21);
 		this.add(positionjcb);
 
 		leagues = new String[7];
@@ -101,7 +101,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		leagues[5] = "SOUTHWEST";
 		leagues[6] = "PACIFIC";
 		leaguejcb = new JComboBox(leagues);
-		leaguejcb.setBounds(259, 34, 100, 21);
+		leaguejcb.setBounds(244, 34, 100, 21);
 		this.add(leaguejcb);
 
 		rowData = new Vector<Vector<String>>();
@@ -141,11 +141,14 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		rowData = new Vector<Vector<String>>();
 		Vector<String> playerInfo = new Vector<String>();
-
+		System.out.println(String.valueOf(positionjcb.getSelectedItem()));
+		System.out.println(Division.valueOf(String.valueOf(leaguejcb.getSelectedItem())));
+		System.out.println(screeningCriteriabtn.getText());
 		ArrayList<PlayerVo> player = player_BS.filterPlayerBy(
 				String.valueOf(positionjcb.getSelectedItem()),
 				Division.valueOf(String.valueOf(leaguejcb.getSelectedItem())),
 				screeningCriteriabtn.getText());
+		
 		for (int i = 0; i < player.size(); i++) {
 			playerInfo.add(player.get(i).getName());
 			playerInfo.add(String.valueOf(player.get(i).getNumber()));
