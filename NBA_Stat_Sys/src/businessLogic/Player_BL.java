@@ -2,7 +2,6 @@ package businessLogic;
 
 import java.util.ArrayList;
 
-import po.Division;
 import vo.PlayerVo;
 
 public class Player_BL implements Player_BS{
@@ -25,7 +24,7 @@ public class Player_BL implements Player_BS{
 		return player_handler.sortPlayerBy(option);
 	}
 
-	public ArrayList<PlayerVo> filterPlayerBy(String position, Division div, String option) {
+	public ArrayList<PlayerVo> filterPlayerBy(String position, String div, String option) {
 		return player_handler.filterPlayersBy(position, div, option);
 	}
 	
