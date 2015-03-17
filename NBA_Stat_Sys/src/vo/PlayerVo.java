@@ -47,13 +47,13 @@ public class PlayerVo {
 	private double turnOverRate;
 	private double reboundOverallRate;
 	private double offensiveReboundRate;
-	private double defensiveReboundRate;
-	private double assistanceRate;          
-	private double blockRate;               
-	private double stealRate;
-	private double useRate;
+	private double defensiveReboundRate;//
+	private double assistanceRate;          //助攻率
+	private double blockRate;        //盖帽率       
+	private double stealRate;//抢断率
+	private double useRate;//使用率
 	
-	//
+	//下面不用管了，哦有个两双
 	private int weighted;
 	private int twoTenNum;//两双数
 	private double teamRoundAttack;      //进攻回合

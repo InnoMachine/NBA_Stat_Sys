@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
-import po.Division;
+
 import vo.PlayerVo;
 
 public class Player_Handler {
@@ -431,16 +431,43 @@ public class Player_Handler {
 		return templist;
 	}
 	
-	public ArrayList<PlayerVo> filterPlayersBy(String position, Division div, String option)
+	public ArrayList<PlayerVo> filterPlayersBy(String position, String div, String option)
 	{
 		ArrayList<PlayerVo> list = new ArrayList<PlayerVo>();
-		for(PlayerVo temp:arrlistvo)
+		if(position.equals("All")&&div.equals("All"))
 		{
-			if(temp.getPosition().equals(position)&&temp.getDivision().equals(div))
-			{
-				list.add(temp);
-			}		
+			list = arrlistvo;
 		}
+		else if((!position.equals("All"))&&div.equals("All"))
+		{
+			for(PlayerVo temp:arrlistvo)
+			{
+				if(temp.getPosition().equals(position))
+				{
+					list.add(temp);
+				}		
+			}
+		}
+		else if((position.equals("All"))&&(!div.equals("All")))
+		{
+			for(PlayerVo temp:arrlistvo)
+			{
+				if(temp.getDivision().toString().equals(div))
+				{
+					list.add(temp);
+				}		
+			}
+		}
+		else{
+			for(PlayerVo temp:arrlistvo)
+			{
+				if(temp.getDivision().toString().equals(div)&&temp.getPosition().equals(position))
+				{
+					list.add(temp);
+				}		
+			}
+		}
+		
 		if(option.equals("score")){
 			int a[][] = new int [listvo.length][2]; 
 			for(int i=0;i<listvo.length;i++)

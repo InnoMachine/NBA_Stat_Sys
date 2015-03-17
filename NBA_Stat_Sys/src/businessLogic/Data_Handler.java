@@ -188,7 +188,7 @@ public class Data_Handler {
 				{
 					listvo[i].setTeam(tgp.getName());
 					
-					listvo[i].setTime(temp.getTime());
+					listvo[i].setTime(listvo[i].getTime()+temp.getTime());
 					listvo[i].setHitNum(listvo[i].getHitNum()+temp.getHitNum());
 					listvo[i].setShotNum(listvo[i].getShotNum()+temp.getShotNum());
 					listvo[i].setThreePointHitNum(listvo[i].getThreePointHitNum()+temp.getThreePointHitNum());
@@ -232,6 +232,7 @@ public class Data_Handler {
 		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
 		for(SinglePerformance temp:listsp)
 		{
+			int k=0;
 			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
 			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
 			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
@@ -271,7 +272,12 @@ public class Data_Handler {
 					pgp.setScore(pgp.getScore()+temp.getScore());
 					if(isTwoTen(temp)){
 						pgp.setTwoTenNum(1);
-					}			
+					}
+					if(k<5)
+					{
+						pgp.setFirstOn(1);
+						k++;
+					}
 					tgp.playerlist.add(pgp);
 					break;
 				}
@@ -377,6 +383,7 @@ public class Data_Handler {
 			listvo[i].setFoul(0);
 			listvo[i].setScore(0);
 			listvo[i].setSteal(0);
+			listvo[i].setFirstOnNum(0);
 			
 			listvo[i].setTeamRoundAttack(0);
 			listvo[i].setteamFreeThrowNum(0);
