@@ -16,8 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
+import ui.SearchPanel.PlayerButton;
 import vo.PlayerVo;
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
 import businessLogic.Team_BS;
@@ -32,7 +34,7 @@ public class SearchPanel extends JPanel {
 
 	JFrame mainFrame;
 	Player_BS player_BS=new Player_BL();
-	Team_BS team_BS=new Team_BL();
+	Team_BS team_BS;
 	private JTable table;
 	private DefaultTableModel model;
 	private JScrollPane scrollPane;

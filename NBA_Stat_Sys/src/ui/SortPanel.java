@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
 import businessLogic.Team_BS;
@@ -32,7 +33,7 @@ public class SortPanel extends JPanel {
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
-	Player_BS player_BS=new Player_BL();
+	Player_BS player_BS=new Player_BL_Stub();
 	Team_BS team_BS=new Team_BL();
 	
     String playerCriteria="";
