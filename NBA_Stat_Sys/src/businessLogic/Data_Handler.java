@@ -37,8 +37,8 @@ public class Data_Handler {
 		teamdao = new TeamDaoImpl();
 		listpo  = playerdao.getAllPlayers();
 		teamlistpo = teamdao.getAllTeams();
-		listvo = new PlayerVo[listpo.size()+1];
-		teamlistvo = new TeamVo[teamlistpo.size()+1];
+		listvo = new PlayerVo[listpo.size()];
+		teamlistvo = new TeamVo[teamlistpo.size()];
 		gamelist = gamedao.getAllGames();
 		
 		SetPlayerVo();
