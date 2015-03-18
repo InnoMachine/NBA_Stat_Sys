@@ -9,7 +9,7 @@ public class InitDatabase {
 	public static void main(String[] args) {
 		Connection conn = DBUtil.open();
 		
-		String sql = "source ~puppy/desktop/tm_sharetime.sql";
+		String sql = "source init.sql";
 		
 		Statement stmt = null;
 		try {
