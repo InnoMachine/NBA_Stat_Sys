@@ -141,33 +141,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		String league="";
 		String screeningCriteria="";
 		
-		switch (String.valueOf(leaguejcb.getSelectedItem())) {
-		case "ATLANTIC":
-			position="ATLANTIC";
-			break;
-		case "CENTRAL":
-			position="CENTRAL";
-			break;
-		case "SOUTHEAST":
-			position="SOUTHEAST";
-			break;
-		case "NORTHWEST":
-			position="NORTHWEST";
-			break;
-		case "SOUTHWEST":
-			position="SOUTHWEST";
-			break;
-		case "PACIFIC":
-			position="PACIFIC";
-			break;
-			
-		case "所有":
-			position="All";
-			break;
-		default:
-			break;
-		}
-		switch (String.valueOf(leaguejcb.getSelectedItem())) {
+
+		switch (String.valueOf(positionjcb.getSelectedItem())) {
 		case "前锋":
 			position="F";
 			break;
@@ -184,6 +159,35 @@ public class ScreeningPlayerPanel extends JPanel {
 			break;
 		}
 
+		switch (String.valueOf(leaguejcb.getSelectedItem())) {
+		case "ATLANTIC":
+			league="ATLANTIC";
+			break;
+		case "CENTRAL":
+		    league="CENTRAL";
+			break;
+		case "SOUTHEAST":
+			league="SOUTHEAST";
+			break;
+		case "NORTHWEST":
+			league="NORTHWEST";
+			break;
+		case "SOUTHWEST":
+			league="SOUTHWEST";
+			break;
+		case "PACIFIC":
+			league="PACIFIC";
+			break;
+			
+		case "所有":
+			league="All";
+			break;
+		default:
+			break;
+		}
+		
+		
+		
 		switch (screeningCriteriabtn.getText()) {
 		case "得分":
 			screeningCriteria="score";
@@ -237,7 +241,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		
 		System.out.println(position);
 		System.out.println(league);
-		System.out.println();
+		System.out.println(screeningCriteria);
 		
 		
 		ArrayList<PlayerVo> player = player_BS.filterPlayerBy(position,league,screeningCriteria);
