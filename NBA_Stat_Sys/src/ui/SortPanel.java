@@ -96,7 +96,6 @@ public class SortPanel extends JPanel {
 			columnNames.add("分区");
 			columnNames.add("主场");
 			columnNames.add("建立时间");
-			// columnNames.add("具体信息");
 
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn.setBounds(166, 33, 271, 23);
@@ -435,7 +434,6 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_5);
 
 		
-			
 			mainFrame.getContentPane().add(this);
 
 		}
