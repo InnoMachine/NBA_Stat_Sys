@@ -1,31 +1,26 @@
 package ui;
 
-import java.awt.Button;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Label;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.AbstractCellEditor;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
-import ui.SearchPanel.PlayerButton;
 import vo.PlayerVo;
+import businessLogic.Player_BL;
 import businessLogic.Player_BS;
+import businessLogic.Team_BL;
+import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -36,7 +31,8 @@ import javax.swing.table.TableCellRenderer;
 public class SearchPanel extends JPanel {
 
 	JFrame mainFrame;
-	Player_BS player_BS;
+	Player_BS player_BS=new Player_BL();
+	Team_BS team_BS=new Team_BL();
 	private JTable table;
 	private DefaultTableModel model;
 	private JScrollPane scrollPane;

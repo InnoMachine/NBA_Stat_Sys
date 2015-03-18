@@ -16,7 +16,9 @@ import javax.swing.JButton;
 
 import vo.PlayerVo;
 import vo.TeamVo;
+import businessLogic.Player_BL;
 import businessLogic.Player_BS;
+import businessLogic.Team_BL;
 import businessLogic.Team_BS;
 
 public class SortPanel extends JPanel {
@@ -30,9 +32,12 @@ public class SortPanel extends JPanel {
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
-	Player_BS player_BS;
-	Team_BS team_BS;
-
+	Player_BS player_BS=new Player_BL();
+	Team_BS team_BS=new Team_BL();
+	
+    String playerCriteria="";
+    String teamCriteria="";
+    
 	public SortPanel(String category, JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		this.setBounds(0, 0, 692, 450);
@@ -96,7 +101,6 @@ public class SortPanel extends JPanel {
 			columnNames.add("分区");
 			columnNames.add("主场");
 			columnNames.add("建立时间");
-			// columnNames.add("具体信息");
 
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn.setBounds(166, 33, 271, 23);
@@ -132,8 +136,10 @@ public class SortPanel extends JPanel {
 		rowData = new Vector<Vector<String>>();
 		Vector<String> playerInfo = new Vector<String>();
 
-		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(playerCriteriabtn
-				.getText());
+	
+		
+		
+		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(playerCriteria);
 		for (int i = 0; i < player.size(); i++) {
 			playerInfo.add(player.get(i).getName());
 			playerInfo.add(String.valueOf(player.get(i).getNumber()));
@@ -191,7 +197,7 @@ public class SortPanel extends JPanel {
 
 		Vector<String> teamInfo = new Vector<String>();
 
-		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteriabtn.getText());
+		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteria);
 
 		for (int i = 0; i < team.size(); i++) {
 			teamInfo.add(team.get(i).getTeamName());
@@ -435,7 +441,6 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_5);
 
 		
-			
 			mainFrame.getContentPane().add(this);
 
 		}
@@ -623,111 +628,138 @@ public class SortPanel extends JPanel {
 			switch (criteria) {
 			case "参赛场数":
 				playerCriteriabtn.setText("参赛场数");
+				playerCriteria="gameNum";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "先发场数":
 				playerCriteriabtn.setText("先发场数");
+				playerCriteria="FirstOnNum";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "篮板数":
 				playerCriteriabtn.setText("篮板数");
+				playerCriteria="reboundOverall";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "助攻数":
 				playerCriteriabtn.setText("助攻数");
+				playerCriteria="assistance";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "在场时间":
 				playerCriteriabtn.setText("在场时间");
+				playerCriteria="time";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":
 				playerCriteriabtn.setText("投篮命中率");
+				playerCriteria="hitRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中率":
 				playerCriteriabtn.setText("三分命中率");
+				playerCriteria="threePointHitRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中率":
 				playerCriteriabtn.setText("罚球命中率");
+				playerCriteria="freeThrowRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "进攻数":
 				playerCriteriabtn.setText("进攻数");
+				playerCriteria="attackingNum";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "防守数":
 				playerCriteriabtn.setText("防守数");
+				playerCriteria="defensiveNum";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "抢断数":
 				playerCriteriabtn.setText("抢断数");
+				playerCriteria="steal";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽数":
 				playerCriteriabtn.setText("盖帽数");
+				playerCriteria="block";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "失误数":
 				playerCriteriabtn.setText("失误数");
+				playerCriteria="turnover";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "犯规数":
 				playerCriteriabtn.setText("犯规数");
+				playerCriteria="foul";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "得分":
 				playerCriteriabtn.setText("得分");
+				playerCriteria="score";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "效率":
 				playerCriteriabtn.setText("效率");
+				playerCriteria="efficiency";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "GmSc效率值":
 				playerCriteriabtn.setText("GmSc效率值");
+				playerCriteria="GmSc";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "真实命中率":
 				playerCriteriabtn.setText("真实命中率");
+				playerCriteria="trueHitRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮效率":
 				playerCriteriabtn.setText("投篮效率");
+				playerCriteria="hitEfficiency";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "篮板率":
 				playerCriteriabtn.setText("篮板率");
+				playerCriteria="reboundOverallRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "进攻篮板率":
 				playerCriteriabtn.setText("进攻篮球率");
+				playerCriteria="offensiveReboundRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "防守篮板率":
 				playerCriteriabtn.setText("防守篮板率");
+				playerCriteria="defensiveReboundRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "助攻率":
 				playerCriteriabtn.setText("助攻率");
+				playerCriteria="assistanceRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 
 			case "抢断率":
 				playerCriteriabtn.setText("抢断率");
+				playerCriteria="stealRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽率":
 				playerCriteriabtn.setText("盖帽率");
+				playerCriteria="blockRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "失误率":
 				playerCriteriabtn.setText("失误率");
+				playerCriteria="turnOverRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "使用率":
 				playerCriteriabtn.setText("使用率");
+				playerCriteria="useRate";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			default:
@@ -750,106 +782,132 @@ public class SortPanel extends JPanel {
 			switch (criteria) {
 			case "比赛场数":
 				teamCriteriabtn.setText("比赛场数");
+				teamCriteria="GameNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中数":
 				teamCriteriabtn.setText("投篮命中数");
+				teamCriteria="hitNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮出手数":
 				teamCriteriabtn.setText("投篮出手数");
+				teamCriteria="shotNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中数":
 				teamCriteriabtn.setText("三分命中数");
+				teamCriteria="threePointHitNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分出手数":
 				teamCriteriabtn.setText("三分出手数");
+				teamCriteria="threePointShotNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中数":
 				teamCriteriabtn.setText("罚球命中数");
+				teamCriteria="freeThrowHitNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球出手数":
 				teamCriteriabtn.setText("罚球出手数");
+				teamCriteria="freeThrowShotNum";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻篮板数":
 				teamCriteriabtn.setText("进攻篮板数");
+				teamCriteria="offensiveRebound";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "防守篮板数":
 				teamCriteriabtn.setText("防守篮板数");
+				teamCriteria="deffensiveRebound";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板数":
 				teamCriteriabtn.setText("篮板数");
+				teamCriteria="reboundOverall";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "助攻数":
 				teamCriteriabtn.setText("助攻数");
+				teamCriteria="assistance";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "抢断数":
 				teamCriteriabtn.setText("抢断数");
+				teamCriteria="steal";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽数":
 				teamCriteriabtn.setText("盖帽数");
+				teamCriteria="block";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "失误数":
 				teamCriteriabtn.setText("失误数");
+				teamCriteria="turnover";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "犯规数":
 				teamCriteriabtn.setText("犯规数");
+				teamCriteria="foul";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "比赛得分":
 				teamCriteriabtn.setText("比赛得分");
+				teamCriteria="score";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":
 				teamCriteriabtn.setText("投篮命中率");
+				teamCriteria="hitRate";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "三分命中率":
 				teamCriteriabtn.setText("三分命中率");
+				teamCriteria="threePointHitRate";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "罚球命中率":
 				teamCriteriabtn.setText("罚球命中率");
+				teamCriteria="freeThrowRate";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "胜率":
 				teamCriteriabtn.setText("胜率");
+				teamCriteria="winningRate";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻回合":
 				teamCriteriabtn.setText("进攻回合");
+				teamCriteria="roundAttack";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "进攻效率":
 				teamCriteriabtn.setText("进攻效率");
+				teamCriteria="attackingEfficiency";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "防守效率":
 				teamCriteriabtn.setText("防守效率");
+				teamCriteria="defensiveEfficiency";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板效率":
 				teamCriteriabtn.setText("篮板效率");
+				teamCriteria="reboundEfficiency";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "抢断效率":
 				teamCriteriabtn.setText("抢断效率");
+				teamCriteria="stealEfficiency";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "助攻率":
 				teamCriteriabtn.setText("助攻率");
+				teamCriteria="assistanceEfficiency";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 

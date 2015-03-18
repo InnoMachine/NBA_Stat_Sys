@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
 
-import po.Division;
+import businessLogic.Player_BL;
 import businessLogic.Player_BS;
 import vo.PlayerVo;
 
@@ -30,7 +30,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS;
+	Player_BS player_BS=new Player_BL();
 	private JButton screeningCriteriabtn;
 
 	public ScreeningPlayerPanel(JFrame mainFrame) {
@@ -138,16 +138,115 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 
 	public void screening() {
+		String position="";
+		String league="";
+		String screeningCriteria="";
+		
 
+		switch (String.valueOf(positionjcb.getSelectedItem())) {
+		case "前锋":
+			position="F";
+			break;
+		case "中锋":
+			position="C";
+			break;
+		case "后卫":
+			position="G";
+			break;
+		case "所有":
+			position="All";
+			break;
+		default:
+			break;
+		}
+
+		switch (String.valueOf(leaguejcb.getSelectedItem())) {
+		case "ATLANTIC":
+			league="ATLANTIC";
+			break;
+		case "CENTRAL":
+		    league="CENTRAL";
+			break;
+		case "SOUTHEAST":
+			league="SOUTHEAST";
+			break;
+		case "NORTHWEST":
+			league="NORTHWEST";
+			break;
+		case "SOUTHWEST":
+			league="SOUTHWEST";
+			break;
+		case "PACIFIC":
+			league="PACIFIC";
+			break;
+			
+		case "所有":
+			league="All";
+			break;
+		default:
+			break;
+		}
+		
+		
+		
+		switch (screeningCriteriabtn.getText()) {
+		case "得分":
+			screeningCriteria="score";
+			break;
+		case "篮板":
+			screeningCriteria="reboundOverall";
+			break;
+		case "助攻":
+			screeningCriteria="assistance";
+			break;
+		case "得分/篮板/助攻":
+			screeningCriteria="weighted";
+			break;
+		case "盖帽":
+			screeningCriteria="block";
+			break;
+		case "抢断":
+			screeningCriteria="steal";
+			break;
+		case "犯规":
+			screeningCriteria="foul";
+			break;
+		case "失误":
+			screeningCriteria="turnover";
+			break;
+		case "分钟":
+			screeningCriteria="time";
+			break;
+		case "效率":
+			screeningCriteria="efficiency";
+			break;
+		case "投篮":
+			screeningCriteria="hitNum";
+			break;
+		case "三分":
+			screeningCriteria="threePointShotNum";
+			break;
+		case "罚球":
+			screeningCriteria="freeThrowShotNum";
+			break;
+        case "两双":
+        	screeningCriteria="twoTenNum";
+			break;	
+		default:
+			break;
+		}
+		
+		
 		rowData = new Vector<Vector<String>>();
 		Vector<String> playerInfo = new Vector<String>();
-		System.out.println(String.valueOf(positionjcb.getSelectedItem()));
-		System.out.println(Division.valueOf(String.valueOf(leaguejcb.getSelectedItem())));
-		System.out.println(screeningCriteriabtn.getText());
-		ArrayList<PlayerVo> player = player_BS.filterPlayerBy(
-				String.valueOf(positionjcb.getSelectedItem()),
-				Division.valueOf(String.valueOf(leaguejcb.getSelectedItem())),
-				screeningCriteriabtn.getText());
+		
+		System.out.println(position);
+		System.out.println(league);
+		System.out.println(screeningCriteria);
+		
+		
+		ArrayList<PlayerVo> player = player_BS.filterPlayerBy(position,league,screeningCriteria);
+
 		
 		for (int i = 0; i < player.size(); i++) {
 			playerInfo.add(player.get(i).getName());
