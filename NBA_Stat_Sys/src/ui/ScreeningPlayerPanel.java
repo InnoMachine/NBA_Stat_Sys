@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
 
+import businessLogic.Player_BL;
 import businessLogic.Player_BS;
 import vo.PlayerVo;
 
@@ -29,7 +30,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS;
+	Player_BS player_BS=new Player_BL();
 	private JButton screeningCriteriabtn;
 
 	public ScreeningPlayerPanel(JFrame mainFrame) {
