@@ -25,6 +25,9 @@ public class MainFrame extends JFrame {
 		Rectangle bounds = new Rectangle( screenSize );  
 		this.setBounds(bounds);
 		StartPanel startPanel=new StartPanel(this);
-        getContentPane().add(startPanel);
+        this.getContentPane().add(startPanel);
+        int X=this.getWidth();
+        int Y=this.getHeight();
+
 	}
 }

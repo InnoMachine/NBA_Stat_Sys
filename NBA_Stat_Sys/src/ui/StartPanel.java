@@ -1,8 +1,9 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class StartPanel extends JPanel {
-	
+
 	SearchPanel searchPlayerPanel;
 	SortPanel sortPlayerPanel;
 	SearchPanel searchTeamPanel;
@@ -23,41 +24,33 @@ public class StartPanel extends JPanel {
 	static JButton screeningPlayerbtn;
 	static JButton searchTeambtn;
 	static JButton sortTeambtn;
-	
+
+	static Image bgImage;
 	JFrame mainFrame;
 	static int X;
 	static int Y;
-	
-	
-	public StartPanel(JFrame mainFrame) {
-		this.mainFrame = mainFrame;
-		X=mainFrame.getWidth();
-		Y=mainFrame.getHeight();
-		this.setBounds(0, 0, X,Y);
-		this.setLayout(null);
-		
-		ImageIcon bgImage=new ImageIcon("/NBA_Stat_Sys/src/Image/startPanel.png");
-		bgImage=new ImageIcon(bgImage.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
-		JLabel bgLabel=new JLabel();
-		bgLabel.setIcon(bgImage);
-		bgLabel.setBounds(0, 0,this.getWidth(),this.getHeight());		
-		this.add(bgLabel);
-		
-		JLabel titleLabel = new JLabel("NBA信息查询系统");
-		titleLabel.setFont(new Font("宋体", Font.PLAIN, 50));
-		titleLabel.setBounds(X/4,Y/3,X/3,Y/20);
-		this.add(titleLabel);
-		
 
-		
-	
-		createFunctionButton();
-		createUIButton();
+	public StartPanel(JFrame mainframe) {
+		this.mainFrame = mainframe;
+		X = mainframe.getWidth();
+		Y = mainframe.getHeight();
+		this.setBounds(0, 0, X, Y);
+		this.setLayout(null);
+		this.setVisible(true);
+		this.setOpaque(true);
+		bgImage = Toolkit.getDefaultToolkit().getImage(
+				"C:/Users/ThinkPad/Desktop/nba/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
+		createButton();
 
 	}
 
-	public void createFunctionButton(){
-		
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(bgImage, 0, 0, X, Y, this);
+	}
+
+	public void createButton() {
+
 		JButton playerInfobtn = new JButton("球员信息");
 		playerInfobtn.setBounds(283, 175, 93, 23);
 		playerInfobtn.addActionListener(e -> playerOpe());
@@ -97,12 +90,13 @@ public class StartPanel extends JPanel {
 		sortTeambtn.addActionListener(e -> toSortTeamPanel());
 		sortTeambtn.setVisible(false);
 		this.add(sortTeambtn);
+
+		JButton closeButton = new JButton("退出系统");
+		closeButton.setBounds(200, 200, 300, 300);
+		closeButton.addActionListener(e -> mainFrame.dispose());
+		this.add(closeButton);
 	}
 
-	public void createUIButton(){
-		
-	}
-	
 	public void playerOpe() {
 
 		searchTeambtn.setVisible(false);
