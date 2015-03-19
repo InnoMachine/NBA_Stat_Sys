@@ -22,7 +22,7 @@ public class TeamDaoImpl implements TeamDao {
 	@Override
 	public void add(TeamPO team) {
 
-		String sql = "insert into nba.team(teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath)values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into nba.team(teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players,seasontp)values(?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -34,6 +34,8 @@ public class TeamDaoImpl implements TeamDao {
 			pstmt.setString(6, team.getHomeField());
 			pstmt.setString(7, team.getBirthYear());
 			pstmt.setString(8, team.getImgPath());
+			pstmt.setString(9, team.getPlayers().toString());//sudo
+			pstmt.setString(10, team.getSeansonTeamPerformance().toString());//sudo
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -46,7 +48,7 @@ public class TeamDaoImpl implements TeamDao {
 	@Override
 	public void update(TeamPO team) {
 		
-		String sql = "update nba.team set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=? where abbr=?";
+		String sql = "update nba.team set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=?,players=?,seasontp=? where abbr=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -58,8 +60,10 @@ public class TeamDaoImpl implements TeamDao {
 			pstmt.setString(6, team.getHomeField());
 			pstmt.setString(7, team.getBirthYear());
 			pstmt.setString(8, team.getImgPath());
+			pstmt.setString(9, team.getPlayers().toString());
+			pstmt.setString(10, team.getSeansonTeamPerformance().toString());
 			
-			pstmt.setString(9, team.getAbbreviation());
+			pstmt.setString(11, team.getAbbreviation());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,7 +94,7 @@ public class TeamDaoImpl implements TeamDao {
 	public TeamPO getTeamByAbbr(String abbr) {
 		
 		TeamPO team = new TeamPO();
-		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath from nba.team where abbr=?";
+		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players,seasontp from nba.team where abbr=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -107,6 +111,8 @@ public class TeamDaoImpl implements TeamDao {
 				team.setHomeField(rs.getString("homefield"));
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
+				//team.setPlayers(rs.getString("players"));//sudo
+				//team.setSeasonTeamPerformance(rs.getString("seasontp"))//sudo
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -138,6 +144,8 @@ public class TeamDaoImpl implements TeamDao {
 				team.setHomeField(rs.getString("homefield"));
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
+				//sudo
+				//sudo
 				
 				teamList.add(team);
 			}

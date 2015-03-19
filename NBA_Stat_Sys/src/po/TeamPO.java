@@ -19,7 +19,7 @@ public class TeamPO {
 	private String imgPath;
 	private ArrayList<PlayerPO> players;
 	
-	private ArrayList<TeamPerformance> seansonTeamPerformance;
+	private ArrayList<TeamPerformance> seansonTeamPerformance;//sudo
 	
 	public String getTeamName() {
 		return teamName;

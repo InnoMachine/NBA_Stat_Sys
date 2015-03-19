@@ -21,7 +21,7 @@ public class PlayerPO {
 	private String ActionImgPath;
 	private String PortraitImgPath;
 	
-	private ArrayList<SinglePerformance> seasonPerformance;
+	private ArrayList<SinglePerformance> seasonSinglePerformance;
 	
 	public String getName() {
 		return name;
@@ -89,11 +89,11 @@ public class PlayerPO {
 	public void setPortraitImgPath(String portraitImgPath) {
 		PortraitImgPath = portraitImgPath;
 	}
-	public ArrayList<SinglePerformance> getSeasonPerformance() {
-		return seasonPerformance;
+	public ArrayList<SinglePerformance> getSeasonSinglePerformance() {
+		return seasonSinglePerformance;
 	}
-	public void setSeasonPerformance(ArrayList<SinglePerformance> seasonPerformance) {
-		this.seasonPerformance = seasonPerformance;
+	public void setSeasonSinglePerformance(ArrayList<SinglePerformance> seasonSinglePerformance) {
+		this.seasonSinglePerformance = seasonSinglePerformance;
 	}
 	
 }

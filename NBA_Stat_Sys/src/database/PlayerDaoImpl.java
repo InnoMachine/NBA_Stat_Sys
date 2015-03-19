@@ -5,40 +5,160 @@
  */
 package database;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Locale;
 
+import jdbc_tools.DBUtil;
+import po.Conference;
+import po.Division;
 import po.PlayerPO;
+import po.TeamPO;
 
 public class PlayerDaoImpl implements PlayerDao {
 
 	@Override
 	public void add(PlayerPO player) {
-		// TODO Auto-generated method stub
-
+		
+		String sql = "insert into nba.player(name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seansonsp)values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		Connection conn = DBUtil.open();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, player.getName());
+			pstmt.setInt(2, player.getNumber());
+			pstmt.setString(3, player.getPosition());
+			pstmt.setString(4, player.getHeight());
+			pstmt.setString(5, player.getWeight());
+			pstmt.setString(6, player.getBirth());
+			pstmt.setInt(7, player.getAge());
+			pstmt.setInt(8, player.getExp());
+			pstmt.setString(9, player.getSchool());
+			pstmt.setString(10, player.getActionImgPath());
+			pstmt.setString(11, player.getPortraitImgPath());
+			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn);
+		}
 	}
 
 	@Override
 	public void update(PlayerPO player) {
-		// TODO Auto-generated method stub
+		
+		String sql = "update nba.player set name=?,number=?,position=?,height=?,weight=?,birth=?,age=?,exp=?,school=?,actionimgpath=?,portraitimgpath=?,seansonsp=? where name=?";
+		Connection conn = DBUtil.open();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, player.getName());
+			pstmt.setInt(2, player.getNumber());
+			pstmt.setString(3, player.getPosition());
+			pstmt.setString(4, player.getHeight());
+			pstmt.setString(5, player.getWeight());
+			pstmt.setString(6, player.getBirth());
+			pstmt.setInt(7, player.getAge());
+			pstmt.setInt(8, player.getExp());
+			pstmt.setString(9, player.getSchool());
+			pstmt.setString(10, player.getActionImgPath());
+			pstmt.setString(11, player.getPortraitImgPath());
+			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
+			
+			pstmt.setString(13, player.getName());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn);
+		}
 
 	}
 
 	@Override
 	public void deletePlayerByName(String name) {
-		// TODO Auto-generated method stub
 
+		String sql = "delete from nba.player where name=?";
+		Connection conn = DBUtil.open();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn);
+		}
 	}
 
 	@Override
 	public PlayerPO getPlayerByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+
+		PlayerPO player = new PlayerPO();
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seansonsp from nba.palyer where name=?";
+		Connection conn = DBUtil.open();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				
+				player.setName(rs.getString("name"));
+				player.setNumber(rs.getInt("number"));
+				player.setPosition(rs.getString("position"));
+				player.setHeight(rs.getString("height"));
+				player.setWeight(rs.getString("weight"));
+				player.setBirth(rs.getString("birth"));
+				player.setAge(rs.getInt("age"));
+				player.setExp(rs.getInt("exp"));
+				player.setSchool(rs.getString("school"));
+				player.setActionImgPath(rs.getString("actionimgpath"));
+				player.setPortraitImgPath(rs.getString("portraitimgpath"));
+				//player.getSeasonSinglePerformance(rs.getString("seasonsp"));//sudo
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn);
+		}
+		return player;
 	}
 
 	@Override
 	public ArrayList<PlayerPO> getAllPlayers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<PlayerPO> playerList = new ArrayList<PlayerPO>();
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seansonsp from nba.palyer";
+		Connection conn = DBUtil.open();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				PlayerPO player = new PlayerPO();
+				player.setName(rs.getString("name"));
+				player.setNumber(rs.getInt("number"));
+				player.setPosition(rs.getString("position"));
+				player.setHeight(rs.getString("height"));
+				player.setWeight(rs.getString("weight"));
+				player.setBirth(rs.getString("birth"));
+				player.setAge(rs.getInt("age"));
+				player.setExp(rs.getInt("exp"));
+				player.setSchool(rs.getString("school"));
+				player.setActionImgPath(rs.getString("actionimgpath"));
+				player.setPortraitImgPath(rs.getString("portraitimgpath"));
+				//player.getSeasonSinglePerformance(rs.getString("seasonsp"));//sudo				
+				playerList.add(player);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn);
+		}
+		return playerList;
 	}
 
 }

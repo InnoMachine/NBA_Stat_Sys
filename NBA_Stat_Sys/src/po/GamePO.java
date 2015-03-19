@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class GamePO {
 	
 	private String gameLabel;
-	private String date;
+	private String gameDate;
 	private String versus;
 	private String guestTeam;
 	private String homeTeam;
@@ -30,12 +30,12 @@ public class GamePO {
 		return null;
 	}
 
-	public String getDate() {
-		return date;
+	public String getGameDate() {
+		return gameDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setGameDate(String date) {
+		this.gameDate = date;
 	}
 
 	public String getVersus() {

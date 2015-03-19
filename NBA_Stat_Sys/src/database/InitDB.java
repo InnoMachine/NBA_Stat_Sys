@@ -27,7 +27,9 @@ public class InitDB {
 				+ " division varchar(15),"
 				+ " homefield varchar(40),"
 				+ " birthyear varchar(10),"
-				+ " imgPath varchar(40) )";
+				+ " imgPath varchar(40),"
+				+ " players text,"
+				+ " seasontp text)";
 		
 		String sql2 = "create table if not exists nba.players("
 				+ " name varchar(30),"
