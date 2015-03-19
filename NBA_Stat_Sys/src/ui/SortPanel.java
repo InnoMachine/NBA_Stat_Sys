@@ -147,41 +147,316 @@ public class SortPanel extends JPanel {
 
 		scrollPane.setVisible(true);
 		
-		Vector<PlayerCardPanel> a=new Vector<PlayerCardPanel>();
-		a.add(new PlayerCardPanel());
-		playerRowData.add(a);
-		Vector<PlayerCardPanel> b=new Vector<PlayerCardPanel>();
-		b.add(new PlayerCardPanel());
-		playerRowData.add(b);
-		Vector<PlayerCardPanel> c=new Vector<PlayerCardPanel>();
-		c.add(new PlayerCardPanel());
-		playerRowData.add(c);
-		Vector<PlayerCardPanel> d=new Vector<PlayerCardPanel>();
-		d.add(new PlayerCardPanel());
-		playerRowData.add(d);
-		
-		
-		Vector<String> playerInfo;
+		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+		playerVos = player_BS.sortPlayerBy(playerCriteria);
+		Vector<Vector<PlayerCardPanel>> rowData = new Vector<Vector<PlayerCardPanel>>();
+		for (int i = 0; i < playerVos.size(); i++) {
+			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
+			switch (playerCriteria) {
+			case "gameNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getGameNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				
+				break;
+			case "FirstOnNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFirstOnNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));				
+				break;
+			case "reboundOverall":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getReboundOverall()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "assistance":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAssistance()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "time":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTime()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "hitRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getHitRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "threePointHitRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getThreePointHitRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "freeThrowRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFreeThrowRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "attackingNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAttackingNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "defensiveNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getDefensiveNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "steal":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getSteal()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "block":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getBlock()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "turnover":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTurnover()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "foul":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFoul()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
 
-	
-		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(playerCriteria);
-		for (int i = 0; i < player.size(); i++) {
-			playerInfo = new Vector<String>();
-			playerInfo.add(player.get(i).getName());
-			playerInfo.add(String.valueOf(player.get(i).getNumber()));
-			playerInfo.add(player.get(i).getPosition());
-			playerInfo.add(player.get(i).getHeight());
-			playerInfo.add(player.get(i).getWeight());
-			playerInfo.add(player.get(i).getBirth());
-			playerInfo.add(String.valueOf(player.get(i).getAge()));
-			playerInfo.add(String.valueOf(player.get(i).getExp()));
-			playerInfo.add(player.get(i).getSchool());
-			System.out.println(player.get(i).getName());
-//			rowData.add(playerInfo);
-			
+			case "score":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getScore()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "efficiency":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getEfficiency()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+				
+				
+			case "GmSc":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getGmSc()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "trueHitRate":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTrueHitRate()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+				
+				
+			case "hitEfficiency":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getHitEfficiency()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "reboundOverallRate":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getReboundOverallRate()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+				
+			case "offensiveReboundRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getOffensiveReboundRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "defensiveReboundRate":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getDefensiveReboundRate()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+				
+				
+			case "assistanceRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAssistanceRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "stealRate":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getStealRate()
+							), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+			case "blockRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getBlockRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "turnOverRate":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTurnOverRate()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+			case "useRate":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						playerCriteriabtn.getText(),String.valueOf(playerVos.get(i).getUseRate()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			default:
+				break;
+			}		
+			playerRowData.add(a);
 		}
-
-
+		
+		
+//		Vector<String> playerInfo;
+//
+//	
+//		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(playerCriteria);
+//		for (int i = 0; i < player.size(); i++) {
+//			playerInfo = new Vector<String>();
+//			playerInfo.add(player.get(i).getName());
+//			playerInfo.add(String.valueOf(player.get(i).getNumber()));
+//			playerInfo.add(player.get(i).getPosition());
+//			playerInfo.add(player.get(i).getHeight());
+//			playerInfo.add(player.get(i).getWeight());
+//			playerInfo.add(player.get(i).getBirth());
+//			playerInfo.add(String.valueOf(player.get(i).getAge()));
+//			playerInfo.add(String.valueOf(player.get(i).getExp()));
+//			playerInfo.add(player.get(i).getSchool());
+//			System.out.println(player.get(i).getName());
+//			rowData.add(playerInfo);
 
 	}
 
@@ -203,19 +478,19 @@ public class SortPanel extends JPanel {
 		teamRowData.add(d);
 		
 		
-		Vector<String> teamInfo;
-
-		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteria);
-
-		for (int i = 0; i < team.size(); i++) {
-			teamInfo = new Vector<String>();
-			teamInfo.add(team.get(i).getTeamName());
-			teamInfo.add(team.get(i).getAbbreviation());
-			teamInfo.add(team.get(i).getCity());
-			teamInfo.add(team.get(i).getConference().toString());
-			teamInfo.add(team.get(i).getDivision().toString());
-			teamInfo.add(team.get(i).getHomeField());
-			teamInfo.add(team.get(i).getBirthYear());
+//		Vector<String> teamInfo;
+//
+//		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteria);
+//
+//		for (int i = 0; i < team.size(); i++) {
+//			teamInfo = new Vector<String>();
+//			teamInfo.add(team.get(i).getTeamName());
+//			teamInfo.add(team.get(i).getAbbreviation());
+//			teamInfo.add(team.get(i).getCity());
+//			teamInfo.add(team.get(i).getConference().toString());
+//			teamInfo.add(team.get(i).getDivision().toString());
+//			teamInfo.add(team.get(i).getHomeField());
+//			teamInfo.add(team.get(i).getBirthYear());
 //			rowData.add(teamInfo);
 		}
 	

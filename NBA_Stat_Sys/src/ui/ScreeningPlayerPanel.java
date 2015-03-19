@@ -36,22 +36,22 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS=new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL_Stub();
 	private JButton screeningCriteriabtn;
 	static int X;
 	static int Y;
-	
+
 	public ScreeningPlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
-		X=mainFrame.getWidth();
-		Y=mainFrame.getHeight();
+		X = mainFrame.getWidth();
+		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
 
 		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
 		playerCriteriaPanel.setVisible(false);
-		
+
 		JLabel screeninglbl = new JLabel("筛选依据");
 		screeninglbl.setBounds(355, 37, 57, 15);
 		this.add(screeninglbl);
@@ -70,7 +70,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningbtn.setBounds(537, 33, 103, 23);
 		screeningbtn.addActionListener(e -> screening());
 		add(screeningbtn);
-
 
 		mainFrame.getContentPane().add(this);
 
@@ -103,10 +102,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		leaguejcb.setBounds(244, 34, 100, 21);
 		this.add(leaguejcb);
 
-
-
-
-
 	}
 
 	public void showScreeningCriteria() {
@@ -116,23 +111,22 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 
 	public void screening() {
-		String position="";
-		String league="";
-		String screeningCriteria="";
-		
+		String position = "";
+		String league = "";
+		String screeningCriteria = "";
 
 		switch (String.valueOf(positionjcb.getSelectedItem())) {
 		case "前锋":
-			position="F";
+			position = "F";
 			break;
 		case "中锋":
-			position="C";
+			position = "C";
 			break;
 		case "后卫":
-			position="G";
+			position = "G";
 			break;
 		case "所有":
-			position="All";
+			position = "All";
 			break;
 		default:
 			break;
@@ -140,120 +134,257 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		switch (String.valueOf(leaguejcb.getSelectedItem())) {
 		case "ATLANTIC":
-			league="ATLANTIC";
+			league = "ATLANTIC";
 			break;
 		case "CENTRAL":
-		    league="CENTRAL";
+			league = "CENTRAL";
 			break;
 		case "SOUTHEAST":
-			league="SOUTHEAST";
+			league = "SOUTHEAST";
 			break;
 		case "NORTHWEST":
-			league="NORTHWEST";
+			league = "NORTHWEST";
 			break;
 		case "SOUTHWEST":
-			league="SOUTHWEST";
+			league = "SOUTHWEST";
 			break;
 		case "PACIFIC":
-			league="PACIFIC";
+			league = "PACIFIC";
 			break;
-			
+
 		case "所有":
-			league="All";
+			league = "All";
 			break;
 		default:
 			break;
 		}
-		
-		
-		
+
 		switch (screeningCriteriabtn.getText()) {
 		case "得分":
-			screeningCriteria="score";
+			screeningCriteria = "score";
 			break;
 		case "篮板":
-			screeningCriteria="reboundOverall";
+			screeningCriteria = "reboundOverall";
 			break;
 		case "助攻":
-			screeningCriteria="assistance";
+			screeningCriteria = "assistance";
 			break;
 		case "得分/篮板/助攻":
-			screeningCriteria="weighted";
+			screeningCriteria = "weighted";
 			break;
 		case "盖帽":
-			screeningCriteria="block";
+			screeningCriteria = "block";
 			break;
 		case "抢断":
-			screeningCriteria="steal";
+			screeningCriteria = "steal";
 			break;
 		case "犯规":
-			screeningCriteria="foul";
+			screeningCriteria = "foul";
 			break;
 		case "失误":
-			screeningCriteria="turnover";
+			screeningCriteria = "turnover";
 			break;
 		case "分钟":
-			screeningCriteria="time";
+			screeningCriteria = "time";
 			break;
 		case "效率":
-			screeningCriteria="efficiency";
+			screeningCriteria = "efficiency";
 			break;
 		case "投篮":
-			screeningCriteria="hitNum";
+			screeningCriteria = "hitNum";
 			break;
 		case "三分":
-			screeningCriteria="threePointShotNum";
+			screeningCriteria = "threePointShotNum";
 			break;
 		case "罚球":
-			screeningCriteria="freeThrowShotNum";
+			screeningCriteria = "freeThrowShotNum";
 			break;
-        case "两双":
-        	screeningCriteria="twoTenNum";
-			break;	
+		case "两双":
+			screeningCriteria = "twoTenNum";
+			break;
 		default:
 			break;
 		}
-		
-		
-		Vector<Vector<PlayerCardPanel>> rowData=new Vector<Vector<PlayerCardPanel>>();
-		Vector<PlayerCardPanel> a=new Vector<PlayerCardPanel>();
-		a.add(new PlayerCardPanel());
-		rowData.add(a);
-		Vector<PlayerCardPanel> b=new Vector<PlayerCardPanel>();
-		b.add(new PlayerCardPanel());
-		rowData.add(b);
-		Vector<PlayerCardPanel> c=new Vector<PlayerCardPanel>();
-		c.add(new PlayerCardPanel());
-		rowData.add(c);
-		Vector<PlayerCardPanel> d=new Vector<PlayerCardPanel>();
-		d.add(new PlayerCardPanel());
-		rowData.add(d);
-		
-		
-		
-		Vector<String> column=new Vector<String>();
+
+		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+		playerVos = player_BS.filterPlayerBy(position, league,
+				screeningCriteria);
+		Vector<Vector<PlayerCardPanel>> rowData = new Vector<Vector<PlayerCardPanel>>();
+		for (int i = 0; i < playerVos.size(); i++) {
+			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
+			switch (screeningCriteria) {
+			case "score":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getScore()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				
+				break;
+			case "reboundOverall":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getReboundOverall()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));				
+				break;
+			case "assistance":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAssistance()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "weighted":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getWeighted()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "block":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getBlock()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "steal":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getSteal()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "foul":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFoul()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "turnover":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTurnover()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "time":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTime()/60), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "efficiency":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getEfficiency()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "hitNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getHitNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "threePointShotNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getThreePointHitNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "freeThrowShotNum":
+				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFreeThrowShotNum()), String.valueOf(playerVos
+								.get(i).getNumber()), playerVos.get(i)
+								.getPosition(), playerVos.get(i).getHeight(),
+						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+						String.valueOf(playerVos.get(i).getAge()), String
+								.valueOf(playerVos.get(i).getExp()), playerVos.get(
+								i).getSchool()));
+				break;
+			case "twoTenNum":
+			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
+					screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTwoTenNum()), String.valueOf(playerVos
+							.get(i).getNumber()), playerVos.get(i)
+							.getPosition(), playerVos.get(i).getHeight(),
+					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
+					String.valueOf(playerVos.get(i).getAge()), String
+							.valueOf(playerVos.get(i).getExp()), playerVos.get(
+							i).getSchool()));
+				break;
+
+			default:
+				break;
+			}		
+			rowData.add(a);
+
+		}
+
+		Vector<String> column = new Vector<String>();
 		column.add("");
-		DefaultTableModel dtm=new DefaultTableModel(rowData,column)
-		{
+		DefaultTableModel dtm = new DefaultTableModel(rowData, column) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-		}
-		;
-		table=new JTable(dtm);
+		};
+		table = new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
-		table.setRowHeight(Y/8);
+		table.setRowHeight(Y / 8);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
 		table.getColumnModel().getColumn(0)
-		.setCellRenderer(new PlayerCardRenderer());
+				.setCellRenderer(new PlayerCardRenderer());
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(X/4, Y/4, X/2, Y/2);
+		scrollPane.setBounds(X / 4, Y / 4, X / 2, Y / 2);
 		scrollPane.setVisible(true);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane
+				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scrollPane);
 
 	}
@@ -273,8 +404,8 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setVisible(true);
 			this.setBounds(423, 56, 213, 108);
 
-			ButtonGroup bg=new ButtonGroup();
-			
+			ButtonGroup bg = new ButtonGroup();
+
 			JRadioButton scorebtn = new JRadioButton("得分");
 			scorebtn.setBounds(6, 6, 51, 23);
 			scorebtn.addActionListener(new ScreeningCriteriaListener("得分"));
@@ -289,73 +420,84 @@ public class ScreeningPlayerPanel extends JPanel {
 
 			JRadioButton assistancebtn = new JRadioButton("助攻");
 			assistancebtn.setBounds(6, 56, 51, 23);
-			assistancebtn.addActionListener(new ScreeningCriteriaListener("助攻"));
+			assistancebtn
+					.addActionListener(new ScreeningCriteriaListener("助攻"));
 			add(assistancebtn);
 			bg.add(assistancebtn);
 
 			JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("得分/篮板/助攻");
 			rdbtnNewRadioButton_3.setBounds(56, 81, 150, 23);
-			rdbtnNewRadioButton_3.addActionListener(new ScreeningCriteriaListener("得分/篮板/助攻"));
+			rdbtnNewRadioButton_3
+					.addActionListener(new ScreeningCriteriaListener("得分/篮板/助攻"));
 			add(rdbtnNewRadioButton_3);
 			bg.add(rdbtnNewRadioButton_3);
 
 			JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("盖帽");
 			rdbtnNewRadioButton_4.setBounds(6, 81, 51, 23);
-			rdbtnNewRadioButton_4.addActionListener(new ScreeningCriteriaListener("盖帽"));
+			rdbtnNewRadioButton_4
+					.addActionListener(new ScreeningCriteriaListener("盖帽"));
 			add(rdbtnNewRadioButton_4);
 			bg.add(rdbtnNewRadioButton_4);
 
 			JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("抢断");
 			rdbtnNewRadioButton_5.setBounds(56, 6, 51, 23);
-			rdbtnNewRadioButton_5.addActionListener(new ScreeningCriteriaListener("抢断"));
+			rdbtnNewRadioButton_5
+					.addActionListener(new ScreeningCriteriaListener("抢断"));
 			add(rdbtnNewRadioButton_5);
 			bg.add(rdbtnNewRadioButton_5);
 
 			JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("犯规");
 			rdbtnNewRadioButton_6.setBounds(56, 31, 51, 23);
-			rdbtnNewRadioButton_6.addActionListener(new ScreeningCriteriaListener("犯规"));
+			rdbtnNewRadioButton_6
+					.addActionListener(new ScreeningCriteriaListener("犯规"));
 			add(rdbtnNewRadioButton_6);
 			bg.add(rdbtnNewRadioButton_6);
 
 			JRadioButton rdbtnNewRadioButton_7 = new JRadioButton("失误");
 			rdbtnNewRadioButton_7.setBounds(56, 56, 51, 23);
-			rdbtnNewRadioButton_7.addActionListener(new ScreeningCriteriaListener("失误"));
+			rdbtnNewRadioButton_7
+					.addActionListener(new ScreeningCriteriaListener("失误"));
 			add(rdbtnNewRadioButton_7);
 			bg.add(rdbtnNewRadioButton_7);
 
 			JRadioButton rdbtnNewRadioButton_8 = new JRadioButton("分钟");
 			rdbtnNewRadioButton_8.setBounds(106, 6, 51, 23);
-			rdbtnNewRadioButton_8.addActionListener(new ScreeningCriteriaListener("分钟"));
+			rdbtnNewRadioButton_8
+					.addActionListener(new ScreeningCriteriaListener("分钟"));
 			add(rdbtnNewRadioButton_8);
 			bg.add(rdbtnNewRadioButton_8);
-			
+
 			JRadioButton radioButton = new JRadioButton("效率");
 			radioButton.setBounds(106, 31, 51, 23);
 			radioButton.addActionListener(new ScreeningCriteriaListener("效率"));
 			add(radioButton);
 			bg.add(radioButton);
-			
+
 			JRadioButton radioButton_1 = new JRadioButton("投篮");
 			radioButton_1.setBounds(106, 56, 51, 23);
-			radioButton_1.addActionListener(new ScreeningCriteriaListener("投篮"));
+			radioButton_1
+					.addActionListener(new ScreeningCriteriaListener("投篮"));
 			add(radioButton_1);
 			bg.add(radioButton_1);
 
 			JRadioButton radioButton_2 = new JRadioButton("三分");
 			radioButton_2.setBounds(156, 6, 51, 23);
-			radioButton_2.addActionListener(new ScreeningCriteriaListener("三分"));
+			radioButton_2
+					.addActionListener(new ScreeningCriteriaListener("三分"));
 			add(radioButton_2);
 			bg.add(radioButton_2);
 
 			JRadioButton radioButton_3 = new JRadioButton("罚球");
 			radioButton_3.setBounds(156, 31, 51, 23);
-			radioButton_3.addActionListener(new ScreeningCriteriaListener("罚球"));
+			radioButton_3
+					.addActionListener(new ScreeningCriteriaListener("罚球"));
 			add(radioButton_3);
 			bg.add(radioButton_3);
 
 			JRadioButton radioButton_4 = new JRadioButton("两双");
 			radioButton_4.setBounds(156, 56, 51, 23);
-			radioButton_4.addActionListener(new ScreeningCriteriaListener("两双"));
+			radioButton_4
+					.addActionListener(new ScreeningCriteriaListener("两双"));
 			add(radioButton_4);
 			bg.add(radioButton_4);
 
@@ -374,7 +516,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			switch (criteria) {
 			case "得分":
-				screeningCriteriabtn.setText("得分");	
+				screeningCriteriabtn.setText("得分");
 				playerCriteriaPanel.setVisible(false);
 				break;
 			case "篮板":
@@ -434,16 +576,17 @@ public class ScreeningPlayerPanel extends JPanel {
 				System.out.println("筛选标准选择出错");
 				break;
 			}
-			
+
 		}
 	}
-	
-	//class: TableRenderer
-	class PlayerCardRenderer extends PlayerCardPanel implements TableCellRenderer{
+
+	// class: TableRenderer
+	class PlayerCardRenderer extends PlayerCardPanel implements
+			TableCellRenderer {
 
 		public PlayerCardRenderer() {
 			super();
-			
+
 			// TODO Auto-generated constructor stub
 		}
 
@@ -451,11 +594,11 @@ public class ScreeningPlayerPanel extends JPanel {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
-			
+
 			this.setBackground(Color.GRAY);
 			// TODO Auto-generated method stub
 			return this;
 		}
-		
+
 	}
 }
