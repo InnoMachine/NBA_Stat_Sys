@@ -1,5 +1,8 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,7 +16,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
+import ui.ScreeningPlayerPanel.PlayerCardRenderer;
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
@@ -27,8 +34,10 @@ public class SortPanel extends JPanel {
 	JFrame mainFrame;
 	private JTable table;
 	private JScrollPane scrollPane;
-	Vector<Vector<String>> rowData;
-	private Vector<String> columnNames;
+
+	private Vector<Vector<PlayerCardPanel>> playerRowData=new Vector<Vector<PlayerCardPanel>>();
+	private Vector<Vector<TeamCardPanel>> teamRowData=new Vector<Vector<TeamCardPanel>>();
+	
 	JButton playerCriteriabtn;
 	JButton teamCriteriabtn;
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
@@ -40,9 +49,14 @@ public class SortPanel extends JPanel {
     String playerCriteria="";
     String teamCriteria="";
     
+    static int X;
+    static int Y;
+    
 	public SortPanel(String category, JFrame mainFrame) {
 		this.mainFrame = mainFrame;
-		this.setBounds(0, 0, 692, 450);
+		X=mainFrame.getWidth();
+		Y=mainFrame.getHeight();
+		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
 
@@ -65,7 +79,7 @@ public class SortPanel extends JPanel {
 		this.add(downSortbtn);
 
 		JButton btnSort = new JButton("排序");
-		btnSort.addActionListener(e -> sortPlayer());
+		
 		btnSort.setBounds(525, 33, 88, 23);
 		this.add(btnSort);
 
@@ -73,69 +87,80 @@ public class SortPanel extends JPanel {
 		backbtn.setBounds(0, 2, 73, 23);
 		backbtn.addActionListener(e -> back());
 		this.add(backbtn);
-
+		
+		DefaultTableModel dtm = new DefaultTableModel(
+				){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		Vector<String> column=new Vector<String>();
+		column.addElement("");
 		if (category == "player") {
 
-			columnNames = new Vector<String>();
-			columnNames.add("姓名");
-			columnNames.add("球衣号码");
-			columnNames.add("位置");
-			columnNames.add("身高");
-			columnNames.add("体重");
-			columnNames.add("生日");
-			columnNames.add("年龄");
-			columnNames.add("球龄");
-			columnNames.add("毕业学校");
-
+			
+			btnSort.addActionListener(e -> sortPlayer());
 			playerCriteriabtn = new JButton("");
 			playerCriteriabtn.setBounds(166, 33, 271, 23);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
 			add(playerCriteriabtn);
-
+			dtm.setDataVector(playerRowData,column);
 		}
 		if (category == "team") {
-
-			columnNames = new Vector<String>();
-			columnNames.add("球队全名");
-			columnNames.add("缩写");
-			columnNames.add("所在地");
-			columnNames.add("赛区");
-			columnNames.add("分区");
-			columnNames.add("主场");
-			columnNames.add("建立时间");
-
+			
+			
+			btnSort.addActionListener(e -> sortTeam());
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn.setBounds(166, 33, 271, 23);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			add(teamCriteriabtn);
-			
+			dtm.setDataVector(teamRowData,column);
 		}
 
-		rowData = new Vector<Vector<String>>();
-
-		if (table != null) {
-			table.setVisible(false);
-		}
-		table = new JTable(rowData, columnNames);
-		this.add(table);
+		
+		table = new JTable(dtm);
+		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
+		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
+		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
+		table.setRowHeight(Y/8);
 		table.setVisible(true);
-		table.setBounds(98, 75, 517, 284);
-
-		if (scrollPane != null) {
-			scrollPane.setVisible(false);
+		table.setCellSelectionEnabled(true);
+		if (category == "team"){
+			table.getColumnModel().getColumn(0).setCellRenderer(new TeamCardRenderer());
 		}
+		if (category == "player"){
+			table.getColumnModel().getColumn(0).setCellRenderer(new PlayerCardRenderer());
+		}
+		
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(98, 75, 517, 338);
-		scrollPane.setVisible(true);
+		scrollPane.setBounds(X/4, Y/4, X/2, Y/2);
+		scrollPane.setVisible(false);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scrollPane);
 
 		mainFrame.getContentPane().add(this);
 
 	}
-
+	
 	public void sortPlayer() {
 
-		rowData = new Vector<Vector<String>>();
+		scrollPane.setVisible(true);
+		
+		Vector<PlayerCardPanel> a=new Vector<PlayerCardPanel>();
+		a.add(new PlayerCardPanel());
+		playerRowData.add(a);
+		Vector<PlayerCardPanel> b=new Vector<PlayerCardPanel>();
+		b.add(new PlayerCardPanel());
+		playerRowData.add(b);
+		Vector<PlayerCardPanel> c=new Vector<PlayerCardPanel>();
+		c.add(new PlayerCardPanel());
+		playerRowData.add(c);
+		Vector<PlayerCardPanel> d=new Vector<PlayerCardPanel>();
+		d.add(new PlayerCardPanel());
+		playerRowData.add(d);
+		
+		
 		Vector<String> playerInfo;
 
 	
@@ -152,32 +177,32 @@ public class SortPanel extends JPanel {
 			playerInfo.add(String.valueOf(player.get(i).getExp()));
 			playerInfo.add(player.get(i).getSchool());
 			System.out.println(player.get(i).getName());
-			rowData.add(playerInfo);
+//			rowData.add(playerInfo);
 			
 		}
 
-		if (table != null) {
-			table.setVisible(false);
-		}
-		table = new JTable(rowData, columnNames);
-		this.add(table);
-		table.setVisible(true);
-		table.setBounds(98, 75, 517, 284);
 
-		if (scrollPane != null) {
-			scrollPane.setVisible(false);
-		}
-		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(98, 75, 517, 284);
-		scrollPane.setVisible(true);
-		this.add(scrollPane);
 
 	}
 
 	public void sortTeam() {
 
-		rowData = new Vector<Vector<String>>();
-
+	
+		scrollPane.setVisible(true);
+		Vector<TeamCardPanel> a=new Vector<TeamCardPanel>();
+		a.add(new TeamCardPanel());
+		teamRowData.add(a);
+		Vector<TeamCardPanel> b=new Vector<TeamCardPanel>();
+		b.add(new TeamCardPanel());
+		teamRowData.add(b);
+		Vector<TeamCardPanel> c=new Vector<TeamCardPanel>();
+		c.add(new TeamCardPanel());
+		teamRowData.add(c);
+		Vector<TeamCardPanel> d=new Vector<TeamCardPanel>();
+		d.add(new TeamCardPanel());
+		teamRowData.add(d);
+		
+		
 		Vector<String> teamInfo;
 
 		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteria);
@@ -191,23 +216,9 @@ public class SortPanel extends JPanel {
 			teamInfo.add(team.get(i).getDivision().toString());
 			teamInfo.add(team.get(i).getHomeField());
 			teamInfo.add(team.get(i).getBirthYear());
-			rowData.add(teamInfo);
+//			rowData.add(teamInfo);
 		}
-		if (table != null) {
-			table.setVisible(false);
-		}
-		table = new JTable(rowData, columnNames);
-		this.add(table);
-		table.setVisible(true);
-		table.setBounds(98, 75, 517, 284);
-
-		if (scrollPane != null) {
-			scrollPane.setVisible(false);
-		}
-		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(98, 75, 517, 284);
-		scrollPane.setVisible(true);
-		this.add(scrollPane);
+	
 
 	}
 
@@ -599,6 +610,46 @@ public class SortPanel extends JPanel {
 
 	}
 
+	// class: TableRenderer
+	class PlayerCardRenderer extends PlayerCardPanel implements
+			TableCellRenderer {
+
+		public PlayerCardRenderer() {
+			super();
+
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column) {
+
+			this.setBackground(Color.GRAY);
+			// TODO Auto-generated method stub
+			return this;
+		}
+
+	}
+	
+	class TeamCardRenderer extends TeamCardPanel implements TableCellRenderer{
+		
+		
+		public TeamCardRenderer() {
+			super();
+
+			// TODO Auto-generated constructor stub
+		}
+		
+		@Override
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column) {
+			// TODO Auto-generated method stub
+			return this;
+		}
+		
+	}
 	
 	class SortPlayerCriteriaListener implements ActionListener {
 		String criteria;

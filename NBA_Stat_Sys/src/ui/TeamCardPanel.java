@@ -15,7 +15,6 @@ public class TeamCardPanel extends JPanel{
 	private JTextField textField_6;
 	private JTextField textField_8;
 	public TeamCardPanel() {
-		this.setBounds(0, 0, 674, 94);
 		this.setVisible(true);
 		this.setLayout(null);
 		
