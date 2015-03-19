@@ -22,6 +22,7 @@ import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
+import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
@@ -33,8 +34,8 @@ import javax.swing.table.TableCellRenderer;
 public class SearchPanel extends JPanel {
 
 	JFrame mainFrame;
-	Player_BS player_BS=new Player_BL();
-	Team_BS team_BS;
+	Player_BS player_BS = new Player_BL_Stub();
+	Team_BS team_BS = new Team_BL_Stub();
 	private JTable table;
 	private DefaultTableModel model;
 	private JScrollPane scrollPane;
@@ -138,7 +139,7 @@ public class SearchPanel extends JPanel {
 
 	public void showPlayerInfo(String pName) {
 		PlayerVo player = player_BS.getPlayerByName(pName);
-
+		
 		textField_4.setText(player.getName());
 		textField_9.setText(player.getHeight());
 		textField_13.setText(player.getBirth());
@@ -261,13 +262,13 @@ public class SearchPanel extends JPanel {
 		testDATA.add(new TeamButton("CHI"));
 		testDATA.add(new TeamButton("CLE"));
 		testDATA.add(new TeamButton("DAL"));
-	
+
 		teamRowData.add(testDATA);
 		Vector<String> testColumn = new Vector<String>(testDATA.size());
 		for (int i = 0; i < testDATA.size(); i++) {
 			testColumn.add("");
 		}
-		
+
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				testColumn);
 		JTable teamTable = new JTable(teamDTM);
@@ -278,10 +279,14 @@ public class SearchPanel extends JPanel {
 		teamTable.getTableHeader().setDefaultRenderer(teamTableHeaderRenderer);
 		teamTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		for (int i = 0; i < testDATA.size(); i++) {
-			teamTable.getColumnModel().getColumn(i).setCellRenderer(new TeamTableRenderer(testDATA.get(i).teamName));
+			teamTable
+					.getColumnModel()
+					.getColumn(i)
+					.setCellRenderer(
+							new TeamTableRenderer(testDATA.get(i).teamName));
 			teamTable.getColumnModel().getColumn(i).setPreferredWidth(100);
 		}
-		
+
 		JScrollPane teamJSP = new JScrollPane(teamTable);
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -334,11 +339,14 @@ public class SearchPanel extends JPanel {
 		playerTable.getTableHeader().setVisible(false);
 		DefaultTableCellRenderer playerTableHeaderRenderer = new DefaultTableCellRenderer();
 		playerTableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
-		playerTable.getTableHeader().setDefaultRenderer(playerTableHeaderRenderer);
+		playerTable.getTableHeader().setDefaultRenderer(
+				playerTableHeaderRenderer);
 		playerTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		JScrollPane playerJSP = new JScrollPane(playerTable);
-		playerJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		playerJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		playerJSP
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		playerJSP
+				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		playerJSP.setBounds(40, 80, 80, 400);
 		playerJSP.setVisible(true);
 		this.add(playerJSP);
@@ -929,10 +937,11 @@ public class SearchPanel extends JPanel {
 			this.playerPortrait = new ImageIcon("CSEⅢdata/players/portrait/"
 					+ this.playerName + ".png");
 			this.setIcon(playerPortrait);
-			this.addActionListener(e -> showPlayerInfo(this.playerName));
+			
 			if (hasFocus) {
 				System.out.println(this.playerName
 						+ "has benn selected successfully!");
+				showPlayerInfo(this.playerName);
 			}
 			return this;
 		}
@@ -952,13 +961,15 @@ public class SearchPanel extends JPanel {
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
 			// TODO Auto-generated method stub
-//			this.teamName = String.valueOf(((TeamButton) value).teamName);
+			// this.teamName = String.valueOf(((TeamButton) value).teamName);
 			this.teamIcon = new ImageIcon("CSEⅢdata/teams/" + this.teamIcon
 					+ ".svg");
 			this.setIcon(teamIcon);
-			
+
 			if (hasFocus) {
-				System.out.println(this.teamName+ " has benn selected successfully!"+"in "+row+"&"+column);
+				System.out.println(this.teamName
+						+ " has benn selected successfully!" + "in " + row
+						+ "&" + column);
 			}
 			return this;
 		}
