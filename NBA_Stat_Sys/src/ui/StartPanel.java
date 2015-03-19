@@ -92,7 +92,7 @@ public class StartPanel extends JPanel {
 		this.add(sortTeambtn);
 
 		JButton closeButton = new JButton("退出系统");
-		closeButton.setBounds(200, 200, 300, 300);
+		closeButton.setBounds(800, 400, 300, 300);
 		closeButton.addActionListener(e -> mainFrame.dispose());
 		this.add(closeButton);
 	}

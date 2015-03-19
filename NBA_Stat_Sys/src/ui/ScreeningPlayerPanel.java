@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
@@ -26,17 +31,19 @@ public class ScreeningPlayerPanel extends JPanel {
 	private String[] leagues;
 	private JTable table;
 	private JScrollPane scrollPane;
-	Vector<Vector<String>> rowData;
-	private Vector<String> columnNames;
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
 	Player_BS player_BS=new Player_BL_Stub();
 	private JButton screeningCriteriabtn;
-
+	static int X;
+	static int Y;
+	
 	public ScreeningPlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
-		this.setBounds(0, 0, 692, 450);
+		X=mainFrame.getWidth();
+		Y=mainFrame.getHeight();
+		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
 
@@ -62,17 +69,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningbtn.addActionListener(e -> screening());
 		add(screeningbtn);
 
-		columnNames = new Vector<String>();
-		columnNames.add("姓名");
-		columnNames.add("球衣号码");
-		columnNames.add("位置");
-		columnNames.add("身高");
-		columnNames.add("体重");
-		columnNames.add("生日");
-		columnNames.add("年龄");
-		columnNames.add("球龄");
-		columnNames.add("毕业学校");
-		// columnNames.add("具体信息");
 
 		mainFrame.getContentPane().add(this);
 
@@ -105,30 +101,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		leaguejcb.setBounds(244, 34, 100, 21);
 		this.add(leaguejcb);
 
-		rowData = new Vector<Vector<String>>();
-		// Vector<String> test=new Vector<String>();
-		// test.add(null);
-		// test.add(null);
-		// test.add(null);
-		// test.add(null);
-		// rowData.add(test);
 
-		if (table != null) {
-			table.setVisible(false);
-		}
-		table = new JTable(rowData, columnNames);
-		this.add(table);
-		table.setVisible(true);
-		table.setBounds(60, 80, 580, 340);
 
-		if (scrollPane != null) {
-			scrollPane.setVisible(false);
-		}
-		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(60, 80, 580, 340);
-		scrollPane.setVisible(true);
 
-		this.add(scrollPane);
 
 	}
 
@@ -238,44 +213,29 @@ public class ScreeningPlayerPanel extends JPanel {
 		}
 		
 		
-		rowData = new Vector<Vector<String>>();
-		Vector<String> playerInfo = new Vector<String>();
-		
-		System.out.println(position);
-		System.out.println(league);
-		System.out.println(screeningCriteria);
+		Vector<Vector<PlayerCardPanel>> rowData=new Vector<Vector<PlayerCardPanel>>();
 		
 		
-		ArrayList<PlayerVo> player = player_BS.filterPlayerBy(position,league,screeningCriteria);
-
-		
-		for (int i = 0; i < player.size(); i++) {
-			playerInfo.add(player.get(i).getName());
-			playerInfo.add(String.valueOf(player.get(i).getNumber()));
-			playerInfo.add(player.get(i).getPosition());
-			playerInfo.add(player.get(i).getHeight());
-			playerInfo.add(player.get(i).getWeight());
-			playerInfo.add(player.get(i).getBirth());
-			playerInfo.add(String.valueOf(player.get(i).getAge()));
-			playerInfo.add(String.valueOf(player.get(i).getExp()));
-			playerInfo.add(player.get(i).getSchool());
-			rowData.add(playerInfo);
-		}
-
-		if (table != null) {
-			table.setVisible(false);
-		}
-		table = new JTable(rowData, columnNames);
-		this.add(table);
+		Vector<String> column=new Vector<String>();
+		column.add("");
+		DefaultTableModel dtm=new DefaultTableModel(rowData,column){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		table=new JTable(dtm);
+		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
+		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
+		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.setVisible(true);
-		table.setBounds(60, 80, 580, 340);
+		table.setCellSelectionEnabled(true);
 
-		if (scrollPane != null) {
-			scrollPane.setVisible(false);
-		}
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(60, 80, 580, 340);
+		scrollPane.setBounds(X/4, Y/4, X/2, Y/2);
 		scrollPane.setVisible(true);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scrollPane);
 
 	}
@@ -459,5 +419,21 @@ public class ScreeningPlayerPanel extends JPanel {
 			
 		}
 	}
+	
+	//class: TableRenderer
+	class TeamCardRenderer extends PlayerCardPanel implements TableCellRenderer{
 
+		public TeamCardRenderer() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public Component getTableCellRendererComponent(JTable arg0,
+				Object arg1, boolean arg2, boolean arg3, int arg4, int arg5) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
 }

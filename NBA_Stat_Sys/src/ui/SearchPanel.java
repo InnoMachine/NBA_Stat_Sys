@@ -269,7 +269,11 @@ public class SearchPanel extends JPanel {
 		}
 		
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
-				testColumn);
+				testColumn){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		JTable teamTable = new JTable(teamDTM);
 		teamTable.setRowHeight(60);
 		teamTable.getTableHeader().setVisible(false);
@@ -325,7 +329,11 @@ public class SearchPanel extends JPanel {
 		columnNames.add("");
 
 		DefaultTableModel playerDTM = new DefaultTableModel(playerRowData,
-				columnNames);
+				columnNames){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		JTable playerTable = new JTable(playerDTM);
 		playerTable.setRowHeight(80);
 		playerTable.setCellSelectionEnabled(true);
