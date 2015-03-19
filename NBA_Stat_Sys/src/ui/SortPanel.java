@@ -464,18 +464,231 @@ public class SortPanel extends JPanel {
 
 	
 		scrollPane.setVisible(true);
-		Vector<TeamCardPanel> a=new Vector<TeamCardPanel>();
-		a.add(new TeamCardPanel());
-		teamRowData.add(a);
-		Vector<TeamCardPanel> b=new Vector<TeamCardPanel>();
-		b.add(new TeamCardPanel());
-		teamRowData.add(b);
-		Vector<TeamCardPanel> c=new Vector<TeamCardPanel>();
-		c.add(new TeamCardPanel());
-		teamRowData.add(c);
-		Vector<TeamCardPanel> d=new Vector<TeamCardPanel>();
-		d.add(new TeamCardPanel());
-		teamRowData.add(d);
+		
+		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
+		teamVos = team_BS.sortTeamBy(teamCriteria);
+		Vector<Vector<TeamCardPanel>> rowData = new Vector<Vector<TeamCardPanel>>();
+		for (int i = 0; i < teamVos.size(); i++) {
+			Vector<TeamCardPanel> a = new Vector<TeamCardPanel>();
+			switch (teamCriteria) {
+			case "GameNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getGameNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "hitNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getHitNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "shotNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getShotNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "threePointHitNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getThreePointHitNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "threePointShotNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getThreePointShotNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "freeThrowHitNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getFreeThrowHitNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "freeThrowShotNum":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getFreeThrowShotNum()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "offensiveRebound":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getOffensiveRebound()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "defensiveRebound":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getDefensiveRebound()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "reboundOverall":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getReboundOverall()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "assistance":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getAssistance()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "steal":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getSteal()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				break;
+			case "block":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getBlock()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "turnover":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getTurnover()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "foul":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getFoul()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+
+			case "score":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getScore()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "hitRate":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getHitRate()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+				
+				
+			case "threePointHitRate":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getThreePointHitRate()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "freeeThrowRate":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getFreeThrowRate()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+				
+			case "winningRate":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getWinningRate()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "roundAttack":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getRoundAttack()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+				
+				
+			case "attackingEfficiency":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getAttackingEfficiency()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "defensiveEfficiency":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getDefensiveEfficiency()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "reboundEfficiency":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getReboundEfficiency()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "stealEfficiency":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getStealEfficiency()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			case "assistanceEfficiency":
+				a.add(new TeamCardPanel(String.valueOf(teamVos.get(i).getTeamName()),
+						teamCriteriabtn.getText(),String.valueOf(teamVos.get(i).getAssistanceEfficiency()), teamVos
+								.get(i).getAbbreviation(), teamVos.get(i)
+								.getCity(), String.valueOf(teamVos.get(i).getConference()),
+						String.valueOf(teamVos.get(i).getDivision()), teamVos.get(i).getHomeField(),teamVos.get(i).getBirthYear()));
+				
+				break;
+			default:
+				break;
+			}		
+			teamRowData.add(a);
+		}
 		
 		
 //		Vector<String> teamInfo;
@@ -492,8 +705,7 @@ public class SortPanel extends JPanel {
 //			teamInfo.add(team.get(i).getHomeField());
 //			teamInfo.add(team.get(i).getBirthYear());
 //			rowData.add(teamInfo);
-		}
-	
+		
 
 	}
 
