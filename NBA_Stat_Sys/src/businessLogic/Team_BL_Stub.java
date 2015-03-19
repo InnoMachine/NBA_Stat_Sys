@@ -13,17 +13,47 @@ public TeamVo getTeamByAbbr(String abbr) {
 
 	@Override
 	public ArrayList<TeamVo> getAllTeam() {
-		return null;
+		ArrayList<TeamVo>  teamVos=new ArrayList<TeamVo>();
+		TeamVo a=new TeamVo();
+		TeamVo b=new TeamVo();
+		TeamVo c=new TeamVo();
+		a.setBirthYear("1970");
+		b.setGameNum(190);
+		c.setTeamName("Spurs");
+		teamVos.add(a);
+		teamVos.add(b);
+		teamVos.add(c);
+		return teamVos;
 	}
 
 	@Override
 	public ArrayList<TeamVo> sortTeamBy(String option) {
-		return null;
+		ArrayList<TeamVo>  teamVos=new ArrayList<TeamVo>();
+		TeamVo a=new TeamVo();
+		TeamVo b=new TeamVo();
+		TeamVo c=new TeamVo();
+		a.setBirthYear("1970");
+		b.setGameNum(190);
+		c.setTeamName("Spurs");
+		teamVos.add(a);
+		teamVos.add(b);
+		teamVos.add(c);
+		return teamVos;
 	}
 
 	@Override
 	public ArrayList<PlayerVo> getPlayers(String abbr) {
-		return null;
+		ArrayList<PlayerVo>  playerVos=new ArrayList<PlayerVo>();
+		PlayerVo a=new PlayerVo();
+		PlayerVo b=new PlayerVo();
+		PlayerVo c=new PlayerVo();
+		a.setName("aaa");
+		b.setAge(26);
+		c.setBirth("1988-07-08");
+		playerVos.add(a);
+		playerVos.add(b);
+		playerVos.add(c);
+		return playerVos;
 	}
 
 }

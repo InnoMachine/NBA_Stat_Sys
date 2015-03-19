@@ -20,6 +20,7 @@ import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
+import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 public class SortPanel extends JPanel {
@@ -34,7 +35,7 @@ public class SortPanel extends JPanel {
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
 	Player_BS player_BS=new Player_BL_Stub();
-	Team_BS team_BS=new Team_BL();
+	Team_BS team_BS=new Team_BL_Stub();
 	
     String playerCriteria="";
     String teamCriteria="";
@@ -135,13 +136,12 @@ public class SortPanel extends JPanel {
 	public void sortPlayer() {
 
 		rowData = new Vector<Vector<String>>();
-		Vector<String> playerInfo = new Vector<String>();
+		Vector<String> playerInfo;
 
 	
-		
-		
 		ArrayList<PlayerVo> player = player_BS.sortPlayerBy(playerCriteria);
 		for (int i = 0; i < player.size(); i++) {
+			playerInfo = new Vector<String>();
 			playerInfo.add(player.get(i).getName());
 			playerInfo.add(String.valueOf(player.get(i).getNumber()));
 			playerInfo.add(player.get(i).getPosition());
@@ -151,28 +151,10 @@ public class SortPanel extends JPanel {
 			playerInfo.add(String.valueOf(player.get(i).getAge()));
 			playerInfo.add(String.valueOf(player.get(i).getExp()));
 			playerInfo.add(player.get(i).getSchool());
+			System.out.println(player.get(i).getName());
 			rowData.add(playerInfo);
+			
 		}
-
-		if (table != null) {
-			table.setVisible(false);
-		}
-		table = new JTable(rowData, columnNames);
-		this.add(table);
-		table.setVisible(true);
-		table.setBounds(98, 75, 517, 284);
-
-		if (scrollPane != null) {
-			scrollPane.setVisible(false);
-		}
-		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(98, 75, 517, 284);
-		scrollPane.setVisible(true);
-		this.add(scrollPane);
-
-	}
-
-	public void showTopFifty() {
 
 		if (table != null) {
 			table.setVisible(false);
@@ -196,11 +178,12 @@ public class SortPanel extends JPanel {
 
 		rowData = new Vector<Vector<String>>();
 
-		Vector<String> teamInfo = new Vector<String>();
+		Vector<String> teamInfo;
 
 		ArrayList<TeamVo> team = team_BS.sortTeamBy(teamCriteria);
 
 		for (int i = 0; i < team.size(); i++) {
+			teamInfo = new Vector<String>();
 			teamInfo.add(team.get(i).getTeamName());
 			teamInfo.add(team.get(i).getAbbreviation());
 			teamInfo.add(team.get(i).getCity());
