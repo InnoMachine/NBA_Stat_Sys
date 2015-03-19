@@ -9,14 +9,14 @@ public class DataImportor {
 
 	public static void main(String[] args) {
 		
-		String teamDataPath = new String("CSEⅢdata/teams/teams");
+		String teamDataPath = new String("CSEdata/teams/teams");
 		new DataImportor().importTeams(teamDataPath);
 		
 	}
 	
 	public void importTeams(String teamDataPath){
 		
-		FileReadTest frt = new FileReadTest();
+		DataFileReader frt = new DataFileReader();
 		System.out.println(frt.teamDataSplitor(frt.getFileContext(teamDataPath)).size()+"*******************");
 //		ArrayList<Team> teamList = new ArrayList<Team>(frt.makeTeamList(frt.teamDataSplitor(frt.getFileContext(teamDataPath))));	
 		

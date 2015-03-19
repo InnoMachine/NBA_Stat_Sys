@@ -1,7 +1,7 @@
-drop database if exists nbasys;
-create database if not exists nbasys;
+drop database if exists nba;
+create database if not exists nba;
 
-use nbasys;
+use nba;
 
 create table if not exists teams
 ( teamname varchar(20),
