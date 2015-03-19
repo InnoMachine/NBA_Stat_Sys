@@ -11,13 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Locale;
-
 import jdbc_tools.DBUtil;
-import po.Conference;
-import po.Division;
 import po.PlayerPO;
-import po.TeamPO;
 
 public class PlayerDaoImpl implements PlayerDao {
 
