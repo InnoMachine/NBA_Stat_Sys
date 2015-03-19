@@ -19,6 +19,8 @@ public class TeamPO {
 	private String imgPath;
 	private ArrayList<PlayerPO> players;
 	
+	private ArrayList<TeamPerformance> seansonTeamPerformance;
+	
 	public String getTeamName() {
 		return teamName;
 	}
@@ -72,6 +74,12 @@ public class TeamPO {
 	}
 	public void setPlayers(ArrayList<PlayerPO> players) {
 		this.players = players;
+	}
+	public ArrayList<TeamPerformance> getSeansonTeamPerformance() {
+		return seansonTeamPerformance;
+	}
+	public void setSeansonTeamPerformance(ArrayList<TeamPerformance> seansonTeamPerformance) {
+		this.seansonTeamPerformance = seansonTeamPerformance;
 	}
 	
 }
