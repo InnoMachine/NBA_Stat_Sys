@@ -17,7 +17,6 @@ public class PlayerCardPanel extends JPanel{
 	private JTextField textField_7;
 	private JTextField textField_8;
 	public PlayerCardPanel() {
-		this.setBounds(0, 0, 674, 94);
 		this.setVisible(true);
 		this.setLayout(null);
 		

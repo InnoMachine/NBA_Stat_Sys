@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -23,6 +24,7 @@ import javax.swing.table.TableCellRenderer;
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
+import ui.SearchPanel.PlayerTableRenderer;
 import vo.PlayerVo;
 
 public class ScreeningPlayerPanel extends JPanel {
@@ -214,23 +216,39 @@ public class ScreeningPlayerPanel extends JPanel {
 		
 		
 		Vector<Vector<PlayerCardPanel>> rowData=new Vector<Vector<PlayerCardPanel>>();
+		Vector<PlayerCardPanel> a=new Vector<PlayerCardPanel>();
+		a.add(new PlayerCardPanel());
+		rowData.add(a);
+		Vector<PlayerCardPanel> b=new Vector<PlayerCardPanel>();
+		b.add(new PlayerCardPanel());
+		rowData.add(b);
+		Vector<PlayerCardPanel> c=new Vector<PlayerCardPanel>();
+		c.add(new PlayerCardPanel());
+		rowData.add(c);
+		Vector<PlayerCardPanel> d=new Vector<PlayerCardPanel>();
+		d.add(new PlayerCardPanel());
+		rowData.add(d);
+		
 		
 		
 		Vector<String> column=new Vector<String>();
 		column.add("");
-		DefaultTableModel dtm=new DefaultTableModel(rowData,column){
+		DefaultTableModel dtm=new DefaultTableModel(rowData,column)
+		{
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-		};
+		}
+		;
 		table=new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setRowHeight(Y/8);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
-
+		table.getColumnModel().getColumn(0)
+		.setCellRenderer(new PlayerCardRenderer());
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(X/4, Y/4, X/2, Y/2);
 		scrollPane.setVisible(true);
@@ -421,18 +439,22 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 	
 	//class: TableRenderer
-	class TeamCardRenderer extends PlayerCardPanel implements TableCellRenderer{
+	class PlayerCardRenderer extends PlayerCardPanel implements TableCellRenderer{
 
-		public TeamCardRenderer() {
+		public PlayerCardRenderer() {
 			super();
+			
 			// TODO Auto-generated constructor stub
 		}
 
 		@Override
-		public Component getTableCellRendererComponent(JTable arg0,
-				Object arg1, boolean arg2, boolean arg3, int arg4, int arg5) {
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column) {
+			
+			this.setBackground(Color.GRAY);
 			// TODO Auto-generated method stub
-			return null;
+			return this;
 		}
 		
 	}
