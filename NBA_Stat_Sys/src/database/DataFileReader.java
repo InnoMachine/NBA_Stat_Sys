@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
-
 import po.Conference;
 import po.Division;
 import po.GamePO;
