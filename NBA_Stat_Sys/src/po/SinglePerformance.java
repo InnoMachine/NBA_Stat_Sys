@@ -12,22 +12,30 @@ public class SinglePerformance {
 	private int timeBySeconds;//sudo
 	private int hitNum;
 	private int shotNum;
+	
 	private int threePointHitNum;
 	private int threePointShotNum;
 	private int freeThrowHitNum;
 	private int freeThrowShotNum;
 	private int offensiveRebound;
+	
 	private int defensiveRebound;
 	private int reboundOverall;
 	private int assistance;
 	private int steal;
 	private int block;
+	
 	private int turnover;
 	private int foul;
 	private int score;
 	
 	public String toString() {
-		return null;//sudo
+		
+		return name+";"+position+";"+timeBySeconds+";"+hitNum+";"+shotNum+";"
+	+threePointHitNum+";"+threePointShotNum+";"+freeThrowHitNum+";"+freeThrowShotNum+";"+offensiveRebound+";"
+				+";"+defensiveRebound+";"+reboundOverall+";"+assistance+";"+steal+";"+block+";"
+				+";"+turnover+";"+foul+";"+score+";";
+		
 	}
 	
 	public String getName() {
@@ -151,9 +159,16 @@ public class SinglePerformance {
 		}else{
 			position = splited[1];
 		}
+		
 		String timeText = splited[2];
-		String[] splitedTime = timeText.split(":");
-		int timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
+		int timeByText;
+		if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None"))){
+			String[] splitedTime = timeText.split(":");
+			timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
+		}else{
+			timeByText = 0;//dirty data
+		}
+		
 		int hitNum = Integer.parseInt(splited[3]);
 		int shotNum = Integer.parseInt(splited[4]);
 		int threePointHitNum = Integer.parseInt(splited[5]);
@@ -168,7 +183,12 @@ public class SinglePerformance {
 		int block = Integer.parseInt(splited[14]);
 		int turnover = Integer.parseInt(splited[15]);
 		int foul = Integer.parseInt(splited[16]);
-		int score = Integer.parseInt(splited[17]);
+		int score;
+		if(!splited[17].equalsIgnoreCase("null")){
+			score = Integer.parseInt(splited[17]);
+		}else{
+			score = 0;//dirty data
+		}
 		
 		SinglePerformance sp = new SinglePerformance();
 		sp.setName(name);

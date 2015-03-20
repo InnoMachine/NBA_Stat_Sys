@@ -29,21 +29,21 @@ public class DataFileReader {
 	public static void main(String[] args) {
 		
 		DataFileReader dfr = new DataFileReader();
+		String gameFileName;
+		String originalString;
+		ArrayList<String> gameDataList;
+		GamePO game;
+		GameDao gameController = new GameDaoImpl();
+		
 		ArrayList<String> gameFileNameList =  dfr.getFileNameList("CSEdata/matches");
 		System.out.println(gameFileNameList);
-		System.out.println(gameFileNameList.size()+"**********************************************");
 		for(int i = 0; i < gameFileNameList.size(); i ++){
-			
-			String gameFileName = gameFileNameList.get(i);
-			String originalString = dfr.getOriginalFileString(gameFileName);
-			System.out.println(originalString);
-			ArrayList<String> gameDataList = dfr.gameDataSplitor(originalString);
-			System.out.println(gameDataList);
-			GamePO game = dfr.makeGame(gameDataList);
-			GameDao gameController = new GameDaoImpl();
+			gameFileName = gameFileNameList.get(i);
+			originalString = dfr.getOriginalFileString(gameFileName);
+			gameDataList = dfr.gameDataSplitor(originalString);
+			game = dfr.makeGame(gameDataList);
 			gameController.add(game);
 		}
-		System.out.println(gameFileNameList.size()+"**********************************************");
 		
 	}
 	
@@ -296,21 +296,19 @@ public class DataFileReader {
 	
 	public GamePO makeGame(ArrayList<String> attriList){
 		
-		Scoreboard sb = new Scoreboard();
-		GamePO game;
-		game = new GamePO();
+		GamePO game = new GamePO();
 		game.setGameLabel(attriList.get(0));
 		game.setGameDate(attriList.get(1));
 		game.setVersus(attriList.get(2));
 		game.setGuestTeam(attriList.get(3));
 		game.setHomeTeam(attriList.get(4));
-		game.setScoreOverall(sb.makeSB(attriList.get(5)));
-		game.setScore1st(sb.makeSB(attriList.get(6)));
-		game.setScore2nd(sb.makeSB(attriList.get(7)));
-		game.setScore3rd(sb.makeSB(attriList.get(8)));
-		game.setScore4th(sb.makeSB(attriList.get(9)));
+		game.setScoreOverall(Scoreboard.makeSB(attriList.get(5)));
+		game.setScore1st(Scoreboard.makeSB(attriList.get(6)));
+		game.setScore2nd(Scoreboard.makeSB(attriList.get(7)));
+		game.setScore3rd(Scoreboard.makeSB(attriList.get(8)));
+		game.setScore4th(Scoreboard.makeSB(attriList.get(9)));
 		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3), attriList.get(10)));
-		game.setGuestTP(TeamPerformance.makeTP(attriList.get(4), attriList.get(11)));
+		game.setHomeTP(TeamPerformance.makeTP(attriList.get(4), attriList.get(11)));
 		return game;
 		
 	}

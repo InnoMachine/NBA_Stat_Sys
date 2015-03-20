@@ -5,8 +5,6 @@
  */
 package po;
 
-import java.util.ArrayList;
-
 public class GamePO {
 	
 	private String gameLabel;
@@ -20,15 +18,15 @@ public class GamePO {
 	private Scoreboard score3rd;
 	private Scoreboard score4th;
 	
-	private ArrayList<Scoreboard> extratime;//加时赛
+//	private ArrayList<Scoreboard> extratime;//加时赛
 	
 	
 	private TeamPerformance guestTP;
 	private TeamPerformance homeTP;
 	
-	public String toString() {
-		return null;
-	}
+//	public String toString() {
+//		return null;
+//	}
 
 	public String getGameDate() {
 		return gameDate;
@@ -126,13 +124,13 @@ public class GamePO {
 		this.gameLabel = gameLabel;
 	}
 
-	public ArrayList<Scoreboard> getExtratime() {
-		return extratime;
-	}
-
-	public void setExtratime(ArrayList<Scoreboard> extratime) {
-		this.extratime = extratime;
-	}
+//	public ArrayList<Scoreboard> getExtratime() {
+//		return extratime;
+//	}
+//
+//	public void setExtratime(ArrayList<Scoreboard> extratime) {
+//		this.extratime = extratime;
+//	}
 	
 	
 	
