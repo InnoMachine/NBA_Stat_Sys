@@ -15,7 +15,7 @@ imgPath varchar(40) );
 
 create table if not exists players(
 name varchar(30),
-number int,
+number varchar(10),
 position varchar(5),
 height varchar(5),
 weight varchar(5),

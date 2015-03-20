@@ -24,7 +24,7 @@ public class PlayerDaoImpl implements PlayerDao {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, player.getName());
-			pstmt.setInt(2, player.getNumber());
+			pstmt.setString(2, player.getNumber());
 			pstmt.setString(3, player.getPosition());
 			pstmt.setString(4, player.getHeight());
 			pstmt.setString(5, player.getWeight());
@@ -51,7 +51,7 @@ public class PlayerDaoImpl implements PlayerDao {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, player.getName());
-			pstmt.setInt(2, player.getNumber());
+			pstmt.setString(2, player.getNumber());
 			pstmt.setString(3, player.getPosition());
 			pstmt.setString(4, player.getHeight());
 			pstmt.setString(5, player.getWeight());
@@ -102,7 +102,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			while(rs.next()){
 				
 				player.setName(rs.getString("name"));
-				player.setNumber(rs.getInt("number"));
+				player.setNumber(rs.getString("number"));
 				player.setPosition(rs.getString("position"));
 				player.setHeight(rs.getString("height"));
 				player.setWeight(rs.getString("weight"));
@@ -135,7 +135,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			while(rs.next()){
 				PlayerPO player = new PlayerPO();
 				player.setName(rs.getString("name"));
-				player.setNumber(rs.getInt("number"));
+				player.setNumber(rs.getString("number"));
 				player.setPosition(rs.getString("position"));
 				player.setHeight(rs.getString("height"));
 				player.setWeight(rs.getString("weight"));

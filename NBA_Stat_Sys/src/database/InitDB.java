@@ -33,7 +33,7 @@ public class InitDB {
 		
 		String sql2 = "create table if not exists nba.players("
 				+ " name varchar(30),"
-				+ " number int,"
+				+ " number varchar(10),"
 				+ " position varchar(5),"
 				+ " height varchar(5),"
 				+ " weight varchar(5),"

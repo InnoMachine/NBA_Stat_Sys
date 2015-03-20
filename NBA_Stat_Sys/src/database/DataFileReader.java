@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
+
 import po.Conference;
 import po.Division;
 import po.GamePO;
@@ -21,26 +22,40 @@ import po.TeamPO;
 
 public class DataFileReader {
 
+	private Scanner scanner;
 
 	public static void main(String[] args) {
 		
-//		DataFileReader frt = new DataFileReader();
-//		System.out.println(frt.getFileContext("CSEdata/teams/teams"));
-//		System.out.println(frt.teamDataSplitor(frt.getFileContext("CSEdata/teams/teams")));
-		System.out.println("**************************************************");
-		System.out.println(new DataFileReader().getOriginalFileString());
-		System.out.println("**************************************************");
-		System.out.println(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString()));
-		System.out.println("**************************************************");
-		System.out.println(new DataFileReader().teamDataSplitor(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString())));
+//		ArrayList<TeamPO> teamList = new DataFileReader().makeTeamList(new DataFileReader().teamDataSplitor(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString("CSEdata/teams/teams"))));
+//		TeamDao teamController = new TeamDaoImpl();
+//		for(int k = 0; k < teamList.size(); k ++){
+//			teamController.add(teamList.get(k));
+//		}
+		
+		
+		
+		
+		DataFileReader dfr = new DataFileReader();
+		ArrayList<String> playerInfoFileNameList =  dfr.getFileNameList("CSEdata/players/info");
+		for(int i = 0; i < playerInfoFileNameList.size(); i ++){
+			String playerInfoFileName = playerInfoFileNameList.get(i);
+			String originalString = dfr.getOriginalFileString(playerInfoFileName);
+			String splitedContent = dfr.splitKeyword(originalString);
+			ArrayList<ArrayList<String>> playerDataList = dfr.playerDataSplitor(splitedContent);
+			System.out.println(playerDataList);
+			
+		}
+		
+		
+		
 	}
 
-	public String getOriginalFileString(){
+	public String getOriginalFileString(String path){
 		
 	        StringBuffer fileContent = new StringBuffer();  
 	        BufferedReader br = null;  
 	        try {  
-	            br = new BufferedReader(new InputStreamReader(new FileInputStream("CSEdata/teams/teams"),"UTF-8"));  
+	            br = new BufferedReader(new InputStreamReader(new FileInputStream(path),"UTF-8"));  
 	            String line = null;
 	            if((line = br.readLine()) != null){
 	            	fileContent.append(line.trim());
@@ -64,27 +79,9 @@ public class DataFileReader {
 	        
 	}
 	
-	public ArrayList<String> getFileNameList(String path){
-		
-		File file = new File(path);
-		File[] fileList = file.listFiles();
-		int len = fileList.length;
-		ArrayList<String> fileNameList = new ArrayList<String>(len);
-		System.out.println("the number of files under current path is" + len);
-		for(int i = 0; i < len; i ++){
-			if(fileList[i].isFile()){
-				fileNameList.add(fileList[i].toString());
-			}
-		}
-		return fileNameList;
-		
-	}
-	
 	public String splitKeyword(String originalString){
 		
-		char bugChar =  '\5279';
-		originalString = originalString.replace(, "dsadsgasdg");
-		originalString = originalString.replace("╔", "");
+		originalString = originalString.replace("╔", "");//teams
 		originalString = originalString.replace("╤", "");
 		originalString = originalString.replace("═", "");
 		originalString = originalString.replace("╗", "");
@@ -94,22 +91,29 @@ public class DataFileReader {
 		originalString = originalString.replace("╝", "");
 		originalString = originalString.replace("╧", "");
 		
+		originalString = originalString.replace("─", "");//players
+		originalString = originalString.replace("┼", "");
+		originalString = originalString.replace("╢", "");
+		originalString = originalString.replace("╟", "");
+		
 		String result = new String();
 		
-		Scanner scanner = new Scanner(originalString);
-		
+		scanner = new Scanner(originalString);
+		String line = new String();
+		if(scanner.hasNextLine()){
+			line = scanner.nextLine();
+			result += line.trim();
+		}
 		while(scanner.hasNextLine()){
-			String line = scanner.nextLine();
-			if(line.equals("")){
-				
-			}else{
-				result += (line + "\n");
+			line = scanner.nextLine();
+			if(!line.equals("")){
+				if(result.equals("")){
+					result += line.trim();
+				}else{
+					result += ("\n" + line.trim());
+				}
 			}
 		}
-		
-		
-		
-		
 		return result;
 		
 	}
@@ -119,33 +123,42 @@ public class DataFileReader {
 		ArrayList<ArrayList<String>> splitedFullData = new ArrayList<ArrayList<String>>();
 		ArrayList<String> splitedSingleData = new ArrayList<String>();
 		Scanner scannerFull = new Scanner(context);
-		Scanner scannerLine;
-		String line = scannerFull.nextLine();
-		String next;
+		String keyword = new String();
 		while(scannerFull.hasNextLine()){
-			scannerLine = new Scanner(line);
-//			System.out.println(line+"-----------------------------thisisline");//
-			while(scannerLine.hasNext()){
-				next = scannerLine.next();
-//				System.out.println(next.length()+" as follow");
-				splitedSingleData.add(next);
-//				System.out.println("*"+next+"*");
-				
+			keyword = scannerFull.nextLine();
+			splitedSingleData.add(keyword);
+			if(splitedSingleData.size() == 7){
+				splitedFullData.add(new ArrayList<String>(splitedSingleData));//reference attentiion!
+				splitedSingleData.clear();
 			}
-			scannerLine.close();
-			line = scannerFull.nextLine();
-			splitedFullData.add(splitedSingleData);
-			splitedSingleData = new ArrayList<String>();
 		}
 		scannerFull.close();
-		System.out.println((int)splitedFullData.get(0).get(0).charAt(0));
 		return splitedFullData;
 		
 	}
 	
-	public ArrayList<String> playerDataSplitor(String context){
+	public ArrayList<ArrayList<String>> playerDataSplitor(String context){
 		
-		return null;
+		ArrayList<ArrayList<String>> splitedFullData = new ArrayList<ArrayList<String>>();
+		ArrayList<String> splitedSingleData = new ArrayList<String>();
+		Scanner scannerFull = new Scanner(context);
+		String keyword = new String();
+		while(scannerFull.hasNextLine()){
+			scannerFull.nextLine();
+			if(scannerFull.hasNextLine()){
+				keyword = scannerFull.nextLine();
+			}else{
+				keyword = null;
+			}
+			splitedSingleData.add(keyword);
+			
+			if(splitedSingleData.size() == 9){
+				splitedFullData.add(new ArrayList<String>(splitedSingleData));
+				splitedSingleData.clear();
+			}
+		}
+		scannerFull.close();
+		return splitedFullData;
 		
 	}
 	
@@ -158,8 +171,9 @@ public class DataFileReader {
 	public ArrayList<TeamPO> makeTeamList(ArrayList<ArrayList<String>> attriList){
 		
 		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>();
-		TeamPO team = new TeamPO();
+		TeamPO team;
 		for(int i = 0; i < attriList.size(); i ++){
+			team = new TeamPO();
 			team.setTeamName(attriList.get(i).get(0));
 			team.setAbbreviation(attriList.get(i).get(1));
 			team.setCity(attriList.get(i).get(2));
@@ -170,15 +184,22 @@ public class DataFileReader {
 			team.setHomeField(attriList.get(i).get(5));
 			team.setBirthYear(attriList.get(i).get(6));
 			team.setImgPath("CSEdata/teams/" + attriList.get(i).get(1) + ".svg");
+			teamList.add(team);//reference attention!
 		}
-		teamList.add(team);
 		return teamList;
 		
 	}
 	
-	public PlayerPO makePlayer(ArrayList<String> attriList){
+	public ArrayList<PlayerPO> makePlayer(ArrayList<ArrayList<String>> attriList){
 		
-		return null;
+		ArrayList<PlayerPO> playerList = new ArrayList<PlayerPO>();
+		PlayerPO player;
+		for(int i = 0; i < attriList.size(); i ++){
+			player = new PlayerPO();
+			player.setName(attriList.get(i).get(0));
+			player.setNumber(attriList.get(i).get(1));
+		}
+		return playerList;
 		
 	}
 	
@@ -187,5 +208,20 @@ public class DataFileReader {
 		return null;
 		
 	}
+	
+	public ArrayList<String> getFileNameList(String path){
+	
+	File file = new File(path);
+	File[] fileList = file.listFiles();
+	int len = fileList.length;
+	ArrayList<String> fileNameList = new ArrayList<String>(len);
+	for(int i = 0; i < len; i ++){
+		if(fileList[i].isFile()){
+			fileNameList.add(fileList[i].toString());
+		}
+	}
+	return fileNameList;
+	
+}
 
 }
