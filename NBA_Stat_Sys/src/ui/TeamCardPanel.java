@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 
 import po.Conference;
 import po.Division;
+import vo.TeamVo;
 
 public class TeamCardPanel extends JPanel{
 	private JTextField txtA;
@@ -17,8 +18,7 @@ public class TeamCardPanel extends JPanel{
 	private JTextField txtBirthYear;
 	private JTextField textField_6;
 	private JTextField textField_8;
-	public TeamCardPanel(String teamName,String teamCriteria,String teamCriteriaValue,String abbreviation,String city,String conference,String division,String homeField,
-	String birthYear) {
+	public TeamCardPanel(TeamVo teamInfo) {
 		this.setVisible(true);
 		this.setLayout(null);
 		
@@ -28,7 +28,7 @@ public class TeamCardPanel extends JPanel{
 		
 		txtA = new JTextField();
 		txtA.setHorizontalAlignment(SwingConstants.CENTER);
-		txtA.setText(teamName);
+		txtA.setText(teamInfo.getTeamName());
 		txtA.setEditable(false);
 		txtA.setBounds(233, 6, 120, 23);
 		add(txtA);
@@ -53,7 +53,7 @@ public class TeamCardPanel extends JPanel{
 		
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText(abbreviation);
+		textField.setText(teamInfo.getAbbreviation());
 		textField.setEditable(false);
 		textField.setBounds(204, 36, 80, 23);
 		add(textField);
@@ -65,7 +65,7 @@ public class TeamCardPanel extends JPanel{
 		
 		textField_2 = new JTextField();
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setText(city);
+		textField_2.setText(teamInfo.getCity());
 		textField_2.setEditable(false);
 		textField_2.setColumns(10);
 		textField_2.setBounds(354, 36, 80, 23);
@@ -78,7 +78,7 @@ public class TeamCardPanel extends JPanel{
 		
 		textField_6 = new JTextField();
 		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_6.setText(conference);
+		textField_6.setText(String.valueOf(teamInfo.getConference().name()));
 		textField_6.setEditable(false);
 		textField_6.setColumns(10);
 		textField_6.setBounds(528, 36, 80, 23);
@@ -90,7 +90,7 @@ public class TeamCardPanel extends JPanel{
 		
 		txtDiv = new JTextField();
 		txtDiv.setHorizontalAlignment(SwingConstants.CENTER);
-		txtDiv.setText(division);
+		txtDiv.setText(teamInfo.getDivision().name());
 		txtDiv.setEditable(false);
 		txtDiv.setColumns(10);
 		txtDiv.setBounds(204, 66, 80, 23);
@@ -102,7 +102,7 @@ public class TeamCardPanel extends JPanel{
 		
 		textField_3 = new JTextField();
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_3.setText(homeField);
+		textField_3.setText(teamInfo.getHomeField());
 		textField_3.setEditable(false);
 		textField_3.setColumns(10);
 		textField_3.setBounds(355, 66, 110, 23);
@@ -114,7 +114,7 @@ public class TeamCardPanel extends JPanel{
 		
 		txtBirthYear = new JTextField();
 		txtBirthYear.setHorizontalAlignment(SwingConstants.CENTER);
-		txtBirthYear.setText(birthYear);
+		txtBirthYear.setText(teamInfo.getBirthYear());
 		txtBirthYear.setEditable(false);
 		txtBirthYear.setColumns(10);
 		txtBirthYear.setBounds(528, 66, 80, 23);

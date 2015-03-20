@@ -5,6 +5,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 
+import vo.PlayerVo;
+
 public class PlayerCardPanel extends JPanel {
 	private JTextField txtA;
 	private JTextField textField;
@@ -17,9 +19,7 @@ public class PlayerCardPanel extends JPanel {
 	private JTextField textField_7;
 	private JTextField textField_8;
 
-	public PlayerCardPanel(String name, String criteria,String criteriaValue, String number,
-			String position, String height, String weight, String birth,
-			String age, String exp, String school) {
+	public PlayerCardPanel(PlayerVo playerInfo) {
 		this.setVisible(true);
 		this.setLayout(null);
 
@@ -38,7 +38,7 @@ public class PlayerCardPanel extends JPanel {
 
 		txtA = new JTextField();
 		txtA.setHorizontalAlignment(SwingConstants.CENTER);
-		txtA.setText(name);
+		txtA.setText(playerInfo.getName());
 		txtA.setEditable(false);
 		txtA.setBounds(204, 6, 184, 23);
 		add(txtA);
@@ -63,7 +63,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_4 = new JTextField();
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_4.setText(number);
+		textField_4.setText(String.valueOf(playerInfo.getNumber()));
 		textField_4.setEditable(false);
 		textField_4.setColumns(10);
 		textField_4.setBounds(588, 36, 70, 23);
@@ -75,7 +75,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_6 = new JTextField();
 		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_6.setText(position);
+		textField_6.setText(playerInfo.getPosition());
 		textField_6.setEditable(false);
 		textField_6.setColumns(10);
 		textField_6.setBounds(444, 36, 72, 23);
@@ -87,7 +87,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText(height);
+		textField.setText(playerInfo.getHeight());
 		textField.setEditable(false);
 		textField.setBounds(204, 36, 72, 23);
 		add(textField);
@@ -99,7 +99,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_2 = new JTextField();
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setText(weight);
+		textField_2.setText(playerInfo.getWeight());
 		textField_2.setEditable(false);
 		textField_2.setColumns(10);
 		textField_2.setBounds(324, 36, 72, 23);
@@ -111,7 +111,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_1 = new JTextField();
 		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setText(birth);
+		textField_1.setText(playerInfo.getBirth());
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
 		textField_1.setBounds(204, 66, 72, 23);
@@ -123,7 +123,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_3 = new JTextField();
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_3.setText(age);
+		textField_3.setText(String.valueOf(playerInfo.getAge()));
 		textField_3.setEditable(false);
 		textField_3.setColumns(10);
 		textField_3.setBounds(324, 66, 72, 23);
@@ -135,7 +135,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_5 = new JTextField();
 		textField_5.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_5.setText(exp);
+		textField_5.setText(String.valueOf(playerInfo.getExp()));
 		textField_5.setEditable(false);
 		textField_5.setColumns(10);
 		textField_5.setBounds(444, 66, 72, 23);
@@ -147,7 +147,7 @@ public class PlayerCardPanel extends JPanel {
 
 		textField_7 = new JTextField();
 		textField_7.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_7.setText(school);
+		textField_7.setText(playerInfo.getSchool());
 		textField_7.setEditable(false);
 		textField_7.setColumns(10);
 		textField_7.setBounds(588, 66, 70, 23);

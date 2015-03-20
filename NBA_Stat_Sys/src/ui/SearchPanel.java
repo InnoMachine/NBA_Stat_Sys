@@ -942,7 +942,7 @@ public class SearchPanel extends JPanel {
 				int column) {
 			// TODO Auto-generated method stub
 			this.playerName = String.valueOf(((PlayerButton) value).playerName);
-			this.playerPortrait = new ImageIcon("CSEⅢdata/players/portrait/"
+			this.playerPortrait = new ImageIcon("CSEdata/players/portrait/"
 					+ this.playerName + ".png");
 			this.setIcon(playerPortrait);
 			
