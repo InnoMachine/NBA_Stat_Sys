@@ -26,27 +26,39 @@ public class DataFileReader {
 
 	public static void main(String[] args) {
 		
-//		ArrayList<TeamPO> teamList = new DataFileReader().makeTeamList(new DataFileReader().teamDataSplitor(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString("CSEdata/teams/teams"))));
-//		TeamDao teamController = new TeamDaoImpl();
-//		for(int k = 0; k < teamList.size(); k ++){
-//			teamController.add(teamList.get(k));
-//		}
 		
-		
-		
+	}
+	
+	public void importGames(){
+		System.out.println("Games data imported!");
+	}
+	
+	public void importPlayers(){
 		
 		DataFileReader dfr = new DataFileReader();
 		ArrayList<String> playerInfoFileNameList =  dfr.getFileNameList("CSEdata/players/info");
 		for(int i = 0; i < playerInfoFileNameList.size(); i ++){
+			
 			String playerInfoFileName = playerInfoFileNameList.get(i);
 			String originalString = dfr.getOriginalFileString(playerInfoFileName);
 			String splitedContent = dfr.splitKeyword(originalString);
-			ArrayList<ArrayList<String>> playerDataList = dfr.playerDataSplitor(splitedContent);
-			System.out.println(playerDataList);
+			ArrayList<String> playerDataList = dfr.playerDataSplitor(splitedContent);
+			PlayerDao playerController = new PlayerDaoImpl();
+			playerController.add(dfr.makePlayer(playerDataList));
 			
 		}
+		System.out.println("Players data imported!");
 		
+	}
+	
+	public void importTeams(){
 		
+		ArrayList<TeamPO> teamList = new DataFileReader().makeTeamList(new DataFileReader().teamDataSplitor(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString("CSEdata/teams/teams"))));
+		TeamDao teamController = new TeamDaoImpl();
+		for(int k = 0; k < teamList.size(); k ++){
+			teamController.add(teamList.get(k));
+		}
+		System.out.println("Teams data imported!");
 		
 	}
 
@@ -137,9 +149,8 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<ArrayList<String>> playerDataSplitor(String context){
+	public ArrayList<String> playerDataSplitor(String context){
 		
-		ArrayList<ArrayList<String>> splitedFullData = new ArrayList<ArrayList<String>>();
 		ArrayList<String> splitedSingleData = new ArrayList<String>();
 		Scanner scannerFull = new Scanner(context);
 		String keyword = new String();
@@ -153,13 +164,11 @@ public class DataFileReader {
 			splitedSingleData.add(keyword);
 			
 			if(splitedSingleData.size() == 9){
-				splitedFullData.add(new ArrayList<String>(splitedSingleData));
-				splitedSingleData.clear();
+				break;
 			}
 		}
-		scannerFull.close();
-		return splitedFullData;
-		
+		scannerFull.close();	
+		return splitedSingleData;
 	}
 	
 	public ArrayList<String> gameDataSplitor(String context){
@@ -190,18 +199,32 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<PlayerPO> makePlayer(ArrayList<ArrayList<String>> attriList){
+	public PlayerPO makePlayer(ArrayList<String> attriList){
 		
-		ArrayList<PlayerPO> playerList = new ArrayList<PlayerPO>();
 		PlayerPO player;
-		for(int i = 0; i < attriList.size(); i ++){
-			player = new PlayerPO();
-			player.setName(attriList.get(i).get(0));
-			player.setNumber(attriList.get(i).get(1));
+		String exp;
+		player = new PlayerPO();
+		player.setName(attriList.get(0));
+		player.setNumber(attriList.get(1));
+		player.setPosition(attriList.get(2));
+		player.setWeight(attriList.get(3));
+		player.setHeight(attriList.get(4));
+		player.setBirth(attriList.get(5));
+		player.setAge(Integer.parseInt(attriList.get(6)));
+		exp = attriList.get(7);
+		if(DataFileReader.isNum(exp)){//attention! Ognjen
+			player.setExp(Integer.parseInt(exp));
+		}else{
+			player.setExp(0);//to indicate dirty data
 		}
-		return playerList;
+		player.setSchool(attriList.get(8));
+		player.setActionImgPath("CSEdata/players/action/" + attriList.get(0) + ".png");
+		player.setPortraitImgPath("CSEdata/players/portrait/" + attriList.get(0) + ".png");
+		return player;
 		
 	}
+	
+	
 	
 	public GamePO makeGame(ArrayList<String> attriList){
 		
@@ -211,17 +234,23 @@ public class DataFileReader {
 	
 	public ArrayList<String> getFileNameList(String path){
 	
-	File file = new File(path);
-	File[] fileList = file.listFiles();
-	int len = fileList.length;
-	ArrayList<String> fileNameList = new ArrayList<String>(len);
-	for(int i = 0; i < len; i ++){
-		if(fileList[i].isFile()){
-			fileNameList.add(fileList[i].toString());
+		File file = new File(path);
+		File[] fileList = file.listFiles();
+		int len = fileList.length;
+		ArrayList<String> fileNameList = new ArrayList<String>(len);
+		for(int i = 0; i < len; i ++){
+			if(fileList[i].isFile()){
+				fileNameList.add(fileList[i].toString());
+			}
 		}
-	}
-	return fileNameList;
+		return fileNameList;
 	
-}
+	}
+	
+	public static boolean isNum(String str){
+		
+		return str.matches("^[-+]?(([0-9]+)([.]([0-9]+))?|([.]([0-9]+))?)$");
+		
+	}
 
 }

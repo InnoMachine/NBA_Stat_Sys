@@ -40,9 +40,9 @@ public class InitDB {
 				+ " birth varchar(15),"
 				+ " age int,"
 				+ " exp int,"
-				+ " school varchar(30),"
-				+ " actionimgpath varchar(40),"
-				+ " portrait varchar(40) )";
+				+ " school varchar(60),"
+				+ " actionimgpath varchar(100),"
+				+ " portraitimgpath varchar(100) )";
 		
 		String sql3 = "create table if not exists nba.games("
 				+ " gamelabel varchar(40),"
