@@ -4,7 +4,7 @@ import po.Division;
 
 
 public class PlayerVo {
-	private int number;
+	private String number;
 	private String position;
 	private String height;
 	private String weight;
@@ -71,10 +71,10 @@ public class PlayerVo {
 	private int teamOffensiveRebound;
 	private int teamDefensiveRebound;
 	
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	public String getHeight() {
