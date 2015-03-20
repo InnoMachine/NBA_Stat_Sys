@@ -18,7 +18,7 @@ public class TeamCardPanel extends JPanel{
 	private JTextField txtBirthYear;
 	private JTextField textField_6;
 	private JTextField textField_8;
-	public TeamCardPanel(TeamVo teamInfo) {
+	public TeamCardPanel(TeamVo teamInfo,String criteria,String criteriaValue) {
 		this.setVisible(true);
 		this.setLayout(null);
 		
@@ -35,13 +35,13 @@ public class TeamCardPanel extends JPanel{
 		txtA.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setText(teamCriteria);
+		lblNewLabel_1.setText(criteria);
 		lblNewLabel_1.setBounds(470, 10, 55, 15);
 		add(lblNewLabel_1);
 		
 		textField_8 = new JTextField();
 		textField_8.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_8.setText(teamCriteriaValue);
+		textField_8.setText(criteriaValue);
 		textField_8.setEditable(false);
 		textField_8.setBounds(528, 6, 80, 23);
 		add(textField_8);

@@ -19,7 +19,7 @@ public class PlayerCardPanel extends JPanel {
 	private JTextField textField_7;
 	private JTextField textField_8;
 
-	public PlayerCardPanel(PlayerVo playerInfo) {
+	public PlayerCardPanel(PlayerVo playerInfo,String criteria,String criteriaValue) {
 		this.setVisible(true);
 		this.setLayout(null);
 
