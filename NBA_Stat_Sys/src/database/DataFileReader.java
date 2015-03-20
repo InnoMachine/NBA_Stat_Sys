@@ -217,7 +217,10 @@ public class DataFileReader {
 		String score4th = splited1[3];
 		scannerFull.close();	
 		
-		line = scannerFull.nextLine();//
+		
+		if((line = scannerFull.nextLine()) == guestteam){////////
+			
+		}
 		
 		String gameLabel = "13-14_" + gamedate + "_" + versus + "";
 		
