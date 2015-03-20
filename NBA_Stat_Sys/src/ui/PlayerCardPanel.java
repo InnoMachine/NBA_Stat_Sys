@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import vo.PlayerVo;
 
 public class PlayerCardPanel extends JPanel {
-	private JTextField txtA;
+	 JTextField txtA;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -18,11 +18,19 @@ public class PlayerCardPanel extends JPanel {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JTextField textField_8;
-
+	
+	public PlayerVo playerInfo;
+	public String criteria;
+	public String criteriaValue;
 	public PlayerCardPanel(PlayerVo playerInfo,String criteria,String criteriaValue) {
 		this.setVisible(true);
 		this.setLayout(null);
-
+		this.playerInfo=playerInfo;
+		this.criteria=criteria;
+		this.criteriaValue=criteriaValue;
+		this.fillPanel();
+	}
+	public void fillPanel(){
 		JLabel lblNewLabel = new JLabel("Picture");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(70, 6, 99, 80);
@@ -35,7 +43,7 @@ public class PlayerCardPanel extends JPanel {
 		JLabel label = new JLabel("姓名");
 		label.setBounds(170, 10, 54, 15);
 		add(label);
-
+		
 		txtA = new JTextField();
 		txtA.setHorizontalAlignment(SwingConstants.CENTER);
 		txtA.setText(playerInfo.getName());

@@ -209,6 +209,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		playerVos = player_BS.filterPlayerBy(position, league,
 				screeningCriteria);
+		
 		Vector<Vector<PlayerCardPanel>> rowData = new Vector<Vector<PlayerCardPanel>>();
 		for (int i = 0; i < playerVos.size(); i++) {
 			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
@@ -275,9 +276,9 @@ public class ScreeningPlayerPanel extends JPanel {
 				break;
 			}		
 			rowData.add(a);
-
+			
 		}
-
+		
 		Vector<String> column = new Vector<String>();
 		column.add("");
 		DefaultTableModel dtm = new DefaultTableModel(rowData, column) {
@@ -292,8 +293,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setRowHeight(Y / 8);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
+
 		table.getColumnModel().getColumn(0)
-				.setCellRenderer(new PlayerCardRenderer());
+				.setCellRenderer(new PlayerCardRenderer(null,"",""));
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(X / 4, Y / 4, X / 2, Y / 2);
 		scrollPane.setVisible(true);
@@ -500,9 +502,11 @@ public class ScreeningPlayerPanel extends JPanel {
 	class PlayerCardRenderer extends PlayerCardPanel implements
 			TableCellRenderer {
 
-		public PlayerCardRenderer() {
-			super();
+	
 
+		public PlayerCardRenderer(PlayerVo playerInfo, String criteria,
+				String criteriaValue) {
+			super(playerInfo, criteria, criteriaValue);
 			// TODO Auto-generated constructor stub
 		}
 
@@ -510,8 +514,15 @@ public class ScreeningPlayerPanel extends JPanel {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
-
+			this.playerInfo=((PlayerCardPanel)value).playerInfo;
+			this.criteria=((PlayerCardPanel)value).criteria;
+			this.criteriaValue=((PlayerCardPanel)value).criteriaValue;
+		
+			
+			this.fillPanel();
 			this.setBackground(Color.GRAY);
+			
+			
 			// TODO Auto-generated method stub
 			return this;
 		}

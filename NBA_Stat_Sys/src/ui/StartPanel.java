@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
 public class StartPanel extends JPanel {
 
 	SearchPanel searchPlayerPanel;
@@ -39,14 +41,16 @@ public class StartPanel extends JPanel {
 		this.setVisible(true);
 		this.setOpaque(true);
 		bgImage = Toolkit.getDefaultToolkit().getImage(
-				"C:/Users/ThinkPad/Desktop/nba/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
+				"Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
 		createButton();
 
 	}
 
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
+		
+		
 		g.drawImage(bgImage, 0, 0, X, Y, this);
+		
 	}
 
 	public void createButton() {
@@ -91,10 +95,13 @@ public class StartPanel extends JPanel {
 		sortTeambtn.setVisible(false);
 		this.add(sortTeambtn);
 
-		JButton closeButton = new JButton("退出系统");
-		closeButton.setBounds(1000, 500, 100, 100);
-		closeButton.addActionListener(e -> mainFrame.dispose());
-		this.add(closeButton);
+		JButton exitButton = new JButton();
+		exitButton.setBounds(85*X/100, 85*Y/100, 13*X/100, 11*Y/100);
+		ImageIcon exitground=new ImageIcon("C:/Users/ThinkPad/Desktop/nba/exitButton.png");
+		exitground=new ImageIcon(exitground.getImage().getScaledInstance(exitButton.getWidth(), exitButton.getHeight(), Image.SCALE_DEFAULT));
+		exitButton.setIcon(exitground);
+		exitButton.addActionListener(e -> mainFrame.dispose());
+		this.add(exitButton);
 	}
 
 	public void playerOpe() {
