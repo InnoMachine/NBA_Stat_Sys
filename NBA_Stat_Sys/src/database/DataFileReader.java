@@ -82,7 +82,8 @@ public class DataFileReader {
 	
 	public String splitKeyword(String originalString){
 		
-		
+		char bugChar =  '\5279';
+		originalString = originalString.replace(, "dsadsgasdg");
 		originalString = originalString.replace("╔", "");
 		originalString = originalString.replace("╤", "");
 		originalString = originalString.replace("═", "");
