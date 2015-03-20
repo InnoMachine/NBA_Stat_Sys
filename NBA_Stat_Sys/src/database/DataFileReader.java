@@ -7,7 +7,9 @@ package database;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -22,35 +24,44 @@ public class DataFileReader {
 
 	public static void main(String[] args) {
 		
-		DataFileReader frt = new DataFileReader();
-		System.out.println(frt.getFileContext("CSEdata/teams/teams"));
+//		DataFileReader frt = new DataFileReader();
+//		System.out.println(frt.getFileContext("CSEdata/teams/teams"));
 //		System.out.println(frt.teamDataSplitor(frt.getFileContext("CSEdata/teams/teams")));
-		
+		System.out.println("**************************************************");
+		System.out.println(new DataFileReader().getOriginalFileString());
+		System.out.println("**************************************************");
+		System.out.println(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString()));
+		System.out.println("**************************************************");
+		System.out.println(new DataFileReader().teamDataSplitor(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString())));
 	}
 
-	public void outputFile(String path){
+	public String getOriginalFileString(){
 		
-//		BufferedReader br;
-//		try {
-//			br = new BufferedReader(new FileReader(path));
-//			String data = br.readLine();
-//			while(data != null){
-//				data = data.replace('╔', ' ');
-//				data = data.replace('╤', ' ');
-//				data = data.replace('═', ' ');
-//				data = data.replace('╗', ' ');
-//				data = data.replace('║', ' ');
-//				data = data.replace('╚', ' ');
-//				data = data.replace('│', ' ');
-//				data = data.replace('╝', ' ');
-//				data = data.replace('╧', ' ');
-//				System.out.println(data);
-//				data = br.readLine();
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		
+	        StringBuffer fileContent = new StringBuffer();  
+	        BufferedReader br = null;  
+	        try {  
+	            br = new BufferedReader(new InputStreamReader(new FileInputStream("CSEdata/teams/teams"),"UTF-8"));  
+	            String line = null;
+	            if((line = br.readLine()) != null){
+	            	fileContent.append(line.trim());
+	            }
+	            while ((line = br.readLine()) != null) {
+	            	fileContent.append("\n");
+	                fileContent.append(line.trim());  
+	            }  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }
+	        finally{ 
+	            if(br!=null)  
+	                try {
+	                    br.close();
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }  
+	        }  
+	        return fileContent.toString();
+	        
 	}
 	
 	public ArrayList<String> getFileNameList(String path){
@@ -69,67 +80,36 @@ public class DataFileReader {
 		
 	}
 	
-	public String getFileContext(String path){
+	public String splitKeyword(String originalString){
 		
-		String context = new String();
-		BufferedReader br;
-		String data = new String();
-		try {
-			br = new BufferedReader(new FileReader(path));
-			data = br.readLine();
-			while(data != null){
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("╔", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("╤", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("═", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("╗", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("║", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("╚", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("│", "\n");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("╝", "");
-				System.out.println(data.length());
-				System.out.println(data);
-				data = data.replace("╧", "");
-				System.out.println(data.length());
-				System.out.println("--------------------------------------");
-				System.out.println("*"+data+"*");
-				char[] list = data.toCharArray();
-				System.out.println(list.length);
-				System.out.println((int)list[0]);
+		
+		originalString = originalString.replace("╔", "");
+		originalString = originalString.replace("╤", "");
+		originalString = originalString.replace("═", "");
+		originalString = originalString.replace("╗", "");
+		originalString = originalString.replace("║", "");
+		originalString = originalString.replace("╚", "");
+		originalString = originalString.replace("│", "\n");
+		originalString = originalString.replace("╝", "");
+		originalString = originalString.replace("╧", "");
+		
+		String result = new String();
+		
+		Scanner scanner = new Scanner(originalString);
+		
+		while(scanner.hasNextLine()){
+			String line = scanner.nextLine();
+			if(line.equals("")){
 				
-				System.out.println(data == "");
-				System.out.println(data.equals(null));
-				System.out.println(data.equals(""));
-				System.out.println(data == null);
-				System.out.println(data.equals("\0"));
-				System.out.println(data.length());
-				if(data.length() != 0){
-					context += (data + "\n");
-				}
-				
-				
-				data = br.readLine();
+			}else{
+				result += (line + "\n");
 			}
-			br.close();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return context;
+		
+		
+		
+		
+		return result;
 		
 	}
 	
@@ -143,12 +123,12 @@ public class DataFileReader {
 		String next;
 		while(scannerFull.hasNextLine()){
 			scannerLine = new Scanner(line);
-			System.out.println(line+"-----------------------------thisisline");//
+//			System.out.println(line+"-----------------------------thisisline");//
 			while(scannerLine.hasNext()){
 				next = scannerLine.next();
-				System.out.println(next.length()+" as follow");
+//				System.out.println(next.length()+" as follow");
 				splitedSingleData.add(next);
-				System.out.println("*"+next+"*");
+//				System.out.println("*"+next+"*");
 				
 			}
 			scannerLine.close();
@@ -157,6 +137,7 @@ public class DataFileReader {
 			splitedSingleData = new ArrayList<String>();
 		}
 		scannerFull.close();
+		System.out.println((int)splitedFullData.get(0).get(0).charAt(0));
 		return splitedFullData;
 		
 	}

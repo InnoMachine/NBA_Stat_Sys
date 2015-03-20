@@ -1,5 +1,7 @@
 package database;
 
+import businessLogic.Team_BL;
+import businessLogic.Team_BS;
 import po.Conference;
 import po.Division;
 import po.TeamPO;
@@ -23,6 +25,10 @@ public class AutoDataImport {
 		//team0.setSeansonTeamPerformance("so much to go");
 		TeamDao td = new TeamDaoImpl();
 		td.add(team0);
+		
+		Team_BS tbs = new Team_BL();
+		tbs.getAllTeam();
+		
 		
 	}
 

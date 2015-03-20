@@ -16,8 +16,7 @@ public class DataImportor {
 	
 	public void importTeams(String teamDataPath){
 		
-		DataFileReader frt = new DataFileReader();
-		System.out.println(frt.teamDataSplitor(frt.getFileContext(teamDataPath)).size()+"*******************");
+//		DataFileReader frt = new DataFileReader();
 //		ArrayList<Team> teamList = new ArrayList<Team>(frt.makeTeamList(frt.teamDataSplitor(frt.getFileContext(teamDataPath))));	
 		
 //		TeamDao teamDataController = new TeamDaoImpl();
