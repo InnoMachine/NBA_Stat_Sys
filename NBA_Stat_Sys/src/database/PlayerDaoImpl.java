@@ -19,12 +19,12 @@ public class PlayerDaoImpl implements PlayerDao {
 	@Override
 	public void add(PlayerPO player) {
 		
-		String sql = "insert into nba.player(name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seansonsp)values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into nba.players(name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath)values(?,?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, player.getName());
-			pstmt.setInt(2, player.getNumber());
+			pstmt.setString(2, player.getNumber());
 			pstmt.setString(3, player.getPosition());
 			pstmt.setString(4, player.getHeight());
 			pstmt.setString(5, player.getWeight());
@@ -34,7 +34,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			pstmt.setString(9, player.getSchool());
 			pstmt.setString(10, player.getActionImgPath());
 			pstmt.setString(11, player.getPortraitImgPath());
-			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
+//			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -46,12 +46,12 @@ public class PlayerDaoImpl implements PlayerDao {
 	@Override
 	public void update(PlayerPO player) {
 		
-		String sql = "update nba.player set name=?,number=?,position=?,height=?,weight=?,birth=?,age=?,exp=?,school=?,actionimgpath=?,portraitimgpath=?,seansonsp=? where name=?";
+		String sql = "update nba.players set name=?,number=?,position=?,height=?,weight=?,birth=?,age=?,exp=?,school=?,actionimgpath=?,portraitimgpath=? where name=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, player.getName());
-			pstmt.setInt(2, player.getNumber());
+			pstmt.setString(2, player.getNumber());
 			pstmt.setString(3, player.getPosition());
 			pstmt.setString(4, player.getHeight());
 			pstmt.setString(5, player.getWeight());
@@ -61,7 +61,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			pstmt.setString(9, player.getSchool());
 			pstmt.setString(10, player.getActionImgPath());
 			pstmt.setString(11, player.getPortraitImgPath());
-			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
+//			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
 			
 			pstmt.setString(13, player.getName());
 			pstmt.executeUpdate();
@@ -76,7 +76,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	@Override
 	public void deletePlayerByName(String name) {
 
-		String sql = "delete from nba.player where name=?";
+		String sql = "delete from nba.players where name=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -93,7 +93,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	public PlayerPO getPlayerByName(String name) {
 
 		PlayerPO player = new PlayerPO();
-		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seansonsp from nba.palyer where name=?";
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath from nba.palyers where name=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -102,7 +102,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			while(rs.next()){
 				
 				player.setName(rs.getString("name"));
-				player.setNumber(rs.getInt("number"));
+				player.setNumber(rs.getString("number"));
 				player.setPosition(rs.getString("position"));
 				player.setHeight(rs.getString("height"));
 				player.setWeight(rs.getString("weight"));
@@ -127,7 +127,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	public ArrayList<PlayerPO> getAllPlayers() {
 		
 		ArrayList<PlayerPO> playerList = new ArrayList<PlayerPO>();
-		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seansonsp from nba.palyer";
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath from nba.palyers";
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();
@@ -135,7 +135,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			while(rs.next()){
 				PlayerPO player = new PlayerPO();
 				player.setName(rs.getString("name"));
-				player.setNumber(rs.getInt("number"));
+				player.setNumber(rs.getString("number"));
 				player.setPosition(rs.getString("position"));
 				player.setHeight(rs.getString("height"));
 				player.setWeight(rs.getString("weight"));

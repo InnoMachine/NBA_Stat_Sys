@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PlayerPO {
 	
 	private String name;
-	private int number;
+	private String number;//data type updated
 	private String position;
 	private String height;
 	private String weight;
@@ -29,10 +29,10 @@ public class PlayerPO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	public String getHeight() {
