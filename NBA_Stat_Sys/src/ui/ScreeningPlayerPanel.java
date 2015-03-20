@@ -214,145 +214,61 @@ public class ScreeningPlayerPanel extends JPanel {
 			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 			switch (screeningCriteria) {
 			case "score":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getScore()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getScore())));
 				
 				break;
 			case "reboundOverall":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getReboundOverall()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));				
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getReboundOverall())));				
 				break;
 			case "assistance":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAssistance()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAssistance())));
 				break;
 			case "weighted":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getWeighted()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getWeighted())));
 				break;
 			case "block":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getBlock()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getBlock())));
 				break;
 			case "steal":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getSteal()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getSteal())));
 				break;
 			case "foul":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFoul()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFoul())));
 				break;
 			case "turnover":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTurnover()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTurnover())));
 				break;
 			case "time":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTime()/60), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTime()/60)));
 				break;
 			case "efficiency":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getEfficiency()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getEfficiency())));
 				break;
 			case "hitNum":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getHitNum()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getHitNum())));
 				break;
 			case "threePointShotNum":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getThreePointHitNum()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getThreePointHitNum())));
 				break;
 			case "freeThrowShotNum":
-				a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFreeThrowShotNum()), String.valueOf(playerVos
-								.get(i).getNumber()), playerVos.get(i)
-								.getPosition(), playerVos.get(i).getHeight(),
-						playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-						String.valueOf(playerVos.get(i).getAge()), String
-								.valueOf(playerVos.get(i).getExp()), playerVos.get(
-								i).getSchool()));
+				a.add(new PlayerCardPanel(playerVos.get(i),
+						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFreeThrowShotNum())));
 				break;
 			case "twoTenNum":
-			a.add(new PlayerCardPanel(playerVos.get(i).getName(),
-					screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTwoTenNum()), String.valueOf(playerVos
-							.get(i).getNumber()), playerVos.get(i)
-							.getPosition(), playerVos.get(i).getHeight(),
-					playerVos.get(i).getWeight(), playerVos.get(i).getBirth(),
-					String.valueOf(playerVos.get(i).getAge()), String
-							.valueOf(playerVos.get(i).getExp()), playerVos.get(
-							i).getSchool()));
+			a.add(new PlayerCardPanel(playerVos.get(i),
+					screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTwoTenNum())));
 				break;
 
 			default:
