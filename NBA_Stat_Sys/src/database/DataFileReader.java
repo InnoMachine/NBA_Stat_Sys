@@ -18,7 +18,9 @@ import po.Conference;
 import po.Division;
 import po.GamePO;
 import po.PlayerPO;
+import po.Scoreboard;
 import po.TeamPO;
+import po.TeamPerformance;
 
 public class DataFileReader {
 
@@ -36,6 +38,7 @@ public class DataFileReader {
 			String originalString = dfr.getOriginalFileString(gameFileName);
 			System.out.println(originalString);
 			ArrayList<String> gameDataList = dfr.gameDataSplitor(originalString);
+			System.out.println(gameDataList);
 			GamePO game = dfr.makeGame(gameDataList);
 			GameDao gameController = new GameDaoImpl();
 			gameController.add(game);
@@ -190,12 +193,9 @@ public class DataFileReader {
 	
 	public ArrayList<String> gameDataSplitor(String context){
 		
+		String guesttp = "";
+		String hometp = "";
 		
-		String guesttp;
-		String hometp;
-		
-
-
 		ArrayList<String> splitedSingleData = new ArrayList<String>();
 		Scanner scannerFull = new Scanner(context);
 		String line = new String();
@@ -204,10 +204,10 @@ public class DataFileReader {
 		String[] splited0 = line.split(";");
 		String gamedate = splited0[0];
 		String versus = splited0[1];
-		String[] splited00 = line.split("-");
+		String scoreoverall = splited0[2];
+		String[] splited00 = versus.split("-");
 		String guestteam = splited00[0];
 		String hometeam = splited00[1];
-		String scoreoverall = splited0[2];
 		
 		line = scannerFull.nextLine();
 		String[] splited1 = line.split(";");
@@ -215,12 +215,19 @@ public class DataFileReader {
 		String score2nd = splited1[1];
 		String score3rd = splited1[2];
 		String score4th = splited1[3];
-		scannerFull.close();	
-		
-		
-		if((line = scannerFull.nextLine()) == guestteam){////////
 			
+		if((line = scannerFull.nextLine()).equals(guestteam)){
+			while(!(line = scannerFull.nextLine()).equals(hometeam)){
+				guesttp += (line + "\n");
+			}
 		}
+		if(line.equals(hometeam)){
+			while(scannerFull.hasNext()){
+				line = scannerFull.nextLine();
+				hometp += (line + "\n");
+			}
+		}
+		scannerFull.close();
 		
 		String gameLabel = "13-14_" + gamedate + "_" + versus + "";
 		
@@ -287,11 +294,24 @@ public class DataFileReader {
 		
 	}
 	
-	
-	
 	public GamePO makeGame(ArrayList<String> attriList){
 		
-		return null;
+		Scoreboard sb = new Scoreboard();
+		GamePO game;
+		game = new GamePO();
+		game.setGameLabel(attriList.get(0));
+		game.setGameDate(attriList.get(1));
+		game.setVersus(attriList.get(2));
+		game.setGuestTeam(attriList.get(3));
+		game.setHomeTeam(attriList.get(4));
+		game.setScoreOverall(sb.makeSB(attriList.get(5)));
+		game.setScore1st(sb.makeSB(attriList.get(6)));
+		game.setScore2nd(sb.makeSB(attriList.get(7)));
+		game.setScore3rd(sb.makeSB(attriList.get(8)));
+		game.setScore4th(sb.makeSB(attriList.get(9)));
+		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3), attriList.get(10)));
+		game.setGuestTP(TeamPerformance.makeTP(attriList.get(4), attriList.get(11)));
+		return game;
 		
 	}
 	

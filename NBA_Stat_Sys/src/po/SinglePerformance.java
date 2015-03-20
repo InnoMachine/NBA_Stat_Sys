@@ -141,5 +141,60 @@ public class SinglePerformance {
 		this.steal = steal;
 	}
 	
+	public static SinglePerformance makeSP(String spText){
+		
+		String[] splited = spText.split(";");
+		String name = splited[0];
+		String position;
+		if(splited[1].equals("")){
+			position = null;
+		}else{
+			position = splited[1];
+		}
+		String timeText = splited[2];
+		String[] splitedTime = timeText.split(":");
+		int timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
+		int hitNum = Integer.parseInt(splited[3]);
+		int shotNum = Integer.parseInt(splited[4]);
+		int threePointHitNum = Integer.parseInt(splited[5]);
+		int threePointShotNum = Integer.parseInt(splited[6]);
+		int freeThrowHitNum = Integer.parseInt(splited[7]);
+		int freeThrowShotNum = Integer.parseInt(splited[8]);
+		int offensiveRebound = Integer.parseInt(splited[9]);
+		int defensiveRebound = Integer.parseInt(splited[10]);
+		int reboundOverall = Integer.parseInt(splited[11]);
+		int assistance = Integer.parseInt(splited[12]);
+		int steal = Integer.parseInt(splited[13]);
+		int block = Integer.parseInt(splited[14]);
+		int turnover = Integer.parseInt(splited[15]);
+		int foul = Integer.parseInt(splited[16]);
+		int score = Integer.parseInt(splited[17]);
+		
+		SinglePerformance sp = new SinglePerformance();
+		sp.setName(name);
+		sp.setPosition(position);
+		sp.setTimeBySeconds(timeByText);
+		sp.setHitNum(hitNum);
+		sp.setShotNum(shotNum);
+		
+		sp.setThreePointHitNum(threePointHitNum);
+		sp.setThreePointShotNum(threePointShotNum);
+		sp.setFreeThrowHitNum(freeThrowHitNum);
+		sp.setFreeThrowShotNum(freeThrowShotNum);
+		sp.setOffensiveRebound(offensiveRebound);
+		
+		sp.setDefensiveRebound(defensiveRebound);
+		sp.setReboundOverall(reboundOverall);
+		sp.setAssistance(assistance);
+		sp.setSteal(steal);
+		sp.setBlock(block);
+		
+		sp.setTurnover(turnover);
+		sp.setFoul(foul);
+		sp.setScore(score);
+		
+		return sp;
+		
+	}
 	
 }

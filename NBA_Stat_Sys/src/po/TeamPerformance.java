@@ -6,6 +6,7 @@
 package po;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TeamPerformance {
 	
@@ -34,6 +35,24 @@ public class TeamPerformance {
 
 	public void setTeamNameAbbr(String teamNameAbbr) {
 		this.teamNameAbbr = teamNameAbbr;
+	}
+	
+	public static TeamPerformance makeTP(String teamAbbr, String tpText){
+		
+		TeamPerformance tp = new TeamPerformance();
+		tp.setTeamNameAbbr(teamAbbr);
+		
+		Scanner scannerFull = new Scanner(tpText);
+		String line = new String();
+		SinglePerformance sp;
+		while(scannerFull.hasNextLine()){
+			line = scannerFull.nextLine();
+			sp = SinglePerformance.makeSP(line);
+			tp.addSinglePerformance(sp);
+		}
+		scannerFull.close();
+		return null;
+		
 	}
 	
 }
