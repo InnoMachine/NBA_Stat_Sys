@@ -27,4 +27,14 @@ public class Scoreboard {
 		this.homeScore = homeScore;
 	}
 	
+	public Scoreboard makeSB(String score){
+		
+		String[] newstr = score.split("-");
+		Scoreboard sb = new Scoreboard();
+		sb.setGuestScore(Integer.parseInt(newstr[0]));
+		sb.setGuestScore(Integer.parseInt(newstr[1]));
+		return sb;
+		
+	}
+	
 }

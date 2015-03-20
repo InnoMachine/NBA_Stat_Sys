@@ -26,10 +26,26 @@ public class DataFileReader {
 
 	public static void main(String[] args) {
 		
+		DataFileReader dfr = new DataFileReader();
+		ArrayList<String> gameFileNameList =  dfr.getFileNameList("CSEdata/matches");
+		System.out.println(gameFileNameList);
+		System.out.println(gameFileNameList.size()+"**********************************************");
+		for(int i = 0; i < gameFileNameList.size(); i ++){
+			
+			String gameFileName = gameFileNameList.get(i);
+			String originalString = dfr.getOriginalFileString(gameFileName);
+			System.out.println(originalString);
+			ArrayList<String> gameDataList = dfr.gameDataSplitor(originalString);
+			GamePO game = dfr.makeGame(gameDataList);
+			GameDao gameController = new GameDaoImpl();
+			gameController.add(game);
+		}
+		System.out.println(gameFileNameList.size()+"**********************************************");
 		
 	}
 	
 	public void importGames(){
+		
 		System.out.println("Games data imported!");
 	}
 	
@@ -169,11 +185,55 @@ public class DataFileReader {
 		}
 		scannerFull.close();	
 		return splitedSingleData;
+		
 	}
 	
 	public ArrayList<String> gameDataSplitor(String context){
 		
-		return null;
+		
+		String guesttp;
+		String hometp;
+		
+
+
+		ArrayList<String> splitedSingleData = new ArrayList<String>();
+		Scanner scannerFull = new Scanner(context);
+		String line = new String();
+		
+		line = scannerFull.nextLine();
+		String[] splited0 = line.split(";");
+		String gamedate = splited0[0];
+		String versus = splited0[1];
+		String[] splited00 = line.split("-");
+		String guestteam = splited00[0];
+		String hometeam = splited00[1];
+		String scoreoverall = splited0[2];
+		
+		line = scannerFull.nextLine();
+		String[] splited1 = line.split(";");
+		String score1st = splited1[0];
+		String score2nd = splited1[1];
+		String score3rd = splited1[2];
+		String score4th = splited1[3];
+		scannerFull.close();	
+		
+		line = scannerFull.nextLine();//
+		
+		String gameLabel = "13-14_" + gamedate + "_" + versus + "";
+		
+		splitedSingleData.add(gameLabel);
+		splitedSingleData.add(gamedate);
+		splitedSingleData.add(versus);
+		splitedSingleData.add(guestteam);
+		splitedSingleData.add(hometeam);
+		splitedSingleData.add(scoreoverall);
+		splitedSingleData.add(score1st);
+		splitedSingleData.add(score2nd);
+		splitedSingleData.add(score3rd);
+		splitedSingleData.add(score4th);
+		splitedSingleData.add(guesttp);
+		splitedSingleData.add(hometp);
+		return splitedSingleData;
 		
 	}
 	
