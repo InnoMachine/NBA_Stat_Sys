@@ -17,8 +17,6 @@ public class AutoDataImport {
 		System.out.println(pd.getPlayerByName("Nate Wolters").getAge());
 		
 		
-		
-		
 	}
 
 }
