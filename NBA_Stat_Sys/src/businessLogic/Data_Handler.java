@@ -91,11 +91,11 @@ public class Data_Handler {
 			listvo[i].setSteal(listvo[i].getSteal());
 			listvo[i].setScore(listvo[i].getScore());
 			listvo[i].setEfficiency(listvo[i].getScore()+listvo[i].getBlock()+listvo[i].getReboundOverall()+
-					listvo[i].getAssistance()-/*splist[i].getSteal*/listvo[i].getFreeThrowShotNum()-
+					listvo[i].getAssistance()+listvo[i].getSteal()-listvo[i].getFreeThrowShotNum()-
 					listvo[i].getShotNum()+listvo[i].getHitNum()+listvo[i].getFreeThrowHitNum()-listvo[i].getTurnover());
 			listvo[i].setGmSc(listvo[i].getScore()+0.4*listvo[i].getHitNum()-0.7*listvo[i].getShotNum()-0.4*
 					(listvo[i].getFreeThrowShotNum()-listvo[i].getFreeThrowHitNum())
-					+0.7*listvo[i].getAttackingNum()+0.3*listvo[i].getDefensiveNum()/*splist[i].getsteal()*/
+					+0.7*listvo[i].getAttackingNum()+0.3*listvo[i].getDefensiveNum()+listvo[i].getSteal()
 					+0.7*listvo[i].getAssistance()+0.7*listvo[i].getBlock()-0.4*listvo[i].getFoul()-listvo[i].getTurnover());
 			listvo[i].setTrueHitRate(listvo[i].getScore()/(2*(listvo[i].getShotNum()+listvo[i].getThreePointShotNum()+0.44
 					*listvo[i].getFreeThrowShotNum())));
