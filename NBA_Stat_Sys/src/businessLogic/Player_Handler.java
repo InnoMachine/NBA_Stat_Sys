@@ -3,6 +3,7 @@ package businessLogic;
 import java.util.ArrayList;
 
 
+
 import vo.PlayerVo;
 
 public class Player_Handler {
@@ -442,7 +443,7 @@ public class Player_Handler {
 		{
 			for(PlayerVo temp:arrlistvo)
 			{
-				if(temp.getPosition().equals(position))
+				if(isPosition(temp,position))
 				{
 					list.add(temp);
 				}		
@@ -461,7 +462,7 @@ public class Player_Handler {
 		else{
 			for(PlayerVo temp:arrlistvo)
 			{
-				if(temp.getDivision().toString().equals(div)&&temp.getPosition().equals(position))
+				if(temp.getDivision().toString().equals(div)&&isPosition(temp,position))
 				{
 					list.add(temp);
 				}		
@@ -718,6 +719,19 @@ public class Player_Handler {
 			return templist;
 		}
 		return null;
+		
+	}
+	private boolean isPosition(PlayerVo temp, String position) {
+		String p = temp.getPosition();
+		if(p.length()==1)
+		{
+			return p.equals(position);
+		}
+		else{
+			String first = p.substring(0, 1);
+			String right = p.substring(2, 3);
+			return first.equals(position)||right.equals(position);
+		}
 		
 	}
 	
