@@ -287,7 +287,7 @@ public class SearchPanel extends JPanel {
 					.getColumnModel()
 					.getColumn(i)
 					.setCellRenderer(
-							new TeamTableRenderer(testDATA.get(i).teamName));
+							new TeamTableRenderer());
 			teamTable.getColumnModel().getColumn(i).setPreferredWidth(100);
 		}
 
@@ -306,7 +306,7 @@ public class SearchPanel extends JPanel {
 		Vector<PlayerButton> b = new Vector<PlayerButton>();
 		b.add(new PlayerButton("Dirk Nowitzki"));
 		Vector<PlayerButton> c = new Vector<PlayerButton>();
-		c.add(new PlayerButton("Dirk Nowitzki"));
+		c.add(new PlayerButton("Al Horford"));
 		Vector<PlayerButton> d = new Vector<PlayerButton>();
 		d.add(new PlayerButton("Dirk Nowitzki"));
 		Vector<PlayerButton> e = new Vector<PlayerButton>();
@@ -343,7 +343,7 @@ public class SearchPanel extends JPanel {
 		playerTable.setRowHeight(80);
 		playerTable.setCellSelectionEnabled(true);
 		playerTable.getColumnModel().getColumn(0)
-				.setCellRenderer(new PlayerTableRenderer(""));
+				.setCellRenderer(new PlayerTableRenderer());
 		playerTable.getTableHeader().setVisible(false);
 		DefaultTableCellRenderer playerTableHeaderRenderer = new DefaultTableCellRenderer();
 		playerTableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
@@ -929,102 +929,51 @@ public class SearchPanel extends JPanel {
 	}
 
 	// class: PlayerTableRenderer
-	class PlayerTableRenderer extends PlayerButton implements TableCellRenderer {
+	class PlayerTableRenderer implements TableCellRenderer {
 
-		public PlayerTableRenderer(String playerName) {
-			super(playerName);
-
-		}
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
 			// TODO Auto-generated method stub
-			this.playerName = String.valueOf(((PlayerButton) value).playerName);
-			this.playerPortrait = new ImageIcon("CSEdata/players/portrait/"
-					+ this.playerName + ".png");
-			this.setIcon(playerPortrait);
+			PlayerButton renderer=new PlayerButton(((PlayerButton)value).playerName);
+			renderer.playerPortrait = new ImageIcon("CSEdata/players/portrait/"
+					+ renderer.playerName + ".png");
+			renderer.setIcon(renderer.playerPortrait);
 			
 			if (hasFocus) {
-				System.out.println(this.playerName
+				System.out.println(renderer.playerName
 						+ "has benn selected successfully!");
-				showPlayerInfo(this.playerName);
+				showPlayerInfo(renderer.playerName);
 			}
-			return this;
+			return renderer;
 		}
 
 	}
 
 	// class: TeamTableRenderer
-	class TeamTableRenderer extends TeamButton implements TableCellRenderer {
-
-		public TeamTableRenderer(String teamName) {
-			super(teamName);
-			// TODO Auto-generated constructor stub
-		}
+	class TeamTableRenderer  implements TableCellRenderer {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
-			// TODO Auto-generated method stub
-			// this.teamName = String.valueOf(((TeamButton) value).teamName);
-			this.teamIcon = new ImageIcon("CSEⅢdata/teams/" + this.teamIcon
+			
+			TeamButton renderer=new TeamButton(((TeamButton)value).teamName);
+			renderer.teamIcon = new ImageIcon("CSEⅢdata/teams/" + renderer.teamName
 					+ ".svg");
-			this.setIcon(teamIcon);
-
+			renderer.setIcon(renderer.teamIcon);
 			if (hasFocus) {
-				System.out.println(this.teamName
+				System.out.println(renderer.teamName
 						+ " has benn selected successfully!" + "in " + row
 						+ "&" + column);
 			}
-			return this;
+			return renderer;
 		}
 
 	}
 }
 
-// 渲染 器 编辑器
-class MyRender extends AbstractCellEditor implements TableCellRenderer,
-		ActionListener, TableCellEditor {
 
-	private static final long serialVersionUID = 1L;
-	private JButton button = null;
-	private JPanel panel = null;
 
-	public MyRender() {
-
-		button = new JButton("确定不？");
-		button.addActionListener(this);
-	}
-
-	@Override
-	public Object getCellEditorValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
-		// TODO Auto-generated method stub
-		return button;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(null, "渲染器学期", "消息",
-				JOptionPane.OK_OPTION);
-
-	}
-
-	@Override
-	public Component getTableCellEditorComponent(JTable table, Object value,
-			boolean isSelected, int row, int column) {
-		// TODO Auto-generated method stub
-		return button;
-	}
-
-}
