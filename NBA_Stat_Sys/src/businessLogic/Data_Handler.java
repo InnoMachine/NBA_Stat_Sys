@@ -66,30 +66,38 @@ public class Data_Handler {
 	private void TeamCalculate() {
 		for(TeamVo temp:teamlistvo)
 		{
-			temp.setHitRate(temp.getHitNum()/temp.getShotNum());
-			temp.setThreePointHitRate(temp.getThreePointHitNum()/temp.getThreePointShotNum());
-			temp.setFreeThrowRate(temp.getFreeThrowHitNum()/temp.getFreeThrowShotNum());
-			temp.setWinningRate(temp.getWinningNum()/temp.getGameNum());
-			temp.setAttackingEfficiency(temp.getScore()/temp.getRoundAttack()*100);
-			temp.setDefensiveEfficiency(temp.getOpScore()/temp.getOpRoundAttack()*100);
-			temp.setReboundEfficiency(temp.getReboundOverall()/(temp.getReboundOverall()+temp.getOpReboundAll()));
-			temp.setStealEfficiency(temp.getSteal()/temp.getOpRoundAttack()*100);
-			temp.setAssistanceEfficiency(temp.getAssistance()/temp.getRoundAttack()*100);
-			
+			temp.setHitRate(temp.getHitNum()/(double)temp.getShotNum());
+			temp.setThreePointHitRate(temp.getThreePointHitNum()/(double)temp.getThreePointShotNum());
+			temp.setFreeThrowRate(temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum());
+			temp.setWinningRate(temp.getWinningNum()/(double)temp.getGameNum());
+			temp.setAttackingEfficiency(temp.getScore()/(double)temp.getRoundAttack()*100);
+			temp.setDefensiveEfficiency(temp.getOpScore()/(double)temp.getOpRoundAttack()*100);
+			temp.setReboundEfficiency(temp.getReboundOverall()/(double)(temp.getReboundOverall()+temp.getOpReboundAll()));
+			temp.setStealEfficiency(temp.getSteal()/(double)temp.getOpRoundAttack()*100);
+			temp.setAssistanceEfficiency(temp.getAssistance()/(double)temp.getRoundAttack()*100);
 		}
 		
 	}
 	private void playerCalculate() {
 		for(PlayerVo temp:listvo)
 		{
-			temp.setHitRate(temp.getHitNum()/temp.getShotNum());
-			temp.setThreePointHitRate(temp.getThreePointHitNum()/temp.getThreePointShotNum());
-			temp.setFreeThrowRate(temp.getFreeThrowHitNum()/temp.getFreeThrowShotNum());
+			if(temp.getShotNum()!=0){
+				temp.setHitRate(temp.getHitNum()/(double)temp.getShotNum());
+			}else temp.setHitRate(0);
+			
+			if(temp.getThreePointShotNum()!=0){
+				temp.setThreePointHitRate(temp.getThreePointHitNum()/(double)temp.getThreePointShotNum());
+			}else temp.setThreePointHitRate(0);
+			if(temp.getFreeThrowShotNum()!=0){
+				temp.setFreeThrowRate(temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum());
+			}else temp.setFreeThrowRate(0);
+			
 			temp.setBlock(temp.getBlock());
 			temp.setTurnover(temp.getTurnover());
 			temp.setFoul(temp.getFoul());
 			temp.setSteal(temp.getSteal());
 			temp.setScore(temp.getScore());
+			
 			temp.setEfficiency(temp.getScore()+temp.getBlock()+temp.getReboundOverall()+
 					temp.getAssistance()+temp.getSteal()-temp.getFreeThrowShotNum()-
 					temp.getShotNum()+temp.getHitNum()+temp.getFreeThrowHitNum()-temp.getTurnover());
@@ -99,23 +107,42 @@ public class Data_Handler {
 					+0.7*temp.getAssistance()+0.7*temp.getBlock()-0.4*temp.getFoul()-temp.getTurnover());
 			temp.setTrueHitRate(temp.getScore()/(2*(temp.getShotNum()+temp.getThreePointShotNum()+0.44
 					*temp.getFreeThrowShotNum())));
-			temp.setHitEfficiency((temp.getHitNum()+0.5*temp.getThreePointHitNum())/temp.getShotNum());
-			temp.setReboundOverallRate(temp.getReboundOverall()*(temp.getteamTime()/5)/temp.getTime()
-					/(temp.getteamRebound()+temp.getOpReboundAll()));
-			temp.setOffensiveReboundRate(temp.getAttackingNum()*(temp.getteamTime()/5)/temp.getTime()
-					/(temp.getteamOffensiveRebound()+temp.getOpOffensiveRebound()));
-			temp.setDefensiveReboundRate(temp.getDefensiveNum()*(temp.getteamTime()/5)/temp.getTime()
-					/(temp.getteamDefensiveRebound()+temp.getOpDefensiveRebound()));
-			temp.setAssistanceRate(temp.getAssistance()/(temp.getTime()/(temp.getteamTime()/5)
-					*temp.GetteamHitNum()-temp.getHitNum()));
-			temp.setStealRate(temp.getSteal()*(temp.getteamTime()/5)/temp.getTime()
-					/temp.getOpRoundAttack());
-			temp.setBlockRate(temp.getBlock()*(temp.getteamTime()/5)/temp.getTime()
-					/temp.getOpTwoPointShotNum());
-			temp.setTurnOverRate(temp.getTurnover()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover());;
-			temp.setUseRate((temp.getShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover())
-				*(temp.getteamTime()/5)/temp.getTime()/(temp.GetteamShotNum()+
-							0.44*temp.getteamFreeThrowNum()+temp.getteamTurnOver()));
+			if(temp.getShotNum()!=0)
+			    temp.setHitEfficiency((temp.getHitNum()+0.5*temp.getThreePointHitNum())/temp.getShotNum());
+			else temp.setHitEfficiency(0);
+			if(temp.getTime()!=0)
+			{
+				temp.setReboundOverallRate(temp.getReboundOverall()*((double)temp.getteamTime()/5)/temp.getTime()
+						/(double)(temp.getteamRebound()+temp.getOpReboundAll()));
+				temp.setOffensiveReboundRate(temp.getAttackingNum()*((double)temp.getteamTime()/5)/temp.getTime()
+						/(double)(temp.getteamOffensiveRebound()+temp.getOpOffensiveRebound()));
+				temp.setDefensiveReboundRate(temp.getDefensiveNum()*((double)temp.getteamTime()/5)/temp.getTime()
+						/(double)(temp.getteamDefensiveRebound()+temp.getOpDefensiveRebound()));
+				
+				temp.setAssistanceRate(temp.getAssistance()/((double)temp.getTime()/((double)temp.getteamTime()/5)
+							*temp.GetteamHitNum()-temp.getHitNum()));
+				
+				
+				temp.setStealRate(temp.getSteal()*((double)temp.getteamTime()/5)/temp.getTime()
+						/(double)temp.getOpRoundAttack());
+				temp.setBlockRate(temp.getBlock()*((double)temp.getteamTime()/5)/temp.getTime()
+						/(double)temp.getOpTwoPointShotNum());
+				temp.setTurnOverRate(temp.getTurnover()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover());
+				temp.setUseRate((temp.getShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover())
+					*(temp.getteamTime()/5)/temp.getTime()/(temp.GetteamShotNum()+
+								0.44*temp.getteamFreeThrowNum()+temp.getteamTurnOver()));
+			}else 
+			{
+				temp.setReboundOverallRate(0);
+				temp.setOffensiveReboundRate(0);
+				temp.setDefensiveReboundRate(0);
+				temp.setAssistanceRate(0);
+				temp.setStealRate(0);
+				temp.setBlockRate(0);
+				temp.setTurnOverRate(0);
+				temp.setUseRate(0);
+			}
+			
 			temp.setWeighted(temp.getScore()+temp.getReboundOverall()+temp.getBlock());
 			
 		}
@@ -150,31 +177,35 @@ public class Data_Handler {
 	private void teamVoPSet(TeamPerformanceInSingleGame tgp) {
 		for(int i=0;i<teamlistvo.size();i++)
 		{
-			
-			teamlistvo.get(i).setTime(teamlistvo.get(i).getTime()+tgp.getTime());
-			teamlistvo.get(i).setHitNum(teamlistvo.get(i).getHitNum()+tgp.getHitNum());
-			teamlistvo.get(i).setShotNum(teamlistvo.get(i).getShotNum()+tgp.getShotNum());
-			teamlistvo.get(i).setThreePointHitNum(teamlistvo.get(i).getThreePointHitNum()+tgp.getThreePointHitNum());
-			teamlistvo.get(i).setThreePointShotNum(teamlistvo.get(i).getThreePointShotNum()+tgp.getThreePointShotNum());
-			teamlistvo.get(i).setFreeThrowHitNum(teamlistvo.get(i).getFreeThrowHitNum()+tgp.getFreeThrowHitNum());
-			teamlistvo.get(i).setFreeThrowShotNum(teamlistvo.get(i).getFreeThrowShotNum()+tgp.getFreeThrowShotNum());
-			teamlistvo.get(i).setOffensiveRebound(teamlistvo.get(i).getOffensiveRebound()+tgp.getOffensiveRebound());
-			teamlistvo.get(i).setDefensiveRebound(teamlistvo.get(i).getDefensiveRebound()+tgp.getDefensiveRebound());
-			teamlistvo.get(i).setReboundOverall(teamlistvo.get(i).getReboundOverall()+tgp.getReboundOverall());
-			teamlistvo.get(i).setAssistance(teamlistvo.get(i).getAssistance()+tgp.getAssistance());
-			teamlistvo.get(i).setBlock(teamlistvo.get(i).getBlock()+tgp.getBlock());
-			teamlistvo.get(i).setTurnover(teamlistvo.get(i).getTurnover()+tgp.getTurnover());
-			teamlistvo.get(i).setFoul(teamlistvo.get(i).getFoul()+tgp.getFoul());
-			teamlistvo.get(i).setSteal(teamlistvo.get(i).getSteal()+tgp.getSteal());
-			teamlistvo.get(i).setScore(teamlistvo.get(i).getScore()+tgp.getScore());
-			teamlistvo.get(i).setWiningNum(teamlistvo.get(i).getWinningNum()+tgp.getWinning());
-			
-			teamlistvo.get(i).setOpDefensiveRebound(teamlistvo.get(i).getOpDefensiveRebound()+tgp.getOpDefensiveRebound());
-			teamlistvo.get(i).setOpOffensiveRebound(teamlistvo.get(i).getOpOffensiveRebound()+tgp.getOpOffensiveRebound());
-			teamlistvo.get(i).setOpReboundAll(teamlistvo.get(i).getOpReboundAll()+tgp.getOpDefensiveRebound()+tgp.getOpOffensiveRebound());
-			teamlistvo.get(i).setOpRoundAttack(teamlistvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
-			teamlistvo.get(i).setOpScore(teamlistvo.get(i).getOpScore()+tgp.getOpScore());
-			teamlistvo.get(i).setOpTwoPointShotNum(teamlistvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
+			if(tgp.getName().equals(teamlistvo.get(i).getAbbreviation()))
+			{
+				teamlistvo.get(i).setGameNum(teamlistvo.get(i).getGameNum()+1);
+				teamlistvo.get(i).setTime(teamlistvo.get(i).getTime()+tgp.getTime());
+				teamlistvo.get(i).setHitNum(teamlistvo.get(i).getHitNum()+tgp.getHitNum());
+				teamlistvo.get(i).setShotNum(teamlistvo.get(i).getShotNum()+tgp.getShotNum());
+				teamlistvo.get(i).setThreePointHitNum(teamlistvo.get(i).getThreePointHitNum()+tgp.getThreePointHitNum());
+				teamlistvo.get(i).setThreePointShotNum(teamlistvo.get(i).getThreePointShotNum()+tgp.getThreePointShotNum());
+				teamlistvo.get(i).setFreeThrowHitNum(teamlistvo.get(i).getFreeThrowHitNum()+tgp.getFreeThrowHitNum());
+				teamlistvo.get(i).setFreeThrowShotNum(teamlistvo.get(i).getFreeThrowShotNum()+tgp.getFreeThrowShotNum());
+				teamlistvo.get(i).setOffensiveRebound(teamlistvo.get(i).getOffensiveRebound()+tgp.getOffensiveRebound());
+				teamlistvo.get(i).setDefensiveRebound(teamlistvo.get(i).getDefensiveRebound()+tgp.getDefensiveRebound());
+				teamlistvo.get(i).setReboundOverall(teamlistvo.get(i).getReboundOverall()+tgp.getReboundOverall());
+				teamlistvo.get(i).setAssistance(teamlistvo.get(i).getAssistance()+tgp.getAssistance());
+				teamlistvo.get(i).setBlock(teamlistvo.get(i).getBlock()+tgp.getBlock());
+				teamlistvo.get(i).setTurnover(teamlistvo.get(i).getTurnover()+tgp.getTurnover());
+				teamlistvo.get(i).setFoul(teamlistvo.get(i).getFoul()+tgp.getFoul());
+				teamlistvo.get(i).setSteal(teamlistvo.get(i).getSteal()+tgp.getSteal());
+				teamlistvo.get(i).setScore(teamlistvo.get(i).getScore()+tgp.getScore());
+				teamlistvo.get(i).setWiningNum(teamlistvo.get(i).getWinningNum()+tgp.getWinning());
+				
+				teamlistvo.get(i).setOpDefensiveRebound(teamlistvo.get(i).getOpDefensiveRebound()+tgp.getOpDefensiveRebound());
+				teamlistvo.get(i).setOpOffensiveRebound(teamlistvo.get(i).getOpOffensiveRebound()+tgp.getOpOffensiveRebound());
+				teamlistvo.get(i).setOpReboundAll(teamlistvo.get(i).getOpReboundAll()+tgp.getOpDefensiveRebound()+tgp.getOpOffensiveRebound());
+				teamlistvo.get(i).setOpRoundAttack(teamlistvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
+				teamlistvo.get(i).setOpScore(teamlistvo.get(i).getOpScore()+tgp.getOpScore());
+				teamlistvo.get(i).setOpTwoPointShotNum(teamlistvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
+				
+			}
 			
 		}
 		
@@ -188,6 +219,7 @@ public class Data_Handler {
 				{
 					listvo.get(i).setTeam(tgp.getName());
 					
+					listvo.get(i).setGameNum(listvo.get(i).getGameNum()+1);
 					listvo.get(i).setTime(listvo.get(i).getTime()+temp.getTime());
 					listvo.get(i).setHitNum(listvo.get(i).getHitNum()+temp.getHitNum());
 					listvo.get(i).setShotNum(listvo.get(i).getShotNum()+temp.getShotNum());
@@ -227,7 +259,7 @@ public class Data_Handler {
 		
 	}
 	private TeamPerformanceInSingleGame setPerformance(TeamPerformance tp) {
-		ArrayList<SinglePerformance> listsp = new ArrayList<SinglePerformance>();
+		ArrayList<SinglePerformance> listsp = tp.getTpList();
 		String abbr = tp.getTeamNameAbbr();
 		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
 		for(SinglePerformance temp:listsp)
@@ -278,7 +310,7 @@ public class Data_Handler {
 						pgp.setFirstOn(1);
 						k++;
 					}
-					tgp.playerlist.add(pgp);
+					tgp.AddPlayerP(pgp);
 					break;
 				}
 			}

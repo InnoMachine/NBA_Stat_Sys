@@ -1,16 +1,26 @@
 package businessLogic;
 
-import po.PlayerPO;
-import database.PlayerDao;
-import database.PlayerDaoImpl;
+
+import java.util.ArrayList;
+
 import vo.PlayerVo;
+import vo.TeamVo;
 
 public class Test {
 
 	public static void main(String[] args) {
 		Player_BS player_bs = new Player_BL();
-		PlayerVo vo = player_bs.getPlayerByName("Nate Wolters");
-		System.out.println(vo.getAge());
+		Team_BS team_bs = new Team_BL();
+		ArrayList<PlayerVo> plist = team_bs.getPlayers("ATL");
+		for(PlayerVo temp :plist)
+		{
+			System.out.println(temp.getName());
+		}
+		ArrayList<TeamVo> tlist = team_bs.getAllTeam();
+		for(TeamVo temp :tlist)
+		{
+			System.out.println(temp.getAbbreviation());
+		}
 		
 	}
 
