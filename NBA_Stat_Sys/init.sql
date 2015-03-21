@@ -28,7 +28,7 @@ portraitimgpath varchar(100) );
 
 create table if not exists games(
 gamelabel varchar(40),
-gamedate varchar(10),
+gamedate varchar(30),
 versus varchar(10),
 guestteam varchar(5),
 hometeam varchar(5),

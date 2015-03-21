@@ -28,6 +28,15 @@ public class DataFileReader {
 
 	public static void main(String[] args) {
 		
+		InitDB.init();
+		DataFileReader dfr = new DataFileReader();
+		dfr.importGames();
+		dfr.importPlayers();
+		dfr.importTeams();
+	}
+	
+	public void importGames(){
+		
 		DataFileReader dfr = new DataFileReader();
 		String gameFileName;
 		String originalString;
@@ -44,12 +53,8 @@ public class DataFileReader {
 			game = dfr.makeGame(gameDataList);
 			gameController.add(game);
 		}
-		
-	}
-	
-	public void importGames(){
-		
 		System.out.println("Games data imported!");
+		
 	}
 	
 	public void importPlayers(){

@@ -19,7 +19,7 @@ public class GameDaoImpl implements GameDao {
 	@Override
 	public void add(GamePO game) {
 		
-		String sql = "insert into nba.games(gamelabel,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,guesttp,hometp) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into nba.games(gamelabel,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,guesttp,hometp)values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -36,6 +36,8 @@ public class GameDaoImpl implements GameDao {
 //			pstmt.setString(11, game.getExtratime().toString()); sudo
 			pstmt.setString(11, game.getGuestTP().toString());
 			pstmt.setString(12, game.getHomeTP().toString());
+			
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{

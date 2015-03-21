@@ -25,15 +25,15 @@ public class TeamPerformance {
 		tpList.add(sp);
 	}
 	
-	public String toString() {/////////////////////////////
+	public String toString() {
 		
 		String result = "";
-		if(tpList.isEmpty()){
+		if(!tpList.isEmpty()){
 			result += (tpList.get(0).toString());
 		}
 		for(int i = 1; i < tpList.size(); i ++){
 			result += "\n";
-			tpList.get(i).toString();
+			result += tpList.get(i).toString();
 		}
 		return result;
 		
