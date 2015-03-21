@@ -11,8 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import jdbc_tools.DBUtil;
 import po.GamePO;
+import po.Scoreboard;
+import po.TeamPerformance;
 
 public class GameDaoImpl implements GameDao {
 
@@ -110,15 +113,14 @@ public class GameDaoImpl implements GameDao {
 				game.setVersus(rs.getString("versus"));
 				game.setGuestTeam(rs.getString("guestteam"));
 				game.setHomeTeam(rs.getString("hometeam"));
-				//sudo
-				//game.setScoreOverall(rs.getString("scoreoverall"));
-				//game.setScore1st(rs.getString("score1st"));
-				//game.setScore2nd(rs.getString("score2nd"));
-				//game.setScore3rd(rs.getString("score3rd"));
-				//game.setScore4th(rs.getString("score4th"));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("scoreoverall")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score1st")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score2nd")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score3rd")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score4th")));
 				//game.setExtratime(rs.getString("extratime"));
-				//game.setGuestTP(rs.getString("guesttp"));
-				//game.setHomeTP(rs.getString("hometp"));
+				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("guesttp")));
+				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("hometp")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -144,17 +146,14 @@ public class GameDaoImpl implements GameDao {
 				game.setVersus(rs.getString("versus"));
 				game.setGuestTeam(rs.getString("guestteam"));
 				game.setHomeTeam(rs.getString("hometeam"));
-				//sudo
-				//game.setScoreOverall(rs.getString("scoreoverall"));
-				//game.setScore1st(rs.getString("score1st"));
-				//game.setScore2nd(rs.getString("score2nd"));
-				//game.setScore3rd(rs.getString("score3rd"));
-				//game.setScore4th(rs.getString("score4th"));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("scoreoverall")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score1st")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score2nd")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score3rd")));
+				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score4th")));
 				//game.setExtratime(rs.getString("extratime"));
-				//game.setGuestTP(rs.getString("guesttp"));
-				//game.setHomeTP(rs.getString("hometp"));
-				//sudo
-				//sudo
+				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("guesttp")));
+				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("hometp")));
 				
 				gameList.add(game);
 			}
