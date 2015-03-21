@@ -13,7 +13,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
-
 import po.Conference;
 import po.Division;
 import po.GamePO;
@@ -46,7 +45,6 @@ public class DataFileReader {
 		GameDao gameController = new GameDaoImpl();
 		
 		ArrayList<String> gameFileNameList =  dfr.getFileNameList("CSEdata/matches");
-		System.out.println(gameFileNameList);
 		for(int i = 0; i < gameFileNameList.size(); i ++){
 			gameFileName = gameFileNameList.get(i);
 			originalString = dfr.getOriginalFileString(gameFileName);

@@ -93,7 +93,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	public PlayerPO getPlayerByName(String name) {
 
 		PlayerPO player = new PlayerPO();
-		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath from nba.palyers where name=?";
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath from nba.players where name=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

@@ -17,7 +17,8 @@ public class TeamPO {
 	private String homeField;
 	private String birthYear;
 	private String imgPath;
-	private ArrayList<PlayerPO> players;
+	
+	private ArrayList<String> playersNameList;
 	
 	private ArrayList<TeamPerformance> seansonTeamPerformance;//sudo
 	
@@ -69,11 +70,11 @@ public class TeamPO {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-	public ArrayList<PlayerPO> getPlayers() {
-		return players;
+	public ArrayList<String> getPlayersNameList() {
+		return playersNameList;
 	}
-	public void setPlayers(ArrayList<PlayerPO> players) {
-		this.players = players;
+	public void setPlayersNameList(ArrayList<String> playersNameList) {
+		this.playersNameList = playersNameList;
 	}
 	public ArrayList<TeamPerformance> getSeansonTeamPerformance() {
 		return seansonTeamPerformance;
