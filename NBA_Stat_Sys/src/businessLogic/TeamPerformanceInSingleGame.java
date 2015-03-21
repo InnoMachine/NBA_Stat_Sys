@@ -51,11 +51,16 @@ public class TeamPerformanceInSingleGame {
 		opDefensiveRebound=0;
 		opRoundAttack=0;
 		opTwoPointShotNum=0;
+		playerlist = new ArrayList<PlayerPerformanceInSingleGame>();
 	}
 	public void CalculateRoundAttack()
 	{
-		roundAttack = shotNum+0.4*freeThrowShotNum-1.07*
-				(offensiveRebound/(offensiveRebound+opDefensiveRebound)*(shotNum-hitNum))+1.07*turnover;
+		if(offensiveRebound+opDefensiveRebound!=0)
+		{
+			roundAttack = shotNum+0.4*freeThrowShotNum-1.07*
+					(offensiveRebound/(offensiveRebound+opDefensiveRebound)*(shotNum-hitNum))+1.07*turnover;
+		}
+		
 	}
 	public void isWinning()
 	{
@@ -208,6 +213,10 @@ public class TeamPerformanceInSingleGame {
 	}
 	public void setWinning(int winning) {
 		this.winning = winning;
+	}
+	public void AddPlayerP(PlayerPerformanceInSingleGame pgp) {
+		this.playerlist.add(pgp);
+		
 	}
 	
 }

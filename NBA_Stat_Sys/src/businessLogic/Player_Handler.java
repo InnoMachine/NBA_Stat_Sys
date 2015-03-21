@@ -445,7 +445,7 @@ public class Player_Handler {
 		{
 			for(PlayerVo temp:listvo)
 			{
-				if(temp.getDivision().toString().equals(div))
+				if((temp.getDivision()+"").equals(div))
 				{
 					list.add(temp);
 				}		
@@ -454,7 +454,7 @@ public class Player_Handler {
 		else{
 			for(PlayerVo temp:listvo)
 			{
-				if(temp.getDivision().toString().equals(div)&&isPosition(temp,position))
+				if((temp.getDivision()+"").equals(div)&&isPosition(temp,position))
 				{
 					list.add(temp);
 				}		
