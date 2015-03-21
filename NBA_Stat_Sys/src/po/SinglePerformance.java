@@ -184,7 +184,7 @@ public class SinglePerformance {
 		int freeThrowHitNum = Integer.parseInt(splited[7]);
 		int freeThrowShotNum = Integer.parseInt(splited[8]);
 		int offensiveRebound = Integer.parseInt(splited[9]);
-		int defensiveRebound;
+		int defensiveRebound = Integer.parseInt(splited[10]);
 		if(!splited[10].equals("")){
 			defensiveRebound = Integer.parseInt(splited[10]);
 		}else{
@@ -195,7 +195,7 @@ public class SinglePerformance {
 		int steal = Integer.parseInt(splited[13]);
 		int block = Integer.parseInt(splited[14]);
 		int turnover = Integer.parseInt(splited[15]);
-		int foul;
+		int foul = Integer.parseInt(splited[16]);
 		if(!splited[16].equals("")){
 			foul = Integer.parseInt(splited[16]);
 		}else{
@@ -205,7 +205,7 @@ public class SinglePerformance {
 		if(!splited[17].equalsIgnoreCase("null")){
 			score = Integer.parseInt(splited[17]);
 		}else{
-			score = 0;//dirty data
+			score = -1;//dirty data
 		}
 		
 		SinglePerformance sp = new SinglePerformance();

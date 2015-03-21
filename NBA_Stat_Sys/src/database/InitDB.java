@@ -42,7 +42,8 @@ public class InitDB {
 				+ " exp int,"
 				+ " school varchar(60),"
 				+ " actionimgpath varchar(100),"
-				+ " portraitimgpath varchar(100))";
+				+ " portraitimgpath varchar(100))"
+				+ " seasonSinglePerformance text ";
 		
 		String sql3 = "create table if not exists nba.games("
 				+ " gamelabel varchar(40) PRIMARY KEY,"

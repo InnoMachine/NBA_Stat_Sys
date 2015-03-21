@@ -25,9 +25,6 @@ public class GamePO {
 	private TeamPerformance guestTP;
 	private TeamPerformance homeTP;
 	
-//	public String toString() {
-//		return null;
-//	}
 
 	public String getGameDate() {
 		return gameDate;
