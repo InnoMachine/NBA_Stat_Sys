@@ -33,6 +33,7 @@ public class DataFileReader {
 		dfr.importGames();
 		dfr.importPlayers();
 		dfr.importTeams();
+		
 	}
 	
 	public void importGames(){
@@ -282,8 +283,8 @@ public class DataFileReader {
 		player.setName(attriList.get(0));
 		player.setNumber(attriList.get(1));
 		player.setPosition(attriList.get(2));
-		player.setWeight(attriList.get(3));
-		player.setHeight(attriList.get(4));
+		player.setHeight(attriList.get(3));
+		player.setWeight(attriList.get(4));
 		player.setBirth(attriList.get(5));
 		player.setAge(Integer.parseInt(attriList.get(6)));
 		exp = attriList.get(7);
