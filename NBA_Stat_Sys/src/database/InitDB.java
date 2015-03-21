@@ -19,8 +19,8 @@ public class InitDB {
 		String sqlOld = "drop database if exists nba";
 		String sqlNew = "create database if not exists nba";
 		
-		String sql1 = "create table if not exists nba.teams"
-				+ "( teamname varchar(20) NOT NULL,"
+		String sql1 = "create table if not exists nba.teams("
+				+ " teamname varchar(20) NOT NULL,"
 				+ " abbreviation varchar(5) PRIMARY KEY,"
 				+ " city varchar(20) NOT NULL,"
 				+ " conference varchar(2) NOT NULL,"
@@ -42,8 +42,8 @@ public class InitDB {
 				+ " exp int,"
 				+ " school varchar(60),"
 				+ " actionimgpath varchar(100),"
-				+ " portraitimgpath varchar(100))"
-				+ " seasonSinglePerformance text ";
+				+ " portraitimgpath varchar(100),"
+				+ " seasonsp text )";
 		
 		String sql3 = "create table if not exists nba.games("
 				+ " gamelabel varchar(40) PRIMARY KEY,"

@@ -31,10 +31,10 @@ public class SinglePerformance {
 	
 	public String toString() {
 		
-		return name+";"+position+";"+timeBySeconds+";"+hitNum+";"+shotNum+";"
-	+threePointHitNum+";"+threePointShotNum+";"+freeThrowHitNum+";"+freeThrowShotNum+";"+offensiveRebound+";"
-				+";"+defensiveRebound+";"+reboundOverall+";"+assistance+";"+steal+";"+block+";"
-				+";"+turnover+";"+foul+";"+score+";";
+		return name+";"+position+";"+timeBySeconds+";"+hitNum+";"+shotNum+";"+
+		threePointHitNum+";"+threePointShotNum+";"+freeThrowHitNum+";"+freeThrowShotNum+";"+offensiveRebound+";"+
+				defensiveRebound+";"+reboundOverall+";"+assistance+";"+steal+";"+block+";"+
+		turnover+";"+foul+";"+score+";";
 		
 	}
 	
@@ -184,28 +184,32 @@ public class SinglePerformance {
 		int freeThrowHitNum = Integer.parseInt(splited[7]);
 		int freeThrowShotNum = Integer.parseInt(splited[8]);
 		int offensiveRebound = Integer.parseInt(splited[9]);
-		int defensiveRebound = Integer.parseInt(splited[10]);
-		if(!splited[10].equals("")){
-			defensiveRebound = Integer.parseInt(splited[10]);
-		}else{
+		
+		int defensiveRebound = 0;
+		if(splited[10].equals("")){
 			defensiveRebound = -1;//dirty data
+		}else{
+			defensiveRebound = Integer.parseInt(splited[10]);
 		}
+		
 		int reboundOverall = Integer.parseInt(splited[11]);
 		int assistance = Integer.parseInt(splited[12]);
 		int steal = Integer.parseInt(splited[13]);
 		int block = Integer.parseInt(splited[14]);
 		int turnover = Integer.parseInt(splited[15]);
-		int foul = Integer.parseInt(splited[16]);
-		if(!splited[16].equals("")){
-			foul = Integer.parseInt(splited[16]);
-		}else{
+		
+		int foul = 0;
+		if(splited[16].equals("")){
 			foul = -1;//dirty data
-		}
-		int score;
-		if(!splited[17].equalsIgnoreCase("null")){
-			score = Integer.parseInt(splited[17]);
 		}else{
+			foul = Integer.parseInt(splited[16]);
+		}
+		
+		int score = 0;
+		if(splited[17].equalsIgnoreCase("null")){
 			score = -1;//dirty data
+		}else{
+			score = Integer.parseInt(splited[17]);
 		}
 		
 		SinglePerformance sp = new SinglePerformance();
