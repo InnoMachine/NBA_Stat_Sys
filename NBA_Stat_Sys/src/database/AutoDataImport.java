@@ -1,9 +1,8 @@
 package database;
 
-import businessLogic.Team_BL;
-import businessLogic.Team_BS;
 import po.Conference;
 import po.Division;
+import po.GamePO;
 import po.TeamPO;
 
 public class AutoDataImport {
@@ -26,8 +25,7 @@ public class AutoDataImport {
 		TeamDao td = new TeamDaoImpl();
 		td.add(team0);
 		
-		Team_BS tbs = new Team_BL();
-		tbs.getAllTeam();
+		GamePO game0 = new GamePO();
 		
 		
 	}
