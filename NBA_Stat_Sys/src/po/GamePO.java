@@ -5,6 +5,8 @@
  */
 package po;
 
+import java.util.ArrayList;
+
 public class GamePO {
 	
 	private String gameLabel;
@@ -18,7 +20,7 @@ public class GamePO {
 	private Scoreboard score3rd;
 	private Scoreboard score4th;
 	
-//	private ArrayList<Scoreboard> extratime;//加时赛
+	private ArrayList<Scoreboard> extratime;//加时赛
 	
 	
 	private TeamPerformance guestTP;

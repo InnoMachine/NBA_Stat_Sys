@@ -20,19 +20,19 @@ public class InitDB {
 		String sqlNew = "create database if not exists nba";
 		
 		String sql1 = "create table if not exists nba.teams"
-				+ "( teamname varchar(20),"
-				+ " abbreviation varchar(5),"
-				+ " city varchar(20),"
-				+ " conference varchar(2),"
-				+ " division varchar(15),"
-				+ " homefield varchar(40),"
-				+ " birthyear varchar(10),"
-				+ " imgPath varchar(40),"
+				+ "( teamname varchar(20) NOT NULL,"
+				+ " abbreviation varchar(5) PRIMARY KEY,"
+				+ " city varchar(20) NOT NULL,"
+				+ " conference varchar(2) NOT NULL,"
+				+ " division varchar(15) NOT NULL,"
+				+ " homefield varchar(40) NOT NULL,"
+				+ " birthyear varchar(10) NOT NULL,"
+				+ " imgPath varchar(40) NOT NULL,"
 				+ " players text,"
 				+ " seasontp text)";
 		
 		String sql2 = "create table if not exists nba.players("
-				+ " name varchar(30),"
+				+ " name varchar(30) PRIMARY KEY,"
 				+ " number varchar(10),"
 				+ " position varchar(5),"
 				+ " height varchar(5),"
@@ -42,10 +42,10 @@ public class InitDB {
 				+ " exp int,"
 				+ " school varchar(60),"
 				+ " actionimgpath varchar(100),"
-				+ " portraitimgpath varchar(100) )";
+				+ " portraitimgpath varchar(100))";
 		
 		String sql3 = "create table if not exists nba.games("
-				+ " gamelabel varchar(40),"
+				+ " gamelabel varchar(40) PRIMARY KEY,"
 				+ " gamedate varchar(30),"
 				+ " versus varchar(10),"
 				+ " guestteam varchar(5),"
@@ -55,6 +55,7 @@ public class InitDB {
 				+ " score2nd varchar(10),"
 				+ " score3rd varchar(10),"
 				+ " score4th varchar(10),"
+				+ " extratime varchar(50),"
 				+ " guesttp text,"
 				+ " hometp text)";
 		

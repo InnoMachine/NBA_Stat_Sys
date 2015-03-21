@@ -167,10 +167,14 @@ public class SinglePerformance {
 				String[] splitedTime = timeText.split(":");
 				timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
 			}else{
-				timeByText = 0;//dirty data
+				timeByText = -1;//dirty data
 			}
 		}else{
-			timeByText = Integer.parseInt(timeText);
+			if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None"))){
+				timeByText = Integer.parseInt(timeText);
+			}else{
+				timeByText = -1;//dirty data
+			}
 		}
 		
 		int hitNum = Integer.parseInt(splited[3]);
