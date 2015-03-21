@@ -22,7 +22,6 @@ public class GamePO {
 	
 	private ArrayList<Scoreboard> extratime;//加时赛
 	
-	
 	private TeamPerformance guestTP;
 	private TeamPerformance homeTP;
 	
@@ -126,15 +125,12 @@ public class GamePO {
 		this.gameLabel = gameLabel;
 	}
 
-//	public ArrayList<Scoreboard> getExtratime() {
-//		return extratime;
-//	}
-//
-//	public void setExtratime(ArrayList<Scoreboard> extratime) {
-//		this.extratime = extratime;
-//	}
-	
-	
-	
+	public ArrayList<Scoreboard> getExtratime() {
+		return extratime;
+	}
+
+	public void setExtratime(ArrayList<Scoreboard> extratime) {
+		this.extratime = extratime;
+	}
 	
 }

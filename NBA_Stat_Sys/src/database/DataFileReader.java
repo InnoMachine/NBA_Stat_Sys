@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
+
 import po.Conference;
 import po.Division;
 import po.GamePO;
@@ -219,6 +220,12 @@ public class DataFileReader {
 		String score2nd = splited1[1];
 		String score3rd = splited1[2];
 		String score4th = splited1[3];
+		String extraTime = "";
+		if(splited1.length > 4){
+			for(int k = 4; k < splited1.length; k ++){
+				extraTime += (splited1[k]+";");
+			}
+		}
 			
 		if((line = scannerFull.nextLine()).equals(guestteam)){
 			while(!(line = scannerFull.nextLine()).equals(hometeam)){
@@ -245,6 +252,7 @@ public class DataFileReader {
 		splitedSingleData.add(score2nd);
 		splitedSingleData.add(score3rd);
 		splitedSingleData.add(score4th);
+		splitedSingleData.add(extraTime);
 		splitedSingleData.add(guesttp);
 		splitedSingleData.add(hometp);
 		return splitedSingleData;
@@ -311,8 +319,17 @@ public class DataFileReader {
 		game.setScore2nd(Scoreboard.makeSB(attriList.get(7)));
 		game.setScore3rd(Scoreboard.makeSB(attriList.get(8)));
 		game.setScore4th(Scoreboard.makeSB(attriList.get(9)));
-		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3), attriList.get(10)));
-		game.setHomeTP(TeamPerformance.makeTP(attriList.get(4), attriList.get(11)));
+		ArrayList<Scoreboard> extraList = new ArrayList<Scoreboard>();
+		String extraText = attriList.get(10);
+		if(extraText.contains(";")){
+			String[] splitedExtra = extraText.split(";");
+			for(int j = 0; j < splitedExtra.length; j ++){
+				extraList.add(Scoreboard.makeSB(splitedExtra[j]));
+			}
+		}
+		game.setExtratime(extraList);
+		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3), attriList.get(11)));
+		game.setHomeTP(TeamPerformance.makeTP(attriList.get(4), attriList.get(12)));
 		return game;
 		
 	}
