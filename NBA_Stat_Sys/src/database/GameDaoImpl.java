@@ -139,18 +139,19 @@ public class GameDaoImpl implements GameDao {
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
+			GamePO game;
 			while(rs.next()){
-				GamePO game = new GamePO();
+				game = new GamePO();
 				game.setGameLabel(rs.getString("gamelabel"));
 				game.setGameDate(rs.getString("gamedate"));
 				game.setVersus(rs.getString("versus"));
 				game.setGuestTeam(rs.getString("guestteam"));
 				game.setHomeTeam(rs.getString("hometeam"));
 				game.setScoreOverall(Scoreboard.makeSB(rs.getString("scoreoverall")));
-				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score1st")));
-				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score2nd")));
-				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score3rd")));
-				game.setScoreOverall(Scoreboard.makeSB(rs.getString("score4th")));
+				game.setScore1st(Scoreboard.makeSB(rs.getString("score1st")));
+				game.setScore2nd(Scoreboard.makeSB(rs.getString("score2nd")));
+				game.setScore3rd(Scoreboard.makeSB(rs.getString("score3rd")));
+				game.setScore4th(Scoreboard.makeSB(rs.getString("score4th")));
 				//game.setExtratime(rs.getString("extratime"));
 				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("guesttp")));
 				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("hometp")));

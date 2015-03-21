@@ -160,13 +160,17 @@ public class SinglePerformance {
 			position = splited[1];
 		}
 		
-		String timeText = splited[2];
+		String timeText = splited[2];//sudo
 		int timeByText;
-		if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None"))){
-			String[] splitedTime = timeText.split(":");
-			timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
+		if(timeText.contains(":")){
+			if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None"))){
+				String[] splitedTime = timeText.split(":");
+				timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
+			}else{
+				timeByText = 0;//dirty data
+			}
 		}else{
-			timeByText = 0;//dirty data
+			timeByText = Integer.parseInt(timeText);
 		}
 		
 		int hitNum = Integer.parseInt(splited[3]);
@@ -176,13 +180,23 @@ public class SinglePerformance {
 		int freeThrowHitNum = Integer.parseInt(splited[7]);
 		int freeThrowShotNum = Integer.parseInt(splited[8]);
 		int offensiveRebound = Integer.parseInt(splited[9]);
-		int defensiveRebound = Integer.parseInt(splited[10]);
+		int defensiveRebound;
+		if(!splited[10].equals("")){
+			defensiveRebound = Integer.parseInt(splited[10]);
+		}else{
+			defensiveRebound = -1;//dirty data
+		}
 		int reboundOverall = Integer.parseInt(splited[11]);
 		int assistance = Integer.parseInt(splited[12]);
 		int steal = Integer.parseInt(splited[13]);
 		int block = Integer.parseInt(splited[14]);
 		int turnover = Integer.parseInt(splited[15]);
-		int foul = Integer.parseInt(splited[16]);
+		int foul;
+		if(!splited[16].equals("")){
+			foul = Integer.parseInt(splited[16]);
+		}else{
+			foul = -1;//dirty data
+		}
 		int score;
 		if(!splited[17].equalsIgnoreCase("null")){
 			score = Integer.parseInt(splited[17]);
