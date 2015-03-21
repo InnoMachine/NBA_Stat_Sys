@@ -217,6 +217,7 @@ public class Data_Handler {
 			{
 				if(temp.getName().equals(listvo.get(i).getName()))
 				{
+					
 					listvo.get(i).setTeam(tgp.getName());
 					
 					listvo.get(i).setGameNum(listvo.get(i).getGameNum()+1);
@@ -265,6 +266,10 @@ public class Data_Handler {
 		for(SinglePerformance temp:listsp)
 		{
 			int k=0;
+			if(temp.getName().equals("Thaddeus Young"))
+			{
+				System.out.println(temp.getScore());
+			}
 			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
 			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
 			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
@@ -401,7 +406,6 @@ public class Data_Handler {
 			temp.setActionImgPath(listpo.get(i).getActionImgPath());
 			temp.setPortraitImgPath(listpo.get(i).getPortraitImgPath());
 			
-			temp.setName(listpo.get(i).getName());
 			temp.setTime(0);
 			temp.setHitNum(0);
 			temp.setShotNum(0);
