@@ -266,10 +266,6 @@ public class Data_Handler {
 		for(SinglePerformance temp:listsp)
 		{
 			int k=0;
-			if(temp.getName().equals("Thaddeus Young"))
-			{
-				System.out.println(temp.getScore());
-			}
 			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
 			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
 			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
