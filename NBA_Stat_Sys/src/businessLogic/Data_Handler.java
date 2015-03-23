@@ -101,11 +101,11 @@ public class Data_Handler {
 			temp.setEfficiency(temp.getScore()+temp.getBlock()+temp.getReboundOverall()+
 					temp.getAssistance()+temp.getSteal()-temp.getFreeThrowShotNum()-
 					temp.getShotNum()+temp.getHitNum()+temp.getFreeThrowHitNum()-temp.getTurnover());
-			temp.setGmSc(temp.getScore()+0.4*temp.getHitNum()-0.7*temp.getShotNum()-0.4*
+			temp.setGmSc((double)temp.getScore()+0.4*temp.getHitNum()-0.7*temp.getShotNum()-0.4*
 					(temp.getFreeThrowShotNum()-temp.getFreeThrowHitNum())
 					+0.7*temp.getAttackingNum()+0.3*temp.getDefensiveNum()+temp.getSteal()
-					+0.7*temp.getAssistance()+0.7*temp.getBlock()-0.4*temp.getFoul()-temp.getTurnover());
-			temp.setTrueHitRate(temp.getScore()/(2*(temp.getShotNum()+temp.getThreePointShotNum()+0.44
+					+0.7*temp.getAssistance()+0.7*temp.getBlock()-0.4*temp.getFoul()-(double)temp.getTurnover());
+			temp.setTrueHitRate(temp.getScore()/(double)(2*((double)temp.getShotNum()+temp.getThreePointShotNum()+0.44
 					*temp.getFreeThrowShotNum())));
 			if(temp.getShotNum()!=0)
 			    temp.setHitEfficiency((temp.getHitNum()+0.5*temp.getThreePointHitNum())/temp.getShotNum());
@@ -142,7 +142,9 @@ public class Data_Handler {
 				temp.setTurnOverRate(0);
 				temp.setUseRate(0);
 			}
-			
+		
+			//System.out.println(temp.getGmSc());
+				
 			temp.setWeighted(temp.getScore()+temp.getReboundOverall()+temp.getBlock());
 			
 		}
@@ -286,6 +288,7 @@ public class Data_Handler {
 			{
 				if(temp.getName().equals(listvo.get(i).getName()))
 				{
+					
 					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
 					pgp.setTime(temp.getTimeBySeconds());
 					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
@@ -389,6 +392,7 @@ public class Data_Handler {
 	{
 		for(int i=0;i<listpo.size();i++)
 		{
+			
 			PlayerVo temp = new PlayerVo();
 			temp.setName(listpo.get(i).getName());
 			temp.setNumber(listpo.get(i).getNumber());

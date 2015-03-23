@@ -57,8 +57,9 @@ public class TeamPerformanceInSingleGame {
 	{
 		if(offensiveRebound+opDefensiveRebound!=0)
 		{
-			roundAttack = shotNum+0.4*freeThrowShotNum-1.07*
-					(offensiveRebound/(offensiveRebound+opDefensiveRebound)*(shotNum-hitNum))+1.07*turnover;
+			roundAttack = (double)shotNum+0.4*freeThrowShotNum-1.07*
+					(offensiveRebound/(double)(offensiveRebound+opDefensiveRebound)*(shotNum-hitNum))
+					+1.07*turnover;
 		}
 		
 	}
