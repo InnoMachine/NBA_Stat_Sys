@@ -144,7 +144,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	public ArrayList<PlayerPO> getAllPlayers() {
 		
 		ArrayList<PlayerPO> playerList = new ArrayList<PlayerPO>();
-		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath from nba.players";
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seasonsp from nba.players";
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();
@@ -163,7 +163,7 @@ public class PlayerDaoImpl implements PlayerDao {
 				player.setActionImgPath(rs.getString("actionimgpath"));
 				player.setPortraitImgPath(rs.getString("portraitimgpath"));
 				
-				if(rs.getString("players") != null){
+				if(rs.getString("seasonsp") != null){
 					String seasonSpListText = rs.getString("seasonsp");
 					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 					String[] splited = seasonSpListText.split("$");

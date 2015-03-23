@@ -38,12 +38,11 @@ public class DataFurtherDistributor {
 		
 		ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 		ArrayList<GamePO> gameList = gd.getAllGames();
-		ArrayList<String> allPlayerFileList = new ArrayList<String>();
-		allPlayerFileList = DataFileReader.getFileNameList("CSEdata/players/info");
+		
+		ArrayList<PlayerPO> allPlayerList = pd.getAllPlayers();
 		ArrayList<String> allPlayerNameList = new ArrayList<String>();
-		for(String file: allPlayerFileList){
-			String[] splitedFileName = file.split("/");
-			allPlayerNameList.add(splitedFileName[3]);
+		for(PlayerPO player: allPlayerList){
+			allPlayerNameList.add(player.getName());
 		}
 		
 		for(String playerName: allPlayerNameList){
