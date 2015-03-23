@@ -18,12 +18,17 @@ public class Test {
 		PlayerDao pd = new PlayerDaoImpl();
 		PlayerPO po = pd.getPlayerByName("Blake Griffin");
 		ArrayList<SinglePerformance> list = po.getSeasonSinglePerformance();
-		int i=0;
+		int i=0,k=0;
 		for(SinglePerformance temp:list)
 		{
 			i+=temp.getScore();
+			k++;
 		}
 		System.out.println(i);
+		System.out.println(k);
+		PlayerVo vo =player_bs.getPlayerByName("Blake Griffin");
+		System.out.println(vo.getScore());
+		System.out.println(vo.getGameNum());
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
 		{
@@ -37,11 +42,8 @@ public class Test {
 			System.out.println(temp.getAbbreviation());
 		}*/
 		
-		/*PlayerVo vo =player_bs.getPlayerByName("Blake Griffin");
-		System.out.println(vo.getScore());
-		System.out.println(vo.getReboundOverall());
-		System.out.println(vo.getAttackingNum());
-		System.out.println(vo.getDefensiveNum());*/
+		
+		
 		
 		
 	}
