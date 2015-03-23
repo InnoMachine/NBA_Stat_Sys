@@ -28,7 +28,7 @@ public class InitDB {
 				+ " homefield varchar(40) NOT NULL,"
 				+ " birthyear varchar(10) NOT NULL,"
 				+ " imgPath varchar(40) NOT NULL,"
-				+ " players varchar(500) DEFAULT 'tbc',"
+				+ " players varchar(500),"
 				+ " seasontp text)";//sudo
 		
 		String sql2 = "create table if not exists nba.players("

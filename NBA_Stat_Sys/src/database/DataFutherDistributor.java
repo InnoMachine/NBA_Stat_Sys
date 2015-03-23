@@ -11,14 +11,35 @@ import po.GamePO;
 import po.SinglePerformance;
 import po.TeamAbbr;
 import po.TeamPO;
+import po.TeamPerformance;
 
 public class DataFutherDistributor {
 
 	public static void main(String[] args) {
+
+		GameDao gd = new GameDaoImpl();
 		TeamDao td = new TeamDaoImpl();
 		
-		System.out.println(td.getTeamByAbbr("PHX"));
-		DataFutherDistributor.importPlayersToTeams();
+		ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
+		ArrayList<GamePO> gameList = gd.getAllGames();
+		
+		for(TeamAbbr teamAbbr:TeamAbbr.values()){
+			for(GamePO gamePo: gameList){
+				if(gamePo.getHomeTeam().equalsIgnoreCase(teamAbbr.toString())){
+					tpList.add(gamePo.getHomeTP());
+				}
+				if(gamePo.getGuestTeam().equalsIgnoreCase(teamAbbr.toString())){
+					tpList.add(gamePo.getGuestTP());
+				}
+			}
+			TeamPO teamPo = td.getTeamByAbbr(teamAbbr.toString());
+			teamPo.setSeansonTeamPerformance(tpList);;
+			td.update(teamPo);
+			tpList.clear();
+		}
+		
+		
+		
 	}
 	
 	public static void importPlayersToTeams(){

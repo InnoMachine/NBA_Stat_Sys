@@ -17,6 +17,19 @@ import jdbc_tools.DBUtil;
 import po.Conference;
 import po.Division;
 import po.TeamPO;
+import po.TeamPerformance;
+
+/*
+ * String getString(int columnIndex)
+                 throws SQLException
+Retrieves the value of the designated column in the current row of this ResultSet object as a String in the Java programming language.
+@Parameters:
+columnIndex - the first column is 1, the second is 2, ...
+#Returns:
+the column value; if the value is SQL NULL, the value returned is null
+@Throws:
+SQLException - if the columnIndex is not valid; if a database access error occurs or this method is called on a closed result set
+ */
 
 public class TeamDaoImpl implements TeamDao {
 
@@ -35,8 +48,8 @@ public class TeamDaoImpl implements TeamDao {
 			pstmt.setString(6, team.getHomeField());
 			pstmt.setString(7, team.getBirthYear());
 			pstmt.setString(8, team.getImgPath());
-			//pstmt.setString(9, team.getPlayers().toString());//sudo
-			//pstmt.setString(10, team.getSeansonTeamPerformance().toString());//sudo
+			//pstmt.setString(9, team.getPlayers().toString());//no need to do this
+			//pstmt.setString(10, team.getSeansonTeamPerformance().toString());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,7 +62,7 @@ public class TeamDaoImpl implements TeamDao {
 	@Override
 	public void update(TeamPO team) {
 		
-		String sql = "update nba.teams set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=?,players=? where abbreviation=?";
+		String sql = "update nba.teams set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=?,players=?,seasontp=? where abbreviation=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -61,13 +74,20 @@ public class TeamDaoImpl implements TeamDao {
 			pstmt.setString(6, team.getHomeField());
 			pstmt.setString(7, team.getBirthYear());
 			pstmt.setString(8, team.getImgPath());
+			
 			String playNameList = new String();
-			for(String playerName:team.getPlayersNameList()){
+			for(String playerName: team.getPlayersNameList()){
 				playNameList += (playerName+";");
 			}
 			pstmt.setString(9, playNameList);
-			//pstmt.setString(10, team.getSeansonTeamPerformance().toString());
-			pstmt.setString(10, team.getAbbreviation());
+			
+			String seasontpList = new String();
+			for(TeamPerformance tp: team.getSeansonTeamPerformance()){
+				seasontpList += (tp.toString()+"$");//set $ as splitor
+			}
+			pstmt.setString(10, seasontpList);
+			
+			pstmt.setString(11, team.getAbbreviation());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,7 +118,7 @@ public class TeamDaoImpl implements TeamDao {
 	public TeamPO getTeamByAbbr(String abbr) {
 		
 		TeamPO team = new TeamPO();
-		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players from nba.teams where abbreviation=?";
+		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players,seasontp from nba.teams where abbreviation=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -115,17 +135,31 @@ public class TeamDaoImpl implements TeamDao {
 				team.setHomeField(rs.getString("homefield"));
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
-				String playerListText = rs.getString("players");
-				if(!playerListText.equalsIgnoreCase("tbc")){
-					System.out.println("haha");
-					String[] spilited = playerListText.split(";");
+				
+				//判断一个引用类型数据是否null。 用==来判断。
+				
+				if(rs.getString("players") != null){
+					String playerListText = rs.getString("players");
+					String[] splited = playerListText.split(";");
 					ArrayList<String> playerNameList = new ArrayList<String>();
-					for(String playerName:spilited){
+					for(String playerName:splited){
 						playerNameList.add(playerName);
 					}
 					team.setPlayersNameList(playerNameList);
 				}
-				//team.setSeasonTeamPerformance(rs.getString("seasontp"))//sudo
+				
+				
+				if(rs.getString("seasontp") != null){
+					String seasontpText = rs.getString("seasontp");
+					String[] splited = seasontpText.split("$");
+					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
+					for(String tp:splited){
+						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), tp));
+					}
+					team.setSeansonTeamPerformance(tpList);
+				}
+				
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,7 +174,7 @@ public class TeamDaoImpl implements TeamDao {
 	public ArrayList<TeamPO> getAllTeams() {
 		
 		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>();
-		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath from nba.teams";
+		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players,seasontp from nba.teams";
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();
@@ -157,17 +191,26 @@ public class TeamDaoImpl implements TeamDao {
 				team.setHomeField(rs.getString("homefield"));
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
-				String playerListText = rs.getString("players");
-				if(!playerListText.equalsIgnoreCase("tbc")){
-					System.out.println("haha");
-					String[] spilited = playerListText.split(";");
+				
+				if(rs.getString("players") != null){
+					String playerListText = rs.getString("players");
+					String[] splited = playerListText.split(";");
 					ArrayList<String> playerNameList = new ArrayList<String>();
-					for(String playerName:spilited){
+					for(String playerName:splited){
 						playerNameList.add(playerName);
 					}
 					team.setPlayersNameList(playerNameList);
 				}
-				//sudo
+				
+				if(rs.getString("seasontp") != null){
+					String seasontpText = rs.getString("seasontp");
+					String[] splited = seasontpText.split("$");
+					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
+					for(String tp:splited){
+						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), tp));
+					}
+					team.setSeansonTeamPerformance(tpList);
+				}
 				
 				teamList.add(team);
 			}
