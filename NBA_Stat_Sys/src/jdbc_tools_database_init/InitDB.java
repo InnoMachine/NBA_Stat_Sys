@@ -77,7 +77,9 @@ public class InitDB {
 			e.printStackTrace();
 		}
 		DBUtil.close(conn);	
-		
+		System.out.println("------------------------------");
+		System.out.println("Database tables initialized!");
+		System.out.println("------------------------------");
 	}
 
 }

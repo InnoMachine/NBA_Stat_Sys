@@ -32,11 +32,12 @@ public class DataFileReader {
 
 	private static Scanner scanner;
 
-	public static void importBasicData(String[] args) {
+	public static void importBasicData() {
 		
 		DataFileReader.importGames();
 		DataFileReader.importPlayers();
 		DataFileReader.importTeams();
+		System.out.println("------------------------------");
 		
 	}
 	

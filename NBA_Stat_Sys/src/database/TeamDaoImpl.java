@@ -82,8 +82,10 @@ public class TeamDaoImpl implements TeamDao {
 			pstmt.setString(9, playNameList);
 			
 			String seasontpList = new String();
-			for(TeamPerformance tp: team.getSeansonTeamPerformance()){
-				seasontpList += (tp.toString()+"$");//set $ as splitor
+			if(team.getSeansonTeamPerformance() != null){
+				for(TeamPerformance tp: team.getSeansonTeamPerformance()){
+					seasontpList += (tp.toString()+"$");//set $ as splitor
+				}
 			}
 			pstmt.setString(10, seasontpList);
 			

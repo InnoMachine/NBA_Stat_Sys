@@ -20,17 +20,18 @@ import po.TeamAbbr;
 import po.TeamPO;
 import po.TeamPerformance;
 
-public class DataFutherDistributor {
+public class DataFurtherDistributor {
 
-	public static void allDistribute(String[] args) {
+	public static void allDistribute() {
 		
-		DataFutherDistributor.importPlayersToTeams();
-		DataFutherDistributor.importSeasontpToTeams();
-		DataFutherDistributor.importTpToPlayers();
+		DataFurtherDistributor.importPlayersToTeams();
+		DataFurtherDistributor.importSeasontpToTeams();
+		DataFurtherDistributor.importSpToPlayers();
+		System.out.println("------------------------------");
 		
 	}
 	
-	public static void importTpToPlayers(){
+	public static void importSpToPlayers(){
 		
 		GameDao gd = new GameDaoImpl();
 		PlayerDao pd = new PlayerDaoImpl();
@@ -59,6 +60,8 @@ public class DataFutherDistributor {
 			spList.clear();
 		}
 		
+		System.out.println("Season single performances distributed to players!");
+		
 	}
 	
 	public static void importSeasontpToTeams(){
@@ -84,6 +87,8 @@ public class DataFutherDistributor {
 			tpList.clear();
 		}
 		
+		System.out.println("Season team performances distributed to teams!");
+		
 	}
 	
 	public static void importPlayersToTeams(){
@@ -107,6 +112,8 @@ public class DataFutherDistributor {
 			td.update(teamPo);
 			playersNameList.clear();
 		}
+		
+		System.out.println("Players lists distributed to teams!");
 		
 	}
 
