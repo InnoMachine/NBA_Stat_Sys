@@ -98,7 +98,7 @@ public class TeamDaoImpl implements TeamDao {
 	public TeamPO getTeamByAbbr(String abbr) {
 		
 		TeamPO team = new TeamPO();
-		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath from nba.teams where abbreviation=?";
+		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players from nba.teams where abbreviation=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -115,7 +115,16 @@ public class TeamDaoImpl implements TeamDao {
 				team.setHomeField(rs.getString("homefield"));
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
-				//team.setPlayers(rs.getString("players"));//sudo
+				String playerListText = rs.getString("players");
+				if(!playerListText.equalsIgnoreCase("tbc")){
+					System.out.println("haha");
+					String[] spilited = playerListText.split(";");
+					ArrayList<String> playerNameList = new ArrayList<String>();
+					for(String playerName:spilited){
+						playerNameList.add(playerName);
+					}
+					team.setPlayersNameList(playerNameList);
+				}
 				//team.setSeasonTeamPerformance(rs.getString("seasontp"))//sudo
 			}
 		} catch (SQLException e) {
@@ -148,7 +157,16 @@ public class TeamDaoImpl implements TeamDao {
 				team.setHomeField(rs.getString("homefield"));
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
-				//sudo
+				String playerListText = rs.getString("players");
+				if(!playerListText.equalsIgnoreCase("tbc")){
+					System.out.println("haha");
+					String[] spilited = playerListText.split(";");
+					ArrayList<String> playerNameList = new ArrayList<String>();
+					for(String playerName:spilited){
+						playerNameList.add(playerName);
+					}
+					team.setPlayersNameList(playerNameList);
+				}
 				//sudo
 				
 				teamList.add(team);

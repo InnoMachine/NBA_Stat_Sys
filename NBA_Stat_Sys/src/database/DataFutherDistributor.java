@@ -15,6 +15,13 @@ import po.TeamPO;
 public class DataFutherDistributor {
 
 	public static void main(String[] args) {
+		TeamDao td = new TeamDaoImpl();
+		
+		System.out.println(td.getTeamByAbbr("PHX"));
+		DataFutherDistributor.importPlayersToTeams();
+	}
+	
+	public static void importPlayersToTeams(){
 		
 		GameDao gd = new GameDaoImpl();
 		TeamDao td = new TeamDaoImpl();
