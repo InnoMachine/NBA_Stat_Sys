@@ -47,13 +47,13 @@ public class DataFurtherDistributor {
 		
 		for(String playerName: allPlayerNameList){
 			for(GamePO gamePo: gameList){
-				for(SinglePerformance sp: gamePo.getGuestTP().getSpList()){
+				for(SinglePerformance sp: gamePo.getGuestTP().getSpList()){//guest performance
 					if(sp.getName().equalsIgnoreCase(playerName)){
 						spList.add(SinglePerformance.makeSP(sp.toString()));
 					}
 				}
 				
-				for(SinglePerformance sp: gamePo.getHomeTP().getSpList()){
+				for(SinglePerformance sp: gamePo.getHomeTP().getSpList()){//home performance
 					if(sp.getName().equalsIgnoreCase(playerName)){
 						spList.add(SinglePerformance.makeSP(sp.toString()));
 					}
