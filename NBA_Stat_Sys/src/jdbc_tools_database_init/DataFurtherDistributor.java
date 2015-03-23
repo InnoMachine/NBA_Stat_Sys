@@ -52,6 +52,11 @@ public class DataFurtherDistributor {
 						spList.add(SinglePerformance.makeSP(sp.toString()));
 					}
 				}
+				for(SinglePerformance sp: gamePo.getHomeTP().getSpList()){
+					if(sp.getName().equalsIgnoreCase(playerName)){
+						spList.add(SinglePerformance.makeSP(sp.toString()));
+					}
+				}
 			}
 			PlayerPO playerPo = pd.getPlayerByName(playerName);
 			playerPo.setSeasonSinglePerformance(spList);
