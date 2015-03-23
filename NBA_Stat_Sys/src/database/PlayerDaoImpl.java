@@ -123,10 +123,9 @@ public class PlayerDaoImpl implements PlayerDao {
 				if(rs.getString("seasonsp") != null){
 					String seasonSpListText = rs.getString("seasonsp");
 					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
-					String[] splited = seasonSpListText.split("$");
-					for(String sp: splited){
-						System.out.println("=====");
-						spList.add(SinglePerformance.makeSP(sp));//
+					String[] splited = seasonSpListText.split("\\$");
+					for(int i = 0; i < splited.length; i ++){
+						spList.add(SinglePerformance.makeSP(splited[i]));
 					}
 					player.setSeasonSinglePerformance(spList);
 				}
@@ -166,9 +165,9 @@ public class PlayerDaoImpl implements PlayerDao {
 				if(rs.getString("seasonsp") != null){
 					String seasonSpListText = rs.getString("seasonsp");
 					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
-					String[] splited = seasonSpListText.split("$");
-					for(String sp: splited){
-						spList.add(SinglePerformance.makeSP(sp));
+					String[] splited = seasonSpListText.split("\\$");
+					for(int i = 0; i < splited.length; i ++){
+						spList.add(SinglePerformance.makeSP(splited[i]));
 					}
 					player.setSeasonSinglePerformance(spList);
 				}				

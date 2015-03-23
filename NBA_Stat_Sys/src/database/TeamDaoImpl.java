@@ -153,7 +153,7 @@ public class TeamDaoImpl implements TeamDao {
 				
 				if(rs.getString("seasontp") != null){
 					String seasontpText = rs.getString("seasontp");
-					String[] splited = seasontpText.split("$");
+					String[] splited = seasontpText.split("\\$");
 					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
 					for(String tp:splited){
 						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), tp));
@@ -206,7 +206,7 @@ public class TeamDaoImpl implements TeamDao {
 				
 				if(rs.getString("seasontp") != null){
 					String seasontpText = rs.getString("seasontp");
-					String[] splited = seasontpText.split("$");
+					String[] splited = seasontpText.split("\\$");
 					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
 					for(String tp:splited){
 						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), tp));
