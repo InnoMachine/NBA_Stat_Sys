@@ -154,8 +154,11 @@ public class SinglePerformance {
 		String[] splited = spText.split(";");
 		String name = splited[0];
 		String position;
+		if(splited.length == 1){
+			return null;
+		}
 		if(splited[1].equals("")){
-			position = null;
+			position = null;//sudo
 		}else{
 			position = splited[1];
 		}
@@ -163,14 +166,14 @@ public class SinglePerformance {
 		String timeText = splited[2];//sudo
 		int timeByText;
 		if(timeText.contains(":")){
-			if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None"))){
+			if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None")||timeText == null)){
 				String[] splitedTime = timeText.split(":");
 				timeByText = Integer.parseInt(splitedTime[0])*60 + Integer.parseInt(splitedTime[1]);
 			}else{
 				timeByText = -1;//dirty data
 			}
 		}else{
-			if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None"))){
+			if(!(timeText.equals("null")||timeText.equalsIgnoreCase("None")||timeText == null)){
 				timeByText = Integer.parseInt(timeText);
 			}else{
 				timeByText = -1;//dirty data

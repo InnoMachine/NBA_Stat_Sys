@@ -11,29 +11,29 @@ import java.util.Scanner;
 public class TeamPerformance {
 	
 	private String teamNameAbbr;
-	private ArrayList<SinglePerformance> tpList = new ArrayList<SinglePerformance>();
+	private ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 	
-	public ArrayList<SinglePerformance> getTpList() {
-		return tpList;
+	public ArrayList<SinglePerformance> getSpList() {
+		return spList;
 	}
 
-	public void setTpList(ArrayList<SinglePerformance> tpList) {
-		this.tpList = tpList;
+	public void setSpList(ArrayList<SinglePerformance> spList) {
+		this.spList = spList;
 	}
 
 	public void addSinglePerformance(SinglePerformance sp) {
-		tpList.add(sp);
+		spList.add(sp);
 	}
 	
 	public String toString() {
 		
 		String result = "";
-		if(!tpList.isEmpty()){
-			result += (tpList.get(0).toString());
+		if(!spList.isEmpty()){
+			result += (spList.get(0).toString());
 		}
-		for(int i = 1; i < tpList.size(); i ++){
+		for(int i = 1; i < spList.size(); i ++){
 			result += "\n";
-			result += tpList.get(i).toString();
+			result += spList.get(i).toString();
 		}
 		return result;
 		

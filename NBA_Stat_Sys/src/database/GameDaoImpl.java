@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import jdbc_tools.DBUtil;
+import jdbc_tools_database_init.DBUtil;
 import po.GamePO;
 import po.Scoreboard;
 import po.TeamPerformance;

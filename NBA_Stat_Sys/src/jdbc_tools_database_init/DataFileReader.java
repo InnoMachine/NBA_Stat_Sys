@@ -3,7 +3,7 @@
  * 2015年3月8日 上午10:53:10
  * TODO
  */
-package database;
+package jdbc_tools_database_init;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
+import database.GameDao;
+import database.GameDaoImpl;
+import database.PlayerDao;
+import database.PlayerDaoImpl;
+import database.TeamDao;
+import database.TeamDaoImpl;
 import po.Conference;
 import po.Division;
 import po.GamePO;
@@ -24,60 +30,56 @@ import po.TeamPerformance;
 
 public class DataFileReader {
 
-	private Scanner scanner;
+	private static Scanner scanner;
 
-	public static void main(String[] args) {
+	public static void importBasicData(String[] args) {
 		
-		InitDB.init();
-		DataFileReader dfr = new DataFileReader();
-		dfr.importGames();
-		dfr.importPlayers();
-		dfr.importTeams();
+		DataFileReader.importGames();
+		DataFileReader.importPlayers();
+		DataFileReader.importTeams();
 		
 	}
 	
-	public void importGames(){
+	public static void importGames(){
 		
-		DataFileReader dfr = new DataFileReader();
 		String gameFileName;
 		String originalString;
 		ArrayList<String> gameDataList;
 		GamePO game;
 		GameDao gameController = new GameDaoImpl();
 		
-		ArrayList<String> gameFileNameList =  dfr.getFileNameList("CSEdata/matches");
+		ArrayList<String> gameFileNameList =  DataFileReader.getFileNameList("CSEdata/matches");
 		for(int i = 0; i < gameFileNameList.size(); i ++){
 			gameFileName = gameFileNameList.get(i);
-			originalString = dfr.getOriginalFileString(gameFileName);
-			gameDataList = dfr.gameDataSplitor(originalString);
-			game = dfr.makeGame(gameDataList);
+			originalString = DataFileReader.getOriginalFileString(gameFileName);
+			gameDataList = DataFileReader.gameDataSplitor(originalString);
+			game = DataFileReader.makeGame(gameDataList);
 			gameController.add(game);
 		}
 		System.out.println("Games data imported!");
 		
 	}
 	
-	public void importPlayers(){
+	public static void importPlayers(){
 		
-		DataFileReader dfr = new DataFileReader();
-		ArrayList<String> playerInfoFileNameList =  dfr.getFileNameList("CSEdata/players/info");
+		ArrayList<String> playerInfoFileNameList =  DataFileReader.getFileNameList("CSEdata/players/info");
 		for(int i = 0; i < playerInfoFileNameList.size(); i ++){
 			
 			String playerInfoFileName = playerInfoFileNameList.get(i);
-			String originalString = dfr.getOriginalFileString(playerInfoFileName);
-			String splitedContent = dfr.splitKeyword(originalString);
-			ArrayList<String> playerDataList = dfr.playerDataSplitor(splitedContent);
+			String originalString = DataFileReader.getOriginalFileString(playerInfoFileName);
+			String splitedContent = DataFileReader.splitKeyword(originalString);
+			ArrayList<String> playerDataList = DataFileReader.playerDataSplitor(splitedContent);
 			PlayerDao playerController = new PlayerDaoImpl();
-			playerController.add(dfr.makePlayer(playerDataList));
+			playerController.add(DataFileReader.makePlayer(playerDataList));
 			
 		}
 		System.out.println("Players data imported!");
 		
 	}
 	
-	public void importTeams(){
+	public static void importTeams(){
 		
-		ArrayList<TeamPO> teamList = new DataFileReader().makeTeamList(new DataFileReader().teamDataSplitor(new DataFileReader().splitKeyword(new DataFileReader().getOriginalFileString("CSEdata/teams/teams"))));
+		ArrayList<TeamPO> teamList = DataFileReader.makeTeamList(DataFileReader.teamDataSplitor(DataFileReader.splitKeyword(DataFileReader.getOriginalFileString("CSEdata/teams/teams"))));
 		TeamDao teamController = new TeamDaoImpl();
 		for(int k = 0; k < teamList.size(); k ++){
 			teamController.add(teamList.get(k));
@@ -86,7 +88,7 @@ public class DataFileReader {
 		
 	}
 
-	public String getOriginalFileString(String path){
+	public static String getOriginalFileString(String path){
 		
 	        StringBuffer fileContent = new StringBuffer();  
 	        BufferedReader br = null;  
@@ -115,7 +117,7 @@ public class DataFileReader {
 	        
 	}
 	
-	public String splitKeyword(String originalString){
+	public static String splitKeyword(String originalString){
 		
 		originalString = originalString.replace("╔", "");//teams
 		originalString = originalString.replace("╤", "");
@@ -154,7 +156,7 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<ArrayList<String>> teamDataSplitor(String context){
+	public static ArrayList<ArrayList<String>> teamDataSplitor(String context){
 		
 		ArrayList<ArrayList<String>> splitedFullData = new ArrayList<ArrayList<String>>();
 		ArrayList<String> splitedSingleData = new ArrayList<String>();
@@ -173,7 +175,7 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<String> playerDataSplitor(String context){
+	public static ArrayList<String> playerDataSplitor(String context){
 		
 		ArrayList<String> splitedSingleData = new ArrayList<String>();
 		Scanner scannerFull = new Scanner(context);
@@ -196,7 +198,7 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<String> gameDataSplitor(String context){
+	public static ArrayList<String> gameDataSplitor(String context){
 		
 		String guesttp = "";
 		String hometp = "";
@@ -259,7 +261,7 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<TeamPO> makeTeamList(ArrayList<ArrayList<String>> attriList){
+	public static ArrayList<TeamPO> makeTeamList(ArrayList<ArrayList<String>> attriList){
 		
 		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>();
 		TeamPO team;
@@ -281,7 +283,7 @@ public class DataFileReader {
 		
 	}
 	
-	public PlayerPO makePlayer(ArrayList<String> attriList){
+	public static PlayerPO makePlayer(ArrayList<String> attriList){
 		
 		PlayerPO player;
 		String exp;
@@ -306,7 +308,7 @@ public class DataFileReader {
 		
 	}
 	
-	public GamePO makeGame(ArrayList<String> attriList){
+	public static GamePO makeGame(ArrayList<String> attriList){
 		
 		GamePO game = new GamePO();
 		game.setGameLabel(attriList.get(0));
@@ -334,7 +336,7 @@ public class DataFileReader {
 		
 	}
 	
-	public ArrayList<String> getFileNameList(String path){
+	public static ArrayList<String> getFileNameList(String path){
 	
 		File file = new File(path);
 		File[] fileList = file.listFiles();

@@ -3,7 +3,7 @@
  * 2015年3月7日 下午5:22:11
  * TODO
  */
-package jdbc_tools;
+package jdbc_tools_database_init;
 
 import java.io.FileReader;
 import java.io.Reader;

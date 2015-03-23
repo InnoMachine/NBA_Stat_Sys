@@ -11,8 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import jdbc_tools.DBUtil;
+
+import jdbc_tools_database_init.DBUtil;
 import po.PlayerPO;
+import po.SinglePerformance;
 
 public class PlayerDaoImpl implements PlayerDao {
 
@@ -34,7 +36,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			pstmt.setString(9, player.getSchool());
 			pstmt.setString(10, player.getActionImgPath());
 			pstmt.setString(11, player.getPortraitImgPath());
-//			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
+//			pstmt.setString(12, player.getSeasonSinglePerformance().toString());//no need
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -46,7 +48,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	@Override
 	public void update(PlayerPO player) {
 		
-		String sql = "update nba.players set name=?,number=?,position=?,height=?,weight=?,birth=?,age=?,exp=?,school=?,actionimgpath=?,portraitimgpath=? where name=?";
+		String sql = "update nba.players set name=?,number=?,position=?,height=?,weight=?,birth=?,age=?,exp=?,school=?,actionimgpath=?,portraitimgpath=?,seasonsp=? where name=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -61,7 +63,12 @@ public class PlayerDaoImpl implements PlayerDao {
 			pstmt.setString(9, player.getSchool());
 			pstmt.setString(10, player.getActionImgPath());
 			pstmt.setString(11, player.getPortraitImgPath());
-//			pstmt.setString(12, player.getSeasonSinglePerformance().toString());
+			
+			String singleSpListText = new String();
+			for(SinglePerformance sp: player.getSeasonSinglePerformance()){
+				singleSpListText += (sp.toString()+"$");
+			}
+			pstmt.setString(12, singleSpListText);
 			
 			pstmt.setString(13, player.getName());
 			pstmt.executeUpdate();
@@ -93,7 +100,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	public PlayerPO getPlayerByName(String name) {
 
 		PlayerPO player = new PlayerPO();
-		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath from nba.players where name=?";
+		String sql = "select name,number,position,height,weight,birth,age,exp,school,actionimgpath,portraitimgpath,seasonsp from nba.players where name=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -112,7 +119,17 @@ public class PlayerDaoImpl implements PlayerDao {
 				player.setSchool(rs.getString("school"));
 				player.setActionImgPath(rs.getString("actionimgpath"));
 				player.setPortraitImgPath(rs.getString("portraitimgpath"));
-				//player.getSeasonSinglePerformance(rs.getString("seasonsp"));//sudo
+				
+				if(rs.getString("seasonsp") != null){
+					String seasonSpListText = rs.getString("seasonsp");
+					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
+					String[] splited = seasonSpListText.split("$");
+					for(String sp: splited){
+						System.out.println("=====");
+						spList.add(SinglePerformance.makeSP(sp));//
+					}
+					player.setSeasonSinglePerformance(spList);
+				}
 				
 			}
 		} catch (SQLException e) {
@@ -145,7 +162,17 @@ public class PlayerDaoImpl implements PlayerDao {
 				player.setSchool(rs.getString("school"));
 				player.setActionImgPath(rs.getString("actionimgpath"));
 				player.setPortraitImgPath(rs.getString("portraitimgpath"));
-				//player.getSeasonSinglePerformance(rs.getString("seasonsp"));//sudo				
+				
+				if(rs.getString("players") != null){
+					String seasonSpListText = rs.getString("seasonsp");
+					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
+					String[] splited = seasonSpListText.split("$");
+					for(String sp: splited){
+						spList.add(SinglePerformance.makeSP(sp));
+					}
+					player.setSeasonSinglePerformance(spList);
+				}				
+				
 				playerList.add(player);
 			}
 		} catch (SQLException e) {

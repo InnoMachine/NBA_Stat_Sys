@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import jdbc_tools.DBUtil;
+import jdbc_tools_database_init.DBUtil;
 import po.Conference;
 import po.Division;
 import po.TeamPO;

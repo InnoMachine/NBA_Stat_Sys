@@ -3,12 +3,11 @@
  * 2015年3月8日 上午0:30:55
  * TODO
  */
-package database;
+package jdbc_tools_database_init;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import jdbc_tools.DBUtil;
 
 public class InitDB {
 
