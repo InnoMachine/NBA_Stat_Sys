@@ -260,7 +260,7 @@ public class Data_Handler {
 		
 	}
 	private TeamPerformanceInSingleGame setPerformance(TeamPerformance tp) {
-		ArrayList<SinglePerformance> listsp = tp.getTpList();
+		ArrayList<SinglePerformance> listsp = tp.getSpList();
 		String abbr = tp.getTeamNameAbbr();
 		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
 		for(SinglePerformance temp:listsp)
