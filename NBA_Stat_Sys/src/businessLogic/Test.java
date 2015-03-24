@@ -1,6 +1,7 @@
 package businessLogic;
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import po.PlayerPO;
@@ -29,6 +30,8 @@ public class Test {
 		PlayerVo vo =player_bs.getPlayerByName("Blake Griffin");
 		System.out.println(vo.getScore());
 		System.out.println(vo.getGameNum());
+		TeamVo teamvo=team_bs.getTeamByAbbr("ATL");
+		System.out.println(teamvo.getHitRate());
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
 		{
