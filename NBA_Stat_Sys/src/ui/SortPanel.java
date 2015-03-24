@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-
+import java.util.Collections;
 
 import vo.PlayerVo;
 import vo.TeamVo;
@@ -50,6 +50,8 @@ public class SortPanel extends JPanel {
     String playerCriteria="";
     String teamCriteria="";
     
+    String UpOrDown="Down";
+    
     static int X;
     static int Y;
     
@@ -73,14 +75,15 @@ public class SortPanel extends JPanel {
 
 		JButton upSortbtn = new JButton("U");
 		upSortbtn.setBounds(455, 33, 22, 23);
+		upSortbtn.addActionListener(e->(UpOrDown="Up"));
 		this.add(upSortbtn);
 
 		JButton downSortbtn = new JButton("D");
 		downSortbtn.setBounds(478, 33, 22, 23);
+		downSortbtn.addActionListener(e->(UpOrDown="Down"));
 		this.add(downSortbtn);
 
-		JButton btnSort = new JButton("排序");
-		
+		JButton btnSort = new JButton("排序");		
 		btnSort.setBounds(525, 33, 88, 23);
 		this.add(btnSort);
 
@@ -100,7 +103,7 @@ public class SortPanel extends JPanel {
 		if (category == "player") {
 
 			
-			btnSort.addActionListener(e ->sortPlayer());
+			btnSort.addActionListener(e ->sortPlayer(UpOrDown));
 			playerCriteriabtn = new JButton("");
 			playerCriteriabtn.setBounds(166, 33, 271, 23);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
@@ -111,7 +114,7 @@ public class SortPanel extends JPanel {
 		if (category == "team") {
 			
 			
-			btnSort.addActionListener(e ->sortTeam());
+			btnSort.addActionListener(e ->sortTeam(UpOrDown));
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn.setBounds(166, 33, 271, 23);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
@@ -148,10 +151,14 @@ public class SortPanel extends JPanel {
 		
 
 	}
-	public void sortPlayer() {
+	public void sortPlayer(String UpOrDown) {
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		playerVos = player_BS.sortPlayerBy(playerCriteria);
 
+		if(UpOrDown=="Up"){
+			Collections.reverse(playerVos);		
+		}
+		
 		for (int i = 0; i < playerVos.size(); i++) {
 			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 			switch (playerCriteria) {
@@ -303,11 +310,16 @@ public class SortPanel extends JPanel {
 		
 	}
 
-	public void sortTeam() {
+	public void sortTeam(String UpOrDown) {
 
 
 		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
 		teamVos = team_BS.sortTeamBy(teamCriteria);
+		
+		if(UpOrDown=="Up"){
+			Collections.reverse(teamVos);		
+		}
+		
 		for (int i = 0; i < teamVos.size(); i++) {
 			Vector<TeamCardPanel> a = new Vector<TeamCardPanel>();
 			switch (teamCriteria) {

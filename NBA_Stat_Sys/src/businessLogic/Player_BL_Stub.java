@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import po.Division;
 import vo.PlayerVo;
 
 public class Player_BL_Stub implements Player_BS{
@@ -21,8 +22,11 @@ public class Player_BL_Stub implements Player_BS{
 		PlayerVo b=new PlayerVo();
 		PlayerVo c=new PlayerVo();
 		a.setName("aaa");
+		a.setDivision(Division.ATLANTIC);
 		b.setAge(26);
+		b.setDivision(Division.CENTRAL);
 		c.setBirth("1988-07-08");
+		c.setDivision(Division.NORTHWEST);
 		playerVos.add(a);
 		playerVos.add(b);
 		playerVos.add(c);
@@ -35,9 +39,12 @@ public class Player_BL_Stub implements Player_BS{
 		PlayerVo b=new PlayerVo();
 		PlayerVo c=new PlayerVo();
 		a.setName("aaa");
+		a.setDivision(Division.ATLANTIC);
 		b.setName("bbb");
+		b.setDivision(Division.CENTRAL);
 		c.setName("ccc");
 		c.setBirth("1988-07-08");
+		c.setDivision(Division.NORTHWEST);
 		playerVos.add(a);
 		playerVos.add(b);
 		playerVos.add(c);
@@ -50,9 +57,12 @@ public class Player_BL_Stub implements Player_BS{
 		PlayerVo b=new PlayerVo();
 		PlayerVo c=new PlayerVo();
 		a.setName("a");
+		a.setDivision(Division.ATLANTIC);
 		b.setName("bb");
+		b.setDivision(Division.CENTRAL);
 		c.setName("ccc");
 		c.setBirth("1988-07-08");
+		c.setDivision(Division.NORTHWEST);
 		playerVos.add(a);
 		playerVos.add(b);
 		playerVos.add(c);
@@ -71,7 +81,9 @@ public class Player_BL_Stub implements Player_BS{
 		b.setName("bb");
 		c.setName("c");
 		b.setAge(26);
+		b.setDivision(Division.CENTRAL);
 		c.setBirth("1988-07-08");
+		c.setDivision(Division.NORTHWEST);
 		playerVos.add(a);
 		playerVos.add(b);
 		playerVos.add(c);
