@@ -34,8 +34,8 @@ public class SortPanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 
-	private Vector<Vector<PlayerCardPanel>> playerRowData=new Vector<Vector<PlayerCardPanel>>();
-	private Vector<Vector<TeamCardPanel>> teamRowData=new Vector<Vector<TeamCardPanel>>();
+	private Vector<Vector<PlayerCardPanel>> playerRowData;
+	private Vector<Vector<TeamCardPanel>> teamRowData;
 	private DefaultTableModel dtm;
 	private Vector<String> column;
 	
@@ -109,7 +109,7 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
 			add(playerCriteriabtn);
 			
-			
+		
 		}
 		if (category == "team") {
 			
@@ -120,13 +120,17 @@ public class SortPanel extends JPanel {
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			add(teamCriteriabtn);
 			
-			
+	
 		}
 
 		mainFrame.getContentPane().add(this);
 		
 	}
 	public void makeTable(String category){
+		if(table!=null){
+			table.setVisible(false);;
+		}
+		
 		table = new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
@@ -152,6 +156,8 @@ public class SortPanel extends JPanel {
 
 	}
 	public void sortPlayer(String UpOrDown) {
+		playerRowData=new Vector<Vector<PlayerCardPanel>>();
+		
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		playerVos = player_BS.sortPlayerBy(playerCriteria);
 
@@ -160,6 +166,7 @@ public class SortPanel extends JPanel {
 		}
 		
 		for (int i = 0; i < playerVos.size(); i++) {
+			
 			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 			switch (playerCriteria) {
 			case "gameNum":
@@ -308,11 +315,12 @@ public class SortPanel extends JPanel {
 		dtm.setDataVector(playerRowData, column);
 		makeTable("player");
 		
+		UpOrDown="Down";  //恢复默认降序
 	}
 
 	public void sortTeam(String UpOrDown) {
 
-
+		teamRowData=new Vector<Vector<TeamCardPanel>>();
 		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
 		teamVos = team_BS.sortTeamBy(teamCriteria);
 		
@@ -482,6 +490,7 @@ public class SortPanel extends JPanel {
 		dtm.setDataVector(teamRowData, column);
 		makeTable("team");
 
+		UpOrDown="Down";  //恢复默认降序
 	}
 
 	public void playerCriteriaShow() {
