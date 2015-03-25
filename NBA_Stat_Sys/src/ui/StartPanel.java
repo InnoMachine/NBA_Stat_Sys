@@ -1,9 +1,8 @@
 package ui;
 
-import java.awt.Font;
-import java.awt.Graphics;
+
 import java.awt.Image;
-import java.awt.Toolkit;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -100,11 +99,15 @@ public class StartPanel extends JPanel {
 		bgLabel.add(sortTeambtn);
 
 		JButton exitButton = new JButton();
-		exitButton.setBounds(85*X/100, 85*Y/100, 13*X/100, 11*Y/100);
-		ImageIcon exitground=new ImageIcon("C:/Users/ThinkPad/Desktop/nba/exitButton.png");
-		exitground=new ImageIcon(exitground.getImage().getScaledInstance(exitButton.getWidth(), exitButton.getHeight(), Image.SCALE_DEFAULT));
+		exitButton.setBounds(85*X/99,85*Y/100, 13*X/100, 11*Y/100);
+		ImageIcon exitground=new ImageIcon("C:/Users/ThinkPad/Desktop/nba/exit.png");
+		exitground=new ImageIcon(exitground.getImage().getScaledInstance(exitButton.getWidth(), exitButton.getHeight(), Image.SCALE_SMOOTH));
 		exitButton.setIcon(exitground);
+		exitButton.setOpaque(false);
+		exitButton.setContentAreaFilled(false);
+		exitButton.setBorderPainted(false);
 		exitButton.addActionListener(e -> mainFrame.dispose());
+
 		bgLabel.add(exitButton);
 	}
 
@@ -159,5 +162,6 @@ public class StartPanel extends JPanel {
 		sortTeamPanel = new SortPanel("team", mainFrame);
 
 	}
+
 
 }
