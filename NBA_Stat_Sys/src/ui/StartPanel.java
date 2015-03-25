@@ -26,8 +26,9 @@ public class StartPanel extends JPanel {
 	static JButton screeningPlayerbtn;
 	static JButton searchTeambtn;
 	static JButton sortTeambtn;
-
-	static Image bgImage;
+	
+	JLabel bgLabel;
+//	Image bgImage;
 	JFrame mainFrame;
 	static int X;
 	static int Y;
@@ -40,60 +41,63 @@ public class StartPanel extends JPanel {
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setOpaque(true);
-		bgImage = Toolkit.getDefaultToolkit().getImage(
-				"Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
+//		bgImage = Toolkit.getDefaultToolkit().getImage(
+//				"Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
+		ImageIcon bg=new ImageIcon(new ImageIcon("Image/mainImage.png").getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
+		bgLabel=new JLabel();
+		bgLabel.setIcon(bg);
+		bgLabel.setBounds(0, 0, X, Y);
+		this.add(bgLabel,new Integer(Integer.MIN_VALUE));
 		createButton();
-
-	}
-
-	protected void paintComponent(Graphics g) {
-		
-		
-		g.drawImage(bgImage, 0, 0, X, Y, this);
 		
 	}
+//	protected void paintComponent(Graphics g) {
+//		super.paintComponent(g);
+//		g.drawImage(bgImage, 0, 0, X, Y, this);		
+//	};
+	
 
 	public void createButton() {
 
 		JButton playerInfobtn = new JButton("球员信息");
 		playerInfobtn.setBounds(283, 175, 93, 23);
 		playerInfobtn.addActionListener(e -> playerOpe());
-		this.add(playerInfobtn);
+		bgLabel.add(playerInfobtn);
 
 		JButton teamInfobtn = new JButton("球队信息");
 		teamInfobtn.setBounds(283, 263, 93, 23);
 		teamInfobtn.addActionListener(e -> teamOpe());
-		this.add(teamInfobtn);
+		bgLabel.add(teamInfobtn);
 
 		searchPlayerbtn = new JButton("球员查看");
 		searchPlayerbtn.setBounds(380, 150, 93, 23);
 		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
 		searchPlayerbtn.setVisible(false);
-		this.add(searchPlayerbtn);
+		bgLabel.add(searchPlayerbtn);
 
 		sortPlayerbtn = new JButton("球员排序");
 		sortPlayerbtn.setBounds(380, 175, 93, 23);
 		sortPlayerbtn.addActionListener(e -> toSortPlayerPanel());
 		sortPlayerbtn.setVisible(false);
-		this.add(sortPlayerbtn);
+		bgLabel.add(sortPlayerbtn);
 
 		screeningPlayerbtn = new JButton("球员筛选");
 		screeningPlayerbtn.setBounds(380, 200, 93, 23);
 		screeningPlayerbtn.addActionListener(e -> toScreeningPlayerPanel());
 		screeningPlayerbtn.setVisible(false);
-		this.add(screeningPlayerbtn);
+		bgLabel.add(screeningPlayerbtn);
 
 		searchTeambtn = new JButton("球队查看");
 		searchTeambtn.setBounds(380, 250, 93, 23);
 		searchTeambtn.addActionListener(e -> toSearchTeamPanel());
 		searchTeambtn.setVisible(false);
-		this.add(searchTeambtn);
+		bgLabel.add(searchTeambtn);
 
 		sortTeambtn = new JButton("球队排序");
 		sortTeambtn.setBounds(380, 275, 93, 23);
 		sortTeambtn.addActionListener(e -> toSortTeamPanel());
 		sortTeambtn.setVisible(false);
-		this.add(sortTeambtn);
+		bgLabel.add(sortTeambtn);
 
 		JButton exitButton = new JButton();
 		exitButton.setBounds(85*X/100, 85*Y/100, 13*X/100, 11*Y/100);
@@ -101,7 +105,7 @@ public class StartPanel extends JPanel {
 		exitground=new ImageIcon(exitground.getImage().getScaledInstance(exitButton.getWidth(), exitButton.getHeight(), Image.SCALE_DEFAULT));
 		exitButton.setIcon(exitground);
 		exitButton.addActionListener(e -> mainFrame.dispose());
-		this.add(exitButton);
+		bgLabel.add(exitButton);
 	}
 
 	public void playerOpe() {

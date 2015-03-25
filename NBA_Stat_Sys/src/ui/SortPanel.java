@@ -127,10 +127,7 @@ public class SortPanel extends JPanel {
 		
 	}
 	public void makeTable(String category){
-		if(table!=null){
-			table.setVisible(false);;
-		}
-		
+
 		table = new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
@@ -313,8 +310,12 @@ public class SortPanel extends JPanel {
 			
 		}
 		dtm.setDataVector(playerRowData, column);
-		makeTable("player");
-		
+		if(table!=null){
+			table.repaint();
+			table.getColumnModel().getColumn(0).setCellRenderer(new PlayerCardRenderer());
+		}else{
+			makeTable("player");
+		}
 		UpOrDown="Down";  //恢复默认降序
 	}
 
@@ -488,8 +489,12 @@ public class SortPanel extends JPanel {
 			teamRowData.add(a);	
 		}
 		dtm.setDataVector(teamRowData, column);
-		makeTable("team");
-
+		if(table!=null){
+			table.repaint();
+			table.getColumnModel().getColumn(0).setCellRenderer(new TeamCardRenderer());
+		}else{
+			makeTable("team");
+		}
 		UpOrDown="Down";  //恢复默认降序
 	}
 

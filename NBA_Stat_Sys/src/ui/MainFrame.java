@@ -3,6 +3,7 @@ package ui;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -24,10 +25,10 @@ public class MainFrame extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Rectangle bounds = new Rectangle( screenSize );  
 		this.setBounds(bounds);
-		StartPanel startPanel=new StartPanel(this);
-        this.getContentPane().add(startPanel);
+		
         int X=this.getWidth();
         int Y=this.getHeight();
-
+        StartPanel startPanel=new StartPanel(this);
+        this.getContentPane().add(startPanel);
 	}
 }
