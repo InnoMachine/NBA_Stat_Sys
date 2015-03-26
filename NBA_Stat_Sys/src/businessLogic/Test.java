@@ -30,8 +30,11 @@ public class Test {
 		PlayerVo vo =player_bs.getPlayerByName("Blake Griffin");
 		System.out.println(vo.getScore());
 		System.out.println(vo.getGameNum());
-		TeamVo teamvo=team_bs.getTeamByAbbr("ATL");
-		System.out.println(teamvo.getHitRate());
+		ArrayList<TeamVo> teamvo=team_bs.getAllTeam();
+		for(TeamVo temp:teamvo)
+		{
+			System.out.println(temp.getRoundAttack());
+		}
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
 		{
