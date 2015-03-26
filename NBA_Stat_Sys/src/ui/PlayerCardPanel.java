@@ -59,15 +59,16 @@ public class PlayerCardPanel extends JPanel {
 		txtA.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel();
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setText(criteria);
-		lblNewLabel_1.setBounds(X*459/1366, Y*10/768, X*54/1366, Y*15/768);
+		lblNewLabel_1.setBounds(X*459/1366, Y*10/768, X*90/1366, Y*15/768);
 		add(lblNewLabel_1);
 
 		textField_8 = new JTextField();
 		textField_8.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_8.setText(criteriaValue);
 		textField_8.setEditable(false);
-		textField_8.setBounds(X*523/1366, Y*6/768, X*80/1366, Y*23/768);
+		textField_8.setBounds(X*550/1366, Y*6/768, X*80/1366, Y*23/768);
 		add(textField_8);
 		textField_8.setColumns(10);
 
