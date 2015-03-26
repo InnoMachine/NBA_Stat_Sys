@@ -10,6 +10,7 @@ import vo.TeamVo;
 public class Team_BL_Stub implements Team_BS {
 	public TeamVo getTeamByAbbr(String abbr) {
 		TeamVo a = new TeamVo();
+		a.setTeamName("ALT");
 		a.setBirthYear("1970");
 		a.setDivision(Division.ATLANTIC);
 		a.setConference(Conference.E);
@@ -60,20 +61,41 @@ public class Team_BL_Stub implements Team_BS {
 
 	@Override
 	public ArrayList<PlayerVo> getPlayers(String abbr) {
-		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		PlayerVo a = new PlayerVo();
-		PlayerVo b = new PlayerVo();
-		PlayerVo c = new PlayerVo();
-		a.setName("aaa");
-		a.setDivision(Division.ATLANTIC);
-		b.setAge(26);
-		b.setDivision(Division.CENTRAL);
-		c.setBirth("1988-07-08");
-		c.setDivision(Division.NORTHWEST);
-		playerVos.add(a);
-		playerVos.add(b);
-		playerVos.add(c);
+		ArrayList<PlayerVo> playerVos;
+		if (abbr == "ATL") {
+			playerVos = new ArrayList<PlayerVo>();
+			PlayerVo a = new PlayerVo();
+			PlayerVo b = new PlayerVo();
+			PlayerVo c = new PlayerVo();
+			a.setName("aaa");
+			a.setDivision(Division.ATLANTIC);
+			b.setName("bbb");
+			b.setAge(26);
+			b.setDivision(Division.CENTRAL);
+			c.setName("ccc");
+			c.setBirth("1988-07-08");
+			c.setDivision(Division.NORTHWEST);
+			playerVos.add(a);
+			playerVos.add(b);
+			playerVos.add(c);
+			System.out.println(playerVos.size());
+		} else {
+			playerVos = new ArrayList<PlayerVo>();
+			PlayerVo a = new PlayerVo();
+			PlayerVo b = new PlayerVo();
+			
+			a.setName("aa");
+			a.setDivision(Division.ATLANTIC);
+			b.setName("bb");
+			b.setAge(26);
+			b.setDivision(Division.CENTRAL);
+		
+			playerVos.add(a);
+			playerVos.add(b);
+			System.out.println(playerVos.size());
+		}
 		return playerVos;
+
 	}
 
 }
