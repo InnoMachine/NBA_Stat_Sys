@@ -38,7 +38,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
 	static int X;
 	static int Y;

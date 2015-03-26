@@ -3,7 +3,6 @@ package ui;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
-
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -17,24 +16,27 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
 
+
+
 import vo.PlayerVo;
 import vo.TeamVo;
+import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
+import businessLogic.Team_BL;
 import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
 import javax.swing.table.TableCellRenderer;
 
 public class SearchPanel extends JPanel {
 
 	JFrame mainFrame;
-	Player_BS player_BS = new Player_BL_Stub();
-	Team_BS team_BS = new Team_BL_Stub();
+	Player_BS player_BS = new Player_BL();
+	Team_BS team_BS = new Team_BL();
 	private JTable table;
 	private DefaultTableModel model;
 	private JScrollPane scrollPane;
@@ -393,100 +395,66 @@ public class SearchPanel extends JPanel {
 		// TeamButton
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testDATA = new Vector<TeamButton>();
-
 		TeamButton teamATL = new TeamButton("ATL");
-		teamATL.addActionListener(e -> (teamForShowPlayer = "ATL"));
 		testDATA.add(teamATL);
 		TeamButton teamBKN = new TeamButton("BKN");
-		teamBKN.addActionListener(e -> (teamForShowPlayer = "BKN"));
 		testDATA.add(teamBKN);
 		TeamButton teamBOS = new TeamButton("BOS");
-		teamBOS.addActionListener(e -> (teamForShowPlayer = "BOS"));
 		testDATA.add(teamBOS);
 		TeamButton teamCHA = new TeamButton("CHA");
-		teamCHA.addActionListener(e -> (teamForShowPlayer = "CHA"));
 		testDATA.add(teamCHA);
-		TeamButton teamCHI = new TeamButton("CHI");
-		teamCHI.addActionListener(e -> (teamForShowPlayer = "CHI"));
+		TeamButton teamCHI = new TeamButton("CHI");	
 		testDATA.add(teamCHI);
-		TeamButton teamCLE = new TeamButton("CLE");
-		teamCLE.addActionListener(e -> (teamForShowPlayer = "CLE"));
+		TeamButton teamCLE = new TeamButton("CLE");		
 		testDATA.add(teamCLE);
 		TeamButton teamDAL = new TeamButton("DAL");
-		teamDAL.addActionListener(e -> (teamForShowPlayer = "DAL"));
 		testDATA.add(teamDAL);
-		TeamButton teamDEN = new TeamButton("DEN");
-		teamDEN.addActionListener(e -> (teamForShowPlayer = "DEN"));
+		TeamButton teamDEN = new TeamButton("DEN");	
 		testDATA.add(teamDEN);
-		TeamButton teamDET = new TeamButton("DET");
-		teamDET.addActionListener(e -> (teamForShowPlayer = "DET"));
+		TeamButton teamDET = new TeamButton("DET");	
 		testDATA.add(teamDET);
-		TeamButton teamGSW = new TeamButton("GSW");
-		teamGSW.addActionListener(e -> (teamForShowPlayer = "GSW"));
+		TeamButton teamGSW = new TeamButton("GSW");	
 		testDATA.add(teamGSW);
-		TeamButton teamHOU = new TeamButton("HOU");
-		teamHOU.addActionListener(e -> (teamForShowPlayer = "HOU"));
+		TeamButton teamHOU = new TeamButton("HOU");	
 		testDATA.add(teamHOU);
-		TeamButton teamIND = new TeamButton("IND");
-		teamIND.addActionListener(e -> (teamForShowPlayer = "IND"));
+		TeamButton teamIND = new TeamButton("IND");	
 		testDATA.add(teamIND);
 		TeamButton teamLAC = new TeamButton("LAC");
-		teamLAC.addActionListener(e -> (teamForShowPlayer = "LAC"));
 		testDATA.add(teamLAC);
 		TeamButton teamLAL = new TeamButton("LAL");
-		teamLAL.addActionListener(e -> (teamForShowPlayer = "LAL"));
 		testDATA.add(teamLAL);
 		TeamButton teamMEM = new TeamButton("MEM");
-		teamMEM.addActionListener(e -> (teamForShowPlayer = "MEM"));
 		testDATA.add(teamMEM);
 		TeamButton teamMIA = new TeamButton("MIA");
-		teamMIA.addActionListener(e -> (teamForShowPlayer = "MIA"));
 		testDATA.add(teamMIA);
 		TeamButton teamMIL = new TeamButton("MIL");
-		teamMIL.addActionListener(e -> (teamForShowPlayer = "MIL"));
 		testDATA.add(teamMIL);
-		TeamButton teamMIN = new TeamButton("MIN");
-		teamMIN.addActionListener(e -> (teamForShowPlayer = "MIN"));
+		TeamButton teamMIN = new TeamButton("MIN");	
 		testDATA.add(teamMIN);
 		TeamButton teamNOP = new TeamButton("NOP");
-		teamNOP.addActionListener(e -> (teamForShowPlayer = "NOP"));
 		testDATA.add(teamNOP);
 		TeamButton teamNYK = new TeamButton("NYK");
-		teamNYK.addActionListener(e -> (teamForShowPlayer = "NYK"));
 		testDATA.add(teamNYK);
 		TeamButton teamOKC = new TeamButton("OKC");
-		teamOKC.addActionListener(e -> (teamForShowPlayer = "OKC"));
 		testDATA.add(teamOKC);
 		TeamButton teamORL = new TeamButton("ORL");
-		teamORL.addActionListener(e -> (teamForShowPlayer = "ORL"));
 		testDATA.add(teamORL);
-		TeamButton teamPHI = new TeamButton("PHI");
-		teamPHI.addActionListener(e -> (teamForShowPlayer = "PHI"));
+		TeamButton teamPHI = new TeamButton("PHI");	
 		testDATA.add(teamPHI);
-		TeamButton teamPHX = new TeamButton("PHX");
-		teamPHX.addActionListener(e -> (teamForShowPlayer = "PHX"));
+		TeamButton teamPHX = new TeamButton("PHX");	
 		testDATA.add(teamPHX);
 		TeamButton teamPOR = new TeamButton("POR");
-		teamPOR.addActionListener(e -> (teamForShowPlayer = "POR"));
 		testDATA.add(teamPOR);
 		TeamButton teamSAC = new TeamButton("SAC");
-		teamSAC.addActionListener(e -> (teamForShowPlayer = "SAC"));
 		testDATA.add(teamSAC);
-		TeamButton teamSAS = new TeamButton("SAS");
-		teamSAS.addActionListener(e -> (teamForShowPlayer = "SAS"));
+		TeamButton teamSAS = new TeamButton("SAS");	
 		testDATA.add(teamSAS);
-		TeamButton teamTOR = new TeamButton("TOR");
-		teamTOR.addActionListener(e -> (teamForShowPlayer = "TOR"));
+		TeamButton teamTOR = new TeamButton("TOR");	
 		testDATA.add(teamTOR);
 		TeamButton teamUTA = new TeamButton("UTA");
-		teamUTA.addActionListener(e -> (teamForShowPlayer = "UTA"));
 		testDATA.add(teamUTA);
 		TeamButton teamWAS = new TeamButton("WAS");
-		teamWAS.addActionListener(e -> (teamForShowPlayer = "WAS"));
-		testDATA.add(teamWAS);
-
-	
-		
+		testDATA.add(teamWAS);		
 		teamRowData.add(testDATA);
 		testColumn = new Vector<String>(testDATA.size());
 		for (int i = 0; i < testDATA.size(); i++) {
@@ -524,26 +492,6 @@ public class SearchPanel extends JPanel {
 
 
 
-		/*
-		 * // testData
-		 * 
-		 * Vector<PlayerButton> b = new Vector<PlayerButton>(); b.add(new
-		 * PlayerButton("Dirk Nowitzki")); Vector<PlayerButton> c = new
-		 * Vector<PlayerButton>(); c.add(new PlayerButton("Al Horford"));
-		 * Vector<PlayerButton> d = new Vector<PlayerButton>(); d.add(new
-		 * PlayerButton("Dirk Nowitzki")); Vector<PlayerButton> e = new
-		 * Vector<PlayerButton>(); e.add(new PlayerButton("Dirk Nowitzki"));
-		 * Vector<PlayerButton> f = new Vector<PlayerButton>(); f.add(new
-		 * PlayerButton("Dirk Nowitzki")); Vector<PlayerButton> g = new
-		 * Vector<PlayerButton>(); g.add(new PlayerButton("Dirk Nowitzki"));
-		 * Vector<PlayerButton> h = new Vector<PlayerButton>(); h.add(new
-		 * PlayerButton("Dirk Nowitzki")); Vector<PlayerButton> i = new
-		 * Vector<PlayerButton>(); i.add(new PlayerButton("Dirk Nowitzki"));
-		 * 
-		 * playerRowData.add(b); playerRowData.add(c); playerRowData.add(d);
-		 * playerRowData.add(e); playerRowData.add(f); playerRowData.add(g);
-		 * playerRowData.add(h); playerRowData.add(i); //
-		 */
 		Vector<String> columnNames = new Vector<String>(1);
 		columnNames.add("");
 
@@ -1739,7 +1687,7 @@ public class SearchPanel extends JPanel {
 
 		public TeamButton(String teamName) {
 			this.teamName = teamName;
-			playersInTeam = team_BS.getPlayers(teamForShowPlayer);
+			playersInTeam = team_BS.getPlayers(teamName);
 		}
 	}
 
@@ -1793,9 +1741,8 @@ public class SearchPanel extends JPanel {
 			renderer.setIcon(renderer.teamIcon);
 			teamForShowPlayer=renderer.teamName;
 			if (hasFocus) {
-				
-				
-				
+				System.out.println(renderer.teamName);
+				playerRowData.clear();
 				for (int i = 0; i < renderer.playersInTeam.size(); i++) {
 
 					Vector<PlayerButton> a = new Vector<PlayerButton>();

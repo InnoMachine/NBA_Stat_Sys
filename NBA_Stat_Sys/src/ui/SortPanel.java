@@ -46,8 +46,8 @@ public class SortPanel extends JPanel {
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
-	Player_BS player_BS = new Player_BL_Stub();
-	Team_BS team_BS = new Team_BL_Stub();
+	Player_BS player_BS = new Player_BL();
+	Team_BS team_BS = new Team_BL();
 
 	String playerCriteria = "";
 	String teamCriteria = "";
