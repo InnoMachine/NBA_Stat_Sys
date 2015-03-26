@@ -215,60 +215,60 @@ public class ScreeningPlayerPanel extends JPanel {
 			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 			switch (screeningCriteria) {
 			case "score":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getScore())));
 				
 				break;
 			case "reboundOverall":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getReboundOverall())));				
 				break;
 			case "assistance":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getAssistance())));
 				break;
 			case "weighted":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getWeighted())));
 				break;
 			case "block":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getBlock())));
 				break;
 			case "steal":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getSteal())));
 				break;
 			case "foul":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFoul())));
 				break;
 			case "turnover":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTurnover())));
 				break;
 			case "time":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTime()/60)));
 				break;
 			case "efficiency":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getEfficiency())));
 				break;
 			case "hitNum":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getHitNum())));
 				break;
 			case "threePointShotNum":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getThreePointHitNum())));
 				break;
 			case "freeThrowShotNum":
-				a.add(new PlayerCardPanel(playerVos.get(i),
+				a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 						screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getFreeThrowShotNum())));
 				break;
 			case "twoTenNum":
-			a.add(new PlayerCardPanel(playerVos.get(i),
+			a.add(new PlayerCardPanel(X,Y,playerVos.get(i),
 					screeningCriteriabtn.getText(),String.valueOf(playerVos.get(i).getTwoTenNum())));
 				break;
 
@@ -505,7 +505,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
-			PlayerCardPanel renderer=new PlayerCardPanel(((PlayerCardPanel)value).getPlayerInfo(),((PlayerCardPanel)value).getCriteria(),((PlayerCardPanel)value).getCriteriaValue());
+			PlayerCardPanel renderer=new PlayerCardPanel(X,Y,((PlayerCardPanel)value).getPlayerInfo(),((PlayerCardPanel)value).getCriteria(),((PlayerCardPanel)value).getCriteriaValue());
 			renderer.fillPanel();
 			
 			// TODO Auto-generated method stub
