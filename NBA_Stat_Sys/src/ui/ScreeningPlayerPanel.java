@@ -38,6 +38,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
 	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
+	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;
 	static int Y;
 
@@ -213,8 +214,11 @@ public class ScreeningPlayerPanel extends JPanel {
 		} else {
 			playerVos = player_BS.filterPlayerBy(position, league,
 					screeningCriteria);
-
-			Vector<Vector<PlayerCardPanel>> rowData = new Vector<Vector<PlayerCardPanel>>();
+			if(rowData==null){
+				rowData = new Vector<Vector<PlayerCardPanel>>();
+			}else{
+				rowData.clear();
+			}
 			for (int i = 0; i < playerVos.size(); i++) {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				switch (screeningCriteria) {
@@ -324,6 +328,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scrollPane);
+
 		}
 	}
 
@@ -544,6 +549,7 @@ public class ScreeningPlayerPanel extends JPanel {
 					((PlayerCardPanel) value).getPlayerInfo(),
 					((PlayerCardPanel) value).getCriteria(),
 					((PlayerCardPanel) value).getCriteriaValue());
+			
 			renderer.fillPanel();
 
 			// TODO Auto-generated method stub
