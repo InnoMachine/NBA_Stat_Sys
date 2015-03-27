@@ -104,6 +104,25 @@ public class SortPanel extends JPanel {
 		};
 		column = new Vector<String>();
 		column.add("");
+		
+		table = new JTable(dtm);
+		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
+		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
+		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
+		table.setRowHeight(Y / 8);
+		table.setVisible(true);
+		table.setCellSelectionEnabled(true);
+
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(X / 5, Y / 5, X * 3 / 5, Y * 3 / 5);
+		scrollPane.setVisible(true);
+		scrollPane
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane
+				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.add(scrollPane);
+		
+		
 		if (category == "player") {
 
 			btnSort.addActionListener(e -> sortPlayer(UpOrDown));
@@ -131,6 +150,10 @@ public class SortPanel extends JPanel {
 
 	public void makeTable(String category) {
 
+		if(table!=null){
+			table.setVisible(false);
+		}
+		
 		table = new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
@@ -147,6 +170,11 @@ public class SortPanel extends JPanel {
 					.setCellRenderer(new PlayerCardRenderer());
 		}
 
+		if(scrollPane!=null){
+			scrollPane.setVisible(false);
+		}
+		
+		
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(X / 5, Y / 5, X * 3 / 5, Y * 3 / 5);
 		scrollPane.setVisible(true);
