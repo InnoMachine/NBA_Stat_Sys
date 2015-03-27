@@ -15,9 +15,6 @@ import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
-
-
-
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
@@ -43,11 +40,11 @@ public class SearchPanel extends JPanel {
 
 	JLabel bgLabel;
 	String category = "player";
-	Vector<Vector<PlayerButton>> playerRowData ;
+	Vector<Vector<PlayerButton>> playerRowData;
 	Vector<String> testColumn;
-	JTable playerTable ;
+	JTable playerTable;
 	DefaultTableModel playerDTM;
-	
+
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -403,21 +400,21 @@ public class SearchPanel extends JPanel {
 		testDATA.add(teamBOS);
 		TeamButton teamCHA = new TeamButton("CHA");
 		testDATA.add(teamCHA);
-		TeamButton teamCHI = new TeamButton("CHI");	
+		TeamButton teamCHI = new TeamButton("CHI");
 		testDATA.add(teamCHI);
-		TeamButton teamCLE = new TeamButton("CLE");		
+		TeamButton teamCLE = new TeamButton("CLE");
 		testDATA.add(teamCLE);
 		TeamButton teamDAL = new TeamButton("DAL");
 		testDATA.add(teamDAL);
-		TeamButton teamDEN = new TeamButton("DEN");	
+		TeamButton teamDEN = new TeamButton("DEN");
 		testDATA.add(teamDEN);
-		TeamButton teamDET = new TeamButton("DET");	
+		TeamButton teamDET = new TeamButton("DET");
 		testDATA.add(teamDET);
-		TeamButton teamGSW = new TeamButton("GSW");	
+		TeamButton teamGSW = new TeamButton("GSW");
 		testDATA.add(teamGSW);
-		TeamButton teamHOU = new TeamButton("HOU");	
+		TeamButton teamHOU = new TeamButton("HOU");
 		testDATA.add(teamHOU);
-		TeamButton teamIND = new TeamButton("IND");	
+		TeamButton teamIND = new TeamButton("IND");
 		testDATA.add(teamIND);
 		TeamButton teamLAC = new TeamButton("LAC");
 		testDATA.add(teamLAC);
@@ -429,7 +426,7 @@ public class SearchPanel extends JPanel {
 		testDATA.add(teamMIA);
 		TeamButton teamMIL = new TeamButton("MIL");
 		testDATA.add(teamMIL);
-		TeamButton teamMIN = new TeamButton("MIN");	
+		TeamButton teamMIN = new TeamButton("MIN");
 		testDATA.add(teamMIN);
 		TeamButton teamNOP = new TeamButton("NOP");
 		testDATA.add(teamNOP);
@@ -439,22 +436,22 @@ public class SearchPanel extends JPanel {
 		testDATA.add(teamOKC);
 		TeamButton teamORL = new TeamButton("ORL");
 		testDATA.add(teamORL);
-		TeamButton teamPHI = new TeamButton("PHI");	
+		TeamButton teamPHI = new TeamButton("PHI");
 		testDATA.add(teamPHI);
-		TeamButton teamPHX = new TeamButton("PHX");	
+		TeamButton teamPHX = new TeamButton("PHX");
 		testDATA.add(teamPHX);
 		TeamButton teamPOR = new TeamButton("POR");
 		testDATA.add(teamPOR);
 		TeamButton teamSAC = new TeamButton("SAC");
 		testDATA.add(teamSAC);
-		TeamButton teamSAS = new TeamButton("SAS");	
+		TeamButton teamSAS = new TeamButton("SAS");
 		testDATA.add(teamSAS);
-		TeamButton teamTOR = new TeamButton("TOR");	
+		TeamButton teamTOR = new TeamButton("TOR");
 		testDATA.add(teamTOR);
 		TeamButton teamUTA = new TeamButton("UTA");
 		testDATA.add(teamUTA);
 		TeamButton teamWAS = new TeamButton("WAS");
-		testDATA.add(teamWAS);		
+		testDATA.add(teamWAS);
 		teamRowData.add(testDATA);
 		testColumn = new Vector<String>(testDATA.size());
 		for (int i = 0; i < testDATA.size(); i++) {
@@ -490,13 +487,10 @@ public class SearchPanel extends JPanel {
 		// playerButton
 		playerRowData = new Vector<Vector<PlayerButton>>();
 
-
-
 		Vector<String> columnNames = new Vector<String>(1);
 		columnNames.add("");
 
-		playerDTM = new DefaultTableModel(playerRowData,
-				columnNames) {
+		playerDTM = new DefaultTableModel(playerRowData, columnNames) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -1716,7 +1710,7 @@ public class SearchPanel extends JPanel {
 			renderer.setIcon(renderer.playerPortrait);
 
 			if (hasFocus) {
-				
+
 				System.out.println(renderer.playerName
 						+ "has benn selected successfully!");
 				showPlayerInfo(renderer.playerName);
@@ -1735,23 +1729,26 @@ public class SearchPanel extends JPanel {
 				int column) {
 
 			TeamButton renderer = new TeamButton(((TeamButton) value).teamName);
-			renderer.playersInTeam=((TeamButton) value).playersInTeam;
+			renderer.playersInTeam = ((TeamButton) value).playersInTeam;
 			renderer.teamIcon = new ImageIcon("CSEⅢdata/teams/"
 					+ renderer.teamName + ".svg");
 			renderer.setIcon(renderer.teamIcon);
-			teamForShowPlayer=renderer.teamName;
+			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
 				System.out.println(renderer.teamName);
-				playerRowData.clear();
-				for (int i = 0; i < renderer.playersInTeam.size(); i++) {
+				if (category == "palyer") {
+					playerRowData.clear();
+					for (int i = 0; i < renderer.playersInTeam.size(); i++) {
 
-					Vector<PlayerButton> a = new Vector<PlayerButton>();
-					a.add(new PlayerButton(renderer.playersInTeam.get(i).getName()));
-					playerRowData.add(a);
+						Vector<PlayerButton> a = new Vector<PlayerButton>();
+						a.add(new PlayerButton(renderer.playersInTeam.get(i)
+								.getName()));
+						playerRowData.add(a);
+					}
+					playerDTM.setDataVector(playerRowData, testColumn);
+					playerTable.getColumnModel().getColumn(0)
+							.setCellRenderer(new PlayerTableRenderer());
 				}
-				playerDTM.setDataVector(playerRowData, testColumn);
-				playerTable.getColumnModel().getColumn(0)
-				.setCellRenderer(new PlayerTableRenderer());
 				if (category == "team") {
 					showTeamInfo(renderer.teamName);
 				}
