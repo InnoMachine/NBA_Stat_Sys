@@ -192,7 +192,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			screeningCriteria = "efficiency";
 			break;
 		case "投篮":
-			screeningCriteria = "hitNum";
+			screeningCriteria = "shotNum";
 			break;
 		case "三分":
 			screeningCriteria = "threePointShotNum";
@@ -274,10 +274,10 @@ public class ScreeningPlayerPanel extends JPanel {
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getEfficiency())));
 					break;
-				case "hitNum":
+				case "shotNum":
 					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getHitNum())));
+									.valueOf(playerVos.get(i).getShotNum())));
 					break;
 				case "threePointShotNum":
 					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),

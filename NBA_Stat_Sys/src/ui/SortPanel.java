@@ -16,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -200,7 +202,7 @@ public class SortPanel extends JPanel {
 				case "time":
 					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTime())));
+									.valueOf(playerVos.get(i).getTime()/60.0)));
 					break;
 				case "hitRate":
 					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
@@ -557,12 +559,12 @@ public class SortPanel extends JPanel {
 			this.setLayout(null);
 			this.setVisible(true);
 			this.setBounds(X * 29 / 100, Y / 8 + X / 50, X * 31 / 100,
-					X * 16 / 100);
+					X * 14 / 100);
 
 			ButtonGroup bg = new ButtonGroup();
 
 			JRadioButton rdbtnNewRadioButton = new JRadioButton("参赛场数");
-			rdbtnNewRadioButton.setBounds(0, Y * 6 / 768, X * 29 / 400,
+			rdbtnNewRadioButton.setBounds(X * 4 / 1366, Y * 6 / 768, X * 29 / 400,
 					X * 15 / 700);
 			rdbtnNewRadioButton
 					.addActionListener(new SortPlayerCriteriaListener("参赛场数"));
@@ -570,7 +572,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton);
 
 			JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("先发场数");
-			rdbtnNewRadioButton_1.setBounds(X * 31 / 400, Y * 6 / 768,
+			rdbtnNewRadioButton_1.setBounds(X * 34 / 400, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_1
 					.addActionListener(new SortPlayerCriteriaListener("先发场数"));
@@ -578,7 +580,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_1);
 
 			JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("使用率");
-			rdbtnNewRadioButton_5.setBounds(X * 93 / 400, Y * 6 / 768,
+			rdbtnNewRadioButton_5.setBounds(X * 94 / 400, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_5
 					.addActionListener(new SortPlayerCriteriaListener("使用率"));
@@ -586,7 +588,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_5);
 
 			JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("篮板数");
-			rdbtnNewRadioButton_2.setBounds(X * 62 / 400, Y * 31 / 768,
+			rdbtnNewRadioButton_2.setBounds(X * 64 / 400, Y * 31 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_2
 					.addActionListener(new SortPlayerCriteriaListener("篮板数"));
@@ -594,7 +596,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_2);
 
 			JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("助攻数");
-			rdbtnNewRadioButton_3.setBounds(X * 93 / 400, Y * 31 / 768,
+			rdbtnNewRadioButton_3.setBounds(X * 94 / 400, Y * 31 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_3
 					.addActionListener(new SortPlayerCriteriaListener("助攻数"));
@@ -602,7 +604,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_3);
 
 			JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("在场时间");
-			rdbtnNewRadioButton_4.setBounds(X * 62 / 400, Y * 6 / 768,
+			rdbtnNewRadioButton_4.setBounds(X * 64 / 400, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_4
 					.addActionListener(new SortPlayerCriteriaListener("在场时间"));
@@ -610,14 +612,14 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_4);
 
 			JRadioButton radioButton = new JRadioButton("投篮命中率");
-			radioButton.setBounds(0, Y * 156 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton.setBounds(X * 4 / 1366, Y * 156 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton.addActionListener(new SortPlayerCriteriaListener(
 					"投篮命中率"));
 			add(radioButton);
 			bg.add(radioButton);
 
 			JRadioButton radioButton_1 = new JRadioButton("三分命中率");
-			radioButton_1.setBounds(X * 31 / 400, Y * 156 / 768, X * 29 / 400,
+			radioButton_1.setBounds(X * 34 / 400, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_1.addActionListener(new SortPlayerCriteriaListener(
 					"三分命中率"));
@@ -625,7 +627,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_1);
 
 			JRadioButton radioButton_2 = new JRadioButton("罚球命中率");
-			radioButton_2.setBounds(X * 62 / 400, Y * 156 / 768, X * 29 / 400,
+			radioButton_2.setBounds(X * 64 / 400, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_2.addActionListener(new SortPlayerCriteriaListener(
 					"罚球命中率"));
@@ -634,14 +636,14 @@ public class SortPanel extends JPanel {
 
 			JRadioButton radioButton_3 = new JRadioButton("进攻数");
 			radioButton_3
-					.setBounds(0, Y * 31 / 768, X * 29 / 400, X * 15 / 700);
+					.setBounds(X * 4 / 1366, Y * 31 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton_3.addActionListener(new SortPlayerCriteriaListener(
 					"进攻数"));
 			add(radioButton_3);
 			bg.add(radioButton_3);
 
 			JRadioButton radioButton_4 = new JRadioButton("防守数");
-			radioButton_4.setBounds(X * 31 / 400, Y * 31 / 768, X * 29 / 400,
+			radioButton_4.setBounds(X * 34 / 400, Y * 31 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_4.addActionListener(new SortPlayerCriteriaListener(
 					"防守数"));
@@ -650,14 +652,14 @@ public class SortPanel extends JPanel {
 
 			JRadioButton radioButton_5 = new JRadioButton("抢断数");
 			radioButton_5
-					.setBounds(0, Y * 56 / 768, X * 29 / 400, X * 15 / 700);
+					.setBounds(X * 4 / 1366, Y * 56 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton_5.addActionListener(new SortPlayerCriteriaListener(
 					"抢断数"));
 			add(radioButton_5);
 			bg.add(radioButton_5);
 
 			JRadioButton radioButton_6 = new JRadioButton("盖帽数");
-			radioButton_6.setBounds(X * 31 / 400, Y * 56 / 768, X * 29 / 400,
+			radioButton_6.setBounds(X * 34 / 400, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_6.addActionListener(new SortPlayerCriteriaListener(
 					"盖帽数"));
@@ -665,7 +667,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_6);
 
 			JRadioButton radioButton_7 = new JRadioButton("失误数");
-			radioButton_7.setBounds(X * 62 / 400, Y * 56 / 768, X * 29 / 400,
+			radioButton_7.setBounds(X * 64 / 400, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_7.addActionListener(new SortPlayerCriteriaListener(
 					"失误数"));
@@ -673,7 +675,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_7);
 
 			JRadioButton radioButton_8 = new JRadioButton("犯规数");
-			radioButton_8.setBounds(X * 93 / 400, Y * 56 / 768, X * 29 / 400,
+			radioButton_8.setBounds(X * 94 / 400, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_8.addActionListener(new SortPlayerCriteriaListener(
 					"犯规数"));
@@ -682,14 +684,14 @@ public class SortPanel extends JPanel {
 
 			JRadioButton radioButton_9 = new JRadioButton("得分");
 			radioButton_9
-					.setBounds(0, Y * 81 / 768, X * 29 / 400, X * 15 / 700);
+					.setBounds(X * 4 / 1366, Y * 81 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton_9
 					.addActionListener(new SortPlayerCriteriaListener("得分"));
 			add(radioButton_9);
 			bg.add(radioButton_9);
 
 			JRadioButton radioButton_10 = new JRadioButton("效率");
-			radioButton_10.setBounds(X * 62 / 400, Y * 131 / 768, X * 29 / 400,
+			radioButton_10.setBounds(X * 64 / 400, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_10.addActionListener(new SortPlayerCriteriaListener(
 					"效率"));
@@ -697,7 +699,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_10);
 
 			JRadioButton rdbtnGmsc = new JRadioButton("GmSc效率值");
-			rdbtnGmsc.setBounds(X * 31 / 400, Y * 81 / 768, X * 29 / 400,
+			rdbtnGmsc.setBounds(X * 34 / 400, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			rdbtnGmsc.addActionListener(new SortPlayerCriteriaListener(
 					"GmSc效率值"));
@@ -705,7 +707,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnGmsc);
 
 			JRadioButton radioButton_11 = new JRadioButton("真实命中率");
-			radioButton_11.setBounds(X * 93 / 400, Y * 131 / 768, X * 29 / 400,
+			radioButton_11.setBounds(X * 94 / 400, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_11.addActionListener(new SortPlayerCriteriaListener(
 					"真实命中率"));
@@ -713,7 +715,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_11);
 
 			JRadioButton radioButton_12 = new JRadioButton("投篮效率");
-			radioButton_12.setBounds(X * 62 / 400, Y * 81 / 768, X * 29 / 400,
+			radioButton_12.setBounds(X * 64 / 400, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_12.addActionListener(new SortPlayerCriteriaListener(
 					"投篮效率"));
@@ -721,7 +723,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_12);
 
 			JRadioButton radioButton_13 = new JRadioButton("篮板率");
-			radioButton_13.setBounds(X * 93 / 400, Y * 81 / 768, X * 29 / 400,
+			radioButton_13.setBounds(X * 94 / 400, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_13.addActionListener(new SortPlayerCriteriaListener(
 					"篮板率"));
@@ -729,7 +731,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_13);
 
 			JRadioButton radioButton_14 = new JRadioButton("进攻篮板率");
-			radioButton_14.setBounds(0, Y * 106 / 768, X * 29 / 400,
+			radioButton_14.setBounds(X * 4 / 1366, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_14.addActionListener(new SortPlayerCriteriaListener(
 					"进攻篮板率"));
@@ -737,7 +739,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_14);
 
 			JRadioButton radioButton_15 = new JRadioButton("防守篮板率");
-			radioButton_15.setBounds(X * 31 / 400, Y * 106 / 768, X * 29 / 400,
+			radioButton_15.setBounds(X * 34 / 400, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_15.addActionListener(new SortPlayerCriteriaListener(
 					"防守篮板率"));
@@ -745,7 +747,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_15);
 
 			JRadioButton radioButton_16 = new JRadioButton("助攻率");
-			radioButton_16.setBounds(X * 62 / 400, Y * 106 / 768, X * 29 / 400,
+			radioButton_16.setBounds(X * 64 / 400, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_16.addActionListener(new SortPlayerCriteriaListener(
 					"助攻率"));
@@ -753,7 +755,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_16);
 
 			JRadioButton radioButton_17 = new JRadioButton("抢断率");
-			radioButton_17.setBounds(X * 93 / 400, Y * 106 / 768, X * 29 / 400,
+			radioButton_17.setBounds(X * 94 / 400, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_17.addActionListener(new SortPlayerCriteriaListener(
 					"抢断率"));
@@ -761,7 +763,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_17);
 
 			JRadioButton radioButton_18 = new JRadioButton("盖帽率");
-			radioButton_18.setBounds(0, Y * 131 / 768, X * 29 / 400,
+			radioButton_18.setBounds(X * 4 / 1366, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_18.addActionListener(new SortPlayerCriteriaListener(
 					"盖帽率"));
@@ -769,7 +771,7 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_18);
 
 			JRadioButton radioButton_19 = new JRadioButton("失误率");
-			radioButton_19.setBounds(X * 31 / 400, Y * 131 / 768, X * 29 / 400,
+			radioButton_19.setBounds(X * 34 / 400, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_19.addActionListener(new SortPlayerCriteriaListener(
 					"失误率"));
@@ -786,26 +788,28 @@ public class SortPanel extends JPanel {
 			this.setLayout(null);
 			this.setVisible(true);
 			this.setBounds(X * 29 / 100, Y / 8 + X / 50, X * 31 / 100,
-					X * 16 / 100);
-
+					X * 195 / 1366);
+           
+			this.setBorder(new TitledBorder(new EtchedBorder()));
+			
 			ButtonGroup bg1 = new ButtonGroup();
 
 			JRadioButton radioButton = new JRadioButton("比赛场数");
-			radioButton.setBounds(0, Y * 6 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton.setBounds(X * 8 / 1366, Y * 6 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton.addActionListener(new SortTeamCriteriaListener("比赛场数"));
 			add(radioButton);
 			bg1.add(radioButton);
 
 			JRadioButton radioButton_1 = new JRadioButton("投篮命中数");
 			radioButton_1
-					.setBounds(0, Y * 31 / 768, X * 29 / 400, X * 15 / 700);
+					.setBounds(X * 8 / 1366, Y * 31 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton_1.addActionListener(new SortTeamCriteriaListener(
 					"投篮命中率"));
 			add(radioButton_1);
 			bg1.add(radioButton_1);
 
 			JRadioButton radioButton_2 = new JRadioButton("投篮出手数");
-			radioButton_2.setBounds(X * 31 / 400, Y * 31 / 768, X * 29 / 400,
+			radioButton_2.setBounds(X * 111 / 1366, Y * 31 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_2.addActionListener(new SortTeamCriteriaListener(
 					"投篮出手数"));
@@ -813,7 +817,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_2);
 
 			JRadioButton radioButton_3 = new JRadioButton("三分命中数");
-			radioButton_3.setBounds(X * 62 / 400, Y * 31 / 768, X * 29 / 400,
+			radioButton_3.setBounds(X * 214 / 1366, Y * 31 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_3.addActionListener(new SortTeamCriteriaListener(
 					"三分命中数"));
@@ -821,7 +825,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_3);
 
 			JRadioButton radioButton_4 = new JRadioButton("三分出手数");
-			radioButton_4.setBounds(X * 93 / 400, Y * 31 / 768, X * 29 / 400,
+			radioButton_4.setBounds(X * 317 / 1366, Y * 31 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_4.addActionListener(new SortTeamCriteriaListener(
 					"三分出手数"));
@@ -830,14 +834,14 @@ public class SortPanel extends JPanel {
 
 			JRadioButton radioButton_5 = new JRadioButton("罚球命中数");
 			radioButton_5
-					.setBounds(0, Y * 56 / 768, X * 29 / 400, X * 15 / 700);
+					.setBounds(X * 8 / 1366, Y * 56 / 768, X * 29 / 400, X * 15 / 700);
 			radioButton_5.addActionListener(new SortTeamCriteriaListener(
 					"罚球命中数"));
 			add(radioButton_5);
 			bg1.add(radioButton_5);
 
 			JRadioButton radioButton_6 = new JRadioButton("罚球出手数");
-			radioButton_6.setBounds(X * 31 / 400, Y * 56 / 768, X * 29 / 400,
+			radioButton_6.setBounds(X * 111 / 1366, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_6.addActionListener(new SortTeamCriteriaListener(
 					"罚球出手数"));
@@ -845,7 +849,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_6);
 
 			JRadioButton radioButton_7 = new JRadioButton("进攻篮板数");
-			radioButton_7.setBounds(X * 31 / 400, Y * 6 / 768, X * 29 / 400,
+			radioButton_7.setBounds(X * 111 / 1366, Y * 6 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_7.addActionListener(new SortTeamCriteriaListener(
 					"进攻篮板数"));
@@ -853,7 +857,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_7);
 
 			JRadioButton radioButton_8 = new JRadioButton("防守篮板数");
-			radioButton_8.setBounds(X * 62 / 400, Y * 6 / 768, X * 29 / 400,
+			radioButton_8.setBounds(X * 214 / 1366, Y * 6 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_8.addActionListener(new SortTeamCriteriaListener(
 					"防守篮板数"));
@@ -861,7 +865,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_8);
 
 			JRadioButton radioButton_9 = new JRadioButton("篮板数");
-			radioButton_9.setBounds(X * 93 / 400, Y * 6 / 768, X * 29 / 400,
+			radioButton_9.setBounds(X * 317 / 1366, Y * 6 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_9
 					.addActionListener(new SortTeamCriteriaListener("篮板数"));
@@ -869,7 +873,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_9);
 
 			JRadioButton radioButton_10 = new JRadioButton("助攻数");
-			radioButton_10.setBounds(X * 62 / 400, Y * 56 / 768, X * 29 / 400,
+			radioButton_10.setBounds(X * 214 / 1366, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_10
 					.addActionListener(new SortTeamCriteriaListener("助攻数"));
@@ -877,7 +881,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_10);
 
 			JRadioButton radioButton_11 = new JRadioButton("抢断数");
-			radioButton_11.setBounds(X * 93 / 400, Y * 56 / 768, X * 29 / 400,
+			radioButton_11.setBounds(X * 317 / 1366, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_11
 					.addActionListener(new SortTeamCriteriaListener("抢断数"));
@@ -885,7 +889,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_11);
 
 			JRadioButton radioButton_12 = new JRadioButton("盖帽数");
-			radioButton_12.setBounds(0, Y * 81 / 768, X * 29 / 400,
+			radioButton_12.setBounds(X * 8 / 1366, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_12
 					.addActionListener(new SortTeamCriteriaListener("盖帽数"));
@@ -893,7 +897,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_12);
 
 			JRadioButton radioButton_13 = new JRadioButton("失误数");
-			radioButton_13.setBounds(X * 31 / 400, Y * 81 / 768, X * 29 / 400,
+			radioButton_13.setBounds(X * 111 / 1366, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_13
 					.addActionListener(new SortTeamCriteriaListener("失误数"));
@@ -901,7 +905,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_13);
 
 			JRadioButton radioButton_14 = new JRadioButton("犯规数");
-			radioButton_14.setBounds(X * 62 / 400, Y * 81 / 768, X * 29 / 400,
+			radioButton_14.setBounds(X * 214 / 1366, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_14
 					.addActionListener(new SortTeamCriteriaListener("犯规数"));
@@ -909,7 +913,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_14);
 
 			JRadioButton radioButton_15 = new JRadioButton("比赛得分");
-			radioButton_15.setBounds(X * 93 / 400, Y * 81 / 768, X * 29 / 400,
+			radioButton_15.setBounds(X * 317 / 1366, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_15.addActionListener(new SortTeamCriteriaListener(
 					"比赛得分"));
@@ -917,7 +921,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_15);
 
 			JRadioButton radioButton_16 = new JRadioButton("投篮命中率");
-			radioButton_16.setBounds(0, Y * 106 / 768, X * 29 / 400,
+			radioButton_16.setBounds(X * 8 / 1366, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_16.addActionListener(new SortTeamCriteriaListener(
 					"投篮命中率"));
@@ -925,7 +929,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_16);
 
 			JRadioButton radioButton_17 = new JRadioButton("三分命中率");
-			radioButton_17.setBounds(X * 31 / 400, Y * 106 / 768, X * 29 / 400,
+			radioButton_17.setBounds(X * 111 / 1366, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_17.addActionListener(new SortTeamCriteriaListener(
 					"三分命中率"));
@@ -933,7 +937,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_17);
 
 			JRadioButton radioButton_18 = new JRadioButton("罚球命中率");
-			radioButton_18.setBounds(X * 62 / 400, Y * 106 / 768, X * 29 / 400,
+			radioButton_18.setBounds(X * 214 / 1366, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_18.addActionListener(new SortTeamCriteriaListener(
 					"罚球命中率"));
@@ -941,7 +945,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_18);
 
 			JRadioButton radioButton_19 = new JRadioButton("胜率");
-			radioButton_19.setBounds(X * 93 / 400, Y * 106 / 768, X * 29 / 400,
+			radioButton_19.setBounds(X * 317 / 1366, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_19
 					.addActionListener(new SortTeamCriteriaListener("胜率"));
@@ -949,7 +953,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_19);
 
 			JRadioButton radioButton_20 = new JRadioButton("进攻回合");
-			radioButton_20.setBounds(0, Y * 131 / 768, X * 29 / 400,
+			radioButton_20.setBounds(X * 8 / 1366, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_20.addActionListener(new SortTeamCriteriaListener(
 					"进攻回合"));
@@ -957,7 +961,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_20);
 
 			JRadioButton radioButton_21 = new JRadioButton("进攻效率");
-			radioButton_21.setBounds(X * 31 / 400, Y * 131 / 768, X * 29 / 400,
+			radioButton_21.setBounds(X * 111 / 1366, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_21.addActionListener(new SortTeamCriteriaListener(
 					"进攻效率"));
@@ -965,7 +969,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_21);
 
 			JRadioButton radioButton_22 = new JRadioButton("防守效率");
-			radioButton_22.setBounds(X * 62 / 400, Y * 131 / 768, X * 29 / 400,
+			radioButton_22.setBounds(X * 214 / 1366, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_22.addActionListener(new SortTeamCriteriaListener(
 					"防守效率"));
@@ -973,7 +977,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_22);
 
 			JRadioButton radioButton_23 = new JRadioButton("篮板效率");
-			radioButton_23.setBounds(X * 93 / 400, Y * 131 / 768, X * 29 / 400,
+			radioButton_23.setBounds(X * 317 /1366, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_23.addActionListener(new SortTeamCriteriaListener(
 					"篮板效率"));
@@ -981,7 +985,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_23);
 
 			JRadioButton radioButton_24 = new JRadioButton("抢断效率");
-			radioButton_24.setBounds(0, Y * 156 / 768, X * 29 / 400,
+			radioButton_24.setBounds(X*8/1366, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_24.addActionListener(new SortTeamCriteriaListener(
 					"抢断效率"));
@@ -989,7 +993,7 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_24);
 
 			JRadioButton radioButton_25 = new JRadioButton("助攻率");
-			radioButton_25.setBounds(X * 31 / 400, Y * 156 / 768, X * 29 / 400,
+			radioButton_25.setBounds(X * 111 / 1366, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_25
 					.addActionListener(new SortTeamCriteriaListener("助攻率"));
