@@ -1,6 +1,8 @@
 package businessLogic;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+
 
 
 
@@ -10,6 +12,7 @@ public class Player_Handler {
 	private Data_Handler data_handler;
 	private ArrayList<PlayerVo> listvo;
 	
+	BigDecimal b;  
 	public Player_Handler()
 	{
 		data_handler = Data_Handler.getInstance();
@@ -58,11 +61,39 @@ public class Player_Handler {
 				templist.add(listvo.get(Integer.parseInt(a[i][1])));
 			}
 			return templist;
+		}else if(option.equals("time")){
+			int a[][] = new int [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getTime();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get(a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("FirstOnNum")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
 			{
 				a[i][0] = listvo.get(i).getFirstOnNum();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("gameNum")){
+			int a[][] = new int [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getGameNum();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
@@ -86,6 +117,20 @@ public class Player_Handler {
 				templist.add(listvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("reboundOverallField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getReboundOverallField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("assistance")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -100,7 +145,22 @@ public class Player_Handler {
 				templist.add(listvo.get(a[i][1]));
 			}
 			return templist;
-		}else if(option.equals("hitRate")){
+		}else if(option.equals("assistanceField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getAssistanceField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
+		}
+		else if(option.equals("hitRate")){
 			double a[][] = new double [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
 			{
@@ -142,6 +202,20 @@ public class Player_Handler {
 				templist.add(listvo.get((int)a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("attackingNumField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getAttackingNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("attackingNum")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -154,6 +228,20 @@ public class Player_Handler {
 			for(int i=0;i<listvo.size();i++)
 			{
 				templist.add(listvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("defensiveNumField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getDefensiveNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("defensiveNum")){
@@ -170,6 +258,20 @@ public class Player_Handler {
 				templist.add(listvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("stealField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getStealField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("steal")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -182,6 +284,20 @@ public class Player_Handler {
 			for(int i=0;i<listvo.size();i++)
 			{
 				templist.add(listvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("blockField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getBlockField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("block")){
@@ -198,6 +314,20 @@ public class Player_Handler {
 				templist.add(listvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("turnoverField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getTurnoverField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("turnover")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -212,6 +342,20 @@ public class Player_Handler {
 				templist.add(listvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("foulField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getFoulField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("foul")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -224,6 +368,20 @@ public class Player_Handler {
 			for(int i=0;i<listvo.size();i++)
 			{
 				templist.add(listvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("scoreField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getScoreField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("score")){
@@ -245,6 +403,20 @@ public class Player_Handler {
 			for(int i=0;i<listvo.size();i++)
 			{
 				a[i][0] = listvo.get(i).getEfficiency();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("GmScField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getGmScField();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
@@ -480,6 +652,46 @@ public class Player_Handler {
 				i++;
 			}		
 			return templist;
+		}else if(option.equals("scoreField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getScoreField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getScoreField()){
+				templist.add(listvo.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("reboundOverallField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getReboundOverallField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getReboundOverallField()){
+				templist.add(listvo.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
 		}else if(option.equals("reboundOverall")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -499,11 +711,70 @@ public class Player_Handler {
 				i++;
 			}		
 			return templist;
+		}else if(option.equals("assistanceField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getAssistanceField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getAssistanceField()){
+				templist.add(listvo.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
 		}else if(option.equals("assistance")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
 			{
 				a[i][0] = listvo.get(i).getAssistance();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get(a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getAssistance()){
+				templist.add(listvo.get(a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("turnoverField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getTurnoverField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getTurnoverField()){
+				templist.add(listvo.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("turnover")){
+			int a[][] = new int [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getTurnover();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
@@ -557,6 +828,26 @@ public class Player_Handler {
 				i++;
 			}		
 			return templist;
+		}else if(option.equals("blockField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getBlockField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getBlockField()){
+				templist.add(listvo.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
 		}else if(option.equals("steal")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -576,6 +867,26 @@ public class Player_Handler {
 				i++;
 			}		
 			return templist;
+		}else if(option.equals("stealField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getStealField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getStealField()){
+				templist.add(listvo.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
 		}else if(option.equals("foul")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -592,6 +903,26 @@ public class Player_Handler {
 			int i =50;
 			while(a[i][0]==templist.get(49).getFoul()){
 				templist.add(listvo.get(a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("foulField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				b = new BigDecimal(listvo.get(i).getFoulField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<50;i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			int i =50;
+			while(a[i][0]==templist.get(49).getFoulField()){
+				templist.add(listvo.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;

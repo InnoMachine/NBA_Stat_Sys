@@ -52,8 +52,21 @@ public class PlayerVo {
 	private double blockRate;        //盖帽率       
 	private double stealRate;//抢断率
 	private double useRate;//使用率
+	//场均的
+	private double scoreField;
+	private double attackingNumField;
+	private double defensiveNumField;        //防守数
+	private double blockField;               //盖帽数
+	private double turnoverField;            //失误数
+	private double foulField;                //犯规数
+	private double stealField;               //抢断
+	private double hitNumField;
+	private double shotNumField;
+	private double reboundOverallField;
+	private double assistanceField;
+	private double GmScField;
 	
-	//下面不用管了，哦有个两双
+	
 	private int weighted;
 	private int twoTenNum;//两双数
 	private double teamRoundAttack;      //进攻回合
@@ -449,5 +462,78 @@ public class PlayerVo {
 	public void setWeighted(int weighted) {
 		this.weighted = weighted;
 	}
+	public double getAttackingNumField() {
+		return attackingNumField;
+	}
+	public void setAttackingNumField(double attackingNumField) {
+		this.attackingNumField = attackingNumField;
+	}
+	public double getScoreField() {
+		return scoreField;
+	}
+	public void setScoreField(double scoreField) {
+		this.scoreField = scoreField;
+	}
+	public double getShotNumField() {
+		return shotNumField;
+	}
+	public void setShotNumField(double shotNumField) {
+		this.shotNumField = shotNumField;
+	}
+	public double getHitNumField() {
+		return hitNumField;
+	}
+	public void setHitNumField(double hitNumField) {
+		this.hitNumField = hitNumField;
+	}
+	public double getStealField() {
+		return stealField;
+	}
+	public void setStealField(double stealField) {
+		this.stealField = stealField;
+	}
+	public double getFoulField() {
+		return foulField;
+	}
+	public void setFoulField(double foulField) {
+		this.foulField = foulField;
+	}
+	public double getTurnoverField() {
+		return turnoverField;
+	}
+	public void setTurnoverField(double turnoverField) {
+		this.turnoverField = turnoverField;
+	}
+	public double getBlockField() {
+		return blockField;
+	}
+	public void setBlockField(double blockField) {
+		this.blockField = blockField;
+	}
+	public double getDefensiveNumField() {
+		return defensiveNumField;
+	}
+	public void setDefensiveNumField(double defensiveNumField) {
+		this.defensiveNumField = defensiveNumField;
+	}
+	public double getReboundOverallField() {
+		return reboundOverallField;
+	}
+	public void setReboundOverallField(double reboundOverallField) {
+		this.reboundOverallField = reboundOverallField;
+	}
+	public double getAssistanceField() {
+		return assistanceField;
+	}
+	public void setAssistanceField(double assistanceField) {
+		this.assistanceField = assistanceField;
+	}
+	public double getGmScField() {
+		return GmScField;
+	}
+	public void setGmScField(double gmScField) {
+		GmScField = gmScField;
+	}
+	
 	
 }
