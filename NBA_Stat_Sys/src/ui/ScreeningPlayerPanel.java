@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -8,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +18,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -26,7 +25,6 @@ import javax.swing.table.TableCellRenderer;
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
-import ui.SearchPanel.PlayerTableRenderer;
 import vo.PlayerVo;
 
 public class ScreeningPlayerPanel extends JPanel {
@@ -316,7 +314,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setRowHeight(Y / 8);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
-
 		table.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerCardRenderer());
 		scrollPane = new JScrollPane(table);
