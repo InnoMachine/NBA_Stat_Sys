@@ -606,7 +606,7 @@ public class SortPanel extends JPanel {
 		public SortPlayerCriteriaPanel() {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 29 / 100, Y / 8 + X / 50, X * 31 / 100,
+			this.setBounds(X * 431 / 1366, Y / 8 + X / 50, X * 31 / 100,
 					X * 14 / 100);
 			
 			this.setBorder(new TitledBorder(new EtchedBorder()));
@@ -837,7 +837,7 @@ public class SortPanel extends JPanel {
 		public SortTeamCriteriaPanel() {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 29 / 100, Y / 8 + X / 50, X * 31 / 100,
+			this.setBounds(X * 431 / 1366, Y / 8 + X / 50, X * 31 / 100,
 					X * 195 / 1366);
            
 			this.setBorder(new TitledBorder(new EtchedBorder()));

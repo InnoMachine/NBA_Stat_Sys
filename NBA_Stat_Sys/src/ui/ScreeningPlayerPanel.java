@@ -18,6 +18,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -373,6 +375,8 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setBounds(X * 700 / 1366, Y / 8 + X / 50, X * 213 / 1366,
 					X * 108 / 1366);
 
+			this.setBorder(new TitledBorder(new EtchedBorder()));
+			
 			ButtonGroup bg = new ButtonGroup();
 
 			JRadioButton scorebtn = new JRadioButton("得分");
