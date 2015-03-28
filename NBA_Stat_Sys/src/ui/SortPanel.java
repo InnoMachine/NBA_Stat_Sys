@@ -75,22 +75,12 @@ public class SortPanel extends JPanel {
 		sortTeamCriteriaPanel.setVisible(false);
 
 		JLabel criterialbl = new JLabel("排序依据");
-		criterialbl.setBounds(X * 22 / 100, Y / 8, X / 15, X / 50);
+		criterialbl.setBounds(X * 345 / 1366, Y / 8, X / 15, X / 50);
 		this.add(criterialbl);
 
-		JButton upSortbtn = new JButton("U");
-		upSortbtn.setBounds(X * 63 / 100, Y / 8, X / 50, X / 50);
-		upSortbtn.addActionListener(e -> (UpOrDown = "Up"));
-		this.add(upSortbtn);
-
-		JButton downSortbtn = new JButton("D");
-		downSortbtn.setBounds(X * 66 / 100, Y / 8, X / 50, X / 50);
-		downSortbtn.addActionListener(e -> (UpOrDown = "Down"));
-		this.add(downSortbtn);
-
-		JButton btnSort = new JButton("排序");
-		btnSort.setBounds(X * 70 / 100, Y / 8, X / 12, X / 50);
-		this.add(btnSort);
+//		JButton btnSort = new JButton("排序");
+//		btnSort.setBounds(X * 70 / 100, Y / 8, X / 12, X / 50);
+//		this.add(btnSort);
 
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 0, X / 15, X / 50);
@@ -125,9 +115,20 @@ public class SortPanel extends JPanel {
 		
 		if (category == "player") {
 
-			btnSort.addActionListener(e -> sortPlayer(UpOrDown));
+			
+			JButton upSortbtn = new JButton("U");
+			upSortbtn.setBounds(X * 940 / 1366, Y / 8, X / 50, X / 50);
+			upSortbtn.addActionListener(e -> {UpOrDown = "Up";sortPlayer(UpOrDown);});
+			this.add(upSortbtn);
+
+			JButton downSortbtn = new JButton("D");
+			downSortbtn.setBounds(X * 981 / 1366, Y / 8, X / 50, X / 50);
+			downSortbtn.addActionListener(e -> {UpOrDown = "Down";sortPlayer(UpOrDown);});
+			this.add(downSortbtn);
+			
+//			btnSort.addActionListener(e -> sortPlayer(UpOrDown));
 			playerCriteriabtn = new JButton("");
-			playerCriteriabtn.setBounds(X * 29 / 100, Y / 8, X * 31 / 100,
+			playerCriteriabtn.setBounds(X * 431 / 1366, Y / 8, X * 31 / 100,
 					X / 50);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
 			add(playerCriteriabtn);
@@ -135,10 +136,21 @@ public class SortPanel extends JPanel {
 		}
 		if (category == "team") {
 
-			btnSort.addActionListener(e -> sortTeam(UpOrDown));
+			
+			JButton upSortbtn = new JButton("U");
+			upSortbtn.setBounds(X * 940 / 1366, Y / 8, X / 50, X / 50);
+			upSortbtn.addActionListener(e -> {UpOrDown = "Up";sortTeam(UpOrDown);});
+			this.add(upSortbtn);
+
+			JButton downSortbtn = new JButton("D");
+			downSortbtn.setBounds(X * 981 / 1366, Y / 8, X / 50, X / 50);
+			downSortbtn.addActionListener(e -> {UpOrDown = "Down";sortTeam(UpOrDown);});
+			this.add(downSortbtn);
+			
+//			btnSort.addActionListener(e -> sortTeam(UpOrDown));
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn
-					.setBounds(X * 29 / 100, Y / 8, X * 31 / 100, X / 50);
+					.setBounds(X * 431 / 1366, Y / 8, X * 31 / 100, X / 50);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			add(teamCriteriabtn);
 
@@ -188,6 +200,10 @@ public class SortPanel extends JPanel {
 
 	public void sortPlayer(String UpOrDown) {
 
+		if(sortPlayerCriteriaPanel!=null){
+			sortPlayerCriteriaPanel.setVisible(false);
+		}
+		
 		playerRowData = new Vector<Vector<PlayerCardPanel>>();
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
@@ -375,6 +391,10 @@ public class SortPanel extends JPanel {
 
 	public void sortTeam(String UpOrDown) {
 
+		if(sortTeamCriteriaPanel!=null){
+			sortTeamCriteriaPanel.setVisible(false);
+		}
+		
 		teamRowData = new Vector<Vector<TeamCardPanel>>();
 		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
 		if (teamCriteria == "") {
@@ -588,6 +608,8 @@ public class SortPanel extends JPanel {
 			this.setVisible(true);
 			this.setBounds(X * 29 / 100, Y / 8 + X / 50, X * 31 / 100,
 					X * 14 / 100);
+			
+			this.setBorder(new TitledBorder(new EtchedBorder()));
 
 			ButtonGroup bg = new ButtonGroup();
 
@@ -1222,7 +1244,7 @@ public class SortPanel extends JPanel {
 				System.out.println("筛选标准选择出错");
 				break;
 			}
-
+            sortPlayer(UpOrDown);
 		}
 	}
 
@@ -1371,7 +1393,7 @@ public class SortPanel extends JPanel {
 				System.out.println("筛选标准选择出错");
 				break;
 			}
-
+            sortTeam(UpOrDown);
 		}
 	}
 }

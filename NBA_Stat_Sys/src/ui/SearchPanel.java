@@ -362,6 +362,8 @@ public class SearchPanel extends JPanel {
 
 		teamRowData.add(testColumn);
 
+		
+		
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				testColumn);
 
@@ -384,6 +386,41 @@ public class SearchPanel extends JPanel {
 		teamJSP.setBounds(X / 4, Y / 10, X / 2, Y / 7);
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
+		
+		TeamVo defaultTeam = team_BS.getTeamByAbbr(String.valueOf(teamRowData.get(0).get(0).teamName));
+		textField_74.setText(defaultTeam.getTeamName());
+		textField_79.setText(defaultTeam.getAbbreviation());
+		textField_76.setText(defaultTeam.getCity());
+		textField_80.setText(String.valueOf(defaultTeam.getConference()));
+		textField_82.setText(String.valueOf(defaultTeam.getDivision()));
+		textField_84.setText(String.valueOf(defaultTeam.getHomeField()));
+		textField_86.setText(defaultTeam.getBirthYear());
+		textField_88.setText(String.valueOf(defaultTeam.getGameNum()));
+		textField_90.setText(String.valueOf(defaultTeam.getHitNum()));
+		textField_93.setText(String.valueOf(defaultTeam.getShotNum()));
+		textField_94.setText(String.valueOf(defaultTeam.getThreePointHitNum()));
+		textField_96.setText(String.valueOf(defaultTeam.getThreePointShotNum()));
+		textField_98.setText(String.valueOf(defaultTeam.getFreeThrowHitNum()));
+		textField_100.setText(String.valueOf(defaultTeam.getFreeThrowShotNum()));
+		textField_102.setText(String.valueOf(defaultTeam.getOffensiveRebound()));
+		textField_104.setText(String.valueOf(defaultTeam.getDefensiveRebound()));
+		textField_106.setText(String.valueOf(defaultTeam.getReboundOverall()));
+		textField_108.setText(String.valueOf(defaultTeam.getAssistance()));
+		textField_110.setText(String.valueOf(defaultTeam.getSteal()));
+		textField_112.setText(String.valueOf(defaultTeam.getBlock()));
+		textField_114.setText(String.valueOf(defaultTeam.getTurnover()));
+		textField_116.setText(String.valueOf(defaultTeam.getFoul()));
+		textField_118.setText(String.valueOf(defaultTeam.getScore()));
+		textField_120.setText(String.valueOf(defaultTeam.getHitRate()));
+		textField_122.setText(String.valueOf(defaultTeam.getThreePointHitRate()));
+		textField_124.setText(String.valueOf(defaultTeam.getFreeThrowRate()));
+		textField_126.setText(String.valueOf(defaultTeam.getWinningRate()));
+		textField_128.setText(String.valueOf(defaultTeam.getRoundAttack()));
+		textField_130.setText(String.valueOf(defaultTeam.getAttackingEfficiency()));
+		textField_132.setText(String.valueOf(defaultTeam.getDefensiveEfficiency()));
+		textField_134.setText(String.valueOf(defaultTeam.getReboundEfficiency()));
+		textField_136.setText(String.valueOf(defaultTeam.getStealEfficiency()));
+		textField_138.setText(String.valueOf(defaultTeam.getAssistanceEfficiency()));
 
 	}
 
@@ -514,6 +551,8 @@ public class SearchPanel extends JPanel {
 		playerJSP.setBounds(X / 8, Y / 4, X / 10, 2 * Y / 3);
 		playerJSP.setVisible(true);
 		bgLabel.add(playerJSP);
+		
+
 	}
 
 	public void createTeamDataPanel() {
@@ -1736,7 +1775,7 @@ public class SearchPanel extends JPanel {
 			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
 				System.out.println(renderer.teamName);
-				if (category == "palyer") {
+				if (category == "player") {
 					playerRowData.clear();
 					for (int i = 0; i < renderer.playersInTeam.size(); i++) {
 
@@ -1748,6 +1787,36 @@ public class SearchPanel extends JPanel {
 					playerDTM.setDataVector(playerRowData, testColumn);
 					playerTable.getColumnModel().getColumn(0)
 							.setCellRenderer(new PlayerTableRenderer());
+					
+					 PlayerVo defaultPlayer=player_BS.getPlayerByName(String.valueOf(renderer.playersInTeam.get(0).getName()));
+						textField_4.setText(String.valueOf(defaultPlayer.getName()));
+						textField_24.setText(String.valueOf(defaultPlayer.getReboundOverall()));
+						textField_26.setText(String.valueOf(defaultPlayer.getAssistance()));
+						textField_30.setText(String.valueOf(defaultPlayer.getTime()));
+						textField_32.setText(String.valueOf(defaultPlayer.getHitRate()));
+						textField_36.setText(String.valueOf(defaultPlayer.getThreePointHitRate()));
+						textField_38.setText(String.valueOf(defaultPlayer.getFreeThrowRate()));
+						textField_42.setText(String.valueOf(defaultPlayer.getAttackingNum()));
+						textField_44.setText(String.valueOf(defaultPlayer.getDefensiveNum()));
+						textField_47.setText(String.valueOf(defaultPlayer.getSteal()));
+						textField_49.setText(String.valueOf(defaultPlayer.getBlock()));
+						textField_53.setText(String.valueOf(defaultPlayer.getTurnover()));
+						textField_55.setText(String.valueOf(defaultPlayer.getFoul()));
+						textField_59.setText(String.valueOf(defaultPlayer.getScore()));
+						textField_61.setText(String.valueOf(defaultPlayer.getEfficiency()));
+						textField_65.setText(String.valueOf(defaultPlayer.getGmSc()));
+						textField_22.setText(String.valueOf(defaultPlayer.getTrueHitRate()));
+						textField_34.setText(String.valueOf(defaultPlayer.getHitEfficiency()));
+						textField_31.setText(String.valueOf(defaultPlayer.getReboundOverallRate()));
+						textField_69.setText(String.valueOf(defaultPlayer.getOffensiveReboundRate()));
+						textField_40.setText(String.valueOf(defaultPlayer.getDefensiveReboundRate()));
+						textField_63.setText(String.valueOf(defaultPlayer.getAssistanceRate()));
+						textField_70.setText(String.valueOf(defaultPlayer.getStealRate()));
+						textField_51.setText(String.valueOf(defaultPlayer.getBlockRate()));
+						textField_57.setText(String.valueOf(defaultPlayer.getTurnOverRate()));
+						textField_71.setText(String.valueOf(defaultPlayer.getUseRate()));
+					
+					
 				}
 				if (category == "team") {
 					showTeamInfo(renderer.teamName);

@@ -102,6 +102,23 @@ public class ScreeningPlayerPanel extends JPanel {
 		leaguejcb = new JComboBox(leagues);
 		leaguejcb.setBounds(X * 515 / 1366, Y / 8, X * 100 / 1366, X / 50);
 		this.add(leaguejcb);
+		
+		table = new JTable();
+		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
+		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
+		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
+		table.setRowHeight(Y / 8);
+		table.setVisible(true);
+		table.setCellSelectionEnabled(true);
+
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(X / 5, Y / 5, X * 3 / 5, Y * 3 / 5);
+		scrollPane.setVisible(true);
+		scrollPane
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane
+				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.add(scrollPane);
 
 	}
 
@@ -311,6 +328,10 @@ public class ScreeningPlayerPanel extends JPanel {
 				return false;
 			}
 		};
+		
+		if(table!=null){
+			table.setVisible(false);
+		}
 		table = new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
@@ -320,6 +341,10 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setCellSelectionEnabled(true);
 		table.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerCardRenderer());
+		
+		if(scrollPane!=null){
+			scrollPane.setVisible(false);
+		}
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(X / 5, Y / 5, X * 3 / 5, Y * 3 / 5);
 		scrollPane.setVisible(true);

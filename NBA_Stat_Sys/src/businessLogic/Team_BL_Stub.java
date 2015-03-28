@@ -10,10 +10,23 @@ import vo.TeamVo;
 public class Team_BL_Stub implements Team_BS {
 	public TeamVo getTeamByAbbr(String abbr) {
 		TeamVo a = new TeamVo();
-		a.setTeamName("ALT");
+		System.out.println("选中的是"+abbr);
+		if(abbr=="ATL"){
+		a.setTeamName("ATL");
+		a.setCity("LA");
+		a.setAbbreviation("ATL");
 		a.setBirthYear("1970");
 		a.setDivision(Division.ATLANTIC);
 		a.setConference(Conference.E);
+		}else{
+			a.setTeamName("WAS");
+			a.setBirthYear("1972");
+			a.setDivision(Division.CENTRAL);
+			a.setConference(Conference.W);
+			
+		}
+		
+		
 		return a;
 	}
 

@@ -10,7 +10,7 @@ public class Player_BL_Stub implements Player_BS{
 	
 	public PlayerVo getPlayerByName(String name) {
 		PlayerVo playerVo=new PlayerVo();
-		playerVo.setName("James");
+		playerVo.setName(name);
 		playerVo.setBlockRate(0.035);
 		playerVo.setAge(31);
 		return playerVo;
@@ -70,7 +70,7 @@ public class Player_BL_Stub implements Player_BS{
 		return playerVos;
 		
 	}
-	
+	/*
 	public ArrayList<PlayerVo> getPlayersByTeam(String abbr)
 	{
 		ArrayList<PlayerVo>  playerVos=new ArrayList<PlayerVo>();
@@ -90,6 +90,6 @@ public class Player_BL_Stub implements Player_BS{
 		return playerVos;
 		
 	}
-	
+	*/
 	
 }
