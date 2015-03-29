@@ -213,16 +213,14 @@ public class SearchPanel extends JPanel {
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
 		if (category.equals("player")) {
-			bg = new ImageIcon(new ImageIcon(
-					"Image/searchPlayer.png")
+			bg = new ImageIcon(new ImageIcon("Image/searchPlayer.png")
 					.getImage().getScaledInstance(this.getWidth(),
 							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			createPlayerPanel();
 		}
 		if (category == "team") {
-			bg = new ImageIcon(new ImageIcon(
-					"Image/searchTeam.png").getImage()
+			bg = new ImageIcon(new ImageIcon("Image/searchTeam.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
@@ -309,10 +307,10 @@ public class SearchPanel extends JPanel {
 		textField_51.setText(String.valueOf(player.getBlockRate()));
 		textField_57.setText(String.valueOf(player.getTurnOverRate()));
 		textField_71.setText(String.valueOf(player.getUseRate()));
-		ImageIcon playerIcon=new ImageIcon(new ImageIcon(
-				"CSEdata/players/action/"	+ player.getName()+ ".png")
-		.getImage().getScaledInstance(X/4,
-				3*Y/4, Image.SCALE_AREA_AVERAGING));
+		ImageIcon playerIcon = new ImageIcon(new ImageIcon(
+				"CSEdata/players/action/" + player.getName() + ".png")
+				.getImage().getScaledInstance(X / 4, 3 * Y / 4,
+						Image.SCALE_AREA_AVERAGING));
 		playerAction.setIcon(playerIcon);
 	}
 
@@ -362,8 +360,6 @@ public class SearchPanel extends JPanel {
 
 		teamRowData.add(testColumn);
 
-		
-		
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				testColumn);
 
@@ -381,14 +377,16 @@ public class SearchPanel extends JPanel {
 		}
 
 		JScrollPane teamJSP = new JScrollPane(teamTable);
-		teamJSP.getHorizontalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
+		teamJSP.getHorizontalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 5, Y / 10, 5*X /8 , Y / 6);
+		teamJSP.setBounds(X / 5, Y / 10, 5 * X / 8, Y / 6);
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
-		
-		TeamVo defaultTeam = team_BS.getTeamByAbbr(String.valueOf(teamRowData.get(0).get(0).teamName));
+
+		TeamVo defaultTeam = team_BS.getTeamByAbbr(String.valueOf(teamRowData
+				.get(0).get(0).teamName));
 		textField_74.setText(defaultTeam.getTeamName());
 		textField_79.setText(defaultTeam.getAbbreviation());
 		textField_76.setText(defaultTeam.getCity());
@@ -400,11 +398,15 @@ public class SearchPanel extends JPanel {
 		textField_90.setText(String.valueOf(defaultTeam.getHitNum()));
 		textField_93.setText(String.valueOf(defaultTeam.getShotNum()));
 		textField_94.setText(String.valueOf(defaultTeam.getThreePointHitNum()));
-		textField_96.setText(String.valueOf(defaultTeam.getThreePointShotNum()));
+		textField_96
+				.setText(String.valueOf(defaultTeam.getThreePointShotNum()));
 		textField_98.setText(String.valueOf(defaultTeam.getFreeThrowHitNum()));
-		textField_100.setText(String.valueOf(defaultTeam.getFreeThrowShotNum()));
-		textField_102.setText(String.valueOf(defaultTeam.getOffensiveRebound()));
-		textField_104.setText(String.valueOf(defaultTeam.getDefensiveRebound()));
+		textField_100
+				.setText(String.valueOf(defaultTeam.getFreeThrowShotNum()));
+		textField_102
+				.setText(String.valueOf(defaultTeam.getOffensiveRebound()));
+		textField_104
+				.setText(String.valueOf(defaultTeam.getDefensiveRebound()));
 		textField_106.setText(String.valueOf(defaultTeam.getReboundOverall()));
 		textField_108.setText(String.valueOf(defaultTeam.getAssistance()));
 		textField_110.setText(String.valueOf(defaultTeam.getSteal()));
@@ -413,15 +415,20 @@ public class SearchPanel extends JPanel {
 		textField_116.setText(String.valueOf(defaultTeam.getFoul()));
 		textField_118.setText(String.valueOf(defaultTeam.getScore()));
 		textField_120.setText(String.valueOf(defaultTeam.getHitRate()));
-		textField_122.setText(String.valueOf(defaultTeam.getThreePointHitRate()));
+		textField_122
+				.setText(String.valueOf(defaultTeam.getThreePointHitRate()));
 		textField_124.setText(String.valueOf(defaultTeam.getFreeThrowRate()));
 		textField_126.setText(String.valueOf(defaultTeam.getWinningRate()));
 		textField_128.setText(String.valueOf(defaultTeam.getRoundAttack()));
-		textField_130.setText(String.valueOf(defaultTeam.getAttackingEfficiency()));
-		textField_132.setText(String.valueOf(defaultTeam.getDefensiveEfficiency()));
-		textField_134.setText(String.valueOf(defaultTeam.getReboundEfficiency()));
+		textField_130.setText(String.valueOf(defaultTeam
+				.getAttackingEfficiency()));
+		textField_132.setText(String.valueOf(defaultTeam
+				.getDefensiveEfficiency()));
+		textField_134
+				.setText(String.valueOf(defaultTeam.getReboundEfficiency()));
 		textField_136.setText(String.valueOf(defaultTeam.getStealEfficiency()));
-		textField_138.setText(String.valueOf(defaultTeam.getAssistanceEfficiency()));
+		textField_138.setText(String.valueOf(defaultTeam
+				.getAssistanceEfficiency()));
 
 	}
 
@@ -516,16 +523,17 @@ public class SearchPanel extends JPanel {
 		}
 
 		JScrollPane teamJSP = new JScrollPane(teamTable);
-		teamJSP.getHorizontalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
+		teamJSP.getHorizontalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 6, Y / 20, 13*X / 20, Y / 6);
+		teamJSP.setBounds(X / 6, Y / 20, 13 * X / 20, Y / 6);
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
 
 		// playerButton
 		playerRowData = new Vector<Vector<PlayerButton>>();
-		playerColumn=new Vector<String>();
+		playerColumn = new Vector<String>();
 		playerColumn.add("");
 
 		playerDTM = new DefaultTableModel(playerRowData, playerColumn) {
@@ -534,7 +542,7 @@ public class SearchPanel extends JPanel {
 			}
 		};
 		playerTable = new JTable(playerDTM);
-		playerTable.setRowHeight(X/10);
+		playerTable.setRowHeight(X / 10);
 		playerTable.setCellSelectionEnabled(true);
 		playerTable.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerTableRenderer());
@@ -543,17 +551,17 @@ public class SearchPanel extends JPanel {
 		playerTableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		playerTable.getTableHeader().setDefaultRenderer(
 				playerTableHeaderRenderer);
-		playerTable.getColumnModel().getColumn(0).setPreferredWidth(X/10);
+		playerTable.getColumnModel().getColumn(0).setPreferredWidth(X / 10);
 		JScrollPane playerJSP = new JScrollPane(playerTable);
-		playerJSP.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
+		playerJSP.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		playerJSP
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		playerJSP
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		playerJSP.setBounds(X / 18, Y / 4, X /10, 7*Y / 10);
+		playerJSP.setBounds(X / 18, Y / 4, X / 10, 7 * Y / 10);
 		playerJSP.setVisible(true);
 		bgLabel.add(playerJSP);
-		
 
 	}
 
@@ -583,7 +591,7 @@ public class SearchPanel extends JPanel {
 		textField_75.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_75.setText("缩写");
 		textField_75.setEditable(false);
-	
+
 		textField_75.setColumns(10);
 		textField_75.setBounds(tempX + 2 * spaceX, tempY, spaceX, spaceY);
 		bgLabel.add(textField_75);
@@ -1115,15 +1123,15 @@ public class SearchPanel extends JPanel {
 	}
 
 	public void createPlayerDataPanel() {
-		int tempX = 2*X / 11;
-		int tempY = 27*Y / 100;
+		int tempX = 2 * X / 11;
+		int tempY = 27 * Y / 100;
 		int spaceX = X / 10;
 		int spaceY = Y / 18;
-		
-		playerAction=new JLabel();
-		playerAction.setBounds(3*X/4, Y/5, X/4, 3*Y/4);
+
+		playerAction = new JLabel();
+		playerAction.setBounds(3 * X / 4, Y / 5, X / 4, 3 * Y / 4);
 		bgLabel.add(playerAction);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setEditable(false);
 		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1263,6 +1271,7 @@ public class SearchPanel extends JPanel {
 		textField_16 = new JTextField();
 		textField_16.setEditable(false);
 		textField_16.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_16.setFont(new Font("Dialog",0,11));
 		textField_16.setBounds(tempX + 5 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_16);
@@ -1758,9 +1767,11 @@ public class SearchPanel extends JPanel {
 			PlayerButton renderer = new PlayerButton(
 					((PlayerButton) value).playerName);
 			renderer.playerPortrait = new ImageIcon(new ImageIcon(
-					"CSEdata/players/portrait/"	+ renderer.playerName + ".png").getImage().getScaledInstance(X/10,X/10, Image.SCALE_SMOOTH));
+					"CSEdata/players/portrait/" + renderer.playerName + ".png")
+					.getImage().getScaledInstance(X / 10, X / 10,
+							Image.SCALE_SMOOTH));
 			renderer.setIcon(renderer.playerPortrait);
-			renderer.setSize(X/10, X/10);
+			renderer.setSize(X / 10, X / 10);
 			if (hasFocus) {
 				showPlayerInfo(renderer.playerName);
 			}
@@ -1793,54 +1804,91 @@ public class SearchPanel extends JPanel {
 								.getName()));
 						playerRowData.add(a);
 					}
-					playerDTM.setDataVector(playerRowData,playerColumn);
+					playerDTM.setDataVector(playerRowData, playerColumn);
 					playerTable.getColumnModel().getColumn(0)
 							.setCellRenderer(new PlayerTableRenderer());
-					
-					 PlayerVo defaultPlayer=player_BS.getPlayerByName(String.valueOf(renderer.playersInTeam.get(0).getName()));
-						textField_4.setText(String.valueOf(defaultPlayer.getName()));
-						
-						textField_9.setText(String.valueOf(defaultPlayer.getHeight()));
-						textField_13.setText(String.valueOf(defaultPlayer.getBirth()));
-						textField_5.setText(String.valueOf(defaultPlayer.getPosition()));
-						textField_10.setText(String.valueOf(defaultPlayer.getWeight()));
-						textField_73.setText(String.valueOf(defaultPlayer.getExp()));
-						textField_72.setText(String.valueOf(defaultPlayer.getNumber()));
-						textField_14.setText(String.valueOf(defaultPlayer.getAge()));
-						textField_16.setText(String.valueOf(defaultPlayer.getSchool()));
-						textField_18.setText(String.valueOf(defaultPlayer.getGameNum()));
-						textField_20.setText(String.valueOf(defaultPlayer.getFirstOnNum()));
-						textField_24.setText(String.valueOf(defaultPlayer.getReboundOverall()));
-						textField_26.setText(String.valueOf(defaultPlayer.getAssistance()));
-						textField_30.setText(String.valueOf(defaultPlayer.getTime()));
-						textField_32.setText(String.valueOf(defaultPlayer.getHitRate()));
-						textField_36.setText(String.valueOf(defaultPlayer.getThreePointHitRate()));
-						textField_38.setText(String.valueOf(defaultPlayer.getFreeThrowRate()));
-						textField_42.setText(String.valueOf(defaultPlayer.getAttackingNum()));
-						textField_44.setText(String.valueOf(defaultPlayer.getDefensiveNum()));
-						textField_47.setText(String.valueOf(defaultPlayer.getSteal()));
-						textField_49.setText(String.valueOf(defaultPlayer.getBlock()));
-						textField_53.setText(String.valueOf(defaultPlayer.getTurnover()));
-						textField_55.setText(String.valueOf(defaultPlayer.getFoul()));
-						textField_59.setText(String.valueOf(defaultPlayer.getScore()));
-						textField_61.setText(String.valueOf(defaultPlayer.getEfficiency()));
-						textField_65.setText(String.valueOf(defaultPlayer.getGmSc()));
-						textField_22.setText(String.valueOf(defaultPlayer.getTrueHitRate()));
-						textField_34.setText(String.valueOf(defaultPlayer.getHitEfficiency()));
-						textField_31.setText(String.valueOf(defaultPlayer.getReboundOverallRate()));
-						textField_69.setText(String.valueOf(defaultPlayer.getOffensiveReboundRate()));
-						textField_40.setText(String.valueOf(defaultPlayer.getDefensiveReboundRate()));
-						textField_63.setText(String.valueOf(defaultPlayer.getAssistanceRate()));
-						textField_70.setText(String.valueOf(defaultPlayer.getStealRate()));
-						textField_51.setText(String.valueOf(defaultPlayer.getBlockRate()));
-						textField_57.setText(String.valueOf(defaultPlayer.getTurnOverRate()));
-						textField_71.setText(String.valueOf(defaultPlayer.getUseRate()));
-						ImageIcon playerIcon=new ImageIcon(new ImageIcon(
-								"CSEdata/players/action/"	+ defaultPlayer.getName()+ ".png")
-						.getImage().getScaledInstance(X/4,
-								3*Y/4, Image.SCALE_AREA_AVERAGING));
-						playerAction.setIcon(playerIcon);
-					
+
+					PlayerVo defaultPlayer = player_BS.getPlayerByName(String
+							.valueOf(renderer.playersInTeam.get(0).getName()));
+					textField_4
+							.setText(String.valueOf(defaultPlayer.getName()));
+
+					textField_9.setText(String.valueOf(defaultPlayer
+							.getHeight()));
+					textField_13.setText(String.valueOf(defaultPlayer
+							.getBirth()));
+					textField_5.setText(String.valueOf(defaultPlayer
+							.getPosition()));
+					textField_10.setText(String.valueOf(defaultPlayer
+							.getWeight()));
+					textField_73
+							.setText(String.valueOf(defaultPlayer.getExp()));
+					textField_72.setText(String.valueOf(defaultPlayer
+							.getNumber()));
+					textField_14
+							.setText(String.valueOf(defaultPlayer.getAge()));
+					textField_16.setText(String.valueOf(defaultPlayer
+							.getSchool()));
+					textField_18.setText(String.valueOf(defaultPlayer
+							.getGameNum()));
+					textField_20.setText(String.valueOf(defaultPlayer
+							.getFirstOnNum()));
+					textField_24.setText(String.valueOf(defaultPlayer
+							.getReboundOverall()));
+					textField_26.setText(String.valueOf(defaultPlayer
+							.getAssistance()));
+					textField_30
+							.setText(String.valueOf(defaultPlayer.getTime()));
+					textField_32.setText(String.valueOf(defaultPlayer
+							.getHitRate()));
+					textField_36.setText(String.valueOf(defaultPlayer
+							.getThreePointHitRate()));
+					textField_38.setText(String.valueOf(defaultPlayer
+							.getFreeThrowRate()));
+					textField_42.setText(String.valueOf(defaultPlayer
+							.getAttackingNum()));
+					textField_44.setText(String.valueOf(defaultPlayer
+							.getDefensiveNum()));
+					textField_47.setText(String.valueOf(defaultPlayer
+							.getSteal()));
+					textField_49.setText(String.valueOf(defaultPlayer
+							.getBlock()));
+					textField_53.setText(String.valueOf(defaultPlayer
+							.getTurnover()));
+					textField_55
+							.setText(String.valueOf(defaultPlayer.getFoul()));
+					textField_59.setText(String.valueOf(defaultPlayer
+							.getScore()));
+					textField_61.setText(String.valueOf(defaultPlayer
+							.getEfficiency()));
+					textField_65
+							.setText(String.valueOf(defaultPlayer.getGmSc()));
+					textField_22.setText(String.valueOf(defaultPlayer
+							.getTrueHitRate()));
+					textField_34.setText(String.valueOf(defaultPlayer
+							.getHitEfficiency()));
+					textField_31.setText(String.valueOf(defaultPlayer
+							.getReboundOverallRate()));
+					textField_69.setText(String.valueOf(defaultPlayer
+							.getOffensiveReboundRate()));
+					textField_40.setText(String.valueOf(defaultPlayer
+							.getDefensiveReboundRate()));
+					textField_63.setText(String.valueOf(defaultPlayer
+							.getAssistanceRate()));
+					textField_70.setText(String.valueOf(defaultPlayer
+							.getStealRate()));
+					textField_51.setText(String.valueOf(defaultPlayer
+							.getBlockRate()));
+					textField_57.setText(String.valueOf(defaultPlayer
+							.getTurnOverRate()));
+					textField_71.setText(String.valueOf(defaultPlayer
+							.getUseRate()));
+					ImageIcon playerIcon = new ImageIcon(new ImageIcon(
+							"CSEdata/players/action/" + defaultPlayer.getName()
+									+ ".png").getImage().getScaledInstance(
+							X / 4, 3 * Y / 4, Image.SCALE_AREA_AVERAGING));
+					playerAction.setIcon(playerIcon);
+
 				}
 				if (category == "team") {
 					showTeamInfo(renderer.teamName);
@@ -1850,13 +1898,14 @@ public class SearchPanel extends JPanel {
 		}
 
 	}
-	class MyTextField extends JTextField{
-		public MyTextField(){
+
+	class MyTextField extends JTextField {
+		public MyTextField() {
 			super();
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
-			this.setFont(new Font("黑体",1,15));
-			
+			this.setFont(new Font("黑体", 1, 15));
+
 		}
 	}
 }

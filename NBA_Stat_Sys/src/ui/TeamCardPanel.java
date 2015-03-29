@@ -39,6 +39,7 @@ public class TeamCardPanel extends JPanel {
 		this.number = number;
 		this.setVisible(true);
 		this.setLayout(null);
+		this.setOpaque(false);
 		this.teamInfo = teamInfo;
 		this.criteria = criteria;
 		this.criteriaValue = criteriaValue;
@@ -54,7 +55,7 @@ public class TeamCardPanel extends JPanel {
 			lblNumber = new JLabel(String.valueOf(number) + "nd");
 		} else if (number == 3) {
 			lblNumber = new JLabel(String.valueOf(number) + "rd");
-		 }else if(number>3){
+		} else if (number > 3) {
 			lblNumber = new JLabel(String.valueOf(number) + "th");
 		} else {
 			System.out.println("球队名片显示中的排名Bug！！！" + number);
@@ -81,7 +82,7 @@ public class TeamCardPanel extends JPanel {
 				+ teamInfo.getAbbreviation() + ".svg");
 		teamButton.setIcon(teamIcon);
 
-		MyLabel label = new MyLabel(Color.WHITE,"球队全名");
+		MyLabel label = new MyLabel(Color.WHITE, "球队全名");
 		label.setBounds(X * 230 / 1366, Y * 21 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label);
@@ -110,7 +111,7 @@ public class TeamCardPanel extends JPanel {
 		add(textField_8);
 		textField_8.setColumns(10);
 
-		MyLabel label_3 = new MyLabel(Color.WHITE,"缩写");
+		MyLabel label_3 = new MyLabel(Color.WHITE, "缩写");
 		label_3.setBounds(X * 230 / 1366, Y * 56 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_3);
@@ -124,12 +125,12 @@ public class TeamCardPanel extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 
-		MyLabel label_4 = new MyLabel(Color.WHITE,"所在地");
+		MyLabel label_4 = new MyLabel(Color.WHITE, "所在地");
 		label_4.setBounds(X * 450 / 1366, Y * 56 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_4);
 
-		textField_2 = new JTextField();
+		textField_2 = new MyTextField(Color.WHITE);
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_2.setText(teamInfo.getCity());
 		textField_2.setEditable(false);
@@ -138,7 +139,7 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_2);
 
-		MyLabel label_2 = new MyLabel(Color.WHITE,"赛区");
+		MyLabel label_2 = new MyLabel(Color.WHITE, "赛区");
 		label_2.setBounds(X * 690 / 1366, Y * 56 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_2);
@@ -152,7 +153,7 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_6);
 
-		MyLabel label_5 = new MyLabel(Color.WHITE,"分区");
+		MyLabel label_5 = new MyLabel(Color.WHITE, "分区");
 		label_5.setBounds(X * 230 / 1366, Y * 91 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_5);
@@ -166,7 +167,7 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(txtDiv);
 
-		MyLabel label_6 = new MyLabel(Color.WHITE,"主场");
+		MyLabel label_6 = new MyLabel(Color.WHITE, "主场");
 		label_6.setBounds(X * 450 / 1366, Y * 91 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_6);
@@ -180,7 +181,7 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_3);
 
-		MyLabel label_7 = new MyLabel(Color.WHITE,"建立时间");
+		MyLabel label_7 = new MyLabel(Color.WHITE, "建立时间");
 		label_7.setBounds(X * 690 / 1366, Y * 91 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_7);
@@ -207,31 +208,34 @@ public class TeamCardPanel extends JPanel {
 	public String getCriteriaValue() {
 		return criteriaValue;
 	}
-	class MyTextField extends JTextField{
-		public MyTextField(Color textColor){
+
+	class MyTextField extends JTextField {
+		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,11));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
-	
+
 	}
-	class MyLabel extends JLabel{
-		public MyLabel(Color textColor){
+
+	class MyLabel extends JLabel {
+		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,11));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
-		public MyLabel(Color textColor,String text){
+
+		public MyLabel(Color textColor, String text) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setText(text);
-			this.setFont(new Font("黑体",1,11));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
 	}
 

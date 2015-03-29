@@ -1,16 +1,12 @@
 package ui;
 
-
 import java.awt.Image;
-
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-
 
 public class StartPanel extends JPanel {
 
@@ -25,9 +21,9 @@ public class StartPanel extends JPanel {
 	static JButton screeningPlayerbtn;
 	static JButton searchTeambtn;
 	static JButton sortTeambtn;
-	
+
 	JLabel bgLabel;
-//	Image bgImage;
+	// Image bgImage;
 	JFrame mainFrame;
 	static int X;
 	static int Y;
@@ -40,21 +36,23 @@ public class StartPanel extends JPanel {
 		this.setLayout(null);
 		this.setVisible(true);
 		this.setOpaque(true);
-//		bgImage = Toolkit.getDefaultToolkit().getImage(
-//				"Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
-		ImageIcon bg=new ImageIcon(new ImageIcon("Image/mainImage.png").getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
-		bgLabel=new JLabel();
+		// bgImage = Toolkit.getDefaultToolkit().getImage(
+		// "Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/mainImage.png")
+				.getImage().getScaledInstance(this.getWidth(),
+						this.getHeight(), Image.SCALE_SMOOTH));
+		bgLabel = new JLabel();
 		bgLabel.setIcon(bg);
 		bgLabel.setBounds(0, 0, X, Y);
-		this.add(bgLabel,new Integer(Integer.MIN_VALUE));
+		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
 		createButton();
-		
+
 	}
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		g.drawImage(bgImage, 0, 0, X, Y, this);		
-//	};
-	
+
+	// protected void paintComponent(Graphics g) {
+	// super.paintComponent(g);
+	// g.drawImage(bgImage, 0, 0, X, Y, this);
+	// };
 
 	public void createButton() {
 
@@ -99,9 +97,13 @@ public class StartPanel extends JPanel {
 		bgLabel.add(sortTeambtn);
 
 		JButton exitButton = new JButton();
-		exitButton.setBounds(85*X/99,85*Y/100, 13*X/100, 11*Y/100);
-		ImageIcon exitground=new ImageIcon("C:/Users/ThinkPad/Desktop/nba/exit.png");
-		exitground=new ImageIcon(exitground.getImage().getScaledInstance(exitButton.getWidth(), exitButton.getHeight(), Image.SCALE_SMOOTH));
+		exitButton.setBounds(85 * X / 99, 85 * Y / 100, 13 * X / 100,
+				11 * Y / 100);
+		ImageIcon exitground = new ImageIcon(
+				"C:/Users/ThinkPad/Desktop/nba/exit.png");
+		exitground = new ImageIcon(exitground.getImage().getScaledInstance(
+				exitButton.getWidth(), exitButton.getHeight(),
+				Image.SCALE_SMOOTH));
 		exitButton.setIcon(exitground);
 		exitButton.setOpaque(false);
 		exitButton.setContentAreaFilled(false);
@@ -162,6 +164,5 @@ public class StartPanel extends JPanel {
 		sortTeamPanel = new SortPanel("team", mainFrame);
 
 	}
-
 
 }

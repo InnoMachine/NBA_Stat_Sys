@@ -53,9 +53,9 @@ public class PlayerCardPanel extends JPanel {
 			lblNumber = new JLabel(String.valueOf(number) + "nd");
 		} else if (number == 3) {
 			lblNumber = new JLabel(String.valueOf(number) + "rd");
-		 }else if(number>3){
+		} else if (number > 3) {
 			lblNumber = new JLabel(String.valueOf(number) + "th");
-		}else {
+		} else {
 			System.out.println("球员名片显示中的排名Bug！！！" + number);
 		}
 		lblNumber.setBounds(X * 6 / 1366, Y * 6 / 768, X * 63 / 1366,
@@ -81,7 +81,7 @@ public class PlayerCardPanel extends JPanel {
 				+ playerInfo.getName() + ".png");
 		playerButton.setIcon(playerPortrait);
 
-		MyLabel label = new MyLabel(Color.WHITE,"姓名");
+		MyLabel label = new MyLabel(Color.WHITE, "姓名");
 		label.setBounds(X * 220 / 1366, Y * 21 / 768, X * 54 / 1366,
 				Y * 15 / 768);
 		add(label);
@@ -111,7 +111,7 @@ public class PlayerCardPanel extends JPanel {
 		add(textField_8);
 		textField_8.setColumns(10);
 
-		MyLabel label_1 = new MyLabel(Color.WHITE,"球衣号码");
+		MyLabel label_1 = new MyLabel(Color.WHITE, "球衣号码");
 		label_1.setBounds(X * 670 / 1366, Y * 56 / 768, X * 54 / 1366,
 				Y * 15 / 768);
 		add(label_1);
@@ -125,7 +125,7 @@ public class PlayerCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_4);
 
-		MyLabel label_2 = new MyLabel(Color.WHITE,"位置");
+		MyLabel label_2 = new MyLabel(Color.WHITE, "位置");
 		label_2.setBounds(X * 520 / 1366, Y * 56 / 768, X * 35 / 1366,
 				Y * 15 / 768);
 		add(label_2);
@@ -139,7 +139,7 @@ public class PlayerCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_6);
 
-		MyLabel label_3 = new MyLabel(Color.WHITE,"身高");
+		MyLabel label_3 = new MyLabel(Color.WHITE, "身高");
 		label_3.setBounds(X * 220 / 1366, Y * 56 / 768, X * 35 / 1366,
 				Y * 15 / 768);
 		add(label_3);
@@ -153,7 +153,7 @@ public class PlayerCardPanel extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 
-		MyLabel label_4 = new MyLabel(Color.WHITE,"体重");
+		MyLabel label_4 = new MyLabel(Color.WHITE, "体重");
 		label_4.setBounds(X * 370 / 1366, Y * 56 / 768, X * 35 / 1366,
 				Y * 15 / 768);
 		add(label_4);
@@ -167,7 +167,7 @@ public class PlayerCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_2);
 
-		MyLabel label_5 = new MyLabel(Color.WHITE,"生日");
+		MyLabel label_5 = new MyLabel(Color.WHITE, "生日");
 		label_5.setBounds(X * 220 / 1366, Y * 91 / 768, X * 35 / 1366,
 				Y * 15 / 768);
 		add(label_5);
@@ -181,7 +181,7 @@ public class PlayerCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_1);
 
-		MyLabel label_6 = new MyLabel(Color.WHITE,"年龄");
+		MyLabel label_6 = new MyLabel(Color.WHITE, "年龄");
 		label_6.setBounds(X * 370 / 1366, Y * 91 / 768, X * 35 / 1366,
 				Y * 15 / 768);
 		add(label_6);
@@ -195,7 +195,7 @@ public class PlayerCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_3);
 
-		MyLabel label_7 = new MyLabel(Color.WHITE,"球龄");
+		MyLabel label_7 = new MyLabel(Color.WHITE, "球龄");
 		label_7.setBounds(X * 520 / 1366, Y * 91 / 768, X * 35 / 1366,
 				Y * 15 / 768);
 		add(label_7);
@@ -209,7 +209,7 @@ public class PlayerCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_5);
 
-		MyLabel label_8 = new MyLabel(Color.WHITE,"毕业学校");
+		MyLabel label_8 = new MyLabel(Color.WHITE, "毕业学校");
 		label_8.setBounds(X * 670 / 1366, Y * 91 / 768, X * 54 / 1366,
 				Y * 15 / 768);
 		add(label_8);

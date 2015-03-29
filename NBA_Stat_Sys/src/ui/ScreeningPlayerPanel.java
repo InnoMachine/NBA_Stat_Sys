@@ -50,6 +50,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	static int X;
 	static int Y;
 	JLabel bgLabel;
+
 	public ScreeningPlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		X = mainFrame.getWidth();
@@ -57,10 +58,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		bgLabel=new JLabel();
+		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
-		ImageIcon bg = new ImageIcon(new ImageIcon(
-				"Image/screeningPanel.png")
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPanel.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
@@ -68,9 +68,10 @@ public class ScreeningPlayerPanel extends JPanel {
 		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
 		playerCriteriaPanel.setVisible(false);
 
-		MyLabel screeninglbl = new MyLabel(Color.WHITE,"筛选依据");
-		screeninglbl.setFont(new Font("黑体",1,13));
-		screeninglbl.setBounds(X * 640 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
+		MyLabel screeninglbl = new MyLabel(Color.WHITE, "筛选依据");
+		screeninglbl.setFont(new Font("黑体", 1, 13));
+		screeninglbl.setBounds(X * 640 / 1366, Y * 66 / 768, X * 60 / 1366,
+				X / 50);
 		bgLabel.add(screeninglbl);
 
 		screeningCriteriabtn = new JButton("");
@@ -91,13 +92,13 @@ public class ScreeningPlayerPanel extends JPanel {
 		bgLabel.add(screeningbtn);
 		mainFrame.getContentPane().add(this);
 
-		MyLabel label = new MyLabel(Color.WHITE,"球员位置");
-		label.setFont(new Font("黑体",1,13));
+		MyLabel label = new MyLabel(Color.WHITE, "球员位置");
+		label.setFont(new Font("黑体", 1, 13));
 		label.setBounds(X * 265 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
 		bgLabel.add(label);
 
-		MyLabel label_1 = new MyLabel(Color.WHITE,"球员联盟");
-		label_1.setFont(new Font("黑体",1,13));
+		MyLabel label_1 = new MyLabel(Color.WHITE, "球员联盟");
+		label_1.setFont(new Font("黑体", 1, 13));
 		label_1.setBounds(X * 455 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
 		bgLabel.add(label_1);
 
@@ -350,7 +351,8 @@ public class ScreeningPlayerPanel extends JPanel {
 				scrollPane.setVisible(false);
 			}
 			scrollPane = new JScrollPane(table);
-			scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
+			scrollPane.getVerticalScrollBar().setUI(
+					new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 			scrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 / 1366,
 					Y * 600 / 768);
 			scrollPane.setVisible(true);
@@ -594,31 +596,34 @@ public class ScreeningPlayerPanel extends JPanel {
 		}
 
 	}
-	class MyTextField extends JTextField{
-		public MyTextField(Color textColor){
+
+	class MyTextField extends JTextField {
+		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,11));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
-	
+
 	}
-	class MyLabel extends JLabel{
-		public MyLabel(Color textColor){
+
+	class MyLabel extends JLabel {
+		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,11));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
-		public MyLabel(Color textColor,String text){
+
+		public MyLabel(Color textColor, String text) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setText(text);
-			this.setFont(new Font("黑体",1,11));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
 	}
 }

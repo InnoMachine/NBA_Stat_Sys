@@ -3,6 +3,7 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -62,6 +64,7 @@ public class SortPanel extends JPanel {
 	static int X;
 	static int Y;
 	JLabel bgLabel;
+
 	public SortPanel(String category, JFrame mainFrame) {
 
 		this.mainFrame = mainFrame;
@@ -70,9 +73,9 @@ public class SortPanel extends JPanel {
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		bgLabel=new JLabel();
+		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
-		
+
 		this.add(bgLabel);
 		sortPlayerCriteriaPanel = new SortPlayerCriteriaPanel();
 		sortPlayerCriteriaPanel.setVisible(false);
@@ -80,13 +83,10 @@ public class SortPanel extends JPanel {
 		sortTeamCriteriaPanel = new SortTeamCriteriaPanel();
 		sortTeamCriteriaPanel.setVisible(false);
 
-		JLabel criterialbl = new JLabel("排序依据");
-		criterialbl.setBounds(X * 335 / 1366, Y * 86 / 768, X / 15, X / 50);
+		MyLabel criterialbl = new MyLabel(Color.WHITE,"排序依据");
+		criterialbl.setFont(new Font("黑体", 1, 13));
+		criterialbl.setBounds(X * 335 / 1366, Y * 66 / 768, X / 15, X / 50);
 		bgLabel.add(criterialbl);
-
-//		JButton btnSort = new JButton("排序");
-//		btnSort.setBounds(X * 70 / 100, Y / 8, X / 12, X / 50);
-//		this.add(btnSort);
 
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 0, X / 15, X / 50);
@@ -100,48 +100,33 @@ public class SortPanel extends JPanel {
 		};
 		column = new Vector<String>();
 		column.add("");
-		
-		table = new JTable(dtm);
-		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
-		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
-		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
-		table.setRowHeight(Y * 120 / 768);
-		table.setVisible(true);
-		table.setCellSelectionEnabled(true);
 
-		scrollPane = new JScrollPane(table);
-		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
-		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
-				Y * 520 / 768);
-		scrollPane.setVisible(true);
-		scrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane
-				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		bgLabel.add(scrollPane);
-		
-		
 		if (category == "player") {
 
 			ImageIcon bg = new ImageIcon(new ImageIcon(
-					"Image/screeningPanel.png")
-					.getImage().getScaledInstance(this.getWidth(),
-							this.getHeight(), Image.SCALE_SMOOTH));
+					"Image/screeningPanel.png").getImage().getScaledInstance(
+					this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
-			upSortbtn.setBounds(X * 940 / 1366, Y * 86 / 768, X / 50, X / 50);
-			upSortbtn.addActionListener(e -> {UpOrDown = "Up";sortPlayer(UpOrDown);});
+			upSortbtn.setBounds(X * 950 / 1366, Y * 66 / 768, X / 50, X / 50);
+			upSortbtn.addActionListener(e -> {
+				UpOrDown = "Up";
+				sortPlayer(UpOrDown);
+			});
 			bgLabel.add(upSortbtn);
 
 			JButton downSortbtn = new JButton("D");
-			downSortbtn.setBounds(X * 981 / 1366, Y * 86 / 768, X / 50, X / 50);
-			downSortbtn.addActionListener(e -> {UpOrDown = "Down";sortPlayer(UpOrDown);});
+			downSortbtn.setBounds(X * 991 / 1366, Y * 66 / 768, X / 50, X / 50);
+			downSortbtn.addActionListener(e -> {
+				UpOrDown = "Down";
+				sortPlayer(UpOrDown);
+			});
 			bgLabel.add(downSortbtn);
-			
-//			btnSort.addActionListener(e -> sortPlayer(UpOrDown));
+
+			// btnSort.addActionListener(e -> sortPlayer(UpOrDown));
 			playerCriteriabtn = new JButton("");
-			playerCriteriabtn.setBounds(X * 431 / 1366, Y * 86 / 768, X * 31 / 100,
-					X / 50);
+			playerCriteriabtn.setBounds(X * 461 / 1366, Y * 66 / 768,
+					X * 31 / 100, X / 50);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
 			bgLabel.add(playerCriteriabtn);
 
@@ -149,24 +134,29 @@ public class SortPanel extends JPanel {
 		if (category == "team") {
 
 			ImageIcon bg = new ImageIcon(new ImageIcon(
-					"Image/screeningPanel.png")
-					.getImage().getScaledInstance(this.getWidth(),
-							this.getHeight(), Image.SCALE_SMOOTH));
+					"Image/screeningPanel.png").getImage().getScaledInstance(
+					this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
-			upSortbtn.setBounds(X * 940 / 1366, Y * 86 / 768, X / 50, X / 50);
-			upSortbtn.addActionListener(e -> {UpOrDown = "Up";sortTeam(UpOrDown);});
+			upSortbtn.setBounds(X * 950 / 1366, Y * 66 / 768, X / 50, X / 50);
+			upSortbtn.addActionListener(e -> {
+				UpOrDown = "Up";
+				sortTeam(UpOrDown);
+			});
 			bgLabel.add(upSortbtn);
 
 			JButton downSortbtn = new JButton("D");
-			downSortbtn.setBounds(X * 981 / 1366, Y * 86 / 768, X / 50, X / 50);
-			downSortbtn.addActionListener(e -> {UpOrDown = "Down";sortTeam(UpOrDown);});
+			downSortbtn.setBounds(X * 991 / 1366, Y * 66 / 768, X / 50, X / 50);
+			downSortbtn.addActionListener(e -> {
+				UpOrDown = "Down";
+				sortTeam(UpOrDown);
+			});
 			bgLabel.add(downSortbtn);
-			
-//			btnSort.addActionListener(e -> sortTeam(UpOrDown));
+
+			// btnSort.addActionListener(e -> sortTeam(UpOrDown));
 			teamCriteriabtn = new JButton("");
-			teamCriteriabtn
-					.setBounds(X * 431 / 1366,Y * 86 / 768, X * 31 / 100, X / 50);
+			teamCriteriabtn.setBounds(X * 461 / 1366, Y * 66 / 768,
+					X * 31 / 100, X / 50);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			bgLabel.add(teamCriteriabtn);
 
@@ -178,15 +168,16 @@ public class SortPanel extends JPanel {
 
 	public void makeTable(String category) {
 
-		if(table!=null){
+		if (table != null) {
 			table.setVisible(false);
 		}
-		
+
 		table = new JTable(dtm);
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
 		table.setRowHeight(Y * 120 / 768);
+		table.setOpaque(false);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
 		if (category == "team") {
@@ -198,30 +189,32 @@ public class SortPanel extends JPanel {
 					.setCellRenderer(new PlayerCardRenderer());
 		}
 
-		if(scrollPane!=null){
+		if (scrollPane != null) {
 			scrollPane.setVisible(false);
 		}
-		
-		
+
 		scrollPane = new JScrollPane(table);
-		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
-		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
-				Y * 520 / 768);
+		scrollPane.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
+		scrollPane.setBounds(X * 220 / 1366, Y * 130 / 768, X * 930 / 1366,
+				Y * 600 / 768);
 		scrollPane.setVisible(true);
 		scrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
 		bgLabel.add(scrollPane);
 
 	}
 
 	public void sortPlayer(String UpOrDown) {
 
-		if(sortPlayerCriteriaPanel!=null){
+		if (sortPlayerCriteriaPanel != null) {
 			sortPlayerCriteriaPanel.setVisible(false);
 		}
-		
+
 		playerRowData = new Vector<Vector<PlayerCardPanel>>();
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
@@ -240,151 +233,151 @@ public class SortPanel extends JPanel {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				switch (playerCriteria) {
 				case "gameNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getGameNum())));
 
 					break;
 				case "FirstOnNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getFirstOnNum())));
 					break;
 				case "reboundOverall":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getReboundOverall())));
 					break;
 				case "assistance":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getAssistance())));
 					break;
 				case "time":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTime()/60.0)));
+									.valueOf(playerVos.get(i).getTime() / 60.0)));
 					break;
 				case "hitRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getHitRate())));
 					break;
 				case "threePointHitRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getThreePointHitRate())));
 					break;
 				case "freeThrowRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getFreeThrowRate())));
 					break;
 				case "attackingNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
 							String.valueOf(playerVos.get(i).getAttackingNum())));
 					break;
 				case "defensiveNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
 							String.valueOf(playerVos.get(i).getDefensiveNum())));
 					break;
 				case "steal":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getSteal())));
 					break;
 				case "block":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getBlock())));
 					break;
 				case "turnover":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTurnover())));
 					break;
 				case "foul":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getFoul())));
 					break;
 
 				case "score":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getScore())));
 					break;
 				case "efficiency":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getEfficiency())));
 					break;
 
 				case "GmSc":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getGmSc())));
 					break;
 				case "trueHitRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTrueHitRate())));
 					break;
 
 				case "hitEfficiency":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getHitEfficiency())));
 					break;
 				case "reboundOverallRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getReboundOverallRate())));
 					break;
 
 				case "offensiveReboundRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getOffensiveReboundRate())));
 					break;
 				case "defensiveReboundRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getDefensiveReboundRate())));
 					break;
 
 				case "assistanceRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getAssistanceRate())));
 					break;
 				case "stealRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getStealRate())));
 					break;
 				case "blockRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getBlockRate())));
 					break;
 				case "turnOverRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
 							String.valueOf(playerVos.get(i).getTurnOverRate())));
 					break;
 				case "useRate":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getUseRate())));
 					break;
@@ -409,10 +402,10 @@ public class SortPanel extends JPanel {
 
 	public void sortTeam(String UpOrDown) {
 
-		if(sortTeamCriteriaPanel!=null){
+		if (sortTeamCriteriaPanel != null) {
 			sortTeamCriteriaPanel.setVisible(false);
 		}
-		
+
 		teamRowData = new Vector<Vector<TeamCardPanel>>();
 		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
 		if (teamCriteria == "") {
@@ -429,160 +422,160 @@ public class SortPanel extends JPanel {
 				Vector<TeamCardPanel> a = new Vector<TeamCardPanel>();
 				switch (teamCriteria) {
 				case "GameNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getGameNum())));
 
 					break;
 				case "hitNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getHitNum())));
 
 					break;
 				case "shotNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getShotNum())));
 
 					break;
 				case "threePointHitNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getThreePointHitNum())));
 
 					break;
 				case "threePointShotNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getThreePointShotNum())));
 
 					break;
 				case "freeThrowHitNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getFreeThrowHitNum())));
 
 					break;
 				case "freeThrowShotNum":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getFreeThrowShotNum())));
 
 					break;
 				case "offensiveRebound":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getOffensiveRebound())));
 
 					break;
 				case "defensiveRebound":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getDefensiveRebound())));
 
 					break;
 				case "reboundOverall":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getReboundOverall())));
 
 					break;
 				case "assistance":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getAssistance())));
 
 					break;
 				case "steal":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getSteal())));
 					break;
 				case "block":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getBlock())));
 
 					break;
 				case "turnover":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getTurnover())));
 
 					break;
 				case "foul":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getFoul())));
 
 					break;
 
 				case "score":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getScore())));
 
 					break;
 				case "hitRate":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getHitRate())));
 
 					break;
 
 				case "threePointHitRate":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getThreePointHitRate())));
 
 					break;
 				case "freeeThrowRate":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getFreeThrowRate())));
 
 					break;
 
 				case "winningRate":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getWinningRate())));
 
 					break;
 				case "roundAttack":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getRoundAttack())));
 
 					break;
 
 				case "attackingEfficiency":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getAttackingEfficiency())));
 
 					break;
 				case "defensiveEfficiency":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getDefensiveEfficiency())));
 
 					break;
 				case "reboundEfficiency":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getReboundEfficiency())));
 
 					break;
 				case "stealEfficiency":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getStealEfficiency())));
 
 					break;
 				case "assistanceEfficiency":
-					a.add(new TeamCardPanel(i+1,X, Y, teamVos.get(i),
+					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getAssistanceEfficiency())));
 
@@ -624,16 +617,16 @@ public class SortPanel extends JPanel {
 		public SortPlayerCriteriaPanel() {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 431 / 1366,Y * 86 / 768+X/50, X * 31 / 100,
+			this.setBounds(X * 461 / 1366, Y * 66 / 768 + X / 50, X * 31 / 100,
 					X * 14 / 100);
-			
+
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 
 			ButtonGroup bg = new ButtonGroup();
 
 			JRadioButton rdbtnNewRadioButton = new JRadioButton("参赛场数");
-			rdbtnNewRadioButton.setBounds(X * 4 / 1366, Y * 6 / 768, X * 29 / 400,
-					X * 15 / 700);
+			rdbtnNewRadioButton.setBounds(X * 4 / 1366, Y * 6 / 768,
+					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton
 					.addActionListener(new SortPlayerCriteriaListener("参赛场数"));
 			add(rdbtnNewRadioButton);
@@ -680,7 +673,8 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_4);
 
 			JRadioButton radioButton = new JRadioButton("投篮命中率");
-			radioButton.setBounds(X * 4 / 1366, Y * 156 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton.setBounds(X * 4 / 1366, Y * 156 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton.addActionListener(new SortPlayerCriteriaListener(
 					"投篮命中率"));
 			add(radioButton);
@@ -703,8 +697,8 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_2);
 
 			JRadioButton radioButton_3 = new JRadioButton("进攻数");
-			radioButton_3
-					.setBounds(X * 4 / 1366, Y * 31 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton_3.setBounds(X * 4 / 1366, Y * 31 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton_3.addActionListener(new SortPlayerCriteriaListener(
 					"进攻数"));
 			add(radioButton_3);
@@ -719,8 +713,8 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_4);
 
 			JRadioButton radioButton_5 = new JRadioButton("抢断数");
-			radioButton_5
-					.setBounds(X * 4 / 1366, Y * 56 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton_5.setBounds(X * 4 / 1366, Y * 56 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton_5.addActionListener(new SortPlayerCriteriaListener(
 					"抢断数"));
 			add(radioButton_5);
@@ -751,8 +745,8 @@ public class SortPanel extends JPanel {
 			bg.add(radioButton_8);
 
 			JRadioButton radioButton_9 = new JRadioButton("得分");
-			radioButton_9
-					.setBounds(X * 4 / 1366, Y * 81 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton_9.setBounds(X * 4 / 1366, Y * 81 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton_9
 					.addActionListener(new SortPlayerCriteriaListener("得分"));
 			add(radioButton_9);
@@ -855,22 +849,23 @@ public class SortPanel extends JPanel {
 		public SortTeamCriteriaPanel() {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 431 / 1366,Y * 86 / 768+X/50, X * 31 / 100,
+			this.setBounds(X * 461 / 1366, Y * 66 / 768 + X / 50, X * 31 / 100,
 					X * 195 / 1366);
-           
+
 			this.setBorder(new TitledBorder(new EtchedBorder()));
-			
+
 			ButtonGroup bg1 = new ButtonGroup();
 
 			JRadioButton radioButton = new JRadioButton("比赛场数");
-			radioButton.setBounds(X * 8 / 1366, Y * 6 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton.setBounds(X * 8 / 1366, Y * 6 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton.addActionListener(new SortTeamCriteriaListener("比赛场数"));
 			add(radioButton);
 			bg1.add(radioButton);
 
 			JRadioButton radioButton_1 = new JRadioButton("投篮命中数");
-			radioButton_1
-					.setBounds(X * 8 / 1366, Y * 31 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton_1.setBounds(X * 8 / 1366, Y * 31 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton_1.addActionListener(new SortTeamCriteriaListener(
 					"投篮命中率"));
 			add(radioButton_1);
@@ -901,8 +896,8 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_4);
 
 			JRadioButton radioButton_5 = new JRadioButton("罚球命中数");
-			radioButton_5
-					.setBounds(X * 8 / 1366, Y * 56 / 768, X * 29 / 400, X * 15 / 700);
+			radioButton_5.setBounds(X * 8 / 1366, Y * 56 / 768, X * 29 / 400,
+					X * 15 / 700);
 			radioButton_5.addActionListener(new SortTeamCriteriaListener(
 					"罚球命中数"));
 			add(radioButton_5);
@@ -941,16 +936,16 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_9);
 
 			JRadioButton radioButton_10 = new JRadioButton("助攻数");
-			radioButton_10.setBounds(X * 214 / 1366, Y * 56 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_10.setBounds(X * 214 / 1366, Y * 56 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_10
 					.addActionListener(new SortTeamCriteriaListener("助攻数"));
 			add(radioButton_10);
 			bg1.add(radioButton_10);
 
 			JRadioButton radioButton_11 = new JRadioButton("抢断数");
-			radioButton_11.setBounds(X * 317 / 1366, Y * 56 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_11.setBounds(X * 317 / 1366, Y * 56 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_11
 					.addActionListener(new SortTeamCriteriaListener("抢断数"));
 			add(radioButton_11);
@@ -965,24 +960,24 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_12);
 
 			JRadioButton radioButton_13 = new JRadioButton("失误数");
-			radioButton_13.setBounds(X * 111 / 1366, Y * 81 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_13.setBounds(X * 111 / 1366, Y * 81 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_13
 					.addActionListener(new SortTeamCriteriaListener("失误数"));
 			add(radioButton_13);
 			bg1.add(radioButton_13);
 
 			JRadioButton radioButton_14 = new JRadioButton("犯规数");
-			radioButton_14.setBounds(X * 214 / 1366, Y * 81 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_14.setBounds(X * 214 / 1366, Y * 81 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_14
 					.addActionListener(new SortTeamCriteriaListener("犯规数"));
 			add(radioButton_14);
 			bg1.add(radioButton_14);
 
 			JRadioButton radioButton_15 = new JRadioButton("比赛得分");
-			radioButton_15.setBounds(X * 317 / 1366, Y * 81 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_15.setBounds(X * 317 / 1366, Y * 81 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_15.addActionListener(new SortTeamCriteriaListener(
 					"比赛得分"));
 			add(radioButton_15);
@@ -997,24 +992,24 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_16);
 
 			JRadioButton radioButton_17 = new JRadioButton("三分命中率");
-			radioButton_17.setBounds(X * 111 / 1366, Y * 106 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_17.setBounds(X * 111 / 1366, Y * 106 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_17.addActionListener(new SortTeamCriteriaListener(
 					"三分命中率"));
 			add(radioButton_17);
 			bg1.add(radioButton_17);
 
 			JRadioButton radioButton_18 = new JRadioButton("罚球命中率");
-			radioButton_18.setBounds(X * 214 / 1366, Y * 106 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_18.setBounds(X * 214 / 1366, Y * 106 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_18.addActionListener(new SortTeamCriteriaListener(
 					"罚球命中率"));
 			add(radioButton_18);
 			bg1.add(radioButton_18);
 
 			JRadioButton radioButton_19 = new JRadioButton("胜率");
-			radioButton_19.setBounds(X * 317 / 1366, Y * 106 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_19.setBounds(X * 317 / 1366, Y * 106 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_19
 					.addActionListener(new SortTeamCriteriaListener("胜率"));
 			add(radioButton_19);
@@ -1029,31 +1024,31 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_20);
 
 			JRadioButton radioButton_21 = new JRadioButton("进攻效率");
-			radioButton_21.setBounds(X * 111 / 1366, Y * 131 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_21.setBounds(X * 111 / 1366, Y * 131 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_21.addActionListener(new SortTeamCriteriaListener(
 					"进攻效率"));
 			add(radioButton_21);
 			bg1.add(radioButton_21);
 
 			JRadioButton radioButton_22 = new JRadioButton("防守效率");
-			radioButton_22.setBounds(X * 214 / 1366, Y * 131 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_22.setBounds(X * 214 / 1366, Y * 131 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_22.addActionListener(new SortTeamCriteriaListener(
 					"防守效率"));
 			add(radioButton_22);
 			bg1.add(radioButton_22);
 
 			JRadioButton radioButton_23 = new JRadioButton("篮板效率");
-			radioButton_23.setBounds(X * 317 /1366, Y * 131 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_23.setBounds(X * 317 / 1366, Y * 131 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_23.addActionListener(new SortTeamCriteriaListener(
 					"篮板效率"));
 			add(radioButton_23);
 			bg1.add(radioButton_23);
 
 			JRadioButton radioButton_24 = new JRadioButton("抢断效率");
-			radioButton_24.setBounds(X*8/1366, Y * 156 / 768, X * 29 / 400,
+			radioButton_24.setBounds(X * 8 / 1366, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_24.addActionListener(new SortTeamCriteriaListener(
 					"抢断效率"));
@@ -1061,8 +1056,8 @@ public class SortPanel extends JPanel {
 			bg1.add(radioButton_24);
 
 			JRadioButton radioButton_25 = new JRadioButton("助攻率");
-			radioButton_25.setBounds(X * 111 / 1366, Y * 156 / 768, X * 29 / 400,
-					X * 15 / 700);
+			radioButton_25.setBounds(X * 111 / 1366, Y * 156 / 768,
+					X * 29 / 400, X * 15 / 700);
 			radioButton_25
 					.addActionListener(new SortTeamCriteriaListener("助攻率"));
 			add(radioButton_25);
@@ -1078,18 +1073,20 @@ public class SortPanel extends JPanel {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column) {
 			// TODO Auto-generated method stub
-			PlayerCardPanel renderer = new PlayerCardPanel(((PlayerCardPanel) value).number,X, Y,
+			PlayerCardPanel renderer = new PlayerCardPanel(
+					((PlayerCardPanel) value).number, X, Y,
 					((PlayerCardPanel) value).getPlayerInfo(),
 					((PlayerCardPanel) value).getCriteria(),
 					((PlayerCardPanel) value).getCriteriaValue());
-			
+
 			renderer.fillPanel();
 
 			// TODO Auto-generated method stub
 			return renderer;
-			
+
 		}
 
 	}
@@ -1101,7 +1098,8 @@ public class SortPanel extends JPanel {
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
 
-			TeamCardPanel renderer = new TeamCardPanel(((TeamCardPanel) value).number,X, Y,
+			TeamCardPanel renderer = new TeamCardPanel(
+					((TeamCardPanel) value).number, X, Y,
 					((TeamCardPanel) value).getTeamInfo(),
 					((TeamCardPanel) value).getCriteria(),
 					((TeamCardPanel) value).getCriteriaValue());
@@ -1263,7 +1261,7 @@ public class SortPanel extends JPanel {
 				System.out.println("筛选标准选择出错");
 				break;
 			}
-            sortPlayer(UpOrDown);
+			sortPlayer(UpOrDown);
 		}
 	}
 
@@ -1412,7 +1410,37 @@ public class SortPanel extends JPanel {
 				System.out.println("筛选标准选择出错");
 				break;
 			}
-            sortTeam(UpOrDown);
+			sortTeam(UpOrDown);
+		}
+	}
+	
+	class MyTextField extends JTextField {
+		public MyTextField(Color textColor) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体", 1, 11));
+
+		}
+
+	}
+
+	class MyLabel extends JLabel {
+		public MyLabel(Color textColor) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体", 1, 11));
+
+		}
+
+		public MyLabel(Color textColor, String text) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setText(text);
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
 	}
 }

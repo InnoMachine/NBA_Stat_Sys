@@ -6,13 +6,9 @@
 package po;
 
 public enum Division {
-	
-	ATLANTIC,
-	CENTRAL,
-	SOUTHEAST,
-	
-	SOUTHWEST,
-	NORTHWEST,
-	PACIFIC;
-	
+
+	ATLANTIC, CENTRAL, SOUTHEAST,
+
+	SOUTHWEST, NORTHWEST, PACIFIC;
+
 }
