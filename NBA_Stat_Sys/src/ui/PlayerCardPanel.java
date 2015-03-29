@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -51,6 +52,10 @@ public class PlayerCardPanel extends JPanel {
 		JButton playerButton=new JButton();
 		playerButton.setBounds(X*70/1366, Y*6/768, X*99/1366, Y*80/768);
 		add(playerButton);
+		
+		ImageIcon playerPortrait=new ImageIcon("CSEdata/players/portrait/"
+				+ playerInfo.getName() + ".png");
+		playerButton.setIcon(playerPortrait);
 
 		JLabel lblNumber = null;
 		if(number==1){
