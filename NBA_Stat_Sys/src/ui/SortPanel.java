@@ -222,151 +222,151 @@ public class SortPanel extends JPanel {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				switch (playerCriteria) {
 				case "gameNum":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getGameNum())));
 
 					break;
 				case "FirstOnNum":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getFirstOnNum())));
 					break;
 				case "reboundOverall":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getReboundOverall())));
 					break;
 				case "assistance":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getAssistance())));
 					break;
 				case "time":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTime()/60.0)));
 					break;
 				case "hitRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getHitRate())));
 					break;
 				case "threePointHitRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getThreePointHitRate())));
 					break;
 				case "freeThrowRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getFreeThrowRate())));
 					break;
 				case "attackingNum":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
 							String.valueOf(playerVos.get(i).getAttackingNum())));
 					break;
 				case "defensiveNum":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
 							String.valueOf(playerVos.get(i).getDefensiveNum())));
 					break;
 				case "steal":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getSteal())));
 					break;
 				case "block":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getBlock())));
 					break;
 				case "turnover":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTurnover())));
 					break;
 				case "foul":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getFoul())));
 					break;
 
 				case "score":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getScore())));
 					break;
 				case "efficiency":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getEfficiency())));
 					break;
 
 				case "GmSc":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getGmSc())));
 					break;
 				case "trueHitRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTrueHitRate())));
 					break;
 
 				case "hitEfficiency":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getHitEfficiency())));
 					break;
 				case "reboundOverallRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getReboundOverallRate())));
 					break;
 
 				case "offensiveReboundRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getOffensiveReboundRate())));
 					break;
 				case "defensiveReboundRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getDefensiveReboundRate())));
 					break;
 
 				case "assistanceRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getAssistanceRate())));
 					break;
 				case "stealRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getStealRate())));
 					break;
 				case "blockRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getBlockRate())));
 					break;
 				case "turnOverRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
 							String.valueOf(playerVos.get(i).getTurnOverRate())));
 					break;
 				case "useRate":
-					a.add(new PlayerCardPanel(X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getUseRate())));
 					break;
@@ -1060,17 +1060,18 @@ public class SortPanel extends JPanel {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row,
-				int column) {
-
-			// System.out.println(((PlayerCardPanel)value).getPlayerInfo().getName());
-			PlayerCardPanel renderer = new PlayerCardPanel(X, Y,
+				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+			// TODO Auto-generated method stub
+			PlayerCardPanel renderer = new PlayerCardPanel(((PlayerCardPanel) value).number,X, Y,
 					((PlayerCardPanel) value).getPlayerInfo(),
 					((PlayerCardPanel) value).getCriteria(),
 					((PlayerCardPanel) value).getCriteriaValue());
+			
 			renderer.fillPanel();
+
 			// TODO Auto-generated method stub
 			return renderer;
+			
 		}
 
 	}
