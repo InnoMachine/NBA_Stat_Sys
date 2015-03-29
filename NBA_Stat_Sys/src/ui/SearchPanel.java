@@ -32,8 +32,8 @@ import javax.swing.table.TableCellRenderer;
 public class SearchPanel extends JPanel {
 
 	JFrame mainFrame;
-	Player_BS player_BS = new Player_BL();
-	Team_BS team_BS = new Team_BL();
+	Player_BS player_BS = new Player_BL_Stub();
+	Team_BS team_BS = new Team_BL_Stub();
 	private JTable table;
 	private DefaultTableModel model;
 	private JScrollPane scrollPane;
@@ -211,7 +211,7 @@ public class SearchPanel extends JPanel {
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
 		if (category.equals("player")) {
 			bg = new ImageIcon(new ImageIcon(
-					"C:/Users/ThinkPad/Desktop/nba/searchPlayer.jpg")
+					"C:/Users/ThinkPad/Desktop/nba/searchPlayer.png")
 					.getImage().getScaledInstance(this.getWidth(),
 							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);

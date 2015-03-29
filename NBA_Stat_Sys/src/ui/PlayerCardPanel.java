@@ -60,15 +60,12 @@ public class PlayerCardPanel extends JPanel {
 		JLabel lblNumber = null;
 		if(number==1){
 		lblNumber = new JLabel(String.valueOf(number)+"st");
-		}
-		if(number==2){
+		}else if(number==2){
 			lblNumber = new JLabel(String.valueOf(number)+"nd");
-		}
-		if(number>2){
+		}else if(number>2){
 			lblNumber = new JLabel(String.valueOf(number)+"th");
 		}else{
-			System.out.println("球员名片显示中的排名Bug！！！");
-
+			System.out.println("球员名片显示中的排名Bug！！！"+number);
 		}
 		lblNumber.setBounds(X*6/1366, Y*6/768, X*63/1366, Y*80/768);
 		lblNumber.setOpaque(true);
