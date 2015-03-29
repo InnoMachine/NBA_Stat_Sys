@@ -3,6 +3,7 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -45,7 +47,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;
 	static int Y;
-
+	JLabel bgLabel;
 	public ScreeningPlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		X = mainFrame.getWidth();
@@ -53,39 +55,46 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-
+		bgLabel=new JLabel();
+		bgLabel.setBounds(0, 0, X, Y);
+		ImageIcon bg = new ImageIcon(new ImageIcon(
+				"Image/screeningPanel.png")
+				.getImage().getScaledInstance(this.getWidth(),
+						this.getHeight(), Image.SCALE_SMOOTH));
+		bgLabel.setIcon(bg);
+		this.add(bgLabel);
 		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
 		playerCriteriaPanel.setVisible(false);
 
 		JLabel screeninglbl = new JLabel("筛选依据");
 		screeninglbl.setBounds(X * 640 / 1366, Y * 86 / 768, X / 15, X / 50);
-		this.add(screeninglbl);
+		bgLabel.add(screeninglbl);
 
 		screeningCriteriabtn = new JButton("");
 		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 86 / 768,
 				X * 213 / 1366, X / 50);
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
-		add(screeningCriteriabtn);
+		bgLabel.add(screeningCriteriabtn);
 
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 0, X / 15, X / 50);
 		backbtn.addActionListener(e -> back());
-		this.add(backbtn);
+		bgLabel.add(backbtn);
 
 		JButton screeningbtn = new JButton("显示前50名");
 		screeningbtn.setBounds(X * 990 / 1366, Y * 86 / 768, X * 103 / 1366,
 				X / 50);
 		screeningbtn.addActionListener(e -> screening());
-		add(screeningbtn);
+		bgLabel.add(screeningbtn);
 		mainFrame.getContentPane().add(this);
 
 		JLabel label = new JLabel("球员位置");
 		label.setBounds(X * 265 / 1366, Y * 86 / 768, X * 54 / 1366, X / 50);
-		add(label);
+		bgLabel.add(label);
 
 		JLabel label_1 = new JLabel("球员联盟");
 		label_1.setBounds(X * 455 / 1366, Y * 86 / 768, X * 54 / 1366, X / 50);
-		add(label_1);
+		bgLabel.add(label_1);
 
 		positions = new String[4];
 		positions[0] = "所有";
@@ -95,7 +104,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		positionjcb = new JComboBox(positions);
 		positionjcb.setBounds(X * 330 / 1366, Y * 86 / 768, X * 100 / 1366,
 				X / 50);
-		this.add(positionjcb);
+		bgLabel.add(positionjcb);
 
 		leagues = new String[7];
 		leagues[0] = "所有";
@@ -108,7 +117,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		leaguejcb = new JComboBox(leagues);
 		leaguejcb.setBounds(X * 520 / 1366, Y * 86 / 768, X * 100 / 1366,
 				X / 50);
-		this.add(leaguejcb);
+		bgLabel.add(leaguejcb);
 
 		table = new JTable();
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
@@ -129,7 +138,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		this.add(scrollPane);
+		bgLabel.add(scrollPane);
 
 	}
 
