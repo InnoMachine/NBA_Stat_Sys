@@ -158,6 +158,33 @@ public class Data_Handler {
 	private void playerCalculate() {
 		for(PlayerVo temp:listvo)
 		{
+			if(temp.getGameNum()!=0)
+			{
+				temp.setScoreField(turnToTwoPoint(temp.getScore()/temp.getGameNum()));
+				temp.setAttackingNumField(turnToTwoPoint(temp.getAttackingNum()/temp.getGameNum()));
+				temp.setDefensiveNumField(turnToTwoPoint(temp.getDefensiveNumField()/temp.getGameNum()));
+				temp.setBlockField(turnToTwoPoint(temp.getBlockField()/temp.getGameNum()));
+				temp.setFoulField(turnToTwoPoint(temp.getFoulField()/temp.getGameNum()));
+				temp.setStealField(turnToTwoPoint(temp.getStealField()/temp.getGameNum()));
+				temp.setHitNumField(turnToTwoPoint(temp.getHitNumField()/temp.getGameNum()));
+				temp.setReboundOverallField(turnToTwoPoint(temp.getReboundOverallField()/temp.getGameNum()));
+				temp.setShotNumField(turnToTwoPoint(temp.getShotNumField()/temp.getGameNum()));
+				temp.setGmScField(turnToTwoPoint(temp.getGmScField()/temp.getGameNum()));
+				temp.setTimeField(turnToTwoPoint(temp.getTime()/temp.getGameNum()));
+			}else
+			{
+				temp.setScoreField(0);
+				temp.setAttackingNumField(0);
+				temp.setDefensiveNumField(0);
+				temp.setBlockField(0);
+				temp.setFoulField(0);
+				temp.setStealField(0);
+				temp.setHitNumField(0);
+				temp.setShotNumField(0);
+				temp.setReboundOverallField(0);
+				temp.setGmScField(0);
+				temp.setTimeField(0);
+			}
 			if(temp.getShotNum()!=0){
 				PlayerSetHitRate(temp);
 			}else temp.setHitRate(0);
@@ -431,32 +458,7 @@ public class Data_Handler {
 					listvo.get(i).setOpRoundAttack(listvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
 					listvo.get(i).setOpTwoPointShotNum(listvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
 					
-					if(listvo.get(i).getGameNum()!=0)
-					{
-						listvo.get(i).setScoreField(turnToTwoPoint(listvo.get(i).getScore()/listvo.get(i).getGameNum()));
-						listvo.get(i).setAttackingNumField(turnToTwoPoint(listvo.get(i).getAttackingNum()/listvo.get(i).getGameNum()));
-						listvo.get(i).setDefensiveNumField(turnToTwoPoint(listvo.get(i).getDefensiveNumField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setBlockField(turnToTwoPoint(listvo.get(i).getBlockField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setFoulField(turnToTwoPoint(listvo.get(i).getFoulField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setStealField(turnToTwoPoint(listvo.get(i).getStealField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setHitNumField(turnToTwoPoint(listvo.get(i).getHitNumField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setReboundOverallField(turnToTwoPoint(listvo.get(i).getReboundOverallField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setShotNumField(turnToTwoPoint(listvo.get(i).getShotNumField()/listvo.get(i).getGameNum()));
-						listvo.get(i).setGmScField(turnToTwoPoint(listvo.get(i).getGmScField()/listvo.get(i).getGameNum()));
-
-					}else
-					{
-						listvo.get(i).setScoreField(turnToTwoPoint(0));
-						listvo.get(i).setAttackingNumField(turnToTwoPoint(0));
-						listvo.get(i).setDefensiveNumField(turnToTwoPoint(0));
-						listvo.get(i).setBlockField(turnToTwoPoint(0));
-						listvo.get(i).setFoulField(turnToTwoPoint(0));
-						listvo.get(i).setStealField(turnToTwoPoint(0));
-						listvo.get(i).setHitNumField(turnToTwoPoint(0));
-						listvo.get(i).setShotNumField(turnToTwoPoint(0));
-						listvo.get(i).setReboundOverallField(0);
-						listvo.get(i).setGmScField(0);
-					}
+					
 					
 					break;
 				}

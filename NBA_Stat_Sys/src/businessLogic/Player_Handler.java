@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 
+
 import vo.PlayerVo;
 
 public class Player_Handler {
@@ -632,411 +633,443 @@ public class Player_Handler {
 				}		
 			}
 		}
-		
+		int m=Math.min(50, list.size());
 		if(option.equals("score")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getScore();
+				a[i][0] = list.get(i).getScore();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getScore()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getScore()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("scoreField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getScoreField());
+				b = new BigDecimal(list.get(i).getScoreField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getScoreField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getScoreField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("reboundOverallField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getReboundOverallField());
+				b = new BigDecimal(list.get(i).getReboundOverallField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getReboundOverallField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getReboundOverallField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("reboundOverall")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getReboundOverall();
+				a[i][0] = list.get(i).getReboundOverall();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getReboundOverall()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getReboundOverall()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("assistanceField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getAssistanceField());
+				b = new BigDecimal(list.get(i).getAssistanceField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getAssistanceField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getAssistanceField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("assistance")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getAssistance();
+				a[i][0] = list.get(i).getAssistance();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getAssistance()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getAssistance()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("turnoverField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getTurnoverField());
+				b = new BigDecimal(list.get(i).getTurnoverField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getTurnoverField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getTurnoverField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("turnover")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getTurnover();
+				a[i][0] = list.get(i).getTurnover();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getAssistance()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getAssistance()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("weighted")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getWeighted();
+				a[i][0] = list.get(i).getWeighted();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getWeighted()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getWeighted()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}
 		else if(option.equals("block")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getBlock();
+				a[i][0] = list.get(i).getBlock();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getBlock()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getBlock()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("blockField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getBlockField());
+				b = new BigDecimal(list.get(i).getBlockField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getBlockField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getBlockField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("steal")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getSteal();
+				a[i][0] = list.get(i).getSteal();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getSteal()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getSteal()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("stealField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getStealField());
+				b = new BigDecimal(list.get(i).getStealField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getStealField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getStealField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("foul")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getFoul();
+				a[i][0] = list.get(i).getFoul();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getFoul()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getFoul()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("foulField")){
-			double a[][] = new double [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				b = new BigDecimal(listvo.get(i).getFoulField());
+				b = new BigDecimal(list.get(i).getFoulField());
 				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get((int)a[i][1]));
+				templist.add(list.get((int)a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getFoulField()){
-				templist.add(listvo.get((int)a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getFoulField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("time")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getTime();
+				a[i][0] = list.get(i).getTime();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getTime()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getTime()){
+				templist.add(list.get(a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("timeField")){
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
+			{
+				b = new BigDecimal(list.get(i).getTimeField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getTimeField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("efficiency")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getEfficiency();
+				a[i][0] = list.get(i).getEfficiency();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getEfficiency()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getEfficiency()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("shotNum")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getShotNum();
+				a[i][0] = list.get(i).getShotNum();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getShotNum()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getShotNum()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("threePointShotNum")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getThreePointShotNum();
+				a[i][0] = list.get(i).getThreePointShotNum();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getThreePointShotNum()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getThreePointShotNum()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("freeThrowShotNum")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getFreeThrowShotNum();
+				a[i][0] = list.get(i).getFreeThrowShotNum();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getFreeThrowShotNum()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getFreeThrowShotNum()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;
 		}else if(option.equals("twoTenNum")){
-			int a[][] = new int [listvo.size()][2]; 
-			for(int i=0;i<listvo.size();i++)
+			int a[][] = new int [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
 			{
-				a[i][0] = listvo.get(i).getTwoTenNum();
+				a[i][0] = list.get(i).getTwoTenNum();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
 			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
-			for(int i=0;i<50;i++)
+			for(int i=0;i<m;i++)
 			{
-				templist.add(listvo.get(a[i][1]));
+				templist.add(list.get(a[i][1]));
 			}
-			int i =50;
-			while(a[i][0]==templist.get(49).getTwoTenNum()){
-				templist.add(listvo.get(a[i][1]));
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getTwoTenNum()){
+				templist.add(list.get(a[i][1]));
 				i++;
 			}		
 			return templist;

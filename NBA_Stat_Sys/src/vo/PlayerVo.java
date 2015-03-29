@@ -65,7 +65,7 @@ public class PlayerVo {
 	private double reboundOverallField;
 	private double assistanceField;
 	private double GmScField;
-	
+	private double timeField;
 	
 	private int weighted;
 	private int twoTenNum;//两双数
@@ -533,6 +533,12 @@ public class PlayerVo {
 	}
 	public void setGmScField(double gmScField) {
 		GmScField = gmScField;
+	}
+	public double getTimeField() {
+		return timeField;
+	}
+	public void setTimeField(double timeField) {
+		this.timeField = timeField;
 	}
 	
 	
