@@ -1,5 +1,6 @@
 package ui;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -24,10 +25,12 @@ public class PlayerCardPanel extends JPanel {
 	private String criteriaValue; 
 	static int X;
 	static int Y;
+	int number;
 	
-	public PlayerCardPanel(int X,int Y,PlayerVo playerInfo,String criteria,String criteriaValue) {
+	public PlayerCardPanel(int number,int X,int Y,PlayerVo playerInfo,String criteria,String criteriaValue) {
 		this.X=X;
 		this.Y=Y;
+		this.number=number;
 		this.setVisible(true);
 		this.setLayout(null);
 		
@@ -37,12 +40,16 @@ public class PlayerCardPanel extends JPanel {
 	}
 	public void fillPanel(){
 
-		JLabel lblNewLabel = new JLabel("Picture");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(X*70/1366, Y*6/768, X*99/1366, Y*80/768);
-		add(lblNewLabel);
+//		JLabel lblNewLabel = new JLabel("Picture");
+//		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblNewLabel.setBounds(X*70/1366, Y*6/768, X*99/1366, Y*80/768);
+//		add(lblNewLabel);
+		
+		JButton playerButton=new JButton();
+		playerButton.setBounds(X*70/1366, Y*6/768, X*99/1366, Y*80/768);
+		add(playerButton);
 
-		JLabel lblNumber = new JLabel("Number");
+		JLabel lblNumber = new JLabel(String.valueOf(number));
 		lblNumber.setBounds(X*6/1366, Y*6/768, X*63/1366, Y*80/768);
 		add(lblNumber);
 

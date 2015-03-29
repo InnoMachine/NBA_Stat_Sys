@@ -571,7 +571,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	class PlayerCardRenderer implements TableCellRenderer {
 
 		@Override
-		public Component getTableCellRendererComponent(JTable table,
+		public Component(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
 			PlayerCardPanel renderer = new PlayerCardPanel(X, Y,
