@@ -51,9 +51,11 @@ public class PlayerCardPanel extends JPanel {
 			lblNumber = new JLabel(String.valueOf(number) + "st");
 		} else if (number == 2) {
 			lblNumber = new JLabel(String.valueOf(number) + "nd");
-		} else if (number > 2) {
+		} else if (number == 3) {
+			lblNumber = new JLabel(String.valueOf(number) + "rd");
+		 }else if(number>3){
 			lblNumber = new JLabel(String.valueOf(number) + "th");
-		} else {
+		}else {
 			System.out.println("球员名片显示中的排名Bug！！！" + number);
 		}
 		lblNumber.setBounds(X * 6 / 1366, Y * 6 / 768, X * 63 / 1366,
@@ -175,7 +177,7 @@ public class PlayerCardPanel extends JPanel {
 		textField_1.setText(playerInfo.getBirth());
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
-		textField_1.setBounds(X * 254 / 1366, Y * 87 / 768, X * 80 / 1366,
+		textField_1.setBounds(X * 254 / 1366, Y * 87 / 768, X * 90 / 1366,
 				Y * 23 / 768);
 		add(textField_1);
 
@@ -217,7 +219,7 @@ public class PlayerCardPanel extends JPanel {
 		textField_7.setText(playerInfo.getSchool());
 		textField_7.setEditable(false);
 		textField_7.setColumns(10);
-		textField_7.setBounds(X * 728 / 1366, Y * 87 / 768, X * 130 / 1366,
+		textField_7.setBounds(X * 728 / 1366, Y * 87 / 768, X * 160 / 1366,
 				Y * 23 / 768);
 		add(textField_7);
 
@@ -234,32 +236,34 @@ public class PlayerCardPanel extends JPanel {
 	public String getCriteriaValue() {
 		return criteriaValue;
 	}
-	
-	class MyTextField extends JTextField{
-		public MyTextField(Color textColor){
+
+	class MyTextField extends JTextField {
+		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,15));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
-	
+
 	}
-	class MyLabel extends JLabel{
-		public MyLabel(Color textColor){
+
+	class MyLabel extends JLabel {
+		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,15));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
-		public MyLabel(Color textColor,String text){
+
+		public MyLabel(Color textColor, String text) {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setText(text);
-			this.setFont(new Font("黑体",1,15));
-			
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
 	}
 }

@@ -52,7 +52,9 @@ public class TeamCardPanel extends JPanel {
 			lblNumber = new JLabel(String.valueOf(number) + "st");
 		} else if (number == 2) {
 			lblNumber = new JLabel(String.valueOf(number) + "nd");
-		} else if (number > 2) {
+		} else if (number == 3) {
+			lblNumber = new JLabel(String.valueOf(number) + "rd");
+		 }else if(number>3){
 			lblNumber = new JLabel(String.valueOf(number) + "th");
 		} else {
 			System.out.println("球队名片显示中的排名Bug！！！" + number);
@@ -210,7 +212,7 @@ public class TeamCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,15));
+			this.setFont(new Font("黑体",1,11));
 			
 		}
 	
@@ -220,7 +222,7 @@ public class TeamCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体",1,15));
+			this.setFont(new Font("黑体",1,11));
 			
 		}
 		public MyLabel(Color textColor,String text){
@@ -228,7 +230,7 @@ public class TeamCardPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setText(text);
-			this.setFont(new Font("黑体",1,15));
+			this.setFont(new Font("黑体",1,11));
 			
 		}
 	}

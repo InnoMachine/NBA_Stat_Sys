@@ -3,6 +3,7 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -66,12 +68,13 @@ public class ScreeningPlayerPanel extends JPanel {
 		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
 		playerCriteriaPanel.setVisible(false);
 
-		JLabel screeninglbl = new JLabel("筛选依据");
-		screeninglbl.setBounds(X * 640 / 1366, Y * 86 / 768, X / 15, X / 50);
+		MyLabel screeninglbl = new MyLabel(Color.WHITE,"筛选依据");
+		screeninglbl.setFont(new Font("黑体",1,13));
+		screeninglbl.setBounds(X * 640 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
 		bgLabel.add(screeninglbl);
 
 		screeningCriteriabtn = new JButton("");
-		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 86 / 768,
+		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 66 / 768,
 				X * 213 / 1366, X / 50);
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		bgLabel.add(screeningCriteriabtn);
@@ -82,18 +85,20 @@ public class ScreeningPlayerPanel extends JPanel {
 		bgLabel.add(backbtn);
 
 		JButton screeningbtn = new JButton("显示前50名");
-		screeningbtn.setBounds(X * 990 / 1366, Y * 86 / 768, X * 103 / 1366,
+		screeningbtn.setBounds(X * 990 / 1366, Y * 66 / 768, X * 103 / 1366,
 				X / 50);
 		screeningbtn.addActionListener(e -> screening());
 		bgLabel.add(screeningbtn);
 		mainFrame.getContentPane().add(this);
 
-		JLabel label = new JLabel("球员位置");
-		label.setBounds(X * 265 / 1366, Y * 86 / 768, X * 54 / 1366, X / 50);
+		MyLabel label = new MyLabel(Color.WHITE,"球员位置");
+		label.setFont(new Font("黑体",1,13));
+		label.setBounds(X * 265 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
 		bgLabel.add(label);
 
-		JLabel label_1 = new JLabel("球员联盟");
-		label_1.setBounds(X * 455 / 1366, Y * 86 / 768, X * 54 / 1366, X / 50);
+		MyLabel label_1 = new MyLabel(Color.WHITE,"球员联盟");
+		label_1.setFont(new Font("黑体",1,13));
+		label_1.setBounds(X * 455 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
 		bgLabel.add(label_1);
 
 		positions = new String[4];
@@ -102,7 +107,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		positions[2] = "中锋";
 		positions[3] = "后卫";
 		positionjcb = new JComboBox(positions);
-		positionjcb.setBounds(X * 330 / 1366, Y * 86 / 768, X * 100 / 1366,
+		positionjcb.setBounds(X * 330 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
 		bgLabel.add(positionjcb);
 
@@ -115,32 +120,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		leagues[5] = "SOUTHWEST";
 		leagues[6] = "PACIFIC";
 		leaguejcb = new JComboBox(leagues);
-		leaguejcb.setBounds(X * 520 / 1366, Y * 86 / 768, X * 100 / 1366,
+		leaguejcb.setBounds(X * 520 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
 		bgLabel.add(leaguejcb);
-
-		table = new JTable();
-		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
-		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
-		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
-		table.setRowHeight(Y * 120 / 768);
-		table.setVisible(true);
-		table.setCellSelectionEnabled(true);
-		table.setOpaque(false);
-		scrollPane = new JScrollPane(table);
-//		JScrollBar bar=scrollPane.getVerticalScrollBar();
-//		bar.setBackground(Color.gray);
-		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
-		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
-				Y * 520 / 768);
-		scrollPane.setVisible(true);
-		scrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane
-				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setOpaque(false);
-		bgLabel.add(scrollPane);
 
 	}
 
@@ -369,8 +351,8 @@ public class ScreeningPlayerPanel extends JPanel {
 			}
 			scrollPane = new JScrollPane(table);
 			scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
-			scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
-					Y * 520 / 768);
+			scrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 / 1366,
+					Y * 600 / 768);
 			scrollPane.setVisible(true);
 			scrollPane
 					.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -396,7 +378,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				ScreeningPlayerPanel screeningPlayerPanel) {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 715 / 1366, Y * 86 / 768 + X / 50,
+			this.setBounds(X * 715 / 1366, Y * 66 / 768 + X / 50,
 					X * 213 / 1366, X * 108 / 1366);
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 
@@ -611,5 +593,32 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		}
 
+	}
+	class MyTextField extends JTextField{
+		public MyTextField(Color textColor){
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体",1,11));
+			
+		}
+	
+	}
+	class MyLabel extends JLabel{
+		public MyLabel(Color textColor){
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体",1,11));
+			
+		}
+		public MyLabel(Color textColor,String text){
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setText(text);
+			this.setFont(new Font("黑体",1,11));
+			
+		}
 	}
 }
