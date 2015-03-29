@@ -224,7 +224,7 @@ public class Data_Handler {
 		temp.setUseRate(f);
 	}
 	private void PlayerSetTurnOverRate(PlayerVo temp) {
-		double r = temp.getTurnover()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover();
+		double r = temp.getTurnover()/(temp.getShotNum()-temp.getThreePointShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover());
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTurnOverRate(f);
