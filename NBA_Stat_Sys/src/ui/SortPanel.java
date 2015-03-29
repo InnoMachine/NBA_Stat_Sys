@@ -3,12 +3,14 @@ package ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -59,7 +61,7 @@ public class SortPanel extends JPanel {
 
 	static int X;
 	static int Y;
-
+	JLabel bgLabel;
 	public SortPanel(String category, JFrame mainFrame) {
 
 		this.mainFrame = mainFrame;
@@ -68,7 +70,10 @@ public class SortPanel extends JPanel {
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-
+		bgLabel=new JLabel();
+		bgLabel.setBounds(0, 0, X, Y);
+		
+		this.add(bgLabel);
 		sortPlayerCriteriaPanel = new SortPlayerCriteriaPanel();
 		sortPlayerCriteriaPanel.setVisible(false);
 
@@ -77,7 +82,7 @@ public class SortPanel extends JPanel {
 
 		JLabel criterialbl = new JLabel("排序依据");
 		criterialbl.setBounds(X * 335 / 1366, Y * 86 / 768, X / 15, X / 50);
-		this.add(criterialbl);
+		bgLabel.add(criterialbl);
 
 //		JButton btnSort = new JButton("排序");
 //		btnSort.setBounds(X * 70 / 100, Y / 8, X / 12, X / 50);
@@ -86,7 +91,7 @@ public class SortPanel extends JPanel {
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 0, X / 15, X / 50);
 		backbtn.addActionListener(e -> back());
-		this.add(backbtn);
+		bgLabel.add(backbtn);
 
 		dtm = new DefaultTableModel() {
 			public boolean isCellEditable(int row, int column) {
@@ -113,49 +118,57 @@ public class SortPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		this.add(scrollPane);
+		bgLabel.add(scrollPane);
 		
 		
 		if (category == "player") {
 
-			
+			ImageIcon bg = new ImageIcon(new ImageIcon(
+					"Image/screeningPanel.png")
+					.getImage().getScaledInstance(this.getWidth(),
+							this.getHeight(), Image.SCALE_SMOOTH));
+			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
 			upSortbtn.setBounds(X * 940 / 1366, Y * 86 / 768, X / 50, X / 50);
 			upSortbtn.addActionListener(e -> {UpOrDown = "Up";sortPlayer(UpOrDown);});
-			this.add(upSortbtn);
+			bgLabel.add(upSortbtn);
 
 			JButton downSortbtn = new JButton("D");
 			downSortbtn.setBounds(X * 981 / 1366, Y * 86 / 768, X / 50, X / 50);
 			downSortbtn.addActionListener(e -> {UpOrDown = "Down";sortPlayer(UpOrDown);});
-			this.add(downSortbtn);
+			bgLabel.add(downSortbtn);
 			
 //			btnSort.addActionListener(e -> sortPlayer(UpOrDown));
 			playerCriteriabtn = new JButton("");
 			playerCriteriabtn.setBounds(X * 431 / 1366, Y * 86 / 768, X * 31 / 100,
 					X / 50);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
-			add(playerCriteriabtn);
+			bgLabel.add(playerCriteriabtn);
 
 		}
 		if (category == "team") {
 
-			
+			ImageIcon bg = new ImageIcon(new ImageIcon(
+					"Image/screeningPanel.png")
+					.getImage().getScaledInstance(this.getWidth(),
+							this.getHeight(), Image.SCALE_SMOOTH));
+			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
 			upSortbtn.setBounds(X * 940 / 1366, Y * 86 / 768, X / 50, X / 50);
 			upSortbtn.addActionListener(e -> {UpOrDown = "Up";sortTeam(UpOrDown);});
-			this.add(upSortbtn);
+			bgLabel.add(upSortbtn);
 
 			JButton downSortbtn = new JButton("D");
 			downSortbtn.setBounds(X * 981 / 1366, Y * 86 / 768, X / 50, X / 50);
 			downSortbtn.addActionListener(e -> {UpOrDown = "Down";sortTeam(UpOrDown);});
-			this.add(downSortbtn);
+			bgLabel.add(downSortbtn);
 			
 //			btnSort.addActionListener(e -> sortTeam(UpOrDown));
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn
 					.setBounds(X * 431 / 1366,Y * 86 / 768, X * 31 / 100, X / 50);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
-			add(teamCriteriabtn);
+			bgLabel.add(teamCriteriabtn);
 
 		}
 
@@ -199,7 +212,7 @@ public class SortPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		this.add(scrollPane);
+		bgLabel.add(scrollPane);
 
 	}
 

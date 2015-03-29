@@ -126,7 +126,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setRowHeight(Y * 120 / 768);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
-
+		table.setOpaque(false);
 		scrollPane = new JScrollPane(table);
 //		JScrollBar bar=scrollPane.getVerticalScrollBar();
 //		bar.setBackground(Color.gray);
@@ -138,6 +138,8 @@ public class ScreeningPlayerPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
 		bgLabel.add(scrollPane);
 
 	}
@@ -361,7 +363,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			table.setCellSelectionEnabled(true);
 			table.getColumnModel().getColumn(0)
 					.setCellRenderer(new PlayerCardRenderer());
-
+			table.setOpaque(false);
 			if (scrollPane != null) {
 				scrollPane.setVisible(false);
 			}
@@ -374,7 +376,9 @@ public class ScreeningPlayerPanel extends JPanel {
 					.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane
 					.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			this.add(scrollPane);
+			scrollPane.getViewport().setOpaque(false);
+			scrollPane.setOpaque(false);
+			bgLabel.add(scrollPane);
 
 		}
 	}
@@ -601,7 +605,7 @@ public class ScreeningPlayerPanel extends JPanel {
 					((PlayerCardPanel) value).getCriteriaValue());
 
 			renderer.fillPanel();
-
+			renderer.setOpaque(false);
 			// TODO Auto-generated method stub
 			return renderer;
 

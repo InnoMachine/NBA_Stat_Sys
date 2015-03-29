@@ -37,7 +37,7 @@ public class PlayerCardPanel extends JPanel {
 		this.number = number;
 		this.setVisible(true);
 		this.setLayout(null);
-
+		this.setOpaque(false);
 		this.playerInfo = playerInfo;
 		this.criteria = criteria;
 		this.criteriaValue = criteriaValue;
