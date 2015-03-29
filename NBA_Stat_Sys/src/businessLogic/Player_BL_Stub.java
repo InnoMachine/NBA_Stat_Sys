@@ -38,6 +38,8 @@ public class Player_BL_Stub implements Player_BS{
 		PlayerVo a=new PlayerVo();
 		PlayerVo b=new PlayerVo();
 		PlayerVo c=new PlayerVo();
+		PlayerVo d=new PlayerVo();
+		PlayerVo e=new PlayerVo();
 		a.setName("aaa");
 		a.setDivision(Division.ATLANTIC);
 		b.setName("bbb");
@@ -45,9 +47,15 @@ public class Player_BL_Stub implements Player_BS{
 		c.setName("ccc");
 		c.setBirth("1988-07-08");
 		c.setDivision(Division.NORTHWEST);
+		d.setName("dddd");
+		d.setDivision(Division.PACIFIC);
+		e.setName("eeeee");
+		e.setDivision(Division.SOUTHEAST);
 		playerVos.add(a);
 		playerVos.add(b);
 		playerVos.add(c);
+		playerVos.add(d);
+		playerVos.add(e);
 		return playerVos;
 	}
 
@@ -56,6 +64,8 @@ public class Player_BL_Stub implements Player_BS{
 		PlayerVo a=new PlayerVo();
 		PlayerVo b=new PlayerVo();
 		PlayerVo c=new PlayerVo();
+		PlayerVo d=new PlayerVo();
+		PlayerVo e=new PlayerVo();
 		a.setName("a");
 		a.setDivision(Division.ATLANTIC);
 		b.setName("bb");
@@ -63,9 +73,15 @@ public class Player_BL_Stub implements Player_BS{
 		c.setName("ccc");
 		c.setBirth("1988-07-08");
 		c.setDivision(Division.NORTHWEST);
+		d.setName("dddd");
+		d.setDivision(Division.PACIFIC);
+		e.setName("eeeee");
+		e.setDivision(Division.SOUTHEAST);
 		playerVos.add(a);
 		playerVos.add(b);
 		playerVos.add(c);
+		playerVos.add(d);
+		playerVos.add(e);
 		System.out.println("筛选成功！");
 		return playerVos;
 		

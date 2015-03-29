@@ -56,12 +56,12 @@ public class ScreeningPlayerPanel extends JPanel {
 		playerCriteriaPanel.setVisible(false);
 
 		JLabel screeninglbl = new JLabel("筛选依据");
-		screeninglbl.setBounds(X * 630 / 1366, Y / 8, X / 15, X / 50);
+		screeninglbl.setBounds(X * 640 / 1366, Y * 86 / 768, X / 15, X / 50);
 		this.add(screeninglbl);
 
 		screeningCriteriabtn = new JButton("");
-		screeningCriteriabtn.setBounds(X * 700 / 1366, Y / 8, X * 213 / 1366,
-				X / 50);
+		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 86 / 768,
+				X * 213 / 1366, X / 50);
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		add(screeningCriteriabtn);
 
@@ -71,17 +71,18 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.add(backbtn);
 
 		JButton screeningbtn = new JButton("显示前50名");
-		screeningbtn.setBounds(X * 950 / 1366, Y / 8, X * 103 / 1366, X / 50);
+		screeningbtn.setBounds(X * 990 / 1366, Y * 86 / 768, X * 103 / 1366,
+				X / 50);
 		screeningbtn.addActionListener(e -> screening());
 		add(screeningbtn);
 		mainFrame.getContentPane().add(this);
 
 		JLabel label = new JLabel("球员位置");
-		label.setBounds(X * 280 / 1366, Y / 8, X * 54 / 1366, X / 50);
+		label.setBounds(X * 265 / 1366, Y * 86 / 768, X * 54 / 1366, X / 50);
 		add(label);
 
 		JLabel label_1 = new JLabel("球员联盟");
-		label_1.setBounds(X * 455 / 1366, Y / 8, X * 54 / 1366, X / 50);
+		label_1.setBounds(X * 455 / 1366, Y * 86 / 768, X * 54 / 1366, X / 50);
 		add(label_1);
 
 		positions = new String[4];
@@ -90,7 +91,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		positions[2] = "中锋";
 		positions[3] = "后卫";
 		positionjcb = new JComboBox(positions);
-		positionjcb.setBounds(X * 340 / 1366, Y / 8, X * 100 / 1366, X / 50);
+		positionjcb.setBounds(X * 330 / 1366, Y * 86 / 768, X * 100 / 1366,
+				X / 50);
 		this.add(positionjcb);
 
 		leagues = new String[7];
@@ -102,19 +104,21 @@ public class ScreeningPlayerPanel extends JPanel {
 		leagues[5] = "SOUTHWEST";
 		leagues[6] = "PACIFIC";
 		leaguejcb = new JComboBox(leagues);
-		leaguejcb.setBounds(X * 515 / 1366, Y / 8, X * 100 / 1366, X / 50);
+		leaguejcb.setBounds(X * 520 / 1366, Y * 86 / 768, X * 100 / 1366,
+				X / 50);
 		this.add(leaguejcb);
-		
+
 		table = new JTable();
 		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
 		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
-		table.setRowHeight(Y / 8);
+		table.setRowHeight(Y * 120 / 768);
 		table.setVisible(true);
 		table.setCellSelectionEnabled(true);
 
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(X / 5, Y / 5, X * 3 / 5, Y * 3 / 5);
+		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
+				Y * 520 / 768);
 		scrollPane.setVisible(true);
 		scrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -233,85 +237,85 @@ public class ScreeningPlayerPanel extends JPanel {
 		} else {
 			playerVos = player_BS.filterPlayerBy(position, league,
 					screeningCriteria);
-			if(rowData==null){
+			if (rowData == null) {
 				rowData = new Vector<Vector<PlayerCardPanel>>();
-			}else{
+			} else {
 				rowData.clear();
 			}
 			for (int i = 0; i < playerVos.size(); i++) {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				switch (screeningCriteria) {
 				case "score":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getScore())));
 
 					break;
 				case "reboundOverall":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getReboundOverall())));
 					break;
 				case "assistance":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getAssistance())));
 					break;
 				case "weighted":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getWeighted())));
 					break;
 				case "block":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getBlock())));
 					break;
 				case "steal":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getSteal())));
 					break;
 				case "foul":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getFoul())));
 					break;
 				case "turnover":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTurnover())));
 					break;
 				case "time":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTime() / 60)));
 					break;
 				case "efficiency":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getEfficiency())));
 					break;
 				case "shotNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getShotNum())));
 					break;
 				case "threePointShotNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getThreePointHitNum())));
 					break;
 				case "freeThrowShotNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
 											.getFreeThrowShotNum())));
 					break;
 				case "twoTenNum":
-					a.add(new PlayerCardPanel(i+1,X, Y, playerVos.get(i),
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTwoTenNum())));
 					break;
@@ -322,39 +326,40 @@ public class ScreeningPlayerPanel extends JPanel {
 				rowData.add(a);
 
 			}
-		
-		Vector<String> column = new Vector<String>();
-		column.add("");
-		DefaultTableModel dtm = new DefaultTableModel(rowData, column) {
-			public boolean isCellEditable(int row, int column) {
-				return false;
+
+			Vector<String> column = new Vector<String>();
+			column.add("");
+			DefaultTableModel dtm = new DefaultTableModel(rowData, column) {
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
+
+			if (table != null) {
+				table.setVisible(false);
 			}
-		};
-		
-		if(table!=null){
-			table.setVisible(false);
-		}
-		table = new JTable(dtm);
-		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
-		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
-		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
-		table.setRowHeight(Y / 8);
-		table.setVisible(true);
-		table.setCellSelectionEnabled(true);
-		table.getColumnModel().getColumn(0)
-				.setCellRenderer(new PlayerCardRenderer());
-		
-		if(scrollPane!=null){
-			scrollPane.setVisible(false);
-		}
-		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(X / 5, Y / 5, X * 3 / 5, Y * 3 / 5);
-		scrollPane.setVisible(true);
-		scrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane
-				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		this.add(scrollPane);
+			table = new JTable(dtm);
+			DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
+			tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
+			table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
+			table.setRowHeight(Y * 120 / 768);
+			table.setVisible(true);
+			table.setCellSelectionEnabled(true);
+			table.getColumnModel().getColumn(0)
+					.setCellRenderer(new PlayerCardRenderer());
+
+			if (scrollPane != null) {
+				scrollPane.setVisible(false);
+			}
+			scrollPane = new JScrollPane(table);
+			scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
+					Y * 520 / 768);
+			scrollPane.setVisible(true);
+			scrollPane
+					.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			scrollPane
+					.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			this.add(scrollPane);
 
 		}
 	}
@@ -372,11 +377,10 @@ public class ScreeningPlayerPanel extends JPanel {
 				ScreeningPlayerPanel screeningPlayerPanel) {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 700 / 1366, Y / 8 + X / 50, X * 213 / 1366,
-					X * 108 / 1366);
-
+			this.setBounds(X * 715 / 1366, Y * 86 / 768 + X / 50,
+					X * 213 / 1366, X * 108 / 1366);
 			this.setBorder(new TitledBorder(new EtchedBorder()));
-			
+
 			ButtonGroup bg = new ButtonGroup();
 
 			JRadioButton scorebtn = new JRadioButton("得分");
@@ -570,21 +574,22 @@ public class ScreeningPlayerPanel extends JPanel {
 	// class: TableRenderer
 	class PlayerCardRenderer implements TableCellRenderer {
 
-
 		@Override
 		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column) {
 			// TODO Auto-generated method stub
-			PlayerCardPanel renderer = new PlayerCardPanel(((PlayerCardPanel) value).number,X, Y,
+			PlayerCardPanel renderer = new PlayerCardPanel(
+					((PlayerCardPanel) value).number, X, Y,
 					((PlayerCardPanel) value).getPlayerInfo(),
 					((PlayerCardPanel) value).getCriteria(),
 					((PlayerCardPanel) value).getCriteriaValue());
-			
+
 			renderer.fillPanel();
 
 			// TODO Auto-generated method stub
 			return renderer;
-			
+
 		}
 
 	}
