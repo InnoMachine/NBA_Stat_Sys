@@ -324,6 +324,11 @@ public class SearchPanel extends JPanel {
 
 		// TeamButton
 		createTeamDataPanel();
+		
+		
+		
+		
+		
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testColumn = new Vector<TeamButton>();
 
@@ -434,6 +439,81 @@ public class SearchPanel extends JPanel {
 
 	public void createPlayerPanel() {
 		createPlayerDataPanel();
+
+		PlayerVo defaultPlayer = player_BS.getPlayerByName(team_BS.getPlayers("ATL").get(0).getName());
+		textField_4
+				.setText(String.valueOf(defaultPlayer.getName()));
+
+		textField_9.setText(String.valueOf(defaultPlayer
+				.getHeight()));
+		textField_13.setText(String.valueOf(defaultPlayer
+				.getBirth()));
+		textField_5.setText(String.valueOf(defaultPlayer
+				.getPosition()));
+		textField_10.setText(String.valueOf(defaultPlayer
+				.getWeight()));
+		textField_73
+				.setText(String.valueOf(defaultPlayer.getExp()));
+		textField_72.setText(String.valueOf(defaultPlayer
+				.getNumber()));
+		textField_14
+				.setText(String.valueOf(defaultPlayer.getAge()));
+		textField_16.setText(String.valueOf(defaultPlayer
+				.getSchool()));
+		textField_18.setText(String.valueOf(defaultPlayer
+				.getGameNum()));
+		textField_20.setText(String.valueOf(defaultPlayer
+				.getFirstOnNum()));
+		textField_24.setText(String.valueOf(defaultPlayer
+				.getReboundOverall()));
+		textField_26.setText(String.valueOf(defaultPlayer
+				.getAssistance()));
+		textField_30
+				.setText(String.valueOf(defaultPlayer.getTime()));
+		textField_32.setText(String.valueOf(defaultPlayer
+				.getHitRate()));
+		textField_36.setText(String.valueOf(defaultPlayer
+				.getThreePointHitRate()));
+		textField_38.setText(String.valueOf(defaultPlayer
+				.getFreeThrowRate()));
+		textField_42.setText(String.valueOf(defaultPlayer
+				.getAttackingNum()));
+		textField_44.setText(String.valueOf(defaultPlayer
+				.getDefensiveNum()));
+		textField_47.setText(String.valueOf(defaultPlayer
+				.getSteal()));
+		textField_49.setText(String.valueOf(defaultPlayer
+				.getBlock()));
+		textField_53.setText(String.valueOf(defaultPlayer
+				.getTurnover()));
+		textField_55
+				.setText(String.valueOf(defaultPlayer.getFoul()));
+		textField_59.setText(String.valueOf(defaultPlayer
+				.getScore()));
+		textField_61.setText(String.valueOf(defaultPlayer
+				.getEfficiency()));
+		textField_65
+				.setText(String.valueOf(defaultPlayer.getGmSc()));
+		textField_22.setText(String.valueOf(defaultPlayer
+				.getTrueHitRate()));
+		textField_34.setText(String.valueOf(defaultPlayer
+				.getHitEfficiency()));
+		textField_31.setText(String.valueOf(defaultPlayer
+				.getReboundOverallRate()));
+		textField_69.setText(String.valueOf(defaultPlayer
+				.getOffensiveReboundRate()));
+		textField_40.setText(String.valueOf(defaultPlayer
+				.getDefensiveReboundRate()));
+		textField_63.setText(String.valueOf(defaultPlayer
+				.getAssistanceRate()));
+		textField_70.setText(String.valueOf(defaultPlayer
+				.getStealRate()));
+		textField_51.setText(String.valueOf(defaultPlayer
+				.getBlockRate()));
+		textField_57.setText(String.valueOf(defaultPlayer
+				.getTurnOverRate()));
+		textField_71.setText(String.valueOf(defaultPlayer
+				.getUseRate()));
 		// TeamButton
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testDATA = new Vector<TeamButton>();
@@ -531,6 +611,10 @@ public class SearchPanel extends JPanel {
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
 
+		
+		
+		
+		
 		// playerButton
 		playerRowData = new Vector<Vector<PlayerButton>>();
 		playerColumn = new Vector<String>();
@@ -566,7 +650,7 @@ public class SearchPanel extends JPanel {
 	}
 
 	public void createTeamDataPanel() {
-		int tempX = X / 6;
+		int tempX = X *190/ 1366;
 		int tempY = 3 * Y / 10;
 		int spaceX = X / 8;
 		int spaceY = Y / 17;
@@ -666,6 +750,7 @@ public class SearchPanel extends JPanel {
 		textField_84.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_84.setEditable(false);
 		textField_84.setColumns(10);
+		textField_84.setFont(new Font("Dialog",1,11));
 		textField_84.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_84);
