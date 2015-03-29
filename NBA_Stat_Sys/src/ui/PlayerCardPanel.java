@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -44,13 +46,30 @@ public class PlayerCardPanel extends JPanel {
 //		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 //		lblNewLabel.setBounds(X*70/1366, Y*6/768, X*99/1366, Y*80/768);
 //		add(lblNewLabel);
-		
+        
+		//放球员头像		
 		JButton playerButton=new JButton();
 		playerButton.setBounds(X*70/1366, Y*6/768, X*99/1366, Y*80/768);
 		add(playerButton);
 
-		JLabel lblNumber = new JLabel(String.valueOf(number));
+		JLabel lblNumber = null;
+		if(number==1){
+		lblNumber = new JLabel(String.valueOf(number)+"st");
+		}
+		if(number==2){
+			lblNumber = new JLabel(String.valueOf(number)+"nd");
+		}
+		if(number>2){
+			lblNumber = new JLabel(String.valueOf(number)+"th");
+		}else{
+			System.out.println("球员名片显示中的排名Bug！！！");
+
+		}
 		lblNumber.setBounds(X*6/1366, Y*6/768, X*63/1366, Y*80/768);
+		lblNumber.setOpaque(true);
+		lblNumber.setBackground(Color.gray);
+		lblNumber.setFont(new java.awt.Font("Dialog",1,15));   
+		lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNumber);
 
 		JLabel label = new JLabel("姓名");
