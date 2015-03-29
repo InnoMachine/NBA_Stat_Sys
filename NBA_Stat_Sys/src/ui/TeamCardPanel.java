@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -78,12 +79,12 @@ public class TeamCardPanel extends JPanel {
 				+ teamInfo.getAbbreviation() + ".svg");
 		teamButton.setIcon(teamIcon);
 
-		JLabel label = new JLabel("球队全名");
+		MyLabel label = new MyLabel(Color.WHITE,"球队全名");
 		label.setBounds(X * 230 / 1366, Y * 21 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label);
 
-		txtA = new JTextField();
+		txtA = new MyTextField(Color.WHITE);
 		txtA.setHorizontalAlignment(SwingConstants.CENTER);
 		txtA.setText(teamInfo.getTeamName());
 		txtA.setEditable(false);
@@ -92,13 +93,13 @@ public class TeamCardPanel extends JPanel {
 		add(txtA);
 		txtA.setColumns(10);
 
-		JLabel lblNewLabel_1 = new JLabel("");
+		MyLabel lblNewLabel_1 = new MyLabel(Color.WHITE);
 		lblNewLabel_1.setText(criteria);
 		lblNewLabel_1.setBounds(X * 480 / 1366, Y * 21 / 768, X * 80 / 1366,
 				Y * 15 / 768);
 		add(lblNewLabel_1);
 
-		textField_8 = new JTextField();
+		textField_8 = new MyTextField(Color.WHITE);
 		textField_8.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_8.setText(criteriaValue);
 		textField_8.setEditable(false);
@@ -107,12 +108,12 @@ public class TeamCardPanel extends JPanel {
 		add(textField_8);
 		textField_8.setColumns(10);
 
-		JLabel label_3 = new JLabel("缩写");
+		MyLabel label_3 = new MyLabel(Color.WHITE,"缩写");
 		label_3.setBounds(X * 230 / 1366, Y * 56 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_3);
 
-		textField = new JTextField();
+		textField = new MyTextField(Color.WHITE);
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setText(teamInfo.getAbbreviation());
 		textField.setEditable(false);
@@ -121,7 +122,7 @@ public class TeamCardPanel extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 
-		JLabel label_4 = new JLabel("所在地");
+		MyLabel label_4 = new MyLabel(Color.WHITE,"所在地");
 		label_4.setBounds(X * 450 / 1366, Y * 56 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_4);
@@ -135,12 +136,12 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_2);
 
-		JLabel label_2 = new JLabel("赛区");
+		MyLabel label_2 = new MyLabel(Color.WHITE,"赛区");
 		label_2.setBounds(X * 690 / 1366, Y * 56 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_2);
 
-		textField_6 = new JTextField();
+		textField_6 = new MyTextField(Color.WHITE);
 		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_6.setText(teamInfo.getConference().name());
 		textField_6.setEditable(false);
@@ -149,12 +150,12 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_6);
 
-		JLabel label_5 = new JLabel("分区");
+		MyLabel label_5 = new MyLabel(Color.WHITE,"分区");
 		label_5.setBounds(X * 230 / 1366, Y * 91 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_5);
 
-		txtDiv = new JTextField();
+		txtDiv = new MyTextField(Color.WHITE);
 		txtDiv.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDiv.setText(teamInfo.getDivision().name());
 		txtDiv.setEditable(false);
@@ -163,12 +164,12 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(txtDiv);
 
-		JLabel label_6 = new JLabel("主场");
+		MyLabel label_6 = new MyLabel(Color.WHITE,"主场");
 		label_6.setBounds(X * 450 / 1366, Y * 91 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_6);
 
-		textField_3 = new JTextField();
+		textField_3 = new MyTextField(Color.WHITE);
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_3.setText(teamInfo.getHomeField());
 		textField_3.setEditable(false);
@@ -177,12 +178,12 @@ public class TeamCardPanel extends JPanel {
 				Y * 23 / 768);
 		add(textField_3);
 
-		JLabel label_7 = new JLabel("建立时间");
+		MyLabel label_7 = new MyLabel(Color.WHITE,"建立时间");
 		label_7.setBounds(X * 690 / 1366, Y * 91 / 768, X * 55 / 1366,
 				Y * 15 / 768);
 		add(label_7);
 
-		txtBirthYear = new JTextField();
+		txtBirthYear = new MyTextField(Color.WHITE);
 		txtBirthYear.setHorizontalAlignment(SwingConstants.CENTER);
 		txtBirthYear.setText(teamInfo.getBirthYear());
 		txtBirthYear.setEditable(false);
@@ -204,4 +205,32 @@ public class TeamCardPanel extends JPanel {
 	public String getCriteriaValue() {
 		return criteriaValue;
 	}
+	class MyTextField extends JTextField{
+		public MyTextField(Color textColor){
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体",1,15));
+			
+		}
+	
+	}
+	class MyLabel extends JLabel{
+		public MyLabel(Color textColor){
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体",1,15));
+			
+		}
+		public MyLabel(Color textColor,String text){
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setText(text);
+			this.setFont(new Font("黑体",1,15));
+			
+		}
+	}
+
 }
