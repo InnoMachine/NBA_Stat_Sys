@@ -27,13 +27,13 @@ public class Test {
 		}
 		System.out.println(i);
 		System.out.println(k);
-		PlayerVo vo =player_bs.getPlayerByName("Blake Griffin");
-		System.out.println(vo.getScore());
+		PlayerVo vo =player_bs.getPlayerByName("Jason Collins");
+		System.out.println(vo.getActionImgPath());
 		System.out.println(vo.getGameNum());
-		ArrayList<TeamVo> teamvo=team_bs.getAllTeam();
-		for(TeamVo temp:teamvo)
+		ArrayList<PlayerVo> players=player_bs.getAllPlayer();
+		for(PlayerVo temp:players)
 		{
-			System.out.println(temp.getRoundAttack());
+			System.out.println(temp.getTurnover());
 		}
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
