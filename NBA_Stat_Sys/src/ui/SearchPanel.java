@@ -381,6 +381,7 @@ public class SearchPanel extends JPanel {
 		}
 
 		JScrollPane teamJSP = new JScrollPane(teamTable);
+		teamJSP.getHorizontalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		teamJSP.setBounds(X / 5, Y / 10, 5*X /8 , Y / 6);
