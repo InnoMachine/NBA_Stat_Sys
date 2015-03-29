@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
@@ -38,7 +40,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox positionjcb;
 	JComboBox leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;
@@ -117,6 +119,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		table.setCellSelectionEnabled(true);
 
 		scrollPane = new JScrollPane(table);
+//		JScrollBar bar=scrollPane.getVerticalScrollBar();
+//		bar.setBackground(Color.gray);
+		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
 		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
 				Y * 520 / 768);
 		scrollPane.setVisible(true);
@@ -352,6 +357,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				scrollPane.setVisible(false);
 			}
 			scrollPane = new JScrollPane(table);
+			scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
 			scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
 					Y * 520 / 768);
 			scrollPane.setVisible(true);

@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -48,8 +49,8 @@ public class SortPanel extends JPanel {
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
-	Player_BS player_BS = new Player_BL_Stub();
-	Team_BS team_BS = new Team_BL_Stub();
+	Player_BS player_BS = new Player_BL();
+	Team_BS team_BS = new Team_BL();
 
 	String playerCriteria = "";
 	String teamCriteria = "";
@@ -104,6 +105,7 @@ public class SortPanel extends JPanel {
 		table.setCellSelectionEnabled(true);
 
 		scrollPane = new JScrollPane(table);
+		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
 		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
 				Y * 520 / 768);
 		scrollPane.setVisible(true);
@@ -189,6 +191,7 @@ public class SortPanel extends JPanel {
 		
 		
 		scrollPane = new JScrollPane(table);
+		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(Color.LIGHT_GRAY,Color.GRAY));
 		scrollPane.setBounds(X * 220 / 1366, Y * 150 / 768, X * 930 / 1366,
 				Y * 520 / 768);
 		scrollPane.setVisible(true);
