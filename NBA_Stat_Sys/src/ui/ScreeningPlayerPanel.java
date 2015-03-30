@@ -240,16 +240,16 @@ public class ScreeningPlayerPanel extends JPanel {
 			screeningCriteria = "timeField";
 			break;
 		case "效率":
-			screeningCriteria = "efficiency";
+			screeningCriteria = "efficiencyField";
 			break;
 		case "投篮":
 			screeningCriteria = "shotNumField";
 			break;
 		case "三分":
-			screeningCriteria = "threePointShotNum";
+			screeningCriteria = "threePointShotNumField";
 			break;
 		case "罚球":
-			screeningCriteria = "freeThrowShotNum";
+			screeningCriteria = "freeThrowShotNumField";
 			break;
 		case "两双":
 			screeningCriteria = "twoTenNum";
@@ -321,27 +321,27 @@ public class ScreeningPlayerPanel extends JPanel {
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getTimeField() / 60)));
 					break;
-				case "efficiency":
+				case "efficiencyField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getEfficiency())));
+									.valueOf(playerVos.get(i).getEfficiencyField())));
 					break;
 				case "shotNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getShotNumField())));
 					break;
-				case "threePointShotNum":
+				case "threePointShotNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
-											.getThreePointHitNum())));
+											.getThreePointHitNumField())));
 					break;
-				case "freeThrowShotNum":
+				case "freeThrowShotNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
-											.getFreeThrowShotNum())));
+											.getFreeThrowShotNumField())));
 					break;
 				case "twoTenNum":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
