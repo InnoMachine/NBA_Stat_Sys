@@ -225,6 +225,7 @@ public class PlayerCardPanel extends JPanel {
 		textField_7.setColumns(10);
 		textField_7.setBounds(X * 728 / 1366, Y * 87 / 768, X * 160 / 1366,
 				Y * 23 / 768);
+		textField_7.setFont(new Font("黑体",1,9));
 		add(textField_7);
 
 	}

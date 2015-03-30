@@ -365,7 +365,7 @@ public class ScreeningPlayerPanel extends JPanel {
 							Y,
 							playerVos.get(i),
 							screeningCriteriabtn.getText(),
-							String.valueOf(playerVos.get(i).getTimeField() / 60)));
+							String.format("%.2f", playerVos.get(i).getTimeField() / 60.0)));
 					break;
 				case "efficiencyField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,9 +41,9 @@ public class SearchPanel extends JPanel {
 	JFrame mainFrame;
 	Player_BS player_BS = new Player_BL();
 	Team_BS team_BS = new Team_BL();
-//	private JTable table;
-//	private DefaultTableModel model;
-//	private JScrollPane scrollPane;
+	// private JTable table;
+	// private DefaultTableModel model;
+	// private JScrollPane scrollPane;
 
 	JLabel bgLabel;
 	String category = "player";
@@ -52,7 +53,7 @@ public class SearchPanel extends JPanel {
 	JTable playerTable;
 	DefaultTableModel playerDTM;
 
-//	private JTextField textField;
+	// private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -120,7 +121,7 @@ public class SearchPanel extends JPanel {
 	private JTextField textField_64;
 	private JTextField textField_65;
 	private JTextField textField_66;
-//	private JTextField textField_68;
+	// private JTextField textField_68;
 	private JTextField textField_70;
 	private JTextField textField_71;
 	private JTextField textField_69;
@@ -207,9 +208,6 @@ public class SearchPanel extends JPanel {
 		this.setVisible(true);
 		this.setLayout(null);
 
-		
-		
-		
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 2, 73, 23);
 		backbtn.addActionListener(e -> back());
@@ -225,6 +223,7 @@ public class SearchPanel extends JPanel {
 							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			createPlayerPanel();
+			this.repaint();
 		}
 		if (category == "team") {
 			bg = new ImageIcon(new ImageIcon("Image/searchTeam.png").getImage()
@@ -232,9 +231,9 @@ public class SearchPanel extends JPanel {
 							Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			createTeamPanel();
+			this.repaint();
 		}
 
-		
 		JButton minimize = new JButton();
 		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
 				Y * 25 / 768);
@@ -247,7 +246,7 @@ public class SearchPanel extends JPanel {
 			}
 		});
 		bgLabel.add(minimize);
-		
+
 		JButton close = new JButton();
 		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
 				Y * 25 / 768);
@@ -260,13 +259,13 @@ public class SearchPanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-		
+
 		mainFrame.getContentPane().add(this);
 
 	}
 
 	public void showTeamInfo(String abbr) {
-		
+
 		TeamVo teamVo = team_BS.getTeamByAbbr(abbr);
 		textField_74.setText(teamVo.getTeamName());
 		textField_79.setText(teamVo.getAbbreviation());
@@ -276,21 +275,36 @@ public class SearchPanel extends JPanel {
 		textField_84.setText(String.valueOf(teamVo.getHomeField()));
 		textField_86.setText(teamVo.getBirthYear());
 		textField_88.setText(String.valueOf(teamVo.getGameNum()));
-		textField_90.setText(String.valueOf(teamVo.getHitNum())+"/"+String.valueOf(teamVo.getHitNumField()));
-		textField_93.setText(String.valueOf(teamVo.getShotNum())+"/"+String.valueOf(teamVo.getShotNumField()));
-		textField_94.setText(String.valueOf(teamVo.getThreePointHitNum())+"/"+String.valueOf(teamVo.getThreePointHitNumField()));
-		textField_96.setText(String.valueOf(teamVo.getThreePointShotNum())+"/"+String.valueOf(teamVo.getThreePointShotNumField()));
-		textField_98.setText(String.valueOf(teamVo.getFreeThrowHitNum())+"/"+String.valueOf(teamVo.getFreeThrowHitNumField()));
-		textField_100.setText(String.valueOf(teamVo.getFreeThrowShotNum())+"/"+String.valueOf(teamVo.getFreeThrowShotNumField()));
-		textField_102.setText(String.valueOf(teamVo.getOffensiveRebound())+"/"+String.valueOf(teamVo.getOffensiveReboundField()));
-		textField_104.setText(String.valueOf(teamVo.getDefensiveRebound())+"/"+String.valueOf(teamVo.getDefensiveReboundField()));
-		textField_106.setText(String.valueOf(teamVo.getReboundOverall())+"/"+String.valueOf(teamVo.getReboundOverallField()));
-		textField_108.setText(String.valueOf(teamVo.getAssistance())+"/"+String.valueOf(teamVo.getAssistanceField()));
-		textField_110.setText(String.valueOf(teamVo.getSteal())+"/"+String.valueOf(teamVo.getStealField()));
-		textField_112.setText(String.valueOf(teamVo.getBlock())+"/"+String.valueOf(teamVo.getBlockField()));
-		textField_114.setText(String.valueOf(teamVo.getTurnover())+"/"+String.valueOf(teamVo.getTurnoverField()));
-		textField_116.setText(String.valueOf(teamVo.getFoul())+"/"+String.valueOf(teamVo.getFoulField()));
-		textField_118.setText(String.valueOf(teamVo.getScore())+"/"+String.valueOf(teamVo.getScoreField()));
+		textField_90.setText(String.valueOf(teamVo.getHitNum()) + "/"
+				+ String.valueOf(teamVo.getHitNumField()));
+		textField_93.setText(String.valueOf(teamVo.getShotNum()) + "/"
+				+ String.valueOf(teamVo.getShotNumField()));
+		textField_94.setText(String.valueOf(teamVo.getThreePointHitNum()) + "/"
+				+ String.valueOf(teamVo.getThreePointHitNumField()));
+		textField_96.setText(String.valueOf(teamVo.getThreePointShotNum())
+				+ "/" + String.valueOf(teamVo.getThreePointShotNumField()));
+		textField_98.setText(String.valueOf(teamVo.getFreeThrowHitNum()) + "/"
+				+ String.valueOf(teamVo.getFreeThrowHitNumField()));
+		textField_100.setText(String.valueOf(teamVo.getFreeThrowShotNum())
+				+ "/" + String.valueOf(teamVo.getFreeThrowShotNumField()));
+		textField_102.setText(String.valueOf(teamVo.getOffensiveRebound())
+				+ "/" + String.valueOf(teamVo.getOffensiveReboundField()));
+		textField_104.setText(String.valueOf(teamVo.getDefensiveRebound())
+				+ "/" + String.valueOf(teamVo.getDefensiveReboundField()));
+		textField_106.setText(String.valueOf(teamVo.getReboundOverall()) + "/"
+				+ String.valueOf(teamVo.getReboundOverallField()));
+		textField_108.setText(String.valueOf(teamVo.getAssistance()) + "/"
+				+ String.valueOf(teamVo.getAssistanceField()));
+		textField_110.setText(String.valueOf(teamVo.getSteal()) + "/"
+				+ String.valueOf(teamVo.getStealField()));
+		textField_112.setText(String.valueOf(teamVo.getBlock()) + "/"
+				+ String.valueOf(teamVo.getBlockField()));
+		textField_114.setText(String.valueOf(teamVo.getTurnover()) + "/"
+				+ String.valueOf(teamVo.getTurnoverField()));
+		textField_116.setText(String.valueOf(teamVo.getFoul()) + "/"
+				+ String.valueOf(teamVo.getFoulField()));
+		textField_118.setText(String.valueOf(teamVo.getScore()) + "/"
+				+ String.valueOf(teamVo.getScoreField()));
 		textField_120.setText(String.valueOf(teamVo.getHitRate()));
 		textField_122.setText(String.valueOf(teamVo.getThreePointHitRate()));
 		textField_124.setText(String.valueOf(teamVo.getFreeThrowRate()));
@@ -301,7 +315,7 @@ public class SearchPanel extends JPanel {
 		textField_134.setText(String.valueOf(teamVo.getReboundEfficiency()));
 		textField_136.setText(String.valueOf(teamVo.getStealEfficiency()));
 		textField_138.setText(String.valueOf(teamVo.getAssistanceEfficiency()));
-		
+
 	}
 
 	public void showPlayerInfo(String pName) {
@@ -318,21 +332,33 @@ public class SearchPanel extends JPanel {
 		textField_16.setText(player.getSchool());
 		textField_18.setText(String.valueOf(player.getGameNum()));
 		textField_20.setText(String.valueOf(player.getFirstOnNum()));
-		textField_24.setText(String.valueOf(player.getReboundOverall())+"/"+String.valueOf(player.getReboundOverallField()));
-		textField_26.setText(String.valueOf(player.getAssistance())+"/"+String.valueOf(player.getAssistanceField()));
-		textField_30.setText(String.format("%.2f",player.getTime()/60.0)+"/"+String.format("%.2f", player.getTimeField()/60.0));
+		textField_24.setText(String.valueOf(player.getReboundOverall()) + "/"
+				+ String.valueOf(player.getReboundOverallField()));
+		textField_26.setText(String.valueOf(player.getAssistance()) + "/"
+				+ String.valueOf(player.getAssistanceField()));
+		textField_30.setText(String.format("%.2f", player.getTime() / 60.0)
+				+ "/" + String.format("%.2f", player.getTimeField() / 60.0));
 		textField_32.setText(String.valueOf(player.getHitRate()));
 		textField_36.setText(String.valueOf(player.getThreePointHitRate()));
 		textField_38.setText(String.valueOf(player.getFreeThrowRate()));
-		textField_42.setText(String.valueOf(player.getAttackingNum())+"/"+String.valueOf(player.getAttackingNumField()));
-		textField_44.setText(String.valueOf(player.getDefensiveNum())+"/"+String.valueOf(player.getDefensiveNumField()));
-		textField_47.setText(String.valueOf(player.getSteal())+"/"+String.valueOf(player.getStealField()));
-		textField_49.setText(String.valueOf(player.getBlock())+"/"+String.valueOf(player.getBlockField()));
-		textField_53.setText(String.valueOf(player.getTurnover())+"/"+String.valueOf(player.getTurnoverField()));
-		textField_55.setText(String.valueOf(player.getFoul())+"/"+String.valueOf(player.getFoulField()));
-		textField_59.setText(String.valueOf(player.getScore())+"/"+String.valueOf(player.getScoreField()));
-		textField_61.setText(String.valueOf(player.getEfficiency())+"/"+String.valueOf(player.getEfficiencyField()));
-		textField_65.setText(String.valueOf(player.getGmSc())+"/"+String.valueOf(player.getGmScField()));
+		textField_42.setText(String.valueOf(player.getAttackingNum()) + "/"
+				+ String.valueOf(player.getAttackingNumField()));
+		textField_44.setText(String.valueOf(player.getDefensiveNum()) + "/"
+				+ String.valueOf(player.getDefensiveNumField()));
+		textField_47.setText(String.valueOf(player.getSteal()) + "/"
+				+ String.valueOf(player.getStealField()));
+		textField_49.setText(String.valueOf(player.getBlock()) + "/"
+				+ String.valueOf(player.getBlockField()));
+		textField_53.setText(String.valueOf(player.getTurnover()) + "/"
+				+ String.valueOf(player.getTurnoverField()));
+		textField_55.setText(String.valueOf(player.getFoul()) + "/"
+				+ String.valueOf(player.getFoulField()));
+		textField_59.setText(String.valueOf(player.getScore()) + "/"
+				+ String.valueOf(player.getScoreField()));
+		textField_61.setText(String.valueOf(player.getEfficiency()) + "/"
+				+ String.valueOf(player.getEfficiencyField()));
+		textField_65.setText(String.valueOf(player.getGmSc()) + "/"
+				+ String.valueOf(player.getGmScField()));
 		textField_22.setText(String.valueOf(player.getTrueHitRate()));
 		textField_34.setText(String.valueOf(player.getHitEfficiency()));
 		textField_31.setText(String.valueOf(player.getReboundOverallRate()));
@@ -360,7 +386,7 @@ public class SearchPanel extends JPanel {
 
 		// TeamButton
 		createTeamDataPanel();
-				
+
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testColumn = new Vector<TeamButton>();
 
@@ -432,25 +458,39 @@ public class SearchPanel extends JPanel {
 		textField_84.setText(String.valueOf(defaultTeam.getHomeField()));
 		textField_86.setText(defaultTeam.getBirthYear());
 		textField_88.setText(String.valueOf(defaultTeam.getGameNum()));
-		textField_90.setText(String.valueOf(defaultTeam.getHitNum())+"/"+String.valueOf(defaultTeam.getHitNumField()));
-		textField_93.setText(String.valueOf(defaultTeam.getShotNum())+"/"+String.valueOf(defaultTeam.getShotNumField()));
-		textField_94.setText(String.valueOf(defaultTeam.getThreePointHitNum())+"/"+String.valueOf(defaultTeam.getThreePointHitNumField()));
+		textField_90.setText(String.valueOf(defaultTeam.getHitNum()) + "/"
+				+ String.valueOf(defaultTeam.getHitNumField()));
+		textField_93.setText(String.valueOf(defaultTeam.getShotNum()) + "/"
+				+ String.valueOf(defaultTeam.getShotNumField()));
+		textField_94.setText(String.valueOf(defaultTeam.getThreePointHitNum())
+				+ "/" + String.valueOf(defaultTeam.getThreePointHitNumField()));
 		textField_96
-				.setText(String.valueOf(defaultTeam.getThreePointShotNum())+"/"+String.valueOf(defaultTeam.getThreePointShotNumField()));
-		textField_98.setText(String.valueOf(defaultTeam.getFreeThrowHitNum())+"/"+String.valueOf(defaultTeam.getFreeThrowHitNumField()));
-		textField_100
-				.setText(String.valueOf(defaultTeam.getFreeThrowShotNum())+"/"+String.valueOf(defaultTeam.getFreeThrowShotNumField()));
-		textField_102
-				.setText(String.valueOf(defaultTeam.getOffensiveRebound())+"/"+String.valueOf(defaultTeam.getOffensiveReboundField()));
-		textField_104
-				.setText(String.valueOf(defaultTeam.getDefensiveRebound())+"/"+String.valueOf(defaultTeam.getDefensiveReboundField()));
-		textField_106.setText(String.valueOf(defaultTeam.getReboundOverall())+"/"+String.valueOf(defaultTeam.getReboundOverall()));
-		textField_108.setText(String.valueOf(defaultTeam.getAssistance())+"/"+String.valueOf(defaultTeam.getAssistanceField()));
-		textField_110.setText(String.valueOf(defaultTeam.getSteal())+"/"+String.valueOf(defaultTeam.getStealField()));
-		textField_112.setText(String.valueOf(defaultTeam.getBlock())+"/"+String.valueOf(defaultTeam.getBlockField()));
-		textField_114.setText(String.valueOf(defaultTeam.getTurnover())+"/"+String.valueOf(defaultTeam.getTurnoverField()));
-		textField_116.setText(String.valueOf(defaultTeam.getFoul())+"/"+String.valueOf(defaultTeam.getFoulField()));
-		textField_118.setText(String.valueOf(defaultTeam.getScore())+"/"+String.valueOf(defaultTeam.getScoreField()));
+				.setText(String.valueOf(defaultTeam.getThreePointShotNum())
+						+ "/"
+						+ String.valueOf(defaultTeam
+								.getThreePointShotNumField()));
+		textField_98.setText(String.valueOf(defaultTeam.getFreeThrowHitNum())
+				+ "/" + String.valueOf(defaultTeam.getFreeThrowHitNumField()));
+		textField_100.setText(String.valueOf(defaultTeam.getFreeThrowShotNum())
+				+ "/" + String.valueOf(defaultTeam.getFreeThrowShotNumField()));
+		textField_102.setText(String.valueOf(defaultTeam.getOffensiveRebound())
+				+ "/" + String.valueOf(defaultTeam.getOffensiveReboundField()));
+		textField_104.setText(String.valueOf(defaultTeam.getDefensiveRebound())
+				+ "/" + String.valueOf(defaultTeam.getDefensiveReboundField()));
+		textField_106.setText(String.valueOf(defaultTeam.getReboundOverall())
+				+ "/" + String.valueOf(defaultTeam.getReboundOverall()));
+		textField_108.setText(String.valueOf(defaultTeam.getAssistance()) + "/"
+				+ String.valueOf(defaultTeam.getAssistanceField()));
+		textField_110.setText(String.valueOf(defaultTeam.getSteal()) + "/"
+				+ String.valueOf(defaultTeam.getStealField()));
+		textField_112.setText(String.valueOf(defaultTeam.getBlock()) + "/"
+				+ String.valueOf(defaultTeam.getBlockField()));
+		textField_114.setText(String.valueOf(defaultTeam.getTurnover()) + "/"
+				+ String.valueOf(defaultTeam.getTurnoverField()));
+		textField_116.setText(String.valueOf(defaultTeam.getFoul()) + "/"
+				+ String.valueOf(defaultTeam.getFoulField()));
+		textField_118.setText(String.valueOf(defaultTeam.getScore()) + "/"
+				+ String.valueOf(defaultTeam.getScoreField()));
 		textField_120.setText(String.valueOf(defaultTeam.getHitRate()));
 		textField_122
 				.setText(String.valueOf(defaultTeam.getThreePointHitRate()));
@@ -472,81 +512,63 @@ public class SearchPanel extends JPanel {
 	public void createPlayerPanel() {
 		createPlayerDataPanel();
 
-		PlayerVo defaultPlayer = player_BS.getPlayerByName(team_BS.getPlayers("ATL").get(0).getName());
-		textField_4
-				.setText(String.valueOf(defaultPlayer.getName()));
+		PlayerVo defaultPlayer = player_BS.getPlayerByName(team_BS
+				.getPlayers("ATL").get(0).getName());
+		textField_4.setText(String.valueOf(defaultPlayer.getName()));
 
-		textField_9.setText(String.valueOf(defaultPlayer
-				.getHeight()));
-		textField_13.setText(String.valueOf(defaultPlayer
-				.getBirth()));
-		textField_5.setText(String.valueOf(defaultPlayer
-				.getPosition()));
-		textField_10.setText(String.valueOf(defaultPlayer
-				.getWeight()));
-		textField_73
-				.setText(String.valueOf(defaultPlayer.getExp()));
-		textField_72.setText(String.valueOf(defaultPlayer
-				.getNumber()));
-		textField_14
-				.setText(String.valueOf(defaultPlayer.getAge()));
-		textField_16.setText(String.valueOf(defaultPlayer
-				.getSchool()));
-		textField_18.setText(String.valueOf(defaultPlayer
-				.getGameNum()));
-		textField_20.setText(String.valueOf(defaultPlayer
-				.getFirstOnNum()));
-		textField_24.setText(String.valueOf(defaultPlayer
-				.getReboundOverall())+"/"+String.valueOf(defaultPlayer
-				.getReboundOverallField()));
-		textField_26.setText(String.valueOf(defaultPlayer
-				.getAssistance())+"/"+String.valueOf(defaultPlayer.getAssistanceField()));
-		textField_30
-				.setText(String.format("%.2f",defaultPlayer.getTime()/60.0)+"/"+String.format("%.2f",defaultPlayer.getTimeField()/60.0));
-		textField_32.setText(String.valueOf(defaultPlayer
-				.getHitRate()));
+		textField_9.setText(String.valueOf(defaultPlayer.getHeight()));
+		textField_13.setText(String.valueOf(defaultPlayer.getBirth()));
+		textField_5.setText(String.valueOf(defaultPlayer.getPosition()));
+		textField_10.setText(String.valueOf(defaultPlayer.getWeight()));
+		textField_73.setText(String.valueOf(defaultPlayer.getExp()));
+		textField_72.setText(String.valueOf(defaultPlayer.getNumber()));
+		textField_14.setText(String.valueOf(defaultPlayer.getAge()));
+		textField_16.setText(String.valueOf(defaultPlayer.getSchool()));
+		textField_18.setText(String.valueOf(defaultPlayer.getGameNum()));
+		textField_20.setText(String.valueOf(defaultPlayer.getFirstOnNum()));
+		textField_24.setText(String.valueOf(defaultPlayer.getReboundOverall())
+				+ "/" + String.valueOf(defaultPlayer.getReboundOverallField()));
+		textField_26.setText(String.valueOf(defaultPlayer.getAssistance())
+				+ "/" + String.valueOf(defaultPlayer.getAssistanceField()));
+		textField_30.setText(String.format("%.2f",
+				defaultPlayer.getTime() / 60.0)
+				+ "/"
+				+ String.format("%.2f", defaultPlayer.getTimeField() / 60.0));
+		textField_32.setText(String.valueOf(defaultPlayer.getHitRate()));
 		textField_36.setText(String.valueOf(defaultPlayer
 				.getThreePointHitRate()));
-		textField_38.setText(String.valueOf(defaultPlayer
-				.getFreeThrowRate()));
-		textField_42.setText(String.valueOf(defaultPlayer
-				.getAttackingNum())+"/"+String.valueOf(defaultPlayer.getAttackingNumField()));
-		textField_44.setText(String.valueOf(defaultPlayer
-				.getDefensiveNum())+"/"+String.valueOf(defaultPlayer.getDefensiveNumField()));
-		textField_47.setText(String.valueOf(defaultPlayer
-				.getSteal())+"/"+String.valueOf(defaultPlayer.getStealField()));
-		textField_49.setText(String.valueOf(defaultPlayer
-				.getBlock())+"/"+String.valueOf(defaultPlayer.getStealField()));
-		textField_53.setText(String.valueOf(defaultPlayer
-				.getTurnover())+"/"+String.valueOf(defaultPlayer.getTurnoverField()));
-		textField_55
-				.setText(String.valueOf(defaultPlayer.getFoul())+"/"+String.valueOf(defaultPlayer.getFoulField()));
-		textField_59.setText(String.valueOf(defaultPlayer
-				.getScore())+"/"+String.valueOf(defaultPlayer.getScoreField()));
-		textField_61.setText(String.valueOf(defaultPlayer
-				.getEfficiency())+"/"+String.valueOf(defaultPlayer.getEfficiencyField()));
-		textField_65
-				.setText(String.valueOf(defaultPlayer.getGmSc())+"/"+String.valueOf(defaultPlayer.getGmScField()));
-		textField_22.setText(String.valueOf(defaultPlayer
-				.getTrueHitRate()));
-		textField_34.setText(String.valueOf(defaultPlayer
-				.getHitEfficiency()));
+		textField_38.setText(String.valueOf(defaultPlayer.getFreeThrowRate()));
+		textField_42.setText(String.valueOf(defaultPlayer.getAttackingNum())
+				+ "/" + String.valueOf(defaultPlayer.getAttackingNumField()));
+		textField_44.setText(String.valueOf(defaultPlayer.getDefensiveNum())
+				+ "/" + String.valueOf(defaultPlayer.getDefensiveNumField()));
+		textField_47.setText(String.valueOf(defaultPlayer.getSteal()) + "/"
+				+ String.valueOf(defaultPlayer.getStealField()));
+		textField_49.setText(String.valueOf(defaultPlayer.getBlock()) + "/"
+				+ String.valueOf(defaultPlayer.getStealField()));
+		textField_53.setText(String.valueOf(defaultPlayer.getTurnover()) + "/"
+				+ String.valueOf(defaultPlayer.getTurnoverField()));
+		textField_55.setText(String.valueOf(defaultPlayer.getFoul()) + "/"
+				+ String.valueOf(defaultPlayer.getFoulField()));
+		textField_59.setText(String.valueOf(defaultPlayer.getScore()) + "/"
+				+ String.valueOf(defaultPlayer.getScoreField()));
+		textField_61.setText(String.valueOf(defaultPlayer.getEfficiency())
+				+ "/" + String.valueOf(defaultPlayer.getEfficiencyField()));
+		textField_65.setText(String.valueOf(defaultPlayer.getGmSc()) + "/"
+				+ String.valueOf(defaultPlayer.getGmScField()));
+		textField_22.setText(String.valueOf(defaultPlayer.getTrueHitRate()));
+		textField_34.setText(String.valueOf(defaultPlayer.getHitEfficiency()));
 		textField_31.setText(String.valueOf(defaultPlayer
 				.getReboundOverallRate()));
 		textField_69.setText(String.valueOf(defaultPlayer
 				.getOffensiveReboundRate()));
 		textField_40.setText(String.valueOf(defaultPlayer
 				.getDefensiveReboundRate()));
-		textField_63.setText(String.valueOf(defaultPlayer
-				.getAssistanceRate()));
-		textField_70.setText(String.valueOf(defaultPlayer
-				.getStealRate()));
-		textField_51.setText(String.valueOf(defaultPlayer
-				.getBlockRate()));
-		textField_57.setText(String.valueOf(defaultPlayer
-				.getTurnOverRate()));
-		textField_71.setText(String.valueOf(defaultPlayer
-				.getUseRate()));
+		textField_63.setText(String.valueOf(defaultPlayer.getAssistanceRate()));
+		textField_70.setText(String.valueOf(defaultPlayer.getStealRate()));
+		textField_51.setText(String.valueOf(defaultPlayer.getBlockRate()));
+		textField_57.setText(String.valueOf(defaultPlayer.getTurnOverRate()));
+		textField_71.setText(String.valueOf(defaultPlayer.getUseRate()));
 		// TeamButton
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testDATA = new Vector<TeamButton>();
@@ -621,7 +643,7 @@ public class SearchPanel extends JPanel {
 			/**
 					 * 
 					 */
-					private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 1L;
 
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -649,10 +671,6 @@ public class SearchPanel extends JPanel {
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
 
-		
-		
-		
-		
 		// playerButton
 		playerRowData = new Vector<Vector<PlayerButton>>();
 		playerColumn = new Vector<String>();
@@ -693,7 +711,7 @@ public class SearchPanel extends JPanel {
 	}
 
 	public void createTeamDataPanel() {
-		int tempX = X *190/ 1366;
+		int tempX = X * 190 / 1366;
 		int tempY = 3 * Y / 10;
 		int spaceX = X / 8;
 		int spaceY = Y / 17;
@@ -793,7 +811,7 @@ public class SearchPanel extends JPanel {
 		textField_84.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_84.setEditable(false);
 		textField_84.setColumns(10);
-		textField_84.setFont(new Font("Dialog",1,11));
+		textField_84.setFont(new Font("Dialog", 1, 11));
 		textField_84.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_84);
@@ -1272,7 +1290,7 @@ public class SearchPanel extends JPanel {
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_4.setEditable(false);
 		textField_4.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
-		textField_4.setFont(new Font("Dialog",1,14));
+		textField_4.setFont(new Font("Dialog", 1, 14));
 		bgLabel.add(textField_4);
 		textField_4.setColumns(10);
 
@@ -1400,7 +1418,7 @@ public class SearchPanel extends JPanel {
 		textField_16 = new MyTextField();
 		textField_16.setEditable(false);
 		textField_16.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_16.setFont(new Font("Dialog",0,11));
+		textField_16.setFont(new Font("黑体", 0, 11));
 		textField_16.setBounds(tempX + 5 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_16);
@@ -1910,6 +1928,8 @@ public class SearchPanel extends JPanel {
 			renderer.setIcon(renderer.playerPortrait);
 			renderer.setSize(X / 10, X / 10);
 			if (hasFocus) {
+				renderer.setBorder(BorderFactory.createLineBorder(Color.BLACK,
+						3));
 				showPlayerInfo(renderer.playerName);
 			}
 			return renderer;
@@ -1932,6 +1952,9 @@ public class SearchPanel extends JPanel {
 			renderer.setIcon(renderer.teamIcon);
 			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
+				renderer.setBorder(BorderFactory.createLineBorder(Color.BLACK,
+						3));
+
 				if (category == "player") {
 					playerRowData.clear();
 					for (int i = 0; i < renderer.playersInTeam.size(); i++) {
@@ -1971,13 +1994,21 @@ public class SearchPanel extends JPanel {
 					textField_20.setText(String.valueOf(defaultPlayer
 							.getFirstOnNum()));
 					textField_24.setText(String.valueOf(defaultPlayer
-							.getReboundOverall())+"/"+String.valueOf(defaultPlayer
+							.getReboundOverall())
+							+ "/"
+							+ String.valueOf(defaultPlayer
 									.getReboundOverallField()));
-					textField_26.setText(String.valueOf(defaultPlayer
-							.getAssistance())+"/"+String.valueOf(defaultPlayer
-									.getAssistanceField()));
-					textField_30
-							.setText(String.format("%.2f",defaultPlayer.getTime()/60.0)+"/"+String.format("%.2f",defaultPlayer.getTimeField()/60));
+					textField_26
+							.setText(String.valueOf(defaultPlayer
+									.getAssistance())
+									+ "/"
+									+ String.valueOf(defaultPlayer
+											.getAssistanceField()));
+					textField_30.setText(String.format("%.2f",
+							defaultPlayer.getTime() / 60.0)
+							+ "/"
+							+ String.format("%.2f",
+									defaultPlayer.getTimeField() / 60));
 					textField_32.setText(String.valueOf(defaultPlayer
 							.getHitRate()));
 					textField_36.setText(String.valueOf(defaultPlayer
@@ -1985,30 +2016,47 @@ public class SearchPanel extends JPanel {
 					textField_38.setText(String.valueOf(defaultPlayer
 							.getFreeThrowRate()));
 					textField_42.setText(String.valueOf(defaultPlayer
-							.getAttackingNum())+"/"+String.valueOf(defaultPlayer
+							.getAttackingNum())
+							+ "/"
+							+ String.valueOf(defaultPlayer
 									.getAttackingNumField()));
 					textField_44.setText(String.valueOf(defaultPlayer
-							.getDefensiveNum())+"/"+String.valueOf(defaultPlayer
+							.getDefensiveNum())
+							+ "/"
+							+ String.valueOf(defaultPlayer
 									.getDefensiveNumField()));
 					textField_47.setText(String.valueOf(defaultPlayer
-							.getSteal())+"/"+String.valueOf(defaultPlayer
-									.getStealField()));
+							.getSteal())
+							+ "/"
+							+ String.valueOf(defaultPlayer.getStealField()));
 					textField_49.setText(String.valueOf(defaultPlayer
-							.getBlock())+"/"+String.valueOf(defaultPlayer
-									.getBlockField()));
+							.getBlock())
+							+ "/"
+							+ String.valueOf(defaultPlayer.getBlockField()));
 					textField_53.setText(String.valueOf(defaultPlayer
-							.getTurnover())+"/"+String.valueOf(defaultPlayer
-									.getTurnoverField()));
+							.getTurnover())
+							+ "/"
+							+ String.valueOf(defaultPlayer.getTurnoverField()));
 					textField_55
-							.setText(String.valueOf(defaultPlayer.getFoul())+"/"+String.valueOf(defaultPlayer.getFoulField()));
+							.setText(String.valueOf(defaultPlayer.getFoul())
+									+ "/"
+									+ String.valueOf(defaultPlayer
+											.getFoulField()));
 					textField_59.setText(String.valueOf(defaultPlayer
-							.getScore())+"/"+String.valueOf(defaultPlayer
-									.getScoreField()));
-					textField_61.setText(String.valueOf(defaultPlayer
-							.getEfficiency())+"/"+String.valueOf(defaultPlayer
-									.getEfficiencyField()));
+							.getScore())
+							+ "/"
+							+ String.valueOf(defaultPlayer.getScoreField()));
+					textField_61
+							.setText(String.valueOf(defaultPlayer
+									.getEfficiency())
+									+ "/"
+									+ String.valueOf(defaultPlayer
+											.getEfficiencyField()));
 					textField_65
-							.setText(String.valueOf(defaultPlayer.getGmSc())+"/"+String.valueOf(defaultPlayer.getGmScField()));
+							.setText(String.valueOf(defaultPlayer.getGmSc())
+									+ "/"
+									+ String.valueOf(defaultPlayer
+											.getGmScField()));
 					textField_22.setText(String.valueOf(defaultPlayer
 							.getTrueHitRate()));
 					textField_34.setText(String.valueOf(defaultPlayer

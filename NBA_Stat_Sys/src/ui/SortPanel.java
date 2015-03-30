@@ -87,7 +87,7 @@ public class SortPanel extends JPanel {
 		sortTeamCriteriaPanel = new SortTeamCriteriaPanel();
 		sortTeamCriteriaPanel.setVisible(false);
 
-		MyLabel criterialbl = new MyLabel(Color.WHITE,"排序依据");
+		MyLabel criterialbl = new MyLabel(Color.WHITE, "排序依据");
 		criterialbl.setFont(new Font("黑体", 1, 13));
 		criterialbl.setBounds(X * 335 / 1366, Y * 66 / 768, X / 15, X / 50);
 		bgLabel.add(criterialbl);
@@ -96,8 +96,7 @@ public class SortPanel extends JPanel {
 		backbtn.setBounds(0, 0, X / 15, X / 50);
 		backbtn.addActionListener(e -> back());
 		bgLabel.add(backbtn);
-		
-		
+
 		JButton minimize = new JButton();
 		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
 				Y * 25 / 768);
@@ -110,7 +109,7 @@ public class SortPanel extends JPanel {
 			}
 		});
 		bgLabel.add(minimize);
-		
+
 		JButton close = new JButton();
 		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
 				Y * 25 / 768);
@@ -123,7 +122,6 @@ public class SortPanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-		
 
 		dtm = new DefaultTableModel() {
 			/**
@@ -167,7 +165,6 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
 			bgLabel.add(playerCriteriabtn);
 
-			
 			bgLabel.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseReleased(MouseEvent e) {
@@ -192,17 +189,19 @@ public class SortPanel extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
-	                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
-					if (e.getX() <= X * 461 / 1366 ||e.getX() >= (X * 461 / 1366+X * 31 / 100)
+					System.out.println("CLICKED!    X: " + e.getX() + "   Y: "
+							+ e.getY());
+					if (e.getX() <= X * 461 / 1366
+							|| e.getX() >= (X * 461 / 1366 + X * 31 / 100)
 							|| e.getY() <= (Y * 66 / 768 + X / 50)
-							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 14 / 100)){
+							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 14 / 100)) {
 						if (sortPlayerCriteriaPanel != null) {
-	                            sortPlayerCriteriaPanel.setVisible(false);
+							sortPlayerCriteriaPanel.setVisible(false);
 						}
 					}
 				}
 			});
-			
+
 		}
 		if (category == "team") {
 
@@ -257,21 +256,23 @@ public class SortPanel extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
-	                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
-					if (e.getX() <= X * 461 / 1366 ||e.getX() >= (X * 461 / 1366+ X * 31 / 100)
+					System.out.println("CLICKED!    X: " + e.getX() + "   Y: "
+							+ e.getY());
+					if (e.getX() <= X * 461 / 1366
+							|| e.getX() >= (X * 461 / 1366 + X * 31 / 100)
 							|| e.getY() <= (Y * 66 / 768 + X / 50)
-							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 195 / 1366)){
+							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 195 / 1366)) {
 						if (sortTeamCriteriaPanel != null) {
-	                            sortTeamCriteriaPanel.setVisible(false);
+							sortTeamCriteriaPanel.setVisible(false);
 						}
 					}
 				}
 			});
-			
+
 		}
 
 		mainFrame.getContentPane().add(this);
-
+		
 	}
 
 	public void makeTable(String category) {
@@ -361,7 +362,8 @@ public class SortPanel extends JPanel {
 				case "assistanceField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getAssistanceField())));
+									.valueOf(playerVos.get(i)
+											.getAssistanceField())));
 					break;
 				case "time":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -387,13 +389,15 @@ public class SortPanel extends JPanel {
 					break;
 				case "attackingNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn.getText(),
-							String.valueOf(playerVos.get(i).getAttackingNumField())));
+							playerCriteriabtn.getText(), String
+									.valueOf(playerVos.get(i)
+											.getAttackingNumField())));
 					break;
 				case "defensiveNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn.getText(),
-							String.valueOf(playerVos.get(i).getDefensiveNumField())));
+							playerCriteriabtn.getText(), String
+									.valueOf(playerVos.get(i)
+											.getDefensiveNumField())));
 					break;
 				case "stealField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -408,7 +412,8 @@ public class SortPanel extends JPanel {
 				case "turnoverField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTurnoverField())));
+									.valueOf(playerVos.get(i)
+											.getTurnoverField())));
 					break;
 				case "foulField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -424,7 +429,8 @@ public class SortPanel extends JPanel {
 				case "efficiencyField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getEfficiencyField())));
+									.valueOf(playerVos.get(i)
+											.getEfficiencyField())));
 					break;
 
 				case "GmScField":
@@ -1216,7 +1222,6 @@ public class SortPanel extends JPanel {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean hasFocus, int row,
 				int column) {
-
 			TeamCardPanel renderer = new TeamCardPanel(
 					((TeamCardPanel) value).number, X, Y,
 					((TeamCardPanel) value).getTeamInfo(),
@@ -1532,7 +1537,7 @@ public class SortPanel extends JPanel {
 			sortTeam(UpOrDown);
 		}
 	}
-	
+
 	class MyTextField extends JTextField {
 		/**
 		 * 
