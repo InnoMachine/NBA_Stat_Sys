@@ -42,7 +42,23 @@ public class SVG2PNG {
 			in.close();
 		}
 	}
-	public static void main(String[] args) throws IOException, TranscoderException{
-		convertSvgFileToPng(new File("CSEdata/teams/ATL.svg"),new File("E:/a.png"));
+	public void getFiles(String filePath) throws IOException, TranscoderException{
+		File root = new File(filePath);
+		File[] files = root.listFiles();
+		for (File file : files) {
+			String path=file.getAbsolutePath();
+			if(path.endsWith(".svg")){
+				convertSvgFileToPng(new File(path), new File(
+				"CSEdata/teams_png/"+path.substring(path.length()-8, path.length()-3)+"png"));
+			}
+		}
+		System.out.println("conversion finished!");
+	}
+	public static void main(String[] args) throws IOException,
+			TranscoderException {
+
+		SVG2PNG conversion=new SVG2PNG();
+		conversion.getFiles("CSEdata/teams/");
+
 	}
 }
