@@ -424,8 +424,11 @@ public class SearchPanel extends JPanel {
 		teamRowData.add(testColumn);
 
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
-				testColumn);
-
+				testColumn) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		JTable teamTable = new JTable(teamDTM);
 		teamTable.setRowHeight(Y / 7);
 		teamTable.getTableHeader().setVisible(false);
@@ -640,11 +643,6 @@ public class SearchPanel extends JPanel {
 
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				teamColumn) {
-			/**
-					 * 
-					 */
-			private static final long serialVersionUID = 1L;
-
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -661,7 +659,7 @@ public class SearchPanel extends JPanel {
 					.setCellRenderer(new TeamTableRenderer());
 			teamTable.getColumnModel().getColumn(i).setPreferredWidth(100);
 		}
-
+		teamTable.setOpaque(false);
 		JScrollPane teamJSP = new JScrollPane(teamTable);
 		teamJSP.getHorizontalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -669,6 +667,8 @@ public class SearchPanel extends JPanel {
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		teamJSP.setBounds(X / 6, Y / 20, 13 * X / 20, Y / 6);
 		teamJSP.setVisible(true);
+		teamJSP.getViewport().setOpaque(false);
+		teamJSP.setOpaque(false);
 		bgLabel.add(teamJSP);
 
 		// playerButton
@@ -1894,6 +1894,7 @@ public class SearchPanel extends JPanel {
 		public TeamButton(String teamName) {
 			this.teamName = teamName;
 			playersInTeam = team_BS.getPlayers(teamName);
+			this.setOpaque(false);
 		}
 	}
 
@@ -1947,9 +1948,12 @@ public class SearchPanel extends JPanel {
 
 			TeamButton renderer = new TeamButton(((TeamButton) value).teamName);
 			renderer.playersInTeam = ((TeamButton) value).playersInTeam;
-			renderer.teamIcon = new ImageIcon("CSEdata/teams/"
-					+ renderer.teamName + ".svg");
+			renderer.teamIcon = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+							+ renderer.teamName + ".png")
+					.getImage().getScaledInstance(X/15,
+							X/15, Image.SCALE_SMOOTH));
 			renderer.setIcon(renderer.teamIcon);
+			renderer.setOpaque(false);
 			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
 				renderer.setBorder(BorderFactory.createLineBorder(Color.BLACK,
