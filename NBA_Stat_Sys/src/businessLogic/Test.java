@@ -30,12 +30,7 @@ public class Test {
 		PlayerVo vo =player_bs.getPlayerByName("Jason Collins");
 		System.out.println(vo.getActionImgPath());
 		System.out.println(vo.getGameNum());
-		ArrayList<PlayerVo> players=player_bs.filterPlayerBy("C", "ATLANTIC", "score");
-		for(PlayerVo temp:players)
-		{
-			System.out.println(temp.getName());
-		}
-		
+		ArrayList<PlayerVo> players=player_bs.getAllPlayer();
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
 		{

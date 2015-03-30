@@ -66,6 +66,11 @@ public class PlayerVo {
 	private double assistanceField;
 	private double GmScField;
 	private double timeField;
+	private double threePointHitNumField;
+	private double threePointShotNumField;
+	private double freeThrowHitNumField;     //罚球命中数
+	private double freeThrowShotNumField;
+	private double efficiencyField; 
 	
 	private int weighted;
 	private int twoTenNum;//两双数
@@ -539,6 +544,36 @@ public class PlayerVo {
 	}
 	public void setTimeField(double timeField) {
 		this.timeField = timeField;
+	}
+	public double getThreePointHitNumField() {
+		return threePointHitNumField;
+	}
+	public void setThreePointHitNumField(double threePointHitNumField) {
+		this.threePointHitNumField = threePointHitNumField;
+	}
+	public double getThreePointShotNumField() {
+		return threePointShotNumField;
+	}
+	public void setThreePointShotNumField(double threePointShotNumField) {
+		this.threePointShotNumField = threePointShotNumField;
+	}
+	public double getFreeThrowHitNumField() {
+		return freeThrowHitNumField;
+	}
+	public void setFreeThrowHitNumField(double freeThrowHitNumField) {
+		this.freeThrowHitNumField = freeThrowHitNumField;
+	}
+	public double getFreeThrowShotNumField() {
+		return freeThrowShotNumField;
+	}
+	public void setFreeThrowShotNumField(double freeThrowShotNumField) {
+		this.freeThrowShotNumField = freeThrowShotNumField;
+	}
+	public double getEfficiencyField() {
+		return efficiencyField;
+	}
+	public void setEfficiencyField(double efficiencyField) {
+		this.efficiencyField = efficiencyField;
 	}
 	
 	

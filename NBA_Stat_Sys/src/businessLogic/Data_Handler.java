@@ -160,17 +160,24 @@ public class Data_Handler {
 		{
 			if(temp.getGameNum()!=0)
 			{
-				temp.setScoreField(turnToTwoPoint(temp.getScore()/temp.getGameNum()));
-				temp.setAttackingNumField(turnToTwoPoint(temp.getAttackingNum()/temp.getGameNum()));
-				temp.setDefensiveNumField(turnToTwoPoint(temp.getDefensiveNumField()/temp.getGameNum()));
-				temp.setBlockField(turnToTwoPoint(temp.getBlockField()/temp.getGameNum()));
-				temp.setFoulField(turnToTwoPoint(temp.getFoulField()/temp.getGameNum()));
-				temp.setStealField(turnToTwoPoint(temp.getStealField()/temp.getGameNum()));
-				temp.setHitNumField(turnToTwoPoint(temp.getHitNumField()/temp.getGameNum()));
-				temp.setReboundOverallField(turnToTwoPoint(temp.getReboundOverallField()/temp.getGameNum()));
-				temp.setShotNumField(turnToTwoPoint(temp.getShotNumField()/temp.getGameNum()));
-				temp.setGmScField(turnToTwoPoint(temp.getGmScField()/temp.getGameNum()));
-				temp.setTimeField(turnToTwoPoint(temp.getTime()/temp.getGameNum()));
+				temp.setScoreField(turnToTwoPoint((double)temp.getScore()/temp.getGameNum()));
+				temp.setAttackingNumField(turnToTwoPoint((double)temp.getAttackingNum()/temp.getGameNum()));
+				temp.setDefensiveNumField(turnToTwoPoint((double)temp.getDefensiveNum()/temp.getGameNum()));
+				temp.setBlockField(turnToTwoPoint((double)temp.getBlock()/temp.getGameNum()));
+				temp.setFoulField(turnToTwoPoint((double)temp.getFoul()/temp.getGameNum()));
+				temp.setStealField(turnToTwoPoint((double)temp.getSteal()/temp.getGameNum()));
+				temp.setHitNumField(turnToTwoPoint((double)temp.getHitNum()/temp.getGameNum()));
+				temp.setReboundOverallField(turnToTwoPoint((double)temp.getReboundOverall()/temp.getGameNum()));
+				temp.setShotNumField(turnToTwoPoint((double)temp.getShotNum()/temp.getGameNum()));
+				temp.setGmScField(turnToTwoPoint((double)temp.getGmSc()/temp.getGameNum()));
+				temp.setTimeField(turnToTwoPoint((double)temp.getTime()/temp.getGameNum()));
+				temp.setThreePointHitNumField(turnToTwoPoint((double)temp.getThreePointHitNum()/temp.getGameNum()));
+				temp.setThreePointShotNumField(turnToTwoPoint((double)temp.getThreePointShotNum()/temp.getGameNum()));
+				temp.setFreeThrowHitNumField(turnToTwoPoint((double)temp.getFreeThrowHitNum()/temp.getGameNum()));
+				temp.setFreeThrowShotNumField(turnToTwoPoint((double)temp.getFreeThrowShotNum()/temp.getGameNum()));
+				temp.setEfficiencyField(turnToTwoPoint((double)temp.getEfficiency()/temp.getGameNum()));
+			
+				
 			}else
 			{
 				temp.setScoreField(0);
@@ -184,6 +191,12 @@ public class Data_Handler {
 				temp.setReboundOverallField(0);
 				temp.setGmScField(0);
 				temp.setTimeField(0);
+				temp.setThreePointHitNumField(0);
+				temp.setThreePointShotNumField(0);
+				temp.setFreeThrowHitNumField(0);
+				temp.setFreeThrowShotNumField(0);
+				temp.setEfficiencyField(0);
+
 			}
 			if(temp.getShotNum()!=0){
 				PlayerSetHitRate(temp);

@@ -400,10 +400,24 @@ public class Player_Handler {
 			}
 			return templist;
 		}else if(option.equals("efficiency")){
-			double a[][] = new double [listvo.size()][2]; 
+			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
 			{
 				a[i][0] = listvo.get(i).getEfficiency();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("efficiencyField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getEfficiencyField();
 				a[i][1] = i;
 			}
 			HeapSortByDouble.heapSort(a);
@@ -973,6 +987,27 @@ public class Player_Handler {
 				i++;
 			}		
 			return templist;
+		}else if(option.equals("efficiencyField")){
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
+			{
+				b = new BigDecimal(list.get(i).getEfficiencyField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getEfficiencyField()){
+				templist.add(list.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
 		}else if(option.equals("efficiency")){
 			int a[][] = new int [list.size()][2]; 
 			for(int i=0;i<list.size();i++)
@@ -993,7 +1028,29 @@ public class Player_Handler {
 				i++;
 			}		
 			return templist;
-		}else if(option.equals("shotNum")){
+		}else if(option.equals("shotNumField")){
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
+			{
+				b = new BigDecimal(list.get(i).getShotNumField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getShotNumField()){
+				templist.add(list.get((int)a[i][1]));
+				i++;
+			}		
+			return templist;
+		}
+		else if(option.equals("shotNum")){
 			int a[][] = new int [list.size()][2]; 
 			for(int i=0;i<list.size();i++)
 			{
@@ -1010,6 +1067,27 @@ public class Player_Handler {
 			if(m!=list.size())
 			while(a[i][0]==templist.get(m-1).getShotNum()){
 				templist.add(list.get(a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("threePointShotNumField")){
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
+			{
+				b = new BigDecimal(list.get(i).getThreePointShotNumField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getThreePointShotNumField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
@@ -1030,6 +1108,27 @@ public class Player_Handler {
 			if(m!=list.size())
 			while(a[i][0]==templist.get(m-1).getThreePointShotNum()){
 				templist.add(list.get(a[i][1]));
+				i++;
+			}		
+			return templist;
+		}else if(option.equals("freeThrowShotNumField")){
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
+			{
+				b = new BigDecimal(list.get(i).getFreeThrowShotNumField());
+				a[i][0] = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getFreeThrowShotNumField()){
+				templist.add(list.get((int)a[i][1]));
 				i++;
 			}		
 			return templist;
