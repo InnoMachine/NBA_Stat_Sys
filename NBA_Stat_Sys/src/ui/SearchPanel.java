@@ -319,7 +319,7 @@ public class SearchPanel extends JPanel {
 		textField_20.setText(String.valueOf(player.getFirstOnNum()));
 		textField_24.setText(String.valueOf(player.getReboundOverall())+"/"+String.valueOf(player.getReboundOverallField()));
 		textField_26.setText(String.valueOf(player.getAssistance())+"/"+String.valueOf(player.getAssistanceField()));
-		textField_30.setText(String.valueOf(player.getTime()/60.0)+"/"+String.valueOf(player.getTimeField()/60.0));
+		textField_30.setText(String.format("%.2f",player.getTime()/60.0)+"/"+String.format("%.2f", player.getTimeField()/60.0));
 		textField_32.setText(String.valueOf(player.getHitRate()));
 		textField_36.setText(String.valueOf(player.getThreePointHitRate()));
 		textField_38.setText(String.valueOf(player.getFreeThrowRate()));
@@ -501,7 +501,7 @@ public class SearchPanel extends JPanel {
 		textField_26.setText(String.valueOf(defaultPlayer
 				.getAssistance())+"/"+String.valueOf(defaultPlayer.getAssistanceField()));
 		textField_30
-				.setText(String.valueOf(defaultPlayer.getTime()/60.0)+"/"+String.valueOf(defaultPlayer.getTimeField()/60.0));
+				.setText(String.format("%.2f",defaultPlayer.getTime()/60.0)+"/"+String.format("%.2f",defaultPlayer.getTimeField()/60.0));
 		textField_32.setText(String.valueOf(defaultPlayer
 				.getHitRate()));
 		textField_36.setText(String.valueOf(defaultPlayer
@@ -1952,11 +1952,13 @@ public class SearchPanel extends JPanel {
 					textField_20.setText(String.valueOf(defaultPlayer
 							.getFirstOnNum()));
 					textField_24.setText(String.valueOf(defaultPlayer
-							.getReboundOverall()));
+							.getReboundOverall())+"/"+String.valueOf(defaultPlayer
+									.getReboundOverallField()));
 					textField_26.setText(String.valueOf(defaultPlayer
-							.getAssistance()));
+							.getAssistance())+"/"+String.valueOf(defaultPlayer
+									.getAssistanceField()));
 					textField_30
-							.setText(String.valueOf(defaultPlayer.getTime()));
+							.setText(String.format("%.2f",defaultPlayer.getTime()/60.0)+"/"+String.format("%.2f",defaultPlayer.getTimeField()/60));
 					textField_32.setText(String.valueOf(defaultPlayer
 							.getHitRate()));
 					textField_36.setText(String.valueOf(defaultPlayer
@@ -1964,23 +1966,30 @@ public class SearchPanel extends JPanel {
 					textField_38.setText(String.valueOf(defaultPlayer
 							.getFreeThrowRate()));
 					textField_42.setText(String.valueOf(defaultPlayer
-							.getAttackingNum()));
+							.getAttackingNum())+"/"+String.valueOf(defaultPlayer
+									.getAttackingNumField()));
 					textField_44.setText(String.valueOf(defaultPlayer
-							.getDefensiveNum()));
+							.getDefensiveNum())+"/"+String.valueOf(defaultPlayer
+									.getDefensiveNumField()));
 					textField_47.setText(String.valueOf(defaultPlayer
-							.getSteal()));
+							.getSteal())+"/"+String.valueOf(defaultPlayer
+									.getStealField()));
 					textField_49.setText(String.valueOf(defaultPlayer
-							.getBlock()));
+							.getBlock())+"/"+String.valueOf(defaultPlayer
+									.getBlockField()));
 					textField_53.setText(String.valueOf(defaultPlayer
-							.getTurnover()));
+							.getTurnover())+"/"+String.valueOf(defaultPlayer
+									.getTurnoverField()));
 					textField_55
-							.setText(String.valueOf(defaultPlayer.getFoul()));
+							.setText(String.valueOf(defaultPlayer.getFoul())+"/"+String.valueOf(defaultPlayer.getFoulField()));
 					textField_59.setText(String.valueOf(defaultPlayer
-							.getScore()));
+							.getScore())+"/"+String.valueOf(defaultPlayer
+									.getScoreField()));
 					textField_61.setText(String.valueOf(defaultPlayer
-							.getEfficiency()));
+							.getEfficiency())+"/"+String.valueOf(defaultPlayer
+									.getEfficiencyField()));
 					textField_65
-							.setText(String.valueOf(defaultPlayer.getGmSc()));
+							.setText(String.valueOf(defaultPlayer.getGmSc())+"/"+String.valueOf(defaultPlayer.getGmScField()));
 					textField_22.setText(String.valueOf(defaultPlayer
 							.getTrueHitRate()));
 					textField_34.setText(String.valueOf(defaultPlayer
