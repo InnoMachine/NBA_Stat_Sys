@@ -145,7 +145,7 @@ public class Data_Handler {
 		
 	}
 	private void TeamSetWinningRate(TeamVo temp) {
-		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
+		double r = temp.getWinningNum()/(double)temp.getGameNum();
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setWinningRate(f);

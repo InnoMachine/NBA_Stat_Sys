@@ -27,11 +27,9 @@ public class Test {
 		}
 		System.out.println(i);
 		System.out.println(k);
-		ArrayList<TeamVo> teams=team_bs.getAllTeam();
-		for(TeamVo temp:teams)
-		{
-			System.out.println(temp.getBlockField());
-		}
+		ArrayList<TeamVo> teams=team_bs.sortTeamBy("freeThrowRate");
+		for(TeamVo temp:teams)	
+		System.out.println(temp.getFreeThrowRate());
 			
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
