@@ -27,10 +27,12 @@ public class Test {
 		}
 		System.out.println(i);
 		System.out.println(k);
-		PlayerVo vo =player_bs.getPlayerByName("Jason Collins");
-		System.out.println(vo.getActionImgPath());
-		System.out.println(vo.getGameNum());
-		ArrayList<PlayerVo> players=player_bs.getAllPlayer();
+		ArrayList<TeamVo> teams=team_bs.getAllTeam();
+		for(TeamVo temp:teams)
+		{
+			System.out.println(temp.getBlockField());
+		}
+			
 		/*ArrayList<PlayerVo> plist = player_bs.sortPlayerBy("useRate");
 		for(PlayerVo temp :plist)
 		{

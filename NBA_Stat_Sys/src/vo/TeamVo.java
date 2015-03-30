@@ -59,6 +59,7 @@ public class TeamVo {
 	private double foulField;                //犯规数
 	private double stealField;               //抢断
 	private double scoreField;               //总得分
+	private double roundAttackField;
 	//下面的你们用不到
 	private int opOffensiveRebound;  //对手进攻篮板
 	private int opDefensiveRebound;  //对手防守篮板
@@ -409,5 +410,11 @@ public class TeamVo {
 	}
 	public void setStealField(double stealField) {
 		this.stealField = stealField;
+	}
+	public double getRoundAttackField() {
+		return roundAttackField;
+	}
+	public void setRoundAttackField(double roundAttackField) {
+		this.roundAttackField = roundAttackField;
 	}
 }
