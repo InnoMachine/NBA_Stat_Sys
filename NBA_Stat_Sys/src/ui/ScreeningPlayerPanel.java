@@ -213,37 +213,37 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		switch (screeningCriteriabtn.getText()) {
 		case "得分":
-			screeningCriteria = "score";
+			screeningCriteria = "scoreField";
 			break;
 		case "篮板":
-			screeningCriteria = "reboundOverall";
+			screeningCriteria = "reboundOverallField";
 			break;
 		case "助攻":
-			screeningCriteria = "assistance";
+			screeningCriteria = "assistanceField";
 			break;
 		case "得分/篮板/助攻":
 			screeningCriteria = "weighted";
 			break;
 		case "盖帽":
-			screeningCriteria = "block";
+			screeningCriteria = "blockField";
 			break;
 		case "抢断":
-			screeningCriteria = "steal";
+			screeningCriteria = "stealField";
 			break;
 		case "犯规":
-			screeningCriteria = "foul";
+			screeningCriteria = "foulField";
 			break;
 		case "失误":
-			screeningCriteria = "turnover";
+			screeningCriteria = "turnoverField";
 			break;
 		case "分钟":
-			screeningCriteria = "time";
+			screeningCriteria = "timeField";
 			break;
 		case "效率":
 			screeningCriteria = "efficiency";
 			break;
 		case "投篮":
-			screeningCriteria = "shotNum";
+			screeningCriteria = "shotNumField";
 			break;
 		case "三分":
 			screeningCriteria = "threePointShotNum";
@@ -263,6 +263,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		if (screeningCriteria == "") {
 			JOptionPane.showMessageDialog(this, "请选择球员筛选依据");
 		} else {
+			System.out.println(screeningCriteria);
 			playerVos = player_BS.filterPlayerBy(position, league,
 					screeningCriteria);
 			if (rowData == null) {
@@ -273,62 +274,62 @@ public class ScreeningPlayerPanel extends JPanel {
 			for (int i = 0; i < playerVos.size(); i++) {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				switch (screeningCriteria) {
-				case "score":
+				case "scoreField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getScore())));
+									.valueOf(playerVos.get(i).getScoreField())));
 
 					break;
-				case "reboundOverall":
+				case "reboundOverallField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
-											.getReboundOverall())));
+											.getReboundOverallField())));
 					break;
-				case "assistance":
+				case "assistanceField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getAssistance())));
+									.valueOf(playerVos.get(i).getAssistanceField())));
 					break;
 				case "weighted":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getWeighted())));
 					break;
-				case "block":
+				case "blockField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getBlock())));
+									.valueOf(playerVos.get(i).getBlockField())));
 					break;
-				case "steal":
+				case "stealField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getSteal())));
+									.valueOf(playerVos.get(i).getStealField())));
 					break;
-				case "foul":
+				case "foulField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getFoul())));
+									.valueOf(playerVos.get(i).getFoulField())));
 					break;
-				case "turnover":
+				case "turnoverField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTurnover())));
+									.valueOf(playerVos.get(i).getTurnoverField())));
 					break;
-				case "time":
+				case "timeField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTime() / 60)));
+									.valueOf(playerVos.get(i).getTimeField() / 60)));
 					break;
 				case "efficiency":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getEfficiency())));
 					break;
-				case "shotNum":
+				case "shotNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getShotNum())));
+									.valueOf(playerVos.get(i).getShotNumField())));
 					break;
 				case "threePointShotNum":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
