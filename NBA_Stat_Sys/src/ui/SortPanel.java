@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -92,6 +93,36 @@ public class SortPanel extends JPanel {
 		backbtn.setBounds(0, 0, X / 15, X / 50);
 		backbtn.addActionListener(e -> back());
 		bgLabel.add(backbtn);
+		
+		
+		JButton minimize = new JButton();
+		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
+				Y * 25 / 768);
+		minimize.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		bgLabel.add(minimize);
+		
+		JButton close = new JButton();
+		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
+				Y * 25 / 768);
+		close.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.dispose();
+			}
+		});
+		bgLabel.add(close);
+		
+		
+		
 
 		dtm = new DefaultTableModel() {
 			public boolean isCellEditable(int row, int column) {

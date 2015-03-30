@@ -5,6 +5,9 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -203,6 +206,36 @@ public class SearchPanel extends JPanel {
 		this.setVisible(true);
 		this.setLayout(null);
 
+		JButton minimize = new JButton();
+		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
+				Y * 25 / 768);
+		minimize.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		bgLabel.add(minimize);
+		
+		JButton close = new JButton();
+		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
+				Y * 25 / 768);
+		close.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.dispose();
+			}
+		});
+		bgLabel.add(close);
+		
+		
+		
+		
+		
 		JButton backbtn = new JButton("返回");
 		backbtn.setBounds(0, 2, 73, 23);
 		backbtn.addActionListener(e -> back());

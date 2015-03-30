@@ -1,6 +1,9 @@
 package ui;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,10 +31,10 @@ public class StartPanel extends JPanel {
 	static int X;
 	static int Y;
 
-	public StartPanel(JFrame mainframe) {
-		this.mainFrame = mainframe;
-		X = mainframe.getWidth();
-		Y = mainframe.getHeight();
+	public StartPanel(JFrame mainFrame) {
+		this.mainFrame = mainFrame;
+		X = mainFrame.getWidth();
+		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setLayout(null);
 		this.setVisible(true);
@@ -46,6 +49,32 @@ public class StartPanel extends JPanel {
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
 		createButton();
+
+		JButton minimize = new JButton();
+		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
+				Y * 25 / 768);
+		minimize.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.setExtendedState(JFrame.ICONIFIED);
+			}
+		});
+		bgLabel.add(minimize);
+		
+		JButton close = new JButton();
+		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
+				Y * 25 / 768);
+		close.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.dispose();
+			}
+		});
+		bgLabel.add(close);
 
 	}
 

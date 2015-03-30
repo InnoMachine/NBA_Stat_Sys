@@ -6,6 +6,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -17,6 +19,9 @@ public class MainFrame extends JFrame {
 	public static void main(String[] args) {
 		MainFrame mf = new MainFrame();
 		mf.setVisible(true);
+		
+
+	      
 	}
 
 	public MainFrame() {
@@ -30,5 +35,8 @@ public class MainFrame extends JFrame {
         int Y=this.getHeight();
         StartPanel startPanel=new StartPanel(this);
         this.getContentPane().add(startPanel);
+        
+ 
+        
 	}
 }
