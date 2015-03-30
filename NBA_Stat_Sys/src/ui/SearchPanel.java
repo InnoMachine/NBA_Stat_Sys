@@ -265,6 +265,7 @@ public class SearchPanel extends JPanel {
 	}
 
 	public void showTeamInfo(String abbr) {
+		
 		TeamVo teamVo = team_BS.getTeamByAbbr(abbr);
 		textField_74.setText(teamVo.getTeamName());
 		textField_79.setText(teamVo.getAbbreviation());
@@ -299,7 +300,7 @@ public class SearchPanel extends JPanel {
 		textField_134.setText(String.valueOf(teamVo.getReboundEfficiency()));
 		textField_136.setText(String.valueOf(teamVo.getStealEfficiency()));
 		textField_138.setText(String.valueOf(teamVo.getAssistanceEfficiency()));
-
+		
 	}
 
 	public void showPlayerInfo(String pName) {
