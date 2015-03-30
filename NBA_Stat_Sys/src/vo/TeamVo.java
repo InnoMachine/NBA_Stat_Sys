@@ -43,7 +43,7 @@ public class TeamVo {
 	private double stealEfficiency;//抢断效率？
 	private double assistanceEfficiency;//助攻效率
 	
-	private double GameNumField;
+	
 	private double hitNumField;
 	private double shotNumField;
 	private double threePointHitNumField;
@@ -319,12 +319,7 @@ public class TeamVo {
 	public void setOpScore(int opScore) {
 		this.opScore = opScore;
 	}
-	public double getGameNumField() {
-		return GameNumField;
-	}
-	public void setGameNumField(double gameNumField) {
-		GameNumField = gameNumField;
-	}
+	
 	public double getHitNumField() {
 		return hitNumField;
 	}

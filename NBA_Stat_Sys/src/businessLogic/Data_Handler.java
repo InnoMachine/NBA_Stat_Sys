@@ -81,6 +81,22 @@ public class Data_Handler {
 				TeamSetReboundEfficiency(temp);
 				TeamSetStealEfficiency(temp);
 				TeamSetAssistanceEfficiency(temp);
+				temp.setHitNumField(turnToTwoPoint((double)temp.getHitNum()/temp.getGameNum()));
+				temp.setShotNumField(turnToTwoPoint((double)temp.getShotNum()/temp.getGameNum()));
+				temp.setThreePointHitNumField(turnToTwoPoint((double)temp.getThreePointHitNum()/temp.getGameNum()));
+				temp.setThreePointShotNumField(turnToTwoPoint((double)temp.getThreePointShotNum()/temp.getGameNum()));
+				temp.setFreeThrowHitNumField(turnToTwoPoint((double)temp.getFreeThrowHitNum()/temp.getGameNum()));
+				temp.setFreeThrowShotNumField(turnToTwoPoint((double)temp.getFreeThrowShotNum()/temp.getGameNum()));
+				temp.setOffensiveReboundField(turnToTwoPoint((double)temp.getOffensiveRebound()/temp.getGameNum()));
+				temp.setDefensiveReboundField(turnToTwoPoint((double)temp.getDefensiveRebound()/temp.getGameNum()));
+				temp.setReboundOverallField(turnToTwoPoint((double)temp.getReboundOverall()/temp.getGameNum()));
+				temp.setAssistanceField(turnToTwoPoint((double)temp.getAssistance()/temp.getGameNum()));
+				temp.setBlockField(turnToTwoPoint((double)temp.getBlock()/temp.getGameNum()));
+				temp.setTurnoverField(turnToTwoPoint((double)temp.getTurnover()/temp.getGameNum()));
+				temp.setFoulField(turnToTwoPoint((double)temp.getFoul()/temp.getGameNum()));
+				temp.setStealField(turnToTwoPoint((double)temp.getSteal()/temp.getGameNum()));
+				temp.setScoreField(turnToTwoPoint((double)temp.getScore()/temp.getGameNum()));
+
 			}
 			
 		}
