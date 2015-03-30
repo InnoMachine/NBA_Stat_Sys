@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -121,8 +123,6 @@ public class SortPanel extends JPanel {
 		});
 		bgLabel.add(close);
 		
-		
-		
 
 		dtm = new DefaultTableModel() {
 			public boolean isCellEditable(int row, int column) {
@@ -161,6 +161,42 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
 			bgLabel.add(playerCriteriabtn);
 
+			
+			bgLabel.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+	                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
+					if (e.getX() <= X * 461 / 1366 ||e.getX() >= (X * 461 / 1366+X * 31 / 100)
+							|| e.getY() <= (Y * 66 / 768 + X / 50)
+							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 14 / 100)){
+						if (sortPlayerCriteriaPanel != null) {
+	                            sortPlayerCriteriaPanel.setVisible(false);
+						}
+					}
+				}
+			});
+			
 		}
 		if (category == "team") {
 
@@ -191,6 +227,41 @@ public class SortPanel extends JPanel {
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			bgLabel.add(teamCriteriabtn);
 
+			bgLabel.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+	                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
+					if (e.getX() <= X * 461 / 1366 ||e.getX() >= (X * 461 / 1366+ X * 31 / 100)
+							|| e.getY() <= (Y * 66 / 768 + X / 50)
+							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 195 / 1366)){
+						if (sortTeamCriteriaPanel != null) {
+	                            sortTeamCriteriaPanel.setVisible(false);
+						}
+					}
+				}
+			});
+			
 		}
 
 		mainFrame.getContentPane().add(this);
@@ -286,10 +357,10 @@ public class SortPanel extends JPanel {
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getAssistanceField())));
 					break;
-				case "timeField":
+				case "time":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTimeField() / 60.0)));
+									.valueOf(playerVos.get(i).getTime() / 60.0)));
 					break;
 				case "hitRate":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -1175,7 +1246,7 @@ public class SortPanel extends JPanel {
 				break;
 			case "在场时间":
 				playerCriteriabtn.setText("在场时间");
-				playerCriteria = "timeField";
+				playerCriteria = "time";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":

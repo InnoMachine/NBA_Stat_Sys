@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -85,8 +87,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		backbtn.setBounds(0, 0, X / 15, X / 50);
 		backbtn.addActionListener(e -> back());
 		bgLabel.add(backbtn);
-		
-		
+
 		JButton minimize = new JButton();
 		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
 				Y * 25 / 768);
@@ -99,7 +100,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			}
 		});
 		bgLabel.add(minimize);
-		
+
 		JButton close = new JButton();
 		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
 				Y * 25 / 768);
@@ -112,7 +113,6 @@ public class ScreeningPlayerPanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-		
 
 		JButton screeningbtn = new JButton("显示前50名");
 		screeningbtn.setBounds(X * 990 / 1366, Y * 66 / 768, X * 103 / 1366,
@@ -154,6 +154,40 @@ public class ScreeningPlayerPanel extends JPanel {
 				X / 50);
 		bgLabel.add(leaguejcb);
 
+		bgLabel.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
+				if (e.getX() <= X * 715 / 1366 ||e.getX() >= X * 928 / 1366
+						|| e.getY() <= (Y * 66 / 768 + X / 50)
+						|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 108 / 1366)){
+					if (playerCriteriaPanel != null) {
+                            playerCriteriaPanel.setVisible(false);
+					}
+				}
+			}
+		});
 	}
 
 	public void showScreeningCriteria() {
@@ -167,6 +201,12 @@ public class ScreeningPlayerPanel extends JPanel {
 		String league = "";
 		String screeningCriteria = "";
 
+		
+		if(playerCriteriaPanel!=null){
+			playerCriteriaPanel.setVisible(false);
+		}
+		
+		
 		switch (String.valueOf(positionjcb.getSelectedItem())) {
 		case "前锋":
 			position = "F";
@@ -289,7 +329,8 @@ public class ScreeningPlayerPanel extends JPanel {
 				case "assistanceField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getAssistanceField())));
+									.valueOf(playerVos.get(i)
+											.getAssistanceField())));
 					break;
 				case "weighted":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -314,22 +355,28 @@ public class ScreeningPlayerPanel extends JPanel {
 				case "turnoverField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTurnoverField())));
+									.valueOf(playerVos.get(i)
+											.getTurnoverField())));
 					break;
 				case "timeField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTimeField() / 60)));
+					a.add(new PlayerCardPanel(
+							i + 1,
+							X,
+							Y,
+							playerVos.get(i),
+							screeningCriteriabtn.getText(),
+							String.valueOf(playerVos.get(i).getTimeField() / 60)));
 					break;
 				case "efficiencyField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getEfficiencyField())));
+									.valueOf(playerVos.get(i)
+											.getEfficiencyField())));
 					break;
 				case "shotNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							screeningCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getShotNumField())));
+							screeningCriteriabtn.getText(),
+							String.valueOf(playerVos.get(i).getShotNumField())));
 					break;
 				case "threePointShotNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -401,7 +448,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
-		playerCriteriaPanel.setVisible(false);
+//		playerCriteriaPanel.setVisible(false);
 	}
 
 	public class ScreeningPlayerCriteriaPanel extends JPanel {
