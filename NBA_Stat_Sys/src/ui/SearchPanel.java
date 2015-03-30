@@ -811,7 +811,7 @@ public class SearchPanel extends JPanel {
 		textField_84.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_84.setEditable(false);
 		textField_84.setColumns(10);
-		textField_84.setFont(new Font("Dialog", 1, 11));
+		textField_84.setFont(new Font("黑体", 1, 11));
 		textField_84.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_84);
@@ -1290,7 +1290,7 @@ public class SearchPanel extends JPanel {
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_4.setEditable(false);
 		textField_4.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
-		textField_4.setFont(new Font("Dialog", 1, 14));
+		textField_4.setFont(new Font("黑体", 1, 14));
 		bgLabel.add(textField_4);
 		textField_4.setColumns(10);
 
