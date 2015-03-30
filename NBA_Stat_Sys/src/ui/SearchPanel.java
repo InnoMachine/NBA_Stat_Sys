@@ -274,21 +274,21 @@ public class SearchPanel extends JPanel {
 		textField_84.setText(String.valueOf(teamVo.getHomeField()));
 		textField_86.setText(teamVo.getBirthYear());
 		textField_88.setText(String.valueOf(teamVo.getGameNum()));
-		textField_90.setText(String.valueOf(teamVo.getHitNum()));
-		textField_93.setText(String.valueOf(teamVo.getShotNum()));
-		textField_94.setText(String.valueOf(teamVo.getThreePointHitNum()));
-		textField_96.setText(String.valueOf(teamVo.getThreePointShotNum()));
-		textField_98.setText(String.valueOf(teamVo.getFreeThrowHitNum()));
-		textField_100.setText(String.valueOf(teamVo.getFreeThrowShotNum()));
-		textField_102.setText(String.valueOf(teamVo.getOffensiveRebound()));
-		textField_104.setText(String.valueOf(teamVo.getDefensiveRebound()));
-		textField_106.setText(String.valueOf(teamVo.getReboundOverall()));
-		textField_108.setText(String.valueOf(teamVo.getAssistance()));
-		textField_110.setText(String.valueOf(teamVo.getSteal()));
-		textField_112.setText(String.valueOf(teamVo.getBlock()));
-		textField_114.setText(String.valueOf(teamVo.getTurnover()));
-		textField_116.setText(String.valueOf(teamVo.getFoul()));
-		textField_118.setText(String.valueOf(teamVo.getScore()));
+		textField_90.setText(String.valueOf(teamVo.getHitNum())+"/"+String.valueOf(teamVo.getHitNumField()));
+		textField_93.setText(String.valueOf(teamVo.getShotNum())+"/"+String.valueOf(teamVo.getShotNumField()));
+		textField_94.setText(String.valueOf(teamVo.getThreePointHitNum())+"/"+String.valueOf(teamVo.getThreePointHitNumField()));
+		textField_96.setText(String.valueOf(teamVo.getThreePointShotNum())+"/"+String.valueOf(teamVo.getThreePointShotNumField()));
+		textField_98.setText(String.valueOf(teamVo.getFreeThrowHitNum())+"/"+String.valueOf(teamVo.getFreeThrowHitNumField()));
+		textField_100.setText(String.valueOf(teamVo.getFreeThrowShotNum())+"/"+String.valueOf(teamVo.getFreeThrowShotNumField()));
+		textField_102.setText(String.valueOf(teamVo.getOffensiveRebound())+"/"+String.valueOf(teamVo.getOffensiveReboundField()));
+		textField_104.setText(String.valueOf(teamVo.getDefensiveRebound())+"/"+String.valueOf(teamVo.getDefensiveReboundField()));
+		textField_106.setText(String.valueOf(teamVo.getReboundOverall())+"/"+String.valueOf(teamVo.getReboundOverallField()));
+		textField_108.setText(String.valueOf(teamVo.getAssistance())+"/"+String.valueOf(teamVo.getAssistanceField()));
+		textField_110.setText(String.valueOf(teamVo.getSteal())+"/"+String.valueOf(teamVo.getStealField()));
+		textField_112.setText(String.valueOf(teamVo.getBlock())+"/"+String.valueOf(teamVo.getBlockField()));
+		textField_114.setText(String.valueOf(teamVo.getTurnover())+"/"+String.valueOf(teamVo.getTurnoverField()));
+		textField_116.setText(String.valueOf(teamVo.getFoul())+"/"+String.valueOf(teamVo.getFoulField()));
+		textField_118.setText(String.valueOf(teamVo.getScore())+"/"+String.valueOf(teamVo.getScoreField()));
 		textField_120.setText(String.valueOf(teamVo.getHitRate()));
 		textField_122.setText(String.valueOf(teamVo.getThreePointHitRate()));
 		textField_124.setText(String.valueOf(teamVo.getFreeThrowRate()));
@@ -316,21 +316,21 @@ public class SearchPanel extends JPanel {
 		textField_16.setText(player.getSchool());
 		textField_18.setText(String.valueOf(player.getGameNum()));
 		textField_20.setText(String.valueOf(player.getFirstOnNum()));
-		textField_24.setText(String.valueOf(player.getReboundOverall()));
-		textField_26.setText(String.valueOf(player.getAssistance()));
-		textField_30.setText(String.valueOf(player.getTime()));
+		textField_24.setText(String.valueOf(player.getReboundOverall())+"/"+String.valueOf(player.getReboundOverallField()));
+		textField_26.setText(String.valueOf(player.getAssistance())+"/"+String.valueOf(player.getAssistanceField()));
+		textField_30.setText(String.valueOf(player.getTime()/60.0)+"/"+String.valueOf(player.getTimeField()/60.0));
 		textField_32.setText(String.valueOf(player.getHitRate()));
 		textField_36.setText(String.valueOf(player.getThreePointHitRate()));
 		textField_38.setText(String.valueOf(player.getFreeThrowRate()));
-		textField_42.setText(String.valueOf(player.getAttackingNum()));
-		textField_44.setText(String.valueOf(player.getDefensiveNum()));
-		textField_47.setText(String.valueOf(player.getSteal()));
-		textField_49.setText(String.valueOf(player.getBlock()));
-		textField_53.setText(String.valueOf(player.getTurnover()));
-		textField_55.setText(String.valueOf(player.getFoul()));
-		textField_59.setText(String.valueOf(player.getScore()));
-		textField_61.setText(String.valueOf(player.getEfficiency()));
-		textField_65.setText(String.valueOf(player.getGmSc()));
+		textField_42.setText(String.valueOf(player.getAttackingNum())+"/"+String.valueOf(player.getAttackingNumField()));
+		textField_44.setText(String.valueOf(player.getDefensiveNum())+"/"+String.valueOf(player.getDefensiveNumField()));
+		textField_47.setText(String.valueOf(player.getSteal())+"/"+String.valueOf(player.getStealField()));
+		textField_49.setText(String.valueOf(player.getBlock())+"/"+String.valueOf(player.getBlockField()));
+		textField_53.setText(String.valueOf(player.getTurnover())+"/"+String.valueOf(player.getTurnoverField()));
+		textField_55.setText(String.valueOf(player.getFoul())+"/"+String.valueOf(player.getFoulField()));
+		textField_59.setText(String.valueOf(player.getScore())+"/"+String.valueOf(player.getScoreField()));
+		textField_61.setText(String.valueOf(player.getEfficiency())+"/"+String.valueOf(player.getEfficiencyField()));
+		textField_65.setText(String.valueOf(player.getGmSc())+"/"+String.valueOf(player.getGmScField()));
 		textField_22.setText(String.valueOf(player.getTrueHitRate()));
 		textField_34.setText(String.valueOf(player.getHitEfficiency()));
 		textField_31.setText(String.valueOf(player.getReboundOverallRate()));
@@ -430,25 +430,25 @@ public class SearchPanel extends JPanel {
 		textField_84.setText(String.valueOf(defaultTeam.getHomeField()));
 		textField_86.setText(defaultTeam.getBirthYear());
 		textField_88.setText(String.valueOf(defaultTeam.getGameNum()));
-		textField_90.setText(String.valueOf(defaultTeam.getHitNum()));
-		textField_93.setText(String.valueOf(defaultTeam.getShotNum()));
-		textField_94.setText(String.valueOf(defaultTeam.getThreePointHitNum()));
+		textField_90.setText(String.valueOf(defaultTeam.getHitNum())+"/"+String.valueOf(defaultTeam.getHitNumField()));
+		textField_93.setText(String.valueOf(defaultTeam.getShotNum())+"/"+String.valueOf(defaultTeam.getShotNumField()));
+		textField_94.setText(String.valueOf(defaultTeam.getThreePointHitNum())+"/"+String.valueOf(defaultTeam.getThreePointHitNumField()));
 		textField_96
-				.setText(String.valueOf(defaultTeam.getThreePointShotNum()));
-		textField_98.setText(String.valueOf(defaultTeam.getFreeThrowHitNum()));
+				.setText(String.valueOf(defaultTeam.getThreePointShotNum())+"/"+String.valueOf(defaultTeam.getThreePointShotNumField()));
+		textField_98.setText(String.valueOf(defaultTeam.getFreeThrowHitNum())+"/"+String.valueOf(defaultTeam.getFreeThrowHitNumField()));
 		textField_100
-				.setText(String.valueOf(defaultTeam.getFreeThrowShotNum()));
+				.setText(String.valueOf(defaultTeam.getFreeThrowShotNum())+"/"+String.valueOf(defaultTeam.getFreeThrowShotNumField()));
 		textField_102
-				.setText(String.valueOf(defaultTeam.getOffensiveRebound()));
+				.setText(String.valueOf(defaultTeam.getOffensiveRebound())+"/"+String.valueOf(defaultTeam.getOffensiveReboundField()));
 		textField_104
-				.setText(String.valueOf(defaultTeam.getDefensiveRebound()));
-		textField_106.setText(String.valueOf(defaultTeam.getReboundOverall()));
-		textField_108.setText(String.valueOf(defaultTeam.getAssistance()));
-		textField_110.setText(String.valueOf(defaultTeam.getSteal()));
-		textField_112.setText(String.valueOf(defaultTeam.getBlock()));
-		textField_114.setText(String.valueOf(defaultTeam.getTurnover()));
-		textField_116.setText(String.valueOf(defaultTeam.getFoul()));
-		textField_118.setText(String.valueOf(defaultTeam.getScore()));
+				.setText(String.valueOf(defaultTeam.getDefensiveRebound())+"/"+String.valueOf(defaultTeam.getDefensiveReboundField()));
+		textField_106.setText(String.valueOf(defaultTeam.getReboundOverall())+"/"+String.valueOf(defaultTeam.getReboundOverall()));
+		textField_108.setText(String.valueOf(defaultTeam.getAssistance())+"/"+String.valueOf(defaultTeam.getAssistanceField()));
+		textField_110.setText(String.valueOf(defaultTeam.getSteal())+"/"+String.valueOf(defaultTeam.getStealField()));
+		textField_112.setText(String.valueOf(defaultTeam.getBlock())+"/"+String.valueOf(defaultTeam.getBlockField()));
+		textField_114.setText(String.valueOf(defaultTeam.getTurnover())+"/"+String.valueOf(defaultTeam.getTurnoverField()));
+		textField_116.setText(String.valueOf(defaultTeam.getFoul())+"/"+String.valueOf(defaultTeam.getFoulField()));
+		textField_118.setText(String.valueOf(defaultTeam.getScore())+"/"+String.valueOf(defaultTeam.getScoreField()));
 		textField_120.setText(String.valueOf(defaultTeam.getHitRate()));
 		textField_122
 				.setText(String.valueOf(defaultTeam.getThreePointHitRate()));
@@ -495,11 +495,12 @@ public class SearchPanel extends JPanel {
 		textField_20.setText(String.valueOf(defaultPlayer
 				.getFirstOnNum()));
 		textField_24.setText(String.valueOf(defaultPlayer
-				.getReboundOverall()));
+				.getReboundOverall())+"/"+String.valueOf(defaultPlayer
+				.getReboundOverallField()));
 		textField_26.setText(String.valueOf(defaultPlayer
-				.getAssistance()));
+				.getAssistance())+"/"+String.valueOf(defaultPlayer.getAssistanceField()));
 		textField_30
-				.setText(String.valueOf(defaultPlayer.getTime()));
+				.setText(String.valueOf(defaultPlayer.getTime()/60.0)+"/"+String.valueOf(defaultPlayer.getTimeField()/60.0));
 		textField_32.setText(String.valueOf(defaultPlayer
 				.getHitRate()));
 		textField_36.setText(String.valueOf(defaultPlayer
@@ -507,23 +508,23 @@ public class SearchPanel extends JPanel {
 		textField_38.setText(String.valueOf(defaultPlayer
 				.getFreeThrowRate()));
 		textField_42.setText(String.valueOf(defaultPlayer
-				.getAttackingNum()));
+				.getAttackingNum())+"/"+String.valueOf(defaultPlayer.getAttackingNumField()));
 		textField_44.setText(String.valueOf(defaultPlayer
-				.getDefensiveNum()));
+				.getDefensiveNum())+"/"+String.valueOf(defaultPlayer.getDefensiveNumField()));
 		textField_47.setText(String.valueOf(defaultPlayer
-				.getSteal()));
+				.getSteal())+"/"+String.valueOf(defaultPlayer.getStealField()));
 		textField_49.setText(String.valueOf(defaultPlayer
-				.getBlock()));
+				.getBlock())+"/"+String.valueOf(defaultPlayer.getStealField()));
 		textField_53.setText(String.valueOf(defaultPlayer
-				.getTurnover()));
+				.getTurnover())+"/"+String.valueOf(defaultPlayer.getTurnoverField()));
 		textField_55
-				.setText(String.valueOf(defaultPlayer.getFoul()));
+				.setText(String.valueOf(defaultPlayer.getFoul())+"/"+String.valueOf(defaultPlayer.getFoulField()));
 		textField_59.setText(String.valueOf(defaultPlayer
-				.getScore()));
+				.getScore())+"/"+String.valueOf(defaultPlayer.getScoreField()));
 		textField_61.setText(String.valueOf(defaultPlayer
-				.getEfficiency()));
+				.getEfficiency())+"/"+String.valueOf(defaultPlayer.getEfficiencyField()));
 		textField_65
-				.setText(String.valueOf(defaultPlayer.getGmSc()));
+				.setText(String.valueOf(defaultPlayer.getGmSc())+"/"+String.valueOf(defaultPlayer.getGmScField()));
 		textField_22.setText(String.valueOf(defaultPlayer
 				.getTrueHitRate()));
 		textField_34.setText(String.valueOf(defaultPlayer
@@ -819,7 +820,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_88);
 
 		textField_89 = new MyTextField();
-		textField_89.setText("投篮命中数");
+		textField_89.setText("投篮命中数/场均");
 		textField_89.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_89.setEditable(false);
 		textField_89.setColumns(10);
@@ -836,7 +837,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_90);
 
 		textField_91 = new MyTextField();
-		textField_91.setText("投篮出手数");
+		textField_91.setText("投篮出手数/场均");
 		textField_91.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_91.setEditable(false);
 		textField_91.setColumns(10);
@@ -852,7 +853,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_93);
 
 		textField_92 = new MyTextField();
-		textField_92.setText("三分命中数");
+		textField_92.setText("三分命中数/场均");
 		textField_92.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_92.setEditable(false);
 		textField_92.setColumns(10);
@@ -869,7 +870,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_94);
 
 		textField_95 = new MyTextField();
-		textField_95.setText("三分出手数");
+		textField_95.setText("三分出手数/场均");
 		textField_95.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_95.setEditable(false);
 		textField_95.setColumns(10);
@@ -886,7 +887,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_96);
 
 		textField_97 = new MyTextField();
-		textField_97.setText("罚球命中数");
+		textField_97.setText("罚球命中数/场均");
 		textField_97.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_97.setEditable(false);
 		textField_97.setColumns(10);
@@ -902,7 +903,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_98);
 
 		textField_99 = new MyTextField();
-		textField_99.setText("罚球出手数");
+		textField_99.setText("罚球出手数/场均");
 		textField_99.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_99.setEditable(false);
 		textField_99.setColumns(10);
@@ -919,7 +920,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_100);
 
 		textField_101 = new MyTextField();
-		textField_101.setText("进攻篮板数");
+		textField_101.setText("进攻篮板数/场均");
 		textField_101.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_101.setEditable(false);
 		textField_101.setColumns(10);
@@ -936,7 +937,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_102);
 
 		textField_103 = new MyTextField();
-		textField_103.setText("防守篮板数");
+		textField_103.setText("防守篮板数/场均");
 		textField_103.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_103.setEditable(false);
 		textField_103.setColumns(10);
@@ -952,7 +953,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_104);
 
 		textField_105 = new MyTextField();
-		textField_105.setText("篮板数");
+		textField_105.setText("篮板数/场均");
 		textField_105.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_105.setEditable(false);
 		textField_105.setColumns(10);
@@ -969,7 +970,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_106);
 
 		textField_107 = new MyTextField();
-		textField_107.setText("助攻数");
+		textField_107.setText("助攻数/场均");
 		textField_107.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_107.setEditable(false);
 		textField_107.setColumns(10);
@@ -986,7 +987,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_108);
 
 		textField_109 = new MyTextField();
-		textField_109.setText("抢断数");
+		textField_109.setText("抢断数/场均");
 		textField_109.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_109.setEditable(false);
 		textField_109.setColumns(10);
@@ -1002,7 +1003,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_110);
 
 		textField_111 = new MyTextField();
-		textField_111.setText("盖帽数");
+		textField_111.setText("盖帽数/场均");
 		textField_111.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_111.setEditable(false);
 		textField_111.setColumns(10);
@@ -1019,7 +1020,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_112);
 
 		textField_113 = new MyTextField();
-		textField_113.setText("失误数");
+		textField_113.setText("失误数/场均");
 		textField_113.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_113.setEditable(false);
 		textField_113.setColumns(10);
@@ -1036,7 +1037,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_114);
 
 		textField_115 = new MyTextField();
-		textField_115.setText("犯规数");
+		textField_115.setText("犯规数/场均");
 		textField_115.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_115.setEditable(false);
 		textField_115.setColumns(10);
@@ -1052,7 +1053,7 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(textField_116);
 
 		textField_117 = new MyTextField();
-		textField_117.setText("比赛得分");
+		textField_117.setText("比赛得分/场均");
 		textField_117.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_117.setEditable(false);
 		textField_117.setColumns(10);
@@ -1259,6 +1260,7 @@ public class SearchPanel extends JPanel {
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_4.setEditable(false);
 		textField_4.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
+		textField_4.setFont(new Font("Dialog",1,14));
 		bgLabel.add(textField_4);
 		textField_4.setColumns(10);
 
@@ -1432,7 +1434,7 @@ public class SearchPanel extends JPanel {
 
 		textField_21 = new MyTextField();
 		textField_21.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_21.setText("篮板数");
+		textField_21.setText("篮板数/场均");
 		textField_21.setEditable(false);
 		textField_21.setBounds(tempX + 4 * spaceX, tempY + 3 * spaceY, spaceX,
 				spaceY);
@@ -1449,7 +1451,7 @@ public class SearchPanel extends JPanel {
 
 		textField_23 = new MyTextField();
 		textField_23.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_23.setText("助攻数");
+		textField_23.setText("助攻数/场均");
 		textField_23.setEditable(false);
 		textField_23.setBounds(tempX, tempY + 4 * spaceY, spaceX, spaceY);
 		bgLabel.add(textField_23);
@@ -1464,7 +1466,7 @@ public class SearchPanel extends JPanel {
 		textField_26.setColumns(10);
 
 		textField_25 = new MyTextField();
-		textField_25.setText("在场时间");
+		textField_25.setText("在场时间/场均");
 		textField_25.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_25.setEditable(false);
 		textField_25.setBounds(tempX + 2 * spaceX, tempY + 4 * spaceY, spaceX,
@@ -1531,7 +1533,7 @@ public class SearchPanel extends JPanel {
 		textField_38.setColumns(10);
 
 		textField_33 = new MyTextField();
-		textField_33.setText("进攻数");
+		textField_33.setText("进攻数/场均");
 		textField_33.setEditable(false);
 		textField_33.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_33.setBounds(tempX + 4 * spaceX, tempY + 5 * spaceY, spaceX,
@@ -1548,7 +1550,7 @@ public class SearchPanel extends JPanel {
 		textField_42.setColumns(10);
 
 		textField_35 = new MyTextField();
-		textField_35.setText("防守数");
+		textField_35.setText("防守数/场均");
 		textField_35.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_35.setEditable(false);
 		textField_35.setBounds(tempX, tempY + 6 * spaceY, spaceX, spaceY);
@@ -1564,7 +1566,7 @@ public class SearchPanel extends JPanel {
 		textField_44.setColumns(10);
 
 		textField_37 = new MyTextField();
-		textField_37.setText("抢断数");
+		textField_37.setText("抢断数/场均");
 		textField_37.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_37.setEditable(false);
 		textField_37.setBounds(tempX + 2 * spaceX, tempY + 6 * spaceY, spaceX,
@@ -1581,7 +1583,7 @@ public class SearchPanel extends JPanel {
 		textField_47.setColumns(10);
 
 		textField_39 = new MyTextField();
-		textField_39.setText("盖帽数");
+		textField_39.setText("盖帽数/场均");
 		textField_39.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_39.setEditable(false);
 		textField_39.setBounds(tempX + 4 * spaceX, tempY + 6 * spaceY, spaceX,
@@ -1598,7 +1600,7 @@ public class SearchPanel extends JPanel {
 		textField_49.setColumns(10);
 
 		textField_41 = new MyTextField();
-		textField_41.setText("失误数");
+		textField_41.setText("失误数/场均");
 		textField_41.setEditable(false);
 		textField_41.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_41.setBounds(tempX, tempY + 7 * spaceY, spaceX, spaceY);
@@ -1614,7 +1616,7 @@ public class SearchPanel extends JPanel {
 		textField_53.setColumns(10);
 
 		textField_43 = new MyTextField();
-		textField_43.setText("犯规数");
+		textField_43.setText("犯规数/场均");
 		textField_43.setEditable(false);
 		textField_43.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_43.setBounds(tempX + 2 * spaceX, tempY + 7 * spaceY, spaceX,
@@ -1631,7 +1633,7 @@ public class SearchPanel extends JPanel {
 		textField_55.setColumns(10);
 
 		textField_45 = new MyTextField();
-		textField_45.setText("得分");
+		textField_45.setText("得分/场均");
 		textField_45.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_45.setEditable(false);
 		textField_45.setBounds(tempX + 4 * spaceX, tempY + 7 * spaceY, spaceX,
@@ -1648,7 +1650,7 @@ public class SearchPanel extends JPanel {
 		textField_59.setColumns(10);
 
 		textField_46 = new MyTextField();
-		textField_46.setText("效率");
+		textField_46.setText("效率/场均");
 		textField_46.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_46.setEditable(false);
 		textField_46.setBounds(tempX, tempY + 8 * spaceY, spaceX, spaceY);
@@ -1664,7 +1666,7 @@ public class SearchPanel extends JPanel {
 		textField_61.setColumns(10);
 
 		txtGmsc = new MyTextField();
-		txtGmsc.setText("GmSc效率值");
+		txtGmsc.setText("GmSc效率值/场均");
 		txtGmsc.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGmsc.setEditable(false);
 		txtGmsc.setBounds(tempX + 2 * spaceX, tempY + 8 * spaceY, spaceX,
