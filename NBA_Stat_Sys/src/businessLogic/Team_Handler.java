@@ -78,6 +78,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("hitNumField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getHitNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("shotNum")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -90,6 +104,20 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("shotNumField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getShotNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("threePointHitNum")){
@@ -106,6 +134,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("threePointHitNumField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getThreePointHitNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("threePointShotNum")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -118,6 +160,20 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("threePointShotNumField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getThreePointShotNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("freeThrowHitNum")){
@@ -134,6 +190,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("freeThrowHitNumField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getFreeThrowHitNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("freeThrowShotNum")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -146,6 +216,34 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("freeThrowShotNumField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getFreeThrowShotNumField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("offensiveReboundField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getOffensiveReboundField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("offensiveRebound")){
@@ -162,6 +260,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("defensiveReboundField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getDefensiveReboundField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("defensiveRebound")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -174,6 +286,20 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("reboundOverallField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getReboundOverallField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}
@@ -191,6 +317,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("assistanceField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getAssistanceField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("assistance")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -203,6 +343,20 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("stealField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getStealField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("steal")){
@@ -219,6 +373,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("blockField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getBlockField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("block")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -231,6 +399,20 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("turnoverField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getTurnoverField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("turnover")){
@@ -247,6 +429,20 @@ public class Team_Handler {
 				templist.add(teamlistvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("foulField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getFoulField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("foul")){
 			int a[][] = new int [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -259,6 +455,20 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("scoreField")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getScoreField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
 		}else if(option.equals("score")){

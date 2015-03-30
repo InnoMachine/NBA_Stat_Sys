@@ -76,6 +76,20 @@ public class Player_Handler {
 				templist.add(listvo.get(a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("timeField")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getTimeField();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("FirstOnNum")){
 			int a[][] = new int [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
