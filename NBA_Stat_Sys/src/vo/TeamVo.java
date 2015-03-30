@@ -43,7 +43,22 @@ public class TeamVo {
 	private double stealEfficiency;//抢断效率？
 	private double assistanceEfficiency;//助攻效率
 	
-	
+	private double GameNumField;
+	private double hitNumField;
+	private double shotNumField;
+	private double threePointHitNumField;
+	private double threePointShotNumField;
+	private double freeThrowHitNumField;//罚球命中
+	private double freeThrowShotNumField;//罚球出手
+	private double offensiveReboundField;//进攻篮板
+	private double defensiveReboundField;//防守篮板
+	private double reboundOverallField;      //篮板数
+	private double assistanceField;          //助攻
+	private double blockField;               //盖帽数
+	private double turnoverField;            //失误数
+	private double foulField;                //犯规数
+	private double stealField;               //抢断
+	private double scoreField;               //总得分
 	//下面的你们用不到
 	private int opOffensiveRebound;  //对手进攻篮板
 	private int opDefensiveRebound;  //对手防守篮板
@@ -303,5 +318,101 @@ public class TeamVo {
 	}
 	public void setOpScore(int opScore) {
 		this.opScore = opScore;
+	}
+	public double getGameNumField() {
+		return GameNumField;
+	}
+	public void setGameNumField(double gameNumField) {
+		GameNumField = gameNumField;
+	}
+	public double getHitNumField() {
+		return hitNumField;
+	}
+	public void setHitNumField(double hitNumField) {
+		this.hitNumField = hitNumField;
+	}
+	public double getShotNumField() {
+		return shotNumField;
+	}
+	public void setShotNumField(double shotNumField) {
+		this.shotNumField = shotNumField;
+	}
+	public double getThreePointHitNumField() {
+		return threePointHitNumField;
+	}
+	public void setThreePointHitNumField(double threePointHitNumField) {
+		this.threePointHitNumField = threePointHitNumField;
+	}
+	public double getScoreField() {
+		return scoreField;
+	}
+	public void setScoreField(double scoreField) {
+		this.scoreField = scoreField;
+	}
+	public double getThreePointShotNumField() {
+		return threePointShotNumField;
+	}
+	public void setThreePointShotNumField(double threePointShotNumField) {
+		this.threePointShotNumField = threePointShotNumField;
+	}
+	public double getFreeThrowHitNumField() {
+		return freeThrowHitNumField;
+	}
+	public void setFreeThrowHitNumField(double freeThrowHitNumField) {
+		this.freeThrowHitNumField = freeThrowHitNumField;
+	}
+	public double getFreeThrowShotNumField() {
+		return freeThrowShotNumField;
+	}
+	public void setFreeThrowShotNumField(double freeThrowShotNumField) {
+		this.freeThrowShotNumField = freeThrowShotNumField;
+	}
+	public double getOffensiveReboundField() {
+		return offensiveReboundField;
+	}
+	public void setOffensiveReboundField(double offensiveReboundField) {
+		this.offensiveReboundField = offensiveReboundField;
+	}
+	public double getDefensiveReboundField() {
+		return defensiveReboundField;
+	}
+	public void setDefensiveReboundField(double defensiveReboundField) {
+		this.defensiveReboundField = defensiveReboundField;
+	}
+	public double getReboundOverallField() {
+		return reboundOverallField;
+	}
+	public void setReboundOverallField(double reboundOverallField) {
+		this.reboundOverallField = reboundOverallField;
+	}
+	public double getAssistanceField() {
+		return assistanceField;
+	}
+	public void setAssistanceField(double assistanceField) {
+		this.assistanceField = assistanceField;
+	}
+	public double getBlockField() {
+		return blockField;
+	}
+	public void setBlockField(double blockField) {
+		this.blockField = blockField;
+	}
+	public double getTurnoverField() {
+		return turnoverField;
+	}
+	public void setTurnoverField(double turnoverField) {
+		this.turnoverField = turnoverField;
+	}
+	public double getFoulField() {
+		return foulField;
+	}
+	public void setFoulField(double foulField) {
+		this.foulField = foulField;
+	}
+	public double getStealField() {
+		return stealField;
+	}
+	public void setStealField(double stealField) {
+		this.stealField = stealField;
 	}
 }

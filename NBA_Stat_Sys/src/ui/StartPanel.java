@@ -129,7 +129,7 @@ public class StartPanel extends JPanel {
 		exitButton.setBounds(85 * X / 99, 85 * Y / 100, 13 * X / 100,
 				11 * Y / 100);
 		ImageIcon exitground = new ImageIcon(
-				"C:/Users/ThinkPad/Desktop/nba/exit.png");
+				"Image/exit.png");
 		exitground = new ImageIcon(exitground.getImage().getScaledInstance(
 				exitButton.getWidth(), exitButton.getHeight(),
 				Image.SCALE_SMOOTH));
