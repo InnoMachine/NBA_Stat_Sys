@@ -1,19 +1,18 @@
 package ui;
 
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
 	
+
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 //test
 	public static void main(String[] args) {
@@ -31,8 +30,8 @@ public class MainFrame extends JFrame {
 		Rectangle bounds = new Rectangle( screenSize );  
 		this.setBounds(bounds);
 		
-        int X=this.getWidth();
-        int Y=this.getHeight();
+ //     int X=this.getWidth();
+ //     int Y=this.getHeight();
         StartPanel startPanel=new StartPanel(this);
         this.getContentPane().add(startPanel);
         

@@ -13,6 +13,10 @@ import javax.swing.JLabel;
 import vo.PlayerVo;
 
 public class PlayerCardPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MyTextField txtA;
 	private MyTextField textField;
 	private MyTextField textField_1;
@@ -27,8 +31,8 @@ public class PlayerCardPanel extends JPanel {
 	private PlayerVo playerInfo;
 	private String criteria;
 	private String criteriaValue;
-	static int X;
-	static int Y;
+	int X;
+	int Y;
 	int number;
 
 	public PlayerCardPanel(int number, int X, int Y, PlayerVo playerInfo,
@@ -238,6 +242,11 @@ public class PlayerCardPanel extends JPanel {
 	}
 
 	class MyTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
@@ -249,6 +258,11 @@ public class PlayerCardPanel extends JPanel {
 	}
 
 	class MyLabel extends JLabel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);

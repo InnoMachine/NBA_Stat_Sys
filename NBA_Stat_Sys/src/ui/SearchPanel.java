@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -23,10 +22,8 @@ import javax.swing.SwingConstants;
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
-import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
-import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
@@ -36,12 +33,16 @@ import javax.swing.table.TableCellRenderer;
 
 public class SearchPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	Player_BS player_BS = new Player_BL();
 	Team_BS team_BS = new Team_BL();
-	private JTable table;
-	private DefaultTableModel model;
-	private JScrollPane scrollPane;
+//	private JTable table;
+//	private DefaultTableModel model;
+//	private JScrollPane scrollPane;
 
 	JLabel bgLabel;
 	String category = "player";
@@ -51,7 +52,7 @@ public class SearchPanel extends JPanel {
 	JTable playerTable;
 	DefaultTableModel playerDTM;
 
-	private JTextField textField;
+//	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -119,7 +120,7 @@ public class SearchPanel extends JPanel {
 	private JTextField textField_64;
 	private JTextField textField_65;
 	private JTextField textField_66;
-	private JTextField textField_68;
+//	private JTextField textField_68;
 	private JTextField textField_70;
 	private JTextField textField_71;
 	private JTextField textField_69;
@@ -617,6 +618,11 @@ public class SearchPanel extends JPanel {
 
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				teamColumn) {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -653,6 +659,11 @@ public class SearchPanel extends JPanel {
 		playerColumn.add("");
 
 		playerDTM = new DefaultTableModel(playerRowData, playerColumn) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -1854,6 +1865,10 @@ public class SearchPanel extends JPanel {
 
 	// class: TeamButton
 	class TeamButton extends JButton {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		String teamName;
 		ArrayList<PlayerVo> playersInTeam;
 		ImageIcon teamIcon;
@@ -1866,6 +1881,10 @@ public class SearchPanel extends JPanel {
 
 	// class: PlayerButton
 	class PlayerButton extends JButton {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		String playerName;
 		ImageIcon playerPortrait;
 
@@ -2027,6 +2046,11 @@ public class SearchPanel extends JPanel {
 	}
 
 	class MyTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyTextField() {
 			super();
 			this.setOpaque(false);

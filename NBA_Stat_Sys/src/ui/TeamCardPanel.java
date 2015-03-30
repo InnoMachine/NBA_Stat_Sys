@@ -10,11 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import po.Conference;
-import po.Division;
 import vo.TeamVo;
 
 public class TeamCardPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtA;
 	private JTextField textField;
 	private JTextField txtDiv;
@@ -28,8 +30,8 @@ public class TeamCardPanel extends JPanel {
 	private String criteria;
 	private String criteriaValue;
 
-	static int X;
-	static int Y;
+	int X;
+	int Y;
 	int number;
 
 	public TeamCardPanel(int number, int X, int Y, TeamVo teamInfo,
@@ -210,6 +212,11 @@ public class TeamCardPanel extends JPanel {
 	}
 
 	class MyTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
@@ -221,6 +228,11 @@ public class TeamCardPanel extends JPanel {
 	}
 
 	class MyLabel extends JLabel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);

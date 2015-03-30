@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -35,13 +34,15 @@ import java.util.Collections;
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
-import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
-import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 public class SortPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	private JTable table;
 	private JScrollPane scrollPane;
@@ -125,6 +126,11 @@ public class SortPanel extends JPanel {
 		
 
 		dtm = new DefaultTableModel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -717,6 +723,11 @@ public class SortPanel extends JPanel {
 	}
 
 	public class SortPlayerCriteriaPanel extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public SortPlayerCriteriaPanel() {
 			this.setLayout(null);
 			this.setVisible(true);
@@ -949,6 +960,11 @@ public class SortPanel extends JPanel {
 	}
 
 	public class SortTeamCriteriaPanel extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public SortTeamCriteriaPanel() {
 			this.setLayout(null);
 			this.setVisible(true);
@@ -1518,6 +1534,11 @@ public class SortPanel extends JPanel {
 	}
 	
 	class MyTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
@@ -1529,6 +1550,11 @@ public class SortPanel extends JPanel {
 	}
 
 	class MyLabel extends JLabel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);

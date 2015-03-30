@@ -9,11 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -22,7 +20,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
@@ -34,18 +31,21 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Player_BL;
-import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import vo.PlayerVo;
 
 public class ScreeningPlayerPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	private String[] positions;
 	private String[] leagues;
 	private JTable table;
 	private JScrollPane scrollPane;
-	JComboBox positionjcb;
-	JComboBox leaguejcb;
+	JComboBox<String> positionjcb;
+	JComboBox<String> leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
 	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
@@ -136,7 +136,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		positions[1] = "前锋";
 		positions[2] = "中锋";
 		positions[3] = "后卫";
-		positionjcb = new JComboBox(positions);
+		positionjcb = new JComboBox<String>(positions);
 		positionjcb.setBounds(X * 330 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
 		bgLabel.add(positionjcb);
@@ -149,7 +149,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		leagues[4] = "NORTHWEST";
 		leagues[5] = "SOUTHWEST";
 		leagues[6] = "PACIFIC";
-		leaguejcb = new JComboBox(leagues);
+		leaguejcb = new JComboBox<String>(leagues);
 		leaguejcb.setBounds(X * 520 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
 		bgLabel.add(leaguejcb);
@@ -406,6 +406,11 @@ public class ScreeningPlayerPanel extends JPanel {
 			Vector<String> column = new Vector<String>();
 			column.add("");
 			DefaultTableModel dtm = new DefaultTableModel(rowData, column) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public boolean isCellEditable(int row, int column) {
 					return false;
 				}
@@ -452,6 +457,11 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 
 	public class ScreeningPlayerCriteriaPanel extends JPanel {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
 		public ScreeningPlayerCriteriaPanel(JFrame mainFrame,
 				ScreeningPlayerPanel screeningPlayerPanel) {
@@ -675,6 +685,11 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 
 	class MyTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyTextField(Color textColor) {
 			super();
 			this.setOpaque(false);
@@ -686,6 +701,11 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 
 	class MyLabel extends JLabel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyLabel(Color textColor) {
 			super();
 			this.setOpaque(false);

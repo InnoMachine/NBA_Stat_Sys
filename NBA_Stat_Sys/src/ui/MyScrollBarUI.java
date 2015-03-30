@@ -156,6 +156,12 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 		return new BasicArrowButton(orientation) {
 
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -6123371718475228407L;
+
+			
 			java.awt.Color darkShadow = new java.awt.Color(0xFFC125);
 			java.awt.Color shadow = new java.awt.Color(0xFFF68F);
 			java.awt.Color highlight = new java.awt.Color(0xFF7F24);
