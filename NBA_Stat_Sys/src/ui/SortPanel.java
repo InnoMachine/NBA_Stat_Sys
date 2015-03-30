@@ -253,6 +253,7 @@ public class SortPanel extends JPanel {
 		if (playerCriteria == "") {
 			JOptionPane.showMessageDialog(this, "请选择球员排序依据");
 		} else {
+			System.out.println(playerCriteria);
 			playerVos = player_BS.sortPlayerBy(playerCriteria);
 
 			if (UpOrDown == "Up") {
@@ -274,21 +275,21 @@ public class SortPanel extends JPanel {
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i).getFirstOnNum())));
 					break;
-				case "reboundOverall":
+				case "reboundOverallField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
 									.valueOf(playerVos.get(i)
-											.getReboundOverall())));
+											.getReboundOverallField())));
 					break;
-				case "assistance":
+				case "assistanceField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getAssistance())));
+									.valueOf(playerVos.get(i).getAssistanceField())));
 					break;
-				case "time":
+				case "timeField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTime() / 60.0)));
+									.valueOf(playerVos.get(i).getTimeField() / 60.0)));
 					break;
 				case "hitRate":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -307,52 +308,52 @@ public class SortPanel extends JPanel {
 									.valueOf(playerVos.get(i)
 											.getFreeThrowRate())));
 					break;
-				case "attackingNum":
+				case "attackingNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
-							String.valueOf(playerVos.get(i).getAttackingNum())));
+							String.valueOf(playerVos.get(i).getAttackingNumField())));
 					break;
-				case "defensiveNum":
+				case "defensiveNumField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(),
-							String.valueOf(playerVos.get(i).getDefensiveNum())));
+							String.valueOf(playerVos.get(i).getDefensiveNumField())));
 					break;
-				case "steal":
+				case "stealField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getSteal())));
+									.valueOf(playerVos.get(i).getStealField())));
 					break;
-				case "block":
+				case "blockField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getBlock())));
+									.valueOf(playerVos.get(i).getBlockField())));
 					break;
-				case "turnover":
+				case "turnoverField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTurnover())));
+									.valueOf(playerVos.get(i).getTurnoverField())));
 					break;
-				case "foul":
+				case "foulField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getFoul())));
-					break;
-
-				case "score":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getScore())));
-					break;
-				case "efficiency":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getEfficiency())));
+									.valueOf(playerVos.get(i).getFoulField())));
 					break;
 
-				case "GmSc":
+				case "scoreField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
 							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getGmSc())));
+									.valueOf(playerVos.get(i).getScoreField())));
+					break;
+				case "efficiencyField":
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+							playerCriteriabtn.getText(), String
+									.valueOf(playerVos.get(i).getEfficiencyField())));
+					break;
+
+				case "GmScField":
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+							playerCriteriabtn.getText(), String
+									.valueOf(playerVos.get(i).getGmScField())));
 					break;
 				case "trueHitRate":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -1164,17 +1165,17 @@ public class SortPanel extends JPanel {
 				break;
 			case "篮板数":
 				playerCriteriabtn.setText("篮板数");
-				playerCriteria = "reboundOverall";
+				playerCriteria = "reboundOverallField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "助攻数":
 				playerCriteriabtn.setText("助攻数");
-				playerCriteria = "assistance";
+				playerCriteria = "assistanceField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "在场时间":
 				playerCriteriabtn.setText("在场时间");
-				playerCriteria = "time";
+				playerCriteria = "timeField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":
@@ -1194,47 +1195,47 @@ public class SortPanel extends JPanel {
 				break;
 			case "进攻数":
 				playerCriteriabtn.setText("进攻数");
-				playerCriteria = "attackingNum";
+				playerCriteria = "attackingNumField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "防守数":
 				playerCriteriabtn.setText("防守数");
-				playerCriteria = "defensiveNum";
+				playerCriteria = "defensiveNumField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "抢断数":
 				playerCriteriabtn.setText("抢断数");
-				playerCriteria = "steal";
+				playerCriteria = "stealField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "盖帽数":
 				playerCriteriabtn.setText("盖帽数");
-				playerCriteria = "block";
+				playerCriteria = "blockField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "失误数":
 				playerCriteriabtn.setText("失误数");
-				playerCriteria = "turnover";
+				playerCriteria = "turnoverField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "犯规数":
 				playerCriteriabtn.setText("犯规数");
-				playerCriteria = "foul";
+				playerCriteria = "foulField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "得分":
 				playerCriteriabtn.setText("得分");
-				playerCriteria = "score";
+				playerCriteria = "scoreField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "效率":
 				playerCriteriabtn.setText("效率");
-				playerCriteria = "efficiency";
+				playerCriteria = "efficiencyField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "GmSc效率值":
 				playerCriteriabtn.setText("GmSc效率值");
-				playerCriteria = "GmSc";
+				playerCriteria = "GmScField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "真实命中率":
