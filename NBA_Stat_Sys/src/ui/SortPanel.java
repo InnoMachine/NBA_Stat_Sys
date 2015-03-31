@@ -92,14 +92,22 @@ public class SortPanel extends JPanel {
 		criterialbl.setBounds(X * 335 / 1366, Y * 66 / 768, X / 15, X / 50);
 		bgLabel.add(criterialbl);
 
-		JButton backbtn = new JButton("返回");
-		backbtn.setBounds(0, 0, X / 15, X / 50);
-		backbtn.addActionListener(e -> back());
-		bgLabel.add(backbtn);
-
+		JButton home= new JButton();
+		ImageIcon homeIcon=new ImageIcon(new ImageIcon("Image/homeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
+		home.setBounds(17*X/20,Y/20, X/25,X/25);
+		home.setIcon(homeIcon);
+		home.setOpaque(false);
+		home.setContentAreaFilled(false);
+		home.setBorderPainted(false);
+		home.addActionListener(e -> back());
+		bgLabel.add(home);
 		JButton minimize = new JButton();
-		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
-				Y * 25 / 768);
+		ImageIcon minimizeIcon=new ImageIcon(new ImageIcon("Image/minimizeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
+		minimize.setBounds(18*X/20,Y/20, X/25,X/25);
+		minimize.setIcon(minimizeIcon);
+		minimize.setOpaque(false);
+		minimize.setContentAreaFilled(false);
+		minimize.setBorderPainted(false);
 		minimize.addActionListener(new ActionListener() {
 
 			@Override
@@ -111,8 +119,12 @@ public class SortPanel extends JPanel {
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
-		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
-				Y * 25 / 768);
+		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
+		close.setBounds(19*X/20,Y/20, X/25,X/25);
+		close.setIcon(closeIcon);
+		close.setOpaque(false);
+		close.setContentAreaFilled(false);
+		close.setBorderPainted(false);
 		close.addActionListener(new ActionListener() {
 
 			@Override

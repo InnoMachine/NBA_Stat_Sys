@@ -53,31 +53,6 @@ public class StartPanel extends JPanel {
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
 		createButton();
 
-		JButton minimize = new JButton();
-		minimize.setBounds(X - X * 70 / 1366, Y * 6 / 768, X * 25 / 1366,
-				Y * 25 / 768);
-		minimize.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				mainFrame.setExtendedState(JFrame.ICONIFIED);
-			}
-		});
-		bgLabel.add(minimize);
-		
-		JButton close = new JButton();
-		close.setBounds(X - X * 35 / 1366, Y * 6 / 768, X * 25 / 1366,
-				Y * 25 / 768);
-		close.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				mainFrame.dispose();
-			}
-		});
-		bgLabel.add(close);
 
 	}
 
