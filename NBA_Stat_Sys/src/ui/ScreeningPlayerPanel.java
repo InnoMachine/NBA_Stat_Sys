@@ -85,7 +85,7 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		JButton home= new JButton();
 		ImageIcon homeIcon=new ImageIcon(new ImageIcon("Image/homeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		home.setBounds(17*X/20,Y/20, X/25,X/25);
+		home.setBounds(17*X/20,Y/18, X/25,X/25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -94,7 +94,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		bgLabel.add(home);
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon=new ImageIcon(new ImageIcon("Image/minimizeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		minimize.setBounds(18*X/20,Y/20, X/25,X/25);
+		minimize.setBounds(18*X/20,Y/18, X/25,X/25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -111,7 +111,7 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		JButton close = new JButton();
 		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		close.setBounds(19*X/20,Y/20, X/25,X/25);
+		close.setBounds(19*X/20,Y/18, X/25,X/25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
