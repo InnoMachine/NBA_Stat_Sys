@@ -183,6 +183,7 @@ public class TeamCardPanel extends JPanel {
 		textField_3 = new MyTextField(Color.WHITE);
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_3.setText(teamInfo.getHomeField());
+		textField_3.setFont(new Font("黑体", 1, 9));
 		textField_3.setEditable(false);
 		textField_3.setColumns(10);
 		textField_3.setBounds(X * 494 / 1366, Y * 87 / 768, X * 110 / 1366,
