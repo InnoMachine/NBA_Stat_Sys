@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import businessLogic.Team_BL;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
+import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -206,7 +209,6 @@ public class SearchPanel extends JPanel {
 		this.setVisible(true);
 		this.setLayout(null);
 
-
 		ImageIcon bg;
 		bgLabel = new JLabel();
 
@@ -228,9 +230,11 @@ public class SearchPanel extends JPanel {
 			createTeamPanel();
 			this.repaint();
 		}
-		JButton home= new JButton();
-		ImageIcon homeIcon=new ImageIcon(new ImageIcon("Image/homeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		home.setBounds(17*X/20,Y/18, X/25,X/25);
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -238,8 +242,10 @@ public class SearchPanel extends JPanel {
 		home.addActionListener(e -> back());
 		bgLabel.add(home);
 		JButton minimize = new JButton();
-		ImageIcon minimizeIcon=new ImageIcon(new ImageIcon("Image/minimizeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		minimize.setBounds(18*X/20,Y/18, X/25,X/25);
+		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
+				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
+				X / 25, Image.SCALE_SMOOTH));
+		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -255,8 +261,10 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
-		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		close.setBounds(19*X/20,Y/18, X/25,X/25);
+		ImageIcon closeIcon = new ImageIcon(
+				new ImageIcon("Image/closeIcon.png").getImage()
+						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
+		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -457,11 +465,12 @@ public class SearchPanel extends JPanel {
 		JScrollPane teamJSP = new JScrollPane(teamTable);
 		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
+
 		teamJSP.getHorizontalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 5, Y / 10, 5 * X / 8, Y / 6);
+		teamJSP.setBounds(X / 5, Y / 10, 5 * X / 8, Y *117/ 766);
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
 
@@ -586,6 +595,13 @@ public class SearchPanel extends JPanel {
 		textField_51.setText(String.valueOf(defaultPlayer.getBlockRate()));
 		textField_57.setText(String.valueOf(defaultPlayer.getTurnOverRate()));
 		textField_71.setText(String.valueOf(defaultPlayer.getUseRate()));
+		
+		ImageIcon playerIcon = new ImageIcon(new ImageIcon(
+				"CSEdata/players/action/" + defaultPlayer.getName()
+						+ ".png").getImage().getScaledInstance(
+				X / 4, 3 * Y / 4, Image.SCALE_AREA_AVERAGING));
+		playerAction.setIcon(playerIcon);
+		
 		// TeamButton
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testDATA = new Vector<TeamButton>();
@@ -681,7 +697,7 @@ public class SearchPanel extends JPanel {
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 6, Y / 20, 5 * X / 8, Y / 6);
+		teamJSP.setBounds(X / 6, Y / 20, 5 * X / 8, Y*117/766);
 		teamJSP.setVisible(true);
 		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
@@ -693,12 +709,11 @@ public class SearchPanel extends JPanel {
 		playerColumn.add("");
 
 		playerRowData.clear();
-		TeamButton defaultTeam=new TeamButton("ATL");
+		TeamButton defaultTeam = new TeamButton("ATL");
 		for (int i = 0; i < defaultTeam.playersInTeam.size(); i++) {
 
 			Vector<PlayerButton> a = new Vector<PlayerButton>(1);
-			a.add(new PlayerButton(defaultTeam.playersInTeam.get(i)
-					.getName()));
+			a.add(new PlayerButton(defaultTeam.playersInTeam.get(i).getName()));
 			playerRowData.add(a);
 		}
 		playerDTM = new DefaultTableModel(playerRowData, playerColumn) {
@@ -734,7 +749,7 @@ public class SearchPanel extends JPanel {
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		playerJSP.setBounds(X / 18, Y / 4, X / 10, 7 * Y / 10);
 		playerJSP.setVisible(true);
-		bgLabel.add(playerJSP);	
+		bgLabel.add(playerJSP);
 
 	}
 
@@ -1963,8 +1978,8 @@ public class SearchPanel extends JPanel {
 			renderer.setSize(X / 10, X / 10);
 			if (hasFocus) {
 				renderer.setOpaque(true);
-				renderer.setBackground(new Color(160,160,160));
-			
+				renderer.setBackground(new Color(160, 160, 160));
+
 				showPlayerInfo(renderer.playerName);
 			}
 			return renderer;
@@ -1982,16 +1997,15 @@ public class SearchPanel extends JPanel {
 
 			TeamButton renderer = new TeamButton(((TeamButton) value).teamName);
 			renderer.playersInTeam = ((TeamButton) value).playersInTeam;
-			renderer.teamIcon = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
-							+ renderer.teamName + ".png")
-					.getImage().getScaledInstance(X/15,
-							X/15, Image.SCALE_SMOOTH));
+			renderer.teamIcon = new ImageIcon(new ImageIcon(
+					"CSEdata/teams_png/" + renderer.teamName + ".png")
+					.getImage().getScaledInstance(X / 15, X / 15,
+							Image.SCALE_SMOOTH));
 			renderer.setIcon(renderer.teamIcon);
 			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
 				renderer.setOpaque(true);
-				renderer.setBackground(new Color(160,160,160));
-				
+				renderer.setBackground(new Color(160, 160, 160));
 
 				if (category == "player") {
 					playerRowData.clear();
@@ -2142,6 +2156,7 @@ public class SearchPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("黑体", 1, 15));
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 	}
 }
