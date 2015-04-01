@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class StartPanel extends JPanel {
 
@@ -200,12 +201,12 @@ public class StartPanel extends JPanel {
 	public void toSortTeamPanel() {
 		this.setVisible(false);
 		sortTeamPanel = new SortPanel("team", mainFrame);
-
 	}
 	class MyButton extends JButton{
 		public MyButton(String function){
 			super();
-//			this.setText(function);
+			this.setText(function);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑",1,20));
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
