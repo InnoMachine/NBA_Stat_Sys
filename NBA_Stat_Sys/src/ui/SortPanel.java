@@ -256,7 +256,7 @@ public class SortPanel extends JPanel {
 			});
 
 			ImageIcon UPIcon=new ImageIcon(new ImageIcon("Image/ascending.png").getImage().getScaledInstance(X/30,X/30 , Image.SCALE_SMOOTH));
-			upSortbtn.setBounds(13*X/20,Y/14, X/30,X/30);
+			upSortbtn.setBounds(72*X/100,Y/14, X/30,X/30);
 			upSortbtn.setIcon(UPIcon);
 			upSortbtn.setOpaque(false);
 			upSortbtn.setContentAreaFilled(false);
@@ -269,7 +269,7 @@ public class SortPanel extends JPanel {
 				sortTeam(UpOrDown);
 			});
 			ImageIcon DownIcon=new ImageIcon(new ImageIcon("Image/descending.png").getImage().getScaledInstance(X/30,X/30 , Image.SCALE_SMOOTH));
-			downSortbtn.setBounds(60*X/100,Y/14, X/30,X/30);
+			downSortbtn.setBounds(68*X/100,Y/14, X/30,X/30);
 			downSortbtn.setIcon(DownIcon);
 			downSortbtn.setOpaque(false);
 			downSortbtn.setContentAreaFilled(false);
@@ -281,7 +281,7 @@ public class SortPanel extends JPanel {
 			teamCriteriabtn.setBounds(X * 421 / 1366, Y * 66 / 768,
 					X * 500 / 1366, X / 50);
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( 	X * 213 / 1366,  X / 50,
+					"Image/mainButton.png").getImage().getScaledInstance( X * 500 / 1366  ,X / 50,
 							 Image.SCALE_SMOOTH));
 			teamCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
 			teamCriteriabtn.setForeground(Color.WHITE);
