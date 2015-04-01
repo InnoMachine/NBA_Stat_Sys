@@ -694,6 +694,15 @@ public class SearchPanel extends JPanel {
 		playerColumn = new Vector<String>();
 		playerColumn.add("");
 
+		playerRowData.clear();
+		TeamButton defaultTeam=new TeamButton("ATL");
+		for (int i = 0; i < defaultTeam.playersInTeam.size(); i++) {
+
+			Vector<PlayerButton> a = new Vector<PlayerButton>(1);
+			a.add(new PlayerButton(defaultTeam.playersInTeam.get(i)
+					.getName()));
+			playerRowData.add(a);
+		}
 		playerDTM = new DefaultTableModel(playerRowData, playerColumn) {
 			/**
 			 * 
@@ -727,7 +736,7 @@ public class SearchPanel extends JPanel {
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		playerJSP.setBounds(X / 18, Y / 4, X / 10, 7 * Y / 10);
 		playerJSP.setVisible(true);
-		bgLabel.add(playerJSP);
+		bgLabel.add(playerJSP);	
 
 	}
 
