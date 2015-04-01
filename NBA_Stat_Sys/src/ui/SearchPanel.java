@@ -470,7 +470,7 @@ public class SearchPanel extends JPanel {
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 5, Y / 10, 5 * X / 8, Y *117/ 766);
+		teamJSP.setBounds(X / 5, Y / 10, 5 * X / 8, Y *115/ 766);
 		teamJSP.setVisible(true);
 		bgLabel.add(teamJSP);
 
@@ -697,7 +697,7 @@ public class SearchPanel extends JPanel {
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 6, Y / 20, 5 * X / 8, Y*117/766);
+		teamJSP.setBounds(X / 6, Y / 20, 5 * X / 8, Y*115/766);
 		teamJSP.setVisible(true);
 		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
@@ -2156,7 +2156,8 @@ public class SearchPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("黑体", 1, 15));
-			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+			
 		}
 	}
 }

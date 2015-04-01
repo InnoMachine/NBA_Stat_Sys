@@ -20,14 +20,14 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 		 super();
 		 this.bgColor=bgColor;
 		 this.barColor=barColor;
-		  scrollBarWidth=5;
+		  scrollBarWidth=3;
 	}
 
 	@Override
 	protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
 
 //		this.getMinimumSize(scrollbar);
-		 scrollBarWidth=5;
+		 scrollBarWidth=3;
 		int w = thumbBounds.width;
 		int h = thumbBounds.height;
 		g.translate(thumbBounds.x, thumbBounds.y);
@@ -57,7 +57,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 	@Override
 	protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
-		  scrollBarWidth=5;
+		  scrollBarWidth=3;
 		g.setColor(barColor);
 		g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width,
 				trackBounds.height);
@@ -74,7 +74,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 	protected void paintDecreaseHighlight(Graphics g) {
 		
 //		scrollbar.setBounds(0, 0, 150, 5);
-		 scrollBarWidth=5;
+		 scrollBarWidth=3;
 		Insets insets = scrollbar.getInsets();
 		Rectangle thumbR = getThumbBounds();
 		g.setColor(java.awt.Color.GRAY);
@@ -120,7 +120,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 	protected void paintIncreaseHighlight(Graphics g) {
 		
 //		scrollbar.setBounds(0, 0, 150, 5);
-	     scrollBarWidth=5;	
+	     scrollBarWidth=3;	
 		Insets insets = scrollbar.getInsets();
 		Rectangle thumbR = getThumbBounds();
 		g.setColor(java.awt.Color.GRAY);
@@ -155,7 +155,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 	@Override
 	protected javax.swing.JButton createDecreaseButton(int orientation) {
-		  scrollBarWidth=5;
+		  scrollBarWidth=3;
 		return new BasicArrowButton(orientation,
 				UIManager.getColor("ScrollBar.thumb"),
 				UIManager.getColor("ScrollBar.thumbShadow"),
@@ -165,7 +165,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 	@Override
 	protected javax.swing.JButton createIncreaseButton(int orientation) {
-		  scrollBarWidth=5;
+		  scrollBarWidth=3;
 		return new BasicArrowButton(orientation) {
 
 			/**
