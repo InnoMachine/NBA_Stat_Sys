@@ -80,8 +80,8 @@ public class TeamCardPanel extends JPanel {
 		teamButton.setBounds(X * 70 / 1366, Y * 6 / 768, X * 134 / 1366,
 				Y * 108 / 768);
 		add(teamButton);
-		ImageIcon teamIcon = new ImageIcon("CSEdata/teams/"
-				+ teamInfo.getAbbreviation() + ".svg");
+		ImageIcon teamIcon = new ImageIcon("CSEdata/teams_png/"
+				+ teamInfo.getAbbreviation() + ".png");
 		teamButton.setIcon(teamIcon);
 
 		MyLabel label = new MyLabel(Color.WHITE, "球队全名");
