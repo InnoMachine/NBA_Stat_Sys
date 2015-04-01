@@ -151,7 +151,7 @@ public class SortPanel extends JPanel {
 		if (category == "player") {
 
 			ImageIcon bg = new ImageIcon(new ImageIcon(
-					"Image/screeningPanel.png").getImage().getScaledInstance(
+					"Image/sortPlayer.png").getImage().getScaledInstance(
 					this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
