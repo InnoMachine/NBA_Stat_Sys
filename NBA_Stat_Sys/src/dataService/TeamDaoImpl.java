@@ -3,7 +3,7 @@
  * 2015年3月9日 上午10:26:13
  * TODO
  */
-package database;
+package dataService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import jdbc_tools_database_init.DBUtil;
+import databaseUtility.DBUtil;
 import po.Conference;
 import po.Division;
 import po.TeamPO;

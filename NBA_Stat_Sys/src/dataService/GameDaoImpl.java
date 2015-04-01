@@ -3,7 +3,7 @@
  * 2015年3月9日 上午10:32:45
  * TODO
  */
-package database;
+package dataService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import jdbc_tools_database_init.DBUtil;
+import databaseUtility.DBUtil;
 import po.GamePO;
 import po.Scoreboard;
 import po.TeamPerformance;

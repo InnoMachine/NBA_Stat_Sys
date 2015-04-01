@@ -3,16 +3,16 @@
  * 2015年3月21日 下午3:56:01
  * TODO
  */
-package jdbc_tools_database_init;
+package databaseUtility;
 
 import java.util.ArrayList;
 
-import database.GameDao;
-import database.GameDaoImpl;
-import database.PlayerDao;
-import database.PlayerDaoImpl;
-import database.TeamDao;
-import database.TeamDaoImpl;
+import dataService.GameDao;
+import dataService.GameDaoImpl;
+import dataService.PlayerDao;
+import dataService.PlayerDaoImpl;
+import dataService.TeamDao;
+import dataService.TeamDaoImpl;
 import po.GamePO;
 import po.PlayerPO;
 import po.SinglePerformance;

@@ -3,7 +3,7 @@
  * 2015年3月9日 上午10:24:04
  * TODO
  */
-package database;
+package dataService;
 
 import java.util.ArrayList;
 import po.TeamPO;

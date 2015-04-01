@@ -10,12 +10,12 @@ import po.TeamPO;
 import po.TeamPerformance;
 import vo.PlayerVo;
 import vo.TeamVo;
-import database.GameDao;
-import database.GameDaoImpl;
-import database.PlayerDao;
-import database.PlayerDaoImpl;
-import database.TeamDao;
-import database.TeamDaoImpl;
+import dataService.GameDao;
+import dataService.GameDaoImpl;
+import dataService.PlayerDao;
+import dataService.PlayerDaoImpl;
+import dataService.TeamDao;
+import dataService.TeamDaoImpl;
 
 public class Data_Handler {
 	private static Data_Handler instance;

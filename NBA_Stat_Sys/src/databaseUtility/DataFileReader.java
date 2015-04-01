@@ -3,7 +3,7 @@
  * 2015年3月8日 上午10:53:10
  * TODO
  */
-package jdbc_tools_database_init;
+package databaseUtility;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-import database.GameDao;
-import database.GameDaoImpl;
-import database.PlayerDao;
-import database.PlayerDaoImpl;
-import database.TeamDao;
-import database.TeamDaoImpl;
+import dataService.GameDao;
+import dataService.GameDaoImpl;
+import dataService.PlayerDao;
+import dataService.PlayerDaoImpl;
+import dataService.TeamDao;
+import dataService.TeamDaoImpl;
 import po.Conference;
 import po.Division;
 import po.GamePO;
