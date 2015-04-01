@@ -124,13 +124,13 @@ public class PlayerCardPanel extends JPanel {
 		textField_8.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_8.setText(criteriaValue);
 		textField_8.setEditable(false);
-		textField_8.setBounds(X * 620 / 1366, Y * 17 / 768, X * 80 / 1366,
+		textField_8.setBounds(X * 626 / 1366, Y * 17 / 768, X * 80 / 1366,
 				Y * 23 / 768);
 		add(textField_8);
 		textField_8.setColumns(10);
 
 		MyLabel label_1 = new MyLabel(Color.WHITE, "球衣号码");
-		label_1.setBounds(X * 670 / 1366, Y * 56 / 768, X * 54 / 1366,
+		label_1.setBounds(X * 670 / 1366, Y * 56 / 768, X * 60 / 1366,
 				Y * 15 / 768);
 		add(label_1);
 
@@ -197,6 +197,7 @@ public class PlayerCardPanel extends JPanel {
 		textField_1.setColumns(10);
 		textField_1.setBounds(X * 254 / 1366, Y * 87 / 768, X * 90 / 1366,
 				Y * 23 / 768);
+		textField_1.setFont(new Font("黑体",1,11));
 		add(textField_1);
 
 		MyLabel label_6 = new MyLabel(Color.WHITE, "年龄");
@@ -228,7 +229,7 @@ public class PlayerCardPanel extends JPanel {
 		add(textField_5);
 
 		MyLabel label_8 = new MyLabel(Color.WHITE, "毕业学校");
-		label_8.setBounds(X * 670 / 1366, Y * 91 / 768, X * 54 / 1366,
+		label_8.setBounds(X * 670 / 1366, Y * 91 / 768, X * 60 / 1366,
 				Y * 15 / 768);
 		add(label_8);
 
@@ -266,7 +267,7 @@ public class PlayerCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体", 1, 11));
+			this.setFont(new Font("黑体", 1, 13));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
@@ -282,7 +283,7 @@ public class PlayerCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体", 1, 11));
+			this.setFont(new Font("黑体", 1, 13));
 
 		}
 
@@ -291,7 +292,7 @@ public class PlayerCardPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setText(text);
-			this.setFont(new Font("黑体", 1, 11));
+			this.setFont(new Font("黑体", 1, 13));
 
 		}
 	}

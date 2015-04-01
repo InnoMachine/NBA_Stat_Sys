@@ -170,8 +170,13 @@ public class ScreeningPlayerPanel extends JPanel {
 		positions[2] = "中锋";
 		positions[3] = "后卫";
 		positionjcb = new JComboBox<String>(positions);
+		
 		positionjcb.setBounds(X * 330 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
+		positionjcb.setForeground(Color.WHITE);
+		positionjcb.setBackground(Color.GRAY);
+		
+		
 		bgLabel.add(positionjcb);
 
 		leagues = new String[7];
@@ -185,6 +190,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		leaguejcb = new JComboBox<String>(leagues);
 		leaguejcb.setBounds(X * 520 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
+		leaguejcb.setForeground(Color.WHITE);
+		leaguejcb.setBackground(Color.GRAY);
+		
 		bgLabel.add(leaguejcb);
 
 		bgLabel.addMouseListener(new MouseListener() {
