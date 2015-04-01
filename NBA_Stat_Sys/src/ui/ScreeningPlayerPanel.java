@@ -217,7 +217,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
+//                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
 				if (e.getX() <= X * 715 / 1366 ||e.getX() >= X * 928 / 1366
 						|| e.getY() <= (Y * 66 / 768 + X / 50)
 						|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 108 / 1366)){
@@ -342,7 +342,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		if (screeningCriteria == "") {
 			JOptionPane.showMessageDialog(this, "请选择球员筛选依据");
 		} else {
-			System.out.println(screeningCriteria);
+//			System.out.println(screeningCriteria);
 			playerVos = player_BS.filterPlayerBy(position, league,
 					screeningCriteria);
 			if (rowData == null) {
@@ -702,7 +702,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				break;
 
 			default:
-				System.out.println("筛选标准选择出错");
+//				System.out.println("筛选标准选择出错");
 				break;
 			}
 

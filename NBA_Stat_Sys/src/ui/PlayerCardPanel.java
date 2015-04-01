@@ -61,7 +61,7 @@ public class PlayerCardPanel extends JPanel {
 		} else if (number > 3) {
 			lblNumber = new JLabel(String.valueOf(number) + "th");
 		} else {
-			System.out.println("球员名片显示中的排名Bug！！！" + number);
+//			System.out.println("球员名片显示中的排名Bug！！！" + number);
 		}
 		lblNumber.setBounds(X * 6 / 1366, Y * 6 / 768, X * 63 / 1366,
 				Y * 108 / 768);

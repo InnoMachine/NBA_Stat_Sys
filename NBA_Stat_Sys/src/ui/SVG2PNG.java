@@ -52,7 +52,7 @@ public class SVG2PNG {
 				"CSEdata/teams_png/"+path.substring(path.length()-8, path.length()-3)+"png"));
 			}
 		}
-		System.out.println("conversion finished!");
+//		System.out.println("conversion finished!");
 	}
 	public static void main(String[] args) throws IOException,
 			TranscoderException {

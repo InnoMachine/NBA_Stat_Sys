@@ -89,8 +89,8 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 			int y = trackRect.y;
 			int w = scrollbar.getWidth() - (insets.left + insets.right);
 			int h = thumbR.y - y;
-			System.out.println("垂直方向" + "x:" + x + "y:" + y + "w:" + w + "h:"
-					+ h);
+//			System.out.println("垂直方向" + "x:" + x + "y:" + y + "w:" + w + "h:"
+//					+ h);
 			g.fillRect(x, y, w, h);
 		} else {
 			// if left-to-right, fill the area between the start of the track
@@ -108,8 +108,8 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 			}
 			int y = insets.top;
 			int h = scrollbar.getHeight() - (insets.top + insets.bottom);
-			System.out.println("水平方向" + "x:" + x + "y:" + y + "w:" + w + "h:"
-					+ h);
+//			System.out.println("水平方向" + "x:" + x + "y:" + y + "w:" + w + "h:"
+//					+ h);
 			g.fillRect(x, y, w, h);
 		}
 	}
