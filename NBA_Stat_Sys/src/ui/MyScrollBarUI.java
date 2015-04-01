@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.awt.Scrollbar;
+
 import javax.swing.JComponent;
 import javax.swing.JScrollBar;
 import javax.swing.UIManager;
@@ -18,14 +20,14 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 		 super();
 		 this.bgColor=bgColor;
 		 this.barColor=barColor;
-         
+		 scrollBarWidth=8;
 	}
 
 	@Override
 	protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
 
 //		this.getMinimumSize(scrollbar);
-		
+		scrollBarWidth=8;
 		int w = thumbBounds.width;
 		int h = thumbBounds.height;
 		g.translate(thumbBounds.x, thumbBounds.y);
@@ -55,6 +57,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 	@Override
 	protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
+		 scrollBarWidth=8;
 		g.setColor(barColor);
 		g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width,
 				trackBounds.height);
@@ -69,7 +72,9 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 	@Override
 	protected void paintDecreaseHighlight(Graphics g) {
-
+		
+//		scrollbar.setBounds(0, 0, 150, 5);
+		scrollBarWidth=8;
 		Insets insets = scrollbar.getInsets();
 		Rectangle thumbR = getThumbBounds();
 		g.setColor(java.awt.Color.GRAY);
@@ -113,6 +118,9 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 
 	@Override
 	protected void paintIncreaseHighlight(Graphics g) {
+		
+//		scrollbar.setBounds(0, 0, 150, 5);
+	    scrollBarWidth=8;	
 		Insets insets = scrollbar.getInsets();
 		Rectangle thumbR = getThumbBounds();
 		g.setColor(java.awt.Color.GRAY);

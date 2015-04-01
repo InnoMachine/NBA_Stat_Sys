@@ -79,6 +79,9 @@ public class TeamCardPanel extends JPanel {
 		JButton teamButton = new JButton();
 		teamButton.setBounds(X * 70 / 1366, Y * 6 / 768, X * 134 / 1366,
 				Y * 108 / 768);
+		teamButton.setContentAreaFilled(false);
+		teamButton.setBorderPainted(false);
+		teamButton.setOpaque(false);
 		add(teamButton);
 		ImageIcon teamIcon = new ImageIcon("CSEdata/teams_png/"
 				+ teamInfo.getAbbreviation() + ".png");

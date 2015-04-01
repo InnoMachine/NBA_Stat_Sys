@@ -79,6 +79,9 @@ public class PlayerCardPanel extends JPanel {
 		JButton playerButton = new JButton();
 		playerButton.setBounds(X * 70 / 1366, Y * 6 / 768, X * 134 / 1366,
 				Y * 108 / 768);
+		playerButton.setContentAreaFilled(false);
+		playerButton.setBorderPainted(false);
+		playerButton.setOpaque(false);
 		add(playerButton);
 
 		ImageIcon playerPortrait = new ImageIcon("CSEdata/players/portrait/"

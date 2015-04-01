@@ -28,6 +28,7 @@ import businessLogic.Team_BL;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -41,9 +42,6 @@ public class SearchPanel extends JPanel {
 	JFrame mainFrame;
 	Player_BS player_BS = new Player_BL();
 	Team_BS team_BS = new Team_BL();
-	// private JTable table;
-	// private DefaultTableModel model;
-	// private JScrollPane scrollPane;
 
 	JLabel bgLabel;
 	String category = "player";
@@ -841,7 +839,7 @@ public class SearchPanel extends JPanel {
 		textField_84.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_84.setEditable(false);
 		textField_84.setColumns(10);
-		textField_84.setFont(new Font("黑体", 1, 11));
+		textField_84.setFont(new Font("黑体", 1, 10));
 		textField_84.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_84);
@@ -1964,8 +1962,9 @@ public class SearchPanel extends JPanel {
 			renderer.setIcon(renderer.playerPortrait);
 			renderer.setSize(X / 10, X / 10);
 			if (hasFocus) {
-				renderer.setBorder(BorderFactory.createLineBorder(Color.BLACK,
-						3));
+				renderer.setOpaque(true);
+				renderer.setBackground(new Color(160,160,160));
+			
 				showPlayerInfo(renderer.playerName);
 			}
 			return renderer;
@@ -1990,8 +1989,9 @@ public class SearchPanel extends JPanel {
 			renderer.setIcon(renderer.teamIcon);
 			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
-				renderer.setBorder(BorderFactory.createLineBorder(Color.BLACK,
-						3));
+				renderer.setOpaque(true);
+				renderer.setBackground(new Color(160,160,160));
+				
 
 				if (category == "player") {
 					playerRowData.clear();
@@ -2142,7 +2142,6 @@ public class SearchPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("黑体", 1, 15));
-
 		}
 	}
 }
