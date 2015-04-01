@@ -16,11 +16,11 @@ public class StartPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	SearchPanel searchPlayerPanel;
-	SortPanel sortPlayerPanel;
-	SearchPanel searchTeamPanel;
-	SortPanel sortTeamPanel;
-	ScreeningPlayerPanel screeningPlayerPanel;
+	static SearchPanel searchPlayerPanel;
+	static SortPanel sortPlayerPanel;
+	static SearchPanel searchTeamPanel;
+	static SortPanel sortTeamPanel;
+	static ScreeningPlayerPanel screeningPlayerPanel;
 
 	static JButton searchPlayerbtn;
 	static JButton sortPlayerbtn;
@@ -55,11 +55,7 @@ public class StartPanel extends JPanel {
 
 
 	}
-
-	// protected void paintComponent(Graphics g) {
-	// super.paintComponent(g);
-	// g.drawImage(bgImage, 0, 0, X, Y, this);
-	// };
+	
 
 	public void createButton() {
 

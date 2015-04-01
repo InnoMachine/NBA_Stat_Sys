@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	static StartPanel startPanel=null;
 //test
 	public static void main(String[] args) {
 		MainFrame mf = new MainFrame();
@@ -29,10 +29,7 @@ public class MainFrame extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Rectangle bounds = new Rectangle( screenSize );  
 		this.setBounds(bounds);
-		
- //     int X=this.getWidth();
- //     int Y=this.getHeight();
-        StartPanel startPanel=new StartPanel(this);
+        startPanel=new StartPanel(this);
         this.getContentPane().add(startPanel);
         
  
