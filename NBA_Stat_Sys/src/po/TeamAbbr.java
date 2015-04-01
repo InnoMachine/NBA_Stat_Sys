@@ -3,7 +3,7 @@
  * 2015年3月20日 下午8:32:07
  * TODO
  */
-package enums;
+package po;
 
 public enum TeamAbbr {
 

@@ -2,8 +2,8 @@ package businessLogic;
 
 import java.util.ArrayList;
 
-import enums.Conference;
-import enums.Division;
+import po.Conference;
+import po.Division;
 import vo.PlayerVo;
 import vo.TeamVo;
 

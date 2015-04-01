@@ -3,7 +3,7 @@
  * 2015年3月8日 下午2:49:33
  * TODO
  */
-package enums;
+package po;
 
 public enum Division {
 
