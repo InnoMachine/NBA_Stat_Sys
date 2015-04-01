@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -162,28 +163,45 @@ public class SortPanel extends JPanel {
 					.getImage().getScaledInstance(this.getWidth(),
 							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
-			JButton upSortbtn = new JButton("U");
-			upSortbtn.setBounds(X * 950 / 1366, Y * 66 / 768, X / 50, X / 50);
+			JButton upSortbtn = new JButton();
 			upSortbtn.addActionListener(e -> {
 				UpOrDown = "Up";
 				sortPlayer(UpOrDown);
 			});
+			
+			ImageIcon UPIcon=new ImageIcon(new ImageIcon("Image/ascending.png").getImage().getScaledInstance(X/30,X/30 , Image.SCALE_SMOOTH));
+			upSortbtn.setBounds(14*X/20,Y/14, X/30,X/30);
+			upSortbtn.setIcon(UPIcon);
+			upSortbtn.setOpaque(false);
+			upSortbtn.setContentAreaFilled(false);
+			upSortbtn.setBorderPainted(false);
 			bgLabel.add(upSortbtn);
-
-			JButton downSortbtn = new JButton("D");
-			downSortbtn.setBounds(X * 991 / 1366, Y * 66 / 768, X / 50, X / 50);
+			JButton downSortbtn = new JButton();
 			downSortbtn.addActionListener(e -> {
 				UpOrDown = "Down";
 				sortPlayer(UpOrDown);
 			});
+			ImageIcon DownIcon=new ImageIcon(new ImageIcon("Image/descending.png").getImage().getScaledInstance(X/30,X/30 , Image.SCALE_SMOOTH));
+			downSortbtn.setBounds(66*X/100,Y/14, X/30,X/30);
+			downSortbtn.setIcon(DownIcon);
+			downSortbtn.setOpaque(false);
+			downSortbtn.setContentAreaFilled(false);
+			downSortbtn.setBorderPainted(false);
 			bgLabel.add(downSortbtn);
 
 			// btnSort.addActionListener(e -> sortPlayer(UpOrDown));
 			playerCriteriabtn = new JButton("");
 			playerCriteriabtn.setBounds(X * 461 / 1366, Y * 66 / 768,
-					X * 31 / 100, X / 50);
+					X * 31 / 100, X / 50);ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+							"Image/mainButton.png").getImage().getScaledInstance( X * 31 / 100,  X / 50,
+									 Image.SCALE_SMOOTH));
+			playerCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
+			playerCriteriabtn.setForeground(Color.WHITE);
+			playerCriteriabtn.setIcon(buttonIcon);
+			playerCriteriabtn.setOpaque(false);
+			playerCriteriabtn.setContentAreaFilled(false);
+			playerCriteriabtn.setBorderPainted(false);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
-
 			bgLabel.add(playerCriteriabtn);
 
 			this.addMouseListener(new MouseListener() {
@@ -219,7 +237,6 @@ public class SortPanel extends JPanel {
 					}
 					if (e.getSource() != playerCriteriabtn
 							&& e.getSource() != sortPlayerCriteriaPanel) {
-						// System.out.println("mouse  out");
 						sortPlayerCriteriaPanel.setVisible(false);
 					}
 				}
@@ -232,26 +249,46 @@ public class SortPanel extends JPanel {
 					.getImage().getScaledInstance(this.getWidth(),
 							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
-			JButton upSortbtn = new JButton("U");
-			upSortbtn.setBounds(X * 950 / 1366, Y * 66 / 768, X / 50, X / 50);
+			JButton upSortbtn = new JButton();
 			upSortbtn.addActionListener(e -> {
 				UpOrDown = "Up";
 				sortTeam(UpOrDown);
 			});
+
+			ImageIcon UPIcon=new ImageIcon(new ImageIcon("Image/ascending.png").getImage().getScaledInstance(X/30,X/30 , Image.SCALE_SMOOTH));
+			upSortbtn.setBounds(13*X/20,Y/14, X/30,X/30);
+			upSortbtn.setIcon(UPIcon);
+			upSortbtn.setOpaque(false);
+			upSortbtn.setContentAreaFilled(false);
+			upSortbtn.setBorderPainted(false);
 			bgLabel.add(upSortbtn);
 
-			JButton downSortbtn = new JButton("D");
-			downSortbtn.setBounds(X * 991 / 1366, Y * 66 / 768, X / 50, X / 50);
+			JButton downSortbtn = new JButton();
 			downSortbtn.addActionListener(e -> {
 				UpOrDown = "Down";
 				sortTeam(UpOrDown);
 			});
+			ImageIcon DownIcon=new ImageIcon(new ImageIcon("Image/descending.png").getImage().getScaledInstance(X/30,X/30 , Image.SCALE_SMOOTH));
+			downSortbtn.setBounds(60*X/100,Y/14, X/30,X/30);
+			downSortbtn.setIcon(DownIcon);
+			downSortbtn.setOpaque(false);
+			downSortbtn.setContentAreaFilled(false);
+			downSortbtn.setBorderPainted(false);
 			bgLabel.add(downSortbtn);
 
 			// btnSort.addActionListener(e -> sortTeam(UpOrDown));
 			teamCriteriabtn = new JButton("");
 			teamCriteriabtn.setBounds(X * 421 / 1366, Y * 66 / 768,
 					X * 500 / 1366, X / 50);
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance( 	X * 213 / 1366,  X / 50,
+							 Image.SCALE_SMOOTH));
+			teamCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
+			teamCriteriabtn.setForeground(Color.WHITE);
+			teamCriteriabtn.setIcon(buttonIcon);
+			teamCriteriabtn.setOpaque(false);
+			teamCriteriabtn.setContentAreaFilled(false);
+			teamCriteriabtn.setBorderPainted(false);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			bgLabel.add(teamCriteriabtn);
 
@@ -279,8 +316,6 @@ public class SortPanel extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
-					System.out.println("CLICKED!    X: " + e.getX() + "   Y: "
-							+ e.getY());
 					if (e.getX() <= X * 461 / 1366
 							|| e.getX() >= (X * 461 / 1366 + X * 31 / 100)
 							|| e.getY() <= (Y * 66 / 768 + X / 50)
@@ -354,7 +389,6 @@ public class SortPanel extends JPanel {
 		if (playerCriteria == "") {
 			JOptionPane.showMessageDialog(this, "请选择球员排序依据");
 		} else {
-			System.out.println(playerCriteria);
 			playerVos = player_BS.sortPlayerBy(playerCriteria);
 
 			if (UpOrDown == "Up") {
@@ -810,224 +844,233 @@ public class SortPanel extends JPanel {
 			this.setVisible(true);
 			this.setBounds(X * 461 / 1366, Y * 66 / 768 + X / 50, X * 31 / 100,
 					X * 14 / 100);
+			JLabel bglabel=new JLabel();
+			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
+					"Image/screeningPlayerPanel.png").getImage().getScaledInstance(this.getWidth(),
+					this.getHeight(), Image.SCALE_SMOOTH));
+			bglabel.setIcon(bgPanel);
+			bglabel.setBounds(0, 0,this.getWidth(),
+					this.getHeight() );
+			this.add(bglabel);
+
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 
 			ButtonGroup bg = new ButtonGroup();
 
-			JRadioButton rdbtnNewRadioButton = new JRadioButton("参赛场数");
+			MyRadioButton rdbtnNewRadioButton = new MyRadioButton("参赛场数");
 			rdbtnNewRadioButton.setBounds(X * 4 / 1366, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton
 					.addActionListener(new SortPlayerCriteriaListener("参赛场数"));
-			add(rdbtnNewRadioButton);
+			bglabel.add(rdbtnNewRadioButton);
 			bg.add(rdbtnNewRadioButton);
 
-			JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("先发场数");
+			MyRadioButton rdbtnNewRadioButton_1 = new MyRadioButton("先发场数");
 			rdbtnNewRadioButton_1.setBounds(X * 34 / 400, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_1
 					.addActionListener(new SortPlayerCriteriaListener("先发场数"));
-			add(rdbtnNewRadioButton_1);
+			bglabel.add(rdbtnNewRadioButton_1);
 			bg.add(rdbtnNewRadioButton_1);
 
-			JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("使用率");
+			MyRadioButton rdbtnNewRadioButton_5 = new MyRadioButton("使用率");
 			rdbtnNewRadioButton_5.setBounds(X * 94 / 400, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_5
 					.addActionListener(new SortPlayerCriteriaListener("使用率"));
-			add(rdbtnNewRadioButton_5);
+			bglabel.add(rdbtnNewRadioButton_5);
 			bg.add(rdbtnNewRadioButton_5);
 
-			JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("篮板数");
+			MyRadioButton rdbtnNewRadioButton_2 = new MyRadioButton("篮板数");
 			rdbtnNewRadioButton_2.setBounds(X * 64 / 400, Y * 31 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_2
 					.addActionListener(new SortPlayerCriteriaListener("篮板数"));
-			add(rdbtnNewRadioButton_2);
+			bglabel.add(rdbtnNewRadioButton_2);
 			bg.add(rdbtnNewRadioButton_2);
 
-			JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("助攻数");
+			MyRadioButton rdbtnNewRadioButton_3 = new MyRadioButton("助攻数");
 			rdbtnNewRadioButton_3.setBounds(X * 94 / 400, Y * 31 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_3
 					.addActionListener(new SortPlayerCriteriaListener("助攻数"));
-			add(rdbtnNewRadioButton_3);
+			bglabel.add(rdbtnNewRadioButton_3);
 			bg.add(rdbtnNewRadioButton_3);
 
-			JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("在场时间");
+			MyRadioButton rdbtnNewRadioButton_4 = new MyRadioButton("在场时间");
 			rdbtnNewRadioButton_4.setBounds(X * 64 / 400, Y * 6 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_4
 					.addActionListener(new SortPlayerCriteriaListener("在场时间"));
-			add(rdbtnNewRadioButton_4);
+			bglabel.add(rdbtnNewRadioButton_4);
 			bg.add(rdbtnNewRadioButton_4);
 
-			JRadioButton radioButton = new JRadioButton("投篮命中率");
+			MyRadioButton radioButton = new MyRadioButton("投篮命中率");
 			radioButton.setBounds(X * 4 / 1366, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton.addActionListener(new SortPlayerCriteriaListener(
 					"投篮命中率"));
-			add(radioButton);
+			bglabel.add(radioButton);
 			bg.add(radioButton);
 
-			JRadioButton radioButton_1 = new JRadioButton("三分命中率");
+			MyRadioButton radioButton_1 = new MyRadioButton("三分命中率");
 			radioButton_1.setBounds(X * 34 / 400, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_1.addActionListener(new SortPlayerCriteriaListener(
 					"三分命中率"));
-			add(radioButton_1);
+			bglabel.add(radioButton_1);
 			bg.add(radioButton_1);
 
-			JRadioButton radioButton_2 = new JRadioButton("罚球命中率");
+			MyRadioButton radioButton_2 = new MyRadioButton("罚球命中率");
 			radioButton_2.setBounds(X * 64 / 400, Y * 156 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_2.addActionListener(new SortPlayerCriteriaListener(
 					"罚球命中率"));
-			add(radioButton_2);
+			bglabel.add(radioButton_2);
 			bg.add(radioButton_2);
 
-			JRadioButton radioButton_3 = new JRadioButton("进攻数");
+			MyRadioButton radioButton_3 = new MyRadioButton("进攻数");
 			radioButton_3.setBounds(X * 4 / 1366, Y * 31 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_3.addActionListener(new SortPlayerCriteriaListener(
 					"进攻数"));
-			add(radioButton_3);
+			bglabel.add(radioButton_3);
 			bg.add(radioButton_3);
 
-			JRadioButton radioButton_4 = new JRadioButton("防守数");
+			MyRadioButton radioButton_4 = new MyRadioButton("防守数");
 			radioButton_4.setBounds(X * 34 / 400, Y * 31 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_4.addActionListener(new SortPlayerCriteriaListener(
 					"防守数"));
-			add(radioButton_4);
+			bglabel.add(radioButton_4);
 			bg.add(radioButton_4);
 
-			JRadioButton radioButton_5 = new JRadioButton("抢断数");
+			MyRadioButton radioButton_5 = new MyRadioButton("抢断数");
 			radioButton_5.setBounds(X * 4 / 1366, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_5.addActionListener(new SortPlayerCriteriaListener(
 					"抢断数"));
-			add(radioButton_5);
+			bglabel.add(radioButton_5);
 			bg.add(radioButton_5);
 
-			JRadioButton radioButton_6 = new JRadioButton("盖帽数");
+			MyRadioButton radioButton_6 = new MyRadioButton("盖帽数");
 			radioButton_6.setBounds(X * 34 / 400, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_6.addActionListener(new SortPlayerCriteriaListener(
 					"盖帽数"));
-			add(radioButton_6);
+			bglabel.add(radioButton_6);
 			bg.add(radioButton_6);
 
-			JRadioButton radioButton_7 = new JRadioButton("失误数");
+			MyRadioButton radioButton_7 = new MyRadioButton("失误数");
 			radioButton_7.setBounds(X * 64 / 400, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_7.addActionListener(new SortPlayerCriteriaListener(
 					"失误数"));
-			add(radioButton_7);
+			bglabel.add(radioButton_7);
 			bg.add(radioButton_7);
 
-			JRadioButton radioButton_8 = new JRadioButton("犯规数");
+			MyRadioButton radioButton_8 = new MyRadioButton("犯规数");
 			radioButton_8.setBounds(X * 94 / 400, Y * 56 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_8.addActionListener(new SortPlayerCriteriaListener(
 					"犯规数"));
-			add(radioButton_8);
+			bglabel.add(radioButton_8);
 			bg.add(radioButton_8);
 
-			JRadioButton radioButton_9 = new JRadioButton("得分");
+			MyRadioButton radioButton_9 = new MyRadioButton("得分");
 			radioButton_9.setBounds(X * 4 / 1366, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_9
 					.addActionListener(new SortPlayerCriteriaListener("得分"));
-			add(radioButton_9);
+			bglabel.add(radioButton_9);
 			bg.add(radioButton_9);
 
-			JRadioButton radioButton_10 = new JRadioButton("效率");
+			MyRadioButton radioButton_10 = new MyRadioButton("效率");
 			radioButton_10.setBounds(X * 64 / 400, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_10.addActionListener(new SortPlayerCriteriaListener(
 					"效率"));
-			add(radioButton_10);
+			bglabel.add(radioButton_10);
 			bg.add(radioButton_10);
 
-			JRadioButton rdbtnGmsc = new JRadioButton("GmSc效率值");
+			MyRadioButton rdbtnGmsc = new MyRadioButton("GmSc效率值");
 			rdbtnGmsc.setBounds(X * 34 / 400, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			rdbtnGmsc.addActionListener(new SortPlayerCriteriaListener(
 					"GmSc效率值"));
-			add(rdbtnGmsc);
+			bglabel.add(rdbtnGmsc);
 			bg.add(rdbtnGmsc);
 
-			JRadioButton radioButton_11 = new JRadioButton("真实命中率");
+			MyRadioButton radioButton_11 = new MyRadioButton("真实命中率");
 			radioButton_11.setBounds(X * 94 / 400, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_11.addActionListener(new SortPlayerCriteriaListener(
 					"真实命中率"));
-			add(radioButton_11);
+			bglabel.add(radioButton_11);
 			bg.add(radioButton_11);
 
-			JRadioButton radioButton_12 = new JRadioButton("投篮效率");
+			MyRadioButton radioButton_12 = new MyRadioButton("投篮效率");
 			radioButton_12.setBounds(X * 64 / 400, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_12.addActionListener(new SortPlayerCriteriaListener(
 					"投篮效率"));
-			add(radioButton_12);
+			bglabel.add(radioButton_12);
 			bg.add(radioButton_12);
 
-			JRadioButton radioButton_13 = new JRadioButton("篮板率");
+			MyRadioButton radioButton_13 = new MyRadioButton("篮板率");
 			radioButton_13.setBounds(X * 94 / 400, Y * 81 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_13.addActionListener(new SortPlayerCriteriaListener(
 					"篮板率"));
-			add(radioButton_13);
+			bglabel.add(radioButton_13);
 			bg.add(radioButton_13);
 
-			JRadioButton radioButton_14 = new JRadioButton("进攻篮板率");
+			MyRadioButton radioButton_14 = new MyRadioButton("进攻篮板率");
 			radioButton_14.setBounds(X * 4 / 1366, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_14.addActionListener(new SortPlayerCriteriaListener(
 					"进攻篮板率"));
-			add(radioButton_14);
+			bglabel.add(radioButton_14);
 			bg.add(radioButton_14);
 
-			JRadioButton radioButton_15 = new JRadioButton("防守篮板率");
+			MyRadioButton radioButton_15 = new MyRadioButton("防守篮板率");
 			radioButton_15.setBounds(X * 34 / 400, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_15.addActionListener(new SortPlayerCriteriaListener(
 					"防守篮板率"));
-			add(radioButton_15);
+			bglabel.add(radioButton_15);
 			bg.add(radioButton_15);
 
-			JRadioButton radioButton_16 = new JRadioButton("助攻率");
+			MyRadioButton radioButton_16 = new MyRadioButton("助攻率");
 			radioButton_16.setBounds(X * 64 / 400, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_16.addActionListener(new SortPlayerCriteriaListener(
 					"助攻率"));
-			add(radioButton_16);
+			bglabel.add(radioButton_16);
 			bg.add(radioButton_16);
 
-			JRadioButton radioButton_17 = new JRadioButton("抢断率");
+			MyRadioButton radioButton_17 = new MyRadioButton("抢断率");
 			radioButton_17.setBounds(X * 94 / 400, Y * 106 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_17.addActionListener(new SortPlayerCriteriaListener(
 					"抢断率"));
-			add(radioButton_17);
+			bglabel.add(radioButton_17);
 			bg.add(radioButton_17);
 
-			JRadioButton radioButton_18 = new JRadioButton("盖帽率");
+			MyRadioButton radioButton_18 = new MyRadioButton("盖帽率");
 			radioButton_18.setBounds(X * 4 / 1366, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_18.addActionListener(new SortPlayerCriteriaListener(
 					"盖帽率"));
-			add(radioButton_18);
+			bglabel.add(radioButton_18);
 			bg.add(radioButton_18);
 
-			JRadioButton radioButton_19 = new JRadioButton("失误率");
+			MyRadioButton radioButton_19 = new MyRadioButton("失误率");
 			radioButton_19.setBounds(X * 34 / 400, Y * 131 / 768, X * 29 / 400,
 					X * 15 / 700);
 			radioButton_19.addActionListener(new SortPlayerCriteriaListener(
 					"失误率"));
-			add(radioButton_19);
+			bglabel.add(radioButton_19);
 			bg.add(radioButton_19);
 
 			mainFrame.getContentPane().add(this);
@@ -1048,214 +1091,224 @@ public class SortPanel extends JPanel {
 					X * 500 / 1366, X * 195 / 1366);
 
 			this.setBorder(new TitledBorder(new EtchedBorder()));
+			this.setBorder(new TitledBorder(new EtchedBorder()));
+			JLabel bglabel=new JLabel();
+			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
+					"Image/screeningPlayerPanel.png").getImage().getScaledInstance(this.getWidth(),
+					this.getHeight(), Image.SCALE_SMOOTH));
+			bglabel.setIcon(bgPanel);
+			bglabel.setBounds(0, 0,this.getWidth(),
+					this.getHeight() );
 
+
+			this.add(bglabel);
 			ButtonGroup bg1 = new ButtonGroup();
 
-			JRadioButton radioButton = new JRadioButton("比赛场数");
+			MyRadioButton radioButton = new MyRadioButton("比赛场数");
 			radioButton.setBounds(X * 5 / 1366, Y * 6 / 768, X * 130 / 1366,
 					X * 15 / 700);
 			radioButton.addActionListener(new SortTeamCriteriaListener("比赛场数"));
-			add(radioButton);
+			bglabel.add(radioButton);
 			bg1.add(radioButton);
 
-			JRadioButton radioButton_1 = new JRadioButton("投篮命中数/场均");
+			MyRadioButton radioButton_1 = new MyRadioButton("投篮命中数/场均");
 			radioButton_1.setBounds(X * 5 / 1366, Y * 31 / 768, X * 130 / 1366,
 					X * 15 / 700);
 			radioButton_1.addActionListener(new SortTeamCriteriaListener(
 					"投篮命中率"));
-			add(radioButton_1);
+			bglabel.add(radioButton_1);
 			bg1.add(radioButton_1);
 
-			JRadioButton radioButton_2 = new JRadioButton("投篮出手数/场均");
+			MyRadioButton radioButton_2 = new MyRadioButton("投篮出手数/场均");
 			radioButton_2.setBounds(X * 131 / 1366, Y * 31 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_2.addActionListener(new SortTeamCriteriaListener(
 					"投篮出手数"));
-			add(radioButton_2);
+			bglabel.add(radioButton_2);
 			bg1.add(radioButton_2);
 
-			JRadioButton radioButton_3 = new JRadioButton("三分命中数/场均");
+			MyRadioButton radioButton_3 = new MyRadioButton("三分命中数/场均");
 			radioButton_3.setBounds(X * 257 / 1366, Y * 31 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_3.addActionListener(new SortTeamCriteriaListener(
 					"三分命中数"));
-			add(radioButton_3);
+			bglabel.add(radioButton_3);
 			bg1.add(radioButton_3);
 
-			JRadioButton radioButton_4 = new JRadioButton("三分出手数/场均");
+			MyRadioButton radioButton_4 = new MyRadioButton("三分出手数/场均");
 			radioButton_4.setBounds(X * 383 / 1366, Y * 31 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_4.addActionListener(new SortTeamCriteriaListener(
 					"三分出手数"));
-			add(radioButton_4);
+			bglabel.add(radioButton_4);
 			bg1.add(radioButton_4);
 
-			JRadioButton radioButton_5 = new JRadioButton("罚球命中数/场均");
+			MyRadioButton radioButton_5 = new MyRadioButton("罚球命中数/场均");
 			radioButton_5.setBounds(X * 5 / 1366, Y * 56 / 768, X * 130 / 1366,
 					X * 15 / 700);
 			radioButton_5.addActionListener(new SortTeamCriteriaListener(
 					"罚球命中数"));
-			add(radioButton_5);
+			bglabel.add(radioButton_5);
 			bg1.add(radioButton_5);
 
-			JRadioButton radioButton_6 = new JRadioButton("罚球出手数/场均");
+			MyRadioButton radioButton_6 = new MyRadioButton("罚球出手数/场均");
 			radioButton_6.setBounds(X * 131 / 1366, Y * 56 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_6.addActionListener(new SortTeamCriteriaListener(
 					"罚球出手数"));
-			add(radioButton_6);
+			bglabel.add(radioButton_6);
 			bg1.add(radioButton_6);
 
-			JRadioButton radioButton_7 = new JRadioButton("进攻篮板数/场均");
+			MyRadioButton radioButton_7 = new MyRadioButton("进攻篮板数/场均");
 			radioButton_7.setBounds(X * 131 / 1366, Y * 6 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_7.addActionListener(new SortTeamCriteriaListener(
 					"进攻篮板数"));
-			add(radioButton_7);
+			bglabel.add(radioButton_7);
 			bg1.add(radioButton_7);
 
-			JRadioButton radioButton_8 = new JRadioButton("防守篮板数/场均");
+			MyRadioButton radioButton_8 = new MyRadioButton("防守篮板数/场均");
 			radioButton_8.setBounds(X * 257 / 1366, Y * 6 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_8.addActionListener(new SortTeamCriteriaListener(
 					"防守篮板数"));
-			add(radioButton_8);
+			bglabel.add(radioButton_8);
 			bg1.add(radioButton_8);
 
-			JRadioButton radioButton_9 = new JRadioButton("篮板数/场均");
+			MyRadioButton radioButton_9 = new MyRadioButton("篮板数/场均");
 			radioButton_9.setBounds(X * 383 / 1366, Y * 6 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_9
 					.addActionListener(new SortTeamCriteriaListener("篮板数"));
-			add(radioButton_9);
+			bglabel.add(radioButton_9);
 			bg1.add(radioButton_9);
 
-			JRadioButton radioButton_10 = new JRadioButton("助攻数/场均");
+			MyRadioButton radioButton_10 = new MyRadioButton("助攻数/场均");
 			radioButton_10.setBounds(X * 257 / 1366, Y * 56 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_10
 					.addActionListener(new SortTeamCriteriaListener("助攻数"));
-			add(radioButton_10);
+			bglabel.add(radioButton_10);
 			bg1.add(radioButton_10);
 
-			JRadioButton radioButton_11 = new JRadioButton("抢断数/场均");
+			MyRadioButton radioButton_11 = new MyRadioButton("抢断数/场均");
 			radioButton_11.setBounds(X * 383 / 1366, Y * 56 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_11
 					.addActionListener(new SortTeamCriteriaListener("抢断数"));
-			add(radioButton_11);
+			bglabel.add(radioButton_11);
 			bg1.add(radioButton_11);
 
-			JRadioButton radioButton_12 = new JRadioButton("盖帽数/场均");
+			MyRadioButton radioButton_12 = new MyRadioButton("盖帽数/场均");
 			radioButton_12.setBounds(X * 5 / 1366, Y * 81 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_12
 					.addActionListener(new SortTeamCriteriaListener("盖帽数"));
-			add(radioButton_12);
+			bglabel.add(radioButton_12);
 			bg1.add(radioButton_12);
 
-			JRadioButton radioButton_13 = new JRadioButton("失误数/场均");
+			MyRadioButton radioButton_13 = new MyRadioButton("失误数/场均");
 			radioButton_13.setBounds(X * 131 / 1366, Y * 81 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_13
 					.addActionListener(new SortTeamCriteriaListener("失误数"));
-			add(radioButton_13);
+			bglabel.add(radioButton_13);
 			bg1.add(radioButton_13);
 
-			JRadioButton radioButton_14 = new JRadioButton("犯规数/场均");
+			MyRadioButton radioButton_14 = new MyRadioButton("犯规数/场均");
 			radioButton_14.setBounds(X * 257 / 1366, Y * 81 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_14
 					.addActionListener(new SortTeamCriteriaListener("犯规数"));
-			add(radioButton_14);
+			bglabel.add(radioButton_14);
 			bg1.add(radioButton_14);
 
-			JRadioButton radioButton_15 = new JRadioButton("比赛得分/场均");
+			MyRadioButton radioButton_15 = new MyRadioButton("比赛得分/场均");
 			radioButton_15.setBounds(X * 383 / 1366, Y * 81 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_15.addActionListener(new SortTeamCriteriaListener(
 					"比赛得分"));
-			add(radioButton_15);
+			bglabel.add(radioButton_15);
 			bg1.add(radioButton_15);
 
-			JRadioButton radioButton_16 = new JRadioButton("投篮命中率");
+			MyRadioButton radioButton_16 = new MyRadioButton("投篮命中率");
 			radioButton_16.setBounds(X * 5 / 1366, Y * 106 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_16.addActionListener(new SortTeamCriteriaListener(
 					"投篮命中率"));
-			add(radioButton_16);
+			bglabel.add(radioButton_16);
 			bg1.add(radioButton_16);
 
-			JRadioButton radioButton_17 = new JRadioButton("三分命中率");
+			MyRadioButton radioButton_17 = new MyRadioButton("三分命中率");
 			radioButton_17.setBounds(X * 131 / 1366, Y * 106 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_17.addActionListener(new SortTeamCriteriaListener(
 					"三分命中率"));
-			add(radioButton_17);
+			bglabel.add(radioButton_17);
 			bg1.add(radioButton_17);
 
-			JRadioButton radioButton_18 = new JRadioButton("罚球命中率");
+			MyRadioButton radioButton_18 = new MyRadioButton("罚球命中率");
 			radioButton_18.setBounds(X * 257 / 1366, Y * 106 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_18.addActionListener(new SortTeamCriteriaListener(
 					"罚球命中率"));
-			add(radioButton_18);
+			bglabel.add(radioButton_18);
 			bg1.add(radioButton_18);
 
-			JRadioButton radioButton_19 = new JRadioButton("胜率");
+			MyRadioButton radioButton_19 = new MyRadioButton("胜率");
 			radioButton_19.setBounds(X * 383 / 1366, Y * 106 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_19
 					.addActionListener(new SortTeamCriteriaListener("胜率"));
-			add(radioButton_19);
+			bglabel.add(radioButton_19);
 			bg1.add(radioButton_19);
 
-			JRadioButton radioButton_20 = new JRadioButton("进攻回合/场均");
+			MyRadioButton radioButton_20 = new MyRadioButton("进攻回合/场均");
 			radioButton_20.setBounds(X * 5 / 1366, Y * 131 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_20.addActionListener(new SortTeamCriteriaListener(
 					"进攻回合"));
-			add(radioButton_20);
+			bglabel.add(radioButton_20);
 			bg1.add(radioButton_20);
 
-			JRadioButton radioButton_21 = new JRadioButton("进攻效率");
+			MyRadioButton radioButton_21 = new MyRadioButton("进攻效率");
 			radioButton_21.setBounds(X * 131 / 1366, Y * 131 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_21.addActionListener(new SortTeamCriteriaListener(
 					"进攻效率"));
-			add(radioButton_21);
+			bglabel.add(radioButton_21);
 			bg1.add(radioButton_21);
 
-			JRadioButton radioButton_22 = new JRadioButton("防守效率");
+			MyRadioButton radioButton_22 = new MyRadioButton("防守效率");
 			radioButton_22.setBounds(X * 257 / 1366, Y * 131 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_22.addActionListener(new SortTeamCriteriaListener(
 					"防守效率"));
-			add(radioButton_22);
+			bglabel.add(radioButton_22);
 			bg1.add(radioButton_22);
 
-			JRadioButton radioButton_23 = new JRadioButton("篮板效率");
+			MyRadioButton radioButton_23 = new MyRadioButton("篮板效率");
 			radioButton_23.setBounds(X * 383 / 1366, Y * 131 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_23.addActionListener(new SortTeamCriteriaListener(
 					"篮板效率"));
-			add(radioButton_23);
+			bglabel.add(radioButton_23);
 			bg1.add(radioButton_23);
 
-			JRadioButton radioButton_24 = new JRadioButton("抢断效率");
+			MyRadioButton radioButton_24 = new MyRadioButton("抢断效率");
 			radioButton_24.setBounds(X * 5 / 1366, Y * 156 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_24.addActionListener(new SortTeamCriteriaListener(
 					"抢断效率"));
-			add(radioButton_24);
+			bglabel.add(radioButton_24);
 			bg1.add(radioButton_24);
 
-			JRadioButton radioButton_25 = new JRadioButton("助攻率");
+			MyRadioButton radioButton_25 = new MyRadioButton("助攻率");
 			radioButton_25.setBounds(X * 131 / 1366, Y * 156 / 768,
 					X * 130 / 1366, X * 15 / 700);
 			radioButton_25
 					.addActionListener(new SortTeamCriteriaListener("助攻率"));
-			add(radioButton_25);
+			bglabel.add(radioButton_25);
 			bg1.add(radioButton_25);
 
 			mainFrame.getContentPane().add(this);
@@ -1452,7 +1505,6 @@ public class SortPanel extends JPanel {
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			default:
-				System.out.println("筛选标准选择出错");
 				break;
 			}
 			sortPlayer(UpOrDown);
@@ -1601,7 +1653,6 @@ public class SortPanel extends JPanel {
 				break;
 
 			default:
-				System.out.println("筛选标准选择出错");
 				break;
 			}
 			sortTeam(UpOrDown);
@@ -1645,6 +1696,14 @@ public class SortPanel extends JPanel {
 			this.setText(text);
 			this.setFont(new Font("黑体", 1, 11));
 
+		}
+	}
+	class MyRadioButton extends JRadioButton{
+		public MyRadioButton(String choice){
+			super();
+			this.setText(choice);
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
 		}
 	}
 }
