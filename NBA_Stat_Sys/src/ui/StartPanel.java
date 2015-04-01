@@ -44,7 +44,7 @@ public class StartPanel extends JPanel {
 		this.setOpaque(true);
 		// bgImage = Toolkit.getDefaultToolkit().getImage(
 		// "Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
-		ImageIcon bg = new ImageIcon(new ImageIcon("Image/mainImage.png")
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/startPanel.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel = new JLabel();

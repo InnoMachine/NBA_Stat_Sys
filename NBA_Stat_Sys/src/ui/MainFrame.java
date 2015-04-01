@@ -9,18 +9,10 @@ import javax.swing.JFrame;
 public class MainFrame extends JFrame {
 	
 
-/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	static StartPanel startPanel=null;
-//test
 	public static void main(String[] args) {
-		MainFrame mf = new MainFrame();
-		mf.setVisible(true);
-		
-
-	      
+		MainFrame mf = new MainFrame();		      
 	}
 
 	public MainFrame() {
