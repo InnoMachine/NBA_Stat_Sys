@@ -377,10 +377,9 @@ public class SortPanel extends JPanel {
 									.valueOf(playerVos.get(i)
 											.getAssistanceField())));
 					break;
-				case "time":
+				case "timeField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn.getText(), String
-									.valueOf(playerVos.get(i).getTime() / 60.0)));
+							playerCriteriabtn.getText(), String.format("%.2f",(playerVos.get(i).getTimeField() / 60.0))));
 					break;
 				case "hitRate":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -1279,7 +1278,7 @@ public class SortPanel extends JPanel {
 				break;
 			case "在场时间":
 				playerCriteriabtn.setText("在场时间");
-				playerCriteria = "time";
+				playerCriteria = "timeField";
 				sortPlayerCriteriaPanel.setVisible(false);
 				break;
 			case "投篮命中率":

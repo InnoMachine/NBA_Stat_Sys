@@ -2,7 +2,11 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -84,9 +88,29 @@ public class PlayerCardPanel extends JPanel {
 		playerButton.setOpaque(false);
 		add(playerButton);
 
+		try {
+			Image img=ImageIO.read(new File("CSEdata/players/portrait/"
+					+ playerInfo.getName() + ".png"));
+		
+			
+			
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ImageIcon playerPortrait = new ImageIcon("CSEdata/players/portrait/"
 				+ playerInfo.getName() + ".png");
+      
+
 		playerButton.setIcon(playerPortrait);
+		
+		
+		
+		
 
 		MyLabel label = new MyLabel(Color.WHITE, "姓名");
 		label.setBounds(X * 220 / 1366, Y * 21 / 768, X * 54 / 1366,

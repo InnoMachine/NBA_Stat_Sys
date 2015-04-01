@@ -456,6 +456,7 @@ public class SearchPanel extends JPanel {
 		teamTableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		teamTable.getTableHeader().setDefaultRenderer(teamTableHeaderRenderer);
 		teamTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		teamTable.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		for (int i = 0; i < testColumn.size(); i++) {
 			teamTable.getColumnModel().getColumn(i)
 					.setCellRenderer(new TeamTableRenderer());
@@ -470,8 +471,9 @@ public class SearchPanel extends JPanel {
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 5, Y / 10, 5 * X / 8, Y *115/ 766);
+		teamJSP.setBounds(X *245/ 1366, Y / 10, X*902 / 1366, Y *115/ 766);
 		teamJSP.setVisible(true);
+		teamJSP.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		bgLabel.add(teamJSP);
 
 		TeamVo defaultTeam = team_BS.getTeamByAbbr(String.valueOf(teamRowData
@@ -681,6 +683,7 @@ public class SearchPanel extends JPanel {
 		teamTable.setOpaque(false);
 		teamTable.setRowHeight(Y / 7);
 		teamTable.getTableHeader().setVisible(false);
+		teamTable.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		DefaultTableCellRenderer teamTableHeaderRenderer = new DefaultTableCellRenderer();
 		teamTableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
 		teamTable.getTableHeader().setDefaultRenderer(teamTableHeaderRenderer);
@@ -697,10 +700,13 @@ public class SearchPanel extends JPanel {
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 6, Y / 20, 5 * X / 8, Y*115/766);
+		teamJSP.setBounds(X *200/ 1366, Y / 20, X*902 / 1366, Y*115/766);
 		teamJSP.setVisible(true);
 		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
+		
+		teamJSP.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		
 		bgLabel.add(teamJSP);
 
 		// playerButton
@@ -738,6 +744,7 @@ public class SearchPanel extends JPanel {
 		playerTable.getTableHeader().setDefaultRenderer(
 				playerTableHeaderRenderer);
 		playerTable.getColumnModel().getColumn(0).setPreferredWidth(X / 10);
+		teamTable.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		JScrollPane playerJSP = new JScrollPane(playerTable);
 		playerJSP.getViewport().setOpaque(false);
 		playerJSP.setOpaque(false);
@@ -747,8 +754,9 @@ public class SearchPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		playerJSP
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		playerJSP.setBounds(X / 18, Y / 4, X / 10, 7 * Y / 10);
+		playerJSP.setBounds(X *64/ 1366, Y / 4, X / 10, 7 * Y / 10);
 		playerJSP.setVisible(true);
+		playerJSP.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		bgLabel.add(playerJSP);
 
 	}
@@ -1940,6 +1948,7 @@ public class SearchPanel extends JPanel {
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
 			this.setOpaque(false);
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 	}
 
@@ -1957,6 +1966,7 @@ public class SearchPanel extends JPanel {
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
 			this.setOpaque(false);
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 	}
 
@@ -1970,6 +1980,7 @@ public class SearchPanel extends JPanel {
 			// TODO Auto-generated method stub
 			PlayerButton renderer = new PlayerButton(
 					((PlayerButton) value).playerName);
+			renderer.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 			renderer.playerPortrait = new ImageIcon(new ImageIcon(
 					"CSEdata/players/portrait/" + renderer.playerName + ".png")
 					.getImage().getScaledInstance(X / 10, X / 10,
@@ -1996,6 +2007,7 @@ public class SearchPanel extends JPanel {
 				int column) {
 
 			TeamButton renderer = new TeamButton(((TeamButton) value).teamName);
+			renderer.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 			renderer.playersInTeam = ((TeamButton) value).playersInTeam;
 			renderer.teamIcon = new ImageIcon(new ImageIcon(
 					"CSEdata/teams_png/" + renderer.teamName + ".png")
