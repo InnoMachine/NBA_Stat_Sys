@@ -1,6 +1,6 @@
 package vo;
 
-import enums.Division;
+import po.Division;
 
 
 public class PlayerVo {

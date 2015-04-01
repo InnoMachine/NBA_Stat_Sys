@@ -1,7 +1,7 @@
 package vo;
 
-import enums.Conference;
-import enums.Division;
+import po.Conference;
+import po.Division;
 
 public class TeamVo {
 

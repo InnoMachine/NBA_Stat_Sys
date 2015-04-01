@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import databaseUtility.DBUtil;
-import enums.Conference;
-import enums.Division;
+import po.Conference;
+import po.Division;
 import po.TeamPO;
 import po.TeamPerformance;
 
