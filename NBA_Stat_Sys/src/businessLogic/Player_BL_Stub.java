@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
-import po.Division;
+import enums.Division;
 import vo.PlayerVo;
 
 public class Player_BL_Stub implements Player_BS{

@@ -7,6 +7,9 @@ package po;
 
 import java.util.ArrayList;
 
+import enums.Conference;
+import enums.Division;
+
 public class TeamPO {
 	
 	private String teamName;
