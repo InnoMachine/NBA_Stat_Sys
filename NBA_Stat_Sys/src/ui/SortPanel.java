@@ -657,7 +657,7 @@ public class SortPanel extends JPanel {
 									.get(i).getThreePointHitRate())));
 
 					break;
-				case "freeeThrowRate":
+				case "freeThrowRate":
 					a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
 							teamCriteriabtn.getText(), String.valueOf(teamVos
 									.get(i).getFreeThrowRate())));
