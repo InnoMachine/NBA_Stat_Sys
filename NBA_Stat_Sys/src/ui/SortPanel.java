@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -93,9 +94,11 @@ public class SortPanel extends JPanel {
 		criterialbl.setBounds(X * 335 / 1366, Y * 66 / 768, X / 15, X / 50);
 		bgLabel.add(criterialbl);
 
-		JButton home= new JButton();
-		ImageIcon homeIcon=new ImageIcon(new ImageIcon("Image/homeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		home.setBounds(17*X/20,Y/18, X/25,X/25);
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -103,8 +106,10 @@ public class SortPanel extends JPanel {
 		home.addActionListener(e -> back());
 		bgLabel.add(home);
 		JButton minimize = new JButton();
-		ImageIcon minimizeIcon=new ImageIcon(new ImageIcon("Image/minimizeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		minimize.setBounds(18*X/20,Y/18, X/25,X/25);
+		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
+				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
+				X / 25, Image.SCALE_SMOOTH));
+		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -120,8 +125,10 @@ public class SortPanel extends JPanel {
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
-		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		close.setBounds(19*X/20,Y/18, X/25,X/25);
+		ImageIcon closeIcon = new ImageIcon(
+				new ImageIcon("Image/closeIcon.png").getImage()
+						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
+		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -151,9 +158,9 @@ public class SortPanel extends JPanel {
 
 		if (category == "player") {
 
-			ImageIcon bg = new ImageIcon(new ImageIcon(
-					"Image/sortPlayer.png").getImage().getScaledInstance(
-					this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
+			ImageIcon bg = new ImageIcon(new ImageIcon("Image/sortPlayer.png")
+					.getImage().getScaledInstance(this.getWidth(),
+							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
 			upSortbtn.setBounds(X * 950 / 1366, Y * 66 / 768, X / 50, X / 50);
@@ -176,9 +183,14 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn.setBounds(X * 461 / 1366, Y * 66 / 768,
 					X * 31 / 100, X / 50);
 			playerCriteriabtn.addActionListener(e -> playerCriteriaShow());
+			
+
+			
+           
+			
 			bgLabel.add(playerCriteriabtn);
 
-			bgLabel.addMouseListener(new MouseListener() {
+			this.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseReleased(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -192,25 +204,27 @@ public class SortPanel extends JPanel {
 				@Override
 				public void mouseExited(MouseEvent e) {
 					// TODO Auto-generated method stub
+					/*
+					
+					 */
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					// TODO Auto-generated method stub
+					
 				}
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
-					System.out.println("CLICKED!    X: " + e.getX() + "   Y: "
-							+ e.getY());
-					if (e.getX() <= X * 461 / 1366
-							|| e.getX() >= (X * 461 / 1366 + X * 31 / 100)
-							|| e.getY() <= (Y * 66 / 768 + X / 50)
-							|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 14 / 100)) {
-						if (sortPlayerCriteriaPanel != null) {
-							sortPlayerCriteriaPanel.setVisible(false);
-						}
+					if (e.getSource() == playerCriteriabtn) {
+						sortPlayerCriteriaPanel.setVisible(true);
+					}
+					if (e.getSource() != playerCriteriabtn
+							&&e.getSource() != sortPlayerCriteriaPanel) {
+						System.out.println("mouse  out");
+						sortPlayerCriteriaPanel.setVisible(false);
 					}
 				}
 			});
@@ -218,9 +232,9 @@ public class SortPanel extends JPanel {
 		}
 		if (category == "team") {
 
-			ImageIcon bg = new ImageIcon(new ImageIcon(
-					"Image/searchTeam.png").getImage().getScaledInstance(
-					this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
+			ImageIcon bg = new ImageIcon(new ImageIcon("Image/searchTeam.png")
+					.getImage().getScaledInstance(this.getWidth(),
+							this.getHeight(), Image.SCALE_SMOOTH));
 			bgLabel.setIcon(bg);
 			JButton upSortbtn = new JButton("U");
 			upSortbtn.setBounds(X * 950 / 1366, Y * 66 / 768, X / 50, X / 50);
@@ -285,7 +299,7 @@ public class SortPanel extends JPanel {
 		}
 
 		mainFrame.getContentPane().add(this);
-		
+
 	}
 
 	public void makeTable(String category) {
@@ -380,7 +394,8 @@ public class SortPanel extends JPanel {
 					break;
 				case "timeField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn.getText(), String.format("%.2f",(playerVos.get(i).getTimeField() / 60.0))));
+							playerCriteriabtn.getText(), String.format("%.2f",
+									(playerVos.get(i).getTimeField() / 60.0))));
 					break;
 				case "hitRate":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
