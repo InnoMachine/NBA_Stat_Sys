@@ -443,6 +443,7 @@ public class SearchPanel extends JPanel {
 			}
 		};
 		JTable teamTable = new JTable(teamDTM);
+		teamTable.setOpaque(false);
 		teamTable.setRowHeight(Y / 7);
 		teamTable.getTableHeader().setVisible(false);
 		DefaultTableCellRenderer teamTableHeaderRenderer = new DefaultTableCellRenderer();
@@ -456,6 +457,7 @@ public class SearchPanel extends JPanel {
 		}
 
 		JScrollPane teamJSP = new JScrollPane(teamTable);
+		teamJSP.setOpaque(false);
 		teamJSP.getHorizontalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -661,7 +663,8 @@ public class SearchPanel extends JPanel {
 			}
 		};
 		JTable teamTable = new JTable(teamDTM);
-		teamTable.setRowHeight(Y / 6);
+		teamTable.setOpaque(false);
+		teamTable.setRowHeight(Y / 7);
 		teamTable.getTableHeader().setVisible(false);
 		DefaultTableCellRenderer teamTableHeaderRenderer = new DefaultTableCellRenderer();
 		teamTableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
@@ -674,11 +677,12 @@ public class SearchPanel extends JPanel {
 		}
 		teamTable.setOpaque(false);
 		JScrollPane teamJSP = new JScrollPane(teamTable);
+		teamJSP.setOpaque(false);
 		teamJSP.getHorizontalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		teamJSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		teamJSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		teamJSP.setBounds(X / 6, Y / 20, 13 * X / 20, Y / 6);
+		teamJSP.setBounds(X / 6, Y / 20, 5 * X / 8, Y / 6);
 		teamJSP.setVisible(true);
 		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
@@ -700,6 +704,7 @@ public class SearchPanel extends JPanel {
 			}
 		};
 		playerTable = new JTable(playerDTM);
+		playerTable.setOpaque(false);
 		playerTable.setRowHeight(X / 10);
 		playerTable.setCellSelectionEnabled(true);
 		playerTable.getColumnModel().getColumn(0)
@@ -711,6 +716,7 @@ public class SearchPanel extends JPanel {
 				playerTableHeaderRenderer);
 		playerTable.getColumnModel().getColumn(0).setPreferredWidth(X / 10);
 		JScrollPane playerJSP = new JScrollPane(playerTable);
+		playerJSP.setOpaque(false);
 		playerJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		playerJSP
