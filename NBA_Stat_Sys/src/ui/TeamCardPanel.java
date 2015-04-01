@@ -91,7 +91,7 @@ public class TeamCardPanel extends JPanel {
 		teamButton.setIcon(teamIcon);
 		
 		MyLabel label = new MyLabel(Color.WHITE, "球队全名");
-		label.setBounds(X * 230 / 1366, Y * 21 / 768, X * 55 / 1366,
+		label.setBounds(X * 230 / 1366, Y * 21 / 768, X * 60 / 1366,
 				Y * 15 / 768);
 		add(label);
 
@@ -191,7 +191,7 @@ public class TeamCardPanel extends JPanel {
 		add(textField_3);
 
 		MyLabel label_7 = new MyLabel(Color.WHITE, "建立时间");
-		label_7.setBounds(X * 690 / 1366, Y * 91 / 768, X * 55 / 1366,
+		label_7.setBounds(X * 690 / 1366, Y * 91 / 768, X * 60 / 1366,
 				Y * 15 / 768);
 		add(label_7);
 
@@ -228,7 +228,7 @@ public class TeamCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体", 1, 11));
+			this.setFont(new Font("黑体", 1, 13));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
@@ -244,7 +244,7 @@ public class TeamCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体", 1, 11));
+			this.setFont(new Font("黑体", 1, 13));
 
 		}
 
@@ -253,7 +253,7 @@ public class TeamCardPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setText(text);
-			this.setFont(new Font("黑体", 1, 11));
+			this.setFont(new Font("黑体", 1, 13));
 
 		}
 	}
