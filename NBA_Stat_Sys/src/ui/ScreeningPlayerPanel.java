@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -25,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -64,7 +66,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setLayout(null);
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
-		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPanel.png")
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
@@ -81,6 +83,15 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningCriteriabtn = new JButton("");
 		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 66 / 768,
 				X * 213 / 1366, X / 50);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance( 	X * 213 / 1366,  X / 50,
+						 Image.SCALE_SMOOTH));
+		screeningCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		screeningCriteriabtn.setForeground(Color.WHITE);
+		screeningCriteriabtn.setIcon(buttonIcon);
+		screeningCriteriabtn.setOpaque(false);
+		screeningCriteriabtn.setContentAreaFilled(false);
+		screeningCriteriabtn.setBorderPainted(false);
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		bgLabel.add(screeningCriteriabtn);
 
@@ -128,8 +139,17 @@ public class ScreeningPlayerPanel extends JPanel {
 		bgLabel.add(close);
 
 		JButton screeningbtn = new JButton("显示前50名");
-		screeningbtn.setBounds(X * 990 / 1366, Y * 66 / 768, X * 103 / 1366,
+		screeningbtn.setForeground(Color.WHITE);
+		screeningbtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		screeningbtn.setBounds(X * 990 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
+		ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance( 	 X * 100 / 1366,  X / 50,
+						 Image.SCALE_SMOOTH));
+		screeningbtn.setIcon(buttonIcon2);
+		screeningbtn.setOpaque(false);
+		screeningbtn.setContentAreaFilled(false);
+		screeningbtn.setBorderPainted(false);
 		screeningbtn.addActionListener(e -> screening());
 		bgLabel.add(screeningbtn);
 		mainFrame.getContentPane().add(this);
@@ -483,116 +503,125 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setBounds(X * 715 / 1366, Y * 66 / 768 + X / 50,
 					X * 213 / 1366, X * 108 / 1366);
 			this.setBorder(new TitledBorder(new EtchedBorder()));
+			JLabel bglabel=new JLabel();
+			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
+					"Image/screeningPlayerPanel.png").getImage().getScaledInstance(this.getWidth(),
+					this.getHeight(), Image.SCALE_SMOOTH));
+			bglabel.setIcon(bgPanel);
+			bglabel.setBounds(0, 0,this.getWidth(),
+					this.getHeight() );
 
+
+			this.add(bglabel);
 			ButtonGroup bg = new ButtonGroup();
 
-			JRadioButton scorebtn = new JRadioButton("得分");
+			MyRadioButton scorebtn = new MyRadioButton("得分");
 			scorebtn.setBounds(X * 6 / 1366, Y * 6 / 768, X * 51 / 1366,
 					Y * 23 / 768);
 			scorebtn.addActionListener(new ScreeningCriteriaListener("得分"));
-			add(scorebtn);
+			bglabel.add(scorebtn);
 			bg.add(scorebtn);
 
-			JRadioButton reboundbtn = new JRadioButton("篮板");
+			MyRadioButton reboundbtn = new MyRadioButton("篮板");
 			reboundbtn.setBounds(X * 6 / 1366, Y * 31 / 768, X * 51 / 1366,
 					Y * 23 / 768);
 			reboundbtn.addActionListener(new ScreeningCriteriaListener("篮板"));
-			add(reboundbtn);
+			bglabel.add(reboundbtn);
 			bg.add(reboundbtn);
 
-			JRadioButton assistancebtn = new JRadioButton("助攻");
+			MyRadioButton assistancebtn = new MyRadioButton("助攻");
 			assistancebtn.setBounds(X * 6 / 1366, Y * 56 / 768, X * 51 / 1366,
 					Y * 23 / 768);
 			assistancebtn
 					.addActionListener(new ScreeningCriteriaListener("助攻"));
-			add(assistancebtn);
+			bglabel.add(assistancebtn);
 			bg.add(assistancebtn);
 
-			JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("得分/篮板/助攻");
+			MyRadioButton rdbtnNewRadioButton_3 = new MyRadioButton("得分/篮板/助攻");
 			rdbtnNewRadioButton_3.setBounds(X * 56 / 1366, Y * 81 / 768,
 					X * 150 / 1366, Y * 23 / 768);
 			rdbtnNewRadioButton_3
 					.addActionListener(new ScreeningCriteriaListener("得分/篮板/助攻"));
-			add(rdbtnNewRadioButton_3);
+			bglabel.add(rdbtnNewRadioButton_3);
 			bg.add(rdbtnNewRadioButton_3);
 
-			JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("盖帽");
+			MyRadioButton rdbtnNewRadioButton_4 = new MyRadioButton("盖帽");
 			rdbtnNewRadioButton_4.setBounds(X * 6 / 1366, Y * 81 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			rdbtnNewRadioButton_4
 					.addActionListener(new ScreeningCriteriaListener("盖帽"));
-			add(rdbtnNewRadioButton_4);
+			bglabel.add(rdbtnNewRadioButton_4);
 			bg.add(rdbtnNewRadioButton_4);
 
-			JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("抢断");
+			MyRadioButton rdbtnNewRadioButton_5 = new MyRadioButton("抢断");
 			rdbtnNewRadioButton_5.setBounds(X * 56 / 1366, Y * 6 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			rdbtnNewRadioButton_5
 					.addActionListener(new ScreeningCriteriaListener("抢断"));
-			add(rdbtnNewRadioButton_5);
+			bglabel.add(rdbtnNewRadioButton_5);
 			bg.add(rdbtnNewRadioButton_5);
 
-			JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("犯规");
+			MyRadioButton rdbtnNewRadioButton_6 = new MyRadioButton("犯规");
 			rdbtnNewRadioButton_6.setBounds(X * 56 / 1366, Y * 31 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			rdbtnNewRadioButton_6
 					.addActionListener(new ScreeningCriteriaListener("犯规"));
-			add(rdbtnNewRadioButton_6);
+			bglabel.add(rdbtnNewRadioButton_6);
 			bg.add(rdbtnNewRadioButton_6);
 
-			JRadioButton rdbtnNewRadioButton_7 = new JRadioButton("失误");
+			MyRadioButton rdbtnNewRadioButton_7 = new MyRadioButton("失误");
 			rdbtnNewRadioButton_7.setBounds(X * 56 / 1366, Y * 56 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			rdbtnNewRadioButton_7
 					.addActionListener(new ScreeningCriteriaListener("失误"));
-			add(rdbtnNewRadioButton_7);
+			bglabel.add(rdbtnNewRadioButton_7);
 			bg.add(rdbtnNewRadioButton_7);
 
-			JRadioButton rdbtnNewRadioButton_8 = new JRadioButton("分钟");
+			MyRadioButton rdbtnNewRadioButton_8 = new MyRadioButton("分钟");
 			rdbtnNewRadioButton_8.setBounds(X * 106 / 1366, Y * 6 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			rdbtnNewRadioButton_8
 					.addActionListener(new ScreeningCriteriaListener("分钟"));
-			add(rdbtnNewRadioButton_8);
+			bglabel.add(rdbtnNewRadioButton_8);
 			bg.add(rdbtnNewRadioButton_8);
 
-			JRadioButton radioButton = new JRadioButton("效率");
+			MyRadioButton radioButton = new MyRadioButton("效率");
 			radioButton.setBounds(X * 106 / 1366, Y * 31 / 768, X * 51 / 1366,
 					Y * 23 / 768);
 			radioButton.addActionListener(new ScreeningCriteriaListener("效率"));
-			add(radioButton);
+			bglabel.add(radioButton);
 			bg.add(radioButton);
 
-			JRadioButton radioButton_1 = new JRadioButton("投篮");
+			MyRadioButton radioButton_1 = new MyRadioButton("投篮");
 			radioButton_1.setBounds(X * 106 / 1366, Y * 56 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			radioButton_1
 					.addActionListener(new ScreeningCriteriaListener("投篮"));
-			add(radioButton_1);
+			bglabel.add(radioButton_1);
 			bg.add(radioButton_1);
 
-			JRadioButton radioButton_2 = new JRadioButton("三分");
+			MyRadioButton radioButton_2 = new MyRadioButton("三分");
 			radioButton_2.setBounds(X * 156 / 1366, Y * 6 / 768, X * 51 / 1366,
 					Y * 23 / 768);
 			radioButton_2
 					.addActionListener(new ScreeningCriteriaListener("三分"));
-			add(radioButton_2);
+			bglabel.add(radioButton_2);
 			bg.add(radioButton_2);
 
-			JRadioButton radioButton_3 = new JRadioButton("罚球");
+			MyRadioButton radioButton_3 = new MyRadioButton("罚球");
 			radioButton_3.setBounds(X * 156 / 1366, Y * 31 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			radioButton_3
 					.addActionListener(new ScreeningCriteriaListener("罚球"));
-			add(radioButton_3);
+			bglabel.add(radioButton_3);
 			bg.add(radioButton_3);
 
-			JRadioButton radioButton_4 = new JRadioButton("两双");
+			MyRadioButton radioButton_4 = new MyRadioButton("两双");
 			radioButton_4.setBounds(X * 156 / 1366, Y * 56 / 768,
 					X * 51 / 1366, Y * 23 / 768);
 			radioButton_4
 					.addActionListener(new ScreeningCriteriaListener("两双"));
-			add(radioButton_4);
+			bglabel.add(radioButton_4);
 			bg.add(radioButton_4);
 
 			mainFrame.getContentPane().add(this);
@@ -734,6 +763,14 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setText(text);
 			this.setFont(new Font("黑体", 1, 11));
 
+		}
+	}
+	class MyRadioButton extends JRadioButton{
+		public MyRadioButton(String choice){
+			super();
+			this.setText(choice);
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
 		}
 	}
 }
