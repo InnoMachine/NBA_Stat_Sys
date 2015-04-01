@@ -18,11 +18,14 @@ public class MyScrollBarUI extends BasicScrollBarUI {
 		 super();
 		 this.bgColor=bgColor;
 		 this.barColor=barColor;
+         
 	}
 
 	@Override
 	protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
 
+//		this.getMinimumSize(scrollbar);
+		
 		int w = thumbBounds.width;
 		int h = thumbBounds.height;
 		g.translate(thumbBounds.x, thumbBounds.y);

@@ -1453,7 +1453,7 @@ public class SortPanel extends JPanel {
 				break;
 			case "防守篮板数":
 				teamCriteriabtn.setText("防守篮板数");
-				teamCriteria = "deffensiveRebound";
+				teamCriteria = "defensiveRebound";
 				sortTeamCriteriaPanel.setVisible(false);
 				break;
 			case "篮板数":

@@ -457,6 +457,7 @@ public class SearchPanel extends JPanel {
 		}
 
 		JScrollPane teamJSP = new JScrollPane(teamTable);
+		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
 		teamJSP.getHorizontalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -675,8 +676,8 @@ public class SearchPanel extends JPanel {
 					.setCellRenderer(new TeamTableRenderer());
 			teamTable.getColumnModel().getColumn(i).setPreferredWidth(100);
 		}
-		teamTable.setOpaque(false);
 		JScrollPane teamJSP = new JScrollPane(teamTable);
+		teamJSP.getViewport().setOpaque(false);
 		teamJSP.setOpaque(false);
 		teamJSP.getHorizontalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -716,6 +717,7 @@ public class SearchPanel extends JPanel {
 				playerTableHeaderRenderer);
 		playerTable.getColumnModel().getColumn(0).setPreferredWidth(X / 10);
 		JScrollPane playerJSP = new JScrollPane(playerTable);
+		playerJSP.getViewport().setOpaque(false);
 		playerJSP.setOpaque(false);
 		playerJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -1913,6 +1915,8 @@ public class SearchPanel extends JPanel {
 		public TeamButton(String teamName) {
 			this.teamName = teamName;
 			playersInTeam = team_BS.getPlayers(teamName);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
 			this.setOpaque(false);
 		}
 	}
@@ -1928,6 +1932,9 @@ public class SearchPanel extends JPanel {
 
 		public PlayerButton(String playerName) {
 			this.playerName = playerName;
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			this.setOpaque(false);
 		}
 	}
 
@@ -1972,7 +1979,6 @@ public class SearchPanel extends JPanel {
 					.getImage().getScaledInstance(X/15,
 							X/15, Image.SCALE_SMOOTH));
 			renderer.setIcon(renderer.teamIcon);
-			renderer.setOpaque(false);
 			teamForShowPlayer = renderer.teamName;
 			if (hasFocus) {
 				renderer.setBorder(BorderFactory.createLineBorder(Color.BLACK,
