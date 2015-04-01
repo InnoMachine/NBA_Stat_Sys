@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.awt.Scrollbar;
-
 import javax.swing.JComponent;
 import javax.swing.JScrollBar;
 import javax.swing.UIManager;

@@ -11,8 +11,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
-
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -774,6 +772,11 @@ public class ScreeningPlayerPanel extends JPanel {
 		}
 	}
 	class MyRadioButton extends JRadioButton{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyRadioButton(String choice){
 			super();
 			this.setText(choice);

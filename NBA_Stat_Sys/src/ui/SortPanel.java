@@ -9,10 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -1699,6 +1697,11 @@ public class SortPanel extends JPanel {
 		}
 	}
 	class MyRadioButton extends JRadioButton{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public MyRadioButton(String choice){
 			super();
 			this.setText(choice);

@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -30,8 +28,6 @@ import businessLogic.Team_BL;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
-import javax.swing.border.Border;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -444,6 +440,11 @@ public class SearchPanel extends JPanel {
 
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				testColumn) {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -676,6 +677,11 @@ public class SearchPanel extends JPanel {
 
 		DefaultTableModel teamDTM = new DefaultTableModel(teamRowData,
 				teamColumn) {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
