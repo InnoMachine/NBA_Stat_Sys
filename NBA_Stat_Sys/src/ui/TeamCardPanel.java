@@ -2,7 +2,9 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -77,16 +79,17 @@ public class TeamCardPanel extends JPanel {
 
 		// 放球队标志
 		JButton teamButton = new JButton();
-		teamButton.setBounds(X * 70 / 1366, Y * 6 / 768, X * 134 / 1366,
+		teamButton.setBounds(X * 88 / 1366, Y * 6 / 768, X * 120 / 1366,
 				Y * 108 / 768);
 		teamButton.setContentAreaFilled(false);
 		teamButton.setBorderPainted(false);
 		teamButton.setOpaque(false);
 		add(teamButton);
-		ImageIcon teamIcon = new ImageIcon("CSEdata/teams_png/"
-				+ teamInfo.getAbbreviation() + ".png");
+		ImageIcon teamIcon = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ teamInfo.getAbbreviation() + ".png").getImage().getScaledInstance(X * 120 / 1366,
+						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
 		teamButton.setIcon(teamIcon);
-
+		
 		MyLabel label = new MyLabel(Color.WHITE, "球队全名");
 		label.setBounds(X * 230 / 1366, Y * 21 / 768, X * 55 / 1366,
 				Y * 15 / 768);
@@ -225,7 +228,7 @@ public class TeamCardPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setFont(new Font("黑体", 1, 11));
-
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
 	}

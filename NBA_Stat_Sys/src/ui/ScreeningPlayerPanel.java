@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -707,7 +708,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setFont(new Font("黑体", 1, 11));
-
+            this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
 	}

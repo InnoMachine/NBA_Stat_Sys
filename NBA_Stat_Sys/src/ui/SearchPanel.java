@@ -604,6 +604,7 @@ public class SearchPanel extends JPanel {
 				X / 4, 3 * Y / 4, Image.SCALE_AREA_AVERAGING));
 		playerAction.setIcon(playerIcon);
 		
+		
 		// TeamButton
 		Vector<Vector<TeamButton>> teamRowData = new Vector<Vector<TeamButton>>();
 		Vector<TeamButton> testDATA = new Vector<TeamButton>();
@@ -1969,6 +1970,7 @@ public class SearchPanel extends JPanel {
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 	}
+	
 
 	// class: PlayerTableRenderer
 	class PlayerTableRenderer implements TableCellRenderer {

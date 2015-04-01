@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -81,30 +82,16 @@ public class PlayerCardPanel extends JPanel {
 
 		// 放球员头像
 		JButton playerButton = new JButton();
-		playerButton.setBounds(X * 70 / 1366, Y * 6 / 768, X * 134 / 1366,
+		playerButton.setBounds(X * 77 / 1366, Y * 6 / 768, X * 134 / 1366,
 				Y * 108 / 768);
 		playerButton.setContentAreaFilled(false);
 		playerButton.setBorderPainted(false);
 		playerButton.setOpaque(false);
 		add(playerButton);
-
-		try {
-			Image img=ImageIO.read(new File("CSEdata/players/portrait/"
-					+ playerInfo.getName() + ".png"));
 		
-			
-			
-			
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ImageIcon playerPortrait = new ImageIcon("CSEdata/players/portrait/"
-				+ playerInfo.getName() + ".png");
-      
+		ImageIcon playerPortrait = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
+				+ playerInfo.getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
+						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
 
 		playerButton.setIcon(playerPortrait);
 		
@@ -280,7 +267,7 @@ public class PlayerCardPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setFont(new Font("黑体", 1, 11));
-
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
 	}

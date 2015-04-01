@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -750,7 +751,6 @@ public class SortPanel extends JPanel {
 			this.setVisible(true);
 			this.setBounds(X * 461 / 1366, Y * 66 / 768 + X / 50, X * 31 / 100,
 					X * 14 / 100);
-
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 
 			ButtonGroup bg = new ButtonGroup();
@@ -1560,7 +1560,7 @@ public class SortPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setFont(new Font("黑体", 1, 11));
-
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
 	}
