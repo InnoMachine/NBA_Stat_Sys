@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import databaseUtility.DBUtil;
+import databaseMysqlUtility.DBUtil;
 import enums.Conference;
 import enums.Division;
 import po.TeamPO;

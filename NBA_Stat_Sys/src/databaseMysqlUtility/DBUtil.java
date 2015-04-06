@@ -3,7 +3,7 @@
  * 2015年3月7日 下午5:22:11
  * TODO
  */
-package databaseUtility;
+package databaseMysqlUtility;
 
 import java.io.FileReader;
 import java.io.Reader;

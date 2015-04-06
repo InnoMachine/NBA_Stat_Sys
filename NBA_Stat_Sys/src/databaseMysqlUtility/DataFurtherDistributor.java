@@ -3,7 +3,7 @@
  * 2015年3月21日 下午3:56:01
  * TODO
  */
-package databaseUtility;
+package databaseMysqlUtility;
 
 import java.util.ArrayList;
 

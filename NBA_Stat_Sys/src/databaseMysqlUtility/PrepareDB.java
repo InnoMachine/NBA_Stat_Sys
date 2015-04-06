@@ -3,7 +3,7 @@
  * 2015年3月23日 下午5:42:52
  * TODO
  */
-package databaseUtility;
+package databaseMysqlUtility;
 
 public class PrepareDB {
 
