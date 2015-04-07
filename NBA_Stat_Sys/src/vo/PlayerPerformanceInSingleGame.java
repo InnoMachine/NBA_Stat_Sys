@@ -1,9 +1,8 @@
-package businessLogic;
+package vo;
 
-import java.util.ArrayList;
-
-public class TeamPerformanceInSingleGame {
+public class PlayerPerformanceInSingleGame {
 	private String name;
+	private String position;
 	private int time;//sudo
 	private int hitNum;
 	private int shotNum;
@@ -20,18 +19,13 @@ public class TeamPerformanceInSingleGame {
 	private int turnover;
 	private int foul;
 	private int score;
-	private double roundAttack;      //进攻回合
-	private int opOffensiveRebound;  //对手进攻篮板
-	private int opDefensiveRebound;  //对手防守篮板
-	private double opRoundAttack;       //对手进攻回合
-	private int opTwoPointShotNum;   //对手两分球出手
-	private int opScore;
-	private int winning;
-	public ArrayList <PlayerPerformanceInSingleGame> playerlist;
-	public TeamPerformanceInSingleGame(String name)
+	
+	private int firstOn;
+	private int twoTenNum;
+	public PlayerPerformanceInSingleGame(String name)
 	{
 		this.name =name;
-		time=0;
+		time = 0;
 		hitNum=0;
 		shotNum=0;
 		threePointHitNum=0;
@@ -46,35 +40,24 @@ public class TeamPerformanceInSingleGame {
 		turnover=0;
 		foul=0;
 		score=0;
-		roundAttack=0;
-		opOffensiveRebound=0;
-		opDefensiveRebound=0;
-		opRoundAttack=0;
-		opTwoPointShotNum=0;
-		playerlist = new ArrayList<PlayerPerformanceInSingleGame>();
+		twoTenNum=0;
+		firstOn=0;
 	}
-	public void CalculateRoundAttack()
-	{
-		if(offensiveRebound+opDefensiveRebound!=0)
-		{
-			roundAttack = (double)shotNum+0.4*freeThrowShotNum-1.07*
-					(offensiveRebound/(double)(offensiveRebound+opDefensiveRebound)*(shotNum-hitNum))
-					+1.07*turnover;
-		}
-		
+	public String toString() {
+		return null;
 	}
-	public void isWinning()
-	{
-		if(this.score>this.opScore)
-		{
-			winning = 1;
-		}
-	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	public int getTime() {
 		return time;
@@ -173,51 +156,17 @@ public class TeamPerformanceInSingleGame {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public double getRoundAttack() {
-		return roundAttack;
+	public int getTwoTenNum() {
+		return twoTenNum;
 	}
-	public void setRoundAttack(double roundAttack) {
-		this.roundAttack = roundAttack;
+	public void setTwoTenNum(int twoTenNum) {
+		this.twoTenNum = twoTenNum;
 	}
-	public int getOpOffensiveRebound() {
-		return opOffensiveRebound;
+	public int getFirstOn() {
+		return firstOn;
 	}
-	public void setOpOffensiveRebound(int opOffensiveRebound) {
-		this.opOffensiveRebound = opOffensiveRebound;
+	public void setFirstOn(int firstOn) {
+		this.firstOn = firstOn;
 	}
-	public int getOpDefensiveRebound() {
-		return opDefensiveRebound;
-	}
-	public void setOpDefensiveRebound(int opDefensiveRebound) {
-		this.opDefensiveRebound = opDefensiveRebound;
-	}
-	public double getOpRoundAttack() {
-		return opRoundAttack;
-	}
-	public void setOpRoundAttack(double opRoundAttack) {
-		this.opRoundAttack = opRoundAttack;
-	}
-	public int getOpTwoPointShotNum() {
-		return opTwoPointShotNum;
-	}
-	public void setOpTwoPointShotNum(int opTwoPointShotNum) {
-		this.opTwoPointShotNum = opTwoPointShotNum;
-	}
-	public int getOpScore() {
-		return opScore;
-	}
-	public void setOpScore(int opScore) {
-		this.opScore = opScore;
-	}
-	public int getWinning() {
-		return winning;
-	}
-	public void setWinning(int winning) {
-		this.winning = winning;
-	}
-	public void AddPlayerP(PlayerPerformanceInSingleGame pgp) {
-		this.playerlist.add(pgp);
-		
-	}
-	
+
 }
