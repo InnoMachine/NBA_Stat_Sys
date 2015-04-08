@@ -113,7 +113,7 @@ public class DataFurtherDistributor {
 				}
 			}
 			TeamPO teamPo = td.getTeamByAbbr(teamAbbr.toString());
-			teamPo.setPlayersNameList(playersNameList);
+			teamPo.setCurrentPlayersNameList(playersNameList);
 			td.update(teamPo);
 			playersNameList.clear();
 		}

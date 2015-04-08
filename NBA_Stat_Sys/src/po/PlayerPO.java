@@ -15,11 +15,13 @@ public class PlayerPO {
 	private String height;
 	private String weight;
 	private String birth;
-	private int age;
-	private int exp;
+	private int age;//
+	private int exp;//
 	private String school;
 	private String ActionImgPath;
 	private String PortraitImgPath;
+	
+	private String currentTeam;//
 	
 	private ArrayList<SinglePerformance> seasonSinglePerformance;
 	
@@ -94,6 +96,12 @@ public class PlayerPO {
 	}
 	public void setSeasonSinglePerformance(ArrayList<SinglePerformance> seasonSinglePerformance) {
 		this.seasonSinglePerformance = seasonSinglePerformance;
+	}
+	public String getCurrentTeam() {
+		return currentTeam;
+	}
+	public void setCurrentTeam(String currentTeam) {
+		this.currentTeam = currentTeam;
 	}
 	
 }
