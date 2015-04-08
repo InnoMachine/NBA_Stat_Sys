@@ -76,7 +76,7 @@ public class TeamDaoImpl implements TeamDao {
 			pstmt.setString(8, team.getImgPath());
 			
 			String playNameList = new String();
-			for(String playerName: team.getPlayersNameList()){
+			for(String playerName: team.getCurrentPlayersNameList()){
 				playNameList += (playerName+";");
 			}
 			pstmt.setString(9, playNameList);
@@ -147,7 +147,7 @@ public class TeamDaoImpl implements TeamDao {
 					for(String playerName:splited){
 						playerNameList.add(playerName);
 					}
-					team.setPlayersNameList(playerNameList);
+					team.setCurrentPlayersNameList(playerNameList);
 				}
 				
 				
@@ -201,7 +201,7 @@ public class TeamDaoImpl implements TeamDao {
 					for(String playerName:splited){
 						playerNameList.add(playerName);
 					}
-					team.setPlayersNameList(playerNameList);
+					team.setCurrentPlayersNameList(playerNameList);
 				}
 				
 				if(rs.getString("seasontp") != null){
