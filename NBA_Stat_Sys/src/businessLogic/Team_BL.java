@@ -32,5 +32,10 @@ public class Team_BL implements Team_BS{
 	public ArrayList<PlayerVo> getPlayers(String abbr) {
 		return player_bl.getPlayersByTeam(abbr);
 	}
+	@Override
+	public ArrayList<TeamVo> hotTeamSeason(String option) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
