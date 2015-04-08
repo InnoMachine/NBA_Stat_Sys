@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 
 
-
-import vo.PlayerCardVo;
 import vo.PlayerVo;
 
 public class Player_Handler {
@@ -1206,9 +1204,4 @@ public class Player_Handler {
 		
 	}
 	
-	public ArrayList<PlayerCardVo> hotPlayerDaily(String option){
-		
-		return null;
-		
-	}
 }

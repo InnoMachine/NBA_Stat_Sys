@@ -2,8 +2,6 @@ package businessLogic;
 
 import java.util.ArrayList;
 
-import test.data.PlayerHotInfo;
-import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
 
 public class Player_BL implements Player_BS{
@@ -36,23 +34,17 @@ public class Player_BL implements Player_BS{
 		
 	}
 	
-	public ArrayList<PlayerHotInfo> hotPlayerDaily(String option) {
+	public ArrayList<PlayerVo> hotPlayerDaily(String option) {
 		
 		return null;
 	}
 	
-	public ArrayList<PlayerHotInfo> hotPlayerSeason(String option) {
+	public ArrayList<PlayerVo> hotPlayerSeason(String option) {
 		
 		return null;
 	}
 	@Override
 	public ArrayList<PlayerVo> progressFastPlayer(String option) {
-		return null;
-	}
-	@Override
-	public ArrayList<PlayerPerformanceInSingleGame> getRecentGames(
-			String PlayerName) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

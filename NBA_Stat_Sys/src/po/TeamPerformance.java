@@ -11,7 +11,6 @@ import java.util.Scanner;
 public class TeamPerformance {
 	
 	private String teamNameAbbr;
-	private String gamelabel;//sudo
 	private ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 	
 	public ArrayList<SinglePerformance> getSpList() {
@@ -64,14 +63,6 @@ public class TeamPerformance {
 		scannerFull.close();
 		return tp;
 		
-	}
-
-	public String getGamelabel() {
-		return gamelabel;
-	}
-
-	public void setGamelabel(String gamelabel) {
-		this.gamelabel = gamelabel;
 	}
 	
 }

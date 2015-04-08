@@ -15,7 +15,6 @@ public class PlayerCardVo {
 	private String ActionImgPath;
 	private String PortraitImgPath;
 	private String sortOption;
-	private String team;
 	private double sortvalue;
 	
 	public PlayerCardVo(PlayerVo vo,String option)
@@ -28,7 +27,6 @@ public class PlayerCardVo {
 		this.birth = vo.getBirth();
 		this.exp = vo.getExp();
 		this.school = vo.getSchool();
-		this.team = vo.getTeam();
 		this.ActionImgPath =vo.getActionImgPath();
 		this.PortraitImgPath = vo.getPortraitImgPath();
 		this.sortOption = option;
@@ -126,10 +124,6 @@ public class PlayerCardVo {
 			sortvalue = vo.getTwoTenNum();
 		}
 	}
-	public PlayerCardVo(PlayerPerformanceInSingleGame vo)
-	{
-		
-	}
 	public String getNumber() {
 		return number;
 	}
@@ -201,11 +195,5 @@ public class PlayerCardVo {
 	}
 	public void setSortvalue(double sortvalue) {
 		this.sortvalue = sortvalue;
-	}
-	public String getTeam() {
-		return team;
-	}
-	public void setTeam(String team) {
-		this.team = team;
 	}
 }

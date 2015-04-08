@@ -27,7 +27,7 @@ public class InitDB {
 				+ " homefield varchar(40) NOT NULL,"
 				+ " birthyear varchar(10) NOT NULL,"
 				+ " imgPath varchar(40) NOT NULL,"
-				+ " currentplayers varchar(500),"
+				+ " players varchar(500),"
 				+ " seasontp text)";//sudo
 		
 		String sql2 = "create table if not exists nba.players("
@@ -42,7 +42,6 @@ public class InitDB {
 				+ " school varchar(60),"
 				+ " actionimgpath varchar(100),"
 				+ " portraitimgpath varchar(100),"
-				+ " currentteam varchar(10),"
 				+ " seasonsp text )";//sudo
 		
 		String sql3 = "create table if not exists nba.games("

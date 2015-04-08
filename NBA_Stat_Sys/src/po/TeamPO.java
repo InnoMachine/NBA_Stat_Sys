@@ -21,7 +21,7 @@ public class TeamPO {
 	private String birthYear;
 	private String imgPath;
 	
-	private ArrayList<String> currentPlayersNameList;//current
+	private ArrayList<String> playersNameList;
 	
 	private ArrayList<TeamPerformance> seansonTeamPerformance;//sudo
 	
@@ -73,11 +73,11 @@ public class TeamPO {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-	public ArrayList<String> getCurrentPlayersNameList() {
-		return currentPlayersNameList;
+	public ArrayList<String> getPlayersNameList() {
+		return playersNameList;
 	}
-	public void setCurrentPlayersNameList(ArrayList<String> playersNameList) {
-		this.currentPlayersNameList = playersNameList;
+	public void setPlayersNameList(ArrayList<String> playersNameList) {
+		this.playersNameList = playersNameList;
 	}
 	public ArrayList<TeamPerformance> getSeansonTeamPerformance() {
 		return seansonTeamPerformance;

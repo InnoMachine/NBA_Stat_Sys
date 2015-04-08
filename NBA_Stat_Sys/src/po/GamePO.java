@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class GamePO {
 	
 	private String gameLabel;
-	private String seasonId;//season
-	private GameDate gameDate;//comparable
+	//season
+	private String gameDate;
 	private String versus;
 	private String guestTeam;
 	private String homeTeam;
@@ -27,12 +27,12 @@ public class GamePO {
 	private TeamPerformance homeTP;
 	
 
-	public GameDate getGameDate() {
+	public String getGameDate() {
 		return gameDate;
 	}
 
 	public void setGameDate(String date) {
-		this.gameDate = new GameDate(date);
+		this.gameDate = date;
 	}
 
 	public String getVersus() {
@@ -129,14 +129,6 @@ public class GamePO {
 
 	public void setExtratime(ArrayList<Scoreboard> extratime) {
 		this.extratime = extratime;
-	}
-
-	public String getSeasonId() {
-		return seasonId;
-	}
-
-	public void setSeasonId(String seasonId) {
-		this.seasonId = seasonId;
 	}
 	
 }

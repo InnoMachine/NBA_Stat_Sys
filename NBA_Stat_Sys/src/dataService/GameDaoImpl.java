@@ -27,7 +27,7 @@ public class GameDaoImpl implements GameDao {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, game.getGameLabel());
-			pstmt.setString(2, game.getGameDate().toString());
+			pstmt.setString(2, game.getGameDate());
 			pstmt.setString(3, game.getVersus());
 			pstmt.setString(4, game.getGuestTeam());
 			pstmt.setString(5, game.getHomeTeam());
@@ -61,7 +61,7 @@ public class GameDaoImpl implements GameDao {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, game.getGameLabel());
-			pstmt.setString(2, game.getGameDate().toString());
+			pstmt.setString(2, game.getGameDate());
 			pstmt.setString(3, game.getVersus());
 			pstmt.setString(4, game.getGuestTeam());
 			pstmt.setString(5, game.getHomeTeam());
