@@ -10,8 +10,6 @@ public class SinglePerformance {
 	private String name;
 	private String position;
 	
-	private String TeamThen;//
-	private String gamelabel;//
 	
 	private int timeBySeconds;// sudo
 	private int hitNum;
@@ -33,14 +31,17 @@ public class SinglePerformance {
 	private int foul;
 	private int score;
 
+	private String teamThen;//
+	private String gamelabel;//
+	
 	public String toString() {
 
-		return name + ";" + position + ";" + TeamThen + ";" + gamelabel + ";" + timeBySeconds + ";" + hitNum + ";"
+		return name + ";" + position + ";" + timeBySeconds + ";" + hitNum + ";"
 				+ shotNum + ";" + threePointHitNum + ";" + threePointShotNum
 				+ ";" + freeThrowHitNum + ";" + freeThrowShotNum + ";"
 				+ offensiveRebound + ";" + defensiveRebound + ";"
 				+ reboundOverall + ";" + assistance + ";" + steal + ";" + block
-				+ ";" + turnover + ";" + foul + ";" + score + ";";
+				+ ";" + turnover + ";" + foul + ";" + score + ";" + "teamThen" + ";" + "gamelabel" +";";
 
 	}
 
@@ -187,8 +188,24 @@ public class SinglePerformance {
 	public void setSteal(int steal) {
 		this.steal = steal;
 	}
+	
+	public String getTeamThen() {
+		return teamThen;
+	}
+	
+	public void setTeamThen(String teamThen) {
+		this.teamThen = teamThen;
+	}
+	
+	public String getGamelabel() {
+		return gamelabel;
+	}
+	
+	public void setGamelabel(String gamelabel) {
+		this.gamelabel = gamelabel;
+	}
 
-	public static SinglePerformance makeSP(String spText) {
+	public static SinglePerformance makeSP(String teamThen, String gamelabel, String spText) {
 
 		String[] splited = spText.split(";");
 		String name = splited[0];
@@ -201,6 +218,8 @@ public class SinglePerformance {
 		} else {
 			position = splited[1];
 		}
+		
+		
 
 		String timeText = splited[2];// sudo
 		int timeByText;
@@ -254,6 +273,11 @@ public class SinglePerformance {
 		} else {
 			score = Integer.parseInt(splited[17]);
 		}
+		
+//		String teamThen = splited[18];
+//		String gamelabel = splited[19];
+		
+		
 
 		SinglePerformance sp = new SinglePerformance();
 		sp.setName(name);
@@ -278,24 +302,116 @@ public class SinglePerformance {
 		sp.setFoul(foul);
 		sp.setScore(score);
 
+		sp.setTeamThen(teamThen);
+		sp.setGamelabel(gamelabel);
+		
+		return sp;
+
+	}
+	
+	public static SinglePerformance makeSP(String spText) {
+
+		String[] splited = spText.split(";");
+		String name = splited[0];
+		String position;
+		if (splited.length == 1) {
+			return null;
+		}
+		if (splited[1].equals("")) {
+			position = null;// sudo
+		} else {
+			position = splited[1];
+		}
+		
+		
+
+		String timeText = splited[2];// sudo
+		int timeByText;
+		if (timeText.contains(":")) {
+			if (!(timeText.equals("null") || timeText.equalsIgnoreCase("None") || timeText == null)) {
+				String[] splitedTime = timeText.split(":");
+				timeByText = Integer.parseInt(splitedTime[0]) * 60
+						+ Integer.parseInt(splitedTime[1]);
+			} else {
+				timeByText = -1;// dirty data
+			}
+		} else {
+			if (!(timeText.equals("null") || timeText.equalsIgnoreCase("None") || timeText == null)) {
+				timeByText = Integer.parseInt(timeText);
+			} else {
+				timeByText = -1;// dirty data
+			}
+		}
+
+		int hitNum = Integer.parseInt(splited[3]);
+		int shotNum = Integer.parseInt(splited[4]);
+		int threePointHitNum = Integer.parseInt(splited[5]);
+		int threePointShotNum = Integer.parseInt(splited[6]);
+		int freeThrowHitNum = Integer.parseInt(splited[7]);
+		int freeThrowShotNum = Integer.parseInt(splited[8]);
+		int offensiveRebound = Integer.parseInt(splited[9]);
+
+		int defensiveRebound = 0;
+		if (splited[10].equals("")) {
+			defensiveRebound = -1;// dirty data
+		} else {
+			defensiveRebound = Integer.parseInt(splited[10]);
+		}
+
+		int reboundOverall = Integer.parseInt(splited[11]);
+		int assistance = Integer.parseInt(splited[12]);
+		int steal = Integer.parseInt(splited[13]);
+		int block = Integer.parseInt(splited[14]);
+		int turnover = Integer.parseInt(splited[15]);
+
+		int foul = 0;
+		if (splited[16].equals("")) {
+			foul = -1;// dirty data
+		} else {
+			foul = Integer.parseInt(splited[16]);
+		}
+
+		int score = 0;
+		if (splited[17].equalsIgnoreCase("null")) {
+			score = -1;// dirty data
+		} else {
+			score = Integer.parseInt(splited[17]);
+		}
+		
+		String teamThen = splited[18];
+		String gamelabel = splited[19];
+		
+		
+
+		SinglePerformance sp = new SinglePerformance();
+		sp.setName(name);
+		sp.setPosition(position);
+		sp.setTimeBySeconds(timeByText);
+		sp.setHitNum(hitNum);
+		sp.setShotNum(shotNum);
+
+		sp.setThreePointHitNum(threePointHitNum);
+		sp.setThreePointShotNum(threePointShotNum);
+		sp.setFreeThrowHitNum(freeThrowHitNum);
+		sp.setFreeThrowShotNum(freeThrowShotNum);
+		sp.setOffensiveRebound(offensiveRebound);
+
+		sp.setDefensiveRebound(defensiveRebound);
+		sp.setReboundOverall(reboundOverall);
+		sp.setAssistance(assistance);
+		sp.setSteal(steal);
+		sp.setBlock(block);
+
+		sp.setTurnover(turnover);
+		sp.setFoul(foul);
+		sp.setScore(score);
+
+		sp.setTeamThen(teamThen);
+		sp.setGamelabel(gamelabel);
+		
 		return sp;
 
 	}
 
-	public String getTeamThen() {
-		return TeamThen;
-	}
-
-	public void setTeamThen(String teamThen) {
-		TeamThen = teamThen;
-	}
-
-	public String getGamelabel() {
-		return gamelabel;
-	}
-
-	public void setGamelabel(String gamelabel) {
-		this.gamelabel = gamelabel;
-	}
 
 }

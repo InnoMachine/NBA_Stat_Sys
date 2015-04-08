@@ -710,11 +710,157 @@ public class Data_Handler {
 	{
 		return teamlistvo;
 	}
-	public ArrayList<PlayerPerformanceInSingleGame> getSingleGamesDaily()
+	public ArrayList<TeamPerformanceInSingleGame> getTeamGamesDaily()
 	{
+		ArrayList<GamePO> todaygame = new ArrayList<GamePO>();
+		ArrayList<TeamPerformanceInSingleGame> tplist = new ArrayList<TeamPerformanceInSingleGame>();
+		for(int i=0;i<todaygame.size();i++)
+		{
+			TeamPerformance tpg = todaygame.get(i).getGuestTP();
+			TeamPerformance tph = todaygame.get(i).getHomeTP();
+			TeamPerformanceInSingleGame tgpg=setPerformanceDaily(tpg);
+			TeamPerformanceInSingleGame tgph=setPerformanceDaily(tph);
+			tgpg.setOpDefensiveRebound(tgph.getDefensiveRebound());
+			tgpg.setOpOffensiveRebound(tgph.getOffensiveRebound());
+			tgpg.setOpTwoPointShotNum(tgph.getShotNum()-tgph.getThreePointShotNum());
+			tgpg.setOpScore(tgph.getScore());
+			tgpg.CalculateRoundAttack();
+			tgph.setOpDefensiveRebound(tgpg.getDefensiveRebound());
+			tgph.setOpOffensiveRebound(tgpg.getOffensiveRebound());
+			tgph.setOpTwoPointShotNum(tgpg.getShotNum()-tgpg.getThreePointShotNum());
+			tgph.setOpScore(tgpg.getScore());
+			tgph.CalculateRoundAttack();
+			tgph.isWinning();
+			tgpg.isWinning();
+			tgpg.setOpRoundAttack(tgph.getRoundAttack());
+			tgph.setOpRoundAttack(tgpg.getRoundAttack());
+			tplist.add(tgph);
+			tplist.add(tgpg);
+		}
+		return tplist;
+	}
+	private TeamPerformanceInSingleGame setPerformanceDaily(TeamPerformance tp) {
+		ArrayList<SinglePerformance> listsp = tp.getSpList();
+		String abbr = tp.getTeamNameAbbr();
+		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
+		for(SinglePerformance temp:listsp)
+		{
+			int k=0;
+			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
+			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
+			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
+			tgp.setThreePointHitNum(tgp.getThreePointHitNum()+temp.getThreePointHitNum());
+			tgp.setThreePointShotNum(tgp.getThreePointShotNum()+temp.getThreePointShotNum());
+			tgp.setFreeThrowHitNum(tgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
+			tgp.setFreeThrowShotNum(tgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
+			tgp.setOffensiveRebound(tgp.getOffensiveRebound()+temp.getOffensiveRebound());
+			tgp.setDefensiveRebound(tgp.getDefensiveRebound()+temp.getDefensiveRebound());
+			tgp.setReboundOverall(tgp.getReboundOverall()+temp.getReboundOverall());
+			tgp.setAssistance(tgp.getAssistance()+temp.getAssistance());
+			tgp.setBlock(tgp.getBlock()+temp.getBlock());
+			tgp.setTurnover(tgp.getTurnover()+temp.getTurnover());
+			tgp.setFoul(tgp.getFoul()+temp.getFoul());
+			tgp.setSteal(tgp.getSteal()+temp.getSteal());
+			tgp.setScore(tgp.getScore()+temp.getScore());
+			for(int i=0;i<listvo.size();i++)
+			{
+				if(temp.getName().equals(listvo.get(i).getName()))
+				{
+					
+					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
+					pgp.setTime(temp.getTimeBySeconds());
+					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
+					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
+					pgp.setThreePointHitNum(pgp.getThreePointHitNum()+temp.getThreePointHitNum());
+					pgp.setThreePointShotNum(pgp.getThreePointShotNum()+temp.getThreePointShotNum());
+					pgp.setFreeThrowHitNum(pgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
+					pgp.setFreeThrowShotNum(pgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
+					pgp.setOffensiveRebound(pgp.getOffensiveRebound()+temp.getOffensiveRebound());
+					pgp.setDefensiveRebound(pgp.getDefensiveRebound()+temp.getDefensiveRebound());
+					pgp.setReboundOverall(pgp.getReboundOverall()+temp.getReboundOverall());
+					pgp.setAssistance(pgp.getAssistance()+temp.getAssistance());
+					pgp.setSteal(pgp.getSteal()+temp.getSteal());
+					pgp.setBlock(pgp.getBlock()+temp.getBlock());
+					pgp.setTurnover(pgp.getTurnover()+temp.getTurnover());
+					pgp.setFoul(pgp.getFoul()+temp.getFoul());
+					pgp.setScore(pgp.getScore()+temp.getScore());
+					if(isTwoTen(temp)){
+						pgp.setTwoTenNum(1);
+					}
+					if(k<5)
+					{
+						pgp.setFirstOn(1);
+						k++;
+					}
+					tgp.AddPlayerP(pgp);
+					break;
+				}
+			}
+		}
+		for(TeamRecentGames temp:trecgames)
+		{
+			if(temp.getAbbreviation().equals(abbr))
+			{
+				temp.AddNewGame(tgp);
+			}
+		}
+		return tgp;
+	}
+	public ArrayList<PlayerPerformanceInSingleGame> getPlayerGamesDaily()
+	{
+		//此处由今日日期读取当天games
+		ArrayList<GamePO> todaygame = new ArrayList<GamePO>();
+		ArrayList<PlayerPerformanceInSingleGame> pplist = new ArrayList<PlayerPerformanceInSingleGame>();
+		for(int i=0;i<todaygame.size();i++)
+		{
+			TeamPerformance tpg = todaygame.get(i).getGuestTP();
+			TeamPerformance tph = todaygame.get(i).getHomeTP();
+			setPerformanceDaily(tpg,pplist);
+			setPerformanceDaily(tph,pplist);
+		}
+		return pplist;
 		
-		return null;
-		
+	}
+	private void setPerformanceDaily(TeamPerformance tp,
+			ArrayList<PlayerPerformanceInSingleGame> pplist) {
+		ArrayList<SinglePerformance> listsp = tp.getSpList();
+		for(SinglePerformance temp:listsp)
+		{
+			int k=0;
+			for(int i=0;i<listvo.size();i++)
+			{
+				if(temp.getName().equals(listvo.get(i).getName()))
+				{
+					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
+					pgp.setTime(temp.getTimeBySeconds());
+					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
+					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
+					pgp.setThreePointHitNum(pgp.getThreePointHitNum()+temp.getThreePointHitNum());
+					pgp.setThreePointShotNum(pgp.getThreePointShotNum()+temp.getThreePointShotNum());
+					pgp.setFreeThrowHitNum(pgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
+					pgp.setFreeThrowShotNum(pgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
+					pgp.setOffensiveRebound(pgp.getOffensiveRebound()+temp.getOffensiveRebound());
+					pgp.setDefensiveRebound(pgp.getDefensiveRebound()+temp.getDefensiveRebound());
+					pgp.setReboundOverall(pgp.getReboundOverall()+temp.getReboundOverall());
+					pgp.setAssistance(pgp.getAssistance()+temp.getAssistance());
+					pgp.setSteal(pgp.getSteal()+temp.getSteal());
+					pgp.setBlock(pgp.getBlock()+temp.getBlock());
+					pgp.setTurnover(pgp.getTurnover()+temp.getTurnover());
+					pgp.setFoul(pgp.getFoul()+temp.getFoul());
+					pgp.setScore(pgp.getScore()+temp.getScore());
+					if(isTwoTen(temp)){
+						pgp.setTwoTenNum(1);
+					}
+					if(k<5)
+					{
+						pgp.setFirstOn(1);
+						k++;
+					}
+					pplist.add(pgp);
+					break;
+				}
+			}
+		}
 	}
 }
 
