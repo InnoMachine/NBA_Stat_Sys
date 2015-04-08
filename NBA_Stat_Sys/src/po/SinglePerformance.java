@@ -9,6 +9,10 @@ public class SinglePerformance {
 
 	private String name;
 	private String position;
+	
+	private String TeamThen;//
+	private String gamelabel;//
+	
 	private int timeBySeconds;// sudo
 	private int hitNum;
 	private int shotNum;
@@ -31,7 +35,7 @@ public class SinglePerformance {
 
 	public String toString() {
 
-		return name + ";" + position + ";" + timeBySeconds + ";" + hitNum + ";"
+		return name + ";" + position + ";" + TeamThen + ";" + gamelabel + ";" + timeBySeconds + ";" + hitNum + ";"
 				+ shotNum + ";" + threePointHitNum + ";" + threePointShotNum
 				+ ";" + freeThrowHitNum + ";" + freeThrowShotNum + ";"
 				+ offensiveRebound + ";" + defensiveRebound + ";"
@@ -276,6 +280,22 @@ public class SinglePerformance {
 
 		return sp;
 
+	}
+
+	public String getTeamThen() {
+		return TeamThen;
+	}
+
+	public void setTeamThen(String teamThen) {
+		TeamThen = teamThen;
+	}
+
+	public String getGamelabel() {
+		return gamelabel;
+	}
+
+	public void setGamelabel(String gamelabel) {
+		this.gamelabel = gamelabel;
 	}
 
 }

@@ -2,7 +2,9 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import test.data.TeamHotInfo;
 import vo.PlayerVo;
+import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 
 public class Team_BL implements Team_BS{
@@ -33,7 +35,12 @@ public class Team_BL implements Team_BS{
 		return player_bl.getPlayersByTeam(abbr);
 	}
 	@Override
-	public ArrayList<TeamVo> hotTeamSeason(String option) {
+	public ArrayList<TeamHotInfo> hotTeamSeason(String option) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<TeamPerformanceInSingleGame> getRecentGame(String abbr) {
 		// TODO Auto-generated method stub
 		return null;
 	}

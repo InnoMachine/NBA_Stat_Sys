@@ -9,8 +9,10 @@ import po.SinglePerformance;
 import po.TeamPO;
 import po.TeamPerformance;
 import vo.PlayerPerformanceInSingleGame;
+import vo.PlayerRecentGames;
 import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
+import vo.TeamRecentGames;
 import vo.TeamVo;
 import dataService.GameDao;
 import dataService.GameDaoImpl;
@@ -30,7 +32,8 @@ public class Data_Handler {
 	private ArrayList<PlayerVo> listvo;
 	private ArrayList<TeamVo> teamlistvo;
 	private ArrayList<GamePO> gamelist;
-	
+	private ArrayList<TeamRecentGames> trecgames;
+	private ArrayList<PlayerRecentGames> precgames;
 	BigDecimal b;  
     
 	
@@ -44,6 +47,8 @@ public class Data_Handler {
 		listvo = new ArrayList<PlayerVo>();
 		teamlistvo = new ArrayList<TeamVo>();
 		gamelist = gamedao.getAllGames();
+		trecgames = new ArrayList<TeamRecentGames>();
+		precgames = new ArrayList<PlayerRecentGames>();
 		
 		SetPlayerVo();
 		SetTeamVo();
@@ -554,8 +559,16 @@ public class Data_Handler {
 						k++;
 					}
 					tgp.AddPlayerP(pgp);
+					precgames.get(i).AddNewGame(pgp);
 					break;
 				}
+			}
+		}
+		for(TeamRecentGames temp:trecgames)
+		{
+			if(temp.getAbbreviation().equals(abbr))
+			{
+				temp.AddNewGame(tgp);
 			}
 		}
 		return tgp;
@@ -624,6 +637,11 @@ public class Data_Handler {
 			temp.setOpScore(0);
 			temp.setOpTwoPointShotNum(0);
 			teamlistvo.add(temp);
+			
+			TeamRecentGames p = new TeamRecentGames();
+			p.setName(teamlistpo.get(i).getTeamName());
+			p.setAbbreviation(teamlistpo.get(i).getAbbreviation());
+			trecgames.add(p);
 		}
 		
 	}
@@ -679,6 +697,10 @@ public class Data_Handler {
 			temp.setOpTwoPointShotNum(0);
 			temp.setTwoTenNum(0);
 			listvo.add(temp);
+			
+			PlayerRecentGames p = new PlayerRecentGames();
+			p.setName(listpo.get(i).getName());
+			precgames.add(p);
 		}		
 	}
 	public ArrayList<PlayerVo> getPlayers() {
@@ -688,6 +710,13 @@ public class Data_Handler {
 	public ArrayList<TeamVo> getTeams()
 	{
 		return teamlistvo;
+	}
+	
+	public ArrayList<PlayerPerformanceInSingleGame> getSingleGamesDaily()
+	{
+		
+		return null;
+		
 	}
 
 }
