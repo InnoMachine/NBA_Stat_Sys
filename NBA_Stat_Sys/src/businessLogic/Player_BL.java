@@ -33,4 +33,18 @@ public class Player_BL implements Player_BS{
 		return player_handler.getPlayersByTeam(abbr);
 		
 	}
+	
+	public ArrayList<PlayerVo> hotPlayerDaily(String option) {
+		
+		return null;
+	}
+	
+	public ArrayList<PlayerVo> hotPlayerSeason(String option) {
+		
+		return null;
+	}
+	@Override
+	public ArrayList<PlayerVo> progressFastPlayer(String option) {
+		return null;
+	}
 }

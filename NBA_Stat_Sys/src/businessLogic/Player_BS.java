@@ -9,5 +9,7 @@ public interface Player_BS {
 	public ArrayList<PlayerVo> getAllPlayer();
 	public ArrayList<PlayerVo> sortPlayerBy(String option);
 	public ArrayList<PlayerVo> filterPlayerBy(String position,String div,String option); 
-	//option用vo里的名字哦
+	public ArrayList<PlayerVo> hotPlayerDaily(String option);
+	public ArrayList<PlayerVo> hotPlayerSeason(String option);
+	public ArrayList<PlayerVo> progressFastPlayer(String option);
 }
