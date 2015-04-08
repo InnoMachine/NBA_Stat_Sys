@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import test.data.PlayerHotInfo;
 import vo.PlayerVo;
 
 public class Player_BL implements Player_BS{
@@ -34,9 +35,9 @@ public class Player_BL implements Player_BS{
 		
 	}
 	
-	public ArrayList<PlayerVo> hotPlayerDaily(String option) {
+	public ArrayList<PlayerHotInfo> hotPlayerDaily(String option) {
 		
-		return null;
+		return player_handler.hotPlayerDaily(option);
 	}
 	
 	public ArrayList<PlayerVo> hotPlayerSeason(String option) {

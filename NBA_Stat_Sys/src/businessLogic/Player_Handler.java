@@ -7,12 +7,15 @@ import java.util.ArrayList;
 
 
 
+
+
+import test.data.PlayerHotInfo;
+import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
 
 public class Player_Handler {
 	private Data_Handler data_handler;
 	private ArrayList<PlayerVo> listvo;
-	
 	BigDecimal b;  
 	public Player_Handler()
 	{
@@ -1204,4 +1207,98 @@ public class Player_Handler {
 		
 	}
 	
+	public ArrayList<PlayerHotInfo> hotPlayerDaily(String option){
+		ArrayList<PlayerPerformanceInSingleGame> pplist= data_handler.getPlayerGamesDaily();
+		ArrayList<PlayerHotInfo> hotlist = new ArrayList<PlayerHotInfo>();
+		if(option.equals("score")){
+			int a[][] = new int [pplist.size()][2]; 
+			for(int i=0;i<pplist.size();i++)
+			{
+				a[i][0] = pplist.get(i).getScore();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			for(int i=0;i<pplist.size();i++)
+			{
+				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
+			}
+			return hotlist;
+		}else if(option.equals("block")){
+			int a[][] = new int [pplist.size()][2]; 
+			for(int i=0;i<pplist.size();i++)
+			{
+				a[i][0] = pplist.get(i).getBlock();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			for(int i=0;i<pplist.size();i++)
+			{
+				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
+			}
+			return hotlist;
+		}else if(option.equals("assistance")){
+			int a[][] = new int [pplist.size()][2]; 
+			for(int i=0;i<pplist.size();i++)
+			{
+				a[i][0] = pplist.get(i).getAssistance();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			for(int i=0;i<pplist.size();i++)
+			{
+				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
+			}
+			return hotlist;
+		}else if(option.equals("steal")){
+			int a[][] = new int [pplist.size()][2]; 
+			for(int i=0;i<pplist.size();i++)
+			{
+				a[i][0] = pplist.get(i).getSteal();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			for(int i=0;i<pplist.size();i++)
+			{
+				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
+			}
+			return hotlist;
+		}else if(option.equals("reboundOverall")){
+			int a[][] = new int [pplist.size()][2]; 
+			for(int i=0;i<pplist.size();i++)
+			{
+				a[i][0] = pplist.get(i).getReboundOverall();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			for(int i=0;i<pplist.size();i++)
+			{
+				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
+			}
+			return hotlist;
+		}
+		return null;
+		
+	}
+
+	private PlayerHotInfo CreateHotInfo(
+			PlayerPerformanceInSingleGame pp,String option) {
+		PlayerHotInfo temp = new PlayerHotInfo();
+		temp.setField(option);
+		temp.setName(pp.getName());
+		temp.setPosition(pp.getPosition());
+		temp.setTeamName(pp.getTeam());
+		temp.setUpgradeRate(0);
+		if(option.equals("score")){
+			temp.setValue(pp.getScore());
+		}else if(option.equals("reboundOverall")){
+			temp.setValue(pp.getReboundOverall());
+		}else if(option.equals("block")){
+			temp.setValue(pp.getBlock());
+		}else if(option.equals("steal")){
+			temp.setValue(pp.getSteal());
+		}else if(option.equals("assistance")){
+			temp.setValue(pp.getAssistance());
+		}
+		return null;
+	}
 }

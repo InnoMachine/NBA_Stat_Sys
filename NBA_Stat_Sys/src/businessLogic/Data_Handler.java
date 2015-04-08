@@ -832,6 +832,7 @@ public class Data_Handler {
 				if(temp.getName().equals(listvo.get(i).getName()))
 				{
 					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
+					pgp.setTeam(tp.getTeamNameAbbr());
 					pgp.setTime(temp.getTimeBySeconds());
 					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
 					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());

@@ -34,8 +34,13 @@ public class Team_BL implements Team_BS{
 	}
 	@Override
 	public ArrayList<TeamVo> hotTeamSeason(String option) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TeamVo> list = team_handler.sortTeamBy(option);
+		ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+		for(int i=0;i<5;i++)
+		{
+			templist.add(list.get(i));
+		}
+		return templist;
 	}
 
 }

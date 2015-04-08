@@ -22,6 +22,7 @@ public class PlayerPerformanceInSingleGame {
 	
 	private int firstOn;
 	private int twoTenNum;
+	private String Team;
 	public PlayerPerformanceInSingleGame(String name)
 	{
 		this.name =name;
@@ -167,6 +168,12 @@ public class PlayerPerformanceInSingleGame {
 	}
 	public void setFirstOn(int firstOn) {
 		this.firstOn = firstOn;
+	}
+	public String getTeam() {
+		return Team;
+	}
+	public void setTeam(String team) {
+		Team = team;
 	}
 
 }
