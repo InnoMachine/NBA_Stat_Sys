@@ -47,7 +47,7 @@ public class InitDB {
 		
 		String sql3 = "create table if not exists nba.games("
 				+ " gamelabel varchar(40) PRIMARY KEY,"
-				+ " gamedate varchar(30),"
+				+ " gamedate varchar(30),"//
 				+ " versus varchar(10),"
 				+ " guestteam varchar(5),"
 				+ " hometeam varchar(5),"

@@ -9,8 +9,12 @@ import java.util.ArrayList;
 
 public class SeasonTracker {
 	
-	ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();
-	GameDate currentDate;
+	private ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();
+	private GameDate currentDate;
+	private String seasonId;
+	private ArrayList<String> updateTeamList;
+	private ArrayList<String> updatePlayerList;
+	private int gameNumSofar;
 	
 	public GameDate getCurrentDate() {
 		return currentDate;
@@ -30,6 +34,38 @@ public class SeasonTracker {
 
 	public void setSeasonRecord(ArrayList<GameDayPack> seasonRecord) {
 		this.seasonRecord = seasonRecord;
+	}
+
+	public int getGameNumSofar() {
+		return gameNumSofar;
+	}
+
+	public void setGameNumSofar(int gameNumSofar) {
+		this.gameNumSofar = gameNumSofar;
+	}
+
+	public String getSeasonId() {
+		return seasonId;
+	}
+
+	public void setSeasonId(String seasonId) {
+		this.seasonId = seasonId;
+	}
+
+	public ArrayList<String> getUpdateTeamList() {
+		return updateTeamList;
+	}
+
+	public void setUpdateTeamList(ArrayList<String> updateTeamList) {
+		this.updateTeamList = updateTeamList;
+	}
+
+	public ArrayList<String> getUpdatePlayerList() {
+		return updatePlayerList;
+	}
+
+	public void setUpdatePlayerList(ArrayList<String> updatePlayerList) {
+		this.updatePlayerList = updatePlayerList;
 	}
 	
 }

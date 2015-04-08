@@ -135,8 +135,8 @@ public class GameDaoImpl implements GameDao {
 					}
 				}
 				game.setExtratime(extraList);
-				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("guesttp")));
-				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("hometp")));
+				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("gamelabel"), rs.getString("guesttp")));
+				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("gamelabel"), rs.getString("hometp")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -177,8 +177,8 @@ public class GameDaoImpl implements GameDao {
 					}
 				}
 				game.setExtratime(extraList);
-				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("guesttp")));
-				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("hometp")));
+				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("gamelabel"), rs.getString("guesttp")));
+				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("gamelabel"), rs.getString("hometp")));
 				
 				gameList.add(game);
 			}

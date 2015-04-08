@@ -343,9 +343,9 @@ public class DataFileReader {
 			}
 		}
 		game.setExtratime(extraList);
-		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3),
+		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3),attriList.get(0),
 				attriList.get(11)));
-		game.setHomeTP(TeamPerformance.makeTP(attriList.get(4),
+		game.setHomeTP(TeamPerformance.makeTP(attriList.get(4),attriList.get(0),
 				attriList.get(12)));
 		return game;
 

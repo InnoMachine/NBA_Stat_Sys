@@ -11,7 +11,7 @@ public class GameDate implements Comparable<Object> {
 	private int month;
 	private int day;
 	
-	public GameDate() {
+	public GameDate() {//default current date
 		this.year = 2000;
 		this.month = 1;
 		this.day = 1;
