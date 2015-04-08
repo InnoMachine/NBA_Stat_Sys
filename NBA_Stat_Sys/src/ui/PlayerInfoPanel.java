@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 
 import ui.ShowPanel.MyTextField;
 
-public class PlayerInfoPanel extends JPanel{
-	
+public class PlayerInfoPanel extends JPanel {
+
 	static int X;
 	static int Y;
 	JLabel bgLabel;
@@ -99,34 +99,31 @@ public class PlayerInfoPanel extends JPanel{
 	private JTextField textField_78;
 	private JTextField textField_79;
 	private JTextField textField_80;
-	
-	public PlayerInfoPanel(String PlayerName){
-		
+
+	public PlayerInfoPanel(String PlayerName) {
+
 		this.setSize(500, 500);
 		this.setVisible(true);
 		this.setLayout(null);
-		X=this.getWidth();
-		Y=this.getHeight();
-		
+		X = this.getWidth();
+		Y = this.getHeight();
+
 		ImageIcon bg;
-		bgLabel=new JLabel();
+		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
 		bg = new ImageIcon(new ImageIcon("Image/searchPlayer.png").getImage()
 				.getScaledInstance(this.getWidth(), this.getHeight(),
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
-		
-		
+
 	}
-	
-	private void addPlayerInfo(){
+
+	private void addPlayerInfo() {
 		int tempX = 2 * X / 11;
 		int tempY = 27 * Y / 100;
 		int spaceX = X / 10;
 		int spaceY = Y / 18;
-
-
 
 		textField_1 = new MyTextField();
 		textField_1.setText("姓名");
@@ -135,20 +132,16 @@ public class PlayerInfoPanel extends JPanel{
 
 		textField_2 = new MyTextField();
 		textField_2.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
-		textField_2.setFont(new Font("黑体", 1, 14));
-		bgLabel.add(textField_4);
-
+		bgLabel.add(textField_2);
 
 		textField_3 = new MyTextField();
 		textField_3.setText("身高");
 		textField_3.setBounds(tempX + 2 * spaceX, tempY, spaceX, spaceY);
 		bgLabel.add(textField_3);
 
-
 		textField_4 = new MyTextField();
 		textField_4.setBounds(tempX + 3 * spaceX, tempY, spaceX, spaceY);
 		bgLabel.add(textField_4);
-
 
 		textField_5 = new MyTextField();
 		textField_5.setText("生日");
@@ -159,12 +152,10 @@ public class PlayerInfoPanel extends JPanel{
 		textField_6.setBounds(tempX + 5 * spaceX, tempY, spaceX, spaceY);
 		bgLabel.add(textField_6);
 
-
 		textField_7 = new MyTextField();
 		textField_7.setText("位置");
 		textField_7.setBounds(tempX, tempY + spaceY, spaceX, spaceY);
 		bgLabel.add(textField_7);
-
 
 		textField_8 = new MyTextField();
 		textField_8.setBounds(tempX + spaceX, tempY + spaceY, spaceX, spaceY);
@@ -176,104 +167,69 @@ public class PlayerInfoPanel extends JPanel{
 				spaceY);
 		bgLabel.add(textField_9);
 
-
 		textField_10 = new MyTextField();
 		textField_10.setBounds(tempX + 3 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_10);
 
+		textField_11 = new MyTextField();
+		textField_11.setText("球龄");
+		textField_11.setBounds(tempX + 4 * spaceX, tempY + spaceY, spaceX,
+				spaceY);
+		bgLabel.add(textField_11);
+
 		textField_12 = new MyTextField();
-		textField_12.setText("球龄");
-		textField_12.ditable(false);
-		textField_12.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_12.setBounds(tempX + 4 * spaceX, tempY + spaceY, spaceX,
+		textField_12.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_12);
-		textField_12.setColumns(10);
 
-		textField_73 = new MyTextField();
-		textField_73.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_73.ditable(false);
-		textField_73.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
-				spaceY);
-		bgLabel.add(textField_73);
-		textField_73.setColumns(10);
-
-		textField_3 = new MyTextField();
-		textField_3.ditable(false);
-		textField_3.setText("球衣号码");
-		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_3.setBounds(tempX, tempY + 2 * spaceY, spaceX, spaceY);
-		bgLabel.add(textField_3);
-		textField_3.setColumns(10);
-
-		textField_72 = new MyTextField();
-		textField_72.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_72.ditable(false);
-		textField_72.setBounds(tempX + spaceX, tempY + 2 * spaceY, spaceX,
-				spaceY);
-		bgLabel.add(textField_72);
-		textField_72.setColumns(10);
-
-		textField_6 = new MyTextField();
-		textField_6.setText("年龄");
-		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_6.ditable(false);
-		textField_6.setBounds(tempX + 2 * spaceX, tempY + 2 * spaceY, spaceX,
-				spaceY);
-		bgLabel.add(textField_6);
-		textField_6.setColumns(10);
+		textField_13 = new MyTextField();
+		textField_13.setText("球衣号码");
+		textField_13.setBounds(tempX, tempY + 2 * spaceY, spaceX, spaceY);
+		bgLabel.add(textField_13);
 
 		textField_14 = new MyTextField();
-		textField_14.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_14.ditable(false);
-		textField_14.setBounds(tempX + 3 * spaceX, tempY + 2 * spaceY, spaceX,
+		textField_14.setBounds(tempX + spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_14);
-		textField_14.setColumns(10);
 
 		textField_15 = new MyTextField();
-		textField_15.setText("毕业院校");
-		textField_15.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_15.ditable(false);
-		textField_15.setBounds(tempX + 4 * spaceX, tempY + 2 * spaceY, spaceX,
+		textField_15.setText("年龄");
+		textField_15.setBounds(tempX + 2 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_15);
-		textField_15.setColumns(10);
 
 		textField_16 = new MyTextField();
-		textField_16.ditable(false);
-		textField_16.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_16.setFont(new Font("黑体", 0, 11));
-		textField_16.setBounds(tempX + 5 * spaceX, tempY + 2 * spaceY, spaceX,
+		textField_16.setBounds(tempX + 3 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_16);
-		textField_16.setColumns(10);
 
 		textField_17 = new MyTextField();
-		textField_17.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_17.ditable(false);
-		textField_17.setText("参赛场数");
-		textField_17.setBounds(tempX, tempY + 3 * spaceY, spaceX, spaceY);
+		textField_17.setText("毕业院校");
+		textField_17.setBounds(tempX + 4 * spaceX, tempY + 2 * spaceY, spaceX,
+				spaceY);
 		bgLabel.add(textField_17);
-		textField_17.setColumns(10);
 
 		textField_18 = new MyTextField();
-		textField_18.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_18.ditable(false);
-		textField_18.setBounds(tempX + spaceX, tempY + 3 * spaceY, spaceX,
+		textField_18.setBounds(tempX + 5 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_18);
-		textField_18.setColumns(10);
 
 		textField_19 = new MyTextField();
-		textField_19.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_19.setText("先发场数");
-		textField_19.ditable(false);
-		textField_19.setBounds(tempX + 2 * spaceX, tempY + 3 * spaceY, spaceX,
-				spaceY);
+		textField_19.setText("参赛场数");
+		textField_19.setBounds(tempX, tempY + 3 * spaceY, spaceX, spaceY);
 		bgLabel.add(textField_19);
-		textField_19.setColumns(10);
+
+		textField_20 = new MyTextField();
+		textField_20.setBounds(tempX + spaceX, tempY + 3 * spaceY, spaceX,
+				spaceY);
+		bgLabel.add(textField_20);
+
+		textField_21 = new MyTextField();
+		textField_21.setText("先发场数");
+		textField_21.setBounds(tempX + 2 * spaceX, tempY + 3 * spaceY, spaceX,
+				spaceY);
+		bgLabel.add(textField_21);
 
 		textField_20 = new MyTextField();
 		textField_20.setHorizontalAlignment(SwingConstants.CENTER);
@@ -703,7 +659,7 @@ public class PlayerInfoPanel extends JPanel{
 				spaceY);
 		bgLabel.add(textField_71);
 	}
-	
+
 	class MyTextField extends JTextField {
 		/**
 		 * 
@@ -715,7 +671,7 @@ public class PlayerInfoPanel extends JPanel{
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("黑体", 1, 15));
-			this.setBorder(BorderFactory.createLineBorder(Color.GRAY,1));
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 			this.setColumns(10);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
