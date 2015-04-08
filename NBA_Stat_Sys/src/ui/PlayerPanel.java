@@ -64,6 +64,9 @@ public class PlayerPanel extends JPanel{
 		static int Y;
 		JLabel bgLabel;
 
+		String dailyHotPlayerCriteria="score";
+		String seasonHotPlayerCriteria="scoreField";
+		
 		public PlayerPanel(JFrame mainFrame) {
 			this.mainFrame = mainFrame;
 //			X = mainFrame.getWidth();
@@ -84,7 +87,7 @@ public class PlayerPanel extends JPanel{
 */
 			JButton home= new JButton();
 			ImageIcon homeIcon=new ImageIcon(new ImageIcon("Image/homeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-			home.setBounds(17*X/20,Y/18, X/25,X/25);
+			home.setBounds(680,10, X/25,X/25);
 			home.setIcon(homeIcon);
 			home.setOpaque(false);
 			home.setContentAreaFilled(false);
@@ -95,7 +98,7 @@ public class PlayerPanel extends JPanel{
 			
 			JButton minimize = new JButton();
 			ImageIcon minimizeIcon=new ImageIcon(new ImageIcon("Image/minimizeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-			minimize.setBounds(18*X/20,Y/18, X/25,X/25);
+			minimize.setBounds(718,10, X/25,X/25);
 			minimize.setIcon(minimizeIcon);
 			minimize.setOpaque(false);
 			minimize.setContentAreaFilled(false);
@@ -113,7 +116,7 @@ public class PlayerPanel extends JPanel{
 			
 			JButton close = new JButton();
 			ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-			close.setBounds(19*X/20,Y/18, X/25,X/25);
+			close.setBounds(760,10, X/25,X/25);
 			close.setIcon(closeIcon);
 			close.setOpaque(false);
 			close.setContentAreaFilled(false);
@@ -130,72 +133,138 @@ public class PlayerPanel extends JPanel{
 			this.add(close);
 			
 			JButton searchPlayerbtn = new JButton("球员搜索");
-			searchPlayerbtn.setBounds(670, 125, 93, 23);
+			searchPlayerbtn.setBounds(50, 50, 80, 23);
 			searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
 			add(searchPlayerbtn);
 			
 			JButton inquiryPlayerbtn = new JButton("球员查看");
-			inquiryPlayerbtn.setBounds(670, 205, 93, 23);
+			inquiryPlayerbtn.setBounds(250, 50, 80, 23);
 			inquiryPlayerbtn.addActionListener(e -> toInquiryPlayerPanel());
 			add(inquiryPlayerbtn);
 			
 			JButton sortPlayerbtn = new JButton("球员排序");
-			sortPlayerbtn.setBounds(670, 285, 93, 23);
+			sortPlayerbtn.setBounds(450, 50, 80, 23);
 			sortPlayerbtn.addActionListener(e -> toSortPlayerPanel());
 			add(sortPlayerbtn);
 			
 			JButton screeningPlayerbtn = new JButton("球员筛选");
-			screeningPlayerbtn.setBounds(670, 365, 93, 23);
+			screeningPlayerbtn.setBounds(650, 50, 80, 23);
 			screeningPlayerbtn.addActionListener(e -> toScreeningPlayerPanel());
 			add(screeningPlayerbtn);		
 			
+			
+			
+			
 			JLabel label = new JLabel("热点球员");
-			label.setBounds(53, 75, 60, 15);
+			label.setBounds(60, 85, 60, 15);
 			add(label);
 			
+			JButton dailyHotDatabtn = new JButton("每日");
+			dailyHotDatabtn.setFont(new Font("宋体", Font.PLAIN, 12));
+			dailyHotDatabtn.setBounds(602, 77, 60, 23);
+			dailyHotDatabtn.addActionListener(e->showDailyHotComponent());
+			add(dailyHotDatabtn);
+			
+			JButton seasonHotDatabtn = new JButton("赛季");
+			seasonHotDatabtn.setBounds(662, 77, 60, 23);
+			seasonHotDatabtn.addActionListener(e->showSeasonHotComponent());
+			add(seasonHotDatabtn);
+
+			
+			
+			
+			
+			 JButton seasonHotData_ScoreFieldbtn = new JButton("场均得分");
+				seasonHotData_ScoreFieldbtn.setBounds(55, 105, 80, 23);
+				seasonHotData_ScoreFieldbtn.addActionListener(e->{
+					seasonHotPlayerCriteria="score";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_ScoreFieldbtn);
+				
+				JButton seasonHotData_ReboundFieldbtn = new JButton("场均篮板");
+				seasonHotData_ReboundFieldbtn.setBounds(134, 105, 80, 23);
+				seasonHotData_ReboundFieldbtn.addActionListener(e->{
+					seasonHotPlayerCriteria="rebound";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_ReboundFieldbtn);
+				
+				JButton seasonHotData_AssistanceFieldbtn = new JButton("场均助攻");
+				seasonHotData_AssistanceFieldbtn.setBounds(213, 105, 80, 23);
+				seasonHotData_AssistanceFieldbtn.addActionListener(e->{
+					seasonHotPlayerCriteria="assistance";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_AssistanceFieldbtn);
+				
+				JButton seasonHotData_BlockFieldbtn = new JButton("场均盖帽");
+				seasonHotData_BlockFieldbtn.setBounds(292, 105, 80, 23);
+				seasonHotData_BlockFieldbtn.addActionListener(e->{
+					seasonHotPlayerCriteria="block";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_BlockFieldbtn);
+				
+				JButton seasonHotData_StealFieldbtn = new JButton("场均抢断");
+				seasonHotData_StealFieldbtn.setBounds(371, 105, 80, 23);
+				seasonHotData_StealFieldbtn.addActionListener(e->{
+					seasonHotPlayerCriteria="steal";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_StealFieldbtn);
+			
+				JButton seasonHotData_ThreePointHitRatebtn = new JButton("三分命中率");
+				seasonHotData_ThreePointHitRatebtn.setBounds(450, 105, 92, 23);
+				seasonHotData_ThreePointHitRatebtn.addActionListener(e->{
+					seasonHotPlayerCriteria="threePointHitRate";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_ThreePointHitRatebtn);
+				
+				JButton seasonHotData_HitRatebtn = new JButton("投篮命中率");
+				seasonHotData_HitRatebtn.setBounds(632, 105, 92, 23);
+				seasonHotData_HitRatebtn.addActionListener(e->{
+					seasonHotPlayerCriteria="hitRate";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_HitRatebtn);	
+				
+				JButton seasonHotData_FreeThrowRatebtn = new JButton("罚球命中率");
+				seasonHotData_FreeThrowRatebtn.setBounds(541, 105, 92, 23);
+				seasonHotData_FreeThrowRatebtn.addActionListener(e->{
+					seasonHotPlayerCriteria="freeThrowRate";
+					showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+				});
+				add(seasonHotData_FreeThrowRatebtn);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			JLabel label_1 = new JLabel("进步最快球员");
-			label_1.setBounds(53, 269, 80, 15);
+			label_1.setBounds(60, 274, 80, 15);
 			add(label_1);
 			
-			JButton dailyDatabtn = new JButton("每日");
-			dailyDatabtn.setFont(new Font("宋体", Font.PLAIN, 12));
-			dailyDatabtn.setBounds(405, 71, 60, 23);
-			add(dailyDatabtn);
-			
-			JButton seasonDatabtn = new JButton("赛季");
-			seasonDatabtn.setBounds(465, 71, 60, 23);
-			add(seasonDatabtn);
-			
-			JButton dailyData_Scorebtn = new JButton("得分");
-			dailyData_Scorebtn.setBounds(40, 100, 120, 23);
-			add(dailyData_Scorebtn);
-			
-			JButton dailyData_Reboundbtn = new JButton("篮板");
-			dailyData_Reboundbtn.setBounds(159, 100, 120, 23);
-			add(dailyData_Reboundbtn);
-			
-			JButton dailyData_Assistancebtn = new JButton("助攻");
-			dailyData_Assistancebtn.setBounds(278, 100, 120, 23);
-			add(dailyData_Assistancebtn);
-			
-			JButton dailyData_Blockbtn = new JButton("盖帽");
-			dailyData_Blockbtn.setBounds(397, 100, 120, 23);
-			add(dailyData_Blockbtn);
-			
-			JButton dailyData_Stealbtn = new JButton("抢断");
-			dailyData_Stealbtn.setBounds(516, 100, 120, 23);
-			add(dailyData_Stealbtn);
-			
 			JButton seasonData_ScoreFieldbtn = new JButton("场均得分");
-			seasonData_ScoreFieldbtn.setBounds(40, 294, 200, 23);
+			seasonData_ScoreFieldbtn.setBounds(55, 294, 223, 23);
 			add(seasonData_ScoreFieldbtn);
 			
 			JButton seasonData_ReboundFieldbtn = new JButton("场均篮板");
-			seasonData_ReboundFieldbtn.setBounds(239, 294, 200, 23);
+			seasonData_ReboundFieldbtn.setBounds(277, 294, 223, 23);
 			add(seasonData_ReboundFieldbtn);
 			
 			JButton seasonData_AssistanceFieldbtn = new JButton("场均助攻");
-			seasonData_AssistanceFieldbtn.setBounds(438, 294, 200, 23);
+			seasonData_AssistanceFieldbtn.setBounds(499, 294, 223, 23);
 			add(seasonData_AssistanceFieldbtn);
 			
 			
@@ -204,6 +273,67 @@ public class PlayerPanel extends JPanel{
 				
 			
 		}
+		
+        public void showDailyHotComponent(){
+			
+        	JButton dailyHotData_Scorebtn = new JButton("得分");
+			dailyHotData_Scorebtn.setBounds(40, 100, 120, 23);
+			dailyHotData_Scorebtn.addActionListener(e->{
+				dailyHotPlayerCriteria="score";
+				showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			});
+			add(dailyHotData_Scorebtn);
+			
+			JButton dailyHotData_Reboundbtn = new JButton("篮板");
+			dailyHotData_Reboundbtn.setBounds(159, 100, 120, 23);
+			dailyHotData_Reboundbtn.addActionListener(e->{
+				dailyHotPlayerCriteria="rebound";
+				showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			});
+			add(dailyHotData_Reboundbtn);
+			
+			JButton dailyHotData_Assistancebtn = new JButton("助攻");
+			dailyHotData_Assistancebtn.setBounds(278, 100, 120, 23);
+			dailyHotData_Assistancebtn.addActionListener(e->{
+				dailyHotPlayerCriteria="assistance";
+				showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			});
+			add(dailyHotData_Assistancebtn);
+			
+			JButton dailyHotData_Blockbtn = new JButton("盖帽");
+			dailyHotData_Blockbtn.setBounds(397, 100, 120, 23);
+			dailyHotData_Blockbtn.addActionListener(e->{
+				dailyHotPlayerCriteria="block";
+				showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			});
+			add(dailyHotData_Blockbtn);
+			
+			JButton dailyHotData_Stealbtn = new JButton("抢断");
+			dailyHotData_Stealbtn.setBounds(516, 100, 120, 23);
+			dailyHotData_Stealbtn.addActionListener(e->{
+				dailyHotPlayerCriteria="steal";
+				showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			});
+			add(dailyHotData_Stealbtn);
+		}
+		
+		public void showSeasonHotComponent(){
+	       	   
+				
+				
+		}
+		
+		public void showDailyHotTopFivePlayer(String dailyHotPlayerCriteria){
+			
+			
+		}
+		
+		public void showSeasonHotTopFivePlayer(String seasonHotPlayerCriteria){
+			
+			
+		}
+		
+		
 	
 		public void toSearchPlayerPanel() {
 		
