@@ -25,7 +25,7 @@ public class Player_BL implements Player_BS{
 	}
 
 	public ArrayList<PlayerVo> filterPlayerBy(String position, String div, String option) {
-		return player_handler.filterPlayersBy(position, div, option);
+		return player_handler.filterPlayersBy(position, div, option,50);
 	}
 	
 	public ArrayList<PlayerVo> getPlayersByTeam(String abbr)
@@ -40,8 +40,7 @@ public class Player_BL implements Player_BS{
 	}
 	
 	public ArrayList<PlayerVo> hotPlayerSeason(String option) {
-		
-		return null;
+		return player_handler.filterPlayersBy("All", "All", option,5);
 	}
 	@Override
 	public ArrayList<PlayerVo> progressFastPlayer(String option) {

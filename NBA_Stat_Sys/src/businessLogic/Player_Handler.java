@@ -625,7 +625,7 @@ public class Player_Handler {
 		return templist;
 	}
 	
-	public ArrayList<PlayerVo> filterPlayersBy(String position, String div, String option)
+	public ArrayList<PlayerVo> filterPlayersBy(String position, String div, String option,int n)
 	{
 		ArrayList<PlayerVo> list = new ArrayList<PlayerVo>();
 		if(position.equals("All")&&div.equals("All"))
@@ -661,7 +661,7 @@ public class Player_Handler {
 				}		
 			}
 		}
-		int m=Math.min(50, list.size());
+		int m=Math.min(n, list.size());
 		if(option.equals("score")){
 			int a[][] = new int [list.size()][2]; 
 			for(int i=0;i<list.size();i++)
