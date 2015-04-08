@@ -44,9 +44,9 @@ public class PlayerPanel extends JPanel{
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
-		static SearchPanel searchPlayerPanel;
+		static ShowPanel searchPlayerPanel;
 		static SortPanel sortPlayerPanel;
-		static SearchPanel searchTeamPanel;
+		static ShowPanel searchTeamPanel;
 		static ScreeningPlayerPanel screeningPlayerPanel;
 		
 		JFrame mainFrame;
@@ -212,7 +212,7 @@ public class PlayerPanel extends JPanel{
 			
 		public void toInquiryPlayerPanel() {
 			this.setVisible(false);
-			searchPlayerPanel = new SearchPanel("player", mainFrame);
+			searchPlayerPanel = new ShowPanel("player", mainFrame);
 
 		}
 		

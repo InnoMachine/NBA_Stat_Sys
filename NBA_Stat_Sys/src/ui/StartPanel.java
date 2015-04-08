@@ -19,9 +19,9 @@ public class StartPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static SearchPanel searchPlayerPanel;
+	static ShowPanel searchPlayerPanel;
 	static SortPanel sortPlayerPanel;
-	static SearchPanel searchTeamPanel;
+	static ShowPanel searchTeamPanel;
 	static SortPanel sortTeamPanel;
 	static ScreeningPlayerPanel screeningPlayerPanel;
 
@@ -176,7 +176,7 @@ public class StartPanel extends JPanel {
 
 	public void toSearchPlayerPanel() {
 		this.setVisible(false);
-		searchPlayerPanel = new SearchPanel("player", mainFrame);
+		searchPlayerPanel = new ShowPanel("player", mainFrame);
 
 	}
 
@@ -194,7 +194,7 @@ public class StartPanel extends JPanel {
 
 	public void toSearchTeamPanel() {
 		this.setVisible(false);
-		searchTeamPanel = new SearchPanel("team", mainFrame);
+		searchTeamPanel = new ShowPanel("team", mainFrame);
 
 	}
 
