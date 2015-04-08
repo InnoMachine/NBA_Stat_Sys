@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class GamePO {
 	
 	private String gameLabel;
+	//season
 	private String gameDate;
 	private String versus;
 	private String guestTeam;
