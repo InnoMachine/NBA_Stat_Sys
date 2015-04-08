@@ -71,6 +71,10 @@ public class PlayerVo {
 	private double freeThrowHitNumField;     //罚球命中数
 	private double freeThrowShotNumField;
 	private double efficiencyField; 
+	private double scoreFieldProgress;
+	private double reboundOverallFieldProgress;
+	private double assistanceFieldProgress;
+	
 	
 	private int weighted;
 	private int twoTenNum;//两双数
@@ -574,6 +578,24 @@ public class PlayerVo {
 	}
 	public void setEfficiencyField(double efficiencyField) {
 		this.efficiencyField = efficiencyField;
+	}
+	public double getScoreFieldProgress() {
+		return scoreFieldProgress;
+	}
+	public void setScoreFieldProgress(double scoreFieldProgress) {
+		this.scoreFieldProgress = scoreFieldProgress;
+	}
+	public double getReboundOverallFieldProgress() {
+		return reboundOverallFieldProgress;
+	}
+	public void setReboundOverallFieldProgress(double reboundOverallFieldProgress) {
+		this.reboundOverallFieldProgress = reboundOverallFieldProgress;
+	}
+	public double getAssistanceFieldProgress() {
+		return assistanceFieldProgress;
+	}
+	public void setAssistanceFieldProgress(double assistanceFieldProgress) {
+		this.assistanceFieldProgress = assistanceFieldProgress;
 	}
 	
 	

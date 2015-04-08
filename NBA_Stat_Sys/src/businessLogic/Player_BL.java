@@ -3,6 +3,7 @@ package businessLogic;
 import java.util.ArrayList;
 
 import test.data.PlayerHotInfo;
+import vo.PlayerCardVo;
 import vo.PlayerVo;
 
 public class Player_BL implements Player_BS{
@@ -44,7 +45,7 @@ public class Player_BL implements Player_BS{
 		return player_handler.filterPlayersBy("All", "All", option,5);
 	}
 	@Override
-	public ArrayList<PlayerVo> progressFastPlayer(String option) {
-		return null;
+	public ArrayList<PlayerCardVo> progressFastPlayer(String option) {
+		return player_handler.progressFastPlayer(option);
 	}
 }

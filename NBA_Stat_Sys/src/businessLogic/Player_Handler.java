@@ -9,8 +9,12 @@ import java.util.ArrayList;
 
 
 
+
+
 import test.data.PlayerHotInfo;
+import vo.PlayerCardVo;
 import vo.PlayerPerformanceInSingleGame;
+import vo.PlayerRecentGames;
 import vo.PlayerVo;
 
 public class Player_Handler {
@@ -1300,5 +1304,74 @@ public class Player_Handler {
 			temp.setValue(pp.getAssistance());
 		}
 		return null;
+	}
+	
+	public ArrayList<PlayerCardVo> progressFastPlayer(String option){
+		CalculateProgress();
+		if(option.equals("scoreFieldProgress")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getScoreFieldProgress();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),option));
+			}
+			return templist;
+		}else if(option.equals("reboundOverallFieldProgress")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getReboundOverallFieldProgress();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),option));
+			}
+			return templist;
+		}else if(option.equals("assistanceFieldProgress")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getAssistanceFieldProgress();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),option));
+			}
+			return templist;
+		}
+		return null;
+	}
+
+	private void CalculateProgress() {
+		ArrayList<PlayerRecentGames> recentGames=data_handler.getPlayerRecentGames();
+		for(PlayerVo temp:listvo){
+			for(PlayerRecentGames recent:recentGames){
+				if(temp.getName().equals(recent.getName())){
+					int s=0,r=0,a=0;
+					ArrayList<PlayerPerformanceInSingleGame> p = recent.getFiveGames();
+					for(PlayerPerformanceInSingleGame pp:p){
+						s+=pp.getScore();
+						r+=pp.getReboundOverall();
+						a+=pp.getAssistance();
+					}
+					temp.setScoreFieldProgress(((double)s/p.size()-temp.getScoreField())/(temp.getScoreField()));
+					temp.setAssistanceFieldProgress(((double)a/p.size()-temp.getAssistanceField())/temp.getAssistanceField());
+					temp.setReboundOverallFieldProgress(((double)r/p.size()-temp.getReboundOverallField())/temp.getReboundOverallField());
+					break;
+				}
+			}
+		}
 	}
 }

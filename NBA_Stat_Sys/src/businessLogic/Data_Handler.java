@@ -57,6 +57,7 @@ public class Data_Handler {
 		PlayerDivisionSet();
 		
 	}
+	
 	private void PlayerDivisionSet() {
 		for(PlayerVo temp:listvo)
 		{
@@ -72,6 +73,7 @@ public class Data_Handler {
 					
 		
 	}
+	
 	private void TeamCalculate() {
 		for(TeamVo temp:teamlistvo)
 		{
@@ -108,36 +110,42 @@ public class Data_Handler {
 		}
 		
 	}
+	
 	private void SetTeamRoundAttack(TeamVo temp) {
 		double r = temp.getRoundAttack();
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setRoundAttack(f);
 	}
+	
 	private void TeamSetAssistanceEfficiency(TeamVo temp) {
 		double r = temp.getAssistance()/(double)temp.getRoundAttack()*100;
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setAssistanceEfficiency(f);
 	}
+	
 	private void TeamSetStealEfficiency(TeamVo temp) {
 		double r = temp.getSteal()/(double)temp.getOpRoundAttack()*100;
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setStealEfficiency(f);
 	}
+	
 	private void TeamSetReboundEfficiency(TeamVo temp) {
 		double r = temp.getReboundOverall()/(double)(temp.getReboundOverall()+temp.getOpReboundAll());
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setReboundEfficiency(f);
 	}
+	
 	private void TeamSetDefensiveEfficiency(TeamVo temp) {
 		double r = temp.getOpScore()/(double)temp.getOpRoundAttack()*100;
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setDefensiveEfficiency(f);
 	}
+	
 	private void TeamSetAttackingEfficiency(TeamVo temp) {
 		double r = 100*(double)temp.getScore()/(double)temp.getRoundAttack();
 		if(r!=0)
@@ -150,6 +158,7 @@ public class Data_Handler {
 			temp.setAttackingEfficiency(0);
 		
 	}
+	
 	private void TeamSetWinningRate(TeamVo temp) {
 		double r = temp.getWinningNum()/(double)temp.getGameNum();
 		b = new BigDecimal(r);
@@ -157,6 +166,7 @@ public class Data_Handler {
 		temp.setWinningRate(f);
 		
 	}
+	
 	private void TeamSetFreeThrowRate(TeamVo temp) {
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
 		b = new BigDecimal(r);
@@ -164,12 +174,14 @@ public class Data_Handler {
 		temp.setFreeThrowRate(f);
 		
 	}
+	
 	private void TeamSetThreePointHitRate(TeamVo temp) {
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setThreePointHitRate(f);
 	}
+	
 	private void TeamSetHitRate(TeamVo temp) {
 		double r = temp.getHitNum()/(double)temp.getShotNum();
 		b = new BigDecimal(r);
@@ -288,12 +300,14 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setUseRate(f);
 	}
+	
 	private void PlayerSetTurnOverRate(PlayerVo temp) {
 		double r = temp.getTurnover()/(temp.getShotNum()-temp.getThreePointShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover());
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTurnOverRate(f);
 	}
+	
 	private void PlayerSetBlockRate(PlayerVo temp) {
 		double r = temp.getBlock()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)temp.getOpTwoPointShotNum();
@@ -301,6 +315,7 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setBlockRate(f);
 	}
+	
 	private void PlayerSetStealRate(PlayerVo temp) {
 		double r = temp.getSteal()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)temp.getOpRoundAttack();
@@ -308,6 +323,7 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setStealRate(f);
 	}
+	
 	private void PlayerSetAssistanceRate(PlayerVo temp) {
 		double r = temp.getAssistance()/((double)temp.getTime()/((double)temp.getteamTime()/5)
 				*temp.GetteamHitNum()-temp.getHitNum());
@@ -315,6 +331,7 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setAssistanceRate(f);
 	}
+	
 	private void PlayerSetDefensiveReboundRate(PlayerVo temp) {
 		double r = temp.getDefensiveNum()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)(temp.getteamDefensiveRebound()+temp.getOpDefensiveRebound());
@@ -322,6 +339,7 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setDefensiveReboundRate(f);
 	}
+	
 	private void PlayerSetOffensiveReboundRate(PlayerVo temp) {
 		double r = temp.getAttackingNum()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)(temp.getteamOffensiveRebound()+temp.getOpOffensiveRebound());
@@ -329,6 +347,7 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setOffensiveReboundRate(f);
 	}
+	
 	private void PlayerSetReboundOverallRate(PlayerVo temp) {
 		double r = temp.getReboundOverall()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)(temp.getteamRebound()+temp.getOpReboundAll());
@@ -336,12 +355,14 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setReboundOverallRate(f);
 	}
+	
 	private void PlayerSetHitEfficiency(PlayerVo temp) {
 		double r = (temp.getHitNum()+0.5*temp.getThreePointHitNum())/temp.getShotNum();
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitEfficiency(f);
 	}
+	
 	private void PlayerSetTrueHitRate(PlayerVo temp) {
 		double r = temp.getScore()/(double)(2*((double)temp.getShotNum()+temp.getThreePointShotNum()+0.44
 				*temp.getFreeThrowShotNum()));
@@ -350,6 +371,7 @@ public class Data_Handler {
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTrueHitRate(f);
 	}
+	
 	private void PlayerSetGmSc(PlayerVo temp) {
 		double r = (double)temp.getScore()+0.4*temp.getHitNum()-0.7*temp.getShotNum()-0.4*
 				(temp.getFreeThrowShotNum()-temp.getFreeThrowHitNum())
@@ -360,6 +382,7 @@ public class Data_Handler {
 		temp.setGmSc(f);
 		
 	}
+	
 	private void PlayerSetFreeThrowRate(PlayerVo temp) {
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
 		b = new BigDecimal(r);
@@ -367,6 +390,7 @@ public class Data_Handler {
 		temp.setFreeThrowRate(f);
 		
 	}
+	
 	private void PlayerSetThreePointHitRate(PlayerVo temp) {
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
 		b = new BigDecimal(r);
@@ -374,6 +398,7 @@ public class Data_Handler {
 		temp.setThreePointHitRate(f);
 		
 	}
+	
 	private void PlayerSetHitRate(PlayerVo temp) {
 		double r = temp.getHitNum()/(double)temp.getShotNum();
 		b = new BigDecimal(r);
@@ -381,12 +406,14 @@ public class Data_Handler {
 		temp.setHitRate(f);
 		
 	}
+	
 	private double turnToTwoPoint(double d)
 	{
 		b = new BigDecimal(d);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		return f;
 	}
+	
 	private void loadGames() {
 		for(int i=0;i<gamelist.size();i++)
 		{
@@ -414,6 +441,7 @@ public class Data_Handler {
 			teamVoPSet(tgph);
 		}
 	}
+	
 	private void teamVoPSet(TeamPerformanceInSingleGame tgp) {
 		for(int i=0;i<teamlistvo.size();i++)
 		{
@@ -451,6 +479,7 @@ public class Data_Handler {
 		}
 		
 	}
+	
 	private void playerVoPSet(TeamPerformanceInSingleGame tgp) {
 		for(PlayerPerformanceInSingleGame temp:tgp.playerlist)
 		{
@@ -504,6 +533,7 @@ public class Data_Handler {
 		}
 		
 	}
+	
 	private TeamPerformanceInSingleGame setPerformance(TeamPerformance tp) {
 		ArrayList<SinglePerformance> listsp = tp.getSpList();
 		String abbr = tp.getTeamNameAbbr();
@@ -573,6 +603,7 @@ public class Data_Handler {
 		return tgp;
 		
 	}
+	
 	private boolean isTwoTen(SinglePerformance temp) {
 		int score = temp.getScore();
 		int assistance = temp.getAssistance();
@@ -589,6 +620,7 @@ public class Data_Handler {
 		else 
 			return false;
 	}
+	
 	public static Data_Handler getInstance()
 	{
 		if(instance==null)
@@ -597,6 +629,7 @@ public class Data_Handler {
 		}
 		return instance;
 	}
+	
 	private void SetTeamVo() {
 		for(int i=0;i<teamlistpo.size();i++)
 		{
@@ -706,10 +739,12 @@ public class Data_Handler {
 		
 		return listvo;
 	}
+	
 	public ArrayList<TeamVo> getTeams()
 	{
 		return teamlistvo;
 	}
+	
 	public ArrayList<TeamPerformanceInSingleGame> getTeamGamesDaily()
 	{
 		ArrayList<GamePO> todaygame = new ArrayList<GamePO>();
@@ -739,6 +774,7 @@ public class Data_Handler {
 		}
 		return tplist;
 	}
+	
 	private TeamPerformanceInSingleGame setPerformanceDaily(TeamPerformance tp) {
 		ArrayList<SinglePerformance> listsp = tp.getSpList();
 		String abbr = tp.getTeamNameAbbr();
@@ -806,6 +842,7 @@ public class Data_Handler {
 		}
 		return tgp;
 	}
+	
 	public ArrayList<PlayerPerformanceInSingleGame> getPlayerGamesDaily()
 	{
 		//此处由今日日期读取当天games
@@ -821,6 +858,7 @@ public class Data_Handler {
 		return pplist;
 		
 	}
+	
 	private void setPerformanceDaily(TeamPerformance tp,
 			ArrayList<PlayerPerformanceInSingleGame> pplist) {
 		ArrayList<SinglePerformance> listsp = tp.getSpList();
@@ -862,6 +900,11 @@ public class Data_Handler {
 				}
 			}
 		}
+	}
+	
+	public ArrayList<PlayerRecentGames> getPlayerRecentGames()
+	{
+		return precgames;
 	}
 }
 

@@ -32,6 +32,12 @@ public class PlayerCardVo {
 		this.sortOption = option;
 		if(option.equals("time")){
 			sortvalue = vo.getTime();
+		}else if(option.equals("scoreFieldProgress")){
+			sortvalue = vo.getFreeThrowShotNumField();
+		}else if(option.equals("reboundOverallFieldProgress")){
+			sortvalue = vo.getFreeThrowShotNum();
+		}else if(option.equals("assistanceFieldProgress")){
+			sortvalue = vo.getTwoTenNum();
 		}else if(option.equals("timeField")){
 			sortvalue = vo.getTimeField();
 		}else if(option.equals("FirstOnNum")){
