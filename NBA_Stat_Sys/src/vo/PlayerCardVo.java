@@ -9,6 +9,7 @@ public class PlayerCardVo {
 	private String height;
 	private String weight;
 	private String birth;
+	private String name;
 	private int age;
 	private int exp;
 	private String school;
@@ -16,9 +17,14 @@ public class PlayerCardVo {
 	private String PortraitImgPath;
 	private String sortOption;
 	private double sortvalue;
-	
+	private String Team;
+	public PlayerCardVo()
+	{
+		
+	}
 	public PlayerCardVo(PlayerVo vo,String option)
 	{
+		this.name=vo.getName();
 		this.number = vo.getNumber();
 		this.position = vo.getPosition();
 		this.height = vo.getHeight();
@@ -30,6 +36,7 @@ public class PlayerCardVo {
 		this.ActionImgPath =vo.getActionImgPath();
 		this.PortraitImgPath = vo.getPortraitImgPath();
 		this.sortOption = option;
+		this.Team=vo.getTeam();
 		if(option.equals("time")){
 			sortvalue = vo.getTime();
 		}else if(option.equals("scoreFieldProgress")){
@@ -201,5 +208,17 @@ public class PlayerCardVo {
 	}
 	public void setSortvalue(double sortvalue) {
 		this.sortvalue = sortvalue;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getTeam() {
+		return Team;
+	}
+	public void setTeam(String team) {
+		Team = team;
 	}
 }

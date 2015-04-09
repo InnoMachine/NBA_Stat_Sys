@@ -2,16 +2,6 @@ package businessLogic;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
-
-
-
-
-
-
-
-
-import test.data.PlayerHotInfo;
 import vo.PlayerCardVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
@@ -1211,9 +1201,9 @@ public class Player_Handler {
 		
 	}
 	
-	public ArrayList<PlayerHotInfo> hotPlayerDaily(String option){
+	public ArrayList<PlayerCardVo> hotPlayerDaily(String option){
 		ArrayList<PlayerPerformanceInSingleGame> pplist= data_handler.getPlayerGamesDaily();
-		ArrayList<PlayerHotInfo> hotlist = new ArrayList<PlayerHotInfo>();
+		ArrayList<PlayerCardVo> hotlist = new ArrayList<PlayerCardVo>();
 		if(option.equals("score")){
 			int a[][] = new int [pplist.size()][2]; 
 			for(int i=0;i<pplist.size();i++)
@@ -1284,24 +1274,23 @@ public class Player_Handler {
 		
 	}
 
-	private PlayerHotInfo CreateHotInfo(
+	private PlayerCardVo CreateHotInfo(
 			PlayerPerformanceInSingleGame pp,String option) {
-		PlayerHotInfo temp = new PlayerHotInfo();
-		temp.setField(option);
+		PlayerCardVo temp = new PlayerCardVo();
+		temp.setSortOption(option);
 		temp.setName(pp.getName());
 		temp.setPosition(pp.getPosition());
-		temp.setTeamName(pp.getTeam());
-		temp.setUpgradeRate(0);
+		temp.setTeam(pp.getTeam());
 		if(option.equals("score")){
-			temp.setValue(pp.getScore());
+			temp.setSortvalue(pp.getScore());
 		}else if(option.equals("reboundOverall")){
-			temp.setValue(pp.getReboundOverall());
+			temp.setSortvalue(pp.getReboundOverall());
 		}else if(option.equals("block")){
-			temp.setValue(pp.getBlock());
+			temp.setSortvalue(pp.getBlock());
 		}else if(option.equals("steal")){
-			temp.setValue(pp.getSteal());
+			temp.setSortvalue(pp.getSteal());
 		}else if(option.equals("assistance")){
-			temp.setValue(pp.getAssistance());
+			temp.setSortvalue(pp.getAssistance());
 		}
 		return null;
 	}
@@ -1366,12 +1355,25 @@ public class Player_Handler {
 						r+=pp.getReboundOverall();
 						a+=pp.getAssistance();
 					}
-					temp.setScoreFieldProgress(((double)s/p.size()-temp.getScoreField())/(temp.getScoreField()));
-					temp.setAssistanceFieldProgress(((double)a/p.size()-temp.getAssistanceField())/temp.getAssistanceField());
-					temp.setReboundOverallFieldProgress(((double)r/p.size()-temp.getReboundOverallField())/temp.getReboundOverallField());
+					int s1=(temp.getScore()-s)/(temp.getGameNum()-p.size());
+					int a1=(temp.getAssistance()-a)/(temp.getGameNum()-p.size());
+					int r1=(temp.getReboundOverall()-r)/(temp.getGameNum()-p.size());
+					temp.setScoreFieldProgress(((double)s/p.size()-s1)/s1);
+					temp.setAssistanceFieldProgress(((double)a/p.size()-a1)/a1);
+					temp.setReboundOverallFieldProgress(((double)r/p.size()-r1)/r1);
 					break;
 				}
 			}
 		}
 	}
+
+	public ArrayList<PlayerCardVo> hotPlayerSeason(String option) {
+		ArrayList<PlayerVo> volist = filterPlayersBy("All", "All", option, 5);
+		ArrayList<PlayerCardVo> infolist = new ArrayList<PlayerCardVo>();
+		for(PlayerVo temp:volist){
+			infolist.add(new PlayerCardVo(temp,option));
+		}
+		return infolist;
+	}
+
 }

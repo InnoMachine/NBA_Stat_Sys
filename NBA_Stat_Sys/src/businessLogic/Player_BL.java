@@ -1,8 +1,6 @@
 package businessLogic;
 
 import java.util.ArrayList;
-
-import test.data.PlayerHotInfo;
 import vo.PlayerCardVo;
 import vo.PlayerVo;
 
@@ -36,13 +34,13 @@ public class Player_BL implements Player_BS{
 		
 	}
 	
-	public ArrayList<PlayerHotInfo> hotPlayerDaily(String option) {
+	public ArrayList<PlayerCardVo> hotPlayerDaily(String option) {
 		
 		return player_handler.hotPlayerDaily(option);
 	}
 	
-	public ArrayList<PlayerVo> hotPlayerSeason(String option) {
-		return player_handler.filterPlayersBy("All", "All", option,5);
+	public ArrayList<PlayerCardVo> hotPlayerSeason(String option) {
+		return player_handler.hotPlayerSeason(option);
 	}
 	@Override
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option) {
