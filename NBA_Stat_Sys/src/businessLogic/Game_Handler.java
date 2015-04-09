@@ -19,7 +19,7 @@ public class Game_Handler {
 	}
 	
 	public ArrayList<GameVo> getGameDaily(){
-		return listvo;
+		return null;
 	}
 	public ArrayList<GameVo> getGameByDate(String date){
 		GameDate gdate = new GameDate(date);

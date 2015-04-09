@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+
 import vo.PlayerCardVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
@@ -1376,4 +1377,254 @@ public class Player_Handler {
 		return infolist;
 	}
 
+	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2) {
+		double a[][] = new double[listvo.size()][3];
+		setArr(option1,a,0);
+		setArr(option2,a,2);
+		SortTwo.heapSort(a);
+		ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+		for(int i=0;i<listvo.size();i++)
+		{
+			templist.add(listvo.get((int)a[i][1]));
+		}		
+		return templist;
+	}
+
+	public void setArr(String option,double[][] a,int l){
+		if(option.equals("time")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getTime();
+				a[i][1] = i;
+			}
+		}else if(option.equals("timeField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getTimeField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("FirstOnNum")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getFirstOnNum();
+				a[i][1] = i;
+			}
+		}else if(option.equals("gameNum")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getGameNum();
+				a[i][1] = i;
+			}
+		}else if(option.equals("reboundOverall")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getReboundOverall();
+				a[i][1] = i;
+			}
+		}else if(option.equals("reboundOverallField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getReboundOverallField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("assistance")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getAssistance();
+				a[i][1] = i;
+			}
+		}else if(option.equals("assistanceField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getAssistanceField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("hitRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getHitRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("threePointHitRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getThreePointHitRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("freeThrowRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getFreeThrowRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("attackingNumField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getAttackingNumField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("attackingNum")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getAttackingNum();
+				a[i][1] = i;
+			}
+		}else if(option.equals("defensiveNumField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getDefensiveNumField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("defensiveNum")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getDefensiveNum();
+				a[i][1] = i;
+			}
+		}else if(option.equals("stealField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getStealField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("steal")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getSteal();
+				a[i][1] = i;
+			}
+		}else if(option.equals("blockField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getBlockField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("block")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getBlock();
+				a[i][1] = i;
+			}
+		}else if(option.equals("turnoverField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getTurnoverField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("turnover")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getTurnover();
+				a[i][1] = i;
+			}
+		}else if(option.equals("foulField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getFoulField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("foul")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getFoul();
+				a[i][1] = i;
+			}
+		}else if(option.equals("scoreField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getScoreField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("score")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getScore();
+				a[i][1] = i;
+			}
+		}else if(option.equals("efficiency")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getEfficiency();
+				a[i][1] = i;
+			}
+		}else if(option.equals("efficiencyField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getEfficiencyField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("GmScField")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getGmScField();
+				a[i][1] = i;
+			}
+		}else if(option.equals("GmSc")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getGmSc();
+				a[i][1] = i;
+			}
+		}else if(option.equals("trueHitRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getTrueHitRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("hitEfficiency")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getHitEfficiency();
+				a[i][1] = i;
+			}
+		}else if(option.equals("reboundOverallRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getReboundOverallRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("offensiveReboundRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getOffensiveReboundRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("defensiveReboundRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getDefensiveReboundRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("assistanceRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getAssistanceRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("stealRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getStealRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("blockRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getBlockRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("turnOverRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getTurnOverRate();
+				a[i][1] = i;
+			}
+		}else if(option.equals("useRate")){
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][l] = listvo.get(i).getUseRate();
+				a[i][1] = i;
+			}
+		}
+	}
 }

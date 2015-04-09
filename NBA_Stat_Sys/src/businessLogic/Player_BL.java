@@ -23,7 +23,9 @@ public class Player_BL implements Player_BS{
 		
 		return player_handler.sortPlayerBy(option);
 	}
-
+	public ArrayList<PlayerVo> sortPlayerBy(String option1,String option2){
+		return player_handler.sortPlayerBy(option1,option2);
+	}
 	public ArrayList<PlayerVo> filterPlayerBy(String position, String div, String option) {
 		return player_handler.filterPlayersBy(position, div, option,50);
 	}
