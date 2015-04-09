@@ -3,6 +3,7 @@ package businessLogic;
 import java.util.ArrayList;
 
 import vo.PlayerVo;
+import vo.TeamCardVo;
 import vo.TeamVo;
 
 public interface Team_BS {
@@ -11,5 +12,5 @@ public interface Team_BS {
 	public ArrayList<TeamVo>  getAllTeam();
 	public ArrayList<TeamVo>  sortTeamBy(String option);
 	public ArrayList<PlayerVo> getPlayers(String abbr);
-	public ArrayList<TeamVo> hotTeamSeason(String option); 
+	public ArrayList<TeamCardVo> hotTeamSeason(String option); 
 }

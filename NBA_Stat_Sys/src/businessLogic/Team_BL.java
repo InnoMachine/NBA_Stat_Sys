@@ -3,6 +3,7 @@ package businessLogic;
 import java.util.ArrayList;
 
 import vo.PlayerVo;
+import vo.TeamCardVo;
 import vo.TeamVo;
 
 public class Team_BL implements Team_BS{
@@ -33,12 +34,12 @@ public class Team_BL implements Team_BS{
 		return player_bl.getPlayersByTeam(abbr);
 	}
 	@Override
-	public ArrayList<TeamVo> hotTeamSeason(String option) {
+	public ArrayList<TeamCardVo> hotTeamSeason(String option) {
 		ArrayList<TeamVo> list = team_handler.sortTeamBy(option);
-		ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+		ArrayList<TeamCardVo> templist = new ArrayList<TeamCardVo>();
 		for(int i=0;i<5;i++)
 		{
-			templist.add(list.get(i));
+			templist.add(new TeamCardVo(list.get(i),option));
 		}
 		return templist;
 	}
