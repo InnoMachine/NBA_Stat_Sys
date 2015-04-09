@@ -112,13 +112,16 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		firstTeambtn = new JButton("Team1");
 		firstTeambtn.setBounds(267, 5, 65, 65);
-		firstPlayerbtn.setContentAreaFilled(false);
-		firstPlayerbtn.setBorderPainted(false);
-		firstPlayerbtn.setOpaque(false);
+		firstTeambtn.setContentAreaFilled(false);
+		firstTeambtn.setBorderPainted(false);
+		firstTeambtn.setOpaque(false);
 		add(firstTeambtn);
 
 		secondPlayerbtn = new JButton("Player2");
 		secondPlayerbtn.setBounds(368, 3, 35, 35);
+		secondPlayerbtn.setContentAreaFilled(false);
+		secondPlayerbtn.setBorderPainted(false);
+		secondPlayerbtn.setOpaque(false);
 		add(secondPlayerbtn);
 
 		secondPlayerNamelbl = new JLabel("name2");
@@ -138,10 +141,16 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		secondTeambtn = new JButton("Team2");
 		secondTeambtn.setBounds(624, 3, 35, 35);
+		secondTeambtn.setContentAreaFilled(false);
+		secondTeambtn.setBorderPainted(false);
+		secondTeambtn.setOpaque(false);
 		add(secondTeambtn);
 
 		thirdPlayerbtn = new JButton("Player3");
 		thirdPlayerbtn.setBounds(368, 40, 35, 35);
+		thirdPlayerbtn.setContentAreaFilled(false);
+		thirdPlayerbtn.setBorderPainted(false);
+		thirdPlayerbtn.setOpaque(false);
 		add(thirdPlayerbtn);
 
 		thirdPlayerNamelbl = new JLabel("name3");
@@ -161,10 +170,16 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		thirdTeambtn = new JButton("Team3");
 		thirdTeambtn.setBounds(624, 40, 35, 35);
+		thirdTeambtn.setContentAreaFilled(false);
+		thirdTeambtn.setBorderPainted(false);
+		thirdTeambtn.setOpaque(false);
 		add(thirdTeambtn);
 
 		fourthPlayerbtn = new JButton("Player4");
 		fourthPlayerbtn.setBounds(368, 77, 35, 35);
+		fourthPlayerbtn.setContentAreaFilled(false);
+		fourthPlayerbtn.setBorderPainted(false);
+		fourthPlayerbtn.setOpaque(false);
 		add(fourthPlayerbtn);
 
 		fourthPlayerNamelbl = new JLabel("name4");
@@ -184,10 +199,16 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		fourthTeambtn = new JButton("Team4");
 		fourthTeambtn.setBounds(624, 77, 35, 35);
+		fourthTeambtn.setContentAreaFilled(false);
+		fourthTeambtn.setBorderPainted(false);
+		fourthTeambtn.setOpaque(false);
 		add(fourthTeambtn);
 
 		fifthPlayerbtn = new JButton("Player5");
 		fifthPlayerbtn.setBounds(368, 114, 35, 35);
+		fifthPlayerbtn.setContentAreaFilled(false);
+		fifthPlayerbtn.setBorderPainted(false);
+		fifthPlayerbtn.setOpaque(false);
 		add(fifthPlayerbtn);
 
 		fifthPlayerNamelbl = new JLabel("name5");
@@ -207,6 +228,9 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		fifthTeambtn = new JButton("Team5");
 		fifthTeambtn.setBounds(624, 114, 35, 35);
+		fifthTeambtn.setContentAreaFilled(false);
+		fifthTeambtn.setBorderPainted(false);
+		fifthTeambtn.setOpaque(false);
 		add(fifthTeambtn);
 
 		showTopFiveData(hotPlayers);

@@ -337,6 +337,10 @@ public class PlayerPanel extends JPanel {
 		seasonHotPlayerPanel.setBounds(55, 325, 669, 150);
 	}
 
+	
+	
+	
+	
 	public void toSearchPlayerPanel() {
 
 	}
