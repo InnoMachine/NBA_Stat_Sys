@@ -935,5 +935,9 @@ public class Data_Handler {
 	{
 		return precgames;
 	}
+	public ArrayList<GameVo> getAllGames(){
+		return gamevo;
+		
+	}
 }
 

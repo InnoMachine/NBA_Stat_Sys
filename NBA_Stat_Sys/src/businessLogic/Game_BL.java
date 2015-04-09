@@ -19,7 +19,7 @@ public class Game_BL implements Game_BS{
 	}
 
 	
-	public ArrayList<GameVo> getGamesByData() {
+	public ArrayList<GameVo> getGamesByDate(String date) {
 		
 		return null;
 	}
