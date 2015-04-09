@@ -8,6 +8,7 @@ import po.PlayerPO;
 import po.SinglePerformance;
 import po.TeamPO;
 import po.TeamPerformance;
+import vo.GameVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
@@ -34,6 +35,7 @@ public class Data_Handler {
 	private ArrayList<GamePO> gamelist;
 	private ArrayList<TeamRecentGames> trecgames;
 	private ArrayList<PlayerRecentGames> precgames;
+	private ArrayList<GameVo> gamevo;
 	BigDecimal b;  
     
 	
@@ -49,6 +51,7 @@ public class Data_Handler {
 		gamelist = gamedao.getAllGames();
 		trecgames = new ArrayList<TeamRecentGames>();
 		precgames = new ArrayList<PlayerRecentGames>();
+		gamevo = new ArrayList<GameVo>();
 		SetPlayerVo();
 		SetTeamVo();
 		loadGames();
@@ -417,6 +420,7 @@ public class Data_Handler {
 	private void loadGames() {
 		for(int i=0;i<gamelist.size();i++)
 		{
+			GameVo game = new GameVo();
 			TeamPerformance tpg = gamelist.get(i).getGuestTP();
 			TeamPerformance tph = gamelist.get(i).getHomeTP();
 			TeamPerformanceInSingleGame tgpg=setPerformance(tpg);
@@ -439,9 +443,34 @@ public class Data_Handler {
 			playerVoPSet(tgph);
 			teamVoPSet(tgpg);
 			teamVoPSet(tgph);
+			
+			CreateGameVo(game,tgpg,tgph,gamelist.get(i));
+			gamevo.add(game);
 		}
 	}
 	
+	
+
+	private void CreateGameVo(GameVo vo, TeamPerformanceInSingleGame tgpg,
+			TeamPerformanceInSingleGame tgph, GamePO po) {
+		vo.setExtratime(po.getExtratime());
+		vo.setGameDate(po.getGameDate());
+		vo.setGameLabel(po.getGameLabel());
+		vo.setGuestTeam(po.getGuestTeam());
+		vo.setGuestTP(tgpg);
+		vo.setHomeTeam(po.getHomeTeam());
+		vo.setHomeTP(tgph);
+		vo.setScore1st(po.getScore1st());
+		vo.setScore2nd(po.getScore2nd());
+		vo.setScore3rd(po.getScore3rd());
+		vo.setScore4th(po.getScore4th());
+		vo.setScoreOverall(po.getScoreOverall());
+		vo.setSeasonId(po.getSeasonId());
+		vo.setVersus(po.getVersus());
+		
+		
+	}
+
 	private void teamVoPSet(TeamPerformanceInSingleGame tgp) {
 		for(int i=0;i<teamlistvo.size();i++)
 		{
