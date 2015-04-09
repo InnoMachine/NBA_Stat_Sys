@@ -321,9 +321,9 @@ public class PlayerPanel extends JPanel {
 		  if(dailyHotPlayerPanel!=null){
 	        	dailyHotPlayerPanel.setVisible(false);
 	        }
-//			dailyHotPlayerPanel=new TopFivePlayerCardPanel(player_BS.hotPlayerDaily(dailyHotPlayerCriteria));
-//			dailyHotPlayerPanel.setVisible(true);
-//			dailyHotPlayerPanel.setBounds(55, 128, 669, 150);
+			dailyHotPlayerPanel=new TopFivePlayerCardPanel(player_BS.hotPlayerDaily(dailyHotPlayerCriteria));
+			dailyHotPlayerPanel.setVisible(true);
+			dailyHotPlayerPanel.setBounds(55, 128, 669, 150);
 		
 		
 	}
