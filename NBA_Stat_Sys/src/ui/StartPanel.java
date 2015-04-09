@@ -24,6 +24,7 @@ public class StartPanel extends JPanel {
 	static ShowPanel searchTeamPanel;
 	static SortPanel sortTeamPanel;
 	static ScreeningPlayerPanel screeningPlayerPanel;
+	static PlayerPanel playerPanel;
 
 	static JButton searchPlayerbtn;
 	static JButton sortPlayerbtn;
@@ -64,7 +65,8 @@ public class StartPanel extends JPanel {
 		int subX=55*X/100;
 		MyButton playerInfobtn = new MyButton("球员信息");
 		playerInfobtn.setBounds(7*X/20, 9*Y/20, X/6, Y/10);
-		playerInfobtn.addActionListener(e -> playerOpe());
+//		playerInfobtn.addActionListener(e -> playerOpe());
+		playerInfobtn.addActionListener(e -> toPlayerPanel());
 		bgLabel.add(playerInfobtn);
 
 		MyButton teamInfobtn = new MyButton("球队信息");
@@ -174,6 +176,15 @@ public class StartPanel extends JPanel {
 
 	}
 
+	
+	public void toPlayerPanel() {
+		this.setVisible(false);
+		playerPanel = new PlayerPanel(mainFrame);
+
+	}
+	
+	
+	
 	public void toSearchPlayerPanel() {
 		this.setVisible(false);
 		searchPlayerPanel = new ShowPanel("player", mainFrame);

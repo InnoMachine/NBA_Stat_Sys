@@ -18,8 +18,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 	int X;
 	int Y;
 
-	public TopFivePlayerCardPanel(ArrayList<PlayerVo> playerVos,
-			String criteria) {
+	public TopFivePlayerCardPanel(ArrayList<PlayerVo> playerVos) {
 		this.X = X;
 		this.Y = Y;
 		this.setVisible(true);
