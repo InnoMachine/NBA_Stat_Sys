@@ -18,6 +18,7 @@ public class PlayerInfoPanel extends JPanel {
 	static int X;
 	static int Y;
 	JLabel bgLabel;
+	
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -91,7 +92,9 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField textField_71;
 	private JTextField textField_72;
 	
-
+	private JLabel playerPortrait;
+	private JLabel playerAction;
+	
 	public PlayerInfoPanel(String PlayerName) {
 
 		this.setSize(500, 500);
@@ -108,7 +111,21 @@ public class PlayerInfoPanel extends JPanel {
 				.getScaledInstance(this.getWidth(), this.getHeight(),
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
-
+		
+		playerPortrait=new JLabel();
+		playerPortrait.setOpaque(false);
+		playerPortrait.setBounds(x, y, width, height);
+		ImageIcon portrait=new ImageIcon(new ImageIcon().getImage().getScaledInstance(playerPortrait.getWidth(), playerPortrait.getHeight(), Image.SCALE_SMOOTH))
+		playerPortrait.setIcon(portrait);
+		bgLabel.add(playerPortrait);
+		
+		playerAction=new JLabel();
+		playerAction.setOpaque(false);
+		playerAction.setBounds(x, y, width, height);
+		ImageIcon action=new ImageIcon(new ImageIcon().getImage().getScaledInstance(playerAction.getWidth(), playerAction.getHeight(), Image.SCALE_SMOOTH))
+		playerAction.setIcon(action);
+		bgLabel.add(playerAction);
+		
 	}
 
 	private void addPlayerInfo() {
