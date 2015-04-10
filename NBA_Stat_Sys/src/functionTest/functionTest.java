@@ -8,8 +8,12 @@ import test.data.PlayerHighInfo;
 import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
 import test.data.PlayerNormalInfo;
+import test.data.TeamHighInfo;
+import test.data.TeamHotInfo;
+import test.data.TeamNormalInfo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
+import vo.TeamVo;
 import businessLogic.Player_Handler;
 import businessLogic.Team_Handler;
 
@@ -25,11 +29,11 @@ public class functionTest {
 	@SuppressWarnings("rawtypes")
 	public ArrayList setInfo(String order){
 		String split[] = order.split("-");
-		int n =50;
 		for(String temp:split){
 			System.out.println(temp);
 		}
 		if(split[1].contains("player")){
+			int n =50;
 			if(order.contains("-n")){
 				int k = order.indexOf("-n");
 				String s1 = order.substring(k+3);
@@ -165,10 +169,146 @@ public class functionTest {
 			
 		}
 		else if(split[1].contains("team")){
-			
+			int n =30;
+			String field ="";
+			String sortorder="";
+			ArrayList<TeamVo> listvo = null ;
+			ArrayList<TeamVo> list = null ;
+			if(order.contains("-hot")){
+				int k =order.indexOf("-hot");
+				String s = order.substring(k+5);
+				if(s.contains("-")){
+					field = s.substring(0, s.indexOf("-")-1);
+				}else{
+					field = s.substring(0);
+				}
+				ArrayList<TeamHotInfo> ob= SetTeamHotInfo(field,n);
+				return ob;
+			}
+			else if(!order.contains("-high")){
+				
+				if(order.contains("-sort")){
+					int k=order.indexOf("-sort");
+					String s = order.substring(k+6);
+					if(s.contains("-")){
+						s = s.substring(0,s.indexOf("-")-1);
+					}
+					field = s.substring(0,s.indexOf("."));
+					sortorder = s.substring(s.indexOf("."));
+				}
+				else{
+					field = "score";
+					sortorder ="desc";
+				}
+				TeamSortFieldTrans(field);
+				list = team_handler.sortTeamBy(field);
+				if(!sortorder.equals("desc"))
+				{
+					Collections.reverse(listvo);
+				}
+				if(order.contains("-total")){
+					ArrayList<TeamNormalInfo> ob= CreateTotalTeamNormalInfo(list,n);
+					return ob;
+				}
+				else{
+					ArrayList<TeamNormalInfo> ob= CreateAvgTeamNormalInfo(list,n);
+					return ob;
+					}
+				}
+			else{
+				if(order.contains("-sort")){
+					int k=order.indexOf("-sort");
+					String s = order.substring(k+6);
+					if(s.contains("-")){
+						s = s.substring(0,s.indexOf("-")-1);
+					}
+					field = s.substring(0,s.indexOf("."));
+					sortorder = s.substring(s.indexOf("."));
+				}
+				else{
+					field = "winRate";
+					sortorder ="desc";
+				}
+				TeamSortFieldTrans(field);
+				list = team_handler.sortTeamBy(field);
+				if(!sortorder.equals("desc"))
+				{
+					Collections.reverse(listvo);
+				}
+				if(order.contains("-total")){
+					ArrayList<TeamNormalInfo> ob= CreateTotalTeamNormalInfo(list,n);
+					return ob;
+				}
+				else{
+					ArrayList<TeamNormalInfo> ob= CreateAvgTeamNormalInfo(list,n);
+					return ob;
+				}
+				
+				
+			}
 		}
 		return null;
 		
+	}
+	private void TeamSortFieldTrans(String f) {
+		if(f.equals("point"))
+			f="score";
+		else if(f.equals("rebound"))
+			f="reboundOverAll";
+		else if(f.equals("assist"))
+			f="assistance";
+		else if(f.equals("blockShot"))
+			f="block";
+		else if(f.equals("fault"))
+			f="turnover";
+		else if(f.equals("shot"))
+			f="hitRate";
+		else if(f.equals("three"))
+			f="threePointHitRate";
+		else if(f.equals("penalty"))
+			f="freeThrowRate";
+		else if(f.equals("defendRebound"))
+			f="defensiveRebound";
+		else if(f.equals("offendRebound"))
+			f="offensiveRebound";
+		else if(f.equals("winRate"))
+			f="winningRate";
+		else if(f.equals("offendRound"))
+			f="roundAttack";
+		else if(f.equals("offendEfficient"))
+			f="attackingEfficiency";
+		else if(f.equals("defendEfficient"))
+			f="defensiveEfficiency";
+		else if(f.equals("offendReboundEfficient"))
+			f="offensiveReboundEfficiency";
+		else if(f.equals("stealEfficient"))
+			f="stealEfficiency";
+		else if(f.equals("assistEfficient"))
+			f="assistanceEfficiency";
+	}
+	private ArrayList<TeamNormalInfo> CreateAvgTeamNormalInfo(
+			ArrayList<TeamVo> list, int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private ArrayList<TeamNormalInfo> CreateTotalTeamNormalInfo(
+			ArrayList<TeamVo> list, int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private ArrayList<TeamHighInfo> CreateAvgTeamHighInfo(
+			ArrayList<TeamVo> listvo, int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private ArrayList<TeamHighInfo> CreateTotalTeamHighInfo(
+			ArrayList<TeamVo> listvo, int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private ArrayList<TeamHotInfo> SetTeamHotInfo(String field, int n) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	private ArrayList<PlayerHighInfo> CreateAvgPlayerHighInfo(
 			ArrayList<PlayerVo> list, int n) {
