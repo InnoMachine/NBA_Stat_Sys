@@ -1296,6 +1296,54 @@ public class Player_Handler {
 		return null;
 	}
 	
+	public ArrayList<PlayerVo> progressFastPlayerForTest(String option){
+		CalculateProgress();
+		if(option.equals("scoreFieldProgress")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getScoreFieldProgress();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("reboundOverallFieldProgress")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getReboundOverallFieldProgress();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("assistanceFieldProgress")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getAssistanceFieldProgress();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<listvo.size();i++)
+			{
+				templist.add(listvo.get((int)a[i][1]));
+			}
+			return templist;
+		}
+		return null;
+	}
+
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option){
 		CalculateProgress();
 		if(option.equals("scoreFieldProgress")){
@@ -1343,7 +1391,7 @@ public class Player_Handler {
 		}
 		return null;
 	}
-
+	
 	private void CalculateProgress() {
 		ArrayList<PlayerRecentGames> recentGames=data_handler.getPlayerRecentGames();
 		for(PlayerVo temp:listvo){
@@ -1381,10 +1429,22 @@ public class Player_Handler {
 		double a[][] = new double[listvo.size()][3];
 		setArr(option1,a,0);
 		setArr(option2,a,2);
-		SortTwo.heapSort(a);
+		SortTwo.heapSort(a,true);
 		ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
 		for(int i=0;i<listvo.size();i++)
 		{
+			templist.add(listvo.get((int)a[i][1]));
+		}		
+		return templist;
+	}
+	
+	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2,boolean issame) {
+		double a[][] = new double[listvo.size()][3];
+		setArr(option1,a,0);
+		setArr(option2,a,2);
+		SortTwo.heapSort(a,issame);
+		ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+		for(int i=0;i<listvo.size();i++){
 			templist.add(listvo.get((int)a[i][1]));
 		}		
 		return templist;
@@ -1630,5 +1690,54 @@ public class Player_Handler {
 
 	public PlayerRecentGames getPlayerRecentPerformance(String name) {
 		return data_handler.getPlayerRecentPerformance(name);
+	}
+	
+	public ArrayList<PlayerPerformanceInSingleGame> sortDailyPerformance(String option){
+		ArrayList<PlayerPerformanceInSingleGame> dp= data_handler.getPlayerGamesDaily();
+		if(option.equals("score")){
+			int a[][] = new int [dp.size()][2]; 
+			for(int i=0;i<dp.size();i++)
+			{
+				a[i][0] = dp.get(i).getScore();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerPerformanceInSingleGame> templist = new ArrayList<PlayerPerformanceInSingleGame>();
+			for(int i=0;i<5;i++)
+			{
+				templist.add(dp.get(a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("rebound")){
+			double a[][] = new double [dp.size()][2]; 
+			for(int i=0;i<dp.size();i++)
+			{
+				a[i][0] = dp.get(i).getReboundOverall();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerPerformanceInSingleGame> templist = new ArrayList<PlayerPerformanceInSingleGame>();
+			for(int i=0;i<5;i++)
+			{
+				templist.add(dp.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("assist")){
+			int a[][] = new int [dp.size()][2]; 
+			for(int i=0;i<dp.size();i++)
+			{
+				a[i][0] = dp.get(i).getAssistance();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<PlayerPerformanceInSingleGame> templist = new ArrayList<PlayerPerformanceInSingleGame>();
+			for(int i=0;i<5;i++)
+			{
+				templist.add(dp.get(a[i][1]));
+			}
+			return templist;
+		}
+		return null;
+		
 	}
 }
