@@ -1309,7 +1309,7 @@ public class Player_Handler {
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
 			for(int i=0;i<listvo.size();i++)
 			{
-				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),option));
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"scoreField"));
 			}
 			return templist;
 		}else if(option.equals("reboundOverallFieldProgress")){
@@ -1323,7 +1323,7 @@ public class Player_Handler {
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
 			for(int i=0;i<listvo.size();i++)
 			{
-				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),option));
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"reboundOverallField"));
 			}
 			return templist;
 		}else if(option.equals("assistanceFieldProgress")){
@@ -1337,7 +1337,7 @@ public class Player_Handler {
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
 			for(int i=0;i<listvo.size();i++)
 			{
-				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),option));
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"assistanceField"));
 			}
 			return templist;
 		}
@@ -1626,5 +1626,9 @@ public class Player_Handler {
 				a[i][1] = i;
 			}
 		}
+	}
+
+	public PlayerRecentGames getPlayerRecentPerformance(String name) {
+		return data_handler.getPlayerRecentPerformance(name);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import enums.Conference;
 import enums.Division;
 import vo.PlayerCardVo;
+import vo.PlayerRecentGames;
 import vo.PlayerVo;
 
 public class Player_BL_Stub implements Player_BS {
@@ -332,5 +333,11 @@ public class Player_BL_Stub implements Player_BS {
 		playerCardVo5.setNumber("18");
 		playerCardVos.add(playerCardVo5);
 		return playerCardVos;
+	}
+
+	@Override
+	public PlayerRecentGames getPlayerRecentPerformance(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

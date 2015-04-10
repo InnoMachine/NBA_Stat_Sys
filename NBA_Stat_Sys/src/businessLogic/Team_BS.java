@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import vo.PlayerVo;
 import vo.TeamCardVo;
+import vo.TeamRecentGames;
 import vo.TeamVo;
 
 public interface Team_BS {
@@ -13,4 +14,5 @@ public interface Team_BS {
 	public ArrayList<TeamVo>  sortTeamBy(String option);
 	public ArrayList<PlayerVo> getPlayers(String abbr);
 	public ArrayList<TeamCardVo> hotTeamSeason(String option); 
+	public TeamRecentGames getTeamRecentPerformance(String abbr);
 }

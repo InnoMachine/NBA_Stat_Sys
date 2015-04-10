@@ -1,6 +1,7 @@
 package vo;
 
 public class PlayerPerformanceInSingleGame {
+	private String gameLabel;
 	private String name;
 	private String position;
 	private int time;//sudo
@@ -174,6 +175,12 @@ public class PlayerPerformanceInSingleGame {
 	}
 	public void setTeam(String team) {
 		Team = team;
+	}
+	public String getGameLabel() {
+		return gameLabel;
+	}
+	public void setGameLabel(String gameLabel) {
+		this.gameLabel = gameLabel;
 	}
 
 }

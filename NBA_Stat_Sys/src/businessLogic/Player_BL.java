@@ -1,7 +1,9 @@
 package businessLogic;
 
 import java.util.ArrayList;
+
 import vo.PlayerCardVo;
+import vo.PlayerRecentGames;
 import vo.PlayerVo;
 
 public class Player_BL implements Player_BS{
@@ -47,5 +49,9 @@ public class Player_BL implements Player_BS{
 	@Override
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option) {
 		return player_handler.progressFastPlayer(option);
+	}
+	
+	public PlayerRecentGames getPlayerRecentPerformance(String name) {
+		return player_handler.getPlayerRecentPerformance(name);
 	}
 }

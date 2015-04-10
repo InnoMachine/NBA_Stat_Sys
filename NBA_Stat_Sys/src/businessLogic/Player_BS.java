@@ -1,7 +1,9 @@
 package businessLogic;
 
 import java.util.ArrayList;
+
 import vo.PlayerCardVo;
+import vo.PlayerRecentGames;
 import vo.PlayerVo;
 
 public interface Player_BS {
@@ -12,4 +14,5 @@ public interface Player_BS {
 	public ArrayList<PlayerCardVo> hotPlayerDaily(String option);
 	public ArrayList<PlayerCardVo> hotPlayerSeason(String option);
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option);
+	public PlayerRecentGames getPlayerRecentPerformance(String name);
 }

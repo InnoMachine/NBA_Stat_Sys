@@ -811,6 +811,7 @@ public class Data_Handler {
 		for(SinglePerformance temp:listsp)
 		{
 			int k=0;
+			tgp.setGameLabel(tp.getGamelabel());
 			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
 			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
 			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
@@ -934,6 +935,27 @@ public class Data_Handler {
 	public ArrayList<PlayerRecentGames> getPlayerRecentGames()
 	{
 		return precgames;
+	}
+	public ArrayList<TeamRecentGames> getTeamRecentGames(){
+		return trecgames;
+	}
+	public PlayerRecentGames getPlayerRecentPerformance(String name)
+	{
+		for(PlayerRecentGames temp:precgames){
+			if(temp.getName().equals(name)){
+				return temp;
+			}
+		}
+		return null;
+	}
+	public TeamRecentGames getTeamRecentPerformance(String abbr)
+	{
+		for(TeamRecentGames temp:trecgames){
+			if(temp.getName().equals(abbr)){
+				return temp;
+			}
+		}
+		return null;
 	}
 	public ArrayList<GameVo> getAllGames(){
 		return gamevo;

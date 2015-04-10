@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import vo.PlayerVo;
 import vo.TeamCardVo;
+import vo.TeamRecentGames;
 import vo.TeamVo;
 
 public class Team_BL implements Team_BS{
@@ -42,6 +43,11 @@ public class Team_BL implements Team_BS{
 			templist.add(new TeamCardVo(list.get(i),option));
 		}
 		return templist;
+	}
+	@Override
+	public TeamRecentGames getTeamRecentPerformance(String abbr) {
+		
+		return team_handler.getTeamRecentPerformance(abbr);
 	}
 
 }

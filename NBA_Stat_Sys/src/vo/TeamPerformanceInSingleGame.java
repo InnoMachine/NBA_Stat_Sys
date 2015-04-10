@@ -3,6 +3,7 @@ package vo;
 import java.util.ArrayList;
 
 public class TeamPerformanceInSingleGame {
+	private String gameLabel;
 	private String name;
 	private int time;//sudo
 	private int hitNum;
@@ -218,6 +219,12 @@ public class TeamPerformanceInSingleGame {
 	public void AddPlayerP(PlayerPerformanceInSingleGame pgp) {
 		this.playerlist.add(pgp);
 		
+	}
+	public String getGameLabel() {
+		return gameLabel;
+	}
+	public void setGameLabel(String gameLabel) {
+		this.gameLabel = gameLabel;
 	}
 	
 }

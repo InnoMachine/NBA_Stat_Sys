@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import vo.TeamRecentGames;
 import vo.TeamVo;
 
 public class Team_Handler {
@@ -627,6 +628,12 @@ public class Team_Handler {
 			return templist;
 		}
 		return null;
+	}
+
+
+	public TeamRecentGames getTeamRecentPerformance(String abbr) {
+		
+		return data_handler.getTeamRecentPerformance(abbr);
 	}
 	
 	

@@ -7,6 +7,7 @@ package po;
 
 public class SinglePerformance {
 
+	
 	private String name;
 	private String position;
 	
@@ -412,6 +413,6 @@ public class SinglePerformance {
 		return sp;
 
 	}
-
+	
 
 }
