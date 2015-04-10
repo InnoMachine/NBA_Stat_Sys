@@ -230,7 +230,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_ScoreFieldbtn = new JButton("场均得分");
 		seasonHotData_ScoreFieldbtn.setBounds(X*55/1366, Y*105/768, X*121/1366, Y*23/768);
 		seasonHotData_ScoreFieldbtn.addActionListener(e -> {
-			seasonHotPlayerCriteria = "score";
+			seasonHotPlayerCriteria = "scoreField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 		});
 		seasonHotData_ScoreFieldbtn.setVisible(false);
@@ -239,7 +239,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_ReboundFieldbtn = new JButton("场均篮板");
 		seasonHotData_ReboundFieldbtn.setBounds(X*175/1366, Y*105/768, X*121/1366, Y*23/768);
 		seasonHotData_ReboundFieldbtn.addActionListener(e -> {
-			seasonHotPlayerCriteria = "rebound";
+			seasonHotPlayerCriteria = "reboundField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 		});
 		seasonHotData_ReboundFieldbtn.setVisible(false);
@@ -248,7 +248,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_AssistanceFieldbtn = new JButton("场均助攻");
 		seasonHotData_AssistanceFieldbtn.setBounds(X*295/1366, Y*105/768, X*121/1366, Y*23/768);
 		seasonHotData_AssistanceFieldbtn.addActionListener(e -> {
-			seasonHotPlayerCriteria = "assistance";
+			seasonHotPlayerCriteria = "assistanceField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 		});
 		seasonHotData_AssistanceFieldbtn.setVisible(false);
@@ -257,7 +257,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_BlockFieldbtn = new JButton("场均盖帽");
 		seasonHotData_BlockFieldbtn.setBounds(X*415/1366, Y*105/768, X*121/1366, Y*23/768);
 		seasonHotData_BlockFieldbtn.addActionListener(e -> {
-			seasonHotPlayerCriteria = "block";
+			seasonHotPlayerCriteria = "blockField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 		});
 		seasonHotData_BlockFieldbtn.setVisible(false);
@@ -266,14 +266,14 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_StealFieldbtn = new JButton("场均抢断");
 		seasonHotData_StealFieldbtn.setBounds(X*535/1366, Y*105/768, X*121/1366, Y*23/768);
 		seasonHotData_StealFieldbtn.addActionListener(e -> {
-			seasonHotPlayerCriteria = "steal";
+			seasonHotPlayerCriteria = "stealField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 		});
 		seasonHotData_StealFieldbtn.setVisible(false);
 		add(seasonHotData_StealFieldbtn);
 
 		seasonHotData_ThreePointHitRatebtn = new JButton("三分命中率");
-		seasonHotData_ThreePointHitRatebtn.setBounds(X*655/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_ThreePointHitRatebtn.setBounds(X*655/1366, Y*105/768, X*122/1366, Y*23/768);
 		seasonHotData_ThreePointHitRatebtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "threePointHitRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
@@ -282,7 +282,7 @@ public class PlayerPanel extends JPanel {
 		add(seasonHotData_ThreePointHitRatebtn);
 
 		seasonHotData_HitRatebtn = new JButton("投篮命中率");
-		seasonHotData_HitRatebtn.setBounds(X*775/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_HitRatebtn.setBounds(X*776/1366, Y*105/768, X*122/1366, Y*23/768);
 		seasonHotData_HitRatebtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "hitRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
@@ -291,7 +291,7 @@ public class PlayerPanel extends JPanel {
 		add(seasonHotData_HitRatebtn);
 
 		seasonHotData_FreeThrowRatebtn = new JButton("罚球命中率");
-		seasonHotData_FreeThrowRatebtn.setBounds(X*895/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_FreeThrowRatebtn.setBounds(X*897/1366, Y*105/768, X*122/1366, Y*23/768);
 		seasonHotData_FreeThrowRatebtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "freeThrowRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
@@ -302,7 +302,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria));
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*669/1366, Y*150/768);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
 		this.add(dailyHotPlayerPanel);
 		
 		
@@ -339,7 +339,7 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria));
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*458/768, X*1022/1366, Y*220/768);
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*208/768);
 		this.add(progressFastPlayerPanel);	
 		
 		
@@ -430,7 +430,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria));
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*669/1366, Y*150/768);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
 		this.add(dailyHotPlayerPanel);
 
 	}
@@ -445,7 +445,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerSeason(seasonHotPlayerCriteria));
 		seasonHotPlayerPanel.setVisible(true);
-		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*669/1366, Y*150/768);
+		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
 		this.add(seasonHotPlayerPanel);
 	}
 
@@ -457,7 +457,7 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria));
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*128/768, X*669/1366, Y*150/768);
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*208/768);
 		this.add(progressFastPlayerPanel);	
 	
 	}
