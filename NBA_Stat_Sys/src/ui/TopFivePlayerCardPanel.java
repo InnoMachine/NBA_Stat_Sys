@@ -91,7 +91,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		add(firstPlayerbtn);
 
 		JLabel firstlbl = new JLabel("1");
-		firstlbl.setFont(new Font("宋体", Font.PLAIN, 20));
+		firstlbl.setFont(new Font("黑体", Font.PLAIN, 20));
 		firstlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		firstlbl.setBounds(X*132/1366, Y*4/768, X*76/1366, Y*200/768);
 		add(firstlbl);
@@ -101,12 +101,11 @@ public class TopFivePlayerCardPanel extends JPanel {
 		add(firstPlayerNamelbl);
 
 		firstPlayerInfolbl = new JLabel();
-//		firstPlayerInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
 		firstPlayerInfolbl.setBounds(X*208/1366, Y*100/768, X*180/1366, Y*31/768);
 		add(firstPlayerInfolbl);
 
 		firstPlayerValuelbl = new JLabel();
-//		firstPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		firstPlayerValuelbl.setFont(new Font("黑体", Font.PLAIN, 20));
 		firstPlayerValuelbl.setBounds(X*208/1366, Y*134/768, X*180/1366, Y*47/768);
 		add(firstPlayerValuelbl);
 

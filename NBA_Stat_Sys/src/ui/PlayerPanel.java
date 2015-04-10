@@ -152,10 +152,10 @@ public class PlayerPanel extends JPanel {
 		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
 		add(searchPlayerbtn);
 
-		JButton inquiryPlayerbtn = new JButton("球员查看");
-		inquiryPlayerbtn.setBounds(X*1161/1366, Y*345/768, X*120/1366, Y*23/768);
-		inquiryPlayerbtn.addActionListener(e -> toInquiryPlayerPanel());
-		add(inquiryPlayerbtn);
+		JButton ShowPlayerbtn = new JButton("球员查看");
+		ShowPlayerbtn.setBounds(X*1161/1366, Y*345/768, X*120/1366, Y*23/768);
+		ShowPlayerbtn.addActionListener(e -> toShowPlayerPanel());
+		add(ShowPlayerbtn);
 
 		JButton sortPlayerbtn = new JButton("球员排序");
 		sortPlayerbtn.setBounds(X*1161/1366, Y*415/768, X*120/1366, Y*23/768);
@@ -466,7 +466,7 @@ public class PlayerPanel extends JPanel {
 
 	}
 
-	public void toInquiryPlayerPanel() {
+	public void toShowPlayerPanel() {
 		this.setVisible(false);
 		searchPlayerPanel = new ShowPanel("player", mainFrame);
 
