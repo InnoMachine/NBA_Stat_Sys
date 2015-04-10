@@ -15,6 +15,12 @@ public class TeamCardVo {
 	private String sortOption;
 	private double sortValue;
 	
+	public TeamCardVo()
+	{
+		
+	}
+	
+	
 	public TeamCardVo(TeamVo vo,String option){
 		this.teamName =vo.getTeamName();
 		this.abbreviation =vo.getAbbreviation();
