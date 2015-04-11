@@ -1,13 +1,10 @@
 package businessLogic;
 
 import java.util.ArrayList;
-
-
-
-
 import enums.Conference;
 import vo.PlayerVo;
 import vo.TeamCardVo;
+import vo.TeamRecentGames;
 import vo.TeamVo;
 
 public class Team_BL_Stub implements Team_BS{
@@ -117,6 +114,12 @@ public class Team_BL_Stub implements Team_BS{
 		}
 		return teamCardVos;
 		
+	}
+
+	@Override
+	public TeamRecentGames getTeamRecentPerformance(String abbr) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

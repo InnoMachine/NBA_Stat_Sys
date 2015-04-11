@@ -18,7 +18,7 @@ public class TeamPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	static ShowPanel searchTeamPanel;
 	static SortPanel sortTeamPanel;
-
+    static TeamButtonsPanel teamButtonsPanel;
 
 	JFrame mainFrame;
 
@@ -106,16 +106,10 @@ public class TeamPanel extends JPanel{
 		});
 		// bgLabel.add(close);
 		this.add(close);
-
-
-
-		JButton showTeambtn = new JButton("球队查看");
-		showTeambtn.setBounds(X*1161/1366, Y*330/768, X*120/1366, Y*23/768);
-		showTeambtn.addActionListener(e -> toShowTeamPanel());
-		add(showTeambtn);
+		
 
 		JButton sortTeambtn = new JButton("球队排序");
-		sortTeambtn.setBounds(X*1161/1366, Y*430/768, X*120/1366, Y*23/768);
+		sortTeambtn.setBounds(X*1161/1366, Y*380/768, X*120/1366, Y*23/768);
 		sortTeambtn.addActionListener(e -> toSortTeamPanel());
 		add(sortTeambtn);
 
@@ -201,6 +195,12 @@ public class TeamPanel extends JPanel{
 		seasonHotTeamPanel.setVisible(true);
 		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
 		this.add(seasonHotTeamPanel);
+		
+		
+		teamButtonsPanel=new TeamButtonsPanel(X, Y);
+		teamButtonsPanel.setVisible(true);
+		teamButtonsPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*240/768);
+		this.add(teamButtonsPanel);	
 		
 		mainFrame.getContentPane().add(this);
 
