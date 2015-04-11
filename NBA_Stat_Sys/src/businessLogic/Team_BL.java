@@ -36,13 +36,7 @@ public class Team_BL implements Team_BS{
 	}
 	@Override
 	public ArrayList<TeamCardVo> hotTeamSeason(String option) {
-		ArrayList<TeamVo> list = team_handler.sortTeamBy(option);
-		ArrayList<TeamCardVo> templist = new ArrayList<TeamCardVo>();
-		for(int i=0;i<5;i++)
-		{
-			templist.add(new TeamCardVo(list.get(i),option));
-		}
-		return templist;
+		return team_handler.hotTeamSeason(option);
 	}
 	@Override
 	public TeamRecentGames getTeamRecentPerformance(String abbr) {

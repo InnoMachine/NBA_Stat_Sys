@@ -13,6 +13,7 @@ import test.data.TeamHotInfo;
 import test.data.TeamNormalInfo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
+import vo.TeamCardVo;
 import vo.TeamVo;
 import businessLogic.Player_Handler;
 import businessLogic.Team_Handler;
@@ -207,11 +208,11 @@ public class functionTest {
 					Collections.reverse(listvo);
 				}
 				if(order.contains("-total")){
-					ArrayList<TeamNormalInfo> ob= CreateTotalTeamNormalInfo(list,n);
+					ArrayList<TeamHighInfo> ob= CreateTotalTeamHighInfo(list,n);
 					return ob;
 				}
 				else{
-					ArrayList<TeamNormalInfo> ob= CreateAvgTeamNormalInfo(list,n);
+					ArrayList<TeamHighInfo> ob= CreateAvgTeamHighInfo(list,n);
 					return ob;
 					}
 				}
@@ -288,27 +289,127 @@ public class functionTest {
 	}
 	private ArrayList<TeamNormalInfo> CreateAvgTeamNormalInfo(
 			ArrayList<TeamVo> list, int n) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TeamNormalInfo> info= new ArrayList<TeamNormalInfo>();
+		for(int i=0;i<n;i++){
+			TeamNormalInfo temp = new TeamNormalInfo();
+			temp.setAssist(list.get(i).getAssistanceField());
+			temp.setBlockShot(list.get(i).getBlockField());
+			temp.setDefendRebound(list.get(i).getDefensiveReboundField());
+			temp.setFault(list.get(i).getTurnoverField());
+			temp.setFoul(list.get(i).getFoulField());
+			temp.setNumOfGame(list.get(i).getGameNum());
+			temp.setOffendRebound(list.get(i).getOffensiveReboundField());
+			temp.setPenalty(list.get(i).getFreeThrowRate());
+			temp.setPoint(list.get(i).getScoreField());
+			//temp.setStart(start);
+			temp.setSteal(list.get(i).getStealField());
+			temp.setThree(list.get(i).getThreePointHitRate());
+			temp.setShot(list.get(i).getHitRate());
+			info.add(temp);
+		}
+		return info;
 	}
 	private ArrayList<TeamNormalInfo> CreateTotalTeamNormalInfo(
 			ArrayList<TeamVo> list, int n) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TeamNormalInfo> info= new ArrayList<TeamNormalInfo>();
+		for(int i=0;i<n;i++){
+			TeamNormalInfo temp = new TeamNormalInfo();
+			temp.setAssist(list.get(i).getAssistance());
+			temp.setBlockShot(list.get(i).getBlock());
+			temp.setDefendRebound(list.get(i).getDefensiveRebound());
+			temp.setFault(list.get(i).getTurnover());
+			temp.setFoul(list.get(i).getFoul());
+			temp.setNumOfGame(list.get(i).getGameNum());
+			temp.setOffendRebound(list.get(i).getOffensiveRebound());
+			temp.setPenalty(list.get(i).getFreeThrowRate());
+			temp.setPoint(list.get(i).getScore());
+			//temp.setStart(start);
+			temp.setSteal(list.get(i).getSteal());
+			temp.setThree(list.get(i).getThreePointHitRate());
+			temp.setShot(list.get(i).getHitRate());
+			temp.setTeamName(list.get(i).getTeamName());
+			info.add(temp);
+		}
+		return info;
 	}
 	private ArrayList<TeamHighInfo> CreateAvgTeamHighInfo(
-			ArrayList<TeamVo> listvo, int n) {
-		// TODO Auto-generated method stub
-		return null;
+			ArrayList<TeamVo> list, int n) {
+		ArrayList<TeamHighInfo> info = new ArrayList<TeamHighInfo>();
+		for(int i=0;i<n;i++){
+			TeamHighInfo temp = new TeamHighInfo();
+			temp.setWinRate(list.get(i).getWinningRate());
+			temp.setAssistEfficient(list.get(i).getAssistanceEfficiency());
+			temp.setDefendEfficient(list.get(i).getDefensiveEfficiency());
+			temp.setDefendReboundEfficient(list.get(i).getDefensiveReboundEfficiency());
+			temp.setOffendEfficient(list.get(i).getAttackingEfficiency());
+			temp.setOffendReboundEfficient(list.get(i).getOffensiveReboundEfficiency());
+			temp.setOffendRound(list.get(i).getRoundAttackField());
+			temp.setStealEfficient(list.get(i).getStealEfficiency());
+			info.add(temp);
+		}
+		return info;
 	}
 	private ArrayList<TeamHighInfo> CreateTotalTeamHighInfo(
-			ArrayList<TeamVo> listvo, int n) {
-		// TODO Auto-generated method stub
-		return null;
+			ArrayList<TeamVo> list, int n) {
+		ArrayList<TeamHighInfo> info = new ArrayList<TeamHighInfo>();
+		for(int i=0;i<n;i++){
+			TeamHighInfo temp = new TeamHighInfo();
+			temp.setWinRate(list.get(i).getWinningRate());
+			temp.setAssistEfficient(list.get(i).getAssistanceEfficiency());
+			temp.setDefendEfficient(list.get(i).getDefensiveEfficiency());
+			temp.setDefendReboundEfficient(list.get(i).getDefensiveReboundEfficiency());
+			temp.setOffendEfficient(list.get(i).getAttackingEfficiency());
+			temp.setOffendReboundEfficient(list.get(i).getOffensiveReboundEfficiency());
+			temp.setOffendRound(list.get(i).getRoundAttack());
+			temp.setStealEfficient(list.get(i).getStealEfficiency());
+			info.add(temp);
+		}
+		return info;
 	}
 	private ArrayList<TeamHotInfo> SetTeamHotInfo(String field, int n) {
-		// TODO Auto-generated method stub
-		return null;
+		String f = TeamHotFieldTrans(field);
+		ArrayList<TeamCardVo> list = team_handler.hotTeamSeason(f);
+		ArrayList<TeamHotInfo> hi = new ArrayList<TeamHotInfo>();
+		for(int i=0;i<n;i++){
+			hi.add(CreateTeamHotInfo(list.get(i),field));
+		}
+		return hi;
+	}
+	private TeamHotInfo CreateTeamHotInfo(TeamCardVo vo, String field) {
+		TeamHotInfo info = new TeamHotInfo();
+		info.setTeamName(vo.getTeamName());
+		String lea = vo.getConference()+"";
+		if(lea.equals("E"))
+			info.setLeague("East");
+		else if(lea.equals("W"))
+			info.setLeague("West");
+		info.setField(field);
+		info.setValue(vo.getSortValue());
+		return info;
+	}
+	private String TeamHotFieldTrans(String field) {
+		String f="";
+		if(field.equals("point"))
+			f="scoreField";
+		else if(field.equals("rebound"))
+			f="reboundOverAllField";
+		else if(field.equals("assist"))
+			f="assistanceField";
+		else if(field.equals("blockShot"))
+			f="blockField";
+		else if(field.equals("fault"))
+			f="turnoverField";
+		else if(field.equals("shot"))
+			f="hitRate";
+		else if(field.equals("three"))
+			f="threePointHitRate";
+		else if(field.equals("penalty"))
+			f="freeThrowRate";
+		else if(field.equals("defendRebound"))
+			f="defensiveReboundField";
+		else if(field.equals("offendRebound"))
+			f="offensiveReboundField";
+		return f;
 	}
 	private ArrayList<PlayerHighInfo> CreateAvgPlayerHighInfo(
 			ArrayList<PlayerVo> list, int n) {
@@ -577,8 +678,6 @@ public class functionTest {
 			return ki;
 
 		}
-		// TODO Auto-generated method stub
-		
 	}
 	private PlayerKingInfo CreateKingInfoSeason(PlayerVo vo, String field) {
 		PlayerKingInfo k = new PlayerKingInfo();
@@ -610,10 +709,6 @@ public class functionTest {
 			k.setValue(temp.getAssistance());
 		
 		return k;
-	}
-	private  ArrayList<Object> setPlayerInfo(String[] split) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

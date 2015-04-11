@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import vo.TeamCardVo;
 import vo.TeamRecentGames;
 import vo.TeamVo;
 
@@ -664,5 +665,13 @@ public class Team_Handler {
 		return data_handler.getTeamRecentPerformance(abbr);
 	}
 	
-	
+	public ArrayList<TeamCardVo> hotTeamSeason(String option) {
+		ArrayList<TeamVo> list = sortTeamBy(option);
+		ArrayList<TeamCardVo> templist = new ArrayList<TeamCardVo>();
+		for(int i=0;i<5;i++)
+		{
+			templist.add(new TeamCardVo(list.get(i),option));
+		}
+		return templist;
+	}
 }
