@@ -598,6 +598,34 @@ public class Team_Handler {
 				templist.add(teamlistvo.get((int)a[i][1]));
 			}
 			return templist;
+		}else if(option.equals("DefensiveReboundEfficiency")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getDefensiveReboundEfficiency();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
+		}else if(option.equals("offensiveReboundEfficiency")){
+			double a[][] = new double [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getOffensiveReboundEfficiency();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get((int)a[i][1]));
+			}
+			return templist;
 		}else if(option.equals("stealEfficiency")){
 			double a[][] = new double [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)

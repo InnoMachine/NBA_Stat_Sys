@@ -90,6 +90,8 @@ public class Data_Handler {
 				TeamSetAttackingEfficiency(temp);
 				TeamSetDefensiveEfficiency(temp);
 				TeamSetReboundEfficiency(temp);
+				TeamSetOffensiveReboundEfficiency(temp);
+				TeamSetDefensiveReboundEfficiency(temp);
 				TeamSetStealEfficiency(temp);
 				TeamSetAssistanceEfficiency(temp);
 				temp.setHitNumField(turnToTwoPoint((double)temp.getHitNum()/temp.getGameNum()));
@@ -114,6 +116,20 @@ public class Data_Handler {
 		
 	}
 	
+	private void TeamSetDefensiveReboundEfficiency(TeamVo temp) {
+		double r = temp.getDefensiveRebound()/(double)(temp.getDefensiveRebound()+temp.getOpOffensiveRebound());
+		b = new BigDecimal(r);
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		temp.setReboundEfficiency(f);
+	}
+
+	private void TeamSetOffensiveReboundEfficiency(TeamVo temp) {
+		double r = temp.getOffensiveRebound()/(double)(temp.getOffensiveRebound()+temp.getDefensiveRebound());
+		b = new BigDecimal(r);
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		temp.setReboundEfficiency(f);
+	}
+
 	private void SetTeamRoundAttack(TeamVo temp) {
 		double r = temp.getRoundAttack();
 		b = new BigDecimal(r);

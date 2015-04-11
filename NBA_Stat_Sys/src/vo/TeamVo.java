@@ -42,7 +42,8 @@ public class TeamVo {
 	private double reboundEfficiency;//篮板效率
 	private double stealEfficiency;//抢断效率？
 	private double assistanceEfficiency;//助攻效率
-	
+	private double offensiveReboundEfficiency;//篮板效率
+	private double defensiveReboundEfficiency;
 	
 	private double hitNumField;
 	private double shotNumField;
@@ -416,5 +417,17 @@ public class TeamVo {
 	}
 	public void setRoundAttackField(double roundAttackField) {
 		this.roundAttackField = roundAttackField;
+	}
+	public double getOffensiveReboundEfficiency() {
+		return offensiveReboundEfficiency;
+	}
+	public void setOffensiveReboundEfficiency(double offensiveReboundEfficiency) {
+		this.offensiveReboundEfficiency = offensiveReboundEfficiency;
+	}
+	public double getDefensiveReboundEfficiency() {
+		return defensiveReboundEfficiency;
+	}
+	public void setDefensiveReboundEfficiency(double defensiveReboundEfficiency) {
+		this.defensiveReboundEfficiency = defensiveReboundEfficiency;
 	}
 }
