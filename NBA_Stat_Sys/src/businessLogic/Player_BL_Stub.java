@@ -24,12 +24,14 @@ public class Player_BL_Stub implements Player_BS {
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		PlayerVo playerVo1 = new PlayerVo();
 		playerVo1.setName("Andre Miller");
+		playerVo1.setTeam("NYK");
 		playerVo1.setAge(25);
 		playerVo1.setDivision(Division.ATLANTIC);
 		playerVo1.setNumber("19");
 		playerVos.add(playerVo1);
 		PlayerVo playerVo2 = new PlayerVo();
 		playerVo2.setName("David Lee");
+		playerVo2.setTeam("OKC");
 		playerVo2.setAge(24);
 		playerVo2.setDivision(Division.SOUTHEAST);
 		playerVo2.setNumber("6");
@@ -341,8 +343,6 @@ public class Player_BL_Stub implements Player_BS {
 		return null;
 	}
 
-
-
 	@Override
 	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2) {
 		// TODO Auto-generated method stub
@@ -352,6 +352,93 @@ public class Player_BL_Stub implements Player_BS {
 	@Override
 	public ArrayList<PlayerVo> searchPlayer(String key, String first) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+		if (key.equals("")) {
+			if (first == "A") {
+				System.out.println("null   "+"A");
+				PlayerVo playerVo1 = new PlayerVo();
+				playerVo1.setName("Andre Miller");
+				playerVo1.setAge(25);
+				playerVo1.setDivision(Division.ATLANTIC);
+				playerVo1.setPosition("前锋");
+				playerVo1.setTeam("ATL");
+				playerVo1.setExp(4);
+				playerVo1.setSchool("UCLA");
+				playerVo1.setBirth("1991-12-23");
+				playerVo1.setNumber("19");
+				playerVos.add(playerVo1);
+				PlayerVo playerVo2 = new PlayerVo();
+				playerVo2.setName("Anthony Davis");
+				playerVo2.setAge(24);
+				playerVo2.setTeam("MIA");
+				playerVo2.setDivision(Division.SOUTHEAST);
+				playerVo2.setNumber("6");
+				playerVos.add(playerVo2);
+			} else {
+				System.out.println("null   "+first);
+				PlayerVo playerVo1 = new PlayerVo();
+				playerVo1.setName("Dion Waiters");
+				playerVo1.setAge(25);
+				playerVo1.setDivision(Division.ATLANTIC);
+				playerVo1.setPosition("中锋");
+				playerVo1.setTeam("MEM");
+				playerVo1.setExp(6);
+				playerVo1.setSchool("UCLA");
+				playerVo1.setBirth("1989-08-07");
+				playerVo1.setNumber("11");
+				playerVos.add(playerVo1);
+				PlayerVo playerVo2 = new PlayerVo();
+				playerVo2.setName("Josh Smith");
+				playerVo2.setAge(24);
+				playerVo2.setTeam("GSW");
+				playerVo2.setDivision(Division.SOUTHEAST);
+				playerVo2.setNumber("6");
+				playerVos.add(playerVo2);
+			}
+		} else {
+			if (first == "B") {
+				System.out.println("key   B");
+				PlayerVo playerVo1 = new PlayerVo();
+				playerVo1.setName("Brandon Knight");
+				playerVo1.setAge(25);
+				playerVo1.setDivision(Division.ATLANTIC);
+				playerVo1.setPosition("前锋");
+				playerVo1.setTeam("HOU");
+				playerVo1.setExp(4);
+				playerVo1.setSchool("UCLA");
+				playerVo1.setBirth("1991-12-23");
+				playerVo1.setNumber("19");
+				playerVos.add(playerVo1);
+				PlayerVo playerVo2 = new PlayerVo();
+				playerVo2.setName("Blake Griffin");
+				playerVo2.setAge(24);
+				playerVo2.setTeam("LAC");
+				playerVo2.setDivision(Division.SOUTHEAST);
+				playerVo2.setNumber("6");
+				playerVos.add(playerVo2);
+			} else {
+				System.out.println("key   "+first);
+				PlayerVo playerVo1 = new PlayerVo();
+				playerVo1.setName("Lou Williams");
+				playerVo1.setAge(25);
+				playerVo1.setDivision(Division.ATLANTIC);
+				playerVo1.setPosition("中锋");
+				playerVo1.setTeam("SAC");
+				playerVo1.setExp(6);
+				playerVo1.setSchool("UCLA");
+				playerVo1.setBirth("1989-08-07");
+				playerVo1.setNumber("11");
+				playerVos.add(playerVo1);
+				PlayerVo playerVo2 = new PlayerVo();
+				playerVo2.setName("Robert Sacre");
+				playerVo2.setAge(24);
+				playerVo2.setTeam("LAL");
+				playerVo2.setDivision(Division.SOUTHEAST);
+				playerVo2.setNumber("6");
+				playerVos.add(playerVo2);
+			}
+		}
+		
+		return playerVos;
 	}
 }

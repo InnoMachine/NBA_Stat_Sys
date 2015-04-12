@@ -22,110 +22,134 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 	int Y;
 
 	public PlayerBasicInfoCardPanel(int X, int Y, PlayerVo playerVo) {
+		System.out.println(playerVo.getName()+"     BBBBB      "+playerVo.getTeam());
 		this.X = X;
 		this.Y = Y;
 		this.setVisible(true);
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.playerVo = playerVo;
-		 this.setBounds(0, 0, X * 930 / 1366, Y * 120 / 768);
+		this.setBounds(0, 0, X * 930 / 1366, Y * 120 / 768);
 
 		JButton playerbtn = new JButton();
-		playerbtn.setBounds(X*30/1366, Y*10/768, X*100/1366, Y*100/768);
+		playerbtn.setBounds(X * 30 / 1366, Y * 10 / 768, X * 100 / 1366,
+				Y * 100 / 768);
+//		playerbtn.addActionListener(e->{System.out.println("click playerbtn");});
+		playerbtn.setVisible(true);
 		add(playerbtn);
 
 		MyLabel lblNumber = new MyLabel();
 		lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNumber.setBounds(X*153/1366, Y*10/768, X*62/1366, Y*100/768);
+		lblNumber.setBounds(X * 153 / 1366, Y * 10 / 768, X * 62 / 1366,
+				Y * 100 / 768);
 		lblNumber.setFont(new Font("黑体", 1, 16));
 		add(lblNumber);
 
 		MyLabel lblPname = new MyLabel();
 		lblPname.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPname.setBounds(X*260/1366, Y*10/768, X*160/1366,Y*20/768);
+		lblPname.setBounds(X * 260 / 1366, Y * 10 / 768, X * 160 / 1366,
+				Y * 20 / 768);
 		add(lblPname);
 
 		MyLabel lblPinfo = new MyLabel();
 		lblPinfo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPinfo.setBounds(X*260/1366, Y*30/768, X*160/1366,Y*20/768);
+		lblPinfo.setBounds(X * 260 / 1366, Y * 30 / 768, X * 160 / 1366,
+				Y * 20 / 768);
 		add(lblPinfo);
 
 		MyLabel lblNewLabel = new MyLabel("H&W：");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(X*450/1366, Y*10/768, X*40/1366,Y*20/768);
+		lblNewLabel.setBounds(X * 450 / 1366, Y * 10 / 768, X * 40 / 1366,
+				Y * 20 / 768);
 		add(lblNewLabel);
 
 		MyLabel heightAweightlbl = new MyLabel();
 		heightAweightlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		heightAweightlbl.setBounds(X*490/1366, Y*10/768, X*120/1366,Y*20/768);
+		heightAweightlbl.setBounds(X * 490 / 1366, Y * 10 / 768,
+				X * 120 / 1366, Y * 20 / 768);
 		add(heightAweightlbl);
 
 		MyLabel lblNewLabel_1 = new MyLabel("生日：");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(X*450/1366, Y*30/768, X*40/1366,Y*20/768);
+		lblNewLabel_1.setBounds(X * 450 / 1366, Y * 30 / 768, X * 40 / 1366,
+				Y * 20 / 768);
 		add(lblNewLabel_1);
 
 		MyLabel lblBirth = new MyLabel();
 		lblBirth.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBirth.setBounds(X*490/1366, Y*30/768, X*120/1366,Y*20/768);
+		lblBirth.setBounds(X * 490 / 1366, Y * 30 / 768, X * 120 / 1366,
+				Y * 20 / 768);
 		add(lblBirth);
 
 		MyLabel lblNewLabel_2 = new MyLabel("球龄：");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(X*640/1366, Y*10/768, X*40/1366,Y*20/768);
+		lblNewLabel_2.setBounds(X * 640 / 1366, Y * 10 / 768, X * 40 / 1366,
+				Y * 20 / 768);
 		add(lblNewLabel_2);
 
 		MyLabel lblExp = new MyLabel();
 		lblExp.setHorizontalAlignment(SwingConstants.CENTER);
-		lblExp.setBounds(X*680/1366, Y*10/768, X*120/1366,Y*20/768);
+		lblExp.setBounds(X * 680 / 1366, Y * 10 / 768, X * 120 / 1366,
+				Y * 20 / 768);
 		add(lblExp);
 
 		MyLabel label = new MyLabel("院校：");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(X*640/1366,Y*30/768, X*40/1366,Y*20/768);
+		label.setBounds(X * 640 / 1366, Y * 30 / 768, X * 40 / 1366,
+				Y * 20 / 768);
 		add(label);
 
 		MyLabel lblSchool = new MyLabel();
 		lblSchool.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSchool.setBounds(X*680/1366, Y*30/768, X*145/1366, Y*20/768);
+		lblSchool.setBounds(X * 680 / 1366, Y * 30 / 768, X * 145 / 1366,
+				Y * 20 / 768);
 		add(lblSchool);
 
 		MyLabel scoreFieldlbl = new MyLabel("场均得分");
 		scoreFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreFieldlbl.setBounds(X*260/1366, Y*60/768, X*130/1366,Y*20/768);
+		scoreFieldlbl.setBounds(X * 260 / 1366, Y * 60 / 768, X * 130 / 1366,
+				Y * 20 / 768);
 		add(scoreFieldlbl);
 
 		MyLabel reboundFieldlbl = new MyLabel("场均篮板");
 		reboundFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		reboundFieldlbl.setBounds(X*390/1366, Y*60/768, X*130/1366,Y*20/768);
+		reboundFieldlbl.setBounds(X * 390 / 1366, Y * 60 / 768, X * 130 / 1366,
+				Y * 20 / 768);
 		add(reboundFieldlbl);
 
 		MyLabel assistanceFieldlbl = new MyLabel("场均助攻");
 		assistanceFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		assistanceFieldlbl.setBounds(X*520/1366,Y*60/768, X*130/1366,Y*20/768);
+		assistanceFieldlbl.setBounds(X * 520 / 1366, Y * 60 / 768,
+				X * 130 / 1366, Y * 20 / 768);
 		add(assistanceFieldlbl);
 
 		MyLabel scoreFieldValuelbl = new MyLabel();
 		scoreFieldValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreFieldValuelbl.setBounds(X*260/1366,Y*80/768, X*130/1366,Y*20/768);
+		scoreFieldValuelbl.setBounds(X * 260 / 1366, Y * 80 / 768,
+				X * 130 / 1366, Y * 20 / 768);
 		add(scoreFieldValuelbl);
 
 		MyLabel reboundFieldValuelbl = new MyLabel();
 		reboundFieldValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		reboundFieldValuelbl.setBounds(X*390/1366,Y*80/768, X*130/1366,Y*20/768);
+		reboundFieldValuelbl.setBounds(X * 390 / 1366, Y * 80 / 768,
+				X * 130 / 1366, Y * 20 / 768);
 		add(reboundFieldValuelbl);
 
 		MyLabel assistanceFieldValuelbl = new MyLabel();
 		assistanceFieldValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		assistanceFieldValuelbl.setBounds(X*520/1366,Y*80/768, X*130/1366,Y*20/768);
+		assistanceFieldValuelbl.setBounds(X * 520 / 1366, Y * 80 / 768,
+				X * 130 / 1366, Y * 20 / 768);
 		add(assistanceFieldValuelbl);
 
 		JButton teambtn = new JButton();
-		teambtn.setBounds(X*830/1366, Y*20/768,X*80/1366, Y*80/768);
+		teambtn.setBounds(X * 830 / 1366, Y * 20 / 768, X * 80 / 1366,
+				Y * 80 / 768);
+//		teambtn.addActionListener(e->{System.out.println("click teambtn");});
+		teambtn.setVisible(true);
 		add(teambtn);
 
 		ImageIcon playerImg = new ImageIcon(new ImageIcon(
-				"CSEdata/players/portrait" + playerVo.getName() + ".png")
+				"CSEdata/players/portrait/" + playerVo.getName() + ".png")
 				.getImage().getScaledInstance(X * 100 / 1366, Y * 100 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		playerbtn.setIcon(playerImg);
@@ -165,7 +189,7 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setFont(new Font("黑体", 1, 11));
-
+			this.setForeground(Color.WHITE);
 		}
 
 		public MyLabel(String text) {
@@ -173,7 +197,7 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 			this.setText(text);
 			this.setOpaque(false);
 			this.setFont(new Font("黑体", 1, 11));
-
+			this.setForeground(Color.WHITE);
 		}
 
 		public MyLabel(Color textColor) {
