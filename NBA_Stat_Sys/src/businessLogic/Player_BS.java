@@ -15,4 +15,5 @@ public interface Player_BS {
 	public ArrayList<PlayerCardVo> hotPlayerSeason(String option);
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option);
 	public PlayerRecentGames getPlayerRecentPerformance(String name);
+	public ArrayList<PlayerVo> searchPlayer(String key);
 }

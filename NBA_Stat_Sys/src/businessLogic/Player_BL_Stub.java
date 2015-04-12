@@ -340,4 +340,10 @@ public class Player_BL_Stub implements Player_BS {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<PlayerVo> searchPlayer(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

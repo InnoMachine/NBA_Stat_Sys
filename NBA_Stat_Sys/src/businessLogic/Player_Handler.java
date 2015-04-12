@@ -1740,4 +1740,10 @@ public class Player_Handler {
 		return null;
 		
 	}
+
+	public ArrayList<PlayerVo> searchPlayer(String key) {
+		ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
+		
+		return null;
+	}
 }

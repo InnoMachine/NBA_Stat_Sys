@@ -46,12 +46,18 @@ public class Player_BL implements Player_BS{
 	public ArrayList<PlayerCardVo> hotPlayerSeason(String option) {
 		return player_handler.hotPlayerSeason(option);
 	}
-	@Override
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option) {
 		return player_handler.progressFastPlayer(option);
 	}
 	
 	public PlayerRecentGames getPlayerRecentPerformance(String name) {
 		return player_handler.getPlayerRecentPerformance(name);
+	}
+	public ArrayList<PlayerVo> searchPlayer(String key) {
+		return player_handler.searchPlayer(key);
+	}
+	public ArrayList<PlayerVo> searchPlayer(String key,String first) {
+		
+		return null;
 	}
 }
