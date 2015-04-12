@@ -38,9 +38,17 @@ public class DateChooserJButton extends JButton {
 	private String preLabel = "";
 	private String originalText = null;
 	private SimpleDateFormat sdf = null;
+	int X,Y;
 
 	public DateChooserJButton() {
 		this(getNowDate());
+	}
+	
+	
+	public DateChooserJButton(int X,int Y) {
+		this(getNowDate());
+		this.X=X;
+		this.Y=Y;
 	}
 
 	public DateChooserJButton(String dateString) {
@@ -196,8 +204,8 @@ public class DateChooserJButton extends JButton {
 		private static final long serialVersionUID = 1L;
 		int startYear = 1980; // 默认【最小】显示年份
 		int lastYear = 2050; // 默认【最大】显示年份
-		int width = 240; // 界面宽度
-		int height = 150; // 界面高度
+		int width = X*240/1366; // 界面宽度
+		int height = Y*150/768; // 界面高度
 		Color backGroundColor = Color.gray; // 底色
 		// 月历表格配色----------------//
 		Color palletTableColor = Color.white; // 日历表底色
@@ -231,7 +239,7 @@ public class DateChooserJButton extends JButton {
 		DateChooser() {
 
 			setLayout(new BorderLayout());
-			setBorder(new LineBorder(backGroundColor, 2));
+			setBorder(new LineBorder(backGroundColor, X*2/1366));
 			setBackground(backGroundColor);
 
 			JPanel topYearAndMonth = createYearAndMonthPanal();
@@ -256,7 +264,7 @@ public class DateChooserJButton extends JButton {
 
 			yearSpin = new JSpinner(new SpinnerNumberModel(currentYear,
 					startYear, lastYear, 1));
-			yearSpin.setPreferredSize(new Dimension(60, 25));
+			yearSpin.setPreferredSize(new Dimension(X*60/1366, Y*25/768));
 			yearSpin.setName("Year");
 			yearSpin.setEditor(new JSpinner.NumberEditor(yearSpin, "####"));
 			yearSpin.addChangeListener(this);
@@ -266,8 +274,8 @@ public class DateChooserJButton extends JButton {
 			yearLabel.setForeground(controlTextColor);
 			result.add(yearLabel);
 
-			monthSpin = new JSpinner(new SpinnerNumberModel(currentMonth, 1,
-					12, 1));
+			monthSpin = new JSpinner(new SpinnerNumberModel(currentMonth, X*1/1366,
+					X*12/1366, X*1/1366));
 			monthSpin.setPreferredSize(new Dimension(45, 25));
 			monthSpin.setName("Month");
 			monthSpin.addChangeListener(this);
@@ -278,8 +286,8 @@ public class DateChooserJButton extends JButton {
 			result.add(monthLabel);
 
 			// 如果这里要能够选择,会要判断很多东西,比如每个月分别由多少日,以及闰年问题.所以,就干脆把Enable设为false
-			daySpin = new JSpinner(new SpinnerNumberModel(currentMonth, 1, 31,
-					1));
+			daySpin = new JSpinner(new SpinnerNumberModel(currentMonth, X*1/1366, X*31/1366,
+					X*1/1366));
 			daySpin.setPreferredSize(new Dimension(45, 25));
 			daySpin.setName("Day");
 			daySpin.addChangeListener(this);
@@ -291,9 +299,9 @@ public class DateChooserJButton extends JButton {
 			dayLabel.setForeground(controlTextColor);
 			result.add(dayLabel);
 
-			hourSpin = new JSpinner(new SpinnerNumberModel(currentHour, 0, 23,
-					1));
-			hourSpin.setPreferredSize(new Dimension(45, 25));
+			hourSpin = new JSpinner(new SpinnerNumberModel(currentHour, 0, X*23/1366,
+					X*1/1366));
+			hourSpin.setPreferredSize(new Dimension(X*45/1366, Y*25/768));
 			hourSpin.setName("Hour");
 			hourSpin.addChangeListener(this);
 			result.add(hourSpin);
@@ -303,8 +311,8 @@ public class DateChooserJButton extends JButton {
 			result.add(hourLabel);
 
 			minuteSpin = new JSpinner(new SpinnerNumberModel(currentMinute, 0,
-					59, 1));
-			minuteSpin.setPreferredSize(new Dimension(45, 25));
+					X*59/1366, X*1/1366));
+			minuteSpin.setPreferredSize(new Dimension(X*45/1366, Y*25/768));
 			minuteSpin.setName("Minute");
 			minuteSpin.addChangeListener(this);
 			result.add(minuteSpin);
@@ -314,8 +322,8 @@ public class DateChooserJButton extends JButton {
 			result.add(minuteLabel);
 
 			secondSpin = new JSpinner(new SpinnerNumberModel(currentSecond, 0,
-					59, 1));
-			secondSpin.setPreferredSize(new Dimension(45, 25));
+					X*59/1366, X*1/1366));
+			secondSpin.setPreferredSize(new Dimension(X*45/1366, Y*25/768));
 			secondSpin.setName("Second");
 			secondSpin.addChangeListener(this);
 			result.add(secondSpin);
@@ -331,7 +339,7 @@ public class DateChooserJButton extends JButton {
 			String colname[] = { "日", "一", "二", "三", "四", "五", "六" };
 			JPanel result = new JPanel();
 			// 设置固定字体，以免调用环境改变影响界面美观
-			result.setFont(new Font("宋体", 1, 12));
+			result.setFont(new Font("黑体", 1, 12));
 			result.setLayout(new GridLayout(7, 7));
 			result.setBackground(Color.white);
 			JLabel cell;
@@ -494,10 +502,10 @@ public class DateChooserJButton extends JButton {
 			int j = actionCommandId % 7;
 			if (isOldDay) {
 				daysButton[i][j].setForeground(dateFontColor);
-				daysButton[i][j].setFont(new java.awt.Font("宋体", 1, 10));// 当前选中字体为粗体
+				daysButton[i][j].setFont(new java.awt.Font("黑体", 1, 12));// 当前选中字体为粗体
 			} else {
 				daysButton[i][j].setForeground(todayBackColor);
-				daysButton[i][j].setFont(new java.awt.Font("宋体", 1, 10));// 当前选中字体为粗体
+				daysButton[i][j].setFont(new java.awt.Font("黑体", 1, 12));// 当前选中字体为粗体
 			}
 		}
 
@@ -513,7 +521,7 @@ public class DateChooserJButton extends JButton {
 						s = String.valueOf(dayNo);
 					}
 					daysButton[i][j].setText(s);
-					daysButton[i][j].setFont(new java.awt.Font("宋体", 0, 18));
+					daysButton[i][j].setFont(new java.awt.Font("黑体", 0, 12));
 					dayNo++;
 				}
 			}

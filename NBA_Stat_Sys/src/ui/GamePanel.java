@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
 	static int X;
 	static int Y;
 
-	// JLabel bgLabel;
+	JLabel bgLabel;
 
 	public GamePanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -55,30 +55,32 @@ public class GamePanel extends JPanel {
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		/*
-		 * bgLabel = new JLabel(); bgLabel.setBounds(0, 0, X, Y); ImageIcon bg =
-		 * new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
-		 * .getImage().getScaledInstance(this.getWidth(), this.getHeight(),
-		 * Image.SCALE_SMOOTH)); bgLabel.setIcon(bg); this.add(bgLabel);
-		 */
+
+		bgLabel = new JLabel();
+		bgLabel.setBounds(0, 0, X, Y);
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
+				.getImage().getScaledInstance(this.getWidth(),
+						this.getHeight(), Image.SCALE_SMOOTH));
+		bgLabel.setIcon(bg);
+		this.add(bgLabel);
 
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
+		home.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
 		home.addActionListener(e -> back());
-		this.add(home);
-		// bgLabel.add(home);
+
+		bgLabel.add(home);
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -91,14 +93,13 @@ public class GamePanel extends JPanel {
 				mainFrame.setExtendedState(JFrame.ICONIFIED);
 			}
 		});
-		this.add(minimize);
-		// bgLabel.add(minimize);
+		bgLabel.add(minimize);
 
 		JButton close = new JButton();
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -111,74 +112,39 @@ public class GamePanel extends JPanel {
 				mainFrame.dispose();
 			}
 		});
-		this.add(close);
-		// bgLabel.add(close);
+		bgLabel.add(close);
 
 		mainFrame.getContentPane().add(this);
 
 		MyLabel label = new MyLabel(Color.BLACK, "起始日期");
 		label.setFont(new Font("黑体", 1, 13));
 		label.setBounds(X * 265 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
-		this.add(label);
-		// bgLabel.add(label);
+		bgLabel.add(label);
 
-		DateChooserJButton startDate = new DateChooserJButton();
-		startDate.setBounds(X * 350 / 1366, Y * 66 / 768, X * 200 / 1366,
+		DateChooserJButton startDate = new DateChooserJButton(X, Y);
+		startDate.setBounds(X * 350 / 1366, Y * 66 / 768, X * 240 / 1366,
 				X / 50);
 		startDate.setVisible(true);
-		this.add(startDate);
+		bgLabel.add(startDate);
 
 		MyLabel label_1 = new MyLabel(Color.BLACK, "结束日期");
 		label_1.setFont(new Font("黑体", 1, 13));
-		label_1.setBounds(X * 625 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
-		this.add(label_1);
+		label_1.setBounds(X * 655 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
+		bgLabel.add(label_1);
 
-		DateChooserJButton endDate = new DateChooserJButton();
-		endDate.setBounds(X * 710 / 1366, Y * 66 / 768, X * 200 / 1366, X / 50);
+		DateChooserJButton endDate = new DateChooserJButton(X, Y);
+		endDate.setBounds(X * 740 / 1366, Y * 66 / 768, X * 240 / 1366, X / 50);
 		endDate.setVisible(true);
-		this.add(endDate);
+		bgLabel.add(endDate);
 
 		JButton searchbtn = new JButton("搜索");
-		searchbtn
-				.setBounds(X * 990 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
+		searchbtn.setBounds(X * 1040 / 1366, Y * 66 / 768, X * 60 / 1366,
+				X / 50);
 		searchbtn.addActionListener(e -> searchGameByDate(startDate.getText(),
 				endDate.getText()));
 		searchbtn.setVisible(true);
-		this.add(searchbtn);
+		bgLabel.add(searchbtn);
 
-		this.addMouseListener(new MouseListener() {
-			// bgLabel.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				// System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
-				if (e.getX() <= X * 715 / 1366 || e.getX() >= X * 928 / 1366
-						|| e.getY() <= (Y * 66 / 768 + X / 50)
-						|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 108 / 1366)) {
-
-				}
-			}
-		});
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
 		gameVos = game_BS.getAllGames();
 		if (rowData == null) {
@@ -234,8 +200,7 @@ public class GamePanel extends JPanel {
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		this.add(scrollPane);
-		// bgLabel.add(scrollPane);
+		bgLabel.add(scrollPane);
 
 	}
 
@@ -296,8 +261,7 @@ public class GamePanel extends JPanel {
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		this.add(scrollPane);
-		// bgLabel.add(scrollPane);
+		bgLabel.add(scrollPane);
 
 	}
 
@@ -305,7 +269,7 @@ public class GamePanel extends JPanel {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
-		// playerCriteriaPanel.setVisible(false);
+
 	}
 
 	// class: TableRenderer
@@ -363,20 +327,6 @@ public class GamePanel extends JPanel {
 			this.setText(text);
 			this.setFont(new Font("黑体", 1, 11));
 
-		}
-	}
-
-	class MyRadioButton extends JRadioButton {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-
-		public MyRadioButton(String choice) {
-			super();
-			this.setText(choice);
-			this.setOpaque(false);
-			this.setForeground(Color.WHITE);
 		}
 	}
 
