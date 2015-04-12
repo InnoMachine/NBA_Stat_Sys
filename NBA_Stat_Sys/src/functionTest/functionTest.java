@@ -33,7 +33,6 @@ public class functionTest {
 	}
 	@SuppressWarnings("rawtypes")
 	public ArrayList setInfo(String order){
-		player_bs.sortPlayerBy("1","2");
 		String split[] = order.split("-");
 		for(String temp:split){
 			System.out.println(temp);

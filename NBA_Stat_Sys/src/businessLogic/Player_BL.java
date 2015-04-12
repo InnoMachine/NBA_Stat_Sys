@@ -58,6 +58,6 @@ public class Player_BL implements Player_BS{
 	}
 	public ArrayList<PlayerVo> searchPlayer(String key,String first) {
 		
-		return null;
+		return player_handler.searchPlayer(key,first);
 	}
 }

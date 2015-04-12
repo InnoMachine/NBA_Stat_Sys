@@ -341,8 +341,16 @@ public class Player_BL_Stub implements Player_BS {
 		return null;
 	}
 
+
+
 	@Override
-	public ArrayList<PlayerVo> searchPlayer(String key) {
+	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<PlayerVo> searchPlayer(String key, String first) {
 		// TODO Auto-generated method stub
 		return null;
 	}

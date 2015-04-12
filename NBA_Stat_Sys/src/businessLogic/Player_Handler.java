@@ -1743,7 +1743,52 @@ public class Player_Handler {
 
 	public ArrayList<PlayerVo> searchPlayer(String key) {
 		ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
+		for(PlayerVo temp:listvo){
+			if(isSearched(temp,key)){
+				slist.add(temp);
+			}
+		}
+		return slist;
+	}
+
+	private boolean isSearched(PlayerVo temp, String key) {
+		boolean is =false;
+		if((temp.getAge()+"").contains(key))
+			is =true;
+		else if(temp.getBirth().contains(key))
+			is =true;
+		else if((temp.getExp()+"").contains(key))
+			is =true;
+		else if(temp.getHeight().contains(key))
+			is =true;
+		else if(temp.getName().contains(key))
+			is =true;
+		else if(temp.getNumber().contains(key))
+			is =true;
+		else if(temp.getPosition().contains(key))
+			is =true;
+		else if(temp.getSchool().contains(key))
+			is =true;
+		else if(temp.getWeight().contains(key))
+			is=true;
+		else if(temp.getTeam().contains(key))
+			is=true;
+		return is;
+	}
+
+	public ArrayList<PlayerVo> searchPlayer(String key, String first) {
+		ArrayList<PlayerVo> templist = searchPlayer(key);
+		if(first.equals("All"))
+			return templist;
+		else{
+			ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
+			for(PlayerVo temp:templist){
+				if(temp.getName().substring(0, 1).equals(first)){
+					slist.add(temp);
+				}
+			}
+			return slist;
+		}
 		
-		return null;
 	}
 }
