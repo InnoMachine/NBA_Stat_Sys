@@ -16,4 +16,6 @@ public interface Player_BS {
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option);
 	public PlayerRecentGames getPlayerRecentPerformance(String name);
 	public ArrayList<PlayerVo> searchPlayer(String key);
+	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2);
+	public ArrayList<PlayerVo> searchPlayer(String key,String first) ;
 }

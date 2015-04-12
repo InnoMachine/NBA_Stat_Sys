@@ -15,6 +15,8 @@ import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
 import vo.TeamCardVo;
 import vo.TeamVo;
+import businessLogic.Player_BL;
+import businessLogic.Player_BS;
 import businessLogic.Player_Handler;
 import businessLogic.Team_Handler;
 
@@ -22,13 +24,16 @@ public class functionTest {
 	BigDecimal b; 
 	Player_Handler player_handler = new Player_Handler();
 	Team_Handler team_handler = new Team_Handler();
+	Player_BS player_bs = new Player_BL();
 	public static void  main(String args[]){
 		String s = "-player -king score -season";
 		int k =s.indexOf("-king");
 		System.out.println(s.substring(k+6, k+6+s.substring(k+6).indexOf("-")));
+		
 	}
 	@SuppressWarnings("rawtypes")
 	public ArrayList setInfo(String order){
+		player_bs.sortPlayerBy("1","2");
 		String split[] = order.split("-");
 		for(String temp:split){
 			System.out.println(temp);
