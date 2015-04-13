@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -23,9 +24,11 @@ import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import ui.ShowPanel.MyTextField;
+import vo.PlayerVo;
 
 public class PlayerInfoPanel extends JPanel {
-
+	
+	String playerName;
 	static int X;
 	static int Y;
 	JLabel bgLabel;
@@ -65,9 +68,8 @@ public class PlayerInfoPanel extends JPanel {
 	
 	public PlayerInfoPanel(String PlayerName,JFrame mainFrame) {
 		
-		mainFrame.add(this);
-		System.out.println(PlayerName);
-		this.setSize(500, 500);
+		this.playerName=PlayerName;
+		this.setBounds(0, 0, 1000, 1000);
 		this.setVisible(true);
 		this.setLayout(null);
 		X = this.getWidth();
@@ -82,19 +84,19 @@ public class PlayerInfoPanel extends JPanel {
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
 		
-		playerPortrait=new JLabel();
-		playerPortrait.setOpaque(false);
-//		playerPortrait.setBounds(x, y, width, height);
-		ImageIcon portrait=new ImageIcon(new ImageIcon().getImage().getScaledInstance(playerPortrait.getWidth(), playerPortrait.getHeight(), Image.SCALE_SMOOTH));
-		playerPortrait.setIcon(portrait);
-		bgLabel.add(playerPortrait);
+//		playerPortrait=new JLabel();
+//		playerPortrait.setOpaque(false);
+////		playerPortrait.setBounds(x, y, width, height);
+//		ImageIcon portrait=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(playerPortrait.getWidth(), playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+//		playerPortrait.setIcon(portrait);
+//		bgLabel.add(playerPortrait);
 		
-		playerAction=new JLabel();
-		playerAction.setOpaque(false);
-//		playerAction.setBounds(x, y, width, height);
-		ImageIcon action=new ImageIcon(new ImageIcon().getImage().getScaledInstance(playerAction.getWidth(), playerAction.getHeight(), Image.SCALE_SMOOTH));
-		playerAction.setIcon(action);
-		bgLabel.add(playerAction);
+//		playerAction=new JLabel();
+//		playerAction.setOpaque(false);
+////		playerAction.setBounds(x, y, width, height);
+//		ImageIcon action=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(playerAction.getWidth(), playerAction.getHeight(), Image.SCALE_SMOOTH));
+//		playerAction.setIcon(action);
+//		bgLabel.add(playerAction);
 		
 		JButton close = new JButton();
 		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
@@ -138,8 +140,9 @@ public class PlayerInfoPanel extends JPanel {
 
 		
 		addBasicInfo();
-		addHistoricalData();
-		addCurrentData();
+//		addHistoricalData();
+//		addCurrentData();
+
 	}
 
 	private void addHistoricalData(){
@@ -148,6 +151,19 @@ public class PlayerInfoPanel extends JPanel {
 	
 	private void addCurrentData(){
 		dtm.setDataVector(currentDataColumn, currentData);
+	}
+	
+	private void addBasicData(){
+		PlayerVo one=player_BS.getPlayerByName(playerName);
+		textField_2.setText(one.getName());
+		textField_4.setText(one.getHeight());
+		textField_6.setText(one.getBirth());
+		textField_8.setText(one.getPosition());
+		textField_10.setText(one.getWeight());
+		textField_12.setText(String.valueOf(one.getExp()));
+		textField_14.setText(String.valueOf(one.getNumber()));
+		textField_16.setText(String.valueOf(one.getAge()));
+		textField_18.setText(one.getSchool());
 	}
 	
 	private void addBasicInfo() {

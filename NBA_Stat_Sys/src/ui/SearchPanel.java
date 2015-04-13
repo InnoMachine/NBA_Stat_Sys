@@ -37,7 +37,7 @@ import vo.GameVo;
 import vo.PlayerVo;
 
 public class SearchPanel extends JPanel {
-
+	
 	static int X;
 	static int Y;
 
@@ -459,18 +459,17 @@ public class SearchPanel extends JPanel {
 			PlayerBasicInfoCardPanel renderer = new PlayerBasicInfoCardPanel(X,
 					Y, ((PlayerBasicInfoCardPanel) value).getPlayerVo());
 			renderer.setOpaque(false);
-			((PlayerBasicInfoCardPanel) value).getPlayerBTN().addActionListener(e->{PlayerInfoPanel a=new PlayerInfoPanel(((PlayerBasicInfoCardPanel) value).getPlayerVo().getName(),mainFrame);System.out.print("11111");});
-			renderer.playerbtn.addActionListener(e->{PlayerInfoPanel a=new PlayerInfoPanel(((PlayerBasicInfoCardPanel) value).getPlayerVo().getName(),mainFrame);System.out.print("11111");});
-			renderer.getPlayerBTN().setForeground(Color.GREEN);
-//			renderer.getTeamBTN().addActionListener(arg0);
+
+			if(hasFocus){
+				PlayerInfoPanel a=new PlayerInfoPanel(renderer.getPlayerVo().getName(),new MainFrame());
+				mainFrame.getContentPane().add(a);
+			}
 			
-			// TODO Auto-generated method stub
 			return renderer;
 
 		}
 
 	}
-
 	class MyTextField extends JTextField {
 		/**
 		 * 

@@ -20,11 +20,10 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 	private PlayerVo playerVo;
 	int X;
 	int Y;
-	JButton playerbtn;
+	private JButton playerbtn;
 	private JButton teambtn;
 	
 	public PlayerBasicInfoCardPanel(int X, int Y, PlayerVo playerVo) {
-		System.out.println(playerVo.getName()+"     BBBBB      "+playerVo.getTeam());
 		this.X = X;
 		this.Y = Y;
 		this.setVisible(true);
