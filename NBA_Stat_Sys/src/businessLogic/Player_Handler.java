@@ -1743,6 +1743,9 @@ public class Player_Handler {
 
 	public ArrayList<PlayerVo> searchPlayer(String key) {
 		ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
+		if(key.equals("")){
+			return null;
+		}
 		for(PlayerVo temp:listvo){
 			if(isSearched(temp,key)){
 				slist.add(temp);
@@ -1778,6 +1781,9 @@ public class Player_Handler {
 
 	public ArrayList<PlayerVo> searchPlayer(String key, String first) {
 		ArrayList<PlayerVo> templist = searchPlayer(key);
+		if(templist == null){
+			return null;
+		}
 		if(first.equals("All"))
 			return templist;
 		else{
