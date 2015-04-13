@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import ui.ShowPanel.MyTextField;
 
@@ -60,13 +61,12 @@ public class PlayerInfoPanel extends JPanel {
 	private Vector<Vector<String>> historicalData;
 	private Vector<Vector<String>> currentData;
 	
-	Player_BS player_BS = new Player_BL();
+	Player_BS player_BS = new Player_BL_Stub();
 	
-	public static void main(String[] args){
-		PlayerInfoPanel a=new PlayerInfoPanel("a");
-	}
-	public PlayerInfoPanel(String PlayerName) {
-
+	public PlayerInfoPanel(String PlayerName,JFrame mainFrame) {
+		
+		mainFrame.add(this);
+		System.out.println(PlayerName);
 		this.setSize(500, 500);
 		this.setVisible(true);
 		this.setLayout(null);

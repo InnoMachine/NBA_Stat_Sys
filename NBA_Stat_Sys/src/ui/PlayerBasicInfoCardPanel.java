@@ -20,7 +20,9 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 	private PlayerVo playerVo;
 	int X;
 	int Y;
-
+	JButton playerbtn;
+	private JButton teambtn;
+	
 	public PlayerBasicInfoCardPanel(int X, int Y, PlayerVo playerVo) {
 		System.out.println(playerVo.getName()+"     BBBBB      "+playerVo.getTeam());
 		this.X = X;
@@ -31,10 +33,9 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 		this.playerVo = playerVo;
 		this.setBounds(0, 0, X * 930 / 1366, Y * 120 / 768);
 
-		JButton playerbtn = new JButton();
+		playerbtn = new JButton();
 		playerbtn.setBounds(X * 30 / 1366, Y * 10 / 768, X * 100 / 1366,
 				Y * 100 / 768);
-//		playerbtn.addActionListener(e->{System.out.println("click playerbtn");});
 		playerbtn.setVisible(true);
 		add(playerbtn);
 
@@ -141,7 +142,7 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 				X * 130 / 1366, Y * 20 / 768);
 		add(assistanceFieldValuelbl);
 
-		JButton teambtn = new JButton();
+		teambtn = new JButton();
 		teambtn.setBounds(X * 830 / 1366, Y * 20 / 768, X * 80 / 1366,
 				Y * 80 / 768);
 //		teambtn.addActionListener(e->{System.out.println("click teambtn");});
@@ -174,7 +175,15 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 		teambtn.setIcon(teamImg);
 
 	}
-
+	
+	public JButton getPlayerBTN(){
+		return this.playerbtn;
+	}
+	
+	public JButton getTeamBTN(){
+		return this.teambtn;
+	}
+	
 	public PlayerVo getPlayerVo() {
 		return playerVo;
 	}

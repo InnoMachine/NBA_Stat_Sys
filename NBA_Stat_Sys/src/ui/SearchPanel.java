@@ -459,6 +459,11 @@ public class SearchPanel extends JPanel {
 			PlayerBasicInfoCardPanel renderer = new PlayerBasicInfoCardPanel(X,
 					Y, ((PlayerBasicInfoCardPanel) value).getPlayerVo());
 			renderer.setOpaque(false);
+			((PlayerBasicInfoCardPanel) value).getPlayerBTN().addActionListener(e->{PlayerInfoPanel a=new PlayerInfoPanel(((PlayerBasicInfoCardPanel) value).getPlayerVo().getName(),mainFrame);System.out.print("11111");});
+			renderer.playerbtn.addActionListener(e->{PlayerInfoPanel a=new PlayerInfoPanel(((PlayerBasicInfoCardPanel) value).getPlayerVo().getName(),mainFrame);System.out.print("11111");});
+			renderer.getPlayerBTN().setForeground(Color.GREEN);
+//			renderer.getTeamBTN().addActionListener(arg0);
+			
 			// TODO Auto-generated method stub
 			return renderer;
 
