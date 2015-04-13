@@ -461,8 +461,7 @@ public class SearchPanel extends JPanel {
 			renderer.setOpaque(false);
 
 			if(hasFocus){
-				PlayerInfoPanel a=new PlayerInfoPanel(renderer.getPlayerVo().getName(),new MainFrame());
-				mainFrame.getContentPane().add(a);
+				PlayerInfoPanel a=new PlayerInfoPanel(renderer.getPlayerVo().getName(),mainFrame);
 			}
 			
 			return renderer;

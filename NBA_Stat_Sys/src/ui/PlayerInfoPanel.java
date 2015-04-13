@@ -28,6 +28,7 @@ import vo.PlayerVo;
 
 public class PlayerInfoPanel extends JPanel {
 	
+	JFrame mainFrame;
 	String playerName;
 	static int X;
 	static int Y;
@@ -67,13 +68,14 @@ public class PlayerInfoPanel extends JPanel {
 	Player_BS player_BS = new Player_BL_Stub();
 	
 	public PlayerInfoPanel(String PlayerName,JFrame mainFrame) {
-		
+		this.mainFrame=mainFrame;
 		this.playerName=PlayerName;
-		this.setBounds(0, 0, 1000, 1000);
+		X = mainFrame.getWidth();
+		Y = mainFrame.getHeight();
+		this.setBounds(0, 0, X,Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		X = this.getWidth();
-		Y = this.getHeight();
+
 
 		ImageIcon bg;
 		bgLabel = new JLabel();
@@ -142,7 +144,7 @@ public class PlayerInfoPanel extends JPanel {
 		addBasicInfo();
 //		addHistoricalData();
 //		addCurrentData();
-
+		mainFrame.getContentPane().add(this);
 	}
 
 	private void addHistoricalData(){
