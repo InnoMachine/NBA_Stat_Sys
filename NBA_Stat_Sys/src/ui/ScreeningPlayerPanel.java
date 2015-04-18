@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -32,6 +33,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import vo.PlayerVo;
 
@@ -41,6 +43,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
+	JPanel previousPanel;
 	private String[] positions;
 	private String[] leagues;
 	private JTable table;
@@ -48,15 +51,16 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox<String> positionjcb;
 	JComboBox<String> leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL();
+	Player_BS player_BS = new Player_BL_Stub();
 	private JButton screeningCriteriabtn;
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;
 	static int Y;
 	JLabel bgLabel;
 
-	public ScreeningPlayerPanel(JFrame mainFrame) {
+	public ScreeningPlayerPanel(JFrame mainFrame,JPanel previousPanel) {
 		this.mainFrame = mainFrame;
+		this.previousPanel=previousPanel;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
@@ -82,8 +86,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 66 / 768,
 				X * 213 / 1366, X / 50);
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/mainButton.png").getImage().getScaledInstance( 	X * 213 / 1366,  X / 50,
-						 Image.SCALE_SMOOTH));
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 213 / 1366, X / 50, Image.SCALE_SMOOTH));
 		screeningCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
 		screeningCriteriabtn.setForeground(Color.WHITE);
 		screeningCriteriabtn.setIcon(buttonIcon);
@@ -93,18 +97,38 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		bgLabel.add(screeningCriteriabtn);
 
-		JButton home= new JButton();
-		ImageIcon homeIcon=new ImageIcon(new ImageIcon("Image/homeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		home.setBounds(17*X/20,Y/18, X/25,X/25);
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(16 * X / 20, Y / 18, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
-		home.addActionListener(e -> back());
+		home.addActionListener(e -> home());
 		bgLabel.add(home);
+
+		JButton back = new JButton("返回");
+		back.setForeground(Color.WHITE);
+		/*
+		 * ImageIcon backIcon = new ImageIcon(new
+		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
+		 * X / 25, Image.SCALE_SMOOTH));
+		 */
+		back.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
+		// back.setIcon(backIcon);
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		back.addActionListener(e -> back());
+		bgLabel.add(back);
+
 		JButton minimize = new JButton();
-		ImageIcon minimizeIcon=new ImageIcon(new ImageIcon("Image/minimizeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		minimize.setBounds(18*X/20,Y/18, X/25,X/25);
+		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
+				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
+				X / 25, Image.SCALE_SMOOTH));
+		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -120,8 +144,10 @@ public class ScreeningPlayerPanel extends JPanel {
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
-		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
-		close.setBounds(19*X/20,Y/18, X/25,X/25);
+		ImageIcon closeIcon = new ImageIcon(
+				new ImageIcon("Image/closeIcon.png").getImage()
+						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
+		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -142,8 +168,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningbtn.setBounds(X * 990 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
 		ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
-				"Image/mainButton.png").getImage().getScaledInstance( 	 X * 100 / 1366,  X / 50,
-						 Image.SCALE_SMOOTH));
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 100 / 1366, X / 50, Image.SCALE_SMOOTH));
 		screeningbtn.setIcon(buttonIcon2);
 		screeningbtn.setOpaque(false);
 		screeningbtn.setContentAreaFilled(false);
@@ -168,13 +194,12 @@ public class ScreeningPlayerPanel extends JPanel {
 		positions[2] = "中锋";
 		positions[3] = "后卫";
 		positionjcb = new JComboBox<String>(positions);
-		
+
 		positionjcb.setBounds(X * 330 / 1366, Y * 66 / 768, X * 100 / 1366,
 				X / 50);
 		positionjcb.setForeground(Color.WHITE);
 		positionjcb.setBackground(Color.GRAY);
-		
-		
+
 		bgLabel.add(positionjcb);
 
 		leagues = new String[7];
@@ -190,7 +215,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				X / 50);
 		leaguejcb.setForeground(Color.WHITE);
 		leaguejcb.setBackground(Color.GRAY);
-		
+
 		bgLabel.add(leaguejcb);
 
 		bgLabel.addMouseListener(new MouseListener() {
@@ -217,12 +242,12 @@ public class ScreeningPlayerPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-//                System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
-				if (e.getX() <= X * 715 / 1366 ||e.getX() >= X * 928 / 1366
+				// System.out.println("CLICKED!    X: "+e.getX()+"   Y: "+e.getY());
+				if (e.getX() <= X * 715 / 1366 || e.getX() >= X * 928 / 1366
 						|| e.getY() <= (Y * 66 / 768 + X / 50)
-						|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 108 / 1366)){
+						|| e.getY() >= (Y * 66 / 768 + X / 50 + X * 108 / 1366)) {
 					if (playerCriteriaPanel != null) {
-                            playerCriteriaPanel.setVisible(false);
+						playerCriteriaPanel.setVisible(false);
 					}
 				}
 			}
@@ -240,12 +265,10 @@ public class ScreeningPlayerPanel extends JPanel {
 		String league = "";
 		String screeningCriteria = "";
 
-		
-		if(playerCriteriaPanel!=null){
+		if (playerCriteriaPanel != null) {
 			playerCriteriaPanel.setVisible(false);
 		}
-		
-		
+
 		switch (String.valueOf(positionjcb.getSelectedItem())) {
 		case "前锋":
 			position = "F";
@@ -342,7 +365,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		if (screeningCriteria == "") {
 			JOptionPane.showMessageDialog(this, "请选择球员筛选依据");
 		} else {
-//			System.out.println(screeningCriteria);
+			// System.out.println(screeningCriteria);
 			playerVos = player_BS.filterPlayerBy(position, league,
 					screeningCriteria);
 			if (rowData == null) {
@@ -398,13 +421,10 @@ public class ScreeningPlayerPanel extends JPanel {
 											.getTurnoverField())));
 					break;
 				case "timeField":
-					a.add(new PlayerCardPanel(
-							i + 1,
-							X,
-							Y,
-							playerVos.get(i),
-							screeningCriteriabtn.getText(),
-							String.format("%.2f", playerVos.get(i).getTimeField() / 60.0)));
+					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+							screeningCriteriabtn.getText(), String.format(
+									"%.2f",
+									playerVos.get(i).getTimeField() / 60.0)));
 					break;
 				case "efficiencyField":
 					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -487,12 +507,16 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		}
 	}
-
-	public void back() {
+	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
-//		playerCriteriaPanel.setVisible(false);
+		// playerCriteriaPanel.setVisible(false);
+	}
+	public void back() {
+		this.setVisible(false);
+		previousPanel.setVisible(true);
+		// playerCriteriaPanel.setVisible(false);
 	}
 
 	public class ScreeningPlayerCriteriaPanel extends JPanel {
@@ -509,14 +533,13 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setBounds(X * 715 / 1366, Y * 66 / 768 + X / 50,
 					X * 213 / 1366, X * 108 / 1366);
 			this.setBorder(new TitledBorder(new EtchedBorder()));
-			JLabel bglabel=new JLabel();
+			JLabel bglabel = new JLabel();
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningPlayerPanel.png").getImage().getScaledInstance(this.getWidth(),
-					this.getHeight(), Image.SCALE_SMOOTH));
+					"Image/screeningPlayerPanel.png").getImage()
+					.getScaledInstance(this.getWidth(), this.getHeight(),
+							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
-			bglabel.setBounds(0, 0,this.getWidth(),
-					this.getHeight() );
-
+			bglabel.setBounds(0, 0, this.getWidth(), this.getHeight());
 
 			this.add(bglabel);
 			ButtonGroup bg = new ButtonGroup();
@@ -702,7 +725,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				break;
 
 			default:
-//				System.out.println("筛选标准选择出错");
+				// System.out.println("筛选标准选择出错");
 				break;
 			}
 
@@ -743,7 +766,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setOpaque(false);
 			this.setForeground(textColor);
 			this.setFont(new Font("黑体", 1, 11));
-            this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
 	}
@@ -771,13 +794,14 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		}
 	}
-	class MyRadioButton extends JRadioButton{
+
+	class MyRadioButton extends JRadioButton {
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public MyRadioButton(String choice){
+		public MyRadioButton(String choice) {
 			super();
 			this.setText(choice);
 			this.setOpaque(false);

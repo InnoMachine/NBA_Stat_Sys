@@ -37,8 +37,8 @@ public class StartPanel extends JPanel {
 	JLabel bgLabel;
 	// Image bgImage;
 	JFrame mainFrame;
-	static int X;
-	static int Y;
+	int X;
+	int Y;
 
 	public StartPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -82,7 +82,7 @@ public class StartPanel extends JPanel {
 		gameInfobtn.addActionListener(e -> toGamePanel());
 		bgLabel.add(gameInfobtn);
 		
-
+/*
 		searchPlayerbtn = new MyButton("球员查看");
 		searchPlayerbtn.setBounds(subX, 35*Y/100, X/6,  Y/10);
 		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
@@ -112,7 +112,7 @@ public class StartPanel extends JPanel {
 		sortTeambtn.addActionListener(e -> toSortTeamPanel());
 		sortTeambtn.setVisible(false);
 		bgLabel.add(sortTeambtn);
-
+*/
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
@@ -202,7 +202,7 @@ public class StartPanel extends JPanel {
 		gamePanel = new GamePanel(mainFrame);
 
 	}
-	
+	/*
 	public void toSearchPlayerPanel() {
 		this.setVisible(false);
 		searchPlayerPanel = new ShowPanel("player", mainFrame);
@@ -231,6 +231,8 @@ public class StartPanel extends JPanel {
 		this.setVisible(false);
 		sortTeamPanel = new SortPanel("team", mainFrame);
 	}
+	*/
+	
 	class MyButton extends JButton{
 		/**
 		 * 

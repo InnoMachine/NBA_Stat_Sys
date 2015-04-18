@@ -224,13 +224,13 @@ public class TeamPanel extends JPanel{
 	
 	public void toShowTeamPanel() {
 		this.setVisible(true);
-		searchTeamPanel = new ShowPanel("Team", mainFrame);
+		searchTeamPanel = new ShowPanel("team", mainFrame,this);
 
 	}
 
 	public void toSortTeamPanel() {
-		this.setVisible(true);
-		sortTeamPanel = new SortPanel("Team", mainFrame);
+		this.setVisible(false);
+		sortTeamPanel = new SortPanel("team", mainFrame,this);
 
 	}
 

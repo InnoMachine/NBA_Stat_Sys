@@ -465,24 +465,24 @@ public class PlayerPanel extends JPanel {
 
 	public void toSearchPlayerPanel() {
 		this.setVisible(false);
-		searchPlayerPanel = new SearchPanel(mainFrame);
+		searchPlayerPanel = new SearchPanel(mainFrame,this);
 	}
 
 	public void toShowPlayerPanel() {
 		this.setVisible(false);
-		showPlayerPanel = new ShowPanel("player", mainFrame);
+		showPlayerPanel = new ShowPanel("player", mainFrame,this);
 
 	}
 
 	public void toSortPlayerPanel() {
 		this.setVisible(false);
-		sortPlayerPanel = new SortPanel("player", mainFrame);
+		sortPlayerPanel = new SortPanel("player", mainFrame,this);
 
 	}
 
 	public void toScreeningPlayerPanel() {
 		this.setVisible(false);
-		screeningPlayerPanel = new ScreeningPlayerPanel(mainFrame);
+		screeningPlayerPanel = new ScreeningPlayerPanel(mainFrame,this);
 
 	}
 

@@ -37,13 +37,13 @@ import vo.GameVo;
 import vo.PlayerVo;
 
 public class SearchPanel extends JPanel {
-	
-	static int X;
-	static int Y;
+
+	int X;
+	int Y;
 
 	JLabel bgLabel;
 	JFrame mainFrame;
-
+JPanel previousPanel;
 	private JTable table;
 	private JScrollPane scrollPane;
 
@@ -51,7 +51,9 @@ public class SearchPanel extends JPanel {
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 
-	public SearchPanel(JFrame mainFrame) {
+	public SearchPanel(JFrame mainFrame,JPanel previousPanel) {
+		this.mainFrame=mainFrame;
+		this.previousPanel=previousPanel;
 		mainFrame.getContentPane().add(this);
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -72,13 +74,29 @@ public class SearchPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
-		home.addActionListener(e -> back());
+		home.addActionListener(e -> home());
 		bgLabel.add(home);
+
+		JButton back = new JButton("返回");
+		back.setForeground(Color.WHITE);
+		/*
+		 * ImageIcon backIcon = new ImageIcon(new
+		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
+		 * X / 25, Image.SCALE_SMOOTH));
+		 */
+		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		// back.setIcon(backIcon);
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		back.addActionListener(e -> back());
+		bgLabel.add(back);
+
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
@@ -440,11 +458,16 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(scrollPane);
 
 	}
-
-	public void back() {
+	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
+		// playerCriteriaPanel.setVisible(false);
+	}
+
+	public void back() {
+		this.setVisible(false);
+		previousPanel.setVisible(true);
 		// playerCriteriaPanel.setVisible(false);
 	}
 
@@ -460,15 +483,17 @@ public class SearchPanel extends JPanel {
 					Y, ((PlayerBasicInfoCardPanel) value).getPlayerVo());
 			renderer.setOpaque(false);
 
-			if(hasFocus){
-				PlayerInfoPanel a=new PlayerInfoPanel(renderer.getPlayerVo().getName(),mainFrame);
+			if (hasFocus) {
+				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerVo()
+						.getName(), mainFrame);
 			}
-			
+
 			return renderer;
 
 		}
 
 	}
+
 	class MyTextField extends JTextField {
 		/**
 		 * 

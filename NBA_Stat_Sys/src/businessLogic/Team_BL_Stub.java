@@ -1,13 +1,15 @@
 package businessLogic;
 
 import java.util.ArrayList;
+
 import enums.Conference;
+import enums.Division;
 import vo.PlayerVo;
 import vo.TeamCardVo;
 import vo.TeamRecentGames;
 import vo.TeamVo;
 
-public class Team_BL_Stub implements Team_BS{
+public class Team_BL_Stub implements Team_BS {
 
 	@Override
 	public TeamVo getTeamByAbbr(String abbr) {
@@ -24,7 +26,79 @@ public class Team_BL_Stub implements Team_BS{
 	@Override
 	public ArrayList<TeamVo> sortTeamBy(String option) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
+		if (option == "score") {
+			TeamVo teamVo1 = new TeamVo();
+			teamVo1.setTeamName("");
+			teamVo1.setAbbreviation("SAS");
+			teamVo1.setConference(Conference.E);
+			teamVo1.setDivision(Division.CENTRAL);
+			teamVo1.setCity("Los Angeles");
+			teamVos.add(teamVo1);
+			TeamVo teamVo2 = new TeamVo();
+			teamVo2.setTeamName("");
+			teamVo2.setAbbreviation("ATL");
+			teamVo2.setConference(Conference.W);
+			teamVo2.setDivision(Division.ATLANTIC);
+			teamVo2.setCity("Dallas");
+			teamVos.add(teamVo2);
+			TeamVo teamVo3 = new TeamVo();
+			teamVo3.setTeamName("");
+			teamVo3.setAbbreviation("WAS");
+			teamVo3.setConference(Conference.E);
+			teamVo3.setDivision(Division.SOUTHEAST);
+			teamVo3.setCity("Seattle");
+			teamVos.add(teamVo3);
+
+		}else if(option=="hitRate"){
+			TeamVo teamVo1 = new TeamVo();
+			teamVo1.setTeamName("");
+			teamVo1.setAbbreviation("HOU");
+			teamVo1.setConference(Conference.E);
+			teamVo1.setDivision(Division.CENTRAL);
+			teamVo1.setCity("Los Angeles");
+			teamVos.add(teamVo1);
+			TeamVo teamVo2 = new TeamVo();
+			teamVo2.setTeamName("");
+			teamVo2.setAbbreviation("PHX");
+			teamVo2.setConference(Conference.W);
+			teamVo2.setDivision(Division.ATLANTIC);
+			teamVo2.setCity("Dallas");
+			teamVos.add(teamVo2);
+			TeamVo teamVo3 = new TeamVo();
+			teamVo3.setTeamName("");
+			teamVo3.setAbbreviation("POR");
+			teamVo3.setConference(Conference.E);
+			teamVo3.setDivision(Division.SOUTHEAST);
+			teamVo3.setCity("Seattle");
+			teamVos.add(teamVo3);
+			
+		}else{
+			
+			TeamVo teamVo1 = new TeamVo();
+			teamVo1.setTeamName("");
+			teamVo1.setAbbreviation("IND");
+			teamVo1.setConference(Conference.E);
+			teamVo1.setDivision(Division.CENTRAL);
+			teamVo1.setCity("Los Angeles");
+			teamVos.add(teamVo1);
+			TeamVo teamVo2 = new TeamVo();
+			teamVo2.setTeamName("");
+			teamVo2.setAbbreviation("ORL");
+			teamVo2.setConference(Conference.W);
+			teamVo2.setDivision(Division.ATLANTIC);
+			teamVo2.setCity("Dallas");
+			teamVos.add(teamVo2);
+			TeamVo teamVo3 = new TeamVo();
+			teamVo3.setTeamName("");
+			teamVo3.setAbbreviation("UTA");
+			teamVo3.setConference(Conference.E);
+			teamVo3.setDivision(Division.SOUTHEAST);
+			teamVo3.setCity("Seattle");
+			teamVos.add(teamVo3);	
+		}
+
+		return teamVos;
 	}
 
 	@Override
@@ -113,7 +187,7 @@ public class Team_BL_Stub implements Team_BS{
 
 		}
 		return teamCardVos;
-		
+
 	}
 
 	@Override

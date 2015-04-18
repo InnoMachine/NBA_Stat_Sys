@@ -63,12 +63,12 @@ public class GameCardPanel extends JPanel {
 		teambtn2.setBorderPainted(false);
 		teambtn2.setOpaque(false);
 		add(teambtn2);
-
+/*
 		JButton detailbtn = new JButton("D");
 		detailbtn.setBounds(X * 880 / 1366, Y * 70 / 768, X * 40 / 1366,
 				Y * 40 / 768);
 		add(detailbtn);
-
+*/
 		JLabel teamlbl = new JLabel("球队");
 		teamlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		teamlbl.setBounds(X * 190 / 1366, Y * 25 / 768, X * 85 / 1366,

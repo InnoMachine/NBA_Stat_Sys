@@ -39,6 +39,7 @@ public class ShowPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
+	JPanel previousPanel;
 	Player_BS player_BS = new Player_BL();
 	Team_BS team_BS = new Team_BL();
 
@@ -196,9 +197,10 @@ public class ShowPanel extends JPanel {
 	static int X;
 	static int Y;
 
-	public ShowPanel(String category, JFrame mainFrame) {
+	public ShowPanel(String category, JFrame mainFrame,JPanel previousPanel) {
 		this.category = category;
 		this.mainFrame = mainFrame;
+		this.previousPanel=previousPanel;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
@@ -230,13 +232,27 @@ public class ShowPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y / 18, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
-		home.addActionListener(e -> back());
+		home.addActionListener(e -> home());
 		bgLabel.add(home);
+		
+		JButton back = new JButton();
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		back.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
+		back.setIcon(backIcon);
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		back.addActionListener(e -> back());
+		bgLabel.add(back);
+		
+		
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
@@ -391,10 +407,15 @@ public class ShowPanel extends JPanel {
 		playerAction.setIcon(playerIcon);
 	}
 
-	public void back() {
+	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
+	}
+	public void back() {
+		this.setVisible(false);
+		previousPanel.setVisible(true);
+	//	mainFrame.getContentPane().add(previousPanel);
 	}
 
 	public void createTeamPanel() {

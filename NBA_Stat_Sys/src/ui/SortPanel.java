@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -35,8 +36,10 @@ import java.util.Collections;
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
+import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 public class SortPanel extends JPanel {
@@ -45,6 +48,7 @@ public class SortPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
+	JPanel previousPanel;
 	private JTable table;
 	private JScrollPane scrollPane;
 
@@ -58,8 +62,8 @@ public class SortPanel extends JPanel {
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
-	Player_BS player_BS = new Player_BL();
-	Team_BS team_BS = new Team_BL();
+	Player_BS player_BS = new Player_BL_Stub();
+	Team_BS team_BS = new Team_BL_Stub();
 
 	String playerCriteria = "";
 	String teamCriteria = "";
@@ -70,9 +74,10 @@ public class SortPanel extends JPanel {
 	static int Y;
 	JLabel bgLabel;
 
-	public SortPanel(String category, JFrame mainFrame) {
+	public SortPanel(String category, JFrame mainFrame,JPanel previousPanel) {
 
 		this.mainFrame = mainFrame;
+		this.previousPanel=previousPanel;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
@@ -92,18 +97,33 @@ public class SortPanel extends JPanel {
 		criterialbl.setFont(new Font("黑体", 1, 13));
 		criterialbl.setBounds(X * 335 / 1366, Y * 66 / 768, X / 15, X / 50);
 		bgLabel.add(criterialbl);
-
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y / 18, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
-		home.addActionListener(e -> back());
+		home.addActionListener(e -> home());
 		bgLabel.add(home);
+		
+		JButton back = new JButton("返回");
+		back.setForeground(Color.WHITE);
+/*
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+						*/
+		back.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
+//		back.setIcon(backIcon);
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		back.addActionListener(e -> back());
+		bgLabel.add(back);
+		
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
@@ -823,12 +843,17 @@ public class SortPanel extends JPanel {
 		sortTeamCriteriaPanel.setVisible(true);
 	}
 
-	public void back() {
+	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 		sortPlayerCriteriaPanel.setVisible(false);
 		sortTeamCriteriaPanel.setVisible(false);
+	}
+
+	public void back() {
+		this.setVisible(false);
+		previousPanel.setVisible(true);
 	}
 
 	public class SortPlayerCriteriaPanel extends JPanel {
