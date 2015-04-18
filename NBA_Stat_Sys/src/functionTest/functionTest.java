@@ -643,7 +643,7 @@ public class functionTest {
 		for(int i=0;i<n;i++){
 			hi.add(CreateHotInfoSeason(list.get(i),field));
 		}
-		return null;
+		return hi;
 	}
 	private PlayerHotInfo CreateHotInfoSeason(PlayerVo vo, String field) {
 		PlayerHotInfo h = new PlayerHotInfo();
