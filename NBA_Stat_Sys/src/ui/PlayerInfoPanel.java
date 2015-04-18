@@ -53,8 +53,8 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField textField_17;
 	private JTextField textField_18;
 	
-	private JLabel playerPortrait;
-	private JLabel playerAction;
+//	private JLabel playerPortrait;
+//	private JLabel playerAction;
 	
 	private DefaultTableModel dtm;
 	private JScrollPane infoJSP;
@@ -68,6 +68,7 @@ public class PlayerInfoPanel extends JPanel {
 	Player_BS player_BS = new Player_BL_Stub();
 	
 	public PlayerInfoPanel(String PlayerName,JFrame mainFrame) {
+
 		this.mainFrame=mainFrame;
 		this.playerName=PlayerName;
 		X = mainFrame.getWidth();
@@ -75,7 +76,6 @@ public class PlayerInfoPanel extends JPanel {
 		this.setBounds(0, 0, X,Y);
 		this.setVisible(true);
 		this.setLayout(null);
-
 
 		ImageIcon bg;
 		bgLabel = new JLabel();
