@@ -81,7 +81,7 @@ public class PlayerInfoPanel extends JPanel {
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
-		bg = new ImageIcon(new ImageIcon("Image/searchPlayer.png").getImage()
+		bg = new ImageIcon(new ImageIcon("Image/sortPlayer.png").getImage()
 				.getScaledInstance(this.getWidth(), this.getHeight(),
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);

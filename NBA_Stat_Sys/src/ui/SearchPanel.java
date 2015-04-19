@@ -43,7 +43,7 @@ public class SearchPanel extends JPanel {
 
 	JLabel bgLabel;
 	JFrame mainFrame;
-JPanel previousPanel;
+	JPanel previousPanel;
 	private JTable table;
 	private JScrollPane scrollPane;
 
@@ -486,6 +486,7 @@ JPanel previousPanel;
 			if (hasFocus) {
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerVo()
 						.getName(), mainFrame);
+
 			}
 
 			return renderer;
