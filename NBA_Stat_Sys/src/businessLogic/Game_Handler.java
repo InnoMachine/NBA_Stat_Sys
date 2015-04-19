@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import po.GameDate;
 import vo.GameVo;
+import vo.PlayerPerformanceInSingleGame;
 
 public class Game_Handler {
 	private Data_Handler data_handler;
@@ -32,6 +33,33 @@ public class Game_Handler {
 			}
 		}
 		return templist;
+	}
+
+	public ArrayList<PlayerPerformanceInSingleGame> getGameByLabel(String label) {
+		for(GameVo temp:listvo){
+			if(temp.getGameLabel().equals(label)){
+				ArrayList<PlayerPerformanceInSingleGame> list = new ArrayList<PlayerPerformanceInSingleGame>();
+				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().playerlist){
+					list.add(pp);
+				}
+				for(PlayerPerformanceInSingleGame pp:temp.getHomeTP().playerlist){
+					list.add(pp);
+				}
+				return list;
+			}
+		}
+		return null;
+	}
+
+	public PlayerPerformanceInSingleGame getPerformance(String label,
+			String name) {
+		ArrayList<PlayerPerformanceInSingleGame> list =getGameByLabel(label);
+		for(PlayerPerformanceInSingleGame temp:list){
+			if(temp.getName().equals(name)){
+				return temp;
+			}
+		}
+		return null;
 	}
 }
 

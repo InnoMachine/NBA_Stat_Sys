@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import po.Scoreboard;
 import enums.Division;
 import vo.GameVo;
+import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
 
 public class Game_BL_Stub implements Game_BS {
@@ -150,6 +151,19 @@ public class Game_BL_Stub implements Game_BS {
 		gameVo3.setScoreOverall(scoreboard2);
 		gameVos.add(gameVo3);
 		return gameVos;
+	}
+
+	@Override
+	public ArrayList<PlayerPerformanceInSingleGame> getGameByLabel(String label) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PlayerPerformanceInSingleGame getPerformance(String label,
+			String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

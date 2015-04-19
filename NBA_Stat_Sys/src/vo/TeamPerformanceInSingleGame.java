@@ -220,6 +220,9 @@ public class TeamPerformanceInSingleGame {
 		this.playerlist.add(pgp);
 		
 	}
+	public ArrayList<PlayerPerformanceInSingleGame> getPlayerList(){
+		return playerlist;
+	}
 	public String getGameLabel() {
 		return gameLabel;
 	}
