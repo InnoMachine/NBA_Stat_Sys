@@ -29,6 +29,7 @@ import vo.PlayerVo;
 public class PlayerInfoPanel extends JPanel {
 	
 	JFrame mainFrame;
+	JPanel previousPanel;
 	String playerName;
 	static int X;
 	static int Y;
@@ -53,12 +54,14 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField textField_17;
 	private JTextField textField_18;
 	
-//	private JLabel playerPortrait;
-//	private JLabel playerAction;
+	private JLabel playerPortrait;
+	private JLabel playerAction;
 	
 	private DefaultTableModel dtm;
 	private JScrollPane infoJSP;
 	private JTable infoTable;
+	JButton historicalDataCheck;
+	JButton currentDataCheck;
 	
 	private Vector<String> historicalDataColumn;
 	private Vector<String> currentDataColumn;
@@ -68,7 +71,8 @@ public class PlayerInfoPanel extends JPanel {
 	Player_BS player_BS = new Player_BL_Stub();
 	
 	public PlayerInfoPanel(String PlayerName,JFrame mainFrame) {
-
+		
+	
 		this.mainFrame=mainFrame;
 		this.playerName=PlayerName;
 		X = mainFrame.getWidth();
@@ -86,19 +90,20 @@ public class PlayerInfoPanel extends JPanel {
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
 		
-//		playerPortrait=new JLabel();
-//		playerPortrait.setOpaque(false);
-////		playerPortrait.setBounds(x, y, width, height);
-//		ImageIcon portrait=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(playerPortrait.getWidth(), playerPortrait.getHeight(), Image.SCALE_SMOOTH));
-//		playerPortrait.setIcon(portrait);
-//		bgLabel.add(playerPortrait);
+		playerPortrait=new JLabel();
+		playerPortrait.setBounds(X/12,Y/12, X/8, X/8);
+		ImageIcon portrait=new ImageIcon(new ImageIcon("CSEdata/players/portrait/"+PlayerName+".png").getImage().getScaledInstance(playerPortrait.getWidth(), playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+		playerPortrait.setIcon(portrait);
+		bgLabel.add(playerPortrait);
 		
-//		playerAction=new JLabel();
-//		playerAction.setOpaque(false);
-////		playerAction.setBounds(x, y, width, height);
-//		ImageIcon action=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(playerAction.getWidth(), playerAction.getHeight(), Image.SCALE_SMOOTH));
-//		playerAction.setIcon(action);
-//		bgLabel.add(playerAction);
+		playerAction=new JLabel();
+		playerAction.setBounds(4*X/5, Y/3, X/4, 2*Y/3);
+		ImageIcon action=new ImageIcon(new ImageIcon("CSEdata/players/action/"+PlayerName+".png").getImage().getScaledInstance(playerAction.getWidth(), playerAction.getHeight(), Image.SCALE_SMOOTH));
+		playerAction.setIcon(action);
+		bgLabel.add(playerAction);
+		
+		
+		
 		
 		JButton close = new JButton();
 		ImageIcon closeIcon=new ImageIcon(new ImageIcon("Image/closeIcon.png").getImage().getScaledInstance(X/25,X/25 , Image.SCALE_SMOOTH));
@@ -107,15 +112,28 @@ public class PlayerInfoPanel extends JPanel {
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
 		close.setBorderPainted(false);
-		close.addActionListener(new ActionListener() {
+		close.addActionListener(new ActionListener(){
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-		
+				mainFrame.dispose();
 			}
+			
 		});
 		bgLabel.add(close);
+		
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		home.setIcon(homeIcon);
+		home.setOpaque(false);
+		home.setContentAreaFilled(false);
+		home.setBorderPainted(false);
+		home.addActionListener(e -> home());
+		bgLabel.add(home);
 		
 		historicalDataColumn=new Vector<String>();
 		historicalDataColumn.add("");
@@ -135,8 +153,8 @@ public class PlayerInfoPanel extends JPanel {
 		};
 		infoTable=new JTable(dtm);
 		infoJSP = new JScrollPane(infoTable);
-		infoJSP.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 / 1366,
-				Y * 600 / 768);
+		infoJSP.setBounds(X /5, Y /3, 3*X /5,
+				Y /2);
 		infoJSP.setVisible(true);
 		bgLabel.add(infoJSP);
 
@@ -147,6 +165,13 @@ public class PlayerInfoPanel extends JPanel {
 		mainFrame.getContentPane().add(this);
 	}
 
+	private void home() {
+		this.setVisible(false);
+		StartPanel sp = new StartPanel(mainFrame);
+		mainFrame.getContentPane().add(sp);
+		// playerCriteriaPanel.setVisible(false);
+	}
+	
 	private void addHistoricalData(){
 		dtm.setDataVector(historicalDataColumn, historicalData);
 	}
@@ -170,8 +195,8 @@ public class PlayerInfoPanel extends JPanel {
 	
 	private void addBasicInfo() {
 		
-		int tempX = 2 * X / 11;
-		int tempY = 27 * Y / 100;
+		int tempX = X / 5 ;
+		int tempY = Y / 10;
 		int spaceX = X / 10;
 		int spaceY = Y / 18;
 
@@ -267,6 +292,7 @@ public class PlayerInfoPanel extends JPanel {
 
 	}
 
+	
 	class MyTextField extends JTextField {
 		/**
 		 * 
@@ -275,8 +301,8 @@ public class PlayerInfoPanel extends JPanel {
 
 		public MyTextField() {
 			super();
-			this.setOpaque(false);
-			this.setForeground(Color.WHITE);
+			this.setVisible(true);
+			this.setForeground(Color.BLACK);
 			this.setFont(new Font("黑体", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 			this.setColumns(10);

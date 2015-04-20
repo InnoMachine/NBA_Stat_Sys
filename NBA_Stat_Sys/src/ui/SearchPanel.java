@@ -40,17 +40,17 @@ public class SearchPanel extends JPanel {
 
 	int X;
 	int Y;
-
 	JLabel bgLabel;
-	JFrame mainFrame;
-	JPanel previousPanel;
 	private JTable table;
 	private JScrollPane scrollPane;
+	JFrame mainFrame;
+	JPanel previousPanel;
 
 	Player_BS player_BS = new Player_BL_Stub();
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 
+	
 	public SearchPanel(JFrame mainFrame,JPanel previousPanel) {
 		this.mainFrame=mainFrame;
 		this.previousPanel=previousPanel;
@@ -395,7 +395,7 @@ public class SearchPanel extends JPanel {
 		scrollPane.setOpaque(false);
 
 		bgLabel.add(scrollPane);
-
+		
 		mainFrame.getContentPane().add(this);
 	}
 
@@ -464,7 +464,9 @@ public class SearchPanel extends JPanel {
 		mainFrame.getContentPane().add(sp);
 		// playerCriteriaPanel.setVisible(false);
 	}
-
+	public void selfClose(){
+		this.setVisible(false);
+	}
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
@@ -486,7 +488,7 @@ public class SearchPanel extends JPanel {
 			if (hasFocus) {
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerVo()
 						.getName(), mainFrame);
-
+				selfClose();
 			}
 
 			return renderer;
