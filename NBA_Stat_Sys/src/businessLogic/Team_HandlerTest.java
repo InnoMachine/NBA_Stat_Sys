@@ -23,5 +23,14 @@ public class Team_HandlerTest {
 	public void testGetAllTeam() {
 		assertTrue(team_handler.getAllTeam().size()==30);
 	}
+	@Test
+	public void testGetTeamRecentPerformance() {
+		assertTrue(team_handler.getTeamRecentPerformance("ATL")!=null);
+	}
+
+	@Test
+	public void testHotTeamSeason() {
+		assertTrue(team_handler.hotTeamSeason("score")!=null);
+	}
 
 }
