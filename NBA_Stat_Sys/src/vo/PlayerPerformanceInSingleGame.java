@@ -4,6 +4,7 @@ public class PlayerPerformanceInSingleGame {
 	private String gameLabel;
 	private String name;
 	private String position;
+	private String number;
 	private int time;//sudo
 	private int hitNum;
 	private int shotNum;
@@ -181,6 +182,12 @@ public class PlayerPerformanceInSingleGame {
 	}
 	public void setGameLabel(String gameLabel) {
 		this.gameLabel = gameLabel;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 }

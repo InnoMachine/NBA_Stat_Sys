@@ -608,6 +608,7 @@ public class Data_Handler {
 				{
 					
 					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
+					pgp.setNumber(listvo.get(i).getNumber());
 					pgp.setTime(temp.getTimeBySeconds());
 					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
 					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
