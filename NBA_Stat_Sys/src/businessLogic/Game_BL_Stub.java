@@ -7,6 +7,7 @@ import enums.Division;
 import vo.GameVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
+import vo.TeamPerformanceInSingleGame;
 
 public class Game_BL_Stub implements Game_BS {
 
@@ -30,6 +31,45 @@ public class Game_BL_Stub implements Game_BS {
 		gameVo1.setScore3rd(scoreboard1);
 		gameVo1.setScore4th(scoreboard1);
 		gameVo1.setScoreOverall(scoreboard2);
+		
+		TeamPerformanceInSingleGame tp1=new TeamPerformanceInSingleGame("CLE");
+		PlayerPerformanceInSingleGame pp1=new PlayerPerformanceInSingleGame("Mike Miller");
+		pp1.setHitNum(9);
+		pp1.setThreePointHitNum(3);
+		pp1.setFoul(3);
+		pp1.setSteal(2);
+		pp1.setReboundOverall(6);
+		pp1.setScore(19);
+		tp1.AddPlayerP(pp1);
+		PlayerPerformanceInSingleGame pp2=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		pp2.setHitNum(0);
+		pp2.setThreePointHitNum(0);
+		pp2.setFoul(0);
+		pp2.setSteal(0);
+		pp2.setReboundOverall(0);
+		pp2.setScore(0);
+		tp1.AddPlayerP(pp2);
+		gameVo1.setGuestTP(tp1);	
+		
+		TeamPerformanceInSingleGame tp2=new TeamPerformanceInSingleGame("CLE");
+		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Mike Miller");
+		pp3.setHitNum(9);
+		pp3.setThreePointHitNum(3);
+		pp3.setFoul(3);
+		pp3.setSteal(2);
+		pp3.setReboundOverall(6);
+		pp3.setScore(19);
+		tp2.AddPlayerP(pp1);
+		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		pp4.setHitNum(0);
+		pp4.setThreePointHitNum(0);
+		pp4.setFoul(0);
+		pp4.setSteal(0);
+		pp4.setReboundOverall(0);
+		pp4.setScore(0);
+		tp2.AddPlayerP(pp4);
+		gameVo1.setHomeTP(tp2);	
+		
 		gameVos.add(gameVo1);
 		GameVo gameVo2 = new GameVo();
 		gameVo2.setHomeTeam("SAS");

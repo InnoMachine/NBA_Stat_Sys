@@ -197,7 +197,7 @@ public class TeamPanel extends JPanel{
 		this.add(seasonHotTeamPanel);
 		
 		
-		teamButtonsPanel=new TeamButtonsPanel(X, Y);
+		teamButtonsPanel=new TeamButtonsPanel(X, Y,mainFrame,this);
 		teamButtonsPanel.setVisible(true);
 		teamButtonsPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*240/768);
 		this.add(teamButtonsPanel);	

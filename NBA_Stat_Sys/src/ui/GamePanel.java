@@ -197,6 +197,7 @@ public class GamePanel extends JPanel {
 		scrollPane.setOpaque(false);
 		bgLabel.add(scrollPane);
 
+		mainFrame.getContentPane().add(this);
 	}
 
 	public void searchGameByDate(String startDate, String endDate) {
@@ -266,22 +267,36 @@ public class GamePanel extends JPanel {
 		mainFrame.getContentPane().add(sp);
 
 	}
-
+	
+	
+	public void selfClose(){
+		this.setVisible(false);
+	}
 	// class: TableRenderer
 	class GameCardRenderer implements TableCellRenderer {
 
-		@Override
-		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row,
-				int column) {
-			// TODO Auto-generated method stub
-			GameCardPanel renderer = new GameCardPanel(X, Y,
-					((GameCardPanel) value).getGameVo());
-			renderer.setOpaque(false);
-			// TODO Auto-generated method stub
-			return renderer;
+			@Override
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus, int row,
+					int column) {
+				// TODO Auto-generated method stub
+				GameCardPanel renderer = new GameCardPanel(X,
+						Y, ((GameCardPanel) value).getGameVo());
+				renderer.setOpaque(false);
 
-		}
+				if (hasFocus) {
+					
+					GameInfoPanel a = new GameInfoPanel(renderer.getGameVo()
+							,mainFrame,new GamePanel(mainFrame) );
+					selfClose();
+				}
+
+				return renderer;
+
+			}
+
+		
+
 
 	}
 
