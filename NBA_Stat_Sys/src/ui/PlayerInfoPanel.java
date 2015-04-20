@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -57,12 +58,15 @@ public class PlayerInfoPanel extends JPanel {
 	private JLabel playerPortrait;
 	private JLabel playerAction;
 	
-	private DefaultTableModel dtm;
-	private JScrollPane infoJSP;
-	private JTable infoTable;
+	private DefaultTableModel historicalDTM;
+	private DefaultTableModel currentDTM;
+	private JScrollPane historicalInfoJSP;
+	private JScrollPane currentInfoJSP;
+	private JTable historicalInfoTable;
+	private JTable currentInfoTable;
 	JButton historicalDataCheck;
 	JButton currentDataCheck;
-	
+	private JTabbedPane JTP;
 	private Vector<String> historicalDataColumn;
 	private Vector<String> currentDataColumn;
 	private Vector<Vector<String>> historicalData;
@@ -135,13 +139,15 @@ public class PlayerInfoPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 		
+
+		
 		historicalDataColumn=new Vector<String>();
-		historicalDataColumn.add("");
+		historicalDataColumn.add("111");
 		
 		currentDataColumn=new Vector<String>();
-		currentDataColumn.add("");
+		currentDataColumn.add("111");
 		
-		dtm=new DefaultTableModel(){
+		currentDTM=new DefaultTableModel(){
 			/**
 			 * 
 			 */
@@ -151,17 +157,38 @@ public class PlayerInfoPanel extends JPanel {
 				return false;
 			}
 		};
-		infoTable=new JTable(dtm);
-		infoJSP = new JScrollPane(infoTable);
-		infoJSP.setBounds(X /5, Y /3, 3*X /5,
+		currentInfoTable=new JTable(currentDTM);
+		currentInfoJSP = new JScrollPane(currentInfoTable);
+		currentInfoJSP.setSize(3*X /5,
 				Y /2);
-		infoJSP.setVisible(true);
-		bgLabel.add(infoJSP);
+		currentInfoJSP.setVisible(true);
+		
+		historicalDTM=new DefaultTableModel(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		historicalInfoTable=new JTable(historicalDTM);
+		historicalInfoJSP = new JScrollPane(historicalInfoTable);
+		historicalInfoJSP.setSize(3*X /5,
+				Y /2);
+		historicalInfoJSP.setVisible(true);
+		
+		JTP=new JTabbedPane();
+		JTP.setBounds(X /5, Y /3, 3*X /5,
+				Y /2);
+		JTP.addTab("currentData", currentInfoJSP);
+		JTP.addTab("historicalData", historicalInfoJSP);
+		bgLabel.add(JTP);
 		
 		addBasicInfo();
-//		addHistoricalData();
-//		addCurrentData();
+		addHistoricalData();
+		addCurrentData();
 		mainFrame.getContentPane().add(this);
 	}
 
@@ -169,15 +196,23 @@ public class PlayerInfoPanel extends JPanel {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
-		// playerCriteriaPanel.setVisible(false);
 	}
 	
 	private void addHistoricalData(){
-		dtm.setDataVector(historicalDataColumn, historicalData);
+		historicalData=new Vector<Vector<String>>();
+		Vector<String> test=new Vector<String>();
+		test.add("1111");
+		historicalData.add(test);
+		historicalDTM.setDataVector(historicalData, historicalDataColumn);
+		
 	}
 	
 	private void addCurrentData(){
-		dtm.setDataVector(currentDataColumn, currentData);
+		currentData=new Vector<Vector<String>>();
+		Vector<String> test=new Vector<String>();
+		test.add("1111");
+		currentData.add(test);
+		currentDTM.setDataVector(currentData, currentDataColumn);
 	}
 	
 	private void addBasicData(){
