@@ -33,6 +33,7 @@ public class Game_BL_Stub implements Game_BS {
 		gameVo1.setScoreOverall(scoreboard2);
 		
 		TeamPerformanceInSingleGame tp1=new TeamPerformanceInSingleGame("CLE");
+		
 		PlayerPerformanceInSingleGame pp1=new PlayerPerformanceInSingleGame("Mike Miller");
 		pp1.setHitNum(9);
 		pp1.setThreePointHitNum(3);
@@ -49,9 +50,6 @@ public class Game_BL_Stub implements Game_BS {
 		pp2.setReboundOverall(0);
 		pp2.setScore(0);
 		tp1.AddPlayerP(pp2);
-		gameVo1.setGuestTP(tp1);	
-		
-		TeamPerformanceInSingleGame tp2=new TeamPerformanceInSingleGame("CLE");
 		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Mike Miller");
 		pp3.setHitNum(9);
 		pp3.setThreePointHitNum(3);
@@ -59,7 +57,7 @@ public class Game_BL_Stub implements Game_BS {
 		pp3.setSteal(2);
 		pp3.setReboundOverall(6);
 		pp3.setScore(19);
-		tp2.AddPlayerP(pp1);
+		tp1.AddPlayerP(pp3);
 		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Anderson Varejao");
 		pp4.setHitNum(0);
 		pp4.setThreePointHitNum(0);
@@ -67,7 +65,43 @@ public class Game_BL_Stub implements Game_BS {
 		pp4.setSteal(0);
 		pp4.setReboundOverall(0);
 		pp4.setScore(0);
-		tp2.AddPlayerP(pp4);
+		tp1.AddPlayerP(pp4);
+		PlayerPerformanceInSingleGame pp5=new PlayerPerformanceInSingleGame("Mike Miller");
+		pp5.setHitNum(9);
+		pp5.setThreePointHitNum(3);
+		pp5.setFoul(3);
+		pp5.setSteal(2);
+		pp5.setReboundOverall(6);
+		pp5.setScore(19);
+		tp1.AddPlayerP(pp5);
+		PlayerPerformanceInSingleGame pp6=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		pp6.setHitNum(0);
+		pp6.setThreePointHitNum(0);
+		pp6.setFoul(0);
+		pp6.setSteal(0);
+		pp6.setReboundOverall(0);
+		pp6.setScore(0);
+		tp1.AddPlayerP(pp6);
+	
+		gameVo1.setGuestTP(tp1);	
+		
+		TeamPerformanceInSingleGame tp2=new TeamPerformanceInSingleGame("CLE");
+		PlayerPerformanceInSingleGame pp7=new PlayerPerformanceInSingleGame("Mike Miller");
+		pp7.setHitNum(9);
+		pp7.setThreePointHitNum(3);
+		pp7.setFoul(3);
+		pp7.setSteal(2);
+		pp7.setReboundOverall(6);
+		pp7.setScore(19);
+		tp2.AddPlayerP(pp7);
+		PlayerPerformanceInSingleGame pp8=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		pp8.setHitNum(0);
+		pp8.setThreePointHitNum(0);
+		pp8.setFoul(0);
+		pp8.setSteal(0);
+		pp8.setReboundOverall(0);
+		pp8.setScore(0);
+		tp2.AddPlayerP(pp8);
 		gameVo1.setHomeTP(tp2);	
 		
 		gameVos.add(gameVo1);
