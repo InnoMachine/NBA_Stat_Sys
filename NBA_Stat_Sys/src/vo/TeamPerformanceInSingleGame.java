@@ -29,6 +29,7 @@ public class TeamPerformanceInSingleGame {
 	private int opScore;
 	private int winning;
 	public ArrayList <PlayerPerformanceInSingleGame> playerlist;
+	public ArrayList<PlayerPerformanceInSingleGame> firstonlist;
 	public TeamPerformanceInSingleGame(String name)
 	{
 		this.name =name;
@@ -222,6 +223,13 @@ public class TeamPerformanceInSingleGame {
 	}
 	public ArrayList<PlayerPerformanceInSingleGame> getPlayerList(){
 		return playerlist;
+	}
+	public void AddFirstP(PlayerPerformanceInSingleGame pgp) {
+		this.firstonlist.add(pgp);
+		
+	}
+	public ArrayList<PlayerPerformanceInSingleGame> getFirstonList(){
+		return firstonlist;
 	}
 	public String getGameLabel() {
 		return gameLabel;

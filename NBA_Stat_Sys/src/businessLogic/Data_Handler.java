@@ -874,6 +874,7 @@ public class Data_Handler {
 					{
 						pgp.setFirstOn(1);
 						k++;
+						tgp.AddFirstP(pgp);
 					}
 					tgp.AddPlayerP(pgp);
 					break;
