@@ -12,9 +12,13 @@ import po.GamePO;
 public interface GameDao {
 	
 	public void add(GamePO game);
+	
 	public void update(GamePO game);
+	
 	public void deleteGameByLabel(String label);
+	
 	public GamePO getGameByLabel(String label);
+	
 	public ArrayList<GamePO> getAllGames();
 	
 }
