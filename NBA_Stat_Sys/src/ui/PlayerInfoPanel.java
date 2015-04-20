@@ -187,6 +187,7 @@ public class PlayerInfoPanel extends JPanel {
 		bgLabel.add(JTP);
 		
 		addBasicInfo();
+		addBasicData();
 		addHistoricalData();
 		addCurrentData();
 		mainFrame.getContentPane().add(this);

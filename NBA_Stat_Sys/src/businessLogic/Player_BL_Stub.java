@@ -12,6 +12,7 @@ public class Player_BL_Stub implements Player_BS {
 	Player_Handler player_handler;
 
 	public PlayerVo getPlayerByName(String name) {
+		System.out.println("Enter Stub");
 		PlayerVo playerVo = new PlayerVo();
 		playerVo.setName(name);
 		playerVo.setAge(25);
