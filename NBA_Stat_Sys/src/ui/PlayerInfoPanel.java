@@ -139,14 +139,6 @@ public class PlayerInfoPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 		
-
-		
-		historicalDataColumn=new Vector<String>();
-		historicalDataColumn.add("111");
-		
-		currentDataColumn=new Vector<String>();
-		currentDataColumn.add("111");
-		
 		currentDTM=new DefaultTableModel(){
 			/**
 			 * 
@@ -175,8 +167,6 @@ public class PlayerInfoPanel extends JPanel {
 		};
 		historicalInfoTable=new JTable(historicalDTM);
 		historicalInfoJSP = new JScrollPane(historicalInfoTable);
-		historicalInfoJSP.setSize(3*X /5,
-				Y /2);
 		historicalInfoJSP.setVisible(true);
 		
 		JTP=new JTabbedPane();
@@ -199,7 +189,9 @@ public class PlayerInfoPanel extends JPanel {
 		mainFrame.getContentPane().add(sp);
 	}
 	
-	private void addHistoricalData(){
+	private void addHistoricalData(){	
+		historicalDataColumn=new Vector<String>();
+		historicalDataColumn.add("111");
 		historicalData=new Vector<Vector<String>>();
 		Vector<String> test=new Vector<String>();
 		test.add("1111");
@@ -209,6 +201,8 @@ public class PlayerInfoPanel extends JPanel {
 	}
 	
 	private void addCurrentData(){
+		currentDataColumn=new Vector<String>();
+		currentDataColumn.add("111");
 		currentData=new Vector<Vector<String>>();
 		Vector<String> test=new Vector<String>();
 		test.add("1111");
