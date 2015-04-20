@@ -526,54 +526,7 @@ public class Data_Handler {
 	}
 	
 	private void playerVoPSet(TeamPerformanceInSingleGame tgp) {
-		for(PlayerPerformanceInSingleGame temp:tgp.getFirstList())
-		{
-			for(int i=0;i<listvo.size();i++)
-			{
-				if(temp.getName().equals(listvo.get(i).getName()))
-				{
-					
-					listvo.get(i).setTeam(tgp.getName());
-					
-					listvo.get(i).setGameNum(listvo.get(i).getGameNum()+1);
-					listvo.get(i).setTime(listvo.get(i).getTime()+temp.getTime());
-					listvo.get(i).setHitNum(listvo.get(i).getHitNum()+temp.getHitNum());
-					listvo.get(i).setShotNum(listvo.get(i).getShotNum()+temp.getShotNum());
-					listvo.get(i).setThreePointHitNum(listvo.get(i).getThreePointHitNum()+temp.getThreePointHitNum());
-					listvo.get(i).setThreePointShotNum(listvo.get(i).getThreePointShotNum()+temp.getThreePointShotNum());
-					listvo.get(i).setFreeThrowHitNum(listvo.get(i).getFreeThrowHitNum()+temp.getFreeThrowHitNum());
-					listvo.get(i).setFreeThrowShotNum(listvo.get(i).getFreeThrowShotNum()+temp.getFreeThrowShotNum());
-					listvo.get(i).setAttackingNum(listvo.get(i).getAttackingNum()+temp.getOffensiveRebound());
-					listvo.get(i).setDefensiveNum(listvo.get(i).getDefensiveNum()+temp.getDefensiveRebound());
-					listvo.get(i).setReboundOverall(listvo.get(i).getReboundOverall()+temp.getReboundOverall());
-					listvo.get(i).setAssistance(listvo.get(i).getAssistance()+temp.getAssistance());
-					listvo.get(i).setSteal(listvo.get(i).getSteal()+temp.getSteal());
-					listvo.get(i).setBlock(listvo.get(i).getBlock()+temp.getBlock());
-					listvo.get(i).setTurnover(listvo.get(i).getTurnover()+temp.getTurnover());
-					listvo.get(i).setFoul(listvo.get(i).getFoul()+temp.getFoul());
-					listvo.get(i).setScore(listvo.get(i).getScore()+temp.getScore());
-					listvo.get(i).setTwoTenNum(listvo.get(i).getTwoTenNum()+temp.getTwoTenNum());
-					
-					listvo.get(i).setFirstOnNum(listvo.get(i).getFirstOnNum()+temp.getFirstOn());
-					listvo.get(i).setTeamRoundAttack(listvo.get(i).getTeamRoundAttack()+tgp.getRoundAttack());
-					listvo.get(i).setteamFreeThrowNum(listvo.get(i).getteamFreeThrowNum()+tgp.getFreeThrowShotNum());
-					listvo.get(i).setteamShotNum(listvo.get(i).GetteamShotNum()+tgp.getShotNum());
-					listvo.get(i).setteamHitNum(listvo.get(i).GetteamHitNum()+tgp.getHitNum());
-					listvo.get(i).setteamTime(listvo.get(i).getteamTime()+tgp.getTime());
-					listvo.get(i).setteamTurnOver(listvo.get(i).getteamTurnOver()+tgp.getTurnover());
-					listvo.get(i).setteamRebound(listvo.get(i).getteamRebound()+tgp.getReboundOverall());
-					listvo.get(i).setteamOffensiveRebound(listvo.get(i).getteamOffensiveRebound()+tgp.getOffensiveRebound());
-					listvo.get(i).setteamDefensiveRebound(listvo.get(i).getteamDefensiveRebound()+tgp.getDefensiveRebound());
-					listvo.get(i).setOpDefensiveRebound(listvo.get(i).getOpDefensiveRebound()+tgp.getOpDefensiveRebound());
-					listvo.get(i).setOpOffensiveRebound(listvo.get(i).getOpOffensiveRebound()+tgp.getOpOffensiveRebound());
-					listvo.get(i).setOpReboundAll(listvo.get(i).getOpReboundAll()+tgp.getOpDefensiveRebound()+tgp.getOpOffensiveRebound());
-					listvo.get(i).setOpRoundAttack(listvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
-					listvo.get(i).setOpTwoPointShotNum(listvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());	
-					break;
-				}
-			}
-		}
-		for(PlayerPerformanceInSingleGame temp:tgp.getOtherList())
+		for(PlayerPerformanceInSingleGame temp:tgp.playerlist)
 		{
 			for(int i=0;i<listvo.size();i++)
 			{
@@ -616,10 +569,14 @@ public class Data_Handler {
 					listvo.get(i).setOpReboundAll(listvo.get(i).getOpReboundAll()+tgp.getOpDefensiveRebound()+tgp.getOpOffensiveRebound());
 					listvo.get(i).setOpRoundAttack(listvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
 					listvo.get(i).setOpTwoPointShotNum(listvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
+					
+					
+					
 					break;
 				}
 			}
 		}
+		
 	}
 	
 	private TeamPerformanceInSingleGame setPerformance(TeamPerformance tp) {
@@ -675,10 +632,8 @@ public class Data_Handler {
 					{
 						pgp.setFirstOn(1);
 						k++;
-						tgp.AddFirstP(pgp);
 					}
-					else
-						tgp.AddOtherP(pgp);
+					tgp.AddPlayerP(pgp);
 					precgames.get(i).AddNewGame(pgp);
 					break;
 				}
@@ -919,9 +874,8 @@ public class Data_Handler {
 					{
 						pgp.setFirstOn(1);
 						k++;
-						tgp.AddFirstP(pgp);
 					}
-					tgp.AddOtherP(pgp);
+					tgp.AddPlayerP(pgp);
 					break;
 				}
 			}

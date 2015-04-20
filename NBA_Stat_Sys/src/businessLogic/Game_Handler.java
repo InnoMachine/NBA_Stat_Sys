@@ -39,16 +39,10 @@ public class Game_Handler {
 		for(GameVo temp:listvo){
 			if(temp.getGameLabel().equals(label)){
 				ArrayList<PlayerPerformanceInSingleGame> list = new ArrayList<PlayerPerformanceInSingleGame>();
-				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().getFirstList()){
+				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().playerlist){
 					list.add(pp);
 				}
-				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().getOtherList()){
-					list.add(pp);
-				}
-				for(PlayerPerformanceInSingleGame pp:temp.getHomeTP().getFirstList()){
-					list.add(pp);
-				}
-				for(PlayerPerformanceInSingleGame pp:temp.getHomeTP().getOtherList()){
+				for(PlayerPerformanceInSingleGame pp:temp.getHomeTP().playerlist){
 					list.add(pp);
 				}
 				return list;

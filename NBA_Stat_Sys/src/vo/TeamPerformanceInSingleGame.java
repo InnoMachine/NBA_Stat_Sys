@@ -28,8 +28,7 @@ public class TeamPerformanceInSingleGame {
 	private int opTwoPointShotNum;   //对手两分球出手
 	private int opScore;
 	private int winning;
-	private ArrayList <PlayerPerformanceInSingleGame> firstlist;
-	private ArrayList <PlayerPerformanceInSingleGame> otherlist;
+	public ArrayList <PlayerPerformanceInSingleGame> playerlist;
 	public TeamPerformanceInSingleGame(String name)
 	{
 		this.name =name;
@@ -53,8 +52,7 @@ public class TeamPerformanceInSingleGame {
 		opDefensiveRebound=0;
 		opRoundAttack=0;
 		opTwoPointShotNum=0;
-		firstlist = new ArrayList<PlayerPerformanceInSingleGame>();
-		otherlist = new ArrayList<PlayerPerformanceInSingleGame>();
+		playerlist = new ArrayList<PlayerPerformanceInSingleGame>();
 	}
 	public void CalculateRoundAttack()
 	{
@@ -218,19 +216,12 @@ public class TeamPerformanceInSingleGame {
 	public void setWinning(int winning) {
 		this.winning = winning;
 	}
-	public void AddFirstP(PlayerPerformanceInSingleGame pgp) {
-		this.firstlist.add(pgp);
+	public void AddPlayerP(PlayerPerformanceInSingleGame pgp) {
+		this.playerlist.add(pgp);
 		
 	}
-	public ArrayList<PlayerPerformanceInSingleGame> getFirstList(){
-		return firstlist;
-	}
-	public void AddOtherP(PlayerPerformanceInSingleGame pgp) {
-		this.otherlist.add(pgp);
-		
-	}
-	public ArrayList<PlayerPerformanceInSingleGame> getOtherList(){
-		return otherlist;
+	public ArrayList<PlayerPerformanceInSingleGame> getPlayerList(){
+		return playerlist;
 	}
 	public String getGameLabel() {
 		return gameLabel;
