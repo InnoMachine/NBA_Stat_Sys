@@ -136,8 +136,6 @@ public class GameInfoPanel extends JPanel {
 	JComboBox<String> guestCriteriajcb;
 	JComboBox<String> hostCriteriajcb;
 
-	// private String guestDataCriteria = "BASIC";
-	// private String hostDataCriteria = "BASIC";
 	Vector<Vector<String>> guestRowData;
 	Vector<String> guestColumn;
 	private JTable guestTable;
@@ -154,14 +152,14 @@ public class GameInfoPanel extends JPanel {
 		this.gameVo = gameVo;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
-		// this.setBounds(0, 0, X, Y);
-		this.setBounds(0, 0, 1366, 768);
+	 this.setBounds(0, 0, X, Y);
+		
 		this.setVisible(true);
 		this.setLayout(null);
 
 		bgLabel = new JLabel();
-		// bgLabel.setBounds(0, 0, X, Y);
-		bgLabel.setBounds(0, 0, 1366, 768);
+		 bgLabel.setBounds(0, 0, X, Y);
+		
 		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
@@ -238,175 +236,175 @@ public class GameInfoPanel extends JPanel {
 
 		guestTeamlbl = new JLabel();
 		guestTeamlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeamlbl.setText("GuestTeamName");
-		guestTeamlbl.setBounds(449, 10, 100, 36);
+		guestTeamlbl.setText(gameVo.getGuestTeam());
+		guestTeamlbl.setBounds(X*449/1366, Y*10/768, X*100/1366, Y*36/768);
 		bgLabel.add(guestTeamlbl);
 
 		hostTeamlbl = new JLabel();
 		hostTeamlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTeamlbl.setText("HostTeamName");
-		hostTeamlbl.setBounds(816, 10, 100, 36);
+		hostTeamlbl.setText(gameVo.getHomeTeam());
+		hostTeamlbl.setBounds(X*816/1366, Y*10/768,X*100/1366,Y*36/768);
 		bgLabel.add(hostTeamlbl);
 
 		txtGTPoint = new JTextField();
-		txtGTPoint.setText("GTPoint");
+		txtGTPoint.setText(String.valueOf(gameVo.getGuestTP().getScore()));
 		txtGTPoint.setHorizontalAlignment(SwingConstants.CENTER);
-		txtGTPoint.setBounds(449, 51, 100, 60);
+		txtGTPoint.setBounds(X*449/1366, Y*51/768, X*100/1366, Y*60/768);
 		bgLabel.add(txtGTPoint);
-		txtGTPoint.setColumns(10);
+		txtGTPoint.setColumns(X*10/1366);
 
 		txtHTPoint = new JTextField();
 		txtHTPoint.setHorizontalAlignment(SwingConstants.CENTER);
-		txtHTPoint.setText("HTPoint");
-		txtHTPoint.setBounds(816, 51, 100, 60);
+		txtHTPoint.setText(String.valueOf(gameVo.getHomeTP().getScore()));
+		txtHTPoint.setBounds(X*816/1366, Y*51/768, X*100/1366, Y*60/768);
 		bgLabel.add(txtHTPoint);
-		txtHTPoint.setColumns(10);
+		txtHTPoint.setColumns(X*10/1366);
 
 		txtState = new JTextField();
 		txtState.setText("结束");
 		txtState.setHorizontalAlignment(SwingConstants.CENTER);
-		txtState.setBounds(651, 17, 66, 21);
+		txtState.setBounds(X*651/1366, Y*17/768, X*66/1366, Y*21/768);
 		bgLabel.add(txtState);
-		txtState.setColumns(10);
+		txtState.setColumns(X*10/1366);
 
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setText("球队");
-		textField.setBounds(596, 55, 55, 16);
+		textField.setBounds(X*596/1366, Y*55/768, X*55/1366, Y*16/768);
 		bgLabel.add(textField);
-		textField.setColumns(10);
+		textField.setColumns(X*10/1366);
 
 		textField_1 = new JTextField();
 		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_1.setText("1");
-		textField_1.setBounds(651, 55, 21, 16);
+		textField_1.setBounds(X*651/1366, Y*55/768, X*21/1366, Y*16/768);
 		bgLabel.add(textField_1);
-		textField_1.setColumns(10);
+		textField_1.setColumns(X*10/1366);
 
 		textField_2 = new JTextField();
 		textField_2.setText("2");
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setColumns(10);
-		textField_2.setBounds(672, 55, 21, 16);
+		textField_2.setColumns(X*10/1366);
+		textField_2.setBounds(X*672/1366,Y*55/768,X*21/1366,Y*16/768);
 		bgLabel.add(textField_2);
 
 		textField_3 = new JTextField();
 		textField_3.setText("3");
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_3.setColumns(10);
-		textField_3.setBounds(693, 55, 21, 16);
+		textField_3.setColumns(X*10/1366);
+		textField_3.setBounds(X*693/1366,Y*55/768,X*21/1366,Y*16/768);
 		bgLabel.add(textField_3);
 
 		textField_4 = new JTextField();
 		textField_4.setText("4");
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_4.setColumns(10);
-		textField_4.setBounds(714, 55, 21, 16);
+		textField_4.setColumns(X*10/1366);
+		textField_4.setBounds(X*714/1366,Y*55/768,X*21/1366,Y*16/768);
 		bgLabel.add(textField_4);
 
 		textField_5 = new JTextField();
 		textField_5.setText("总分");
 		textField_5.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_5.setColumns(10);
-		textField_5.setBounds(735, 55, 35, 16);
+		textField_5.setColumns(X*10/1366);
+		textField_5.setBounds(X*735/1366, Y*55/768, X*35/1366,Y*16/768);
 		bgLabel.add(textField_5);
 
 		guestTeamtF = new JTextField();
-		guestTeamtF.setText("G");
+		guestTeamtF.setText(gameVo.getGuestTeam());
 		guestTeamtF.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeamtF.setColumns(10);
-		guestTeamtF.setBounds(596, 71, 55, 16);
+		guestTeamtF.setColumns(X*10/1366);
+		guestTeamtF.setBounds(X*596/1366, Y*71/768, X*55/1366,Y*16/768);
 		bgLabel.add(guestTeamtF);
 
 		guestTeam1 = new JTextField();
-		guestTeam1.setText("G1");
+		guestTeam1.setText(String.valueOf(gameVo.getScore1st().getGuestScore()));
 		guestTeam1.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam1.setColumns(10);
-		guestTeam1.setBounds(651, 71, 21, 16);
+		guestTeam1.setColumns(X*10/1366);
+		guestTeam1.setBounds(X*651/1366, Y*71/768,X*21/1366,Y*16/768);
 		bgLabel.add(guestTeam1);
 
 		guestTeam2 = new JTextField();
-		guestTeam2.setText("G2");
+		guestTeam2.setText(String.valueOf(gameVo.getScore2nd().getGuestScore()));
 		guestTeam2.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam2.setColumns(10);
-		guestTeam2.setBounds(672, 71, 21, 16);
+		guestTeam2.setColumns(X*10/1366);
+		guestTeam2.setBounds(X*672/1366, Y*71/768,X*21/1366,Y*16/768);
 		bgLabel.add(guestTeam2);
 
 		guestTeam3 = new JTextField();
-		guestTeam3.setText("G3");
+		guestTeam3.setText(String.valueOf(gameVo.getScore3rd().getGuestScore()));
 		guestTeam3.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam3.setColumns(10);
-		guestTeam3.setBounds(693, 71, 21, 16);
+		guestTeam3.setColumns(X*10/1366);
+		guestTeam3.setBounds(X*693/1366, Y*71/768,X*21/1366,Y*16/768);
 		bgLabel.add(guestTeam3);
 
 		guestTeam4 = new JTextField();
-		guestTeam4.setText("G4");
+		guestTeam4.setText(String.valueOf(gameVo.getScore4th().getGuestScore()));
 		guestTeam4.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam4.setColumns(10);
-		guestTeam4.setBounds(714, 71, 21, 16);
+		guestTeam4.setColumns(X*10/1366);
+		guestTeam4.setBounds(X*714/1366, Y*71/768,X*21/1366,Y*16/768);
 		bgLabel.add(guestTeam4);
 
 		guestScoreSum = new JTextField();
-		guestScoreSum.setText("GS");
+		guestScoreSum.setText(String.valueOf(gameVo.getScoreOverall().getGuestScore()));
 		guestScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
-		guestScoreSum.setColumns(10);
-		guestScoreSum.setBounds(735, 71, 35, 16);
+		guestScoreSum.setColumns(X*10/1366);
+		guestScoreSum.setBounds(X*735/1366, Y*71/768, X*35/1366,Y*16/768);
 		bgLabel.add(guestScoreSum);
 
 		hostTeamtF = new JTextField();
-		hostTeamtF.setText("H");
+		hostTeamtF.setText(gameVo.getHomeTeam());
 		hostTeamtF.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTeamtF.setColumns(10);
-		hostTeamtF.setBounds(596, 87, 55, 16);
+		hostTeamtF.setColumns(X*10/1366);
+		hostTeamtF.setBounds(X*596/1366, Y*87/768, X*55/1366,Y*16/768);
 		bgLabel.add(hostTeamtF);
 
 		hostScore1 = new JTextField();
-		hostScore1.setText("H1");
+		hostScore1.setText(String.valueOf(gameVo.getScore1st().getHomeScore()));
 		hostScore1.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore1.setColumns(10);
-		hostScore1.setBounds(651, 87, 21, 16);
+		hostScore1.setColumns(X*10/1366);
+		hostScore1.setBounds(X*651/1366, Y*87/768,X*21/1366,Y*16/768);
 		bgLabel.add(hostScore1);
 
 		hostScore2 = new JTextField();
-		hostScore2.setText("H2");
+		hostScore2.setText(String.valueOf(gameVo.getScore2nd().getHomeScore()));
 		hostScore2.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore2.setColumns(10);
-		hostScore2.setBounds(672, 87, 21, 16);
+		hostScore2.setColumns(X*10/1366);
+		hostScore2.setBounds(X*672/1366, Y*87/768,X*21/1366,Y*16/768);
 		bgLabel.add(hostScore2);
 
 		hostScore3 = new JTextField();
-		hostScore3.setText("H3");
+		hostScore3.setText(String.valueOf(gameVo.getScore3rd().getHomeScore()));
 		hostScore3.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore3.setColumns(10);
-		hostScore3.setBounds(693, 87, 21, 16);
+		hostScore3.setColumns(X*10/1366);
+		hostScore3.setBounds(X*693/1366, Y*87/768,X*21/1366,Y*16/768);
 		bgLabel.add(hostScore3);
 
 		hostScore4 = new JTextField();
-		hostScore4.setText("H4");
+		hostScore4.setText(String.valueOf(gameVo.getScore4th().getHomeScore()));
 		hostScore4.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore4.setColumns(10);
-		hostScore4.setBounds(714, 87, 21, 16);
+		hostScore4.setColumns(X*10/1366);
+		hostScore4.setBounds(X*714/1366, Y*87/768,X*21/1366,Y*16/768);
 		bgLabel.add(hostScore4);
 
 		hostScoreSum = new JTextField();
-		hostScoreSum.setText("HS");
+		hostScoreSum.setText(String.valueOf(gameVo.getScoreOverall().getHomeScore()));
 		hostScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScoreSum.setColumns(10);
-		hostScoreSum.setBounds(735, 87, 35, 16);
+		hostScoreSum.setColumns(X*10/1366);
+		hostScoreSum.setBounds(X*735/1366, Y*87/768, X*35/1366,Y*16/768);
 		bgLabel.add(hostScoreSum);
 
 		JButton startingbtn = new JButton("首发");
-		startingbtn.setBounds(450, 139, 155, 23);
+		startingbtn.setBounds(X*450/1366, Y*139/768,X*155/1366,Y*23/768);
 		startingbtn.addActionListener(e -> starting());
 		bgLabel.add(startingbtn);
 
 		JButton summarybtn = new JButton("赛后总结");
-		summarybtn.setBounds(605, 139, 155, 23);
+		summarybtn.setBounds(X*605/1366, Y*139/768,X*155/1366,Y*23/768);
 		summarybtn.addActionListener(e -> summary());
 		bgLabel.add(summarybtn);
 
 		JButton databtn = new JButton("数据");
-		databtn.setBounds(760, 139, 155, 23);
+		databtn.setBounds(X*760/1366, Y*139/768,X*155/1366,Y*23/768);
 		databtn.addActionListener(e -> showData());
 		bgLabel.add(databtn);
 
@@ -420,6 +418,7 @@ public class GameInfoPanel extends JPanel {
 		guestFirstPlayerList=(gameVo.getGuestTP()).getFirstonList();
 		ArrayList<PlayerPerformanceInSingleGame> hostFirstPlayerList=new ArrayList<PlayerPerformanceInSingleGame>();
 		hostFirstPlayerList=(gameVo.getHomeTP()).getFirstonList();
+		
 		if (courtlbl != null) {
 			courtlbl.setVisible(false);
 		}
@@ -432,11 +431,11 @@ public class GameInfoPanel extends JPanel {
 
 		courtlbl = new JLabel("court");
 		courtlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		courtlbl.setBounds(131, 194, 1100, 500);
+		courtlbl.setBounds(X*131/1366, Y*194/768, X*1100/1366, Y*500/768);
 		courtlbl.setBackground(Color.blue);
 
 		btnG1 = new JButton("G1");
-		btnG1.setBounds(372, 215, 70, 70);
+		btnG1.setBounds(X*372/1366, Y*215/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitG1 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ guestFirstPlayerList.get(0).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -444,7 +443,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnG1);
 
 		btnG2 = new JButton("G2");
-		btnG2.setBounds(273, 80, 70, 70);
+		btnG2.setBounds(X*273/1366, Y*80/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitG2 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ guestFirstPlayerList.get(1).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -452,7 +451,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnG2);
 
 		btnG3 = new JButton("G3");
-		btnG3.setBounds(73, 419, 70, 70);
+		btnG3.setBounds(X*73/1366, Y*419/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitG3 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ guestFirstPlayerList.get(2).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -460,7 +459,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnG3);
 
 		btnG4 = new JButton("G4");
-		btnG4.setBounds(134, 173, 70, 70);
+		btnG4.setBounds(X*134/1366, Y*173/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitG4 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ guestFirstPlayerList.get(3).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -468,7 +467,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnG4);
 
 		btnG5 = new JButton("G5");
-		btnG5.setBounds(237, 335, 70, 70);
+		btnG5.setBounds(X*237/1366, Y*335/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitG5 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ guestFirstPlayerList.get(4).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -476,7 +475,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnG5);
 
 		btnH1 = new JButton("H1");
-		btnH1.setBounds(778, 215, 70, 70);
+		btnH1.setBounds(X*778/1366, Y*215/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitH1 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ hostFirstPlayerList.get(0).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -484,7 +483,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnH1);
 
 		btnH2 = new JButton("H2");
-		btnH2.setBounds(744, 350, 70, 70);
+		btnH2.setBounds(X*744/1366, Y*350/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitH2 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ hostFirstPlayerList.get(1).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -492,7 +491,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnH2);
 
 		btnH3 = new JButton("H3");
-		btnH3.setBounds(790, 92, 70, 70);
+		btnH3.setBounds(X*790/768, Y*92/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitH3 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ hostFirstPlayerList.get(2).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -500,7 +499,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnH3);
 
 		btnH4 = new JButton("H4");
-		btnH4.setBounds(889, 259, 70, 70);
+		btnH4.setBounds(X*889/1366, Y*259/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitH4 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ hostFirstPlayerList.get(3).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -508,7 +507,7 @@ public class GameInfoPanel extends JPanel {
 		courtlbl.add(btnH4);
 
 		btnH5 = new JButton("H5");
-		btnH5.setBounds(950, 7, 70, 70);
+		btnH5.setBounds(X*950/1366, Y*7/768, X*70/1366,Y*70/768);
 		ImageIcon playerPortraitH5 = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
 				+ hostFirstPlayerList.get(4).getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
 						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
@@ -532,360 +531,360 @@ public class GameInfoPanel extends JPanel {
 
 		summarylbl = new JLabel("summary");
 		summarylbl.setHorizontalAlignment(SwingConstants.CENTER);
-		summarylbl.setBounds(131, 194, 1100, 500);
+		summarylbl.setBounds(X*131/1366, Y*194/768, X*1100/1366, Y*500/768);
 		summarylbl.setBackground(Color.blue);
 
 		gameInfolbl = new JLabel("比赛概览");
 		gameInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
-		gameInfolbl.setBounds(97, 16, 54, 30);
+		gameInfolbl.setBounds(X*97/1366, Y*16/768, X*54/1366,Y*30/768);
 		summarylbl.add(gameInfolbl);
 
 		textField_6 = new JTextField();
 		textField_6.setEditable(false);
 		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_6.setBounds(97, 46, 130, 30);
+		textField_6.setBounds(X*97/1366, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(textField_6);
-		textField_6.setColumns(10);
+		textField_6.setColumns(X*10/1366);
 
 		txtGt = new JTextField();
 		txtGt.setEditable(false);
-		txtGt.setText("GT");
+		txtGt.setText(gameVo.getGuestTeam());
 		txtGt.setHorizontalAlignment(SwingConstants.CENTER);
-		txtGt.setColumns(10);
-		txtGt.setBounds(97, 76, 130, 30);
+		txtGt.setColumns(X*10/1366);
+		txtGt.setBounds(X*97/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGt);
 
 		txtHt = new JTextField();
 		txtHt.setEditable(false);
-		txtHt.setText("HT");
+		txtHt.setText(gameVo.getHomeTeam());
 		txtHt.setHorizontalAlignment(SwingConstants.CENTER);
-		txtHt.setColumns(10);
-		txtHt.setBounds(97, 106, 130, 30);
+		txtHt.setColumns(X*10/1366);
+		txtHt.setBounds(X*97/1366, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHt);
 
 		FGtF = new JTextField();
 		FGtF.setText("投篮命中率");
 		FGtF.setEditable(false);
 		FGtF.setHorizontalAlignment(SwingConstants.CENTER);
-		FGtF.setColumns(10);
-		FGtF.setBounds(227, 46, 130, 30);
+		FGtF.setColumns(X*10/1366);
+		FGtF.setBounds(227, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(FGtF);
 
 		FTtF = new JTextField();
 		FTtF.setText("罚球命中率");
 		FTtF.setEditable(false);
 		FTtF.setHorizontalAlignment(SwingConstants.CENTER);
-		FTtF.setColumns(10);
-		FTtF.setBounds(357, 46, 130, 30);
+		FTtF.setColumns(X*10/1366);
+		FTtF.setBounds(X*357/1366, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(FTtF);
 
 		ThreePtF = new JTextField();
 		ThreePtF.setText("三分命中率");
 		ThreePtF.setEditable(false);
 		ThreePtF.setHorizontalAlignment(SwingConstants.CENTER);
-		ThreePtF.setColumns(10);
-		ThreePtF.setBounds(487, 46, 130, 30);
+		ThreePtF.setColumns(X*10/1366);
+		ThreePtF.setBounds(X*487/1366, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(ThreePtF);
 
 		ASTtF = new JTextField();
 		ASTtF.setText("助攻");
 		ASTtF.setEditable(false);
 		ASTtF.setHorizontalAlignment(SwingConstants.CENTER);
-		ASTtF.setColumns(10);
-		ASTtF.setBounds(617, 46, 130, 30);
+		ASTtF.setColumns(X*10/1366);
+		ASTtF.setBounds(X*617/1366, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(ASTtF);
 
 		REBtF = new JTextField();
 		REBtF.setText("篮板");
 		REBtF.setEditable(false);
 		REBtF.setHorizontalAlignment(SwingConstants.CENTER);
-		REBtF.setColumns(10);
-		REBtF.setBounds(747, 46, 130, 30);
+		REBtF.setColumns(X*10/1366);
+		REBtF.setBounds(X*747/1366, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(REBtF);
 
 		TOtF = new JTextField();
 		TOtF.setText("失误");
 		TOtF.setEditable(false);
 		TOtF.setHorizontalAlignment(SwingConstants.CENTER);
-		TOtF.setColumns(10);
-		TOtF.setBounds(877, 46, 130, 30);
+		TOtF.setColumns(X*10/1366);
+		TOtF.setBounds(X*877/1366, Y*46/768, X*130/1366,Y*30/768);
 		summarylbl.add(TOtF);
 
 		txtGTfg = new JTextField();
-		txtGTfg.setText("GTFG");
+		txtGTfg.setText(String.valueOf(gameVo.getGuestTP().getHitRate()));
 		txtGTfg.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTfg.setEditable(false);
-		txtGTfg.setColumns(10);
-		txtGTfg.setBounds(227, 76, 130, 30);
+		txtGTfg.setColumns(X*10/1366);
+		txtGTfg.setBounds(X*227/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTfg);
 
 		txtHTfg = new JTextField();
-		txtHTfg.setText("HTFG");
+		txtHTfg.setText(String.valueOf(gameVo.getHomeTP().getHitRate()));
 		txtHTfg.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTfg.setEditable(false);
-		txtHTfg.setColumns(10);
-		txtHTfg.setBounds(227, 106, 130, 30);
+		txtHTfg.setColumns(X*10/1366);
+		txtHTfg.setBounds(227, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTfg);
 
 		txtGTft = new JTextField();
-		txtGTft.setText("GTFT");
+		txtGTft.setText(String.valueOf(gameVo.getGuestTP().getFreeThrowRate()));
 		txtGTft.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTft.setEditable(false);
-		txtGTft.setColumns(10);
-		txtGTft.setBounds(357, 76, 130, 30);
+		txtGTft.setColumns(X*10/1366);
+		txtGTft.setBounds(X*357/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTft);
 
 		txtHTft = new JTextField();
-		txtHTft.setText("HTFT");
+		txtHTft.setText(String.valueOf(gameVo.getHomeTP().getFreeThrowRate()));
 		txtHTft.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTft.setEditable(false);
-		txtHTft.setColumns(10);
-		txtHTft.setBounds(357, 106, 130, 30);
+		txtHTft.setColumns(X*10/1366);
+		txtHTft.setBounds(X*357/1366, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTft);
 
 		txtGT3p = new JTextField();
-		txtGT3p.setText("GT3P");
+		txtGT3p.setText(String.valueOf(gameVo.getGuestTP().getThreePointHitRate()));
 		txtGT3p.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGT3p.setEditable(false);
-		txtGT3p.setColumns(10);
-		txtGT3p.setBounds(487, 76, 130, 30);
+		txtGT3p.setColumns(X*10/1366);
+		txtGT3p.setBounds(X*487/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGT3p);
 
 		txtHT3p = new JTextField();
-		txtHT3p.setText("HT3P");
+		txtHT3p.setText(String.valueOf(gameVo.getHomeTP().getThreePointHitRate()));
 		txtHT3p.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHT3p.setEditable(false);
-		txtHT3p.setColumns(10);
-		txtHT3p.setBounds(487, 106, 130, 30);
+		txtHT3p.setColumns(X*10/1366);
+		txtHT3p.setBounds(X*487/1366, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHT3p);
 
 		txtGTast = new JTextField();
-		txtGTast.setText("GTAST");
+		txtGTast.setText(String.valueOf(gameVo.getGuestTP().getAssistance()));
 		txtGTast.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTast.setEditable(false);
-		txtGTast.setColumns(10);
-		txtGTast.setBounds(617, 76, 130, 30);
+		txtGTast.setColumns(X*10/1366);
+		txtGTast.setBounds(X*617/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTast);
 
 		txtHTast = new JTextField();
-		txtHTast.setText("HTAST");
+		txtHTast.setText(String.valueOf(gameVo.getHomeTP().getAssistance()));
 		txtHTast.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTast.setEditable(false);
-		txtHTast.setColumns(10);
-		txtHTast.setBounds(617, 106, 130, 30);
+		txtHTast.setColumns(X*10/1366);
+		txtHTast.setBounds(X*617/1366, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTast);
 
 		txtGTreb = new JTextField();
-		txtGTreb.setText("GTREB");
+		txtGTreb.setText(String.valueOf(gameVo.getGuestTP().getReboundOverall()));
 		txtGTreb.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTreb.setEditable(false);
-		txtGTreb.setColumns(10);
-		txtGTreb.setBounds(747, 76, 130, 30);
+		txtGTreb.setColumns(X*10/1366);
+		txtGTreb.setBounds(X*747/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTreb);
 
 		txtHTreb = new JTextField();
-		txtHTreb.setText("HTREB");
+		txtHTreb.setText(String.valueOf(gameVo.getHomeTP().getReboundOverall()));
 		txtHTreb.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTreb.setEditable(false);
-		txtHTreb.setColumns(10);
-		txtHTreb.setBounds(747, 106, 130, 30);
+		txtHTreb.setColumns(X*10/1366);
+		txtHTreb.setBounds(X*747/1366, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTreb);
 
 		txtGTto = new JTextField();
-		txtGTto.setText("GTTO");
+		txtGTto.setText(String.valueOf(gameVo.getGuestTP().getTurnover()));
 		txtGTto.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTto.setEditable(false);
-		txtGTto.setColumns(10);
-		txtGTto.setBounds(877, 76, 130, 30);
+		txtGTto.setColumns(X*10/1366);
+		txtGTto.setBounds(X*877/1366, Y*76/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTto);
 
 		txtHTto = new JTextField();
-		txtHTto.setText("HTTO");
+		txtHTto.setText(String.valueOf(gameVo.getHomeTP().getTurnover()));
 		txtHTto.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTto.setEditable(false);
-		txtHTto.setColumns(10);
-		txtHTto.setBounds(877, 106, 130, 30);
+		txtHTto.setColumns(X*10/1366);
+		txtHTto.setBounds(X*877/1366, Y*106/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTto);
 
 		leadinglbl = new JLabel("数据领跑者");
 		leadinglbl.setHorizontalAlignment(SwingConstants.CENTER);
-		leadinglbl.setBounds(97, 166, 74, 30);
+		leadinglbl.setBounds(X*97/1366, Y*166/768, X*74/1366, Y*30/768);
 		summarylbl.add(leadinglbl);
 
 		txtGuestTeam = new JTextField();
 		txtGuestTeam.setEditable(false);
-		txtGuestTeam.setText("GuestTeam");
+		txtGuestTeam.setText(gameVo.getGuestTeam());
 		txtGuestTeam.setHorizontalAlignment(SwingConstants.CENTER);
-		txtGuestTeam.setBounds(97, 196, 455, 30);
+		txtGuestTeam.setBounds(X*97/1366, Y*196/768, X*445/1366,Y*30/768);
 		summarylbl.add(txtGuestTeam);
-		txtGuestTeam.setColumns(10);
+		txtGuestTeam.setColumns(X*10/1366);
 
 		txtHostTeam = new JTextField();
 		txtHostTeam.setEditable(false);
-		txtHostTeam.setText("HostTeam");
+		txtHostTeam.setText(gameVo.getHomeTeam());
 		txtHostTeam.setHorizontalAlignment(SwingConstants.CENTER);
-		txtHostTeam.setColumns(10);
-		txtHostTeam.setBounds(552, 196, 455, 30);
+		txtHostTeam.setColumns(X*10/1366);
+		txtHostTeam.setBounds(552, 196, X*445/1366,Y*30/768);
 		summarylbl.add(txtHostTeam);
 
 		txtGTscorefirst = new JTextField();
-		txtGTscorefirst.setText("GTScoreFirst");
+		txtGTscorefirst.setText(gameVo.getGuestTP().getHighestScorePlayer());
 		txtGTscorefirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTscorefirst.setEditable(false);
-		txtGTscorefirst.setColumns(10);
-		txtGTscorefirst.setBounds(97, 226, 260, 30);
+		txtGTscorefirst.setColumns(X*10/1366);
+		txtGTscorefirst.setBounds(X*97/1366, Y*226/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtGTscorefirst);
 
 		txtGTscore = new JTextField();
-		txtGTscore.setText("GTScore");
+		txtGTscore.setText(String.valueOf(gameVo.getGuestTP().getHighestScore()));
 		txtGTscore.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTscore.setEditable(false);
-		txtGTscore.setColumns(10);
-		txtGTscore.setBounds(357, 226, 130, 30);
+		txtGTscore.setColumns(X*10/1366);
+		txtGTscore.setBounds(X*357/1366, Y*226/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTscore);
 
 		txtScore = new JTextField();
 		txtScore.setText("得分");
 		txtScore.setHorizontalAlignment(SwingConstants.CENTER);
 		txtScore.setEditable(false);
-		txtScore.setColumns(10);
-		txtScore.setBounds(487, 226, 130, 30);
+		txtScore.setColumns(X*10/1366);
+		txtScore.setBounds(X*487/1366, Y*226/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtScore);
 
 		txtHTscore = new JTextField();
-		txtHTscore.setText("HTScore");
+		txtHTscore.setText(String.valueOf(gameVo.getHomeTP().getHighestScore()));
 		txtHTscore.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTscore.setEditable(false);
-		txtHTscore.setColumns(10);
-		txtHTscore.setBounds(617, 226, 130, 30);
+		txtHTscore.setColumns(X*10/1366);
+		txtHTscore.setBounds(X*617/1366, Y*226/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTscore);
 
 		txtHTscorefirst = new JTextField();
-		txtHTscorefirst.setText("HTScoreFirst");
+		txtHTscorefirst.setText(gameVo.getHomeTP().getHighestScorePlayer());
 		txtHTscorefirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTscorefirst.setEditable(false);
-		txtHTscorefirst.setColumns(10);
-		txtHTscorefirst.setBounds(747, 226, 260, 30);
+		txtHTscorefirst.setColumns(X*10/1366);
+		txtHTscorefirst.setBounds(X*747/1366, Y*226/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtHTscorefirst);
 
 		txtGTreboundfirst = new JTextField();
-		txtGTreboundfirst.setText("GTReboundFirst");
+		txtGTreboundfirst.setText(gameVo.getGuestTP().getHighestReboundPlayer());
 		txtGTreboundfirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTreboundfirst.setEditable(false);
-		txtGTreboundfirst.setColumns(10);
-		txtGTreboundfirst.setBounds(97, 256, 260, 30);
+		txtGTreboundfirst.setColumns(X*10/1366);
+		txtGTreboundfirst.setBounds(X*97/1366, Y*256/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtGTreboundfirst);
 
 		txtGTrebound = new JTextField();
-		txtGTrebound.setText("GTRebound");
+		txtGTrebound.setText(String.valueOf(gameVo.getGuestTP().getHighestRebound()));
 		txtGTrebound.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTrebound.setEditable(false);
-		txtGTrebound.setColumns(10);
-		txtGTrebound.setBounds(357, 256, 130, 30);
+		txtGTrebound.setColumns(X*10/1366);
+		txtGTrebound.setBounds(X*357/1366, Y*256/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTrebound);
 
 		txtRebound = new JTextField();
 		txtRebound.setText("篮板");
 		txtRebound.setHorizontalAlignment(SwingConstants.CENTER);
 		txtRebound.setEditable(false);
-		txtRebound.setColumns(10);
-		txtRebound.setBounds(487, 256, 130, 30);
+		txtRebound.setColumns(X*10/1366);
+		txtRebound.setBounds(X*487/1366, Y*256/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtRebound);
 
 		txtHTrebound = new JTextField();
-		txtHTrebound.setText("HTRebound");
+		txtHTrebound.setText(String.valueOf(gameVo.getHomeTP().getHighestRebound()));
 		txtHTrebound.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTrebound.setEditable(false);
-		txtHTrebound.setColumns(10);
-		txtHTrebound.setBounds(617, 256, 130, 30);
+		txtHTrebound.setColumns(X*10/1366);
+		txtHTrebound.setBounds(X*617/1366, Y*256/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTrebound);
 
 		txtHTreboundfirst = new JTextField();
-		txtHTreboundfirst.setText("HTReboundFirst");
+		txtHTreboundfirst.setText(gameVo.getHomeTP().getHighestReboundPlayer());
 		txtHTreboundfirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTreboundfirst.setEditable(false);
-		txtHTreboundfirst.setColumns(10);
-		txtHTreboundfirst.setBounds(747, 256, 260, 30);
+		txtHTreboundfirst.setColumns(X*10/1366);
+		txtHTreboundfirst.setBounds(X*747/1366, Y*256/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtHTreboundfirst);
 
 		txtGTassistancefirst = new JTextField();
-		txtGTassistancefirst.setText("GTAssistanceFirst");
+		txtGTassistancefirst.setText(gameVo.getGuestTP().getHighestassistPlayer());
 		txtGTassistancefirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTassistancefirst.setEditable(false);
-		txtGTassistancefirst.setColumns(10);
-		txtGTassistancefirst.setBounds(97, 286, 260, 30);
+		txtGTassistancefirst.setColumns(X*10/1366);
+		txtGTassistancefirst.setBounds(X*97/1366, Y*286/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtGTassistancefirst);
 
 		txtGTassistance = new JTextField();
-		txtGTassistance.setText("GTAssistance");
+		txtGTassistance.setText(String.valueOf(gameVo.getGuestTP().getHighestassist()));
 		txtGTassistance.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTassistance.setEditable(false);
-		txtGTassistance.setColumns(10);
-		txtGTassistance.setBounds(357, 286, 130, 30);
+		txtGTassistance.setColumns(X*10/1366);
+		txtGTassistance.setBounds(X*357/1366, Y*286/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTassistance);
 
 		txtAssistance = new JTextField();
 		txtAssistance.setText("助攻");
 		txtAssistance.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAssistance.setEditable(false);
-		txtAssistance.setColumns(10);
-		txtAssistance.setBounds(487, 286, 130, 30);
+		txtAssistance.setColumns(X*10/1366);
+		txtAssistance.setBounds(X*487/1366, Y*286/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtAssistance);
 
 		txtHTassistance = new JTextField();
-		txtHTassistance.setText("HTAssistance");
+		txtHTassistance.setText(String.valueOf(gameVo.getHomeTP().getHighestassist()));
 		txtHTassistance.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTassistance.setEditable(false);
-		txtHTassistance.setColumns(10);
-		txtHTassistance.setBounds(617, 286, 130, 30);
+		txtHTassistance.setColumns(X*10/1366);
+		txtHTassistance.setBounds(X*617/1366, Y*286/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTassistance);
 
 		txtHTassistancefirst = new JTextField();
-		txtHTassistancefirst.setText("HTAssistanceFirst");
+		txtHTassistancefirst.setText(gameVo.getHomeTP().getHighestassistPlayer());
 		txtHTassistancefirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTassistancefirst.setEditable(false);
-		txtHTassistancefirst.setColumns(10);
-		txtHTassistancefirst.setBounds(747, 286, 260, 30);
+		txtHTassistancefirst.setColumns(X*10/1366);
+		txtHTassistancefirst.setBounds(X*747/1366, Y*286/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtHTassistancefirst);
 
 		txtGTblockfirst = new JTextField();
-		txtGTblockfirst.setText("GTblockFirst");
+		txtGTblockfirst.setText(gameVo.getGuestTP().getHighestblockPlayer());
 		txtGTblockfirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTblockfirst.setEditable(false);
-		txtGTblockfirst.setColumns(10);
-		txtGTblockfirst.setBounds(97, 316, 260, 30);
+		txtGTblockfirst.setColumns(X*10/1366);
+		txtGTblockfirst.setBounds(X*97/1366,Y*316/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtGTblockfirst);
 
 		txtGTblock = new JTextField();
-		txtGTblock.setText("GTblock");
+		txtGTblock.setText(String.valueOf(gameVo.getHomeTP().getHighestblock()));
 		txtGTblock.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTblock.setEditable(false);
-		txtGTblock.setColumns(10);
-		txtGTblock.setBounds(357, 316, 130, 30);
+		txtGTblock.setColumns(X*10/1366);
+		txtGTblock.setBounds(X*357/1366,Y*316/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtGTblock);
 
 		txtBlock = new JTextField();
-		txtBlock.setText("助攻");
+		txtBlock.setText("盖帽");
 		txtBlock.setHorizontalAlignment(SwingConstants.CENTER);
 		txtBlock.setEditable(false);
-		txtBlock.setColumns(10);
-		txtBlock.setBounds(487, 316, 130, 30);
+		txtBlock.setColumns(X*10/1366);
+		txtBlock.setBounds(X*487/1366,Y*316/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtBlock);
 
 		txtHTblock = new JTextField();
-		txtHTblock.setText("HTblock");
+		txtHTblock.setText(String.valueOf(gameVo.getHomeTP().getHighestblock()));
 		txtHTblock.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTblock.setEditable(false);
-		txtHTblock.setColumns(10);
-		txtHTblock.setBounds(617, 316, 130, 30);
+		txtHTblock.setColumns(X*10/1366);
+		txtHTblock.setBounds(X*617/1366,Y*316/768, X*130/1366,Y*30/768);
 		summarylbl.add(txtHTblock);
 
 		txtHTblockfirst = new JTextField();
-		txtHTblockfirst.setText("HTblockFirst");
+		txtHTblockfirst.setText(gameVo.getHomeTP().getHighestblockPlayer());
 		txtHTblockfirst.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTblockfirst.setEditable(false);
-		txtHTblockfirst.setColumns(10);
-		txtHTblockfirst.setBounds(747, 316, 260, 30);
+		txtHTblockfirst.setColumns(X*10/1366);
+		txtHTblockfirst.setBounds(X*747/1366,Y*316/768, X*260/1366,Y*30/768);
 		summarylbl.add(txtHTblockfirst);
 
 		bgLabel.add(summarylbl);
@@ -902,7 +901,7 @@ public class GameInfoPanel extends JPanel {
 			datalbl.setVisible(false);
 		}
 
-		datalbl = new JLabel("data");
+		datalbl = new JLabel();
 		datalbl.setHorizontalAlignment(SwingConstants.CENTER);
 		datalbl.setBounds(131, 194, 1100, 500);
 		datalbl.setBackground(Color.blue);
@@ -999,16 +998,11 @@ public class GameInfoPanel extends JPanel {
 		guestTable.setRowHeight(70);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
-		// guestTable.getguestColumnModel().getguestColumn(0)
-		// .setCellRenderer(new GameCardRenderer());
 		guestTable.setOpaque(false);
 
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
-				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		// guestScrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 /
-		// 1366,
-		// Y * 600 / 768);
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));		
 		guestScrollPane.setBounds(0, 100, 550, 400);
 		guestScrollPane.setVisible(true);
 		guestScrollPane
@@ -1070,16 +1064,11 @@ public class GameInfoPanel extends JPanel {
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
-		// hostTable.gethostColumnModel().gethostColumn(0)
-		// .setCellRenderer(new GameCardRenderer());
 		hostTable.setOpaque(false);
 
 		hostScrollPane = new JScrollPane(hostTable);
 		hostScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		// hostScrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 /
-		// 1366,
-		// Y * 600 / 768);
 		hostScrollPane.setBounds(550, 100, 550, 400);
 		hostScrollPane.setVisible(true);
 		hostScrollPane
@@ -1217,16 +1206,11 @@ public class GameInfoPanel extends JPanel {
 		guestTable.setRowHeight(70);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
-		// guestTable.getguestColumnModel().getguestColumn(0)
-		// .setCellRenderer(new GameCardRenderer());
 		guestTable.setOpaque(false);
 
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		// guestScrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 /
-		// 1366,
-		// Y * 600 / 768);
 		guestScrollPane.setBounds(0, 100, 550, 400);
 		guestScrollPane.setVisible(true);
 		guestScrollPane
@@ -1362,16 +1346,11 @@ public class GameInfoPanel extends JPanel {
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
-		// hostTable.gethostColumnModel().gethostColumn(0)
-		// .setCellRenderer(new GameCardRenderer());
 		hostTable.setOpaque(false);
 
 		hostScrollPane = new JScrollPane(hostTable);
 		hostScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		// hostScrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 /
-		// 1366,
-		// Y * 600 / 768);
 		hostScrollPane.setBounds(550, 100, 550, 400);
 		hostScrollPane.setVisible(true);
 		hostScrollPane
