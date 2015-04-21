@@ -459,6 +459,8 @@ public class Data_Handler {
 			playerVoPSet(tgph);
 			teamVoPSet(tgpg);
 			teamVoPSet(tgph);
+			TGPRateSet(tgph);
+			TGPRateSet(tgpg);
 			
 			CreateGameVo(game,tgpg,tgph,gamelist.get(i));
 			gamevo.add(game);
@@ -467,6 +469,33 @@ public class Data_Handler {
 	
 	
 
+	private void TGPRateSet(TeamPerformanceInSingleGame tgp) {
+		TGPSetFreeThrowRate(tgp);
+		TGPSetThreePointHitRate(tgp);
+		TGPSetHitRate(tgp);
+	}
+
+	private void TGPSetFreeThrowRate(TeamPerformanceInSingleGame temp) {
+		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
+		b = new BigDecimal(r);
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		temp.setFreeThrowRate(f);
+		
+	}
+	
+	private void TGPSetThreePointHitRate(TeamPerformanceInSingleGame temp) {
+		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
+		b = new BigDecimal(r);
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		temp.setThreePointHitRate(f);
+	}
+	
+	private void TGPSetHitRate(TeamPerformanceInSingleGame temp) {
+		double r = temp.getHitNum()/(double)temp.getShotNum();
+		b = new BigDecimal(r);
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		temp.setHitRate(f);
+	}
 	private void CreateGameVo(GameVo vo, TeamPerformanceInSingleGame tgpg,
 			TeamPerformanceInSingleGame tgph, GamePO po) {
 		vo.setExtratime(po.getExtratime());
@@ -632,6 +661,22 @@ public class Data_Handler {
 					{
 						pgp.setFirstOn(1);
 						k++;
+					}
+					if(tgp.getHighestassist()<temp.getAssistance()){
+						tgp.setHighestassist(temp.getAssistance());
+						tgp.setHighestassistPlayer(temp.getName());
+					}
+					if(tgp.getHighestScore()<temp.getScore()){
+						tgp.setHighestScore(temp.getScore());
+						tgp.setHighestScorePlayer(temp.getName());
+					}
+					if(tgp.getHighestblock()<temp.getBlock()){
+						tgp.setHighestblock(temp.getBlock());
+						tgp.setHighestblockPlayer(temp.getName());
+					}
+					if(tgp.getHighestRebound()<temp.getReboundOverall()){
+						tgp.setHighestRebound(temp.getReboundOverall());
+						tgp.setHighestReboundPlayer(temp.getName());
 					}
 					tgp.AddPlayerP(pgp);
 					precgames.get(i).AddNewGame(pgp);

@@ -28,11 +28,32 @@ public class TeamPerformanceInSingleGame {
 	private int opTwoPointShotNum;   //对手两分球出手
 	private int opScore;
 	private int winning;
+	
+	private double hitRate;          //投篮命中率
+	private double threePointHitRate;//三分球命中率
+	private double freeThrowRate;    //罚球命中率
+	private String highestScorePlayer;
+	private String highestReboundPlayer;
+	private String highestassistPlayer;
+	private String highestblockPlayer;
+	private int highestScore;
+	private int highestRebound;
+	private int highestassist;
+	private int highestblock;
+	
 	public ArrayList <PlayerPerformanceInSingleGame> playerlist;
 	public ArrayList<PlayerPerformanceInSingleGame> firstonlist;
 	public TeamPerformanceInSingleGame(String name)
 	{
 		this.name =name;
+		highestScorePlayer="";
+		highestReboundPlayer="";
+		highestassistPlayer="";
+		highestblockPlayer="";
+		highestScore=0;
+		highestRebound=0;
+		highestassist=0;
+		highestblock=0;
 		time=0;
 		hitNum=0;
 		shotNum=0;
@@ -236,6 +257,72 @@ public class TeamPerformanceInSingleGame {
 	}
 	public void setGameLabel(String gameLabel) {
 		this.gameLabel = gameLabel;
+	}
+	public double getHitRate() {
+		return hitRate;
+	}
+	public void setHitRate(double hitRate) {
+		this.hitRate = hitRate;
+	}
+	public double getThreePointHitRate() {
+		return threePointHitRate;
+	}
+	public void setThreePointHitRate(double threePointHitRate) {
+		this.threePointHitRate = threePointHitRate;
+	}
+	public double getFreeThrowRate() {
+		return freeThrowRate;
+	}
+	public void setFreeThrowRate(double freeThrowRate) {
+		this.freeThrowRate = freeThrowRate;
+	}
+	public String getHighestScorePlayer() {
+		return highestScorePlayer;
+	}
+	public void setHighestScorePlayer(String highestScorePlayer) {
+		this.highestScorePlayer = highestScorePlayer;
+	}
+	public String getHighestReboundPlayer() {
+		return highestReboundPlayer;
+	}
+	public void setHighestReboundPlayer(String highestReboundPlayer) {
+		this.highestReboundPlayer = highestReboundPlayer;
+	}
+	public String getHighestassistPlayer() {
+		return highestassistPlayer;
+	}
+	public void setHighestassistPlayer(String highestassistPlayer) {
+		this.highestassistPlayer = highestassistPlayer;
+	}
+	public int getHighestScore() {
+		return highestScore;
+	}
+	public void setHighestScore(int highestScore) {
+		this.highestScore = highestScore;
+	}
+	public int getHighestRebound() {
+		return highestRebound;
+	}
+	public void setHighestRebound(int highestRebound) {
+		this.highestRebound = highestRebound;
+	}
+	public String getHighestblockPlayer() {
+		return highestblockPlayer;
+	}
+	public void setHighestblockPlayer(String highestblockPlayer) {
+		this.highestblockPlayer = highestblockPlayer;
+	}
+	public int getHighestassist() {
+		return highestassist;
+	}
+	public void setHighestassist(int highestassist) {
+		this.highestassist = highestassist;
+	}
+	public int getHighestblock() {
+		return highestblock;
+	}
+	public void setHighestblock(int highestblock) {
+		this.highestblock = highestblock;
 	}
 	
 }
