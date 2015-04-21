@@ -125,7 +125,7 @@ public class TeamInfoPanel extends JPanel{
 		
 		TeamBadge=new JLabel();
 		TeamBadge.setOpaque(false);
-		TeamBadge.setBounds(X/10, Y/10, X/10, Y/10);
+		TeamBadge.setBounds(X/20, Y/20, X/5, X/5);
 		ImageIcon portrait=new ImageIcon(new ImageIcon("CSEdata/teams_png/"+this.teamABBR+".png").getImage().getScaledInstance(TeamBadge.getWidth(), TeamBadge.getHeight(), Image.SCALE_SMOOTH));
 		TeamBadge.setIcon(portrait);
 		bgLabel.add(TeamBadge);
@@ -176,6 +176,8 @@ public class TeamInfoPanel extends JPanel{
 		JTP.addTab("teamPlayers", teamPlayersJSP);
 		JTP.addTab("currentMatches", currentMatchesJSP);
 		JTP.addTab("historicalMatches",historicalMatchesJSP);
+		JTP.setBounds(X/4, Y/3, X/2, Y/3);
+		bgLabel.add(JTP);
 		
 		addBasicInfo();
 		addBasicData();
@@ -223,10 +225,10 @@ public class TeamInfoPanel extends JPanel{
 	}
 	
 	private void addBasicInfo(){
-		int tempX = X * 190 / 1366;
-		int tempY = 3 * Y / 10;
-		int spaceX = X / 8;
-		int spaceY = Y / 17;
+		int tempX = X / 4;
+		int tempY = Y / 8;
+		int spaceX = X / 12;
+		int spaceY = Y / 12;
 		
 		textField_1 = new MyTextField();
 		textField_1.setText("球队全名");

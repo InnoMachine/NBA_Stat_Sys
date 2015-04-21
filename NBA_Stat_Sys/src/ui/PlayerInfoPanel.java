@@ -197,7 +197,6 @@ public class PlayerInfoPanel extends JPanel {
 		test.add("1111");
 		historicalData.add(test);
 		historicalDTM.setDataVector(historicalData, historicalDataColumn);
-		
 	}
 	
 	private void addCurrentData(){
