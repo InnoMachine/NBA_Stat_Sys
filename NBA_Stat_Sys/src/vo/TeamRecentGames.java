@@ -6,7 +6,13 @@ public class TeamRecentGames {
 	private String name;
 	private String abbreviation;
 	private ArrayList<TeamPerformanceInSingleGame> fiveGames;
-	
+	public TeamRecentGames(){
+		fiveGames = new ArrayList<TeamPerformanceInSingleGame>();
+	}
+	public TeamRecentGames(String name ){
+		this.name = name ;
+		fiveGames = new ArrayList<TeamPerformanceInSingleGame>();
+	}
 	public void AddNewGame(TeamPerformanceInSingleGame ngame){
 		if(fiveGames.size()==5)
 		{
