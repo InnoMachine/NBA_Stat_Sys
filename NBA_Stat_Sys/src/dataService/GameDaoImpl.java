@@ -22,27 +22,28 @@ public class GameDaoImpl implements GameDao {
 	@Override
 	public void add(GamePO game) {
 		
-		String sql = "insert into nba.games(gamelabel,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp)values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into nba.games(gamelabel,seasonid,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, game.getGameLabel());
-			pstmt.setString(2, game.getGameDate().toString());
-			pstmt.setString(3, game.getVersus());
-			pstmt.setString(4, game.getGuestTeam());
-			pstmt.setString(5, game.getHomeTeam());
-			pstmt.setString(6, game.getScoreOverall().toString());
-			pstmt.setString(7, game.getScore1st().toString());
-			pstmt.setString(8, game.getScore2nd().toString());
-			pstmt.setString(9, game.getScore3rd().toString());
-			pstmt.setString(10, game.getScore4th().toString());
+			pstmt.setString(2, game.getSeasonId());
+			pstmt.setString(3, game.getGameDate().toString());
+			pstmt.setString(4, game.getVersus());
+			pstmt.setString(5, game.getGuestTeam());
+			pstmt.setString(6, game.getHomeTeam());
+			pstmt.setString(7, game.getScoreOverall().toString());
+			pstmt.setString(8, game.getScore1st().toString());
+			pstmt.setString(9, game.getScore2nd().toString());
+			pstmt.setString(10, game.getScore3rd().toString());
+			pstmt.setString(11, game.getScore4th().toString());
 			String extraText = "";
 			for(int i =0; i < game.getExtratime().size(); i ++){
 				extraText += (game.getExtratime().get(i).toString()+";");
 			}
-			pstmt.setString(11, extraText);
-			pstmt.setString(12, game.getGuestTP().toString());
-			pstmt.setString(13, game.getHomeTP().toString());
+			pstmt.setString(12, extraText);
+			pstmt.setString(13, game.getGuestTP().toString());
+			pstmt.setString(14, game.getHomeTP().toString());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -56,29 +57,29 @@ public class GameDaoImpl implements GameDao {
 	@Override
 	public void update(GamePO game) {
 
-		String sql = "update nba.games set gamelabel=?,gamedate=?,versus=?,guestteam=?,hometeam=?,scoreoverall=?,score1st=?,score2nd=?,score3rd=?,score4th=?,extratime=?,guesttp=?,hometp=? where gamelabel=?";
+		String sql = "update nba.games set gamelabel=?,seasonid=?,gamedate=?,versus=?,guestteam=?,hometeam=?,scoreoverall=?,score1st=?,score2nd=?,score3rd=?,score4th=?,extratime=?,guesttp=?,hometp=? where gamelabel=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, game.getGameLabel());
-			pstmt.setString(2, game.getGameDate().toString());
-			pstmt.setString(3, game.getVersus());
-			pstmt.setString(4, game.getGuestTeam());
-			pstmt.setString(5, game.getHomeTeam());
-			pstmt.setString(6, game.getScoreOverall().toString());
-			pstmt.setString(7, game.getScore1st().toString());
-			pstmt.setString(8, game.getScore2nd().toString());
-			pstmt.setString(9, game.getScore3rd().toString());
-			pstmt.setString(10, game.getScore4th().toString());
+			pstmt.setString(2, game.getSeasonId());
+			pstmt.setString(3, game.getGameDate().toString());
+			pstmt.setString(4, game.getVersus());
+			pstmt.setString(5, game.getGuestTeam());
+			pstmt.setString(6, game.getHomeTeam());
+			pstmt.setString(7, game.getScoreOverall().toString());
+			pstmt.setString(8, game.getScore1st().toString());
+			pstmt.setString(9, game.getScore2nd().toString());
+			pstmt.setString(10, game.getScore3rd().toString());
+			pstmt.setString(11, game.getScore4th().toString());
 			String extraText = "";
 			for(int i =0; i < game.getExtratime().size(); i ++){
 				extraText += (game.getExtratime().get(i).toString()+";");
 			}
-			pstmt.setString(11, extraText);
-			pstmt.setString(12, game.getGuestTP().toString());
-			pstmt.setString(13, game.getHomeTP().toString());
+			pstmt.setString(12, extraText);
+			pstmt.setString(13, game.getGuestTP().toString());
+			pstmt.setString(14, game.getHomeTP().toString());
 			
-			pstmt.setString(14, game.getGameLabel());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -109,7 +110,7 @@ public class GameDaoImpl implements GameDao {
 	public GamePO getGameByLabel(String label) {
 
 		GamePO game = new GamePO();
-		String sql = "select gamelabel,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp from nba.games where gamelabel=?";
+		String sql = "select gamelabel,seasonid,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp from nba.games where gamelabel=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -117,6 +118,7 @@ public class GameDaoImpl implements GameDao {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				game.setGameLabel(rs.getString("gamelabel"));
+				game.setSeasonId(rs.getString("seasonid"));
 				game.setGameDate(rs.getString("gamedate"));
 				game.setVersus(rs.getString("versus"));
 				game.setGuestTeam(rs.getString("guestteam"));
@@ -135,8 +137,8 @@ public class GameDaoImpl implements GameDao {
 					}
 				}
 				game.setExtratime(extraList);
-				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("gamelabel"), rs.getString("guesttp")));
-				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("gamelabel"), rs.getString("hometp")));
+				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guesttp")));
+				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometp")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -159,6 +161,7 @@ public class GameDaoImpl implements GameDao {
 			while(rs.next()){
 				game = new GamePO();
 				game.setGameLabel(rs.getString("gamelabel"));
+				game.setSeasonId(rs.getString("seasonid"));
 				game.setGameDate(rs.getString("gamedate"));
 				game.setVersus(rs.getString("versus"));
 				game.setGuestTeam(rs.getString("guestteam"));
@@ -177,8 +180,8 @@ public class GameDaoImpl implements GameDao {
 					}
 				}
 				game.setExtratime(extraList);
-				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guestteam"), rs.getString("gamelabel"), rs.getString("guesttp")));
-				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometeam"), rs.getString("gamelabel"), rs.getString("hometp")));
+				game.setGuestTP(TeamPerformance.makeTP(rs.getString("guesttp")));
+				game.setHomeTP(TeamPerformance.makeTP(rs.getString("hometp")));
 				
 				gameList.add(game);
 			}

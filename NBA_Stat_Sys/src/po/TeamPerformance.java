@@ -30,8 +30,8 @@ public class TeamPerformance {
 		
 		String result = "";
 		if(!spList.isEmpty()){
-			result += gamelabel;
-//			result += spList.get(0).toString();
+//			result += gamelabel;
+			result += spList.get(0).toString();
 		}
 		for(int i = 1; i < spList.size(); i ++){
 			result += "\n";
@@ -49,12 +49,12 @@ public class TeamPerformance {
 		this.teamNameAbbr = teamNameAbbr;
 	}
 	
-	public static TeamPerformance makeTP(String teamAbbr, String gamelabel, String tpText){
+	public static TeamPerformance makeTP(String teamAbbr, String gamelabel, String tpTextRaw){
 		
 		TeamPerformance tp = new TeamPerformance();
 		tp.setTeamNameAbbr(teamAbbr);
 		
-		Scanner scannerFull = new Scanner(tpText);
+		Scanner scannerFull = new Scanner(tpTextRaw);
 		String line = new String();
 		SinglePerformance sp;
 		while(scannerFull.hasNextLine()){
@@ -67,27 +67,30 @@ public class TeamPerformance {
 		
 	}
 	
-	public static TeamPerformance makeTP(String teamAbbr, String tpText){
+public static TeamPerformance makeTP(String tpTextDB){
 		
 		TeamPerformance tp = new TeamPerformance();
-		tp.setTeamNameAbbr(teamAbbr);
 		
-		Scanner scannerFull = new Scanner(tpText);
+		
+		Scanner scannerFull = new Scanner(tpTextDB);
 		String line = new String();
-		String gamelabel = "";
 		SinglePerformance sp;
-		if(scannerFull.hasNextLine()){
-			gamelabel = scannerFull.nextLine();
-		}
+		String gamelabel = "";
+		String teamAbbr = "";
 		while(scannerFull.hasNextLine()){
 			line = scannerFull.nextLine();
-			sp = SinglePerformance.makeSP(teamAbbr, gamelabel, line);
+			sp = SinglePerformance.makeSP(line);
 			tp.addSinglePerformance(sp);
+			gamelabel = sp.getGamelabel();
+			teamAbbr = sp.getTeamThen();
 		}
 		scannerFull.close();
+		tp.setGamelabel(gamelabel);
+		tp.setTeamNameAbbr(teamAbbr);
 		return tp;
 		
 	}
+	
 
 	public String getGamelabel() {
 		return gamelabel;

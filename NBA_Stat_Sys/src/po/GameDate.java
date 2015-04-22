@@ -24,6 +24,16 @@ public class GameDate implements Comparable<Object> {
 		this.day = Integer.parseInt(splited[2]);
 	}
 	
+	public static String appendYear(String season, String originalDate) {//season = "13-14"; originalDate = "01-01"
+		String year = season.split("-")[0];//13
+		String month = originalDate.split("-")[0];//01
+		if(Integer.parseInt(month) <= 9 ) {
+			year = (Integer.parseInt(year) + 1) + "";
+		}
+		String result = "20" + year + "-" + originalDate; 
+		return result;
+	}
+	
 	public String toString() {
 		
 		String monthString = "";
