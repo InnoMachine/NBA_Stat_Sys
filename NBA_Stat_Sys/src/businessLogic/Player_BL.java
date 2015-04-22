@@ -3,6 +3,7 @@ package businessLogic;
 import java.util.ArrayList;
 
 import vo.PlayerCardVo;
+import vo.PlayerGames;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
 
@@ -59,5 +60,11 @@ public class Player_BL implements Player_BS{
 	public ArrayList<PlayerVo> searchPlayer(String key,String first) {
 		
 		return player_handler.searchPlayer(key,first);
+	}
+	
+	public PlayerGames getPlayerPerformacne(
+			String name) {
+		
+		return player_handler.getPlayerPerformacne(name);
 	}
 }

@@ -28,6 +28,7 @@ public class TeamPerformanceInSingleGame {
 	private int opTwoPointShotNum;   //对手两分球出手
 	private int opScore;
 	private int winning;
+	private String opTeam;
 	
 	private double hitRate;          //投篮命中率
 	private double threePointHitRate;//三分球命中率
@@ -325,6 +326,12 @@ public class TeamPerformanceInSingleGame {
 	}
 	public void setHighestblock(int highestblock) {
 		this.highestblock = highestblock;
+	}
+	public String getOpTeam() {
+		return opTeam;
+	}
+	public void setOpTeam(String opTeam) {
+		this.opTeam = opTeam;
 	}
 	
 }

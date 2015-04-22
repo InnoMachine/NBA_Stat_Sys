@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import vo.PlayerCardVo;
+import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
@@ -1796,5 +1797,11 @@ public class Player_Handler {
 			return slist;
 		}
 		
+	}
+
+	public PlayerGames getPlayerPerformacne(
+			String name) {
+		
+		return data_handler.getPlayerPerformacne(name);
 	}
 }
