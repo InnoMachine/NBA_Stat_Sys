@@ -562,7 +562,7 @@ public class Player_BL_Stub implements Player_BS {
 		games.add(pp2);
 		games.add(pp3);
 		games.add(pp4);
-		games.add(pp5);
+//		games.add(pp5);
 		playerGames.setGames(games);
 
 		return playerGames;
