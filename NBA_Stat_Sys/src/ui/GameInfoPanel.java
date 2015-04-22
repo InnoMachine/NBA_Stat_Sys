@@ -46,8 +46,8 @@ public class GameInfoPanel extends JPanel {
 	static int Y;
 
 	JLabel bgLabel;
-	private JLabel guestTeamlbl;
-	private JLabel hostTeamlbl;
+	private JButton guestTeambtn;
+	private JButton hostTeambtn;
 	private JTextField txtGTPoint;
 	private JTextField txtHTPoint;
 	private JTextField textField;
@@ -247,29 +247,53 @@ public class GameInfoPanel extends JPanel {
 		
 		mainFrame.getContentPane().add(this);
 
-		guestTeamlbl = new MyLabel();
-		guestTeamlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeamlbl.setText(gameVo.getGuestTeam());
-		guestTeamlbl.setBounds(X*449/1366, Y*10/768, X*100/1366, Y*36/768);
-		bgLabel.add(guestTeamlbl);
+		guestTeambtn = new JButton();
+		guestTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		guestTeambtn.setBounds(X*469/1366, Y*5/768, X*60/1366, Y*60/768);
+		ImageIcon teamImg1 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ gameVo.getGuestTeam() + ".png").getImage()
+				.getScaledInstance(X * 60 / 1366, Y * 60 / 768,
+						Image.SCALE_AREA_AVERAGING));
+		guestTeambtn.setIcon(teamImg1);
+		guestTeambtn.setContentAreaFilled(false);
+		guestTeambtn.setBorderPainted(false);
+		guestTeambtn.setOpaque(false);
+		guestTeambtn.addActionListener(e->{
+			this.setVisible(false);
+			TeamInfoPanel a = new TeamInfoPanel(gameVo.getGuestTeam(), mainFrame,this);
+		});
+		bgLabel.add(guestTeambtn);
 
-		hostTeamlbl = new MyLabel();
-		hostTeamlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTeamlbl.setText(gameVo.getHomeTeam());
-		hostTeamlbl.setBounds(X*816/1366, Y*10/768,X*100/1366,Y*36/768);
-		bgLabel.add(hostTeamlbl);
+		hostTeambtn = new JButton();
+		hostTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
+		hostTeambtn.setText(gameVo.getHomeTeam());
+		hostTeambtn.setBounds(X*836/1366, Y*5/768,X*60/1366,Y*60/768);
+		ImageIcon teamImg2 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ gameVo.getHomeTeam() + ".png").getImage()
+				.getScaledInstance(X * 60 / 1366, Y * 60 / 768,
+						Image.SCALE_AREA_AVERAGING));
+		hostTeambtn.setIcon(teamImg2);
+		hostTeambtn.setContentAreaFilled(false);
+		hostTeambtn.setBorderPainted(false);
+		hostTeambtn.setOpaque(false);
+		hostTeambtn.addActionListener(e->{
+			this.setVisible(false);
+			TeamInfoPanel a = new TeamInfoPanel(gameVo.getHomeTeam(), mainFrame,this);
+		});
+		bgLabel.add(hostTeambtn);
 
 		txtGTPoint = new MyTextField();
 		txtGTPoint.setText(String.valueOf(gameVo.getGuestTP().getScore()));
 		txtGTPoint.setHorizontalAlignment(SwingConstants.CENTER);
-		txtGTPoint.setBounds(X*449/1366, Y*51/768, X*100/1366, Y*60/768);
+		txtGTPoint.setBounds(X*449/1366, Y*67/768, X*100/1366, Y*60/768);
 		bgLabel.add(txtGTPoint);
 		txtGTPoint.setColumns(X*10/1366);
 
 		txtHTPoint = new MyTextField();
 		txtHTPoint.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTPoint.setText(String.valueOf(gameVo.getHomeTP().getScore()));
-		txtHTPoint.setBounds(X*816/1366, Y*51/768, X*100/1366, Y*60/768);
+		txtHTPoint.setBounds(X*816/1366, Y*67/768, X*100/1366, Y*60/768);
 		bgLabel.add(txtHTPoint);
 		txtHTPoint.setColumns(X*10/1366);
 
