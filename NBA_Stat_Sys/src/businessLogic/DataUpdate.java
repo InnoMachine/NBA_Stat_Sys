@@ -9,21 +9,16 @@ public class DataUpdate extends TimerTask{
 	GameDate dateTrue;
 	Data_Handler data_handler ;
 	
-	public DataUpdate(GameDate dateui){
-		this.dateui = dateui;
+	public DataUpdate(){
 		dateTrue = new GameDate();
-		dateTrue.setDay(3);
 		data_handler = Data_Handler.getInstance();
+		dateui = data_handler.getDateNow();
 	}
 	public void run() {
-		//dateTrue = getDateNow()
+		dateTrue = data_handler.getDateNow();
 		if(dateui.compareTo(dateTrue)!=0){
 			data_handler.updateData();
-			System.out.println(dateTrue.toString());
-			this.cancel();
 		}
-		else 
-			System.out.println(dateui.toString());
 			
 	}
 	

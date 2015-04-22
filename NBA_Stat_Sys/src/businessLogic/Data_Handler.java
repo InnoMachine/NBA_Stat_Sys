@@ -3,6 +3,7 @@ package businessLogic;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import po.GameDate;
 import po.GamePO;
 import po.PlayerPO;
 import po.SinglePerformance;
@@ -1028,6 +1029,9 @@ public class Data_Handler {
 	public void updateData() {
 	
 		
+	}
+	public GameDate getDateNow(){
+		return null;
 	}
 }
 

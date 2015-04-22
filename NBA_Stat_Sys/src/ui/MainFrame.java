@@ -3,8 +3,11 @@ package ui;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Timer;
 
 import javax.swing.JFrame;
+
+import businessLogic.DataUpdate;
 
 public class MainFrame extends JFrame {
 	
@@ -14,6 +17,9 @@ public class MainFrame extends JFrame {
 	public static void main(String[] args) {
 		MainFrame mf = new MainFrame();	
 		mf.setVisible(true);
+		Timer timer = new Timer();
+		DataUpdate du = new DataUpdate();
+		timer.schedule(du,1000,30000);
 	}
 
 	public MainFrame() {
