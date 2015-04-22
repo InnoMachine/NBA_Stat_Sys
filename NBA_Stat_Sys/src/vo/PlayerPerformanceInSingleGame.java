@@ -25,6 +25,7 @@ public class PlayerPerformanceInSingleGame {
 	private int firstOn;
 	private int twoTenNum;
 	private String Team;
+	private String OpTeam;
 	public PlayerPerformanceInSingleGame(String name)
 	{
 		this.name =name;
@@ -188,6 +189,17 @@ public class PlayerPerformanceInSingleGame {
 	}
 	public void setNumber(String number) {
 		this.number = number;
+	}
+	public String getOpTeam() {
+		return OpTeam;
+	}
+	public void setOpTeam(String opTeam) {
+		OpTeam = opTeam;
+	}
+	public String getDate(){
+		String date = gameLabel.substring(gameLabel.indexOf("_")+1);
+		date = date.substring(0, date.indexOf("_"));
+		return date;
 	}
 
 }

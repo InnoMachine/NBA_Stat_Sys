@@ -10,6 +10,7 @@ import po.SinglePerformance;
 import po.TeamPO;
 import po.TeamPerformance;
 import vo.GameVo;
+import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
@@ -37,6 +38,7 @@ public class Data_Handler {
 	private ArrayList<TeamRecentGames> trecgames;
 	private ArrayList<PlayerRecentGames> precgames;
 	private ArrayList<GameVo> gamevo;
+	private ArrayList<PlayerGames> listpg;
 	BigDecimal b;  
     
 	
@@ -53,6 +55,7 @@ public class Data_Handler {
 		trecgames = new ArrayList<TeamRecentGames>();
 		precgames = new ArrayList<PlayerRecentGames>();
 		gamevo = new ArrayList<GameVo>();
+		listpg = new ArrayList<PlayerGames>();
 		SetPlayerVo();
 		SetTeamVo();
 		PlayerDivisionSet();
@@ -440,6 +443,8 @@ public class Data_Handler {
 			TeamPerformance tph = gamelist.get(i).getHomeTP();
 			TeamPerformanceInSingleGame tgpg=setPerformance(tpg);
 			TeamPerformanceInSingleGame tgph=setPerformance(tph);
+			tgph.setOpTeam(tgpg.getName());
+			tgpg.setOpTeam(tgph.getName());
 			tgpg.setOpDefensiveRebound(tgph.getDefensiveRebound());
 			tgpg.setOpOffensiveRebound(tgph.getOffensiveRebound());
 			tgpg.setOpTwoPointShotNum(tgph.getShotNum()-tgph.getThreePointShotNum());
@@ -678,6 +683,7 @@ public class Data_Handler {
 					}
 					tgp.AddPlayerP(pgp);
 					precgames.get(i).AddNewGame(pgp);
+					listpg.get(i).AddGames(pgp);
 					break;
 				}
 			}
@@ -821,7 +827,9 @@ public class Data_Handler {
 			
 			PlayerRecentGames p = new PlayerRecentGames();
 			p.setName(listpo.get(i).getName());
+			PlayerGames pg = new PlayerGames(temp.getName());
 			precgames.add(p);
+			listpg.add(pg);
 		}		
 	}
 	public ArrayList<PlayerVo> getPlayers() {
@@ -1060,6 +1068,16 @@ public class Data_Handler {
 		TeamCalculate();
 	}
 	public GameDate getDateNow(){
+		return null;
+	}
+
+	public PlayerGames getPlayerPerformacne(
+			String name) {
+		for(PlayerGames temp:listpg){
+			if(temp.getName().equals(name)){
+				return temp;
+			}
+		}
 		return null;
 	}
 }

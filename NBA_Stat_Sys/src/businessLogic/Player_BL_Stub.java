@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import enums.Conference;
 import enums.Division;
 import vo.PlayerCardVo;
+<<<<<<< HEAD
+=======
+import vo.PlayerGames;
+>>>>>>> origin/master
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
@@ -499,5 +503,12 @@ public class Player_BL_Stub implements Player_BS {
 		}
 		
 		return playerVos;
+	}
+
+	@Override
+	public PlayerGames getPlayerPerformacne(
+			String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
