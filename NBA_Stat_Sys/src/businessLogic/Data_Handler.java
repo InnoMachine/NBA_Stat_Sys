@@ -566,7 +566,6 @@ public class Data_Handler {
 				{
 					
 					listvo.get(i).setTeam(tgp.getName());
-					
 					listvo.get(i).setGameNum(listvo.get(i).getGameNum()+1);
 					listvo.get(i).setTime(listvo.get(i).getTime()+temp.getTime());
 					listvo.get(i).setHitNum(listvo.get(i).getHitNum()+temp.getHitNum());
@@ -585,7 +584,6 @@ public class Data_Handler {
 					listvo.get(i).setFoul(listvo.get(i).getFoul()+temp.getFoul());
 					listvo.get(i).setScore(listvo.get(i).getScore()+temp.getScore());
 					listvo.get(i).setTwoTenNum(listvo.get(i).getTwoTenNum()+temp.getTwoTenNum());
-					
 					listvo.get(i).setFirstOnNum(listvo.get(i).getFirstOnNum()+temp.getFirstOn());
 					listvo.get(i).setTeamRoundAttack(listvo.get(i).getTeamRoundAttack()+tgp.getRoundAttack());
 					listvo.get(i).setteamFreeThrowNum(listvo.get(i).getteamFreeThrowNum()+tgp.getFreeThrowShotNum());
@@ -601,9 +599,7 @@ public class Data_Handler {
 					listvo.get(i).setOpReboundAll(listvo.get(i).getOpReboundAll()+tgp.getOpDefensiveRebound()+tgp.getOpOffensiveRebound());
 					listvo.get(i).setOpRoundAttack(listvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
 					listvo.get(i).setOpTwoPointShotNum(listvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
-					
-					
-					
+				
 					break;
 				}
 			}
@@ -929,6 +925,9 @@ public class Data_Handler {
 					}
 					tgp.AddPlayerP(pgp);
 					break;
+				}
+				if(i==listvo.size()&&!temp.getName().equals(listvo.get(i).getName())){
+					PlayerVo vo = new PlayerVo(temp.getName());
 				}
 			}
 		}

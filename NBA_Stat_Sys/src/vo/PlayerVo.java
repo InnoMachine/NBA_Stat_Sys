@@ -93,6 +93,11 @@ public class PlayerVo {
 	private int teamOffensiveRebound;
 	private int teamDefensiveRebound;
 	
+	
+	public PlayerVo(String name ){
+		this.name = name ;
+		
+	}
 	public String getNumber() {
 		return number;
 	}
