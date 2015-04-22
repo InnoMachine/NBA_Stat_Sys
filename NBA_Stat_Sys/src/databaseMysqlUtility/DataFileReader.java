@@ -22,6 +22,7 @@ import dataService.TeamDao;
 import dataService.TeamDaoImpl;
 import enums.Conference;
 import enums.Division;
+import po.GameDate;
 import po.GamePO;
 import po.PlayerPO;
 import po.Scoreboard;
@@ -210,6 +211,7 @@ public class DataFileReader {
 
 		String guesttp = "";
 		String hometp = "";
+		String seasonid = "12-13";//season can only be got from data file name
 
 		ArrayList<String> splitedSingleData = new ArrayList<String>();
 		Scanner scannerFull = new Scanner(context);
@@ -217,7 +219,8 @@ public class DataFileReader {
 
 		line = scannerFull.nextLine();
 		String[] splited0 = line.split(";");
-		String gamedate = splited0[0];
+		//String gamedate = splited0[0];
+		String gamedate = GameDate.appendYear(seasonid, splited0[0]);
 		String versus = splited0[1];
 		String scoreoverall = splited0[2];
 		String[] splited00 = versus.split("-");
@@ -250,9 +253,10 @@ public class DataFileReader {
 		}
 		scannerFull.close();
 
-		String gameLabel = "13-14_" + gamedate + "_" + versus + "";
+		String gameLabel = seasonid + "_" + gamedate + "_" + versus + "";
 
 		splitedSingleData.add(gameLabel);
+		splitedSingleData.add(seasonid);
 		splitedSingleData.add(gamedate);
 		splitedSingleData.add(versus);
 		splitedSingleData.add(guestteam);
@@ -325,17 +329,18 @@ public class DataFileReader {
 
 		GamePO game = new GamePO();
 		game.setGameLabel(attriList.get(0));
-		game.setGameDate(attriList.get(1));
-		game.setVersus(attriList.get(2));
-		game.setGuestTeam(attriList.get(3));
-		game.setHomeTeam(attriList.get(4));
-		game.setScoreOverall(Scoreboard.makeSB(attriList.get(5)));
-		game.setScore1st(Scoreboard.makeSB(attriList.get(6)));
-		game.setScore2nd(Scoreboard.makeSB(attriList.get(7)));
-		game.setScore3rd(Scoreboard.makeSB(attriList.get(8)));
-		game.setScore4th(Scoreboard.makeSB(attriList.get(9)));
+		game.setSeasonId(attriList.get(1));
+		game.setGameDate(attriList.get(2));
+		game.setVersus(attriList.get(3));
+		game.setGuestTeam(attriList.get(4));
+		game.setHomeTeam(attriList.get(5));
+		game.setScoreOverall(Scoreboard.makeSB(attriList.get(6)));
+		game.setScore1st(Scoreboard.makeSB(attriList.get(7)));
+		game.setScore2nd(Scoreboard.makeSB(attriList.get(8)));
+		game.setScore3rd(Scoreboard.makeSB(attriList.get(9)));
+		game.setScore4th(Scoreboard.makeSB(attriList.get(10)));
 		ArrayList<Scoreboard> extraList = new ArrayList<Scoreboard>();
-		String extraText = attriList.get(10);
+		String extraText = attriList.get(11);
 		if (extraText.contains(";")) {
 			String[] splitedExtra = extraText.split(";");
 			for (int j = 0; j < splitedExtra.length; j++) {
@@ -343,10 +348,10 @@ public class DataFileReader {
 			}
 		}
 		game.setExtratime(extraList);
-		game.setGuestTP(TeamPerformance.makeTP(attriList.get(3),attriList.get(0),
-				attriList.get(11)));
-		game.setHomeTP(TeamPerformance.makeTP(attriList.get(4),attriList.get(0),
+		game.setGuestTP(TeamPerformance.makeTP(attriList.get(4),attriList.get(0),
 				attriList.get(12)));
+		game.setHomeTP(TeamPerformance.makeTP(attriList.get(5),attriList.get(0),
+				attriList.get(13)));
 		return game;
 
 	}

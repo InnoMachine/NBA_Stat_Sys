@@ -8,6 +8,8 @@ package po;
 public class SinglePerformance {
 
 	
+	private String gamelabel;//
+	
 	private String name;
 	private String position;
 	
@@ -33,16 +35,15 @@ public class SinglePerformance {
 	private int score;
 
 	private String teamThen;//
-	private String gamelabel;//
 	
 	public String toString() {
 
-		return name + ";" + position + ";" + timeBySeconds + ";" + hitNum + ";"
+		return gamelabel + ";" + name + ";" + position + ";" + timeBySeconds + ";" + hitNum + ";"
 				+ shotNum + ";" + threePointHitNum + ";" + threePointShotNum
 				+ ";" + freeThrowHitNum + ";" + freeThrowShotNum + ";"
 				+ offensiveRebound + ";" + defensiveRebound + ";"
 				+ reboundOverall + ";" + assistance + ";" + steal + ";" + block
-				+ ";" + turnover + ";" + foul + ";" + score + ";" + "teamThen" + ";" + "gamelabel" +";";
+				+ ";" + turnover + ";" + foul + ";" + score + ";" + teamThen + ";";
 
 	}
 
@@ -206,9 +207,9 @@ public class SinglePerformance {
 		this.gamelabel = gamelabel;
 	}
 
-	public static SinglePerformance makeSP(String teamThen, String gamelabel, String spText) {
+	public static SinglePerformance makeSP(String teamThen, String gamelabel, String spTextRaw) {
 
-		String[] splited = spText.split(";");
+		String[] splited = spTextRaw.split(";");
 		String name = splited[0];
 		String position;
 		if (splited.length == 1) {
@@ -310,10 +311,11 @@ public class SinglePerformance {
 
 	}
 	
-	public static SinglePerformance makeSP(String spText) {
+	public static SinglePerformance makeSP(String spTextDB) {//spTextDB is in database format
 
-		String[] splited = spText.split(";");
-		String name = splited[0];
+		String[] splited = spTextDB.split(";");
+		String gamelabel = splited[0];
+		String name = splited[1];
 		String position;
 		if (splited.length == 1) {
 			return null;
@@ -321,12 +323,12 @@ public class SinglePerformance {
 		if (splited[1].equals("")) {
 			position = null;// sudo
 		} else {
-			position = splited[1];
+			position = splited[2];
 		}
 		
 		
 
-		String timeText = splited[2];// sudo
+		String timeText = splited[3];// sudo
 		int timeByText;
 		if (timeText.contains(":")) {
 			if (!(timeText.equals("null") || timeText.equalsIgnoreCase("None") || timeText == null)) {
@@ -344,43 +346,42 @@ public class SinglePerformance {
 			}
 		}
 
-		int hitNum = Integer.parseInt(splited[3]);
-		int shotNum = Integer.parseInt(splited[4]);
-		int threePointHitNum = Integer.parseInt(splited[5]);
-		int threePointShotNum = Integer.parseInt(splited[6]);
-		int freeThrowHitNum = Integer.parseInt(splited[7]);
-		int freeThrowShotNum = Integer.parseInt(splited[8]);
-		int offensiveRebound = Integer.parseInt(splited[9]);
+		int hitNum = Integer.parseInt(splited[4]);
+		int shotNum = Integer.parseInt(splited[5]);
+		int threePointHitNum = Integer.parseInt(splited[6]);
+		int threePointShotNum = Integer.parseInt(splited[7]);
+		int freeThrowHitNum = Integer.parseInt(splited[8]);
+		int freeThrowShotNum = Integer.parseInt(splited[9]);
+		int offensiveRebound = Integer.parseInt(splited[10]);
 
 		int defensiveRebound = 0;
 		if (splited[10].equals("")) {
 			defensiveRebound = -1;// dirty data
 		} else {
-			defensiveRebound = Integer.parseInt(splited[10]);
+			defensiveRebound = Integer.parseInt(splited[11]);
 		}
 
-		int reboundOverall = Integer.parseInt(splited[11]);
-		int assistance = Integer.parseInt(splited[12]);
-		int steal = Integer.parseInt(splited[13]);
-		int block = Integer.parseInt(splited[14]);
-		int turnover = Integer.parseInt(splited[15]);
+		int reboundOverall = Integer.parseInt(splited[12]);
+		int assistance = Integer.parseInt(splited[13]);
+		int steal = Integer.parseInt(splited[14]);
+		int block = Integer.parseInt(splited[15]);
+		int turnover = Integer.parseInt(splited[16]);
 
 		int foul = 0;
-		if (splited[16].equals("")) {
+		if (splited[17].equals("")) {
 			foul = -1;// dirty data
 		} else {
-			foul = Integer.parseInt(splited[16]);
+			foul = Integer.parseInt(splited[17]);
 		}
 
 		int score = 0;
-		if (splited[17].equalsIgnoreCase("null")) {
+		if (splited[18].equalsIgnoreCase("null")) {
 			score = -1;// dirty data
 		} else {
-			score = Integer.parseInt(splited[17]);
+			score = Integer.parseInt(splited[18]);
 		}
 		
-		String teamThen = splited[18];
-		String gamelabel = splited[19];
+		String teamThen = splited[19];
 		
 		
 
