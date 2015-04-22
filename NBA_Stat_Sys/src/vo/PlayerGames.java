@@ -8,7 +8,10 @@ public class PlayerGames {
 	private ArrayList<PlayerPerformanceInSingleGame> games;
 	public PlayerGames(String name){
 		this.setName(name);
-		setGames(new ArrayList<PlayerPerformanceInSingleGame>());
+		games = new ArrayList<PlayerPerformanceInSingleGame>();
+	}
+	public PlayerGames(){
+		games = new ArrayList<PlayerPerformanceInSingleGame>();
 	}
 	public String getName() {
 		return name;
