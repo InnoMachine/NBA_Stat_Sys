@@ -516,6 +516,8 @@ public class Data_Handler {
 		vo.setScoreOverall(po.getScoreOverall());
 		vo.setSeasonId(po.getSeasonId());
 		vo.setVersus(po.getVersus());
+		tgpg.setGameDate(po.getGameDate());
+		tgph.setGameDate(po.getGameDate());
 		
 		
 	}

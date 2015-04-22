@@ -2,7 +2,10 @@ package vo;
 
 import java.util.ArrayList;
 
+import po.GameDate;
+
 public class TeamPerformanceInSingleGame {
+	private GameDate gameDate;//comparable
 	private String gameLabel;
 	private String name;
 	private int time;//sudo
@@ -335,6 +338,12 @@ public class TeamPerformanceInSingleGame {
 	}
 	public void setOpTeam(String opTeam) {
 		this.opTeam = opTeam;
+	}
+	public GameDate getGameDate() {
+		return gameDate;
+	}
+	public void setGameDate(GameDate gameDate) {
+		this.gameDate = gameDate;
 	}
 	
 }
