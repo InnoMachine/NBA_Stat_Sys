@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import enums.Conference;
 import enums.Division;
 import vo.PlayerCardVo;
+import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
 
@@ -340,8 +341,52 @@ public class Player_BL_Stub implements Player_BS {
 
 	@Override
 	public PlayerRecentGames getPlayerRecentPerformance(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		PlayerRecentGames playerRecentGames=new PlayerRecentGames();
+		PlayerPerformanceInSingleGame pp1=new PlayerPerformanceInSingleGame("Mike Miller");
+		pp1.setHitNum(9);
+		pp1.setThreePointHitNum(3);
+		pp1.setFoul(3);
+		pp1.setSteal(2);
+		pp1.setReboundOverall(6);
+		pp1.setScore(19);
+		
+		PlayerPerformanceInSingleGame pp2=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		pp2.setHitNum(0);
+		pp2.setThreePointHitNum(0);
+		pp2.setFoul(0);
+		pp2.setSteal(0);
+		pp2.setReboundOverall(0);
+		pp2.setScore(0);
+	
+		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Anthony Bennett");
+		pp3.setHitNum(9);
+		pp3.setThreePointHitNum(3);
+		pp3.setFoul(3);
+		pp3.setSteal(2);
+		pp3.setReboundOverall(6);
+		pp3.setScore(19);
+		
+		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Andre Roberson");
+		pp4.setHitNum(0);
+		pp4.setThreePointHitNum(0);
+		pp4.setFoul(0);
+		pp4.setSteal(0);
+		pp4.setReboundOverall(0);
+		pp4.setScore(0);
+	
+		PlayerPerformanceInSingleGame pp5=new PlayerPerformanceInSingleGame("Evan Turner");
+		pp5.setHitNum(9);
+		pp5.setThreePointHitNum(3);
+		pp5.setFoul(3);
+		pp5.setSteal(2);
+		pp5.setReboundOverall(6);
+		pp5.setScore(19);
+		playerRecentGames.AddNewGame(pp1);
+		playerRecentGames.AddNewGame(pp2);
+		playerRecentGames.AddNewGame(pp3);
+		playerRecentGames.AddNewGame(pp4);
+		playerRecentGames.AddNewGame(pp5);
+		return playerRecentGames;
 	}
 
 	@Override
