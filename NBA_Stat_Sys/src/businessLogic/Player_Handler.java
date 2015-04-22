@@ -1798,7 +1798,6 @@ public class Player_Handler {
 		}
 		
 	}
-
 	public PlayerGames getPlayerPerformacne(
 			String name) {
 		
