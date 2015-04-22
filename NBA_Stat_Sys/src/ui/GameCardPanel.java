@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JPanel;
@@ -7,6 +9,7 @@ import javax.swing.JPanel;
 import vo.GameVo;
 import vo.PlayerVo;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -43,13 +46,13 @@ public class GameCardPanel extends JPanel {
 		this.gameVo = gameVo;
 		this.setBounds(0, 0, X * 930 / 1366, Y * 120 / 768);
 
-		JLabel statelbl = new JLabel("结束");
+		JLabel statelbl = new MyLabel("结束");
 		statelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		statelbl.setBounds(0, 0, X * 930 / 1366, Y * 20 / 768);
 		add(statelbl);
 
 		JButton teambtn1 = new JButton();
-		teambtn1.setBounds(X * 20 / 1366, Y * 25 / 768, X * 85 / 1366,
+		teambtn1.setBounds(X * 40 / 1366, Y * 25 / 768, X * 85 / 1366,
 				Y * 85 / 768);
 		teambtn1.setContentAreaFilled(false);
 		teambtn1.setBorderPainted(false);
@@ -69,147 +72,147 @@ public class GameCardPanel extends JPanel {
 				Y * 40 / 768);
 		add(detailbtn);
 */
-		JLabel teamlbl = new JLabel("球队");
+		JLabel teamlbl = new MyLabel("球队");
 		teamlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		teamlbl.setBounds(X * 190 / 1366, Y * 25 / 768, X * 85 / 1366,
+		teamlbl.setBounds(X * 210 / 1366, Y * 25 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(teamlbl);
 
-		JLabel score1stlbl = new JLabel("1");
+		JLabel score1stlbl = new MyLabel("1");
 		score1stlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score1stlbl.setBounds(X * 275 / 1366, Y * 26 / 768, X * 85 / 1366,
+		score1stlbl.setBounds(X * 295 / 1366, Y * 26 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score1stlbl);
 
-		JLabel score2ndlbl = new JLabel("2");
+		JLabel score2ndlbl = new MyLabel("2");
 		score2ndlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score2ndlbl.setBounds(X * 360 / 1366, Y * 26 / 768, X * 85 / 1366,
+		score2ndlbl.setBounds(X * 380 / 1366, Y * 26 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score2ndlbl);
 
-		JLabel score3rdlbl = new JLabel("3");
+		JLabel score3rdlbl = new MyLabel("3");
 		score3rdlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score3rdlbl.setBounds(X * 445 / 1366, Y * 26 / 768, X * 85 / 1366,
+		score3rdlbl.setBounds(X * 465 / 1366, Y * 26 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score3rdlbl);
 
-		JLabel score4thlbl = new JLabel("4");
+		JLabel score4thlbl = new MyLabel("4");
 		score4thlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score4thlbl.setBounds(X * 530 / 1366, Y * 26 / 768, X * 85 / 1366,
+		score4thlbl.setBounds(X * 550 / 1366, Y * 26 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score4thlbl);
 
-		JLabel scoreSumlbl = new JLabel("总数");
+		JLabel scoreSumlbl = new MyLabel("总数");
 		scoreSumlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreSumlbl.setBounds(X * 615 / 1366, Y * 25 / 768, X * 85 / 1366,
+		scoreSumlbl.setBounds(X * 635 / 1366, Y * 25 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(scoreSumlbl);
 
-		teamName1tF = new JTextField();
+		teamName1tF = new MyTextField();
 		teamName1tF.setText("teamName1");
 		teamName1tF.setHorizontalAlignment(SwingConstants.CENTER);
 		teamName1tF.setEditable(false);
-		teamName1tF.setBounds(X * 190 / 1366, Y * 53 / 768, X * 85 / 1366,
+		teamName1tF.setBounds(X * 210 / 1366, Y * 53 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(teamName1tF);
-		teamName1tF.setColumns(10);
+		teamName1tF.setColumns(X*10/1366);
 
-		score11tF = new JTextField();
+		score11tF = new MyTextField();
 		score11tF.setText("T1-1");
 		score11tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score11tF.setEditable(false);
-		score11tF.setColumns(10);
-		score11tF.setBounds(X * 275 / 1366, Y * 53 / 768, X * 85 / 1366,
+		score11tF.setColumns(X*10/1366);
+		score11tF.setBounds(X * 295 / 1366, Y * 53 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score11tF);
 
-		score12tF = new JTextField();
+		score12tF = new MyTextField();
 		score12tF.setText("T1-2");
 		score12tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score12tF.setEditable(false);
-		score12tF.setColumns(10);
-		score12tF.setBounds(X * 360 / 1366, Y * 53 / 768, X * 85 / 1366,
+		score12tF.setColumns(X*10/1366);
+		score12tF.setBounds(X * 380 / 1366, Y * 53 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score12tF);
 
-		score13tF = new JTextField();
+		score13tF = new MyTextField();
 		score13tF.setText("T1-3");
 		score13tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score13tF.setEditable(false);
-		score13tF.setColumns(10);
-		score13tF.setBounds(X * 445 / 1366, Y * 53 / 768, X * 85 / 1366,
+		score13tF.setColumns(X*10/1366);
+		score13tF.setBounds(X * 465 / 1366, Y * 53 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score13tF);
 
-		score14tF = new JTextField();
+		score14tF = new MyTextField();
 		score14tF.setText("T1-4");
 		score14tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score14tF.setEditable(false);
-		score14tF.setColumns(10);
-		score14tF.setBounds(X * 530 / 1366, Y * 53 / 768, X * 85 / 1366,
+		score14tF.setColumns(X*10/1366);
+		score14tF.setBounds(X * 550 / 1366, Y * 53 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score14tF);
 
-		scoreSumtF1 = new JTextField();
+		scoreSumtF1 = new MyTextField();
 		scoreSumtF1.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreSumtF1.setText("scoreSum1");
 		scoreSumtF1.setEditable(false);
-		scoreSumtF1.setColumns(10);
-		scoreSumtF1.setBounds(X * 615 / 1366, Y * 53 / 768, X * 85 / 1366,
+		scoreSumtF1.setColumns(X*10/1366);
+		scoreSumtF1.setBounds(X * 635 / 1366, Y * 53 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(scoreSumtF1);
 
-		teamName2tF = new JTextField();
+		teamName2tF = new MyTextField();
 		teamName2tF.setText("teamName2");
 		teamName2tF.setHorizontalAlignment(SwingConstants.CENTER);
 		teamName2tF.setEditable(false);
-		teamName2tF.setColumns(10);
-		teamName2tF.setBounds(X * 190 / 1366, Y * 81 / 768, X * 85 / 1366,
+		teamName2tF.setColumns(X*10/1366);
+		teamName2tF.setBounds(X * 210 / 1366, Y * 81 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(teamName2tF);
 
-		score21tF = new JTextField();
+		score21tF = new MyTextField();
 		score21tF.setText("T2-1");
 		score21tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score21tF.setEditable(false);
-		score21tF.setColumns(10);
-		score21tF.setBounds(X * 275 / 1366, Y * 81 / 768, X * 85 / 1366,
+		score21tF.setColumns(X*10/1366);
+		score21tF.setBounds(X * 295 / 1366, Y * 81 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score21tF);
 
-		score22tF = new JTextField();
+		score22tF = new MyTextField();
 		score22tF.setText("T2-2");
 		score22tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score22tF.setEditable(false);
-		score22tF.setColumns(10);
-		score22tF.setBounds(X * 360 / 1366, Y * 81 / 768, X * 85 / 1366,
+		score22tF.setColumns(X*10/1366);
+		score22tF.setBounds(X * 380 / 1366, Y * 81 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score22tF);
 
-		score23tF = new JTextField();
+		score23tF = new MyTextField();
 		score23tF.setText("T2-3");
 		score23tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score23tF.setEditable(false);
-		score23tF.setColumns(10);
-		score23tF.setBounds(X * 445 / 1366, Y * 81 / 768, X * 85 / 1366,
+		score23tF.setColumns(X*10/1366);
+		score23tF.setBounds(X * 465 / 1366, Y * 81 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score23tF);
 
-		score24tF = new JTextField();
+		score24tF = new MyTextField();
 		score24tF.setText("T2-4");
 		score24tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score24tF.setEditable(false);
-		score24tF.setColumns(10);
-		score24tF.setBounds(X * 530 / 1366, Y * 81 / 768, X * 85 / 1366,
+		score24tF.setColumns(X*10/1366);
+		score24tF.setBounds(X * 550 / 1366, Y * 81 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(score24tF);
 
-		scoreSumtF2 = new JTextField();
+		scoreSumtF2 = new MyTextField();
 		scoreSumtF2.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreSumtF2.setText("scoreSum2");
 		scoreSumtF2.setEditable(false);
-		scoreSumtF2.setColumns(10);
-		scoreSumtF2.setBounds(X * 615 / 1366, Y * 81 / 768, X * 85 / 1366,
+		scoreSumtF2.setColumns(X*10/1366);
+		scoreSumtF2.setBounds(X * 635 / 1366, Y * 81 / 768, X * 85 / 1366,
 				Y * 28 / 768);
 		add(scoreSumtF2);
 
@@ -243,5 +246,67 @@ public class GameCardPanel extends JPanel {
 	public GameVo getGameVo() {
 		return gameVo;
 	}
+	class MyTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
+		public MyTextField() {
+			super();
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 13));
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		}
+		
+		
+		public MyTextField(Color textColor) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体", 1, 13));
+			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		}
+
+	}
+
+	class MyLabel extends JLabel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyLabel() {
+			super();
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 13));
+
+		}
+		
+		public MyLabel(Color textColor) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体", 1, 13));
+
+		}
+		public MyLabel(String text) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
+			this.setText(text);
+			this.setFont(new Font("黑体", 1, 13));
+
+		}
+		public MyLabel(Color textColor, String text) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setText(text);
+			this.setFont(new Font("黑体", 1, 13));
+
+		}
+	}
 }
