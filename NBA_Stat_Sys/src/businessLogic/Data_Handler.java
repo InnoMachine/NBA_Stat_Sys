@@ -478,7 +478,7 @@ public class Data_Handler {
 	private void TGPSetFreeThrowRate(TeamPerformanceInSingleGame temp) {
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
 		b = new BigDecimal(r);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setFreeThrowRate(f);
 		
 	}
@@ -486,14 +486,14 @@ public class Data_Handler {
 	private void TGPSetThreePointHitRate(TeamPerformanceInSingleGame temp) {
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
 		b = new BigDecimal(r);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setThreePointHitRate(f);
 	}
 	
 	private void TGPSetHitRate(TeamPerformanceInSingleGame temp) {
 		double r = temp.getHitNum()/(double)temp.getShotNum();
 		b = new BigDecimal(r);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitRate(f);
 	}
 	private void CreateGameVo(GameVo vo, TeamPerformanceInSingleGame tgpg,
