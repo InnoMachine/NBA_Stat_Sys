@@ -77,7 +77,7 @@ public class PrepareDB {
 	public static GameDate getGamedateFromPath(String path) {
 //		path = "CSEdata/new/12-13_10-30_BOS-MIA";
 		System.out.println(path);
-		String time = path.split("\\")[2];
+		String time = path.split("\\\\|\\/")[2];
 		return new GameDate(GameDate.appendYear(time.split("_")[0], time.split("_")[1]));
 	}
 
