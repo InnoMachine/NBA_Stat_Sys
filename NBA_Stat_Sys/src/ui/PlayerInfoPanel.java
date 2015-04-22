@@ -25,6 +25,7 @@ import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import ui.ShowPanel.MyTextField;
+import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
@@ -227,10 +228,8 @@ public class PlayerInfoPanel extends JPanel {
 
 		for (int i = 0; i < fiveRecentGames.size(); i++) {
 			Vector<String> a = new Vector<String>();
-			a.add("");
-			a.add("");
-			// a.add(fiveRecentGames.get(i));
-			// a.add(fiveRecentGames.get(i));
+			a.add(fiveRecentGames.get(i).getDate());
+			a.add(fiveRecentGames.get(i).getOpTeam());
 			a.add(String.valueOf(fiveRecentGames.get(i).getTime()));
 			a.add(String.valueOf(fiveRecentGames.get(i).getHitNum()));
 			a.add(String.valueOf(fiveRecentGames.get(i).getShotNum()));
@@ -264,8 +263,8 @@ public class PlayerInfoPanel extends JPanel {
 
 		// -----------------------------------------------------------------------------------------------
 
-		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
-		// historicalGames=player_BS
+		PlayerGames historicalGames = new PlayerGames(PlayerName);
+		 historicalGames=player_BS.getPlayerPerformacne(PlayerName);
 
 		if (historicalGameRowData == null) {
 			historicalGameRowData = new Vector<Vector<String>>();
@@ -294,10 +293,8 @@ public class PlayerInfoPanel extends JPanel {
 
 		for (int i = 0; i < historicalGames.size(); i++) {
 			Vector<String> a = new Vector<String>();
-			a.add("");
-			a.add("");
-			// a.add(historicalGames.get(i));
-			// a.add(historicalGames.get(i));
+			a.add(historicalGames.get(i).getDate());
+			a.add(historicalGames.get(i).getOpTeam());
 			a.add(String.valueOf(historicalGames.get(i).getTime()));
 			a.add(String.valueOf(historicalGames.get(i).getHitNum()));
 			a.add(String.valueOf(historicalGames.get(i).getShotNum()));
