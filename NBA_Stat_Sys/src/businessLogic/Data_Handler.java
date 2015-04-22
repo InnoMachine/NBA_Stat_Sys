@@ -1024,5 +1024,10 @@ public class Data_Handler {
 		return gamevo;
 		
 	}
+
+	public void updateData() {
+	
+		
+	}
 }
 
