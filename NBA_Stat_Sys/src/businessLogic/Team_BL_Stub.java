@@ -6,6 +6,7 @@ import enums.Conference;
 import enums.Division;
 import vo.PlayerVo;
 import vo.TeamCardVo;
+import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
 
@@ -192,6 +193,12 @@ public class Team_BL_Stub implements Team_BS {
 
 	@Override
 	public TeamRecentGames getTeamRecentPerformance(String abbr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr) {
 		// TODO Auto-generated method stub
 		return null;
 	}

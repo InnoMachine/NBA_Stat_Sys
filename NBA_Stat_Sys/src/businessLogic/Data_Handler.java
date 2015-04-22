@@ -1079,5 +1079,19 @@ public class Data_Handler {
 		}
 		return null;
 	}
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr)
+	{
+		ArrayList<TeamPerformanceInSingleGame> list = new ArrayList<TeamPerformanceInSingleGame>();
+		for(GameVo temp:gamevo){
+			if(temp.getGuestTeam().equals(abbr)){
+				list.add(temp.getGuestTP());
+			}
+			if(temp.getHomeTeam().equals(abbr)){
+				list.add(temp.getHomeTP());
+			}
+		}
+		return list;
+		
+	}
 }
 
