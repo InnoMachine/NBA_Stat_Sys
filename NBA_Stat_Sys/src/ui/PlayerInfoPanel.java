@@ -258,13 +258,12 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn);
 
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
-		setSize(3 * X / 5, Y / 2);
+		setSize( X*1000 / 1366, Y *450/768);
 		recentGameInfoJSP.setVisible(true);
 
 		// -----------------------------------------------------------------------------------------------
-
-		PlayerGames historicalGames = new PlayerGames(PlayerName);
-		 historicalGames=player_BS.getPlayerPerformacne(PlayerName);
+ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPerformanceInSingleGame>();
+		 historicalGames=player_BS.getPlayerPerformacne(PlayerName).getGames();
 
 		if (historicalGameRowData == null) {
 			historicalGameRowData = new Vector<Vector<String>>();
@@ -313,6 +312,7 @@ public class PlayerInfoPanel extends JPanel {
 			a.add(String.valueOf(historicalGames.get(i).getScore()));
 			historicalGameRowData.add(a);
 		}
+		
 		if (historicalGameInfoTable != null) {
 			historicalGameInfoTable.setVisible(false);
 		}
@@ -324,11 +324,11 @@ public class PlayerInfoPanel extends JPanel {
 				historicalGameColumn);
 
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
-		historicalGameInfoJSP.setSize(3 * X / 5, Y / 2);
+		historicalGameInfoJSP.setSize(X*1000 / 1366, Y *450/768);
 		historicalGameInfoJSP.setVisible(true);
 
 		JTP = new JTabbedPane();
-		JTP.setBounds(X / 5, Y / 3, 3 * X / 5, Y / 2);
+		JTP.setBounds(X *183/ 1366, Y*220/768, X*1000 / 1366, Y *450/768);
 		JTP.addTab("currentData", recentGameInfoJSP);
 		JTP.addTab("historicalData", historicalGameInfoJSP);
 		bgLabel.add(JTP);

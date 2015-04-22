@@ -342,46 +342,52 @@ public class Player_BL_Stub implements Player_BS {
 
 	@Override
 	public PlayerRecentGames getPlayerRecentPerformance(String name) {
-		PlayerRecentGames playerRecentGames=new PlayerRecentGames();
-		PlayerPerformanceInSingleGame pp1=new PlayerPerformanceInSingleGame("Mike Miller");
+		PlayerRecentGames playerRecentGames = new PlayerRecentGames();
+		PlayerPerformanceInSingleGame pp1 = new PlayerPerformanceInSingleGame(
+				"Mike Miller");
 		pp1.setHitNum(9);
 		pp1.setThreePointHitNum(3);
 		pp1.setFoul(3);
 		pp1.setSteal(2);
 		pp1.setReboundOverall(6);
 		pp1.setScore(19);
-		
-		PlayerPerformanceInSingleGame pp2=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		pp1.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp2 = new PlayerPerformanceInSingleGame(
+				"Anderson Varejao");
 		pp2.setHitNum(0);
 		pp2.setThreePointHitNum(0);
 		pp2.setFoul(0);
 		pp2.setSteal(0);
 		pp2.setReboundOverall(0);
 		pp2.setScore(0);
-	
-		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Anthony Bennett");
+		pp2.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp3 = new PlayerPerformanceInSingleGame(
+				"Anthony Bennett");
 		pp3.setHitNum(9);
 		pp3.setThreePointHitNum(3);
 		pp3.setFoul(3);
 		pp3.setSteal(2);
 		pp3.setReboundOverall(6);
 		pp3.setScore(19);
-		
-		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Andre Roberson");
+		pp3.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp4 = new PlayerPerformanceInSingleGame(
+				"Andre Roberson");
 		pp4.setHitNum(0);
 		pp4.setThreePointHitNum(0);
 		pp4.setFoul(0);
 		pp4.setSteal(0);
 		pp4.setReboundOverall(0);
 		pp4.setScore(0);
-	
-		PlayerPerformanceInSingleGame pp5=new PlayerPerformanceInSingleGame("Evan Turner");
+		pp4.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp5 = new PlayerPerformanceInSingleGame(
+				"Evan Turner");
 		pp5.setHitNum(9);
 		pp5.setThreePointHitNum(3);
 		pp5.setFoul(3);
 		pp5.setSteal(2);
 		pp5.setReboundOverall(6);
 		pp5.setScore(19);
+		pp5.setGameLabel("13-14_2014-01-01_CHA-LAC");
 		playerRecentGames.AddNewGame(pp1);
 		playerRecentGames.AddNewGame(pp2);
 		playerRecentGames.AddNewGame(pp3);
@@ -415,7 +421,7 @@ public class Player_BL_Stub implements Player_BS {
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		if (key.equals("")) {
 			if (first == "A") {
-				System.out.println("null   "+"A");
+				System.out.println("null   " + "A");
 				PlayerVo playerVo1 = new PlayerVo();
 				playerVo1.setName("Andre Miller");
 				playerVo1.setAge(25);
@@ -435,7 +441,7 @@ public class Player_BL_Stub implements Player_BS {
 				playerVo2.setNumber("6");
 				playerVos.add(playerVo2);
 			} else {
-				System.out.println("null   "+first);
+				System.out.println("null   " + first);
 				PlayerVo playerVo1 = new PlayerVo();
 				playerVo1.setName("Dion Waiters");
 				playerVo1.setAge(25);
@@ -477,7 +483,7 @@ public class Player_BL_Stub implements Player_BS {
 				playerVo2.setNumber("6");
 				playerVos.add(playerVo2);
 			} else {
-				System.out.println("key   "+first);
+				System.out.println("key   " + first);
 				PlayerVo playerVo1 = new PlayerVo();
 				playerVo1.setName("Lou Williams");
 				playerVo1.setAge(25);
@@ -498,14 +504,67 @@ public class Player_BL_Stub implements Player_BS {
 				playerVos.add(playerVo2);
 			}
 		}
-		
+
 		return playerVos;
 	}
 
 	@Override
-	public PlayerGames getPlayerPerformacne(
-			String name) {
+	public PlayerGames getPlayerPerformacne(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		PlayerGames playerGames = new PlayerGames(name);
+		ArrayList<PlayerPerformanceInSingleGame> games = new ArrayList<PlayerPerformanceInSingleGame>();
+		PlayerPerformanceInSingleGame pp1 = new PlayerPerformanceInSingleGame(
+				"Mike Miller");
+		pp1.setHitNum(9);
+		pp1.setThreePointHitNum(3);
+		pp1.setFoul(3);
+		pp1.setSteal(2);
+		pp1.setReboundOverall(6);
+		pp1.setScore(19);
+		pp1.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp2 = new PlayerPerformanceInSingleGame(
+				"Anderson Varejao");
+		pp2.setHitNum(0);
+		pp2.setThreePointHitNum(0);
+		pp2.setFoul(0);
+		pp2.setSteal(0);
+		pp2.setReboundOverall(0);
+		pp2.setScore(0);
+		pp2.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp3 = new PlayerPerformanceInSingleGame(
+				"Anthony Bennett");
+		pp3.setHitNum(9);
+		pp3.setThreePointHitNum(3);
+		pp3.setFoul(3);
+		pp3.setSteal(2);
+		pp3.setReboundOverall(6);
+		pp3.setScore(19);
+		pp3.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp4 = new PlayerPerformanceInSingleGame(
+				"Andre Roberson");
+		pp4.setHitNum(0);
+		pp4.setThreePointHitNum(0);
+		pp4.setFoul(0);
+		pp4.setSteal(0);
+		pp4.setReboundOverall(0);
+		pp4.setScore(0);
+		pp4.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		PlayerPerformanceInSingleGame pp5 = new PlayerPerformanceInSingleGame(
+				"Evan Turner");
+		pp5.setHitNum(9);
+		pp5.setThreePointHitNum(3);
+		pp5.setFoul(3);
+		pp5.setSteal(2);
+		pp5.setReboundOverall(6);
+		pp5.setScore(19);
+		pp5.setGameLabel("13-14_2014-01-01_CHA-LAC");
+		games.add(pp1);
+		games.add(pp2);
+		games.add(pp3);
+		games.add(pp4);
+		games.add(pp5);
+		playerGames.setGames(games);
+
+		return playerGames;
 	}
 }
