@@ -55,10 +55,11 @@ public class Data_Handler {
 		gamevo = new ArrayList<GameVo>();
 		SetPlayerVo();
 		SetTeamVo();
+		PlayerDivisionSet();
 		loadGames();
 		playerCalculate();
 		TeamCalculate();
-		PlayerDivisionSet();
+		
 		
 	}
 	
@@ -304,9 +305,6 @@ public class Data_Handler {
 				temp.setEfficiencyField(0);
 
 			}
-		
-			//System.out.println(temp.getGmSc());
-				
 			temp.setWeighted(temp.getScore()+temp.getReboundOverall()+temp.getBlock());
 			
 		}
@@ -541,7 +539,6 @@ public class Data_Handler {
 				teamlistvo.get(i).setScore(teamlistvo.get(i).getScore()+tgp.getScore());
 				teamlistvo.get(i).setWiningNum(teamlistvo.get(i).getWinningNum()+tgp.getWinning());
 				teamlistvo.get(i).setRoundAttack(teamlistvo.get(i).getRoundAttack()+tgp.getRoundAttack());
-				
 				teamlistvo.get(i).setOpDefensiveRebound(teamlistvo.get(i).getOpDefensiveRebound()+tgp.getOpDefensiveRebound());
 				teamlistvo.get(i).setOpOffensiveRebound(teamlistvo.get(i).getOpOffensiveRebound()+tgp.getOpOffensiveRebound());
 				teamlistvo.get(i).setOpReboundAll(teamlistvo.get(i).getOpReboundAll()+tgp.getOpDefensiveRebound()+tgp.getOpOffensiveRebound());
@@ -1027,8 +1024,40 @@ public class Data_Handler {
 	}
 
 	public void updateData() {
-	
-		
+		ArrayList<GamePO> ngs = new ArrayList<GamePO>();
+		for(int i=0;i<ngs.size();i++)
+		{
+			GameVo game = new GameVo();
+			TeamPerformance tpg = ngs.get(i).getGuestTP();
+			TeamPerformance tph = ngs.get(i).getHomeTP();
+			TeamPerformanceInSingleGame tgpg=setPerformance(tpg);
+			TeamPerformanceInSingleGame tgph=setPerformance(tph);
+			tgpg.setOpDefensiveRebound(tgph.getDefensiveRebound());
+			tgpg.setOpOffensiveRebound(tgph.getOffensiveRebound());
+			tgpg.setOpTwoPointShotNum(tgph.getShotNum()-tgph.getThreePointShotNum());
+			tgpg.setOpScore(tgph.getScore());
+			tgpg.CalculateRoundAttack();
+			tgph.setOpDefensiveRebound(tgpg.getDefensiveRebound());
+			tgph.setOpOffensiveRebound(tgpg.getOffensiveRebound());
+			tgph.setOpTwoPointShotNum(tgpg.getShotNum()-tgpg.getThreePointShotNum());
+			tgph.setOpScore(tgpg.getScore());
+			tgph.CalculateRoundAttack();
+			tgph.isWinning();
+			tgpg.isWinning();
+			tgpg.setOpRoundAttack(tgph.getRoundAttack());
+			tgph.setOpRoundAttack(tgpg.getRoundAttack());
+			playerVoPSet(tgpg);
+			playerVoPSet(tgph);
+			teamVoPSet(tgpg);
+			teamVoPSet(tgph);
+			TGPRateSet(tgph);
+			TGPRateSet(tgpg);
+			
+			CreateGameVo(game,tgpg,tgph,ngs.get(i));
+			gamevo.add(game);
+		}
+		playerCalculate();
+		TeamCalculate();
 	}
 	public GameDate getDateNow(){
 		return null;

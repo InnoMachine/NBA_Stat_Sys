@@ -37,7 +37,6 @@ public class Game_BL implements Game_BS{
 	}
 
 
-	@Override
 	public PlayerPerformanceInSingleGame getPerformance(String label,
 			String name) {
 		
