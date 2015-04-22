@@ -66,19 +66,19 @@ public class StartPanel extends JPanel {
 	public void createButton() {
 		int subX=55*X/100;
 		MyButton playerInfobtn = new MyButton("球员信息");
-		playerInfobtn.setBounds(7*X/20, 9*Y/20, X/6, Y/10);
+		playerInfobtn.setBounds(12*X/20, 11*Y/20, X/6, Y/10);
 //		playerInfobtn.addActionListener(e -> playerOpe());
 		playerInfobtn.addActionListener(e -> toPlayerPanel());
 		bgLabel.add(playerInfobtn);
 
 		MyButton teamInfobtn = new MyButton("球队信息");
-		teamInfobtn.setBounds(7*X/20, 2*Y/3, X/6,  Y/10);
+		teamInfobtn.setBounds(12*X/20, 14*Y/20, X/6,  Y/10);
 		teamInfobtn.addActionListener(e -> toTeamPanel());
 		bgLabel.add(teamInfobtn);
 		
 
 		MyButton gameInfobtn = new MyButton("比赛信息");
-		gameInfobtn.setBounds(7*X/20, 53*Y/60, X/6,  Y/10);
+		gameInfobtn.setBounds(12*X/20, 17*Y/20, X/6,  Y/10);
 		gameInfobtn.addActionListener(e -> toGamePanel());
 		bgLabel.add(gameInfobtn);
 		
@@ -152,7 +152,29 @@ public class StartPanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-
+		
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(X*1180/1366, Y*10/768, X / 25, X / 25);
+		home.setIcon(homeIcon);
+		home.setOpaque(false);
+		home.setContentAreaFilled(false);
+		home.setBorderPainted(false);
+		bgLabel.add(home);
+		
+		JButton back=new JButton();
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
+		.getImage().getScaledInstance(X / 25, X / 25,
+				Image.SCALE_SMOOTH));
+		back.setBounds(X*1180/1366, Y*10/768, X / 25, X / 25);
+		back.setIcon(backIcon);
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		bgLabel.add(back);
+		
 	}
 
 	public void playerOpe() {

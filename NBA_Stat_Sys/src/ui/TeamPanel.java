@@ -55,7 +55,6 @@ public class TeamPanel extends JPanel{
 		 * Image.SCALE_SMOOTH)); bgLabel.setIcon(bg); this.add(bgLabel);
 		 */
 		JButton home = new JButton();
-		System.out.println(X+"  "+Y);
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
