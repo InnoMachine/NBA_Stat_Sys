@@ -20,4 +20,6 @@ public interface PlayerDao {
 	
 	public ArrayList<PlayerPO> getAllPlayers();
 	
+	public void updateHostTeam(String playerName, String teamAbbr);
+	
 }

@@ -49,13 +49,15 @@ public class DataFurtherDistributor {
 			for(GamePO gamePo: gameList){
 				for(SinglePerformance sp: gamePo.getGuestTP().getSpList()){//guest performance
 					if(sp.getName().equalsIgnoreCase(playerName)){
-						spList.add(SinglePerformance.makeSP(gamePo.getGuestTeam(), gamePo.getGameLabel(), sp.toString()));
+						spList.add(SinglePerformance.makeSP(sp.toString()));
+						new PlayerDaoImpl().updateHostTeam(playerName, sp.getTeamThen());//update player's host team
 					}
 				}
 				
 				for(SinglePerformance sp: gamePo.getHomeTP().getSpList()){//home performance
 					if(sp.getName().equalsIgnoreCase(playerName)){
-						spList.add(SinglePerformance.makeSP(gamePo.getHomeTeam(), gamePo.getGameLabel(), sp.toString()));
+						spList.add(SinglePerformance.makeSP(sp.toString()));
+						new PlayerDaoImpl().updateHostTeam(playerName, sp.getTeamThen());//update player's host team
 					}
 				}
 			}

@@ -62,7 +62,7 @@ public class TeamDaoImpl implements TeamDao {
 	@Override
 	public void update(TeamPO team) {
 		
-		String sql = "update nba.teams set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=?,players=?,seasontp=? where abbreviation=?";
+		String sql = "update nba.teams set teamname=?,abbreviation=?,city=?,conference=?,division=?,homefield=?,birthyear=?,imgpath=?,currentplayers=?,seasontp=? where abbreviation=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -120,7 +120,7 @@ public class TeamDaoImpl implements TeamDao {
 	public TeamPO getTeamByAbbr(String abbr) {
 		
 		TeamPO team = new TeamPO();
-		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players,seasontp from nba.teams where abbreviation=?";
+		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,currentplayers,seasontp from nba.teams where abbreviation=?";
 		Connection conn = DBUtil.open();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -140,8 +140,8 @@ public class TeamDaoImpl implements TeamDao {
 				
 				//判断一个引用类型数据是否null。 用==来判断。
 				
-				if(rs.getString("players") != null){
-					String playerListText = rs.getString("players");
+				if(rs.getString("currentplayers") != null){
+					String playerListText = rs.getString("currentplayers");
 					String[] splited = playerListText.split(";");
 					ArrayList<String> playerNameList = new ArrayList<String>();
 					for(String playerName:splited){
@@ -156,7 +156,7 @@ public class TeamDaoImpl implements TeamDao {
 					String[] splited = seasontpText.split("\\$");
 					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
 					for(String tp:splited){
-						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"),rs.getString("gamelabel"), tp));
+						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"),tp.split(";")[0], tp));
 					}
 					team.setSeansonTeamPerformance(tpList);
 				}
@@ -176,7 +176,7 @@ public class TeamDaoImpl implements TeamDao {
 	public ArrayList<TeamPO> getAllTeams() {
 		
 		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>();
-		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,players,seasontp from nba.teams";
+		String sql = "select teamname,abbreviation,city,conference,division,homefield,birthyear,imgpath,currentplayers,seasontp from nba.teams";
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();
@@ -194,8 +194,8 @@ public class TeamDaoImpl implements TeamDao {
 				team.setBirthYear(rs.getString("birthyear"));
 				team.setImgPath(rs.getString("imgpath"));
 				
-				if(rs.getString("players") != null){
-					String playerListText = rs.getString("players");
+				if(rs.getString("currentplayers") != null){
+					String playerListText = rs.getString("currentplayers");
 					String[] splited = playerListText.split(";");
 					ArrayList<String> playerNameList = new ArrayList<String>();
 					for(String playerName:splited){
@@ -209,7 +209,7 @@ public class TeamDaoImpl implements TeamDao {
 					String[] splited = seasontpText.split("\\$");
 					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
 					for(String tp:splited){
-						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), rs.getString("gamelabel"), tp));
+						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), tp.split(";")[0], tp));
 					}
 					team.setSeansonTeamPerformance(tpList);
 				}

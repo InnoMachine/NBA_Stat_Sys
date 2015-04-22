@@ -8,7 +8,7 @@ package po;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class SeasonTracker {
+public class SeasonTracker {//每个赛季一个Tracker对象
 	
 	private ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();	//所有比赛日的顺序打包
 	private GameDate currentDate;//当前日期
@@ -42,6 +42,7 @@ public class SeasonTracker {
 			day = 1;
 		}
 		return new GameDate(year, month, day);
+		
 	}
 
 	public void setCurrentDate(GameDate currentDate) {

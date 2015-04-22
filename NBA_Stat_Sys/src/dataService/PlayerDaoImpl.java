@@ -182,4 +182,21 @@ public class PlayerDaoImpl implements PlayerDao {
 		return playerList;
 	}
 
+	@Override
+	public void updateHostTeam(String playerName, String teamAbbr) {
+		
+		String sql = "update nba.players set currentteam=? where name=?";
+		Connection conn = DBUtil.open();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, teamAbbr);
+			pstmt.setString(2, playerName);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(conn);
+		}
+	}
+
 }

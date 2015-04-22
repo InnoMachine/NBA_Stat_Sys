@@ -152,7 +152,7 @@ public class GameDaoImpl implements GameDao {
 	public ArrayList<GamePO> getAllGames() {
 		
 		ArrayList<GamePO> gameList = new ArrayList<GamePO>();
-		String sql = "select gamelabel,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp from nba.games";
+		String sql = "select gamelabel,seasonid,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp from nba.games";
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();

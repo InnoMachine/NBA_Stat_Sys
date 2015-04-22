@@ -28,7 +28,7 @@ public class InitDB {
 				+ " birthyear varchar(10) NOT NULL,"
 				+ " imgPath varchar(40) NOT NULL,"
 				+ " currentplayers varchar(500),"
-				+ " seasontp text)";//sudo
+				+ " seasontp longtext)";//sudo
 		
 		String sql2 = "create table if not exists nba.players("
 				+ " name varchar(30) PRIMARY KEY,"
