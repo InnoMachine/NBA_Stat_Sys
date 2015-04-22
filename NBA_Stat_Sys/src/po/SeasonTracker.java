@@ -10,12 +10,13 @@ import java.util.Calendar;
 
 public class SeasonTracker {//每个赛季一个Tracker对象
 	
-	private ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();	//所有比赛日的顺序打包
+	private ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();	//所有比赛日包的顺序列表
 	private GameDate currentDate;//当前日期
 	private String seasonId;//当前赛季
 	private ArrayList<String> updateTeamList;//当日需要更新信息的球队名单（即参赛了）
 	private ArrayList<String> updatePlayerList;//当日需要更新信息的球员名单（即参赛了）
 	private int gameNumSofar;//本赛季已经进行总场次
+	private ArrayList<String> fileNameList;//记录已经处理的数据文件名列表
 	
 	public GameDate getCurrentDate() {
 		return currentDate;
@@ -91,6 +92,14 @@ public class SeasonTracker {//每个赛季一个Tracker对象
 
 	public void setUpdatePlayerList(ArrayList<String> updatePlayerList) {
 		this.updatePlayerList = updatePlayerList;
+	}
+
+	public ArrayList<String> getFileNameList() {
+		return fileNameList;
+	}
+
+	public void setFileNameList(ArrayList<String> fileNameList) {
+		this.fileNameList = fileNameList;
 	}
 	
 }

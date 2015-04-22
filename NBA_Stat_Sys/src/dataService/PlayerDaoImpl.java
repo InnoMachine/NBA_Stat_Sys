@@ -120,7 +120,7 @@ public class PlayerDaoImpl implements PlayerDao {
 				player.setActionImgPath(rs.getString("actionimgpath"));
 				player.setPortraitImgPath(rs.getString("portraitimgpath"));
 				
-				if(rs.getString("seasonsp") != null){
+				if((rs.getString("seasonsp") != null) && !rs.getString("seasonsp").equals("")){
 					String seasonSpListText = rs.getString("seasonsp");
 					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 					String[] splited = seasonSpListText.split("\\$");
@@ -162,7 +162,7 @@ public class PlayerDaoImpl implements PlayerDao {
 				player.setActionImgPath(rs.getString("actionimgpath"));
 				player.setPortraitImgPath(rs.getString("portraitimgpath"));
 				
-				if(rs.getString("seasonsp") != null){
+				if((rs.getString("seasonsp") != null)&&(!rs.getString("seasonsp").equalsIgnoreCase(""))){
 					String seasonSpListText = rs.getString("seasonsp");
 					ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 					String[] splited = seasonSpListText.split("\\$");

@@ -33,16 +33,15 @@ public class DataFileReader {
 
 	private static Scanner scanner;
 
-	public static void importBasicData() {
+	public static void importPlayersAndTeams() {
 
-		DataFileReader.importGames();
-		DataFileReader.importPlayers();
-		DataFileReader.importTeams();
+		DataFileReader.importPlayersFrom("CSEdata/players/info");
+		DataFileReader.importTeamsFrom("CSEdata/teams/teams");
 		System.out.println("------------------------------");
 
 	}
 
-	public static void importGames() {
+	public static void importGamesFrom(ArrayList<String> gameFileNameList) {
 
 		String gameFileName;
 		String originalString;
@@ -50,9 +49,9 @@ public class DataFileReader {
 		GamePO game;
 		GameDao gameController = new GameDaoImpl();
 
-		ArrayList<String> gameFileNameList = DataFileReader
-				.getFileNameList("CSEdata/matches");
-		for (int i = 0; i < gameFileNameList.size(); i++) {
+//		ArrayList<String> gameFileNameList = DataFileReader
+//				.getFileNameList(path);
+		for (int i = 0; i < gameFileNameList.size(); i ++) {
 			gameFileName = gameFileNameList.get(i);
 			originalString = DataFileReader.getOriginalFileString(gameFileName);
 			gameDataList = DataFileReader.gameDataSplitor(originalString);
@@ -63,10 +62,10 @@ public class DataFileReader {
 
 	}
 
-	public static void importPlayers() {
+	public static void importPlayersFrom(String path) {
 
 		ArrayList<String> playerInfoFileNameList = DataFileReader
-				.getFileNameList("CSEdata/players/info");
+				.getFileNameList(path);
 		for (int i = 0; i < playerInfoFileNameList.size(); i++) {
 
 			String playerInfoFileName = playerInfoFileNameList.get(i);
@@ -83,11 +82,11 @@ public class DataFileReader {
 
 	}
 
-	public static void importTeams() {
+	public static void importTeamsFrom(String path) {
 
 		ArrayList<TeamPO> teamList = DataFileReader.makeTeamList(DataFileReader
 				.teamDataSplitor(DataFileReader.splitKeyword(DataFileReader
-						.getOriginalFileString("CSEdata/teams/teams"))));
+						.getOriginalFileString(path))));
 		TeamDao teamController = new TeamDaoImpl();
 		for (int k = 0; k < teamList.size(); k++) {
 			teamController.add(teamList.get(k));

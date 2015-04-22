@@ -156,7 +156,7 @@ public class TeamDaoImpl implements TeamDao {
 					String[] splited = seasontpText.split("\\$");
 					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
 					for(String tp:splited){
-						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"),tp.split(";")[0], tp));
+						tpList.add(TeamPerformance.makeTP(tp));
 					}
 					team.setSeansonTeamPerformance(tpList);
 				}

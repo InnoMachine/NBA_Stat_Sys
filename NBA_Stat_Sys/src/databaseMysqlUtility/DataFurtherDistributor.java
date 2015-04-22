@@ -23,7 +23,7 @@ import po.TeamPerformance;
 public class DataFurtherDistributor {
 
 	public static void allDistribute() {
-		
+
 		DataFurtherDistributor.importPlayersToTeams();
 		DataFurtherDistributor.importSeasontpToTeams();
 		DataFurtherDistributor.importSpToPlayers();
