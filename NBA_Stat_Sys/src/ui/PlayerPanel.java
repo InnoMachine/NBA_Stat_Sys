@@ -361,7 +361,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this);
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
 		bgLabel.add(dailyHotPlayerPanel);
 		
 		
@@ -369,7 +369,7 @@ public class PlayerPanel extends JPanel {
 		
 		progress = new JLabel();
 		progress.setText("进步最快球员"+progressby);
-		progress.setBounds(X*60/1366, Y*390/768, X*300/1366, Y*20/768);
+		progress.setBounds(X*60/1366, Y*390/768, X*300/1366, Y*30/768);
 		progress.setForeground(Color.WHITE);
 		progress.setFont(new Font("微软雅黑",1,20));
 		bgLabel.add(progress);
@@ -413,7 +413,7 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this);
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*208/768);
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
 		bgLabel.add(progressFastPlayerPanel);	
 		
 		
@@ -509,7 +509,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this);
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
 		bgLabel.add(dailyHotPlayerPanel);
 
 	}
@@ -524,7 +524,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerSeason(seasonHotPlayerCriteria),mainFrame,this);
 		seasonHotPlayerPanel.setVisible(true);
-		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
+		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
 		bgLabel.add(seasonHotPlayerPanel);
 	}
 
@@ -536,7 +536,7 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this);
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*208/768);
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
 		bgLabel.add(progressFastPlayerPanel);	
 	
 	}
