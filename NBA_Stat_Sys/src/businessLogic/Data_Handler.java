@@ -927,7 +927,7 @@ public class Data_Handler {
 					break;
 				}
 				if(i==listvo.size()&&!temp.getName().equals(listvo.get(i).getName())){
-					PlayerVo vo = new PlayerVo(temp.getName());
+					//PlayerVo vo = new PlayerVo(temp.getName());
 				}
 			}
 		}

@@ -19,7 +19,7 @@ public class PlayerVo {
 	
 	private String name;
 	private String team;
-	private int FirstOnNum;//先发场数？莫非是时间最长的5个。。
+	private int FirstOnNum;//先发场数
 	private int gameNum;
 	private int reboundOverall;
 	private int assistance;
@@ -96,6 +96,9 @@ public class PlayerVo {
 	
 	public PlayerVo(String name ){
 		this.name = name ;
+		
+	}
+	public PlayerVo(){
 		
 	}
 	public String getNumber() {

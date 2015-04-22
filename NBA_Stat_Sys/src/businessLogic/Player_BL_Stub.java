@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import enums.Conference;
 import enums.Division;
 import vo.PlayerCardVo;
-<<<<<<< HEAD
-=======
 import vo.PlayerGames;
->>>>>>> origin/master
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;

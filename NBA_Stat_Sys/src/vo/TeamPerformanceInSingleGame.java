@@ -79,6 +79,9 @@ public class TeamPerformanceInSingleGame {
 		playerlist = new ArrayList<PlayerPerformanceInSingleGame>();
 		firstonlist = new ArrayList<PlayerPerformanceInSingleGame>();
 	}
+	public TeamPerformanceInSingleGame(){
+		
+	}
 	public void CalculateRoundAttack()
 	{
 		if(offensiveRebound+opDefensiveRebound!=0)
