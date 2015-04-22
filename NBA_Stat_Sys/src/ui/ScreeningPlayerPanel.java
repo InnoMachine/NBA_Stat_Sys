@@ -731,7 +731,9 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		}
 	}
-
+	public void selfClose(){
+		this.setVisible(false);
+	}
 	// class: TableRenderer
 	class PlayerCardRenderer implements TableCellRenderer {
 
@@ -748,6 +750,13 @@ public class ScreeningPlayerPanel extends JPanel {
 
 			renderer.fillPanel();
 			renderer.setOpaque(false);
+			if (hasFocus) {
+				PlayerPanel ppPanel=new PlayerPanel(mainFrame);
+				ppPanel.setVisible(false);
+				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerInfo()
+						.getName(), mainFrame,new ScreeningPlayerPanel(mainFrame, ppPanel));
+				selfClose();
+			}
 			// TODO Auto-generated method stub
 			return renderer;
 

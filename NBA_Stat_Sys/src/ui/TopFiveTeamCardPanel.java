@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -18,6 +19,9 @@ import vo.TeamVo;
 public class TopFiveTeamCardPanel extends JPanel {
 	private ArrayList<TeamVo> TeamVos = new ArrayList<TeamVo>();
 	private String criteria;
+    JFrame mainFrame;
+    JPanel previousPanel;
+	
 	int X;
 	int Y;
 
@@ -42,9 +46,12 @@ public class TopFiveTeamCardPanel extends JPanel {
 	JLabel fifthTeamInfolbl;
 	JLabel fifthTeamValuelbl;
 
-	public TopFiveTeamCardPanel(int X, int Y, ArrayList<TeamCardVo> hotTeams) {
+	public TopFiveTeamCardPanel(int X, int Y, ArrayList<TeamCardVo> hotTeams,JFrame mainFrame,JPanel previousPanel) {
 		this.X = X;
 		this.Y = Y;
+		this.mainFrame=mainFrame;
+		this.previousPanel=previousPanel;
+		
 		this.setVisible(true);
 		this.setLayout(null);
 		this.setOpaque(false);
@@ -221,6 +228,10 @@ public class TopFiveTeamCardPanel extends JPanel {
 				.getScaledInstance(X * 160 / 1366, Y * 160 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		firstTeambtn.setIcon(teamImg1);
+		firstTeambtn.addActionListener(e->{
+			previousPanel.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(hotTeams.get(0).getAbbreviation(), mainFrame, previousPanel);
+		});
 		firstTeamNamelbl.setText(hotTeams.get(0).getCity() + " "
 				+ hotTeams.get(0).getTeamName());
 		firstTeamInfolbl.setText(String
@@ -235,6 +246,10 @@ public class TopFiveTeamCardPanel extends JPanel {
 				.getScaledInstance(X * 35 / 1366, Y * 35 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		secondTeambtn.setIcon(teamImg2);
+		secondTeambtn.addActionListener(e->{
+			previousPanel.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(hotTeams.get(1).getAbbreviation(), mainFrame, previousPanel);
+		});
 		secondTeamNamelbl.setText(hotTeams.get(1).getCity() + " "
 				+ hotTeams.get(1).getTeamName());
 		secondTeamInfolbl.setText(String.valueOf(hotTeams.get(1)
@@ -249,6 +264,10 @@ public class TopFiveTeamCardPanel extends JPanel {
 				.getScaledInstance(X * 35 / 1366, Y * 35 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		thirdTeambtn.setIcon(teamImg3);
+		thirdTeambtn.addActionListener(e->{
+			previousPanel.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(hotTeams.get(2).getAbbreviation(), mainFrame, previousPanel);
+		});
 		thirdTeamNamelbl.setText(hotTeams.get(2).getCity() + " "
 				+ hotTeams.get(2).getTeamName());
 		thirdTeamInfolbl.setText(String
@@ -263,6 +282,10 @@ public class TopFiveTeamCardPanel extends JPanel {
 				.getScaledInstance(X * 35 / 1366, Y * 35 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		fourthTeambtn.setIcon(teamImg4);
+		fourthTeambtn.addActionListener(e->{
+			previousPanel.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(hotTeams.get(3).getAbbreviation(), mainFrame, previousPanel);
+		});
 		fourthTeamNamelbl.setText(hotTeams.get(3).getCity() + " "
 				+ hotTeams.get(3).getTeamName());
 		fourthTeamInfolbl.setText(String.valueOf(hotTeams.get(3)
@@ -277,6 +300,10 @@ public class TopFiveTeamCardPanel extends JPanel {
 				.getScaledInstance(X * 35 / 1366, Y * 35 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		fifthTeambtn.setIcon(teamImg5);
+		fifthTeambtn.addActionListener(e->{
+			previousPanel.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(hotTeams.get(4).getAbbreviation(), mainFrame, previousPanel);
+		});
 		fifthTeamNamelbl.setText(hotTeams.get(4).getCity() + " "
 				+ hotTeams.get(4).getTeamName());
 		fifthTeamInfolbl.setText(String

@@ -191,7 +191,7 @@ public class TeamPanel extends JPanel{
 		seasonHotData_FreeThrowRatebtn.setVisible(true);
 		add(seasonHotData_FreeThrowRatebtn);
 
-		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,team_BS.hotTeamSeason(seasonHotTeamCriteria));
+		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this);
 		seasonHotTeamPanel.setVisible(true);
 		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
 		this.add(seasonHotTeamPanel);
@@ -213,7 +213,7 @@ public class TeamPanel extends JPanel{
 		}
 		
 		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,
-				team_BS.hotTeamSeason                                                                                                                                                                           (seasonHotTeamCriteria));
+				team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this);
 		seasonHotTeamPanel.setVisible(true);
 		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
 		this.add(seasonHotTeamPanel);

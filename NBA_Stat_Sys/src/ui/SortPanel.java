@@ -1770,7 +1770,9 @@ public class SortPanel extends JPanel {
 		}
 
 	}
-
+	public void selfClose(){
+		this.setVisible(false);
+	}
 	// class: TableRenderer
 	class PlayerCardRenderer implements TableCellRenderer {
 
@@ -1786,7 +1788,14 @@ public class SortPanel extends JPanel {
 					((PlayerCardPanel) value).getCriteriaValue());
 
 			renderer.fillPanel();
-
+			
+			if (hasFocus) {
+				PlayerPanel ppPanel=new PlayerPanel(mainFrame);
+				ppPanel.setVisible(false);
+				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerInfo()
+						.getName(), mainFrame,new SortPanel("player",mainFrame, ppPanel));
+				selfClose();
+			}
 			// TODO Auto-generated method stub
 			return renderer;
 
@@ -1806,7 +1815,13 @@ public class SortPanel extends JPanel {
 					((TeamCardPanel) value).getCriteria(),
 					((TeamCardPanel) value).getCriteriaValue());
 			renderer.fillPanel();
-
+			if (hasFocus) {
+				TeamPanel ppPanel=new TeamPanel(mainFrame);
+				ppPanel.setVisible(false);
+				TeamInfoPanel a = new TeamInfoPanel(renderer.getTeamInfo()
+						.getAbbreviation(), mainFrame,new SortPanel("team",mainFrame, ppPanel));
+				selfClose();
+			}
 			// TODO Auto-generated method stub
 			return renderer;
 		}

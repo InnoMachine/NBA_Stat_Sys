@@ -232,6 +232,19 @@ public class GameInfoPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
+		JButton fresh = new JButton();
+		ImageIcon freshIcon = new ImageIcon(new ImageIcon("Image/freshIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		fresh.setBounds( X*10 / 1366, Y * 10 / 768, X / 25, X / 25);
+		fresh.setIcon(freshIcon);
+		fresh.setOpaque(false);
+		fresh.setContentAreaFilled(false);
+		fresh.setBorderPainted(false);
+		fresh.addActionListener(e -> fresh());
+		bgLabel.add(fresh);
+		
+		
 		mainFrame.getContentPane().add(this);
 
 		guestTeamlbl = new MyLabel();
@@ -1374,6 +1387,10 @@ public class GameInfoPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
+	}
+	
+	public void fresh(){
+		
 	}
 
 	class MyTextField extends JTextField {

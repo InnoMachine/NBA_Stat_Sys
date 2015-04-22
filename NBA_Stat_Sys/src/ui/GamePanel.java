@@ -69,8 +69,8 @@ public class GamePanel extends JPanel {
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
 		home.addActionListener(e -> back());
-
 		bgLabel.add(home);
+		
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
@@ -109,6 +109,19 @@ public class GamePanel extends JPanel {
 		});
 		bgLabel.add(close);
 
+		JButton fresh = new JButton();
+		ImageIcon freshIcon = new ImageIcon(new ImageIcon("Image/freshIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		fresh.setBounds( X*10 / 1366, Y * 10 / 768, X / 25, X / 25);
+		fresh.setIcon(freshIcon);
+		fresh.setOpaque(false);
+		fresh.setContentAreaFilled(false);
+		fresh.setBorderPainted(false);
+		fresh.addActionListener(e -> fresh());
+		bgLabel.add(fresh);
+		
+		
 		mainFrame.getContentPane().add(this);
 
 		MyLabel label = new MyLabel(Color.BLACK, "起始日期");
@@ -267,7 +280,11 @@ public class GamePanel extends JPanel {
 		mainFrame.getContentPane().add(sp);
 
 	}
+	public void fresh(){
 	
+		
+
+	}
 	
 	public void selfClose(){
 		this.setVisible(false);
