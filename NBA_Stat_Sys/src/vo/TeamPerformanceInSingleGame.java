@@ -76,7 +76,11 @@ public class TeamPerformanceInSingleGame {
 		opRoundAttack=0;
 		opTwoPointShotNum=0;
 		playerlist = new ArrayList<PlayerPerformanceInSingleGame>();
+<<<<<<< HEAD
+		firstonlist=new ArrayList<PlayerPerformanceInSingleGame>();
+=======
 		firstonlist =  new ArrayList<PlayerPerformanceInSingleGame>();
+>>>>>>> origin/master
 	}
 	public void CalculateRoundAttack()
 	{

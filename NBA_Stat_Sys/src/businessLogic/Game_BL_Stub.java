@@ -42,6 +42,7 @@ public class Game_BL_Stub implements Game_BS {
 		pp1.setReboundOverall(6);
 		pp1.setScore(19);
 		tp1.AddPlayerP(pp1);
+		tp1.AddFirstP(pp1);
 		PlayerPerformanceInSingleGame pp2=new PlayerPerformanceInSingleGame("Anderson Varejao");
 		pp2.setHitNum(0);
 		pp2.setThreePointHitNum(0);
@@ -50,7 +51,7 @@ public class Game_BL_Stub implements Game_BS {
 		pp2.setReboundOverall(0);
 		pp2.setScore(0);
 		tp1.AddPlayerP(pp2);
-		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Mike Miller");
+		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Anthony Bennett");
 		pp3.setHitNum(9);
 		pp3.setThreePointHitNum(3);
 		pp3.setFoul(3);
@@ -58,7 +59,7 @@ public class Game_BL_Stub implements Game_BS {
 		pp3.setReboundOverall(6);
 		pp3.setScore(19);
 		tp1.AddPlayerP(pp3);
-		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Andre Roberson");
 		pp4.setHitNum(0);
 		pp4.setThreePointHitNum(0);
 		pp4.setFoul(0);
@@ -66,7 +67,7 @@ public class Game_BL_Stub implements Game_BS {
 		pp4.setReboundOverall(0);
 		pp4.setScore(0);
 		tp1.AddPlayerP(pp4);
-		PlayerPerformanceInSingleGame pp5=new PlayerPerformanceInSingleGame("Mike Miller");
+		PlayerPerformanceInSingleGame pp5=new PlayerPerformanceInSingleGame("Evan Turner");
 		pp5.setHitNum(9);
 		pp5.setThreePointHitNum(3);
 		pp5.setFoul(3);
@@ -82,7 +83,7 @@ public class Game_BL_Stub implements Game_BS {
 		pp6.setReboundOverall(0);
 		pp6.setScore(0);
 		tp1.AddPlayerP(pp6);
-		tp1.AddFirstP(pp1);
+		
 		tp1.AddFirstP(pp2);
 		tp1.AddFirstP(pp3);
 		tp1.AddFirstP(pp4);

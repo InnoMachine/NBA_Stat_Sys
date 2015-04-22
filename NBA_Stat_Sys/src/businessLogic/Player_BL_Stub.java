@@ -346,8 +346,21 @@ public class Player_BL_Stub implements Player_BS {
 
 	@Override
 	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+		PlayerVo playerVo1 = new PlayerVo();
+		playerVo1.setName("Chris Johnson");
+		playerVo1.setAge(25);
+		playerVo1.setDivision(Division.ATLANTIC);
+		playerVo1.setNumber("19");
+		playerVos.add(playerVo1);
+		PlayerVo playerVo2 = new PlayerVo();
+		playerVo2.setName("Leandro Barbosa");
+		playerVo2.setAge(24);
+		playerVo2.setDivision(Division.SOUTHEAST);
+		playerVo2.setNumber("6");
+		playerVos.add(playerVo2);
+
+		return playerVos;
 	}
 
 	@Override
