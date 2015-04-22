@@ -32,6 +32,7 @@ public class TeamPerformanceInSingleGame {
 	private double hitRate;          //投篮命中率
 	private double threePointHitRate;//三分球命中率
 	private double freeThrowRate;    //罚球命中率
+	
 	private String highestScorePlayer;
 	private String highestReboundPlayer;
 	private String highestassistPlayer;
@@ -75,6 +76,7 @@ public class TeamPerformanceInSingleGame {
 		opRoundAttack=0;
 		opTwoPointShotNum=0;
 		playerlist = new ArrayList<PlayerPerformanceInSingleGame>();
+		firstonlist =  new ArrayList<PlayerPerformanceInSingleGame>();
 	}
 	public void CalculateRoundAttack()
 	{
