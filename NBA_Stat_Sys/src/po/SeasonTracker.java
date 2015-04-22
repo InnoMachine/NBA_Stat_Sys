@@ -6,18 +6,42 @@
 package po;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class SeasonTracker {
 	
-	private ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();
-	private GameDate currentDate;
-	private String seasonId;
-	private ArrayList<String> updateTeamList;
-	private ArrayList<String> updatePlayerList;
-	private int gameNumSofar;
+	private ArrayList<GameDayPack> seasonRecord = new ArrayList<GameDayPack>();	//所有比赛日的顺序打包
+	private GameDate currentDate;//当前日期
+	private String seasonId;//当前赛季
+	private ArrayList<String> updateTeamList;//当日需要更新信息的球队名单（即参赛了）
+	private ArrayList<String> updatePlayerList;//当日需要更新信息的球员名单（即参赛了）
+	private int gameNumSofar;//本赛季已经进行总场次
 	
 	public GameDate getCurrentDate() {
 		return currentDate;
+	}
+	
+	public GameDate getNextDate() {
+		
+		int year = currentDate.getYear();
+		int month = currentDate.getMonth();
+		int day = currentDate.getDay();
+		
+		Calendar time=Calendar.getInstance();
+		time.clear();
+		time.set(Calendar.YEAR, year);
+		time.set(Calendar.MONTH, month - 1);//count from 0
+		int monthLength = time.getActualMaximum(Calendar.DAY_OF_MONTH);
+		if(monthLength == day) {
+			if(month == 12) {
+				year ++;
+				month = 1;
+			}else {
+				month ++;
+			}
+			day = 1;
+		}
+		return new GameDate(year, month, day);
 	}
 
 	public void setCurrentDate(GameDate currentDate) {

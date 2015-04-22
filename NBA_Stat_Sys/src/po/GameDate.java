@@ -17,6 +17,12 @@ public class GameDate implements Comparable<Object> {
 		this.day = 1;
 	}
 	
+	public GameDate(int year, int month, int day) {//default current date
+		this.year = year;
+		this.month = month;
+		this.day = day;
+	}
+	
 	public GameDate(String date) {
 		String[] splited = date.split("-");
 		this.year = Integer.parseInt(splited[0]);

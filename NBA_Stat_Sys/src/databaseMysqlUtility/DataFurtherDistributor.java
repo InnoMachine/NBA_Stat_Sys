@@ -31,7 +31,7 @@ public class DataFurtherDistributor {
 		
 	}
 	
-	public static void importSpToPlayers(){
+	public static void importSpToPlayers(){//遍历所有球员名字，再遍历所有比赛主客队的tp，如果其中包含该球员表现，加上
 		
 		GameDao gd = new GameDaoImpl();
 		PlayerDao pd = new PlayerDaoImpl();
@@ -69,7 +69,7 @@ public class DataFurtherDistributor {
 		
 	}
 	
-	public static void importSeasontpToTeams(){
+	public static void importSeasontpToTeams(){//遍历所有比赛，检查主客场队名匹配就加上
 		
 		GameDao gd = new GameDaoImpl();
 		TeamDao td = new TeamDaoImpl();
@@ -96,14 +96,14 @@ public class DataFurtherDistributor {
 		
 	}
 	
-	public static void importPlayersToTeams(){
+	public static void importPlayersToTeams(){//遍历所有球队名，对每个球队名从比赛主客场中找，找到即认为出场名单为该球队当前球员列表
 		
 		GameDao gd = new GameDaoImpl();
 		TeamDao td = new TeamDaoImpl();
 		ArrayList<String> playersNameList = new ArrayList<String>();
 		ArrayList<GamePO> gameList = gd.getAllGames();
 		
-		for(TeamAbbr teamAbbr:TeamAbbr.values()){
+		for(TeamAbbr teamAbbr: TeamAbbr.values()){//enums
 			for(GamePO gamePo: gameList){
 				if(gamePo.getHomeTeam().equalsIgnoreCase(teamAbbr.toString())){
 					for(SinglePerformance sp:gamePo.getHomeTP().getSpList()){
