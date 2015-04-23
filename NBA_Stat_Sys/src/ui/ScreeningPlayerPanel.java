@@ -51,7 +51,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox<String> positionjcb;
 	JComboBox<String> leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;

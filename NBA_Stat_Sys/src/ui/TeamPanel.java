@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import businessLogic.Team_BL;
 import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
@@ -25,7 +26,7 @@ public class TeamPanel extends JPanel{
 
 	JFrame mainFrame;
 
-	Team_BS team_BS = new Team_BL_Stub();
+	Team_BS team_BS = new Team_BL();
 	static int X;
 	static int Y;
 	JLabel bgLabel;

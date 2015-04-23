@@ -29,6 +29,7 @@ import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
+import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import ui.GamePanel.GameCardRenderer;
@@ -46,7 +47,7 @@ public class SearchPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 

@@ -35,18 +35,19 @@ import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
+import businessLogic.Team_BL;
 import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
-public class TeamInfoPanel extends JPanel{
-	
+public class TeamInfoPanel extends JPanel {
+
 	String teamABBR;
 	JFrame mainFrame;
 	JPanel previousPanel;
 	static int X;
 	static int Y;
 	JLabel bgLabel;
-	
+
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -65,7 +66,7 @@ public class TeamInfoPanel extends JPanel{
 	private JTextField textField_16;
 
 	private JTabbedPane JTP;
-	
+
 	Vector<Vector<String>> playersRowData;
 	Vector<String> playersColumn;
 	private JTable playersInfoTable;
@@ -79,22 +80,20 @@ public class TeamInfoPanel extends JPanel{
 	private JTable historicalGameInfoTable;
 	private JScrollPane historicalGameInfoJSP;
 
-	
 	private JLabel TeamBadge;
 
-	Team_BS team_BS = new Team_BL_Stub();
-	
-	public TeamInfoPanel(String abbr,JFrame mainFrame,JPanel previousPanel){
-		this.mainFrame=mainFrame;
-		this.teamABBR=abbr;
-		this.previousPanel=previousPanel;
+	Team_BS team_BS = new Team_BL();
+
+	public TeamInfoPanel(String abbr, JFrame mainFrame, JPanel previousPanel) {
+		this.mainFrame = mainFrame;
+		this.teamABBR = abbr;
+		this.previousPanel = previousPanel;
 		previousPanel.setVisible(false);
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		
 
 		ImageIcon bg;
 		bgLabel = new JLabel();
@@ -104,7 +103,7 @@ public class TeamInfoPanel extends JPanel{
 				.getScaledInstance(this.getWidth(), this.getHeight(),
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
-		
+
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
@@ -119,13 +118,13 @@ public class TeamInfoPanel extends JPanel{
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
+
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
-		// back.setIcon(backIcon);
+		back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -171,29 +170,31 @@ public class TeamInfoPanel extends JPanel{
 		});
 		bgLabel.add(close);
 
-		
 		JButton fresh = new JButton();
-		ImageIcon freshIcon = new ImageIcon(new ImageIcon("Image/freshIcon.png")
-				.getImage().getScaledInstance(X / 25, X / 25,
-						Image.SCALE_SMOOTH));
-		fresh.setBounds( X*10 / 1366, Y * 10 / 768, X / 25, X / 25);
+		ImageIcon freshIcon = new ImageIcon(
+				new ImageIcon("Image/freshIcon.png").getImage()
+						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
+		fresh.setBounds(X * 10 / 1366, Y * 10 / 768, X / 25, X / 25);
 		fresh.setIcon(freshIcon);
 		fresh.setOpaque(false);
 		fresh.setContentAreaFilled(false);
 		fresh.setBorderPainted(false);
 		fresh.addActionListener(e -> fresh());
 		bgLabel.add(fresh);
-		
-		TeamBadge=new JLabel();
+
+		TeamBadge = new JLabel();
 		TeamBadge.setOpaque(false);
-		TeamBadge.setBounds(X*65/1366, Y*55/768, X*150/1366, Y*150/768);
-		ImageIcon portrait=new ImageIcon(new ImageIcon("CSEdata/teams_png/"+this.teamABBR+".png").getImage().getScaledInstance(TeamBadge.getWidth(), TeamBadge.getHeight(), Image.SCALE_SMOOTH));
+		TeamBadge.setBounds(X * 65 / 1366, Y * 55 / 768, X * 150 / 1366,
+				Y * 150 / 768);
+		ImageIcon portrait = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ this.teamABBR + ".png").getImage()
+				.getScaledInstance(TeamBadge.getWidth(), TeamBadge.getHeight(),
+						Image.SCALE_SMOOTH));
 		TeamBadge.setIcon(portrait);
 		bgLabel.add(TeamBadge);
-				
-	//-----------------------------------------------------------------------------
-		
-		
+
+		// -----------------------------------------------------------------------------
+
 		ArrayList<PlayerVo> players = new ArrayList<PlayerVo>();
 		players = team_BS.getPlayers(abbr);
 
@@ -221,7 +222,7 @@ public class TeamInfoPanel extends JPanel{
 		playersColumn.add("盖帽");
 		playersColumn.add("得分");
 		playersColumn.add("More");
-		
+
 		for (int i = 0; i < players.size(); i++) {
 			Vector<String> a = new Vector<String>();
 			a.add(players.get(i).getName());
@@ -256,21 +257,14 @@ public class TeamInfoPanel extends JPanel{
 		playersInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		playersInfoTable.setDefaultRenderer(Object.class, r1);
-		playersInfoTable.getColumnModel().getColumn(17).setCellRenderer(new MyButtonRenderer());
+		playersInfoTable.getColumnModel().getColumn(17)
+				.setCellRenderer(new MyButtonRenderer());
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		playersInfoJSP.setVisible(true);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//------------------------------------------------------------------------------
+
+		// ------------------------------------------------------------------------------
 		TeamRecentGames teamRecentGames = new TeamRecentGames();
 		teamRecentGames = team_BS.getTeamRecentPerformance(abbr);
 		ArrayList<TeamPerformanceInSingleGame> fiveRecentGames = new ArrayList<TeamPerformanceInSingleGame>();
@@ -339,12 +333,9 @@ public class TeamInfoPanel extends JPanel{
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		recentGameInfoJSP.setVisible(true);
-		
-		
-		
-		
-		//------------------------------------------------------------------------------
-		
+
+		// ------------------------------------------------------------------------------
+
 		ArrayList<TeamPerformanceInSingleGame> historicalGames = new ArrayList<TeamPerformanceInSingleGame>();
 		historicalGames = team_BS.getTeamPerformance(abbr);
 
@@ -401,7 +392,8 @@ public class TeamInfoPanel extends JPanel{
 		if (historicalGameInfoJSP != null) {
 			historicalGameInfoJSP.setVisible(false);
 		}
-		historicalGameInfoTable = new JTable(historicalGameRowData, historicalGameColumn);
+		historicalGameInfoTable = new JTable(historicalGameRowData,
+				historicalGameColumn);
 		DefaultTableCellRenderer r3 = new DefaultTableCellRenderer();
 		r3.setHorizontalAlignment(JLabel.CENTER);
 		historicalGameInfoTable.getColumnModel().getColumn(0)
@@ -411,39 +403,39 @@ public class TeamInfoPanel extends JPanel{
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		historicalGameInfoJSP.setVisible(true);
-		
-		
-		
-		
-		//--------------------------------------------------------------------------------------------
-		JTP=new JTabbedPane();
+
+		// --------------------------------------------------------------------------------------------
+		JTP = new JTabbedPane();
 		JTP.addTab("teamPlayers", playersInfoJSP);
 		JTP.addTab("currentMatches", recentGameInfoJSP);
-		JTP.addTab("historicalMatches",historicalGameInfoJSP);
-		JTP.setBounds(X * 183 / 1366, Y * 220 / 768, X * 1000 / 1366, Y * 510 / 768);
+		JTP.addTab("historicalMatches", historicalGameInfoJSP);
+		JTP.setBounds(X * 183 / 1366, Y * 220 / 768, X * 1000 / 1366,
+				Y * 510 / 768);
 		bgLabel.add(JTP);
-		
+
 		addBasicInfo();
 		addBasicData();
-		
+
 		mainFrame.getContentPane().add(this);
 	}
-	
+
 	private void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 	}
+
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 	}
-	
-	public void fresh(){
-		
+
+	public void fresh() {
+
 	}
-	private void addBasicData(){
-		TeamVo team=team_BS.getTeamByAbbr(teamABBR);
+
+	private void addBasicData() {
+		TeamVo team = team_BS.getTeamByAbbr(teamABBR);
 		textField_2.setText(team.getTeamName());
 		textField_4.setText(team.getAbbreviation());
 		textField_6.setText(team.getCity());
@@ -453,15 +445,13 @@ public class TeamInfoPanel extends JPanel{
 		textField_14.setText(String.valueOf(team.getTime()));
 		textField_16.setText(String.valueOf(team.getGameNum()));
 	}
-	
 
-	
-	private void addBasicInfo(){
-		int tempX = X *240/ 1366;
+	private void addBasicInfo() {
+		int tempX = X * 240 / 1366;
 		int tempY = Y / 9;
 		int spaceX = X / 12;
 		int spaceY = Y / 24;
-		
+
 		textField_1 = new MyTextField();
 		textField_1.setText("球队全名");
 		textField_1.setBounds(tempX, tempY, spaceX, spaceY);
@@ -491,16 +481,16 @@ public class TeamInfoPanel extends JPanel{
 
 		textField_7 = new MyTextField();
 		textField_7.setText("赛区");
-		textField_7.setBounds(tempX+6*spaceX, tempY , spaceX, spaceY);
+		textField_7.setBounds(tempX + 6 * spaceX, tempY, spaceX, spaceY);
 		bgLabel.add(textField_7);
 
 		textField_8 = new MyTextField();
-		textField_8.setBounds(tempX +7* spaceX, tempY , spaceX, spaceY);
+		textField_8.setBounds(tempX + 7 * spaceX, tempY, spaceX, spaceY);
 		bgLabel.add(textField_8);
 
 		textField_9 = new MyTextField();
 		textField_9.setText("分区");
-		textField_9.setBounds(tempX , tempY + spaceY, spaceX, spaceY);
+		textField_9.setBounds(tempX, tempY + spaceY, spaceX, spaceY);
 		bgLabel.add(textField_9);
 
 		textField_10 = new MyTextField();
@@ -521,47 +511,58 @@ public class TeamInfoPanel extends JPanel{
 
 		textField_13 = new MyTextField();
 		textField_13.setText("建立时间");
-		textField_13.setBounds(tempX+4*spaceX, tempY +  spaceY, spaceX, spaceY);
+		textField_13.setBounds(tempX + 4 * spaceX, tempY + spaceY, spaceX,
+				spaceY);
 		bgLabel.add(textField_13);
 
 		textField_14 = new MyTextField();
-		textField_14.setBounds(tempX + 5*spaceX, tempY + spaceY, spaceX,
+		textField_14.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_14);
 
 		textField_15 = new MyTextField();
 		textField_15.setText("比赛场数");
-		textField_15.setBounds(tempX + 6 * spaceX, tempY +spaceY, spaceX,
+		textField_15.setBounds(tempX + 6 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_15);
 
 		textField_16 = new MyTextField();
-		textField_16.setBounds(tempX + 7*spaceX, tempY + spaceY, spaceX,
+		textField_16.setBounds(tempX + 7 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_16);
 
 	}
 	
-	class MyButtonRenderer extends JButton implements TableCellRenderer{
+	public void selfClose(){
+		this.setVisible(false);
+	}
+
+	class MyButtonRenderer extends JButton implements TableCellRenderer {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable arg0,
-				Object arg1, boolean isFocus, boolean isSelected, int arg4, int arg5) {
+				Object arg1, boolean isFocus, boolean isSelected, int arg4,
+				int arg5) {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance(  X*122/1366, Y*30/768,
-							 Image.SCALE_SMOOTH));
-			
+					"Image/mainButton.png").getImage().getScaledInstance(
+					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
+
 			this.setIcon(buttonIcon);
-		
-			if(isSelected){
-				System.out.println("111");
+
+			if (isSelected) {
+				selfClose();
+				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+						String.valueOf(playersInfoTable.getModel().getValueAt(
+								playersInfoTable.getSelectedRow(), 0)),
+						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
+								previousPanel));
 			}
 			return this;
 		}
-		
+
 	}
-	
+
 	class MyTextField extends JTextField {
 		/**
 		 * 
@@ -573,7 +574,7 @@ public class TeamInfoPanel extends JPanel{
 			this.setForeground(Color.BLACK);
 			this.setFont(new Font("黑体", 1, 13));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-			this.setColumns(X*10/1366);
+			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 		}
