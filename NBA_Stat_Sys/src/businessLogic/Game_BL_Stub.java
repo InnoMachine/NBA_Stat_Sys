@@ -274,4 +274,10 @@ public class Game_BL_Stub implements Game_BS {
 		return null;
 	}
 
+	@Override
+	public ArrayList<GameVo> getGamesByDate(String date1, String date2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

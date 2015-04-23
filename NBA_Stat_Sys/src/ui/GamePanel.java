@@ -242,7 +242,7 @@ public class GamePanel extends JPanel {
 	public void searchGameByDate(String startDate, String endDate) {
 
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
-		gameVos = game_BS.getGamesByDate(startDate);
+		gameVos = game_BS.getGamesByDate(startDate,endDate);
 		if (rowData == null) {
 			rowData = new Vector<Vector<GameCardPanel>>();
 		} else {
