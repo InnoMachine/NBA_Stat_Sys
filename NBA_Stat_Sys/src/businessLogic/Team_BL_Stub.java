@@ -106,7 +106,6 @@ public class Team_BL_Stub implements Team_BS {
 			teamVos.add(teamVo3);
 			
 		}else{
-			
 			TeamVo teamVo1 = new TeamVo();
 			teamVo1.setTeamName("");
 			teamVo1.setAbbreviation("IND");
