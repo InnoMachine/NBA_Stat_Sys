@@ -44,7 +44,14 @@ public class Data_Handler {
 	private SeasonTracker st;
 	BigDecimal b;  
     
-	
+	public static Data_Handler getInstance()
+	{
+		if(instance==null)
+		{
+			instance = new Data_Handler();
+		}
+		return instance;
+	}
 	private Data_Handler()
 	{
 		playerdao = new PlayerDaoImpl();
@@ -731,14 +738,7 @@ public class Data_Handler {
 			return false;
 	}
 	
-	public static Data_Handler getInstance()
-	{
-		if(instance==null)
-		{
-			instance = new Data_Handler();
-		}
-		return instance;
-	}
+	
 	
 	private void SetTeamVo() {
 		for(int i=0;i<teamlistpo.size();i++)
@@ -958,7 +958,7 @@ public class Data_Handler {
 		TeamCalculate();
 	}
 	public GameDate getDateNow(){
-		st.setCurrentDate(new GameDate(2012,11,2));
+		st.setCurrentDate(new GameDate(2012,11,28));
 		return st.getCurrentDate();
 	}
 	

@@ -1359,7 +1359,7 @@ public class Player_Handler {
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
 			for(int i=0;i<listvo.size();i++)
 			{
-				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"scoreField"));
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"scoreField",a[i][0]));
 			}
 			return templist;
 		}else if(option.equals("reboundOverallFieldProgress")){
@@ -1373,7 +1373,7 @@ public class Player_Handler {
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
 			for(int i=0;i<listvo.size();i++)
 			{
-				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"reboundOverallField"));
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"reboundOverallField",a[i][0]));
 			}
 			return templist;
 		}else if(option.equals("assistanceFieldProgress")){
@@ -1387,7 +1387,7 @@ public class Player_Handler {
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
 			for(int i=0;i<listvo.size();i++)
 			{
-				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"assistanceField"));
+				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"assistanceField",a[i][0]));
 			}
 			return templist;
 		}
@@ -1406,12 +1406,38 @@ public class Player_Handler {
 						r+=pp.getReboundOverall();
 						a+=pp.getAssistance();
 					}
-					int s1=(temp.getScore()-s)/(temp.getGameNum()-p.size());
-					int a1=(temp.getAssistance()-a)/(temp.getGameNum()-p.size());
-					int r1=(temp.getReboundOverall()-r)/(temp.getGameNum()-p.size());
-					temp.setScoreFieldProgress(((double)s/p.size()-s1)/s1);
-					temp.setAssistanceFieldProgress(((double)a/p.size()-a1)/a1);
-					temp.setReboundOverallFieldProgress(((double)r/p.size()-r1)/r1);
+					if(temp.getGameNum()>=6){
+						int s1=(temp.getScore()-s)/(temp.getGameNum()-p.size());
+						int a1=(temp.getAssistance()-a)/(temp.getGameNum()-p.size());
+						int r1=(temp.getReboundOverall()-r)/(temp.getGameNum()-p.size());
+						if(s1==0){
+							temp.setScoreFieldProgress(0);
+						}
+						else{
+							b = new BigDecimal(((double)s/p.size()-s1)/s1);
+							temp.setScoreFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+						}
+						if(a1==0){
+							
+							temp.setAssistanceFieldProgress(0);
+						}
+						else{
+							
+							temp.setAssistanceFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+						}
+						if(r1==0){
+						
+							temp.setReboundOverallFieldProgress(0);
+						}else{
+							b = new BigDecimal(((double)r/p.size()-r1)/r1);
+							temp.setReboundOverallFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+						}
+					}
+					else {
+						temp.setScoreFieldProgress(0);
+						temp.setAssistanceFieldProgress(0);
+						temp.setReboundOverallFieldProgress(0);
+					}
 					break;
 				}
 			}
