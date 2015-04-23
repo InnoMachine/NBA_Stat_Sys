@@ -94,6 +94,12 @@ public class PlayerInfoPanel extends JPanel {
 		this.setVisible(true);
 		this.setLayout(null);
 
+		
+		
+		System.out.println(X+"   "+Y);
+		
+		
+		
 		ImageIcon bg;
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
@@ -418,6 +424,7 @@ public class PlayerInfoPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
+		mainFrame.add(previousPanel);
 	}
 
 	public void fresh() {

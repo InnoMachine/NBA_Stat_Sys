@@ -158,6 +158,11 @@ public class GameInfoPanel extends JPanel {
 		Y = mainFrame.getHeight();
 	 this.setBounds(0, 0, X, Y);
 		
+	 
+		System.out.println(X+"   "+Y);
+	 
+	 
+	 
 		this.setVisible(true);
 		this.setLayout(null);
 
