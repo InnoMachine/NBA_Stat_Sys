@@ -36,7 +36,7 @@ public class DataFileReader {
 	public static void importPlayersAndTeams() {
 
 		DataFileReader.importPlayersFrom("CSEdata/players/info");
-		DataFileReader.importTeamsFrom("CSEdata/teams/teams");
+		DataFileReader.importTeamsFrom("CSEdata/teams/12-13teams");
 		System.out.println("------------------------------");
 
 	}
