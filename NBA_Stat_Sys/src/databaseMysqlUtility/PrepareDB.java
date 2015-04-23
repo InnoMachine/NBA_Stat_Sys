@@ -52,7 +52,7 @@ public class PrepareDB {
 				st.setGameNumSofar(DataFileReader.getFileNameList("CSEdata/new").size());
 				st.setCurrentDate(filterCurrentDate(newFileNameList));
 			}
-			DataFurtherDistributor.allDistribute();	
+			DataFurtherDistributor.allDistribute();	//
 			sd.update(st);
 			System.out.println(st.getCurrentDate().toString());
 		}
