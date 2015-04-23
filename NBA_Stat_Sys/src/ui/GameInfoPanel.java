@@ -1159,7 +1159,7 @@ public class GameInfoPanel extends JPanel {
 		ASTtF.setEditable(false);
 		ASTtF.setHorizontalAlignment(SwingConstants.CENTER);
 		ASTtF.setColumns(X * 10 / 1366);
-		ASTtF.setBounds(X * 467 / 1366, Y * 70 / 768, X * 130 / 1366,
+		ASTtF.setBounds(X * 617 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
 		summarylbl.add(ASTtF);
 
@@ -1242,7 +1242,7 @@ public class GameInfoPanel extends JPanel {
 		txtGTast.setHorizontalAlignment(SwingConstants.CENTER);
 		txtGTast.setEditable(false);
 		txtGTast.setColumns(X * 10 / 1366);
-		txtGTast.setBounds(X * 467 / 1366, Y * 110 / 768, X * 130 / 1366,
+		txtGTast.setBounds(X * 617 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
 		summarylbl.add(txtGTast);
 
@@ -1251,7 +1251,7 @@ public class GameInfoPanel extends JPanel {
 		txtHTast.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTast.setEditable(false);
 		txtHTast.setColumns(X * 10 / 1366);
-		txtHTast.setBounds(X * 467 / 1366, Y * 150 / 768, X * 130 / 1366,
+		txtHTast.setBounds(X * 617 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
 		summarylbl.add(txtHTast);
 
@@ -1349,7 +1349,7 @@ public class GameInfoPanel extends JPanel {
 		txtHTscore.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTscore.setEditable(false);
 		txtHTscore.setColumns(X * 10 / 1366);
-		txtHTscore.setBounds(X * 467 / 1366, Y * 290 / 768, X * 130 / 1366,
+		txtHTscore.setBounds(X * 617 / 1366, Y * 290 / 768, X * 130 / 1366,
 				Y * 40 / 768);
 		summarylbl.add(txtHTscore);
 
@@ -1397,7 +1397,7 @@ public class GameInfoPanel extends JPanel {
 		txtHTrebound.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTrebound.setEditable(false);
 		txtHTrebound.setColumns(X * 10 / 1366);
-		txtHTrebound.setBounds(X * 467 / 1366, Y * 330 / 768, X * 130 / 1366,
+		txtHTrebound.setBounds(X * 617 / 1366, Y * 330 / 768, X * 130 / 1366,
 				Y * 40 / 768);
 		summarylbl.add(txtHTrebound);
 
@@ -1445,7 +1445,7 @@ public class GameInfoPanel extends JPanel {
 		txtHTassistance.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTassistance.setEditable(false);
 		txtHTassistance.setColumns(X * 10 / 1366);
-		txtHTassistance.setBounds(X * 467 / 1366, Y * 370 / 768,
+		txtHTassistance.setBounds(X * 617 / 1366, Y * 370 / 768,
 				X * 130 / 1366, Y * 40 / 768);
 		summarylbl.add(txtHTassistance);
 
@@ -1493,7 +1493,7 @@ public class GameInfoPanel extends JPanel {
 		txtHTblock.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTblock.setEditable(false);
 		txtHTblock.setColumns(X * 10 / 1366);
-		txtHTblock.setBounds(X * 467 / 1366, Y * 410 / 768, X * 130 / 1366,
+		txtHTblock.setBounds(X * 617 / 1366, Y * 410 / 768, X * 130 / 1366,
 				Y * 40 / 768);
 		summarylbl.add(txtHTblock);
 
