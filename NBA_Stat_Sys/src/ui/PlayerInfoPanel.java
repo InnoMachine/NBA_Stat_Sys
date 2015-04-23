@@ -133,11 +133,11 @@ public class PlayerInfoPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		  ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		  X / 25, Image.SCALE_SMOOTH));
+		 
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		// back.setIcon(backIcon);
 		back.setOpaque(false);
@@ -487,12 +487,13 @@ public class PlayerInfoPanel extends JPanel {
 		public MyTextField() {
 			super();
 			this.setVisible(true);
-			this.setForeground(Color.BLACK);
-			this.setFont(new Font("黑体", 1, 13));
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
+			this.setOpaque(false);
 		}
 	}
 }

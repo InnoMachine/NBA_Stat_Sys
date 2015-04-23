@@ -104,16 +104,16 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		firstPlayerNamelbl = new MyLabel();
 		firstPlayerNamelbl.setBounds(X*180/1366, Y*35/768, X*180/1366, Y*50/768);
-		firstPlayerNamelbl.setFont(new Font("黑体", Font.BOLD, 20));
+		firstPlayerNamelbl.setFont(new Font("黑体", Font.BOLD, 17));
 		add(firstPlayerNamelbl);
 
 		firstPlayerInfolbl = new MyLabel();
 		firstPlayerInfolbl.setBounds(X*180/1366, Y*100/768, X*180/1366, Y*50/768);
-		firstPlayerInfolbl.setFont(new Font("黑体", Font.BOLD, 20));
+		firstPlayerInfolbl.setFont(new Font("黑体", Font.BOLD, 17));
 		add(firstPlayerInfolbl);
 
 		firstPlayerValuelbl = new MyLabel();
-		firstPlayerValuelbl.setFont(new Font("黑体", Font.BOLD, 20));
+		firstPlayerValuelbl.setFont(new Font("黑体", Font.BOLD, 17));
 		firstPlayerValuelbl.setBounds(X*180/1366, Y*165/768, X*180/1366, Y*50/768);
 		add(firstPlayerValuelbl);
 
@@ -397,7 +397,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 			this.setText(s);
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
-			this.setFont(new Font("微软雅黑",1,20));
+			this.setFont(new Font("微软雅黑",1,17));
 		}
 		
 		public MyLabel(Color textColor) {

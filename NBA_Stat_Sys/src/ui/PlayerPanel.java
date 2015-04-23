@@ -153,7 +153,7 @@ public class PlayerPanel extends JPanel {
 
 
 		JButton searchPlayerbtn = new MyButton("球员搜索");
-		searchPlayerbtn.setBounds(X*1100/1366, Y*250/768, X*180/1366, Y*50/768);
+		searchPlayerbtn.setBounds(X*1100/1366, Y*330/768,X*180/1366, Y*50/768);
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance( X*180/1366, Y*50/768,
 						 Image.SCALE_SMOOTH));
@@ -161,13 +161,13 @@ public class PlayerPanel extends JPanel {
 		searchPlayerbtn.setIcon(buttonIcon);
 		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
 		bgLabel.add(searchPlayerbtn);
-
+/*
 		JButton ShowPlayerbtn = new MyButton("球员查看");
 		ShowPlayerbtn.setBounds(X*1100/1366, Y*330/768,X*180/1366, Y*50/768);
 		ShowPlayerbtn.setIcon(buttonIcon);
 		ShowPlayerbtn.addActionListener(e -> toShowPlayerPanel());
 		bgLabel.add(ShowPlayerbtn);
-
+*/
 		JButton sortPlayerbtn = new MyButton("球员排序");
 		sortPlayerbtn.setBounds(X*1100/1366, Y*410/768, X*180/1366, Y*50/768);
 		sortPlayerbtn.setIcon(buttonIcon);
