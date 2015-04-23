@@ -910,7 +910,7 @@ public class Data_Handler {
 	public TeamRecentGames getTeamRecentPerformance(String abbr)
 	{
 		for(TeamRecentGames temp:trecgames){
-			if(temp.getName().equals(abbr)){
+			if(temp.getAbbreviation().equals(abbr)){
 				return temp;
 			}
 		}

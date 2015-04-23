@@ -78,7 +78,7 @@ public class PlayerPanel extends JPanel {
 
 	String dailyHotPlayerCriteria = "score";
 	String seasonHotPlayerCriteria = "scoreField";
-	String progressFastPlayerCriteria = "scoreField";
+	String progressFastPlayerCriteria = "scoreFieldProgress";
 	
 	private String selected="每日热点球员";
 	private String selectedby="-得分";
@@ -217,7 +217,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotData_Reboundbtn.setBounds(X*248/1366, Y*105/768, X*194/1366, Y*30/768);
 		dailyHotData_Reboundbtn.setIcon(buttonIcon);
 		dailyHotData_Reboundbtn.addActionListener(e -> {
-			dailyHotPlayerCriteria = "rebound";
+			dailyHotPlayerCriteria = "reboundOverall";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 			selectedby="-篮板";
 			hotLabel.setText(selected+selectedby);
@@ -284,7 +284,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_ReboundFieldbtn = new MyButton("场均篮板");
 		seasonHotData_ReboundFieldbtn.setBounds(X*175/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_ReboundFieldbtn.addActionListener(e -> {
-			seasonHotPlayerCriteria = "reboundField";
+			seasonHotPlayerCriteria = "reboundOverallField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-场均篮板";
 			hotLabel.setText(selected+selectedby);
@@ -392,7 +392,7 @@ public class PlayerPanel extends JPanel {
 		seasonData_ReboundFieldbtn.setBounds(X*377/1366, Y*432/768,X*322/1366, Y*30/768);
 		seasonData_ReboundFieldbtn.setIcon(buttonIcon);
 		seasonData_ReboundFieldbtn.addActionListener(e -> {
-			progressFastPlayerCriteria = "reboundFieldProgress";
+			progressFastPlayerCriteria = "reboundOverallFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均篮板";
 			progress.setText("进步最快球员"+progressby);

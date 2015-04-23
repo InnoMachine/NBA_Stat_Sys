@@ -146,7 +146,7 @@ public class TeamPanel extends JPanel{
 		seasonHotData_ReboundFieldbtn = new MyButton("场均篮板");
 		seasonHotData_ReboundFieldbtn.setBounds(X*175/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_ReboundFieldbtn.addActionListener(e -> {
-			seasonHotTeamCriteria = "reboundField";
+			seasonHotTeamCriteria = "reboundOverallField";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-场均篮板";
 			hotTeam.setText("热点球队"+selectedby);

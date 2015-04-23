@@ -1186,6 +1186,67 @@ public class Player_Handler {
 			}		
 			return templist;
 		}
+		else if(option.equals("hitRate")){
+			double a[][] = new double [list.size()][2]; 
+			for(int i=0;i<list.size();i++)
+			{
+				a[i][0] = list.get(i).getHitRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getHitRate()){
+				templist.add(list.get((int) a[i][1]));
+				i++;
+			}	
+			return templist;
+		}else if(option.equals("threePointHitRate")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getThreePointHitRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getThreePointHitRate()){
+				templist.add(list.get((int) a[i][1]));
+				i++;
+			}	
+			return templist;
+		}else if(option.equals("freeThrowRate")){
+			double a[][] = new double [listvo.size()][2]; 
+			for(int i=0;i<listvo.size();i++)
+			{
+				a[i][0] = listvo.get(i).getFreeThrowRate();
+				a[i][1] = i;
+			}
+			HeapSortByDouble.heapSort(a);
+			ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+			for(int i=0;i<m;i++)
+			{
+				templist.add(list.get((int)a[i][1]));
+			}
+			int i =m;
+			if(m!=list.size())
+			while(a[i][0]==templist.get(m-1).getFreeThrowRate()){
+				templist.add(list.get((int) a[i][1]));
+				i++;
+			}	
+			return templist;
+		}
 		return null;
 		
 	}
@@ -1348,6 +1409,7 @@ public class Player_Handler {
 
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option){
 		CalculateProgress();
+		int num =5;
 		if(option.equals("scoreFieldProgress")){
 			double a[][] = new double [listvo.size()][2]; 
 			for(int i=0;i<listvo.size();i++)
@@ -1357,7 +1419,7 @@ public class Player_Handler {
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
-			for(int i=0;i<listvo.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"scoreField",a[i][0]));
 			}
@@ -1371,7 +1433,7 @@ public class Player_Handler {
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
-			for(int i=0;i<listvo.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"reboundOverallField",a[i][0]));
 			}
@@ -1385,7 +1447,7 @@ public class Player_Handler {
 			}
 			HeapSortByDouble.heapSort(a);
 			ArrayList<PlayerCardVo> templist = new ArrayList<PlayerCardVo>();
-			for(int i=0;i<listvo.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				templist.add(new PlayerCardVo(listvo.get((int)a[i][1]),"assistanceField",a[i][0]));
 			}
@@ -1422,7 +1484,7 @@ public class Player_Handler {
 							temp.setAssistanceFieldProgress(0);
 						}
 						else{
-							
+							b = new BigDecimal(((double)a/p.size()-a1)/a1);
 							temp.setAssistanceFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
 						}
 						if(r1==0){

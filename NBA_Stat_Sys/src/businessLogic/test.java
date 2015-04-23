@@ -11,7 +11,7 @@ public class test {
 	
 	public static void main(String args[]){
 		Player_BS p = new Player_BL();
-		ArrayList<PlayerCardVo> cv=p.progressFastPlayer("scoreFieldProgress");
+		ArrayList<PlayerCardVo> cv=p.progressFastPlayer("assistanceFieldProgress");
 		for(PlayerCardVo temp:cv){
 			System.out.println(temp.getSortProgress());
 		}
