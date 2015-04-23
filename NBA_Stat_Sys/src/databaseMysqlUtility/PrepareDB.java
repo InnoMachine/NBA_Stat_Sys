@@ -41,6 +41,7 @@ public class PrepareDB {
 		sd.add(st);
 		DataFileReader.importGamesFrom(fileNameList);
 		DataFileReader.importPlayersAndTeams();
+		DataFurtherDistributor.allDistribute();	
 		
 		while(true){
 			if(checkNew(st.getGameNumSofar())) {

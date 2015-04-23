@@ -26,6 +26,21 @@ public class GamePO {
 	private TeamPerformance guestTP;
 	private TeamPerformance homeTP;
 	
+	public ArrayList<String> getAllPlayersNameList() {
+		ArrayList<String> result = new ArrayList<String>(this.guestTP.getPlayerNameList());
+		for(String name: this.homeTP.getPlayerNameList()) {
+			result.add(name);
+		}
+		return result;
+	}
+	
+	public ArrayList<String> getGuestPlayersNameList() {
+		return this.guestTP.getPlayerNameList();
+	}
+	
+	public ArrayList<String> getHomePlayersNameList() {
+		return this.homeTP.getPlayerNameList();
+	}
 
 	public GameDate getGameDate() {
 		return gameDate;
