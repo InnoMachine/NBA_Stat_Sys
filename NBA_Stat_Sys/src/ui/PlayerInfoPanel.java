@@ -301,20 +301,21 @@ public class PlayerInfoPanel extends JPanel {
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
 		*/
+		
 		recentGameInfoTable.setForeground(Color.WHITE);
 		MyTableRenderer r1 = new MyTableRenderer();
 		r1.setHorizontalAlignment(JLabel.CENTER);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
-		recentGameInfoTable.setOpaque(false);
+//		recentGameInfoTable.setOpaque(false);
 		recentGameInfoTable.setBackground(Color.GRAY);
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 490 / 768);
 		recentGameInfoJSP.setVisible(true);
 		recentGameInfoJSP.setBackground(Color.GRAY);
-		recentGameInfoJSP.setOpaque(false);
+//		recentGameInfoJSP.setOpaque(false);
 		recentGameInfoJSP.setBackground(Color.gray);
 
 		// -----------------------------------------------------------------------------------------------
@@ -376,6 +377,7 @@ public class PlayerInfoPanel extends JPanel {
 		if (historicalGameInfoJSP != null) {
 			historicalGameInfoJSP.setVisible(false);
 		}
+		
 		historicalGameInfoTable = new JTable(historicalGameRowData,
 				historicalGameColumn) { 
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -402,13 +404,14 @@ public class PlayerInfoPanel extends JPanel {
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
 		
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
-		historicalGameInfoTable.setOpaque(false);
+	//	historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoTable.setBackground(Color.gray);
+		
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
 		historicalGameInfoJSP.setVisible(true);
-		historicalGameInfoJSP.getViewport().setOpaque(false);
-		historicalGameInfoJSP.setOpaque(false);
+//		historicalGameInfoJSP.getViewport().setOpaque(false);
+//		historicalGameInfoJSP.setOpaque(false);
 		historicalGameInfoJSP.setBackground(Color.gray);
 		
 		JTP = new JTabbedPane();
