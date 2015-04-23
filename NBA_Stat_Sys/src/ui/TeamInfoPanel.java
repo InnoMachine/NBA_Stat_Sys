@@ -452,6 +452,7 @@ public class TeamInfoPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
+		mainFrame.add(previousPanel);
 	}
 
 	public void fresh() {

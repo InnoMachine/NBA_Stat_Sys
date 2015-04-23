@@ -184,7 +184,42 @@ public class Game_BL_Stub implements Game_BS {
 		gameVo6.setScore4th(scoreboard1);
 		gameVo6.setScoreOverall(scoreboard2);
 		gameVos.add(gameVo6);
-
+		GameVo gameVo7 = new GameVo();
+		gameVo7.setHomeTeam("UTA");
+		gameVo7.setGuestTeam("NYK");
+		gameVo7.setScore1st(scoreboard1);
+		gameVo7.setScore2nd(scoreboard1);
+		gameVo7.setScore3rd(scoreboard1);
+		gameVo7.setScore4th(scoreboard1);
+		gameVo7.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo7);
+		GameVo gameVo8 = new GameVo();
+		gameVo8.setHomeTeam("LAL");
+		gameVo8.setGuestTeam("MIL");
+		gameVo8.setScore1st(scoreboard1);
+		gameVo8.setScore2nd(scoreboard1);
+		gameVo8.setScore3rd(scoreboard1);
+		gameVo8.setScore4th(scoreboard1);
+		gameVo8.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo8);
+		GameVo gameVo9 = new GameVo();
+		gameVo9.setHomeTeam("PHX");
+		gameVo9.setGuestTeam("GSW");
+		gameVo9.setScore1st(scoreboard1);
+		gameVo9.setScore2nd(scoreboard1);
+		gameVo9.setScore3rd(scoreboard1);
+		gameVo9.setScore4th(scoreboard1);
+		gameVo9.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo9);
+		GameVo gameVo10 = new GameVo();
+		gameVo10.setHomeTeam("PHX");
+		gameVo10.setGuestTeam("GSW");
+		gameVo10.setScore1st(scoreboard1);
+		gameVo10.setScore2nd(scoreboard1);
+		gameVo10.setScore3rd(scoreboard1);
+		gameVo10.setScore4th(scoreboard1);
+		gameVo10.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo10);
 		return gameVos;
 	}
 
@@ -277,7 +312,42 @@ public class Game_BL_Stub implements Game_BS {
 	@Override
 	public ArrayList<GameVo> getGamesByDate(String date1, String date2) {
 		// TODO Auto-generated method stub
-		return null;
+		Scoreboard scoreboard1 = new Scoreboard();
+		scoreboard1.setGuestScore(26);
+		scoreboard1.setHomeScore(23);
+		Scoreboard scoreboard2 = new Scoreboard();
+		scoreboard2.setGuestScore(104);
+		scoreboard2.setHomeScore(92);
+
+		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
+		GameVo gameVo1 = new GameVo();
+		gameVo1.setHomeTeam("UTA");
+		gameVo1.setGuestTeam("NYK");
+		gameVo1.setScore1st(scoreboard1);
+		gameVo1.setScore2nd(scoreboard1);
+		gameVo1.setScore3rd(scoreboard1);
+		gameVo1.setScore4th(scoreboard1);
+		gameVo1.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo1);
+		GameVo gameVo2 = new GameVo();
+		gameVo2.setHomeTeam("LAL");
+		gameVo2.setGuestTeam("MIL");
+		gameVo2.setScore1st(scoreboard1);
+		gameVo2.setScore2nd(scoreboard1);
+		gameVo2.setScore3rd(scoreboard1);
+		gameVo2.setScore4th(scoreboard1);
+		gameVo2.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo2);
+		GameVo gameVo3 = new GameVo();
+		gameVo3.setHomeTeam("PHX");
+		gameVo3.setGuestTeam("GSW");
+		gameVo3.setScore1st(scoreboard1);
+		gameVo3.setScore2nd(scoreboard1);
+		gameVo3.setScore3rd(scoreboard1);
+		gameVo3.setScore4th(scoreboard1);
+		gameVo3.setScoreOverall(scoreboard2);
+		gameVos.add(gameVo3);
+		return gameVos;
 	}
 
 }
