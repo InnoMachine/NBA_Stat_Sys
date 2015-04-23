@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
@@ -109,18 +112,19 @@ public class PlayerInfoPanel extends JPanel {
 						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
 		playerPortrait.setIcon(portrait);
 		bgLabel.add(playerPortrait);
-		
-		teambtn=new JButton();
+
+		teambtn = new JButton();
 		teambtn.setBounds(X * 1113 / 1366, Y * 60 / 768, X * 160 / 1366,
 				Y * 128 / 768);
-		ImageIcon team = new ImageIcon(new ImageIcon(
-				"CSEdata/teams_png/" + player_BS.getPlayerByName(playerName).getTeam() + ".png").getImage()
-				.getScaledInstance(playerPortrait.getWidth(),
+		ImageIcon team = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ player_BS.getPlayerByName(playerName).getTeam() + ".png")
+				.getImage().getScaledInstance(playerPortrait.getWidth(),
 						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
 		teambtn.setIcon(team);
-		teambtn.addActionListener(e->{
+		teambtn.addActionListener(e -> {
 			this.setVisible(false);
-			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(player_BS.getPlayerByName(playerName).getTeam(), mainFrame,this);
+			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(player_BS
+					.getPlayerByName(playerName).getTeam(), mainFrame, this);
 		});
 		bgLabel.add(teambtn);
 
@@ -148,11 +152,11 @@ public class PlayerInfoPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		
-		  ImageIcon backIcon = new ImageIcon(new
-		  ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
-		  X / 25, Image.SCALE_SMOOTH));
-		 
+
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		// back.setIcon(backIcon);
 		back.setOpaque(false);
@@ -271,12 +275,30 @@ public class PlayerInfoPanel extends JPanel {
 		if (recentGameInfoJSP != null) {
 			recentGameInfoJSP.setVisible(false);
 		}
-		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn);
+		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn) { 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		/*
 		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
 		r1.setHorizontalAlignment(JLabel.CENTER);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
+		*/
+		recentGameInfoTable.setForeground(Color.WHITE);
+		MyTableRenderer r1 = new MyTableRenderer();
+		r1.setHorizontalAlignment(JLabel.CENTER);
+		recentGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
+		
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 490 / 768);
@@ -342,12 +364,30 @@ public class PlayerInfoPanel extends JPanel {
 			historicalGameInfoJSP.setVisible(false);
 		}
 		historicalGameInfoTable = new JTable(historicalGameRowData,
-				historicalGameColumn);
+				historicalGameColumn) { 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		/*
 		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
+	*/
+		historicalGameInfoTable.setForeground(Color.WHITE);
+		MyTableRenderer r2 = new MyTableRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		historicalGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
+		
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
@@ -493,6 +533,24 @@ public class PlayerInfoPanel extends JPanel {
 
 	}
 
+	public class MyTableRenderer extends DefaultTableCellRenderer {
+	    public Component getTableCellRendererComponent(JTable table,
+	            Object value, boolean isSelected,boolean cellHasFocus,
+	            int row,int col) {
+	        
+	        if((row%2)==1)
+	              setBackground(Color.GRAY);
+	        else
+	              setBackground(Color.DARK_GRAY);
+	   
+	        setText((value == null) ? "" : value.toString());
+
+	        return this;
+	    }
+	}
+	
+	
+	
 	class MyTextField extends JTextField {
 		/**
 		 * 
