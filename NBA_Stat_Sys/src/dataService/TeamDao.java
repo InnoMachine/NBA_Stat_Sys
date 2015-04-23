@@ -6,8 +6,6 @@
 package dataService;
 
 import java.util.ArrayList;
-
-import enums.TeamAbbr;
 import po.TeamPO;
 import po.TeamPerformance;
 
@@ -23,12 +21,12 @@ public interface TeamDao {
 
 	public ArrayList<TeamPO> getAllTeams();
 	
-	public void addTeamPerformance(TeamPerformance tp, TeamAbbr teamAbbr);
+	public void addTeamPerformance(TeamPerformance tp, String teamAbbr);
 	
-	public void addCurrentPlayer(String playerName, TeamAbbr teamAbbr);
+	public void addCurrentPlayer(String playerName, String teamAbbr);
 	
-	public void playerTrans(String playerName, TeamAbbr fromTeamAbbr, TeamAbbr toTeamAbbr);
+	public void playerTrans(String playerName, String fromTeamAbbr, String toTeamAbbr);
 	
-	public void changeTeamName(TeamAbbr teamAbbr, TeamPO newTeam);
+	public void changeTeamName(String teamAbbr, TeamPO newTeam);
 
 }

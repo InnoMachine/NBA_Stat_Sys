@@ -31,6 +31,34 @@ public class DataFurtherDistributor {
 		
 	}
 	
+	public static void updateTeamAndPlayer(GamePO game) {
+		
+		TeamDao td= new TeamDaoImpl();
+		PlayerDao pd = new PlayerDaoImpl();
+		//guest team
+		TeamPerformance guestTP = game.getGuestTP();
+		game.getGuestPlayersNameList();
+		td.addTeamPerformance(guestTP, game.getGuestTeam());//import teamPerformance to team
+		for(SinglePerformance sp: guestTP.getSpList()) {
+			pd.addSinglePerformance(sp.getName(), sp); //import singlePerformance to player
+			pd.updateHostTeam(sp.getName(), sp.getTeamThen());//import playerHostTeam to player
+		}
+		for(String name: guestTP.getPlayerNameList()) {
+			td.addCurrentPlayer(name, game.getGuestTeam());//import currentPlayers to team
+		}
+		//home team
+		TeamPerformance homeTP = game.getHomeTP();
+		td.addTeamPerformance(homeTP, game.getHomeTeam());
+		for(SinglePerformance sp: homeTP.getSpList()) {
+			pd.addSinglePerformance(sp.getName(), sp); 
+			pd.updateHostTeam(sp.getName(), sp.getTeamThen());
+		}
+		for(String name: homeTP.getPlayerNameList()) {
+			td.addCurrentPlayer(name, game.getHomeTeam());
+		}
+		
+	}
+	
 	public static void importSpToPlayers(){//遍历所有球员名字，再遍历所有比赛主客队的tp，如果其中包含该球员表现，加上
 		
 		GameDao gd = new GameDaoImpl();
@@ -123,5 +151,7 @@ public class DataFurtherDistributor {
 		System.out.println("Players lists distributed to teams!");
 		
 	}
+	
+	
 
 }

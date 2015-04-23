@@ -23,6 +23,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -75,7 +76,7 @@ public class SearchPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -83,14 +84,14 @@ public class SearchPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 
-		JButton back = new JButton("返回");
+		JButton back = new JButton();
 		back.setForeground(Color.WHITE);
 		
 		  ImageIcon backIcon = new ImageIcon(new
 		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
 		 X / 25, Image.SCALE_SMOOTH));
 		
-		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		back.setBounds(17 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		 back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
@@ -102,7 +103,7 @@ public class SearchPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 20/ 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -122,7 +123,7 @@ public class SearchPanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 20/ 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -138,18 +139,26 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(close);
 
 		JTextField keytF = new JTextField();
-		keytF.setBounds(X * 483 / 1366, Y * 50 / 768, X * 400 / 1366,
+		keytF.setBounds(X * 483 / 1366, Y * 50 / 768, X * 200 / 1366,
 				Y * 27 / 768);
 		keytF.setVisible(true);
+		keytF.setBackground(Color.GRAY);
+		keytF.setForeground(Color.WHITE);
+		keytF.setFont(new Font("微软雅黑",1,20));
 		bgLabel.add(keytF);
 
 		JButton searchbtn = new JButton("搜索");
-		searchbtn.setBounds(X * 900 / 1366, Y * 50 / 768, X * 60 / 1366,
+		searchbtn.setBounds(X * 700 / 1366, Y * 50 / 768, X * 100 / 1366,
 				Y * 27 / 768);
 		ImageIcon searchbtnIcon = new ImageIcon(
 				new ImageIcon("Image/mainButton.png").getImage()
-						.getScaledInstance(X * 60 / 1366,
+						.getScaledInstance(X * 100/ 1366,
 								Y * 27 / 768, Image.SCALE_SMOOTH));
+		searchbtn.setForeground(Color.WHITE);
+		searchbtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		searchbtn.setOpaque(false);
+		searchbtn.setContentAreaFilled(false);
+		searchbtn.setBorderPainted(false);
 		searchbtn.setIcon(searchbtnIcon);
 		searchbtn.addActionListener(e -> searchPlayer(keytF.getText(), "All"));
 		searchbtn.setVisible(true);

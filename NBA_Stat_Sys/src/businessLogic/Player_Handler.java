@@ -627,39 +627,45 @@ public class Player_Handler {
 	public ArrayList<PlayerVo> filterPlayersBy(String position, String div, String option,int n)
 	{
 		ArrayList<PlayerVo> list = new ArrayList<PlayerVo>();
-		if(position.equals("All")&&div.equals("All"))
-		{
-			list = listvo;
-		}
-		else if((!position.equals("All"))&&div.equals("All"))
-		{
-			for(PlayerVo temp:listvo)
+		if(position!=null&&div!=null){
+			if(position.equals("All")&&div.equals("All"))
 			{
-				if(isPosition(temp,position))
-				{
-					list.add(temp);
-				}		
+				list = listvo;
 			}
-		}
-		else if((position.equals("All"))&&(!div.equals("All")))
-		{
-			for(PlayerVo temp:listvo)
+			else if((!position.equals("All"))&&div.equals("All"))
 			{
-				if((temp.getDivision()+"").equals(div))
+				for(PlayerVo temp:listvo)
 				{
-					list.add(temp);
-				}		
+					if(isPosition(temp,position))
+					{
+						list.add(temp);
+					}		
+				}
+			}
+			else if((position.equals("All"))&&(!div.equals("All")))
+			{
+				for(PlayerVo temp:listvo)
+				{
+					if((temp.getDivision()+"").equals(div))
+					{
+						list.add(temp);
+					}		
+				}
+			}
+			else{
+				for(PlayerVo temp:listvo)
+				{
+					if((temp.getDivision()+"").equals(div)&&isPosition(temp,position))
+					{
+						list.add(temp);
+					}		
+				}
 			}
 		}
 		else{
-			for(PlayerVo temp:listvo)
-			{
-				if((temp.getDivision()+"").equals(div)&&isPosition(temp,position))
-				{
-					list.add(temp);
-				}		
-			}
+			return null;
 		}
+		
 		int m=Math.min(n, list.size());
 		if(option.equals("score")){
 			int a[][] = new int [list.size()][2]; 
@@ -1015,11 +1021,11 @@ public class Player_Handler {
 				templist.add(list.get((int)a[i][1]));
 			}
 			int i =m;
-			if(m!=list.size())
+			if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getEfficiencyField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}	}	
 			return templist;
 		}else if(option.equals("efficiency")){
 			int a[][] = new int [list.size()][2]; 
@@ -1855,17 +1861,17 @@ public class Player_Handler {
 			is =true;
 		else if(temp.getHeight().contains(key))
 			is =true;
-		else if(temp.getName().contains(key))
+		else if((temp.getName()+"").contains(key))
 			is =true;
-		else if(temp.getNumber().contains(key))
+		else if((temp.getNumber()+"").contains(key))
 			is =true;
-		else if(temp.getPosition().contains(key))
+		else if((temp.getPosition()+"").contains(key))
 			is =true;
-		else if(temp.getSchool().contains(key))
+		else if((temp.getSchool()+"").contains(key))
 			is =true;
-		else if(temp.getWeight().contains(key))
+		else if((temp.getWeight()+"").contains(key))
 			is=true;
-		else if(temp.getTeam().contains(key))
+		else if((temp.getTeam()+"").contains(key))
 			is=true;
 		return is;
 	}

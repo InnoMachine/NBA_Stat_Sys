@@ -14,6 +14,16 @@ public class TeamPerformance {
 	private String gamelabel;//sudo
 	private ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
 	
+	public ArrayList<String> getPlayerNameList() {
+		
+		ArrayList<String> result = new ArrayList<String>();
+		for(SinglePerformance sp: this.spList) {
+			result.add(sp.getName());
+		}
+		return result;
+		
+	}
+	
 	public ArrayList<SinglePerformance> getSpList() {
 		return spList;
 	}

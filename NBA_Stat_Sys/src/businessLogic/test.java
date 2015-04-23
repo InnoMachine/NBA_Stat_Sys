@@ -2,34 +2,32 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import dataService.SystemDao;
+import dataService.SystemDaoImpl;
 import po.GameDate;
 import vo.GameVo;
 import vo.PlayerCardVo;
 import vo.PlayerPerformanceInSingleGame;
+import vo.PlayerVo;
 
 public class test {
 	
 	public static void main(String args[]){
+		/*SystemDao dao = new SystemDaoImpl();
+		System.out.println(dao.getStById("12-13").getCurrentDate().toString());
 		Player_BS p = new Player_BL();
-		ArrayList<PlayerCardVo> cv=p.progressFastPlayer("assistanceFieldProgress");
-		for(PlayerCardVo temp:cv){
-			System.out.println(temp.getSortProgress());
-		}
-		/*Game_BS g = new Game_BL();
+		ArrayList<PlayerVo> cv=p.filterPlayerBy("All", "All", "score");
+		for(PlayerVo temp:cv){
+			System.out.println(temp.getStealField());
+		}*/
+		Game_BS g = new Game_BL();
 		GameDate gd = new GameDate(2012,11,1);
 		ArrayList<PlayerPerformanceInSingleGame> gv = g.getGameByLabel("12-13_2012-10-31_DAL-UTA");
-		ArrayList<GameVo> gl= g.getGamesByDate("2012-11-01");
-		ArrayList<PlayerPerformanceInSingleGame> fl = gl.get(0).getGuestTP().getFirstonList();
+		ArrayList<GameVo> gl= g.getGamesByDate("2012-11-12","2012-11-15");
 		for(GameVo temp:gl){
 			System.out.println(temp.getGameLabel());
 			//System.out.println(temp.getHomeTeam());
 		}
-		for(PlayerPerformanceInSingleGame temp:gv){
-			System.out.println(temp.getFirstOn());
-		}
-		for(PlayerPerformanceInSingleGame temp:fl){
-			System.out.println(temp.getName());
-		}*/
 		
 	}
 }

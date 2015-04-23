@@ -94,6 +94,12 @@ public class PlayerInfoPanel extends JPanel {
 		this.setVisible(true);
 		this.setLayout(null);
 
+		
+		
+		System.out.println(X+"   "+Y);
+		
+		
+		
 		ImageIcon bg;
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
@@ -104,8 +110,8 @@ public class PlayerInfoPanel extends JPanel {
 		bgLabel.setIcon(bg);
 
 		playerPortrait = new JLabel();
-		playerPortrait.setBounds(X * 90 / 1366, Y * 60 / 768, X * 160 / 1366,
-				Y * 128 / 768);
+		playerPortrait.setBounds(X * 90 / 1366, Y * 60 / 768, X * 130 / 1366,
+				Y * 130 / 768);
 		ImageIcon portrait = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/" + PlayerName + ".png").getImage()
 				.getScaledInstance(playerPortrait.getWidth(),
@@ -114,8 +120,8 @@ public class PlayerInfoPanel extends JPanel {
 		bgLabel.add(playerPortrait);
 
 		teambtn = new JButton();
-		teambtn.setBounds(X * 1113 / 1366, Y * 60 / 768, X * 160 / 1366,
-				Y * 128 / 768);
+		teambtn.setBounds(X * 1070 / 1366, Y * 70 / 768, X * 130 / 1366,
+				Y * 130 / 768);
 		ImageIcon team = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
 				+ player_BS.getPlayerByName(playerName).getTeam() + ".png")
 				.getImage().getScaledInstance(playerPortrait.getWidth(),
@@ -126,6 +132,9 @@ public class PlayerInfoPanel extends JPanel {
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(player_BS
 					.getPlayerByName(playerName).getTeam(), mainFrame, this);
 		});
+		teambtn.setOpaque(false);
+		teambtn.setContentAreaFilled(false);
+		teambtn.setBorderPainted(false);
 		bgLabel.add(teambtn);
 
 		playerAction = new JLabel();
@@ -142,7 +151,7 @@ public class PlayerInfoPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -150,15 +159,15 @@ public class PlayerInfoPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 
-		JButton back = new JButton("返回");
+		JButton back = new JButton();
 		back.setForeground(Color.WHITE);
 
 		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
 
-		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
-		// back.setIcon(backIcon);
+		back.setBounds(17 * X / 20, Y * 20 / 768, X / 25, X / 25);
+		back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -169,7 +178,7 @@ public class PlayerInfoPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -189,7 +198,7 @@ public class PlayerInfoPanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -208,7 +217,7 @@ public class PlayerInfoPanel extends JPanel {
 		ImageIcon freshIcon = new ImageIcon(
 				new ImageIcon("Image/freshIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		fresh.setBounds(X * 10 / 1366, Y * 10 / 768, X / 25, X / 25);
+		fresh.setBounds(X * 1250/ 1366, Y * 120 / 768, X / 25, X / 25);
 		fresh.setIcon(freshIcon);
 		fresh.setOpaque(false);
 		fresh.setContentAreaFilled(false);
@@ -292,17 +301,22 @@ public class PlayerInfoPanel extends JPanel {
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
 		*/
+		
 		recentGameInfoTable.setForeground(Color.WHITE);
 		MyTableRenderer r1 = new MyTableRenderer();
 		r1.setHorizontalAlignment(JLabel.CENTER);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
-		
+//		recentGameInfoTable.setOpaque(false);
+		recentGameInfoTable.setBackground(Color.GRAY);
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 490 / 768);
 		recentGameInfoJSP.setVisible(true);
+		recentGameInfoJSP.setBackground(Color.GRAY);
+//		recentGameInfoJSP.setOpaque(false);
+		recentGameInfoJSP.setBackground(Color.gray);
 
 		// -----------------------------------------------------------------------------------------------
 		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
@@ -363,6 +377,7 @@ public class PlayerInfoPanel extends JPanel {
 		if (historicalGameInfoJSP != null) {
 			historicalGameInfoJSP.setVisible(false);
 		}
+		
 		historicalGameInfoTable = new JTable(historicalGameRowData,
 				historicalGameColumn) { 
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -389,16 +404,27 @@ public class PlayerInfoPanel extends JPanel {
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
 		
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
+	//	historicalGameInfoTable.setOpaque(false);
+		historicalGameInfoTable.setBackground(Color.gray);
+		
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
 		historicalGameInfoJSP.setVisible(true);
-
+//		historicalGameInfoJSP.getViewport().setOpaque(false);
+//		historicalGameInfoJSP.setOpaque(false);
+		historicalGameInfoJSP.setBackground(Color.gray);
+		
 		JTP = new JTabbedPane();
 		JTP.setBounds(X * 90 / 1366, Y * 220 / 768, X * 1000 / 1366,
 				Y * 490 / 768);
 		JTP.addTab("currentData", recentGameInfoJSP);
 		JTP.addTab("historicalData", historicalGameInfoJSP);
+	
 		bgLabel.add(JTP);
+		JTP.setOpaque(false);
+		JTP.setBackgroundAt(0,Color.GRAY);
+		JTP.setBackgroundAt(1,Color.GRAY);
+	
 
 		addBasicInfo();
 		addBasicData();
@@ -415,6 +441,7 @@ public class PlayerInfoPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
+		mainFrame.add(previousPanel);
 	}
 
 	public void fresh() {
@@ -436,8 +463,8 @@ public class PlayerInfoPanel extends JPanel {
 
 	private void addBasicInfo() {
 
-		int tempX = X / 5;
-		int tempY = Y / 10;
+		int tempX = 230;
+		int tempY = Y / 10+20;
 		int spaceX = X / 10;
 		int spaceY = Y / 24;
 
