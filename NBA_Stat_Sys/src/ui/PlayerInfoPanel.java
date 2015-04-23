@@ -301,11 +301,13 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
-		
+		recentGameInfoTable.setOpaque(false);
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 490 / 768);
 		recentGameInfoJSP.setVisible(true);
+		recentGameInfoJSP.getViewport().setOpaque(false);
+		recentGameInfoJSP.setOpaque(false);
 
 		// -----------------------------------------------------------------------------------------------
 		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
@@ -392,16 +394,24 @@ public class PlayerInfoPanel extends JPanel {
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
 		
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
+		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
 		historicalGameInfoJSP.setVisible(true);
-
+		historicalGameInfoJSP.getViewport().setOpaque(false);
+		historicalGameInfoJSP.setOpaque(false);
+		historicalGameInfoJSP.setBackground(Color.gray);
+		
 		JTP = new JTabbedPane();
 		JTP.setBounds(X * 90 / 1366, Y * 220 / 768, X * 1000 / 1366,
 				Y * 490 / 768);
 		JTP.addTab("currentData", recentGameInfoJSP);
 		JTP.addTab("historicalData", historicalGameInfoJSP);
+	
 		bgLabel.add(JTP);
+		JTP.setOpaque(false);
+		JTP.setForeground(Color.WHITE);
+		JTP.setBackground(Color.GRAY);
 
 		addBasicInfo();
 		addBasicData();
