@@ -14,7 +14,6 @@ public class TeamRecentGames {
 		this.name = name ;
 		fiveGames = new ArrayList<TeamPerformanceInSingleGame>();
 	}
-
 	public void AddNewGame(TeamPerformanceInSingleGame ngame){
 		if(fiveGames.size()==5)
 		{
