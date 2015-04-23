@@ -41,6 +41,8 @@ public class SeasonTracker {//每个赛季一个Tracker对象
 				month ++;
 			}
 			day = 1;
+		}else {
+			day ++;
 		}
 		return new GameDate(year, month, day);
 		
