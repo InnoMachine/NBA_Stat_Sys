@@ -61,6 +61,7 @@ public class PlayerInfoPanel extends JPanel {
 
 	private JLabel playerPortrait;
 	private JLabel playerAction;
+	private JButton teambtn;
 
 	Vector<Vector<String>> recentGameRowData;
 	Vector<String> recentGameColumn;
@@ -108,6 +109,20 @@ public class PlayerInfoPanel extends JPanel {
 						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
 		playerPortrait.setIcon(portrait);
 		bgLabel.add(playerPortrait);
+		
+		teambtn=new JButton();
+		teambtn.setBounds(X * 1113 / 1366, Y * 60 / 768, X * 160 / 1366,
+				Y * 128 / 768);
+		ImageIcon team = new ImageIcon(new ImageIcon(
+				"CSEdata/teams_png/" + player_BS.getPlayerByName(playerName).getTeam() + ".png").getImage()
+				.getScaledInstance(playerPortrait.getWidth(),
+						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+		teambtn.setIcon(team);
+		teambtn.addActionListener(e->{
+			this.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(player_BS.getPlayerByName(playerName).getTeam(), mainFrame,this);
+		});
+		bgLabel.add(teambtn);
 
 		playerAction = new JLabel();
 		playerAction
