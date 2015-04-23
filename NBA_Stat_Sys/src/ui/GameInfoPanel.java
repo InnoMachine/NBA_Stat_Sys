@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -157,6 +158,11 @@ public class GameInfoPanel extends JPanel {
 		Y = mainFrame.getHeight();
 	 this.setBounds(0, 0, X, Y);
 		
+	 
+		System.out.println(X+"   "+Y);
+	 
+	 
+	 
 		this.setVisible(true);
 		this.setLayout(null);
 
@@ -1042,13 +1048,38 @@ public class GameInfoPanel extends JPanel {
 		if (guestScrollPane != null) {
 			guestScrollPane.setVisible(false);
 		}
-		guestTable = new JTable(guestRowData, guestColumn);
+		
+		guestTable = new JTable(guestRowData, guestColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		guestTable = new JTable(guestRowData, guestColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		
 		DefaultTableCellRenderer guestTableHeaderRenderer = new DefaultTableCellRenderer();
 		guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
 		guestTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		guestTableHeaderRenderer.setOpaque(false);
 		guestTable.getTableHeader()
 				.setDefaultRenderer(guestTableHeaderRenderer);
 
+		
+		guestTable.setForeground(Color.WHITE);
+		guestTable.getTableHeader().setBackground(Color.BLACK);
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
 		r.setHorizontalAlignment(JLabel.CENTER);
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
@@ -1060,10 +1091,9 @@ public class GameInfoPanel extends JPanel {
 		guestTable.setOpaque(false);
 		guestTable.getColumnModel().getColumn(0).setCellRenderer(new PlayerRenderer("guest"));
 		
-
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
-				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));		
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		guestScrollPane.setBounds(0, 100, 550, 400);
 		guestScrollPane.setVisible(true);
 		guestScrollPane
@@ -1111,23 +1141,51 @@ public class GameInfoPanel extends JPanel {
 		if (hostScrollPane != null) {
 			hostScrollPane.setVisible(false);
 		}
-
-		hostTable = new JTable(hostRowData, hostColumn);
+		
+		hostTable = new JTable(hostRowData, hostColumn) { 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		
+		
+		guestTable = new JTable(guestRowData, guestColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		
 		DefaultTableCellRenderer hostTableHeaderRenderer = new DefaultTableCellRenderer();
 		hostTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
 		hostTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTable.getTableHeader().setDefaultRenderer(hostTableHeaderRenderer);
-		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
-		r1.setHorizontalAlignment(JLabel.CENTER);
+		hostTableHeaderRenderer.setOpaque(false);
+		hostTable.getTableHeader()
+				.setDefaultRenderer(hostTableHeaderRenderer);
+
+		
+		hostTable.setForeground(Color.WHITE);
+		hostTable.getTableHeader().setBackground(Color.BLACK);
+		DefaultTableCellRenderer r5 = new DefaultTableCellRenderer();
+		r5.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		hostTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		hostTable.setDefaultRenderer(Object.class, r1);
+		hostTable.setDefaultRenderer(Object.class, r5);
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
 		hostTable.setOpaque(false);
 		hostTable.getColumnModel().getColumn(0).setCellRenderer(new PlayerRenderer("host"));
-
+		
 		hostScrollPane = new JScrollPane(hostTable);
 		hostScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -1253,13 +1311,28 @@ public class GameInfoPanel extends JPanel {
 		if (guestScrollPane != null) {
 			guestScrollPane.setVisible(false);
 		}
-		guestTable = new JTable(guestRowData, guestColumn);
+		
+		guestTable = new JTable(guestRowData, guestColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		
 		DefaultTableCellRenderer guestTableHeaderRenderer = new DefaultTableCellRenderer();
 		guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
 		guestTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		guestTableHeaderRenderer.setOpaque(false);
 		guestTable.getTableHeader()
 				.setDefaultRenderer(guestTableHeaderRenderer);
 
+		
+		guestTable.setForeground(Color.WHITE);
+		guestTable.getTableHeader().setBackground(Color.BLACK);
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
 		r.setHorizontalAlignment(JLabel.CENTER);
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
@@ -1270,7 +1343,7 @@ public class GameInfoPanel extends JPanel {
 		guestTable.setCellSelectionEnabled(true);
 		guestTable.setOpaque(false);
 		guestTable.getColumnModel().getColumn(0).setCellRenderer(new PlayerRenderer("guest"));
-
+		
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -1396,22 +1469,52 @@ public class GameInfoPanel extends JPanel {
 			hostScrollPane.setVisible(false);
 		}
 
-		hostTable = new JTable(hostRowData, hostColumn);
+		
+		hostTable = new JTable(hostRowData, hostColumn) 
+		{ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		}
+		;
+
+		guestTable = new JTable(guestRowData, guestColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		
 		DefaultTableCellRenderer hostTableHeaderRenderer = new DefaultTableCellRenderer();
 		hostTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
 		hostTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTable.getTableHeader().setDefaultRenderer(hostTableHeaderRenderer);
-		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
-		r1.setHorizontalAlignment(JLabel.CENTER);
+		hostTableHeaderRenderer.setOpaque(false);
+		hostTable.getTableHeader()
+				.setDefaultRenderer(hostTableHeaderRenderer);
+
+		
+		hostTable.setForeground(Color.WHITE);
+		hostTable.getTableHeader().setBackground(Color.BLACK);
+		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
+		r.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		hostTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		hostTable.setDefaultRenderer(Object.class, r1);
+		hostTable.setDefaultRenderer(Object.class, r);
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
-		hostTable.getColumnModel().getColumn(0).setCellRenderer(new PlayerRenderer("host"));
 		hostTable.setOpaque(false);
-
+		hostTable.getColumnModel().getColumn(0).setCellRenderer(new PlayerRenderer("host"));
+		
 		hostScrollPane = new JScrollPane(hostTable);
 		hostScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));

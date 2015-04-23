@@ -14,6 +14,7 @@ import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -241,9 +242,21 @@ public class TeamInfoPanel extends JPanel {
 		if (playersInfoJSP != null) {
 			playersInfoJSP.setVisible(false);
 		}
-		playersInfoTable = new JTable(playersRowData, playersColumn);
+		playersInfoTable = new JTable(playersRowData, playersColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
 		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
 		r1.setHorizontalAlignment(JLabel.CENTER);
+		
+		playersInfoTable.setBackground(Color.gray);
+		
 		playersInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		playersInfoTable.setDefaultRenderer(Object.class, r1);
@@ -252,6 +265,7 @@ public class TeamInfoPanel extends JPanel {
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
+		playersInfoJSP.setBackground(Color.GRAY);
 		playersInfoJSP.setVisible(true);
 
 		// ------------------------------------------------------------------------------
@@ -313,15 +327,28 @@ public class TeamInfoPanel extends JPanel {
 		if (recentGameInfoJSP != null) {
 			recentGameInfoJSP.setVisible(false);
 		}
-		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn);
+		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn){ 
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
 		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
+		
+		recentGameInfoTable.setBackground(Color.gray);
+		
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
+		recentGameInfoJSP.setBackground(Color.GRAY);
 		recentGameInfoJSP.setVisible(true);
 
 		// ------------------------------------------------------------------------------
@@ -384,16 +411,22 @@ public class TeamInfoPanel extends JPanel {
 		}
 		historicalGameInfoTable = new JTable(historicalGameRowData,
 				historicalGameColumn);
+		
+		
+		historicalGameInfoTable.setBackground(Color.gray);
+		
+		
 		DefaultTableCellRenderer r3 = new DefaultTableCellRenderer();
 		r3.setHorizontalAlignment(JLabel.CENTER);
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r3);
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
+		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		historicalGameInfoJSP.setVisible(true);
-
+		historicalGameInfoJSP.setBackground(Color.GRAY);
 		// --------------------------------------------------------------------------------------------
 		JTP = new JTabbedPane();
 		JTP.addTab("teamPlayers", playersInfoJSP);
@@ -401,6 +434,7 @@ public class TeamInfoPanel extends JPanel {
 		JTP.addTab("historicalMatches", historicalGameInfoJSP);
 		JTP.setBounds(X * 183 / 1366, Y * 220 / 768, X * 1000 / 1366,
 				Y * 510 / 768);
+		JTP.setBackground(Color.GRAY);
 		bgLabel.add(JTP);
 
 		addBasicInfo();
@@ -559,6 +593,7 @@ public class TeamInfoPanel extends JPanel {
 								playersInfoTable.getSelectedRow(), 0)),
 						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
 								previousPanel));
+				mainFrame.add(playerInfoPanel);
 			}
 			return this;
 		}
