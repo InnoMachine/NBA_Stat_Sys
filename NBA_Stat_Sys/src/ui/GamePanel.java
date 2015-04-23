@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -63,7 +64,7 @@ public class GamePanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		home.setBounds(17 * X / 20, Y * 15 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -75,7 +76,7 @@ public class GamePanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 15 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -94,7 +95,7 @@ public class GamePanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 15 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -111,9 +112,9 @@ public class GamePanel extends JPanel {
 
 		JButton fresh = new JButton();
 		ImageIcon freshIcon = new ImageIcon(new ImageIcon("Image/freshIcon.png")
-				.getImage().getScaledInstance(X / 25, X / 25,
+				.getImage().getScaledInstance(X / 30, X / 30,
 						Image.SCALE_SMOOTH));
-		fresh.setBounds( X*10 / 1366, Y * 10 / 768, X / 25, X / 25);
+		fresh.setBounds( X*1070/ 1366, Y * 66/ 768, X / 30, X / 30);
 		fresh.setIcon(freshIcon);
 		fresh.setOpaque(false);
 		fresh.setContentAreaFilled(false);
@@ -124,33 +125,55 @@ public class GamePanel extends JPanel {
 		
 		mainFrame.getContentPane().add(this);
 
-		MyLabel label = new MyLabel(Color.BLACK, "起始日期");
-		label.setFont(new Font("黑体", 1, 13));
-		label.setBounds(X * 265 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
+		MyLabel label = new MyLabel(Color.WHITE, "起始日期:");
+		label.setFont(new Font("黑体", 1, 15));
+		label.setBounds(X * 300 / 1366, Y * 66 / 768, X * 80 / 1366,Y*40/768);
 		bgLabel.add(label);
 
 		DateChooserJButton startDate = new DateChooserJButton(X, Y);
 		startDate.setBounds(X * 350 / 1366, Y * 66 / 768, X * 240 / 1366,
-				X / 50);
+				Y*40/768);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(  X*150/1366, Y*40/768,
+						 Image.SCALE_SMOOTH));
+		
+		startDate.setIcon(buttonIcon);
 		startDate.setVisible(true);
+		startDate.setOpaque(false);
+		startDate.setContentAreaFilled(false);
+		startDate.setBorderPainted(false);
+		startDate.setHorizontalTextPosition(SwingConstants.CENTER);
+		startDate.setForeground(Color.WHITE);
 		bgLabel.add(startDate);
 
-		MyLabel label_1 = new MyLabel(Color.BLACK, "结束日期");
-		label_1.setFont(new Font("黑体", 1, 13));
-		label_1.setBounds(X * 655 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
+		MyLabel label_1 = new MyLabel(Color.white, "结束日期:");
+		label_1.setFont(new Font("黑体", 1, 15));
+		label_1.setBounds(X * 600 / 1366, Y * 66 / 768, X * 80/ 1366, Y*40/768);
 		bgLabel.add(label_1);
 
 		DateChooserJButton endDate = new DateChooserJButton(X, Y);
-		endDate.setBounds(X * 740 / 1366, Y * 66 / 768, X * 240 / 1366, X / 50);
+		endDate.setBounds(X * 650 / 1366, Y * 66 / 768, X * 240 / 1366, Y*40/768);
 		endDate.setVisible(true);
+		endDate.setIcon(buttonIcon);
+		endDate.setOpaque(false);
+		endDate.setContentAreaFilled(false);
+		endDate.setBorderPainted(false);
+		endDate.setHorizontalTextPosition(SwingConstants.CENTER);
+		endDate.setForeground(Color.WHITE);
 		bgLabel.add(endDate);
 
 		JButton searchbtn = new JButton("搜索");
-		searchbtn.setBounds(X * 1040 / 1366, Y * 66 / 768, X * 60 / 1366,
-				X / 50);
+		searchbtn.setBounds(X * 850 / 1366, Y * 66 / 768, X * 240 / 1366,
+				Y*40/768);
 		searchbtn.addActionListener(e -> searchGameByDate(startDate.getText(),
 				endDate.getText()));
 		searchbtn.setVisible(true);
+		searchbtn.setIcon(buttonIcon);
+		searchbtn.setOpaque(false);
+		searchbtn.setContentAreaFilled(false);
+		searchbtn.setBorderPainted(false);
+		searchbtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		searchbtn.setForeground(Color.WHITE);
 		bgLabel.add(searchbtn);
 
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
