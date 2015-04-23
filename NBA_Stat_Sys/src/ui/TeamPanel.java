@@ -62,7 +62,7 @@ public class TeamPanel extends JPanel{
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(X*1180/1366, Y*10/768, X / 25, X / 25);
+		home.setBounds(X*1180/1366, Y*20/768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -73,7 +73,7 @@ public class TeamPanel extends JPanel{
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25, X / 25,Image.SCALE_SMOOTH));
-		minimize.setBounds(X*1240/1366, Y*10/768, X / 25, X / 25);
+		minimize.setBounds(X*1240/1366, Y*20/768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -92,7 +92,7 @@ public class TeamPanel extends JPanel{
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(X*1300/1366, Y*10/768, X / 25, X / 25);
+		close.setBounds(X*1300/1366, Y*20/768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);

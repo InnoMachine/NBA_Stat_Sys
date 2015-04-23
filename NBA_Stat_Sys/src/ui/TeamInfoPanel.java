@@ -99,7 +99,7 @@ public class TeamInfoPanel extends JPanel {
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
-		bg = new ImageIcon(new ImageIcon("Image/searchPlayer.png").getImage()
+		bg = new ImageIcon(new ImageIcon("Image/teamPanel.png").getImage()
 				.getScaledInstance(this.getWidth(), this.getHeight(),
 						Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
@@ -108,7 +108,7 @@ public class TeamInfoPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -116,14 +116,14 @@ public class TeamInfoPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 
-		JButton back = new JButton("返回");
+		JButton back = new JButton();
 		back.setForeground(Color.WHITE);
 
 		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
 
-		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		back.setBounds(17 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
@@ -135,7 +135,7 @@ public class TeamInfoPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -155,7 +155,7 @@ public class TeamInfoPanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 20/ 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -170,17 +170,7 @@ public class TeamInfoPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-		JButton fresh = new JButton();
-		ImageIcon freshIcon = new ImageIcon(
-				new ImageIcon("Image/freshIcon.png").getImage()
-						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		fresh.setBounds(X * 10 / 1366, Y * 10 / 768, X / 25, X / 25);
-		fresh.setIcon(freshIcon);
-		fresh.setOpaque(false);
-		fresh.setContentAreaFilled(false);
-		fresh.setBorderPainted(false);
-		fresh.addActionListener(e -> fresh());
-		bgLabel.add(fresh);
+
 
 		TeamBadge = new JLabel();
 		TeamBadge.setOpaque(false);
@@ -447,10 +437,10 @@ public class TeamInfoPanel extends JPanel {
 	}
 
 	private void addBasicInfo() {
-		int tempX = X * 240 / 1366;
+		int tempX = X * 220 / 1366;
 		int tempY = Y / 9;
 		int spaceX = X / 12;
-		int spaceY = Y / 24;
+		int spaceY = Y / 20;
 
 		textField_1 = new MyTextField();
 		textField_1.setText("球队全名");
@@ -530,6 +520,18 @@ public class TeamInfoPanel extends JPanel {
 		textField_16.setBounds(tempX + 7 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_16);
+		
+		JButton fresh = new JButton();
+		ImageIcon freshIcon = new ImageIcon(
+				new ImageIcon("Image/freshIcon.png").getImage()
+						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
+		fresh.setBounds(tempX + 950, tempY + spaceY/2, X / 25, X / 25);
+		fresh.setIcon(freshIcon);
+		fresh.setOpaque(false);
+		fresh.setContentAreaFilled(false);
+		fresh.setBorderPainted(false);
+		fresh.addActionListener(e -> fresh());
+		bgLabel.add(fresh);
 
 	}
 	
@@ -572,11 +574,13 @@ public class TeamInfoPanel extends JPanel {
 		public MyTextField() {
 			super();
 			this.setForeground(Color.BLACK);
-			this.setFont(new Font("黑体", 1, 13));
+			this.setFont(new Font("微软雅黑", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+			this.setForeground(Color.WHITE);
 			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
+			this.setOpaque(false);
 		}
 	}
 }
