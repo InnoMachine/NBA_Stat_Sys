@@ -53,7 +53,7 @@ public class PlayerPanel extends JPanel {
 	
 	JFrame mainFrame;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	static int X;
 	static int Y;
 	JLabel bgLabel;
@@ -153,7 +153,7 @@ public class PlayerPanel extends JPanel {
 
 
 		JButton searchPlayerbtn = new MyButton("球员搜索");
-		searchPlayerbtn.setBounds(X*1100/1366, Y*250/768, X*180/1366, Y*50/768);
+		searchPlayerbtn.setBounds(X*1100/1366, Y*330/768,X*180/1366, Y*50/768);
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance( X*180/1366, Y*50/768,
 						 Image.SCALE_SMOOTH));
@@ -161,13 +161,13 @@ public class PlayerPanel extends JPanel {
 		searchPlayerbtn.setIcon(buttonIcon);
 		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
 		bgLabel.add(searchPlayerbtn);
-
+/*
 		JButton ShowPlayerbtn = new MyButton("球员查看");
 		ShowPlayerbtn.setBounds(X*1100/1366, Y*330/768,X*180/1366, Y*50/768);
 		ShowPlayerbtn.setIcon(buttonIcon);
 		ShowPlayerbtn.addActionListener(e -> toShowPlayerPanel());
 		bgLabel.add(ShowPlayerbtn);
-
+*/
 		JButton sortPlayerbtn = new MyButton("球员排序");
 		sortPlayerbtn.setBounds(X*1100/1366, Y*410/768, X*180/1366, Y*50/768);
 		sortPlayerbtn.setIcon(buttonIcon);
@@ -381,7 +381,7 @@ public class PlayerPanel extends JPanel {
 						 Image.SCALE_SMOOTH));
 		seasonData_ScoreFieldbtn.setIcon(buttonIcon);
 		seasonData_ScoreFieldbtn.addActionListener(e -> {
-			progressFastPlayerCriteria = "scoreField";
+			progressFastPlayerCriteria = "scoreFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均得分";
 			progress.setText("进步最快球员"+progressby);
@@ -392,7 +392,7 @@ public class PlayerPanel extends JPanel {
 		seasonData_ReboundFieldbtn.setBounds(X*377/1366, Y*432/768,X*322/1366, Y*30/768);
 		seasonData_ReboundFieldbtn.setIcon(buttonIcon);
 		seasonData_ReboundFieldbtn.addActionListener(e -> {
-			progressFastPlayerCriteria = "reboundField";
+			progressFastPlayerCriteria = "reboundFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均篮板";
 			progress.setText("进步最快球员"+progressby);
@@ -403,7 +403,7 @@ public class PlayerPanel extends JPanel {
 		seasonData_AssistanceFieldbtn.setBounds(X*699/1366, Y*432/768, X*322/1366,Y*30/768);
 		seasonData_AssistanceFieldbtn.setIcon(buttonIcon);
 		seasonData_AssistanceFieldbtn.addActionListener(e -> {
-			progressFastPlayerCriteria = "assistanceField";
+			progressFastPlayerCriteria = "assistanceFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均助攻";
 			progress.setText("进步最快球员"+progressby);

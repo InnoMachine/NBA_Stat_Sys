@@ -51,7 +51,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	JComboBox<String> positionjcb;
 	JComboBox<String> leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;
@@ -101,7 +101,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y / 18, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -111,13 +111,13 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
-		back.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
-		// back.setIcon(backIcon);
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		 X / 25, Image.SCALE_SMOOTH));
+		
+		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		 back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -128,7 +128,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -141,13 +141,14 @@ public class ScreeningPlayerPanel extends JPanel {
 				mainFrame.setExtendedState(JFrame.ICONIFIED);
 			}
 		});
+
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);

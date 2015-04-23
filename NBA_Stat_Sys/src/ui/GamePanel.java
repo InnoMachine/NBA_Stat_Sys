@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import vo.GameVo;
+import businessLogic.Game_BL;
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 
@@ -36,7 +37,7 @@ public class GamePanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 
-	Game_BS game_BS = new Game_BL_Stub();
+	Game_BS game_BS = new Game_BL();
 
 	Vector<Vector<GameCardPanel>> rowData;
 	static int X;

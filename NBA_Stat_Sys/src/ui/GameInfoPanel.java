@@ -26,6 +26,7 @@ import vo.GameVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
+import businessLogic.Game_BL;
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 
@@ -42,7 +43,7 @@ public class GameInfoPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 
-	Game_BS game_BS = new Game_BL_Stub();
+	Game_BS game_BS = new Game_BL();
 
 	static int X;
 	static int Y;

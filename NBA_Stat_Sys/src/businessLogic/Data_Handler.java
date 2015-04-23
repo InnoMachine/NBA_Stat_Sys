@@ -44,7 +44,14 @@ public class Data_Handler {
 	private SeasonTracker st;
 	BigDecimal b;  
     
-	
+	public static Data_Handler getInstance()
+	{
+		if(instance==null)
+		{
+			instance = new Data_Handler();
+		}
+		return instance;
+	}
 	private Data_Handler()
 	{
 		playerdao = new PlayerDaoImpl();
@@ -327,7 +334,10 @@ public class Data_Handler {
 	}
 	
 	private void PlayerSetTurnOverRate(PlayerVo temp) {
-		double r = temp.getTurnover()/(temp.getShotNum()-temp.getThreePointShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover());
+		double g =(temp.getShotNum()-temp.getThreePointShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover());
+		double r = 0;
+		if(g!=0)
+			r = temp.getTurnover()/g;
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTurnOverRate(f);
@@ -389,9 +399,11 @@ public class Data_Handler {
 	}
 	
 	private void PlayerSetTrueHitRate(PlayerVo temp) {
-		double r = temp.getScore()/(double)(2*((double)temp.getShotNum()+temp.getThreePointShotNum()+0.44
+		double g =(double)(2*((double)temp.getShotNum()+temp.getThreePointShotNum()+0.44
 				*temp.getFreeThrowShotNum()));
-	
+		double r=0;
+		if(r!=0)
+			r = temp.getScore()/g;
 		b = new BigDecimal(r);
 		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTrueHitRate(f);
@@ -449,6 +461,8 @@ public class Data_Handler {
 			TeamPerformanceInSingleGame tgph=setPerformance(tph);
 			tgph.setOpTeam(tgpg.getName());
 			tgpg.setOpTeam(tgph.getName());
+			tgph.setOpTeamP(tgpg.getName());
+			tgpg.setOpTeamP(tgph.getName());
 			tgpg.setOpDefensiveRebound(tgph.getDefensiveRebound());
 			tgpg.setOpOffensiveRebound(tgph.getOffensiveRebound());
 			tgpg.setOpTwoPointShotNum(tgph.getShotNum()-tgph.getThreePointShotNum());
@@ -617,9 +631,11 @@ public class Data_Handler {
 		ArrayList<SinglePerformance> listsp = tp.getSpList();
 		String abbr = tp.getTeamNameAbbr();
 		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
+		int k=0;
+		tgp.setGameLabel(tp.getGamelabel());
 		for(SinglePerformance temp:listsp)
 		{
-			int k=0;
+			
 			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
 			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
 			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
@@ -642,6 +658,9 @@ public class Data_Handler {
 				{
 					
 					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
+					pgp.setTeam(tgp.getName());
+					pgp.setPosition(temp.getPosition());
+					pgp.setGameLabel(tp.getGamelabel());
 					pgp.setNumber(listvo.get(i).getNumber());
 					pgp.setTime(temp.getTimeBySeconds());
 					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
@@ -666,6 +685,7 @@ public class Data_Handler {
 					{
 						pgp.setFirstOn(1);
 						k++;
+						tgp.AddFirstP(pgp);
 					}
 					if(tgp.getHighestassist()<temp.getAssistance()){
 						tgp.setHighestassist(temp.getAssistance());
@@ -718,14 +738,7 @@ public class Data_Handler {
 			return false;
 	}
 	
-	public static Data_Handler getInstance()
-	{
-		if(instance==null)
-		{
-			instance = new Data_Handler();
-		}
-		return instance;
-	}
+	
 	
 	private void SetTeamVo() {
 		for(int i=0;i<teamlistpo.size();i++)
@@ -846,165 +859,37 @@ public class Data_Handler {
 	
 	public ArrayList<TeamPerformanceInSingleGame> getTeamGamesDaily()
 	{
-		ArrayList<GamePO> todaygame = new ArrayList<GamePO>();
 		ArrayList<TeamPerformanceInSingleGame> tplist = new ArrayList<TeamPerformanceInSingleGame>();
-		for(int i=0;i<todaygame.size();i++)
-		{
-			TeamPerformance tpg = todaygame.get(i).getGuestTP();
-			TeamPerformance tph = todaygame.get(i).getHomeTP();
-			TeamPerformanceInSingleGame tgpg=setPerformanceDaily(tpg);
-			TeamPerformanceInSingleGame tgph=setPerformanceDaily(tph);
-			tgpg.setOpDefensiveRebound(tgph.getDefensiveRebound());
-			tgpg.setOpOffensiveRebound(tgph.getOffensiveRebound());
-			tgpg.setOpTwoPointShotNum(tgph.getShotNum()-tgph.getThreePointShotNum());
-			tgpg.setOpScore(tgph.getScore());
-			tgpg.CalculateRoundAttack();
-			tgph.setOpDefensiveRebound(tgpg.getDefensiveRebound());
-			tgph.setOpOffensiveRebound(tgpg.getOffensiveRebound());
-			tgph.setOpTwoPointShotNum(tgpg.getShotNum()-tgpg.getThreePointShotNum());
-			tgph.setOpScore(tgpg.getScore());
-			tgph.CalculateRoundAttack();
-			tgph.isWinning();
-			tgpg.isWinning();
-			tgpg.setOpRoundAttack(tgph.getRoundAttack());
-			tgph.setOpRoundAttack(tgpg.getRoundAttack());
-			tplist.add(tgph);
-			tplist.add(tgpg);
+		int i = gamevo.size()-1;
+		GameDate dn = getDateNow();
+		while(gamevo.get(i).getGameDate().compareTo(dn)==0){
+			tplist.add(gamevo.get(i).getGuestTP());
+			tplist.add(gamevo.get(i).getHomeTP());
+			i--;
 		}
 		return tplist;
 	}
 	
-	private TeamPerformanceInSingleGame setPerformanceDaily(TeamPerformance tp) {
-		ArrayList<SinglePerformance> listsp = tp.getSpList();
-		String abbr = tp.getTeamNameAbbr();
-		TeamPerformanceInSingleGame tgp = new TeamPerformanceInSingleGame(abbr);
-		for(SinglePerformance temp:listsp)
-		{
-			int k=0;
-			tgp.setGameLabel(tp.getGamelabel());
-			tgp.setTime(tgp.getTime()+temp.getTimeBySeconds());
-			tgp.setHitNum(tgp.getHitNum()+temp.getHitNum());
-			tgp.setShotNum(tgp.getShotNum()+temp.getShotNum());
-			tgp.setThreePointHitNum(tgp.getThreePointHitNum()+temp.getThreePointHitNum());
-			tgp.setThreePointShotNum(tgp.getThreePointShotNum()+temp.getThreePointShotNum());
-			tgp.setFreeThrowHitNum(tgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
-			tgp.setFreeThrowShotNum(tgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
-			tgp.setOffensiveRebound(tgp.getOffensiveRebound()+temp.getOffensiveRebound());
-			tgp.setDefensiveRebound(tgp.getDefensiveRebound()+temp.getDefensiveRebound());
-			tgp.setReboundOverall(tgp.getReboundOverall()+temp.getReboundOverall());
-			tgp.setAssistance(tgp.getAssistance()+temp.getAssistance());
-			tgp.setBlock(tgp.getBlock()+temp.getBlock());
-			tgp.setTurnover(tgp.getTurnover()+temp.getTurnover());
-			tgp.setFoul(tgp.getFoul()+temp.getFoul());
-			tgp.setSteal(tgp.getSteal()+temp.getSteal());
-			tgp.setScore(tgp.getScore()+temp.getScore());
-			for(int i=0;i<listvo.size();i++)
-			{
-				if(temp.getName().equals(listvo.get(i).getName()))
-				{
-					
-					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
-					pgp.setTime(temp.getTimeBySeconds());
-					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
-					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
-					pgp.setThreePointHitNum(pgp.getThreePointHitNum()+temp.getThreePointHitNum());
-					pgp.setThreePointShotNum(pgp.getThreePointShotNum()+temp.getThreePointShotNum());
-					pgp.setFreeThrowHitNum(pgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
-					pgp.setFreeThrowShotNum(pgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
-					pgp.setOffensiveRebound(pgp.getOffensiveRebound()+temp.getOffensiveRebound());
-					pgp.setDefensiveRebound(pgp.getDefensiveRebound()+temp.getDefensiveRebound());
-					pgp.setReboundOverall(pgp.getReboundOverall()+temp.getReboundOverall());
-					pgp.setAssistance(pgp.getAssistance()+temp.getAssistance());
-					pgp.setSteal(pgp.getSteal()+temp.getSteal());
-					pgp.setBlock(pgp.getBlock()+temp.getBlock());
-					pgp.setTurnover(pgp.getTurnover()+temp.getTurnover());
-					pgp.setFoul(pgp.getFoul()+temp.getFoul());
-					pgp.setScore(pgp.getScore()+temp.getScore());
-					if(isTwoTen(temp)){
-						pgp.setTwoTenNum(1);
-					}
-					if(k<5)
-					{
-						pgp.setFirstOn(1);
-						k++;
-						tgp.AddFirstP(pgp);
-					}
-					tgp.AddPlayerP(pgp);
-					break;
-				}
-				if(i==listvo.size()&&!temp.getName().equals(listvo.get(i).getName())){
-					//PlayerVo vo = new PlayerVo(temp.getName());
-				}
-			}
-		}
-		for(TeamRecentGames temp:trecgames)
-		{
-			if(temp.getAbbreviation().equals(abbr))
-			{
-				temp.AddNewGame(tgp);
-			}
-		}
-		return tgp;
-	}
+	
 	
 	public ArrayList<PlayerPerformanceInSingleGame> getPlayerGamesDaily()
 	{
-		//此处由今日日期读取当天games
-		ArrayList<GamePO> todaygame = new ArrayList<GamePO>();
 		ArrayList<PlayerPerformanceInSingleGame> pplist = new ArrayList<PlayerPerformanceInSingleGame>();
-		for(int i=0;i<todaygame.size();i++)
-		{
-			TeamPerformance tpg = todaygame.get(i).getGuestTP();
-			TeamPerformance tph = todaygame.get(i).getHomeTP();
-			setPerformanceDaily(tpg,pplist);
-			setPerformanceDaily(tph,pplist);
+		int i = gamevo.size()-1;
+		GameDate dn = getDateNow();
+		while(gamevo.get(i).getGameDate().compareTo(dn)==0){
+			for(PlayerPerformanceInSingleGame temp:gamevo.get(i).getGuestTP().playerlist){
+				pplist.add(temp);
+			}
+			for(PlayerPerformanceInSingleGame temp:gamevo.get(i).getHomeTP().playerlist){
+				pplist.add(temp);
+			}
+			i--;
 		}
 		return pplist;
 		
 	}
 	
-	private void setPerformanceDaily(TeamPerformance tp,
-			ArrayList<PlayerPerformanceInSingleGame> pplist) {
-		ArrayList<SinglePerformance> listsp = tp.getSpList();
-		for(SinglePerformance temp:listsp)
-		{
-			int k=0;
-			for(int i=0;i<listvo.size();i++)
-			{
-				if(temp.getName().equals(listvo.get(i).getName()))
-				{
-					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
-					pgp.setTeam(tp.getTeamNameAbbr());
-					pgp.setTime(temp.getTimeBySeconds());
-					pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
-					pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
-					pgp.setThreePointHitNum(pgp.getThreePointHitNum()+temp.getThreePointHitNum());
-					pgp.setThreePointShotNum(pgp.getThreePointShotNum()+temp.getThreePointShotNum());
-					pgp.setFreeThrowHitNum(pgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
-					pgp.setFreeThrowShotNum(pgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
-					pgp.setOffensiveRebound(pgp.getOffensiveRebound()+temp.getOffensiveRebound());
-					pgp.setDefensiveRebound(pgp.getDefensiveRebound()+temp.getDefensiveRebound());
-					pgp.setReboundOverall(pgp.getReboundOverall()+temp.getReboundOverall());
-					pgp.setAssistance(pgp.getAssistance()+temp.getAssistance());
-					pgp.setSteal(pgp.getSteal()+temp.getSteal());
-					pgp.setBlock(pgp.getBlock()+temp.getBlock());
-					pgp.setTurnover(pgp.getTurnover()+temp.getTurnover());
-					pgp.setFoul(pgp.getFoul()+temp.getFoul());
-					pgp.setScore(pgp.getScore()+temp.getScore());
-					if(isTwoTen(temp)){
-						pgp.setTwoTenNum(1);
-					}
-					if(k<5)
-					{
-						pgp.setFirstOn(1);
-						k++;
-					}
-					pplist.add(pgp);
-					break;
-				}
-			}
-		}
-	}
 	
 	public ArrayList<PlayerRecentGames> getPlayerRecentGames()
 	{
@@ -1073,6 +958,7 @@ public class Data_Handler {
 		TeamCalculate();
 	}
 	public GameDate getDateNow(){
+		st.setCurrentDate(new GameDate(2012,11,28));
 		return st.getCurrentDate();
 	}
 	

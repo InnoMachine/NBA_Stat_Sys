@@ -29,6 +29,7 @@ import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
+import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import ui.GamePanel.GameCardRenderer;
@@ -46,7 +47,7 @@ public class SearchPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 
@@ -84,13 +85,13 @@ public class SearchPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		 X / 25, Image.SCALE_SMOOTH));
+		
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
-		// back.setIcon(backIcon);
+		 back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -137,14 +138,19 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(close);
 
 		JTextField keytF = new JTextField();
-		keytF.setBounds(X * 650 / 1366, Y * 50 / 768, X * 400 / 1366,
+		keytF.setBounds(X * 483 / 1366, Y * 50 / 768, X * 400 / 1366,
 				Y * 27 / 768);
 		keytF.setVisible(true);
 		bgLabel.add(keytF);
 
 		JButton searchbtn = new JButton("搜索");
-		searchbtn.setBounds(X * 1080 / 1366, Y * 50 / 768, X * 60 / 1366,
+		searchbtn.setBounds(X * 900 / 1366, Y * 50 / 768, X * 60 / 1366,
 				Y * 27 / 768);
+		ImageIcon searchbtnIcon = new ImageIcon(
+				new ImageIcon("Image/mainButton.png").getImage()
+						.getScaledInstance(X * 60 / 1366,
+								Y * 27 / 768, Image.SCALE_SMOOTH));
+		searchbtn.setIcon(searchbtnIcon);
 		searchbtn.addActionListener(e -> searchPlayer(keytF.getText(), "All"));
 		searchbtn.setVisible(true);
 		bgLabel.add(searchbtn);

@@ -6,6 +6,7 @@ public class TeamRecentGames {
 	private String name;
 	private String abbreviation;
 	private ArrayList<TeamPerformanceInSingleGame> fiveGames;
+
 	public TeamRecentGames(){
 		fiveGames = new ArrayList<TeamPerformanceInSingleGame>();
 	}

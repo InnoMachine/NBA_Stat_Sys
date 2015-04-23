@@ -35,6 +35,8 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 		playerbtn = new JButton();
 		playerbtn.setBounds(X * 30 / 1366, Y * 10 / 768, X * 100 / 1366,
 				Y * 100 / 768);
+		playerbtn.setContentAreaFilled(false);
+		playerbtn.setBorderPainted(false);
 		playerbtn.setVisible(true);
 		add(playerbtn);
 
@@ -145,6 +147,8 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 		teambtn.setBounds(X * 830 / 1366, Y * 20 / 768, X * 80 / 1366,
 				Y * 80 / 768);
 //		teambtn.addActionListener(e->{System.out.println("click teambtn");});
+		teambtn.setContentAreaFilled(false);
+		teambtn.setBorderPainted(false);
 		teambtn.setVisible(true);
 		add(teambtn);
 

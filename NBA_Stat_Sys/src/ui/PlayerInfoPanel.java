@@ -61,6 +61,7 @@ public class PlayerInfoPanel extends JPanel {
 
 	private JLabel playerPortrait;
 	private JLabel playerAction;
+	private JButton teambtn;
 
 	Vector<Vector<String>> recentGameRowData;
 	Vector<String> recentGameColumn;
@@ -75,7 +76,7 @@ public class PlayerInfoPanel extends JPanel {
 	JButton currentDataCheck;
 	private JTabbedPane JTP;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	public PlayerInfoPanel(String PlayerName, JFrame mainFrame,
 			JPanel previousPanel) {
@@ -108,6 +109,20 @@ public class PlayerInfoPanel extends JPanel {
 						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
 		playerPortrait.setIcon(portrait);
 		bgLabel.add(playerPortrait);
+		
+		teambtn=new JButton();
+		teambtn.setBounds(X * 1113 / 1366, Y * 60 / 768, X * 160 / 1366,
+				Y * 128 / 768);
+		ImageIcon team = new ImageIcon(new ImageIcon(
+				"CSEdata/teams_png/" + player_BS.getPlayerByName(playerName).getTeam() + ".png").getImage()
+				.getScaledInstance(playerPortrait.getWidth(),
+						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+		teambtn.setIcon(team);
+		teambtn.addActionListener(e->{
+			this.setVisible(false);
+			TeamInfoPanel teamInfoPanel=new TeamInfoPanel(player_BS.getPlayerByName(playerName).getTeam(), mainFrame,this);
+		});
+		bgLabel.add(teambtn);
 
 		playerAction = new JLabel();
 		playerAction
@@ -133,11 +148,11 @@ public class PlayerInfoPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		  ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		  X / 25, Image.SCALE_SMOOTH));
+		 
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		// back.setIcon(backIcon);
 		back.setOpaque(false);
@@ -487,12 +502,13 @@ public class PlayerInfoPanel extends JPanel {
 		public MyTextField() {
 			super();
 			this.setVisible(true);
-			this.setForeground(Color.BLACK);
-			this.setFont(new Font("黑体", 1, 13));
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
+			this.setOpaque(false);
 		}
 	}
 }
