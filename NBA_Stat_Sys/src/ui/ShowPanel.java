@@ -23,8 +23,10 @@ import javax.swing.SwingConstants;
 import vo.PlayerVo;
 import vo.TeamVo;
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
+import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 import javax.swing.JScrollPane;
@@ -40,8 +42,8 @@ public class ShowPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	JPanel previousPanel;
-	Player_BS player_BS = new Player_BL();
-	Team_BS team_BS = new Team_BL();
+	Player_BS player_BS = new Player_BL_Stub();
+	Team_BS team_BS = new Team_BL_Stub();
 
 	JLabel bgLabel;
 	String category = "player";

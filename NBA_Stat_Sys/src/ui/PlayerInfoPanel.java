@@ -79,7 +79,7 @@ public class PlayerInfoPanel extends JPanel {
 	JButton currentDataCheck;
 	private JTabbedPane JTP;
 
-	Player_BS player_BS = new Player_BL();
+	Player_BS player_BS = new Player_BL_Stub();
 
 	public PlayerInfoPanel(String PlayerName, JFrame mainFrame,
 			JPanel previousPanel) {
