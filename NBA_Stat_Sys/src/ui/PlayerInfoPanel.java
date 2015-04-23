@@ -19,6 +19,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import businessLogic.Player_BL;
@@ -212,10 +213,10 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameColumn.add("分钟");
 		recentGameColumn.add("命中");
 		recentGameColumn.add("出手");
-		recentGameColumn.add("三分命中数");
-		recentGameColumn.add("三分出手数");
-		recentGameColumn.add("罚球命中数");
-		recentGameColumn.add("罚球出手数");
+		recentGameColumn.add("三分命中");
+		recentGameColumn.add("三分出手");
+		recentGameColumn.add("罚球命中");
+		recentGameColumn.add("罚球出手");
 		recentGameColumn.add("进攻");
 		recentGameColumn.add("防守");
 		recentGameColumn.add("篮板");
@@ -256,14 +257,19 @@ public class PlayerInfoPanel extends JPanel {
 			recentGameInfoJSP.setVisible(false);
 		}
 		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn);
-
+		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
+		r1.setHorizontalAlignment(JLabel.CENTER);
+		recentGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
+		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
-		setSize( X*1000 / 1366, Y *450/768);
+		setSize(X * 1000 / 1366, Y * 490 / 768);
 		recentGameInfoJSP.setVisible(true);
 
 		// -----------------------------------------------------------------------------------------------
-ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPerformanceInSingleGame>();
-		 historicalGames=player_BS.getPlayerPerformacne(PlayerName).getGames();
+		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
+		historicalGames = player_BS.getPlayerPerformacne(PlayerName).getGames();
 
 		if (historicalGameRowData == null) {
 			historicalGameRowData = new Vector<Vector<String>>();
@@ -276,10 +282,10 @@ ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPer
 		historicalGameColumn.add("分钟");
 		historicalGameColumn.add("命中");
 		historicalGameColumn.add("出手");
-		historicalGameColumn.add("三分命中数");
-		historicalGameColumn.add("三分出手数");
-		historicalGameColumn.add("罚球命中数");
-		historicalGameColumn.add("罚球出手数");
+		historicalGameColumn.add("三分命中");
+		historicalGameColumn.add("三分出手");
+		historicalGameColumn.add("罚球命中");
+		historicalGameColumn.add("罚球出手");
 		historicalGameColumn.add("进攻");
 		historicalGameColumn.add("防守");
 		historicalGameColumn.add("篮板");
@@ -312,7 +318,7 @@ ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPer
 			a.add(String.valueOf(historicalGames.get(i).getScore()));
 			historicalGameRowData.add(a);
 		}
-		
+
 		if (historicalGameInfoTable != null) {
 			historicalGameInfoTable.setVisible(false);
 		}
@@ -322,13 +328,19 @@ ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPer
 		}
 		historicalGameInfoTable = new JTable(historicalGameRowData,
 				historicalGameColumn);
-
+		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		historicalGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
+		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
-		historicalGameInfoJSP.setSize(X*1000 / 1366, Y *450/768);
+		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
 		historicalGameInfoJSP.setVisible(true);
 
 		JTP = new JTabbedPane();
-		JTP.setBounds(X *183/ 1366, Y*220/768, X*1000 / 1366, Y *450/768);
+		JTP.setBounds(X * 90 / 1366, Y * 220 / 768, X * 1000 / 1366,
+				Y * 490 / 768);
 		JTP.addTab("currentData", recentGameInfoJSP);
 		JTP.addTab("historicalData", historicalGameInfoJSP);
 		bgLabel.add(JTP);

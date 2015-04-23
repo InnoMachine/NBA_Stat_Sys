@@ -2,10 +2,12 @@ package businessLogic;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import po.GameDate;
 import po.GamePO;
 import po.PlayerPO;
+import po.SeasonTracker;
 import po.SinglePerformance;
 import po.TeamPO;
 import po.TeamPerformance;
@@ -39,6 +41,7 @@ public class Data_Handler {
 	private ArrayList<PlayerRecentGames> precgames;
 	private ArrayList<GameVo> gamevo;
 	private ArrayList<PlayerGames> listpg;
+	private SeasonTracker st;
 	BigDecimal b;  
     
 	
@@ -56,6 +59,7 @@ public class Data_Handler {
 		precgames = new ArrayList<PlayerRecentGames>();
 		gamevo = new ArrayList<GameVo>();
 		listpg = new ArrayList<PlayerGames>();
+		st = new SeasonTracker();
 		SetPlayerVo();
 		SetTeamVo();
 		PlayerDivisionSet();
@@ -516,6 +520,8 @@ public class Data_Handler {
 		vo.setScoreOverall(po.getScoreOverall());
 		vo.setSeasonId(po.getSeasonId());
 		vo.setVersus(po.getVersus());
+		tgpg.setGameDate(po.getGameDate());
+		tgph.setGameDate(po.getGameDate());
 		
 		
 	}
@@ -1067,7 +1073,29 @@ public class Data_Handler {
 		TeamCalculate();
 	}
 	public GameDate getDateNow(){
-		return null;
+		return st.getCurrentDate();
+	}
+	
+	public GameDate getNextDate(GameDate date){
+		int year = date.getYear();
+		int month = date.getMonth();
+		int day = date.getDay();
+		
+		Calendar time=Calendar.getInstance();
+		time.clear();
+		time.set(Calendar.YEAR, year);
+		time.set(Calendar.MONTH, month - 1);//count from 0
+		int monthLength = time.getActualMaximum(Calendar.DAY_OF_MONTH);
+		if(monthLength == day) {
+			if(month == 12) {
+				year ++;
+				month = 1;
+			}else {
+				month ++;
+			}
+			day = 1;
+		}
+		return new GameDate(year, month, day);
 	}
 
 	public PlayerGames getPlayerPerformacne(
@@ -1078,6 +1106,20 @@ public class Data_Handler {
 			}
 		}
 		return null;
+	}
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr)
+	{
+		ArrayList<TeamPerformanceInSingleGame> list = new ArrayList<TeamPerformanceInSingleGame>();
+		for(GameVo temp:gamevo){
+			if(temp.getGuestTeam().equals(abbr)){
+				list.add(temp.getGuestTP());
+			}
+			if(temp.getHomeTeam().equals(abbr)){
+				list.add(temp.getHomeTP());
+			}
+		}
+		return list;
+		
 	}
 }
 

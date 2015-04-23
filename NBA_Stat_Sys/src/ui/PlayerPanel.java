@@ -79,24 +79,30 @@ public class PlayerPanel extends JPanel {
 	String dailyHotPlayerCriteria = "score";
 	String seasonHotPlayerCriteria = "scoreField";
 	String progressFastPlayerCriteria = "scoreField";
-
+	
+	private String selected="每日热点球员";
+	private String selectedby="-得分";
+	private JLabel hotLabel;
+	private JLabel progress;
+	private String progressby="-场均得分";
+	
 	public PlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
-		// X = mainFrame.getWidth();
-		// Y = mainFrame.getHeight();
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		/*
-		 * bgLabel = new JLabel(); bgLabel.setBounds(10, -10, X, Y); ImageIcon
-		 * bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
-		 * .getImage().getScaledInstance(this.getWidth(), this.getHeight(),
-		 * Image.SCALE_SMOOTH)); bgLabel.setIcon(bg); this.add(bgLabel);
-		 */
+		
+		bgLabel = new JLabel();
+		bgLabel.setBounds(0, 0, X, Y);
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/playerPanel.png")
+				.getImage().getScaledInstance(this.getWidth(),
+						this.getHeight(), Image.SCALE_SMOOTH));
+		bgLabel.setIcon(bg);
+		this.add(bgLabel);
+
 		JButton home = new JButton();
-		System.out.println(X+"  "+Y);
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
@@ -106,8 +112,7 @@ public class PlayerPanel extends JPanel {
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
 		home.addActionListener(e -> back());
-		// bgLabel.add(home);
-		this.add(home);
+		bgLabel.add(home);
 
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
@@ -125,8 +130,7 @@ public class PlayerPanel extends JPanel {
 				mainFrame.setExtendedState(JFrame.ICONIFIED);
 			}
 		});
-		// bgLabel.add(minimize);
-		this.add(minimize);
+		bgLabel.add(minimize);
 
 		JButton close = new JButton();
 		ImageIcon closeIcon = new ImageIcon(
@@ -145,203 +149,272 @@ public class PlayerPanel extends JPanel {
 				mainFrame.dispose();
 			}
 		});
-		// bgLabel.add(close);
-		this.add(close);
+		bgLabel.add(close);
 
-		JButton searchPlayerbtn = new JButton("球员搜索");
-		searchPlayerbtn.setBounds(X*1161/1366, Y*275/768, X*120/1366, Y*23/768);
+
+		JButton searchPlayerbtn = new MyButton("球员搜索");
+		searchPlayerbtn.setBounds(X*1100/1366, Y*250/768, X*180/1366, Y*50/768);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance( X*180/1366, Y*50/768,
+						 Image.SCALE_SMOOTH));
+		
+		searchPlayerbtn.setIcon(buttonIcon);
 		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
-		add(searchPlayerbtn);
+		bgLabel.add(searchPlayerbtn);
 
-		JButton ShowPlayerbtn = new JButton("球员查看");
-		ShowPlayerbtn.setBounds(X*1161/1366, Y*345/768, X*120/1366, Y*23/768);
+		JButton ShowPlayerbtn = new MyButton("球员查看");
+		ShowPlayerbtn.setBounds(X*1100/1366, Y*330/768,X*180/1366, Y*50/768);
+		ShowPlayerbtn.setIcon(buttonIcon);
 		ShowPlayerbtn.addActionListener(e -> toShowPlayerPanel());
-		add(ShowPlayerbtn);
+		bgLabel.add(ShowPlayerbtn);
 
-		JButton sortPlayerbtn = new JButton("球员排序");
-		sortPlayerbtn.setBounds(X*1161/1366, Y*415/768, X*120/1366, Y*23/768);
+		JButton sortPlayerbtn = new MyButton("球员排序");
+		sortPlayerbtn.setBounds(X*1100/1366, Y*410/768, X*180/1366, Y*50/768);
+		sortPlayerbtn.setIcon(buttonIcon);
 		sortPlayerbtn.addActionListener(e -> toSortPlayerPanel());
-		add(sortPlayerbtn);
+		bgLabel.add(sortPlayerbtn);
 
-		JButton screeningPlayerbtn = new JButton("球员筛选");
-		screeningPlayerbtn.setBounds(X*1161/1366, Y*485/768, X*120/1366, Y*23/768);
+		JButton screeningPlayerbtn = new MyButton("球员筛选");
+		screeningPlayerbtn.setBounds(X*1100/1366, Y*490/768,X*180/1366, Y*50/768);
+		screeningPlayerbtn.setIcon(buttonIcon);
 		screeningPlayerbtn.addActionListener(e -> toScreeningPlayerPanel());
-		add(screeningPlayerbtn);
+		bgLabel.add(screeningPlayerbtn);
 
-		JLabel label = new JLabel("热点球员");
-		label.setBounds(X*60/1366, Y*82/768, X*60/1366, Y*15/768);
-		add(label);
+		hotLabel = new JLabel();
+		hotLabel.setText(selected+selectedby);
+		hotLabel.setBounds(X*60/1366, Y*70/768, X*300/1366, Y*20/768);
+		hotLabel.setForeground(Color.WHITE);
+		hotLabel.setFont(new Font("微软雅黑",1,20));
+		bgLabel.add(hotLabel);
 		
 		
-		JButton dailyHotDatabtn = new JButton("每日");
-		dailyHotDatabtn.setBounds(X*899/1366, Y*74/768, X*60/1366, Y*23/768);
+		JButton dailyHotDatabtn = new MyButton("每日");
+		dailyHotDatabtn.setBounds(X*700/1366, Y*70/768, X*150/1366, Y*30/768);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(  X*150/1366, Y*30/768,
+						 Image.SCALE_SMOOTH));
+		
+		dailyHotDatabtn.setIcon(buttonIcon);
 		dailyHotDatabtn.addActionListener(e -> showDailyHotComponent());
-		add(dailyHotDatabtn);
+		bgLabel.add(dailyHotDatabtn);
 
-		dailyHotData_Scorebtn = new JButton("得分");
-		dailyHotData_Scorebtn.setBounds(X*55/1366, Y*105/768, X*194/1366, Y*23/768);
+		dailyHotData_Scorebtn = new MyButton("得分");
+		dailyHotData_Scorebtn.setBounds(X*55/1366, Y*105/768, X*194/1366, Y*30/768);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(  X*194/1366, Y*30/768,
+						 Image.SCALE_SMOOTH));
+		dailyHotData_Scorebtn.setIcon(buttonIcon);
 		dailyHotData_Scorebtn.addActionListener(e -> {
 			dailyHotPlayerCriteria = "score";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			selectedby="-得分";
+			hotLabel.setText(selected+selectedby);
 		});
 		dailyHotData_Scorebtn.setVisible(true);
-		add(dailyHotData_Scorebtn);
+		bgLabel.add(dailyHotData_Scorebtn);
 
-		dailyHotData_Reboundbtn = new JButton("篮板");
-		dailyHotData_Reboundbtn.setBounds(X*248/1366, Y*105/768, X*194/1366, Y*23/768);
+		dailyHotData_Reboundbtn = new MyButton("篮板");
+		dailyHotData_Reboundbtn.setBounds(X*248/1366, Y*105/768, X*194/1366, Y*30/768);
+		dailyHotData_Reboundbtn.setIcon(buttonIcon);
 		dailyHotData_Reboundbtn.addActionListener(e -> {
 			dailyHotPlayerCriteria = "rebound";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			selectedby="-篮板";
+			hotLabel.setText(selected+selectedby);
 		});
 		dailyHotData_Reboundbtn.setVisible(true);
-		add(dailyHotData_Reboundbtn);
+		bgLabel.add(dailyHotData_Reboundbtn);
 
-		dailyHotData_Assistancebtn = new JButton("助攻");
-		dailyHotData_Assistancebtn.setBounds(X*441/1366, Y*105/768, X*194/1366, Y*23/768);
+		dailyHotData_Assistancebtn = new MyButton("助攻");
+		dailyHotData_Assistancebtn.setBounds(X*441/1366, Y*105/768, X*194/1366, Y*30/768);
+		dailyHotData_Assistancebtn.setIcon(buttonIcon);
 		dailyHotData_Assistancebtn.addActionListener(e -> {
 			dailyHotPlayerCriteria = "assistance";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			selectedby="-助攻";
+			hotLabel.setText(selected+selectedby);
 		});
 		dailyHotData_Assistancebtn.setVisible(true);
-		add(dailyHotData_Assistancebtn);
+		bgLabel.add(dailyHotData_Assistancebtn);
 
-		dailyHotData_Blockbtn = new JButton("盖帽");
-		dailyHotData_Blockbtn.setBounds(X*634/1366, Y*105/768, X*194/1366, Y*23/768);
+		dailyHotData_Blockbtn = new MyButton("盖帽");
+		dailyHotData_Blockbtn.setBounds(X*634/1366, Y*105/768, X*194/1366, Y*30/768);
+		dailyHotData_Blockbtn.setIcon(buttonIcon);
 		dailyHotData_Blockbtn.addActionListener(e -> {
 			dailyHotPlayerCriteria = "block";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			selectedby="-盖帽";
+			hotLabel.setText(selected+selectedby);
 		});
 		dailyHotData_Blockbtn.setVisible(true);
-		add(dailyHotData_Blockbtn);
+		bgLabel.add(dailyHotData_Blockbtn);
 
-		dailyHotData_Stealbtn = new JButton("抢断");
-		dailyHotData_Stealbtn.setBounds(X*827/1366, Y*105/768, X*194/1366, Y*23/768);
+		dailyHotData_Stealbtn = new MyButton("抢断");
+		dailyHotData_Stealbtn.setBounds(X*827/1366, Y*105/768, X*194/1366, Y*30/768);
+		dailyHotData_Stealbtn.setIcon(buttonIcon);
 		dailyHotData_Stealbtn.addActionListener(e -> {
 			dailyHotPlayerCriteria = "steal";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
+			selectedby="-抢断";
+			hotLabel.setText(selected+selectedby);
 		});
 		dailyHotData_Stealbtn.setVisible(true);
-		add(dailyHotData_Stealbtn);
+		bgLabel.add(dailyHotData_Stealbtn);
 
-		JButton seasonHotDatabtn = new JButton("赛季");
-		seasonHotDatabtn.setBounds(X*960/1366, Y*74/768, X*60/1366, Y*23/768);
+		JButton seasonHotDatabtn = new MyButton("赛季");
+		seasonHotDatabtn.setBounds(X*850/1366, Y*70/768, X*150/1366, Y*30/768);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(  X*150/1366, Y*30/768,
+						 Image.SCALE_SMOOTH));
+		seasonHotDatabtn.setIcon(buttonIcon);
 		seasonHotDatabtn.addActionListener(e -> showSeasonHotComponent());
-		add(seasonHotDatabtn);
+		bgLabel.add(seasonHotDatabtn);
 
-		seasonHotData_ScoreFieldbtn = new JButton("场均得分");
-		seasonHotData_ScoreFieldbtn.setBounds(X*55/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_ScoreFieldbtn = new MyButton("场均得分");
+		seasonHotData_ScoreFieldbtn.setBounds(X*55/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_ScoreFieldbtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "scoreField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-场均得分";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_ScoreFieldbtn.setVisible(false);
-		add(seasonHotData_ScoreFieldbtn);
+		bgLabel.add(seasonHotData_ScoreFieldbtn);
 
-		seasonHotData_ReboundFieldbtn = new JButton("场均篮板");
-		seasonHotData_ReboundFieldbtn.setBounds(X*175/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_ReboundFieldbtn = new MyButton("场均篮板");
+		seasonHotData_ReboundFieldbtn.setBounds(X*175/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_ReboundFieldbtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "reboundField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-场均篮板";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_ReboundFieldbtn.setVisible(false);
-		add(seasonHotData_ReboundFieldbtn);
+		bgLabel.add(seasonHotData_ReboundFieldbtn);
 
-		seasonHotData_AssistanceFieldbtn = new JButton("场均助攻");
-		seasonHotData_AssistanceFieldbtn.setBounds(X*295/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_AssistanceFieldbtn = new MyButton("场均助攻");
+		seasonHotData_AssistanceFieldbtn.setBounds(X*295/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_AssistanceFieldbtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "assistanceField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-场均助攻";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_AssistanceFieldbtn.setVisible(false);
-		add(seasonHotData_AssistanceFieldbtn);
+		bgLabel.add(seasonHotData_AssistanceFieldbtn);
 
-		seasonHotData_BlockFieldbtn = new JButton("场均盖帽");
-		seasonHotData_BlockFieldbtn.setBounds(X*415/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_BlockFieldbtn = new MyButton("场均盖帽");
+		seasonHotData_BlockFieldbtn.setBounds(X*415/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_BlockFieldbtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "blockField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-场均盖帽";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_BlockFieldbtn.setVisible(false);
-		add(seasonHotData_BlockFieldbtn);
+		bgLabel.add(seasonHotData_BlockFieldbtn);
 
-		seasonHotData_StealFieldbtn = new JButton("场均抢断");
-		seasonHotData_StealFieldbtn.setBounds(X*535/1366, Y*105/768, X*121/1366, Y*23/768);
+		seasonHotData_StealFieldbtn = new MyButton("场均抢断");
+		seasonHotData_StealFieldbtn.setBounds(X*535/1366, Y*105/768, X*121/1366, Y*30/768);
 		seasonHotData_StealFieldbtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "stealField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-场均抢断";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_StealFieldbtn.setVisible(false);
-		add(seasonHotData_StealFieldbtn);
+		bgLabel.add(seasonHotData_StealFieldbtn);
 
-		seasonHotData_ThreePointHitRatebtn = new JButton("三分命中率");
-		seasonHotData_ThreePointHitRatebtn.setBounds(X*655/1366, Y*105/768, X*122/1366, Y*23/768);
+		seasonHotData_ThreePointHitRatebtn = new MyButton("三分命中率");
+		seasonHotData_ThreePointHitRatebtn.setBounds(X*655/1366, Y*105/768, X*122/1366, Y*30/768);
 		seasonHotData_ThreePointHitRatebtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "threePointHitRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-三分命中率";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_ThreePointHitRatebtn.setVisible(false);
-		add(seasonHotData_ThreePointHitRatebtn);
+		bgLabel.add(seasonHotData_ThreePointHitRatebtn);
 
-		seasonHotData_HitRatebtn = new JButton("投篮命中率");
-		seasonHotData_HitRatebtn.setBounds(X*776/1366, Y*105/768, X*122/1366, Y*23/768);
+		seasonHotData_HitRatebtn = new MyButton("投篮命中率");
+		seasonHotData_HitRatebtn.setBounds(X*776/1366, Y*105/768, X*122/1366, Y*30/768);
 		seasonHotData_HitRatebtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "hitRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-投篮命中率";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_HitRatebtn.setVisible(false);
-		add(seasonHotData_HitRatebtn);
+		bgLabel.add(seasonHotData_HitRatebtn);
 
-		seasonHotData_FreeThrowRatebtn = new JButton("罚球命中率");
-		seasonHotData_FreeThrowRatebtn.setBounds(X*897/1366, Y*105/768, X*122/1366, Y*23/768);
+		seasonHotData_FreeThrowRatebtn = new MyButton("罚球命中率");
+		seasonHotData_FreeThrowRatebtn.setBounds(X*897/1366, Y*105/768, X*122/1366, Y*30/768);
 		seasonHotData_FreeThrowRatebtn.addActionListener(e -> {
 			seasonHotPlayerCriteria = "freeThrowRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
+			selectedby="-罚球命中率";
+			hotLabel.setText(selected+selectedby);
 		});
 		seasonHotData_FreeThrowRatebtn.setVisible(false);
-		add(seasonHotData_FreeThrowRatebtn);
+		bgLabel.add(seasonHotData_FreeThrowRatebtn);
 
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this);
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
-		this.add(dailyHotPlayerPanel);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
+		bgLabel.add(dailyHotPlayerPanel);
 		
 		
 		
 		
-		JLabel label_1 = new JLabel("进步最快球员");
-		label_1.setBounds(X*60/1366, Y*408/768, X*80/1366, Y*15/768);
-		add(label_1);
+		progress = new JLabel();
+		progress.setText("进步最快球员"+progressby);
+		progress.setBounds(X*60/1366, Y*390/768, X*300/1366, Y*30/768);
+		progress.setForeground(Color.WHITE);
+		progress.setFont(new Font("微软雅黑",1,20));
+		bgLabel.add(progress);
 
-		JButton seasonData_ScoreFieldbtn = new JButton("场均得分");
-		seasonData_ScoreFieldbtn.setBounds(X*55/1366, Y*432/768, X*323/1366, Y*23/768);
+		JButton seasonData_ScoreFieldbtn = new MyButton("场均得分");
+		seasonData_ScoreFieldbtn.setBounds(X*55/1366, Y*432/768, X*322/1366, Y*30/768);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(  X*322/1366, Y*30/768,
+						 Image.SCALE_SMOOTH));
+		seasonData_ScoreFieldbtn.setIcon(buttonIcon);
 		seasonData_ScoreFieldbtn.addActionListener(e -> {
 			progressFastPlayerCriteria = "scoreField";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
+			progressby="-场均得分";
+			progress.setText("进步最快球员"+progressby);
 		});
-		add(seasonData_ScoreFieldbtn);
+		bgLabel.add(seasonData_ScoreFieldbtn);
 
-		JButton seasonData_ReboundFieldbtn = new JButton("场均篮板");
-		seasonData_ReboundFieldbtn.setBounds(X*377/1366, Y*432/768, X*323/1366, Y*23/768);
+		JButton seasonData_ReboundFieldbtn = new MyButton("场均篮板");
+		seasonData_ReboundFieldbtn.setBounds(X*377/1366, Y*432/768,X*322/1366, Y*30/768);
+		seasonData_ReboundFieldbtn.setIcon(buttonIcon);
 		seasonData_ReboundFieldbtn.addActionListener(e -> {
 			progressFastPlayerCriteria = "reboundField";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
+			progressby="-场均篮板";
+			progress.setText("进步最快球员"+progressby);
 		});
-		add(seasonData_ReboundFieldbtn);
+		bgLabel.add(seasonData_ReboundFieldbtn);
 
-		JButton seasonData_AssistanceFieldbtn = new JButton("场均助攻");
-		seasonData_AssistanceFieldbtn.setBounds(X*699/1366, Y*432/768, X*323/1366, Y*23/768);
+		JButton seasonData_AssistanceFieldbtn = new MyButton("场均助攻");
+		seasonData_AssistanceFieldbtn.setBounds(X*699/1366, Y*432/768, X*322/1366,Y*30/768);
+		seasonData_AssistanceFieldbtn.setIcon(buttonIcon);
 		seasonData_AssistanceFieldbtn.addActionListener(e -> {
 			progressFastPlayerCriteria = "assistanceField";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
+			progressby="-场均助攻";
+			progress.setText("进步最快球员"+progressby);
 		});
-		add(seasonData_AssistanceFieldbtn);
+		bgLabel.add(seasonData_AssistanceFieldbtn);
 
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this);
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*208/768);
-		this.add(progressFastPlayerPanel);	
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
+		bgLabel.add(progressFastPlayerPanel);	
 		
 		
 		mainFrame.getContentPane().add(this);
@@ -349,7 +422,9 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showDailyHotComponent() {
-
+		selected="每日热点球员";
+		selectedby="-得分";
+		hotLabel.setText(selected+selectedby);
 		if (seasonHotData_ScoreFieldbtn != null) {
 			seasonHotData_ScoreFieldbtn.setVisible(false);
 		}
@@ -391,6 +466,9 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showSeasonHotComponent() {
+		selected="赛季热点球员";
+		selectedby="-场均得分";
+		hotLabel.setText(selected+selectedby);
 		if (dailyHotData_Scorebtn != null) {
 			dailyHotData_Scorebtn.setVisible(false);
 		}
@@ -431,8 +509,8 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this);
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
-		this.add(dailyHotPlayerPanel);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
+		bgLabel.add(dailyHotPlayerPanel);
 
 	}
 
@@ -446,8 +524,8 @@ public class PlayerPanel extends JPanel {
 		seasonHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerSeason(seasonHotPlayerCriteria),mainFrame,this);
 		seasonHotPlayerPanel.setVisible(true);
-		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*208/768);
-		this.add(seasonHotPlayerPanel);
+		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
+		bgLabel.add(seasonHotPlayerPanel);
 	}
 
 	public void showProgressFastTopFivePlayer(String progressFastPlayerCriteria) {
@@ -458,8 +536,8 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this);
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*208/768);
-		this.add(progressFastPlayerPanel);	
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
+		bgLabel.add(progressFastPlayerPanel);	
 	
 	}
 
@@ -509,6 +587,30 @@ public class PlayerPanel extends JPanel {
 
 	}
 
+	class MyButton extends JButton{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyButton(String function){
+			super();
+			this.setText(function);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("微软雅黑",1,15));
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(  X*122/1366, Y*30/768,
+							 Image.SCALE_SMOOTH));
+			
+			this.setIcon(buttonIcon);
+			this.setOpaque(false);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			
+		}
+	}
+	
 	class MyLabel extends JLabel {
 		/**
 			 * 

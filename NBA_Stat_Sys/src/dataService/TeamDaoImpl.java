@@ -204,12 +204,13 @@ public class TeamDaoImpl implements TeamDao {
 					team.setCurrentPlayersNameList(playerNameList);
 				}
 				
+				
 				if(rs.getString("seasontp") != null){
 					String seasontpText = rs.getString("seasontp");
 					String[] splited = seasontpText.split("\\$");
 					ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
 					for(String tp:splited){
-						tpList.add(TeamPerformance.makeTP(rs.getString("abbreviation"), tp.split(";")[0], tp));
+						tpList.add(TeamPerformance.makeTP(tp));
 					}
 					team.setSeansonTeamPerformance(tpList);
 				}

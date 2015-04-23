@@ -25,9 +25,7 @@ public class Game_BL implements Game_BS{
 	}
 
 	public ArrayList<GameVo> getGamesByDate(String date1,String date2) {
-		ArrayList<GameVo> list = new ArrayList<GameVo>();
-		
-		return list;
+		return game_handler.getGameByDate(date1,date2);
 	}
 
 
