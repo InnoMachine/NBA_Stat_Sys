@@ -256,7 +256,7 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		// System.out.println(screeningCriteria);
-		playerVos = player_BS.filterPlayerBy(null, null, "scoreField");
+		playerVos = player_BS.filterPlayerBy("All", "All", "scoreField");
 		if (rowData == null) {
 			rowData = new Vector<Vector<PlayerCardPanel>>();
 		} else {
