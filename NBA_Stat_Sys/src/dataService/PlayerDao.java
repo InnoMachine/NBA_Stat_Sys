@@ -7,6 +7,7 @@ package dataService;
 
 import java.util.ArrayList;
 import po.PlayerPO;
+import po.SinglePerformance;
 
 public interface PlayerDao {
 	
@@ -21,5 +22,7 @@ public interface PlayerDao {
 	public ArrayList<PlayerPO> getAllPlayers();
 	
 	public void updateHostTeam(String playerName, String teamAbbr);
+	
+	public void addSinglePerformance(String playerName, SinglePerformance sp);
 	
 }
