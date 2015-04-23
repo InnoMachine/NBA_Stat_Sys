@@ -256,7 +256,7 @@ public class TeamInfoPanel extends JPanel{
 		playersInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		playersInfoTable.setDefaultRenderer(Object.class, r1);
-//		playersInfoTable.getColumnModel().getColumn(17).setCellEditor(new DetailRenderer(playersInfoTable.getSelectedRow()));
+		playersInfoTable.getColumnModel().getColumn(17).setCellRenderer(new MyButtonRenderer());
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
@@ -542,86 +542,25 @@ public class TeamInfoPanel extends JPanel{
 
 	}
 	
-	/*
-	class DetailRenderer extends AbstractCellEditor implements TableCellRenderer,ActionListener, TableCellEditor{
+	class MyButtonRenderer extends JButton implements TableCellRenderer{
 
-		private static final long serialVersionUID = 1L;
-		private JButton button =null;
-		private int selectedRow=0;
-		public DetailRenderer(int selectedRow){
-			this.selectedRow=selectedRow;
-			button = new JButton();		
-			button.setBackground(Color.YELLOW);
-			button.addActionListener(this);
-			
-		}
-
-	@Override
-		public Object getCellEditorValue() {
+		@Override
+		public Component getTableCellRendererComponent(JTable arg0,
+				Object arg1, boolean isFocus, boolean isSelected, int arg4, int arg5) {
 			// TODO Auto-generated method stub
-			return null;
-		}
-
-	@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			PlayerInfoPanel playerInfoPanel=new PlayerInfoPanel(String.valueOf(playersInfoTable.getModel().getValueAt(selectedRow,0)), mainFrame, new TeamInfoPanel(teamABBR, mainFrame, previousPanel));
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(  X*122/1366, Y*30/768,
+							 Image.SCALE_SMOOTH));
 			
+			this.setIcon(buttonIcon);
+		
+			if(isSelected){
+				System.out.println("111");
+			}
+			return this;
 		}
-
-
-	@Override
-	public boolean isCellEditable(EventObject anEvent) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean shouldSelectCell(EventObject anEvent) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean stopCellEditing() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void cancelCellEditing() {
-		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void addCellEditorListener(CellEditorListener l) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeCellEditorListener(CellEditorListener l) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Component getTableCellEditorComponent(JTable table, Object value,
-			boolean isSelected, int row, int column) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-		
-	}
-	*/
 	
 	class MyTextField extends JTextField {
 		/**

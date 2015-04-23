@@ -108,7 +108,17 @@ public class TeamPanel extends JPanel{
 		
 
 		JButton sortTeambtn = new JButton("球队排序");
-		sortTeambtn.setBounds(X*1161/1366, Y*380/768, X*120/1366, Y*23/768);
+		sortTeambtn.setBounds(X*1100/1366, Y*550/768, X*180/1366, Y*50/768);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 160/ 1366, Y * 50 / 768, Image.SCALE_SMOOTH));
+		sortTeambtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		sortTeambtn.setForeground(Color.WHITE);
+		sortTeambtn.setFont(new Font("微软雅黑",1,20));
+		sortTeambtn.setIcon(buttonIcon);
+		sortTeambtn.setOpaque(false);
+		sortTeambtn.setContentAreaFilled(false);
+		sortTeambtn.setBorderPainted(false);
 		sortTeambtn.addActionListener(e -> toSortTeamPanel());
 		bgLabel.add(sortTeambtn);
 
