@@ -126,13 +126,13 @@ public class TopFiveTeamCardPanel extends JPanel {
 		secondTeamNamelbl = new MyLabel("");
 		secondTeamNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		secondTeamNamelbl.setBounds(X * 610 / 1366, Y *40 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200 / 1366, Y * 15 / 768);
 		add(secondTeamNamelbl);
 
 		secondTeamInfolbl = new MyLabel("");
 		secondTeamInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
 		secondTeamInfolbl.setBounds(X * 610 / 1366, Y *60/ 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200/ 1366, Y * 15 / 768);
 		add(secondTeamInfolbl);
 
 		secondTeamValuelbl = new MyLabel("");
@@ -152,13 +152,13 @@ public class TopFiveTeamCardPanel extends JPanel {
 		thirdTeamNamelbl = new MyLabel("");
 		thirdTeamNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		thirdTeamNamelbl.setBounds(X * 610 / 1366, Y * 90 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200/ 1366, Y * 15 / 768);
 		add(thirdTeamNamelbl);
 
 		thirdTeamInfolbl = new MyLabel("");
 		thirdTeamInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
 		thirdTeamInfolbl.setBounds(X * 610 / 1366, Y * 110 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200 / 1366, Y * 15 / 768);
 		add(thirdTeamInfolbl);
 
 		thirdTeamValuelbl = new MyLabel("");
@@ -178,13 +178,13 @@ public class TopFiveTeamCardPanel extends JPanel {
 		fourthTeamNamelbl = new MyLabel("c");
 		fourthTeamNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		fourthTeamNamelbl.setBounds(X * 610 / 1366, Y * 140 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200 / 1366, Y * 15 / 768);
 		add(fourthTeamNamelbl);
 
 		fourthTeamInfolbl = new MyLabel("");
 		fourthTeamInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
 		fourthTeamInfolbl.setBounds(X * 610 / 1366, Y * 160 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200 / 1366, Y * 15 / 768);
 		add(fourthTeamInfolbl);
 
 		fourthTeamValuelbl = new MyLabel("");
@@ -204,13 +204,13 @@ public class TopFiveTeamCardPanel extends JPanel {
 		fifthTeamNamelbl = new MyLabel("");
 		fifthTeamNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		fifthTeamNamelbl.setBounds(X * 610 / 1366, Y * 190 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200 / 1366, Y * 15 / 768);
 		add(fifthTeamNamelbl);
 
 		fifthTeamInfolbl = new MyLabel("");
 		fifthTeamInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
 		fifthTeamInfolbl.setBounds(X * 610 / 1366, Y * 210 / 768,
-				X * 145 / 1366, Y * 15 / 768);
+				X * 200 / 1366, Y * 15 / 768);
 		add(fifthTeamInfolbl);
 
 		fifthTeamValuelbl = new MyLabel("");
