@@ -1855,17 +1855,17 @@ public class Player_Handler {
 			is =true;
 		else if(temp.getHeight().contains(key))
 			is =true;
-		else if(temp.getName().contains(key))
+		else if((temp.getName()+"").contains(key))
 			is =true;
-		else if(temp.getNumber().contains(key))
+		else if((temp.getNumber()+"").contains(key))
 			is =true;
-		else if(temp.getPosition().contains(key))
+		else if((temp.getPosition()+"").contains(key))
 			is =true;
-		else if(temp.getSchool().contains(key))
+		else if((temp.getSchool()+"").contains(key))
 			is =true;
-		else if(temp.getWeight().contains(key))
+		else if((temp.getWeight()+"").contains(key))
 			is=true;
-		else if(temp.getTeam().contains(key))
+		else if((temp.getTeam()+"").contains(key))
 			is=true;
 		return is;
 	}
