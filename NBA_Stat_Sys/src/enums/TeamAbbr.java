@@ -13,10 +13,13 @@ public enum TeamAbbr {
 
 	HOU, IND, LAC, LAL, MEM,
 
-	MIA, MIL, MIN, NOP, NYK,
+	MIA, MIL, MIN, NOH, NYK,
 
 	OKC, ORL, PHI, PHX, POR,
 
-	SAC, SAS, TOR, UTA, WAS;
+	SAC, SAS, TOR, UTA, WAS,
+	
+	
+	
 
 }

@@ -7,6 +7,8 @@ package databaseMysqlUtility;
 
 import java.util.ArrayList;
 
+import dataService.SystemDao;
+import dataService.SystemDaoImpl;
 import po.GameDate;
 import po.SeasonTracker;
 
@@ -23,16 +25,20 @@ public class PrepareDB {
 			}
 		}
 		
+		SystemDao sd = new SystemDaoImpl();
 		SeasonTracker st = new SeasonTracker();
 		st.setCurrentDate(filterCurrentDate(fileNameList));
 		st.setFileNameList(fileNameList);
 		st.setGameNumSofar(fileNameList.size());
 		st.setSeasonId("12-13");
+		
+		
 //		st.setSeasonRecord(seasonRecord);
 //		st.setUpdatePlayerList(updatePlayerList);
 //		st.setUpdateTeamList(updateTeamList);
 		
 		InitDB.init();
+		sd.add(st);
 		DataFileReader.importGamesFrom(fileNameList);
 		DataFileReader.importPlayersAndTeams();
 		
@@ -45,7 +51,8 @@ public class PrepareDB {
 				st.setGameNumSofar(DataFileReader.getFileNameList("CSEdata/new").size());
 				st.setCurrentDate(filterCurrentDate(newFileNameList));
 			}
-			DataFurtherDistributor.allDistribute();		
+			DataFurtherDistributor.allDistribute();	
+			sd.update(st);
 			System.out.println(st.getCurrentDate().toString());
 		}
 		
