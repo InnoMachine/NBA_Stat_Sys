@@ -74,22 +74,23 @@ public class Game_Handler {
 	public ArrayList<GameVo> getGameByDate(String date1, String date2) {
 		GameDate d1 = new GameDate(date1);
 		GameDate d2 = new GameDate(date2);
+		GameDate d3 = data_handler.getNextDate(d2);
 		ArrayList<GameVo> templist =new ArrayList<GameVo>();
 		if(d1.compareTo(d2)==0){
-			return null;
+			return getGameByDate(date1);
 		}
 		if(d1.compareTo(d2)==1){
 			return null;
 		}
-		while(d1.compareTo(d2)==-1){
-			for(GameVo temp:listvo)
-			{
-				if(d1.compareTo(temp.getGameDate())==0)
-				{
-					templist.add(temp);
-				}
+		int i =0;
+		while(i<listvo.size()&&listvo.get(i).getGameDate().compareTo(d1)==-1){
+			i++;
+		}
+		if(listvo.get(i).getGameDate().compareTo(d1)==0){
+			while(listvo.get(i).getGameDate().compareTo(d3)==-1){
+				templist.add(listvo.get(i));
+				i++;
 			}
-			d1=data_handler.getNextDate(d1);
 		}
 		return templist;
 	}

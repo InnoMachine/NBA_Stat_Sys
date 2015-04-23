@@ -77,7 +77,7 @@ public class SystemDaoImpl implements SystemDao {
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				st.setCurrentDate(new GameDate(rs.getString("seasonrecord")));
+				st.setCurrentDate(new GameDate(rs.getString("currentdate")));
 				st.setSeasonId(id);
 			}
 		} catch (SQLException e) {

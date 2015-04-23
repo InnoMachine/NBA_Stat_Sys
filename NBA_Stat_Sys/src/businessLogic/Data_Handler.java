@@ -23,6 +23,8 @@ import dataService.GameDao;
 import dataService.GameDaoImpl;
 import dataService.PlayerDao;
 import dataService.PlayerDaoImpl;
+import dataService.SystemDao;
+import dataService.SystemDaoImpl;
 import dataService.TeamDao;
 import dataService.TeamDaoImpl;
 
@@ -32,6 +34,7 @@ public class Data_Handler {
 	protected PlayerDao playerdao;
 	protected GameDao gamedao;
 	protected TeamDao teamdao;
+	protected SystemDao systemdao;
 	private ArrayList<PlayerPO> listpo;
 	private ArrayList<TeamPO> teamlistpo;
 	private ArrayList<PlayerVo> listvo;
@@ -57,6 +60,7 @@ public class Data_Handler {
 		playerdao = new PlayerDaoImpl();
 		gamedao = new GameDaoImpl();
 		teamdao = new TeamDaoImpl();
+		systemdao = new SystemDaoImpl();
 		listpo  = playerdao.getAllPlayers();
 		teamlistpo = teamdao.getAllTeams();
 		listvo = new ArrayList<PlayerVo>();
@@ -66,11 +70,11 @@ public class Data_Handler {
 		precgames = new ArrayList<PlayerRecentGames>();
 		gamevo = new ArrayList<GameVo>();
 		listpg = new ArrayList<PlayerGames>();
-		st = new SeasonTracker();
+		st = systemdao.getStById("12-13");
 		SetPlayerVo();
 		SetTeamVo();
-		PlayerDivisionSet();
 		loadGames();
+		PlayerDivisionSet();
 		playerCalculate();
 		TeamCalculate();
 		
@@ -804,6 +808,7 @@ public class Data_Handler {
 			temp.setSchool(listpo.get(i).getSchool());
 			temp.setActionImgPath(listpo.get(i).getActionImgPath());
 			temp.setPortraitImgPath(listpo.get(i).getPortraitImgPath());
+			temp.setTeam(listpo.get(i).getCurrentTeam());
 			
 			temp.setTime(0);
 			temp.setHitNum(0);
@@ -860,12 +865,12 @@ public class Data_Handler {
 	public ArrayList<TeamPerformanceInSingleGame> getTeamGamesDaily()
 	{
 		ArrayList<TeamPerformanceInSingleGame> tplist = new ArrayList<TeamPerformanceInSingleGame>();
-		int i = gamevo.size()-1;
 		GameDate dn = getDateNow();
-		while(gamevo.get(i).getGameDate().compareTo(dn)==0){
-			tplist.add(gamevo.get(i).getGuestTP());
-			tplist.add(gamevo.get(i).getHomeTP());
-			i--;
+		for(GameVo temp:gamevo){
+			if(temp.getGameDate().compareTo(dn)==0){
+				tplist.add(temp.getGuestTP());
+				tplist.add(temp.getHomeTP());
+			}
 		}
 		return tplist;
 	}
@@ -875,16 +880,16 @@ public class Data_Handler {
 	public ArrayList<PlayerPerformanceInSingleGame> getPlayerGamesDaily()
 	{
 		ArrayList<PlayerPerformanceInSingleGame> pplist = new ArrayList<PlayerPerformanceInSingleGame>();
-		int i = gamevo.size()-1;
 		GameDate dn = getDateNow();
-		while(gamevo.get(i).getGameDate().compareTo(dn)==0){
-			for(PlayerPerformanceInSingleGame temp:gamevo.get(i).getGuestTP().playerlist){
-				pplist.add(temp);
+		for(GameVo temp:gamevo){
+			if(temp.getGameDate().compareTo(dn)==0){
+				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().getPlayerList()){
+					pplist.add(pp);
+				}
+				for(PlayerPerformanceInSingleGame pp:temp.getHomeTP().getPlayerList()){
+					pplist.add(pp);
+				}
 			}
-			for(PlayerPerformanceInSingleGame temp:gamevo.get(i).getHomeTP().playerlist){
-				pplist.add(temp);
-			}
-			i--;
 		}
 		return pplist;
 		
@@ -958,7 +963,7 @@ public class Data_Handler {
 		TeamCalculate();
 	}
 	public GameDate getDateNow(){
-		st.setCurrentDate(new GameDate(2012,11,28));
+		//st.setCurrentDate(new GameDate(2012,11,28));
 		return st.getCurrentDate();
 	}
 	
@@ -980,6 +985,8 @@ public class Data_Handler {
 				month ++;
 			}
 			day = 1;
+		}else{
+			day++;
 		}
 		return new GameDate(year, month, day);
 	}

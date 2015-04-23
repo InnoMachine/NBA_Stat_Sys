@@ -1021,11 +1021,11 @@ public class Player_Handler {
 				templist.add(list.get((int)a[i][1]));
 			}
 			int i =m;
-			if(m!=list.size())
+			if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getEfficiencyField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}	}	
 			return templist;
 		}else if(option.equals("efficiency")){
 			int a[][] = new int [list.size()][2]; 
