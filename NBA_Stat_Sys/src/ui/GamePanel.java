@@ -178,7 +178,9 @@ public class GamePanel extends JPanel {
 		bgLabel.add(searchbtn);
 
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
-		gameVos = game_BS.getAllGames();
+		for(int i=0;i<10;i++){
+		gameVos.add(game_BS.getAllGames().get(i));
+		}
 		if (rowData == null) {
 			rowData = new Vector<Vector<GameCardPanel>>();
 		} else {

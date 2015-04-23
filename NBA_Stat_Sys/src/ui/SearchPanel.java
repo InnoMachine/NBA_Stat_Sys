@@ -346,7 +346,9 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(AllButton);
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		playerVos = player_BS.getAllPlayer();
+		for(int i=0;i<10;i++){
+		playerVos.add(player_BS.getAllPlayer().get(i));
+		}
 		if (rowData == null) {
 			rowData = new Vector<Vector<PlayerBasicInfoCardPanel>>();
 		} else {
