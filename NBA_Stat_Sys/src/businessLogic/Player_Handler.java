@@ -1345,6 +1345,7 @@ public class Player_Handler {
 		temp.setName(pp.getName());
 		temp.setPosition(pp.getPosition());
 		temp.setTeam(pp.getTeam());
+		temp.setNumber(pp.getNumber());
 		if(option.equals("score")){
 			temp.setSortvalue(pp.getScore());
 		}else if(option.equals("reboundOverall")){
