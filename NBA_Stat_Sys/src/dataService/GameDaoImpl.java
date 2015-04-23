@@ -193,4 +193,10 @@ public class GameDaoImpl implements GameDao {
 		return gameList;
 	}
 
+	@Override
+	public ArrayList<GamePO> getNewGamePOs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

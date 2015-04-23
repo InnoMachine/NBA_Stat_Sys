@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import databaseMysqlUtility.DBUtil;
 import po.PlayerPO;
 import po.SinglePerformance;
@@ -197,6 +196,12 @@ public class PlayerDaoImpl implements PlayerDao {
 		}finally{
 			DBUtil.close(conn);
 		}
+	}
+
+	@Override
+	public void addSinglePerformance(String playerName, SinglePerformance sp) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

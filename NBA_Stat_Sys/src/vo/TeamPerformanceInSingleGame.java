@@ -345,5 +345,13 @@ public class TeamPerformanceInSingleGame {
 	public void setGameDate(GameDate gameDate) {
 		this.gameDate = gameDate;
 	}
+	public void setOpTeamP(String name2) {
+		for(PlayerPerformanceInSingleGame pp:this.playerlist){
+			pp.setOpTeam(name2);
+		}
+		for(PlayerPerformanceInSingleGame pp:this.firstonlist){
+			pp.setOpTeam(name2);
+		}
+	}
 	
 }

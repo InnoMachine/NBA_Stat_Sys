@@ -1,25 +1,40 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.Vector;
 
+import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.event.CellEditorListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
+import vo.PlayerPerformanceInSingleGame;
+import vo.PlayerRecentGames;
+import vo.PlayerVo;
+import vo.TeamPerformanceInSingleGame;
+import vo.TeamRecentGames;
+import vo.TeamVo;
 import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
@@ -51,21 +66,19 @@ public class TeamInfoPanel extends JPanel{
 
 	private JTabbedPane JTP;
 	
-	private DefaultTableModel teamPlayersDTM;
-	private DefaultTableModel currentMatchesDTM;
-	private DefaultTableModel historicalMatchesDTM;
-	private JTable teamPlayersTable;
-	private JTable currentMatchesTable;
-	private JTable historicalMatchesTable;
-	private JScrollPane teamPlayersJSP;
-	private JScrollPane currentMatchesJSP;
-	private JScrollPane historicalMatchesJSP;
-	private Vector<String> teamPlayersColumn;
-	private Vector<String> currentMatchesColumn;
-	private Vector<String> historicalMatchesColumn;
-	private Vector<Vector<String>> teamPlayersData;
-	private Vector<Vector<String>> currentMatchesData;
-	private Vector<Vector<String>> historicalMatchesData;
+	Vector<Vector<String>> playersRowData;
+	Vector<String> playersColumn;
+	private JTable playersInfoTable;
+	private JScrollPane playersInfoJSP;
+	Vector<Vector<String>> recentGameRowData;
+	Vector<String> recentGameColumn;
+	private JTable recentGameInfoTable;
+	private JScrollPane recentGameInfoJSP;
+	Vector<Vector<String>> historicalGameRowData;
+	Vector<String> historicalGameColumn;
+	private JTable historicalGameInfoTable;
+	private JScrollPane historicalGameInfoJSP;
+
 	
 	private JLabel TeamBadge;
 
@@ -173,65 +186,246 @@ public class TeamInfoPanel extends JPanel{
 		
 		TeamBadge=new JLabel();
 		TeamBadge.setOpaque(false);
-		TeamBadge.setBounds(X/20, Y/20, X/5, X/5);
+		TeamBadge.setBounds(X*65/1366, Y*55/768, X*150/1366, Y*150/768);
 		ImageIcon portrait=new ImageIcon(new ImageIcon("CSEdata/teams_png/"+this.teamABBR+".png").getImage().getScaledInstance(TeamBadge.getWidth(), TeamBadge.getHeight(), Image.SCALE_SMOOTH));
 		TeamBadge.setIcon(portrait);
 		bgLabel.add(TeamBadge);
 				
-		teamPlayersDTM=new DefaultTableModel(){
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		teamPlayersTable=new JTable(teamPlayersDTM);
-		teamPlayersJSP = new JScrollPane(teamPlayersTable);
-		teamPlayersJSP.setVisible(true);
+	//-----------------------------------------------------------------------------
 		
-		currentMatchesDTM=new DefaultTableModel(){
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		currentMatchesTable=new JTable(currentMatchesDTM);
-		currentMatchesJSP = new JScrollPane(currentMatchesTable);
-		currentMatchesJSP.setVisible(true);
 		
-		historicalMatchesDTM=new DefaultTableModel(){
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+		ArrayList<PlayerVo> players = new ArrayList<PlayerVo>();
+		players = team_BS.getPlayers(abbr);
 
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		historicalMatchesTable=new JTable(historicalMatchesDTM);
-		historicalMatchesJSP = new JScrollPane(historicalMatchesTable);
-		historicalMatchesJSP.setVisible(true);
+		if (playersRowData == null) {
+			playersRowData = new Vector<Vector<String>>();
+		} else {
+			playersRowData.clear();
+		}
+		playersColumn = new Vector<String>();
+		playersColumn.add("姓名");
+		playersColumn.add("号码");
+		playersColumn.add("命中");
+		playersColumn.add("出手");
+		playersColumn.add("三分命中");
+		playersColumn.add("三分出手");
+		playersColumn.add("罚球命中");
+		playersColumn.add("罚球出手");
+		playersColumn.add("进攻");
+		playersColumn.add("防守");
+		playersColumn.add("篮板");
+		playersColumn.add("助攻");
+		playersColumn.add("犯规");
+		playersColumn.add("抢断");
+		playersColumn.add("失误");
+		playersColumn.add("盖帽");
+		playersColumn.add("得分");
+		playersColumn.add("More");
 		
+		for (int i = 0; i < players.size(); i++) {
+			Vector<String> a = new Vector<String>();
+			a.add(players.get(i).getName());
+			a.add(players.get(i).getNumber());
+			a.add(String.valueOf(players.get(i).getHitNumField()));
+			a.add(String.valueOf(players.get(i).getShotNumField()));
+			a.add(String.valueOf(players.get(i).getThreePointHitNumField()));
+			a.add(String.valueOf(players.get(i).getThreePointShotNumField()));
+			a.add(String.valueOf(players.get(i).getFreeThrowHitNumField()));
+			a.add(String.valueOf(players.get(i).getFreeThrowShotNumField()));
+			a.add(String.valueOf(players.get(i).getAttackingNumField()));
+			a.add(String.valueOf(players.get(i).getDefensiveNumField()));
+			a.add(String.valueOf(players.get(i).getReboundOverallField()));
+			a.add(String.valueOf(players.get(i).getAssistanceField()));
+			a.add(String.valueOf(players.get(i).getFoulField()));
+			a.add(String.valueOf(players.get(i).getStealField()));
+			a.add(String.valueOf(players.get(i).getTurnoverField()));
+			a.add(String.valueOf(players.get(i).getBlockField()));
+			a.add(String.valueOf(players.get(i).getScoreField()));
+			playersRowData.add(a);
+		}
+		if (playersInfoTable != null) {
+			playersInfoTable.setVisible(false);
+		}
+
+		if (playersInfoJSP != null) {
+			playersInfoJSP.setVisible(false);
+		}
+		playersInfoTable = new JTable(playersRowData, playersColumn);
+		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
+		r1.setHorizontalAlignment(JLabel.CENTER);
+		playersInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		playersInfoTable.setDefaultRenderer(Object.class, r1);
+		playersInfoTable.getColumnModel().getColumn(17).setCellRenderer(new MyButtonRenderer());
+		playersInfoTable.setRowHeight(X * 20 / 1366);
+		playersInfoJSP = new JScrollPane(playersInfoTable);
+		setSize(X * 1000 / 1366, Y * 510 / 768);
+		playersInfoJSP.setVisible(true);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//------------------------------------------------------------------------------
+		TeamRecentGames teamRecentGames = new TeamRecentGames();
+		teamRecentGames = team_BS.getTeamRecentPerformance(abbr);
+		ArrayList<TeamPerformanceInSingleGame> fiveRecentGames = new ArrayList<TeamPerformanceInSingleGame>();
+		fiveRecentGames = teamRecentGames.getFiveGames();
+
+		if (recentGameRowData == null) {
+			recentGameRowData = new Vector<Vector<String>>();
+		} else {
+			recentGameRowData.clear();
+		}
+		recentGameColumn = new Vector<String>();
+		recentGameColumn.add("日期");
+		recentGameColumn.add("对手");
+		recentGameColumn.add("命中");
+		recentGameColumn.add("出手");
+		recentGameColumn.add("三分命中");
+		recentGameColumn.add("三分出手");
+		recentGameColumn.add("罚球命中");
+		recentGameColumn.add("罚球出手");
+		recentGameColumn.add("进攻");
+		recentGameColumn.add("防守");
+		recentGameColumn.add("篮板");
+		recentGameColumn.add("助攻");
+		recentGameColumn.add("犯规");
+		recentGameColumn.add("抢断");
+		recentGameColumn.add("失误");
+		recentGameColumn.add("盖帽");
+		recentGameColumn.add("得分");
+
+		for (int i = 0; i < fiveRecentGames.size(); i++) {
+			Vector<String> a = new Vector<String>();
+			a.add(fiveRecentGames.get(i).getGameDate().toString());
+			a.add(fiveRecentGames.get(i).getOpTeam());
+			a.add(String.valueOf(fiveRecentGames.get(i).getTime()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getHitNum()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getShotNum()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getThreePointHitNum()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getThreePointShotNum()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getFreeThrowHitNum()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getFreeThrowShotNum()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getOffensiveRebound()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getDefensiveRebound()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getReboundOverall()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getAssistance()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getFoul()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getSteal()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getTurnover()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getBlock()));
+			a.add(String.valueOf(fiveRecentGames.get(i).getScore()));
+			recentGameRowData.add(a);
+		}
+		if (recentGameInfoTable != null) {
+			recentGameInfoTable.setVisible(false);
+		}
+
+		if (recentGameInfoJSP != null) {
+			recentGameInfoJSP.setVisible(false);
+		}
+		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn);
+		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		recentGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
+		recentGameInfoTable.setRowHeight(X * 20 / 1366);
+		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
+		setSize(X * 1000 / 1366, Y * 510 / 768);
+		recentGameInfoJSP.setVisible(true);
+		
+		
+		
+		
+		//------------------------------------------------------------------------------
+		
+		ArrayList<TeamPerformanceInSingleGame> historicalGames = new ArrayList<TeamPerformanceInSingleGame>();
+		historicalGames = team_BS.getTeamPerformance(abbr);
+
+		if (historicalGameRowData == null) {
+			historicalGameRowData = new Vector<Vector<String>>();
+		} else {
+			historicalGameRowData.clear();
+		}
+		historicalGameColumn = new Vector<String>();
+		historicalGameColumn.add("日期");
+		historicalGameColumn.add("对手");
+		historicalGameColumn.add("命中");
+		historicalGameColumn.add("出手");
+		historicalGameColumn.add("三分命中");
+		historicalGameColumn.add("三分出手");
+		historicalGameColumn.add("罚球命中");
+		historicalGameColumn.add("罚球出手");
+		historicalGameColumn.add("进攻");
+		historicalGameColumn.add("防守");
+		historicalGameColumn.add("篮板");
+		historicalGameColumn.add("助攻");
+		historicalGameColumn.add("犯规");
+		historicalGameColumn.add("抢断");
+		historicalGameColumn.add("失误");
+		historicalGameColumn.add("盖帽");
+		historicalGameColumn.add("得分");
+
+		for (int i = 0; i < historicalGames.size(); i++) {
+			Vector<String> a = new Vector<String>();
+			a.add(historicalGames.get(i).getGameDate().toString());
+			a.add(historicalGames.get(i).getOpTeam());
+			a.add(String.valueOf(historicalGames.get(i).getTime()));
+			a.add(String.valueOf(historicalGames.get(i).getHitNum()));
+			a.add(String.valueOf(historicalGames.get(i).getShotNum()));
+			a.add(String.valueOf(historicalGames.get(i).getThreePointHitNum()));
+			a.add(String.valueOf(historicalGames.get(i).getThreePointShotNum()));
+			a.add(String.valueOf(historicalGames.get(i).getFreeThrowHitNum()));
+			a.add(String.valueOf(historicalGames.get(i).getFreeThrowShotNum()));
+			a.add(String.valueOf(historicalGames.get(i).getOffensiveRebound()));
+			a.add(String.valueOf(historicalGames.get(i).getDefensiveRebound()));
+			a.add(String.valueOf(historicalGames.get(i).getReboundOverall()));
+			a.add(String.valueOf(historicalGames.get(i).getAssistance()));
+			a.add(String.valueOf(historicalGames.get(i).getFoul()));
+			a.add(String.valueOf(historicalGames.get(i).getSteal()));
+			a.add(String.valueOf(historicalGames.get(i).getTurnover()));
+			a.add(String.valueOf(historicalGames.get(i).getBlock()));
+			a.add(String.valueOf(historicalGames.get(i).getScore()));
+			historicalGameRowData.add(a);
+		}
+		if (historicalGameInfoTable != null) {
+			historicalGameInfoTable.setVisible(false);
+		}
+
+		if (historicalGameInfoJSP != null) {
+			historicalGameInfoJSP.setVisible(false);
+		}
+		historicalGameInfoTable = new JTable(historicalGameRowData, historicalGameColumn);
+		DefaultTableCellRenderer r3 = new DefaultTableCellRenderer();
+		r3.setHorizontalAlignment(JLabel.CENTER);
+		historicalGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
+		historicalGameInfoTable.setDefaultRenderer(Object.class, r3);
+		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
+		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
+		setSize(X * 1000 / 1366, Y * 510 / 768);
+		historicalGameInfoJSP.setVisible(true);
+		
+		
+		
+		
+		//--------------------------------------------------------------------------------------------
 		JTP=new JTabbedPane();
-		JTP.addTab("teamPlayers", teamPlayersJSP);
-		JTP.addTab("currentMatches", currentMatchesJSP);
-		JTP.addTab("historicalMatches",historicalMatchesJSP);
-		JTP.setBounds(X/4, Y/3, X/2, Y/3);
+		JTP.addTab("teamPlayers", playersInfoJSP);
+		JTP.addTab("currentMatches", recentGameInfoJSP);
+		JTP.addTab("historicalMatches",historicalGameInfoJSP);
+		JTP.setBounds(X * 183 / 1366, Y * 220 / 768, X * 1000 / 1366, Y * 510 / 768);
 		bgLabel.add(JTP);
 		
 		addBasicInfo();
 		addBasicData();
-		addTeamPlayersData();
-		addCurrentMatchesData();
-		addHistoricalMatchesData();
+		
 		mainFrame.getContentPane().add(this);
 	}
 	
@@ -249,41 +443,24 @@ public class TeamInfoPanel extends JPanel{
 		
 	}
 	private void addBasicData(){
-		
+		TeamVo team=team_BS.getTeamByAbbr(teamABBR);
+		textField_2.setText(team.getTeamName());
+		textField_4.setText(team.getAbbreviation());
+		textField_6.setText(team.getCity());
+		textField_8.setText(String.valueOf(team.getConference()));
+		textField_10.setText(String.valueOf(team.getDivision()));
+		textField_12.setText(team.getHomeField());
+		textField_14.setText(String.valueOf(team.getTime()));
+		textField_16.setText(String.valueOf(team.getGameNum()));
 	}
 	
-	private void addTeamPlayersData(){
-		teamPlayersColumn=new Vector<String>();
-		teamPlayersColumn.add("teamPlayers");
-		teamPlayersData=new Vector<Vector<String>>();
-		Vector<String> test=new Vector<String>();
-		test.add("teamPlayersTest");
-		teamPlayersData.add(test);
-	}
-	
-	private void addCurrentMatchesData(){
-		currentMatchesColumn=new Vector<String>();
-		currentMatchesColumn.add("currentMatches");
-		currentMatchesData=new Vector<Vector<String>>();
-		Vector<String> test=new Vector<String>();
-		test.add("currentMatchesTest");
-		currentMatchesData.add(test);
-	}
-	
-	private void addHistoricalMatchesData(){
-		historicalMatchesData=new Vector<Vector<String>>();
-		historicalMatchesColumn=new Vector<String>();
-		historicalMatchesColumn.add("historicalMatches");
-		Vector<String> test=new Vector<String>();
-		test.add("historicalMatchesTest");
-		historicalMatchesData.add(test);
-	}
+
 	
 	private void addBasicInfo(){
-		int tempX = X / 4;
-		int tempY = Y / 8;
+		int tempX = X *240/ 1366;
+		int tempY = Y / 9;
 		int spaceX = X / 12;
-		int spaceY = Y / 12;
+		int spaceY = Y / 24;
 		
 		textField_1 = new MyTextField();
 		textField_1.setText("球队全名");
@@ -365,6 +542,26 @@ public class TeamInfoPanel extends JPanel{
 
 	}
 	
+	class MyButtonRenderer extends JButton implements TableCellRenderer{
+
+		@Override
+		public Component getTableCellRendererComponent(JTable arg0,
+				Object arg1, boolean isFocus, boolean isSelected, int arg4, int arg5) {
+			// TODO Auto-generated method stub
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(  X*122/1366, Y*30/768,
+							 Image.SCALE_SMOOTH));
+			
+			this.setIcon(buttonIcon);
+		
+			if(isSelected){
+				System.out.println("111");
+			}
+			return this;
+		}
+		
+	}
+	
 	class MyTextField extends JTextField {
 		/**
 		 * 
@@ -374,9 +571,9 @@ public class TeamInfoPanel extends JPanel{
 		public MyTextField() {
 			super();
 			this.setForeground(Color.BLACK);
-			this.setFont(new Font("黑体", 1, 15));
+			this.setFont(new Font("黑体", 1, 13));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-			this.setColumns(10);
+			this.setColumns(X*10/1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 		}

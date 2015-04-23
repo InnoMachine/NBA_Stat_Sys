@@ -1206,6 +1206,7 @@ public class Player_Handler {
 	public ArrayList<PlayerCardVo> hotPlayerDaily(String option){
 		ArrayList<PlayerPerformanceInSingleGame> pplist= data_handler.getPlayerGamesDaily();
 		ArrayList<PlayerCardVo> hotlist = new ArrayList<PlayerCardVo>();
+		int num = 5;
 		if(option.equals("score")){
 			int a[][] = new int [pplist.size()][2]; 
 			for(int i=0;i<pplist.size();i++)
@@ -1214,7 +1215,7 @@ public class Player_Handler {
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
-			for(int i=0;i<pplist.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
 			}
@@ -1227,7 +1228,7 @@ public class Player_Handler {
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
-			for(int i=0;i<pplist.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
 			}
@@ -1240,7 +1241,7 @@ public class Player_Handler {
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
-			for(int i=0;i<pplist.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
 			}
@@ -1253,7 +1254,7 @@ public class Player_Handler {
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
-			for(int i=0;i<pplist.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
 			}
@@ -1266,7 +1267,7 @@ public class Player_Handler {
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
-			for(int i=0;i<pplist.size();i++)
+			for(int i=0;i<num;i++)
 			{
 				hotlist.add(CreateHotInfo(pplist.get(a[i][1]),option));
 			}
@@ -1294,7 +1295,7 @@ public class Player_Handler {
 		}else if(option.equals("assistance")){
 			temp.setSortvalue(pp.getAssistance());
 		}
-		return null;
+		return temp;
 	}
 	
 	public ArrayList<PlayerVo> progressFastPlayerForTest(String option){

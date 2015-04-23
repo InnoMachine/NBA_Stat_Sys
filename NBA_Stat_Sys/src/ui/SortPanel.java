@@ -106,7 +106,7 @@ public class SortPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y / 18, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -116,13 +116,13 @@ public class SortPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
-		back.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
-		// back.setIcon(backIcon);
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		 X / 25, Image.SCALE_SMOOTH));
+		
+		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		 back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -133,7 +133,7 @@ public class SortPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -146,13 +146,14 @@ public class SortPanel extends JPanel {
 				mainFrame.setExtendedState(JFrame.ICONIFIED);
 			}
 		});
+
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -230,11 +231,11 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn1.setContentAreaFilled(false);
 			playerCriteriabtn1.setBorderPainted(false);
 			playerCriteriabtn1.addActionListener(e -> {
-				if(sortPlayerCriteriaPanel2!=null){
+				if (sortPlayerCriteriaPanel2 != null) {
 					sortPlayerCriteriaPanel2.setVisible(false);
 				}
 				sortPlayerCriteriaPanel1.setVisible(true);
-				
+
 			});
 			bgLabel.add(playerCriteriabtn1);
 
@@ -251,7 +252,7 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn2.setContentAreaFilled(false);
 			playerCriteriabtn2.setBorderPainted(false);
 			playerCriteriabtn2.addActionListener(e -> {
-				if(sortPlayerCriteriaPanel1!=null){
+				if (sortPlayerCriteriaPanel1 != null) {
 					sortPlayerCriteriaPanel1.setVisible(false);
 				}
 				sortPlayerCriteriaPanel2.setVisible(true);
@@ -302,6 +303,30 @@ public class SortPanel extends JPanel {
 					}
 				}
 			});
+
+			if (table != null) {
+				table.setVisible(false);
+			}
+			playerRowData = new Vector<Vector<PlayerCardPanel>>();
+
+			ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+			playerVos = player_BS.sortPlayerBy("gameNum");
+			for (int i = 0; i < playerVos.size(); i++) {
+				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
+				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+						"gameNum", String
+								.valueOf(playerVos.get(i).getGameNum())));
+				playerRowData.add(a);
+			}
+
+			dtm.setDataVector(playerRowData, column);
+			if (table != null) {
+				table.repaint();
+				table.getColumnModel().getColumn(0)
+						.setCellRenderer(new PlayerCardRenderer());
+			} else {
+				makeTable("player");
+			}
 
 		}
 		if (category == "team") {
@@ -391,6 +416,31 @@ public class SortPanel extends JPanel {
 					}
 				}
 			});
+			
+			if (table != null) {
+				table.setVisible(false);
+			}
+			teamRowData = new Vector<Vector<TeamCardPanel>>();
+
+			ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
+			teamVos = team_BS.sortTeamBy("GameNum");
+			for (int i = 0; i < teamVos.size(); i++) {
+				Vector<TeamCardPanel> a = new Vector<TeamCardPanel>();
+				a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
+						"GameNum", String
+								.valueOf(teamVos.get(i).getGameNum())));
+				teamRowData.add(a);
+			}
+
+			dtm.setDataVector(teamRowData, column);
+			if (table != null) {
+				table.repaint();
+				table.getColumnModel().getColumn(0)
+						.setCellRenderer(new PlayerCardRenderer());
+			} else {
+				makeTable("team");
+			}
+
 
 		}
 
@@ -1275,27 +1325,28 @@ public class SortPanel extends JPanel {
 		public SortPlayerCriteriaPanel(String priority) {
 			JLabel bglabel = new JLabel();
 			ButtonGroup bg = new ButtonGroup();
-			
+
 			if (priority == "first") {
 
 				this.setLayout(null);
 				this.setVisible(true);
 				this.setBounds(X * 426 / 1366, Y * 66 / 768 + X / 50,
 						X * 212 / 1366, X * 263 / 1000);
-				
+
 			} else if (priority == "second") {
 				this.setLayout(null);
 				this.setVisible(true);
 				this.setBounds(X * 655 / 1366, Y * 66 / 768 + X / 50,
 						X * 212 / 1366, X * 263 / 1000);
 				MyRadioButton radioButton_20 = new MyRadioButton("ALL");
-				radioButton_20.setBounds(X * 34 / 400, Y * 331 / 768, X * 29 / 400,
-						X * 15 / 700);
-				radioButton_20.addActionListener(new SortPlayerCriteriaListener(
-						"ALL", priority));
+				radioButton_20.setBounds(X * 34 / 400, Y * 331 / 768,
+						X * 29 / 400, X * 15 / 700);
+				radioButton_20
+						.addActionListener(new SortPlayerCriteriaListener(
+								"ALL", priority));
 				bglabel.add(radioButton_20);
 				bg.add(radioButton_20);
-				
+
 			}
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
 					"Image/screeningPlayerPanel.png").getImage()
@@ -1335,7 +1386,7 @@ public class SortPanel extends JPanel {
 			bg.add(rdbtnNewRadioButton_5);
 
 			MyRadioButton rdbtnNewRadioButton_2 = new MyRadioButton("篮板数");
-			rdbtnNewRadioButton_2.setBounds(X * 4 /1366, Y * 206 / 768,
+			rdbtnNewRadioButton_2.setBounds(X * 4 / 1366, Y * 206 / 768,
 					X * 29 / 400, X * 15 / 700);
 			rdbtnNewRadioButton_2
 					.addActionListener(new SortPlayerCriteriaListener("篮板数",
@@ -1770,9 +1821,11 @@ public class SortPanel extends JPanel {
 		}
 
 	}
-	public void selfClose(){
+
+	public void selfClose() {
 		this.setVisible(false);
 	}
+
 	// class: TableRenderer
 	class PlayerCardRenderer implements TableCellRenderer {
 
@@ -1788,12 +1841,13 @@ public class SortPanel extends JPanel {
 					((PlayerCardPanel) value).getCriteriaValue());
 
 			renderer.fillPanel();
-			
+
 			if (hasFocus) {
-				PlayerPanel ppPanel=new PlayerPanel(mainFrame);
+				PlayerPanel ppPanel = new PlayerPanel(mainFrame);
 				ppPanel.setVisible(false);
-				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerInfo()
-						.getName(), mainFrame,new SortPanel("player",mainFrame, ppPanel));
+				PlayerInfoPanel a = new PlayerInfoPanel(renderer
+						.getPlayerInfo().getName(), mainFrame, new SortPanel(
+						"player", mainFrame, ppPanel));
 				selfClose();
 			}
 			// TODO Auto-generated method stub
@@ -1816,10 +1870,11 @@ public class SortPanel extends JPanel {
 					((TeamCardPanel) value).getCriteriaValue());
 			renderer.fillPanel();
 			if (hasFocus) {
-				TeamPanel ppPanel=new TeamPanel(mainFrame);
+				TeamPanel ppPanel = new TeamPanel(mainFrame);
 				ppPanel.setVisible(false);
 				TeamInfoPanel a = new TeamInfoPanel(renderer.getTeamInfo()
-						.getAbbreviation(), mainFrame,new SortPanel("team",mainFrame, ppPanel));
+						.getAbbreviation(), mainFrame, new SortPanel("team",
+						mainFrame, ppPanel));
 				selfClose();
 			}
 			// TODO Auto-generated method stub
@@ -1980,7 +2035,7 @@ public class SortPanel extends JPanel {
 				default:
 					break;
 				}
-			}else if (priority == "second") {
+			} else if (priority == "second") {
 				switch (criteria) {
 				case "参赛场数":
 					playerCriteriabtn2.setText("参赛场数");

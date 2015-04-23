@@ -133,11 +133,11 @@ public class PlayerInfoPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		  ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		  X / 25, Image.SCALE_SMOOTH));
+		 
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		// back.setIcon(backIcon);
 		back.setOpaque(false);
@@ -259,16 +259,17 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn);
 		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
 		r1.setHorizontalAlignment(JLabel.CENTER);
-		recentGameInfoTable.getColumnModel().getColumn(0).setPreferredWidth(X*100/1366);
+		recentGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
-		recentGameInfoTable.setRowHeight(X*20/1366);
+		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
-		setSize( X*1000 / 1366, Y *490/768);
+		setSize(X * 1000 / 1366, Y * 490 / 768);
 		recentGameInfoJSP.setVisible(true);
 
 		// -----------------------------------------------------------------------------------------------
-ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPerformanceInSingleGame>();
-		 historicalGames=player_BS.getPlayerPerformacne(PlayerName).getGames();
+		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
+		historicalGames = player_BS.getPlayerPerformacne(PlayerName).getGames();
 
 		if (historicalGameRowData == null) {
 			historicalGameRowData = new Vector<Vector<String>>();
@@ -317,7 +318,7 @@ ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPer
 			a.add(String.valueOf(historicalGames.get(i).getScore()));
 			historicalGameRowData.add(a);
 		}
-		
+
 		if (historicalGameInfoTable != null) {
 			historicalGameInfoTable.setVisible(false);
 		}
@@ -329,15 +330,17 @@ ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPer
 				historicalGameColumn);
 		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
-		historicalGameInfoTable.getColumnModel().getColumn(0).setPreferredWidth(X*100/1366);
+		historicalGameInfoTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
-		historicalGameInfoTable.setRowHeight(X*20/1366);
+		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
-		historicalGameInfoJSP.setSize(X*1000 / 1366, Y *490/768);
+		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
 		historicalGameInfoJSP.setVisible(true);
 
 		JTP = new JTabbedPane();
-		JTP.setBounds(X *90/ 1366, Y*220/768, X*1000 / 1366, Y *490/768);
+		JTP.setBounds(X * 90 / 1366, Y * 220 / 768, X * 1000 / 1366,
+				Y * 490 / 768);
 		JTP.addTab("currentData", recentGameInfoJSP);
 		JTP.addTab("historicalData", historicalGameInfoJSP);
 		bgLabel.add(JTP);
@@ -484,12 +487,13 @@ ArrayList<PlayerPerformanceInSingleGame> historicalGames=new ArrayList<PlayerPer
 		public MyTextField() {
 			super();
 			this.setVisible(true);
-			this.setForeground(Color.BLACK);
-			this.setFont(new Font("黑体", 1, 13));
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
+			this.setOpaque(false);
 		}
 	}
 }

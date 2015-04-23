@@ -363,7 +363,9 @@ public class DataFileReader {
 		ArrayList<String> fileNameList = new ArrayList<String>(len);
 		for (int i = 0; i < len; i++) {
 			if (fileList[i].isFile()) {
-				fileNameList.add(fileList[i].toString());
+				if(!fileList[i].toString().contains("DS_Store")) {//ignore system default file .DS_Store
+					fileNameList.add(fileList[i].toString());
+				}
 			}
 		}
 		return fileNameList;

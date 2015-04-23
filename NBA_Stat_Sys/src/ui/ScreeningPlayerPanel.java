@@ -58,9 +58,9 @@ public class ScreeningPlayerPanel extends JPanel {
 	static int Y;
 	JLabel bgLabel;
 
-	public ScreeningPlayerPanel(JFrame mainFrame,JPanel previousPanel) {
+	public ScreeningPlayerPanel(JFrame mainFrame, JPanel previousPanel) {
 		this.mainFrame = mainFrame;
-		this.previousPanel=previousPanel;
+		this.previousPanel = previousPanel;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
@@ -101,7 +101,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y / 18, X / 25, X / 25);
+		home.setBounds(16 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
@@ -111,13 +111,13 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
-		/*
-		 * ImageIcon backIcon = new ImageIcon(new
-		 * ImageIcon("Image/homeIcon.png") .getImage().getScaledInstance(X / 25,
-		 * X / 25, Image.SCALE_SMOOTH));
-		 */
-		back.setBounds(17 * X / 20, Y / 18, X / 25, X / 25);
-		// back.setIcon(backIcon);
+		
+		  ImageIcon backIcon = new ImageIcon(new
+		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
+		 X / 25, Image.SCALE_SMOOTH));
+		
+		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
+		 back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -128,7 +128,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y / 18, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -141,13 +141,14 @@ public class ScreeningPlayerPanel extends JPanel {
 				mainFrame.setExtendedState(JFrame.ICONIFIED);
 			}
 		});
+
 		bgLabel.add(minimize);
 
 		JButton close = new JButton();
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y / 18, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 10 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -252,6 +253,67 @@ public class ScreeningPlayerPanel extends JPanel {
 				}
 			}
 		});
+
+		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+		// System.out.println(screeningCriteria);
+		playerVos = player_BS.filterPlayerBy(null, null, "scoreField");
+		if (rowData == null) {
+			rowData = new Vector<Vector<PlayerCardPanel>>();
+		} else {
+			rowData.clear();
+		}
+		for (int i = 0; i < playerVos.size(); i++) {
+			Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
+			a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+					screeningCriteriabtn.getText(), String.valueOf(playerVos
+							.get(i).getScoreField())));
+			rowData.add(a);
+
+		}
+
+		Vector<String> column = new Vector<String>();
+		column.add("");
+		DefaultTableModel dtm = new DefaultTableModel(rowData, column) {
+			/**
+				 * 
+				 */
+			private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		if (table != null) {
+			table.setVisible(false);
+		}
+		table = new JTable(dtm);
+		DefaultTableCellRenderer tableHeaderRenderer = new DefaultTableCellRenderer();
+		tableHeaderRenderer.setPreferredSize(new Dimension(0, 0));
+		table.getTableHeader().setDefaultRenderer(tableHeaderRenderer);
+		table.setRowHeight(Y * 120 / 768);
+		table.setVisible(true);
+		table.setCellSelectionEnabled(true);
+		table.getColumnModel().getColumn(0)
+				.setCellRenderer(new PlayerCardRenderer());
+		table.setOpaque(false);
+		if (scrollPane != null) {
+			scrollPane.setVisible(false);
+		}
+		scrollPane = new JScrollPane(table);
+		scrollPane.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
+		scrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 / 1366,
+				Y * 600 / 768);
+		scrollPane.setVisible(true);
+		scrollPane
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane
+				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
+		bgLabel.add(scrollPane);
+
 	}
 
 	public void showScreeningCriteria() {
@@ -507,12 +569,14 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		}
 	}
+
 	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 		// playerCriteriaPanel.setVisible(false);
 	}
+
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
@@ -731,9 +795,11 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		}
 	}
-	public void selfClose(){
+
+	public void selfClose() {
 		this.setVisible(false);
 	}
+
 	// class: TableRenderer
 	class PlayerCardRenderer implements TableCellRenderer {
 
@@ -751,10 +817,11 @@ public class ScreeningPlayerPanel extends JPanel {
 			renderer.fillPanel();
 			renderer.setOpaque(false);
 			if (hasFocus) {
-				PlayerPanel ppPanel=new PlayerPanel(mainFrame);
+				PlayerPanel ppPanel = new PlayerPanel(mainFrame);
 				ppPanel.setVisible(false);
-				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerInfo()
-						.getName(), mainFrame,new ScreeningPlayerPanel(mainFrame, ppPanel));
+				PlayerInfoPanel a = new PlayerInfoPanel(renderer
+						.getPlayerInfo().getName(), mainFrame,
+						new ScreeningPlayerPanel(mainFrame, ppPanel));
 				selfClose();
 			}
 			// TODO Auto-generated method stub

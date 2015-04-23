@@ -21,4 +21,6 @@ public interface GameDao {
 	
 	public ArrayList<GamePO> getAllGames();
 	
+	public ArrayList<GamePO> getNewGamePOs();
+	
 }

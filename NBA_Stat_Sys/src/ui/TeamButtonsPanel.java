@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.JButton;
@@ -52,14 +53,16 @@ public class TeamButtonsPanel extends JPanel{
 		this.setOpaque(false);
 		this.setBounds(0, 0, X * 967 / 1366, Y * 240 / 768);
 		
-		JLabel label = new JLabel("-----------------------------------------东部球队------------------------------------------");
-		label.setBackground(Color.WHITE);
-		label.setBounds(X*47/1366, Y*10/768, X*420/1366, Y*15/768);
+		JLabel label = new JLabel("-------------------------东部球队-------------------------");
+		label.setFont(new Font("微软雅黑",1,15));
+		label.setForeground(Color.white);
+		label.setBounds(X*47/1366, Y*1/768, X*420/1366, Y*20/768);
 		add(label);
 		
-		JLabel label_1 = new JLabel("-------------------------------------------西部球队--------------------------------------------");
-		label_1.setBackground(Color.WHITE);
-		label_1.setBounds(X*518/1366, Y*10/768, X*420/1366, Y*15/768);
+		JLabel label_1 = new JLabel("-----------------------西部球队-------------------------");
+		label_1.setForeground(Color.white);
+		label_1.setFont(new Font("微软雅黑",1,15));
+		label_1.setBounds(X*518/1366, Y*1/768, X*420/1366, Y*20/768);
 		add(label_1);
 		
 		JButton eastTeambtn1 = new JButton();
