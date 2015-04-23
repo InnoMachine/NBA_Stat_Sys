@@ -116,7 +116,7 @@ public class TeamInfoPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 
-		JButton back = new JButton();
+		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
 
 		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
@@ -255,11 +255,11 @@ public class TeamInfoPanel extends JPanel {
 		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
 		r1.setHorizontalAlignment(JLabel.CENTER);
 		playersInfoTable.getColumnModel().getColumn(0)
-				.setPreferredWidth(X * 120 / 1366);
+				.setPreferredWidth(X * 100 / 1366);
 		playersInfoTable.setDefaultRenderer(Object.class, r1);
 		playersInfoTable.getColumnModel().getColumn(17)
 				.setCellRenderer(new MyButtonRenderer());
-		playersInfoTable.setRowHeight(X * 30 / 1366);
+		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		playersInfoJSP.setVisible(true);
@@ -329,7 +329,7 @@ public class TeamInfoPanel extends JPanel {
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
-		recentGameInfoTable.setRowHeight(X * 30 / 1366);
+		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		recentGameInfoJSP.setVisible(true);
@@ -399,7 +399,7 @@ public class TeamInfoPanel extends JPanel {
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r3);
-		historicalGameInfoTable.setRowHeight(X * 30 / 1366);
+		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
 		historicalGameInfoJSP.setVisible(true);
@@ -411,7 +411,6 @@ public class TeamInfoPanel extends JPanel {
 		JTP.addTab("historicalMatches", historicalGameInfoJSP);
 		JTP.setBounds(X * 183 / 1366, Y * 220 / 768, X * 1000 / 1366,
 				Y * 510 / 768);
-		JTP.setOpaque(false);
 		bgLabel.add(JTP);
 
 		addBasicInfo();

@@ -143,7 +143,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		secondPlayerValuelbl = new MyLabel();
 		secondPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		secondPlayerValuelbl.setBounds(X*902/1366, Y*25/768, X*50/1366, Y*35/768);
+		secondPlayerValuelbl.setBounds(X*902/1366, Y*25/768, X*35/1366, Y*35/768);
 		add(secondPlayerValuelbl);
 
 		secondTeambtn = new JButton();
@@ -172,7 +172,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		thirdPlayerValuelbl = new MyLabel();
 		thirdPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		thirdPlayerValuelbl.setBounds(X*902/1366, Y*75/768, X*50/1366, Y*35/768);
+		thirdPlayerValuelbl.setBounds(X*902/1366, Y*75/768, X*35/1366, Y*35/768);
 		add(thirdPlayerValuelbl);
 
 		thirdTeambtn = new JButton();
@@ -201,7 +201,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		fourthPlayerValuelbl = new MyLabel();
 		fourthPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fourthPlayerValuelbl.setBounds(X*902/1366, Y*125/768, X*50/1366, Y*35/768);
+		fourthPlayerValuelbl.setBounds(X*902/1366, Y*125/768, X*35/1366, Y*35/768);
 		add(fourthPlayerValuelbl);
 
 		fourthTeambtn = new JButton();
@@ -230,7 +230,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		fifthPlayerValuelbl = new MyLabel();
 		fifthPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fifthPlayerValuelbl.setBounds(X*902/1366, Y*175/768, X*50/1366, Y*35/768);
+		fifthPlayerValuelbl.setBounds(X*902/1366, Y*175/768, X*35/1366, Y*35/768);
 		add(fifthPlayerValuelbl);
 
 		fifthTeambtn = new JButton();

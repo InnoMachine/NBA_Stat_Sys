@@ -150,7 +150,7 @@ public class PlayerInfoPanel extends JPanel {
 		home.addActionListener(e -> home());
 		bgLabel.add(home);
 
-		JButton back = new JButton();
+		JButton back = new JButton("返回");
 		back.setForeground(Color.WHITE);
 
 		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
@@ -158,7 +158,7 @@ public class PlayerInfoPanel extends JPanel {
 						Image.SCALE_SMOOTH));
 
 		back.setBounds(17 * X / 20, Y * 10 / 768, X / 25, X / 25);
-		 back.setIcon(backIcon);
+		// back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
