@@ -256,7 +256,7 @@ public class TeamInfoPanel extends JPanel{
 		playersInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		playersInfoTable.setDefaultRenderer(Object.class, r1);
-		playersInfoTable.getColumnModel().getColumn(17).setCellEditor(new DetailRenderer(playersInfoTable.getSelectedRow()));
+//		playersInfoTable.getColumnModel().getColumn(17).setCellEditor(new DetailRenderer(playersInfoTable.getSelectedRow()));
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		setSize(X * 1000 / 1366, Y * 510 / 768);
@@ -542,7 +542,7 @@ public class TeamInfoPanel extends JPanel{
 
 	}
 	
-	
+	/*
 	class DetailRenderer extends AbstractCellEditor implements TableCellRenderer,ActionListener, TableCellEditor{
 
 		private static final long serialVersionUID = 1L;
@@ -551,7 +551,9 @@ public class TeamInfoPanel extends JPanel{
 		public DetailRenderer(int selectedRow){
 			this.selectedRow=selectedRow;
 			button = new JButton();		
+			button.setBackground(Color.YELLOW);
 			button.addActionListener(this);
+			
 		}
 
 	@Override
@@ -619,7 +621,7 @@ public class TeamInfoPanel extends JPanel{
 	}
 		
 	}
-	
+	*/
 	
 	class MyTextField extends JTextField {
 		/**
