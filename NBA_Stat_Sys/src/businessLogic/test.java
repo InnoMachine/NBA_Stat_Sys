@@ -11,9 +11,9 @@ public class test {
 	
 	public static void main(String args[]){
 		Player_BS p = new Player_BL();
-		ArrayList<PlayerCardVo> cv=p.hotPlayerSeason("scoreField");
+		ArrayList<PlayerCardVo> cv=p.progressFastPlayer("scoreFieldProgress");
 		for(PlayerCardVo temp:cv){
-			System.out.println(temp.getSortvalue());
+			System.out.println(temp.getSortProgress());
 		}
 		/*Game_BS g = new Game_BL();
 		GameDate gd = new GameDate(2012,11,1);

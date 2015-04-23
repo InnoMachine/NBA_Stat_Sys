@@ -75,7 +75,7 @@ public class PlayerInfoPanel extends JPanel {
 	JButton currentDataCheck;
 	private JTabbedPane JTP;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	public PlayerInfoPanel(String PlayerName, JFrame mainFrame,
 			JPanel previousPanel) {
