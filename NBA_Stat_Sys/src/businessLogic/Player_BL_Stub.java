@@ -2,6 +2,8 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import enums.Conference;
 import enums.Division;
 import vo.PlayerCardVo;
@@ -21,6 +23,18 @@ public class Player_BL_Stub implements Player_BS {
 		playerVo.setAge(25);
 		playerVo.setDivision(Division.ATLANTIC);
 		playerVo.setNumber("19");
+		
+		playerVo.setGameNum(10);
+		playerVo.setTime(1201);
+		playerVo.setAssistanceField(7.11);
+		playerVo.setScoreField(18.2);
+		playerVo.setHitNumField(5.2);
+		playerVo.setThreePointHitRate(0.389);
+		playerVo.setFreeThrowRate(0.793);
+		playerVo.setStealField(10.3);
+		playerVo.setBlockField(9.8);
+		playerVo.setTurnoverField(1.9);
+		playerVo.setFoulField(3.4);
 		return playerVo;
 	}
 
@@ -572,6 +586,18 @@ public class Player_BL_Stub implements Player_BS {
 	@Override
 	public TotalInfo getTotalInfo() {
 		// TODO Auto-generated method stub
-		return null;
+		TotalInfo totalInfo=new TotalInfo();
+		totalInfo.setGamenumField(7);
+		totalInfo.setTime(1201);
+		totalInfo.setAssistanceField(7.11);
+		totalInfo.setScoreField(18.2);
+		totalInfo.setHitField(7.0);
+		totalInfo.setThreeRate(0.389);
+		totalInfo.setFreeRate(0.793);
+		totalInfo.setStealField(10.3);
+		totalInfo.setBlockField(9.8);
+		totalInfo.setTurnoverField(3.5);
+		totalInfo.setFoulField(2.3);
+		return totalInfo;
 	}
 }
