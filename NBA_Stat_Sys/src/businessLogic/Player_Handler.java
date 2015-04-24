@@ -645,22 +645,45 @@ public class Player_Handler {
 			}
 			else if((position.equals("All"))&&(!div.equals("All")))
 			{
-				for(PlayerVo temp:listvo)
-				{
-					if((temp.getDivision()+"").equals(div))
+				if(div.equals("West")){
+					for(PlayerVo temp:listvo)
 					{
-						list.add(temp);
-					}		
+						if(isWest(temp.getDivision()+""))
+						{
+							list.add(temp);
+						}		
+					}
+				}else
+				{
+					for(PlayerVo temp:listvo)
+					{
+						if(isEast(temp.getDivision()+""))
+						{
+							list.add(temp);
+						}		
+					}
 				}
+				
 			}
 			else{
-				for(PlayerVo temp:listvo)
-				{
-					if((temp.getDivision()+"").equals(div)&&isPosition(temp,position))
+				if(div.equals("West")){
+					for(PlayerVo temp:listvo)
 					{
-						list.add(temp);
-					}		
-				}
+						if(isWest(temp.getDivision()+"")&&isPosition(temp,position))
+						{
+							list.add(temp);
+						}		
+					}
+				}else
+				{
+					for(PlayerVo temp:listvo)
+					{
+						if(isEast(temp.getDivision()+"")&&isPosition(temp,position))
+						{
+							list.add(temp);
+						}		
+					}
+				}	
 			}
 		}
 		else{
@@ -682,11 +705,11 @@ public class Player_Handler {
 				templist.add(list.get(a[i][1]));
 			}
 			int i =m;
-			if(m!=list.size())
+			if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getScore()){
 				templist.add(list.get(a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("scoreField")){
 			double a[][] = new double [list.size()][2]; 
@@ -702,11 +725,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get((int)a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getScoreField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("reboundOverallField")){
 			double a[][] = new double [list.size()][2]; 
@@ -722,11 +745,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get((int)a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getReboundOverallField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("reboundOverall")){
 			int a[][] = new int [list.size()][2]; 
@@ -741,11 +764,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get(a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getReboundOverall()){
 				templist.add(list.get(a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("assistanceField")){
 			double a[][] = new double [list.size()][2]; 
@@ -761,11 +784,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get((int)a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getAssistanceField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("assistance")){
 			int a[][] = new int [list.size()][2]; 
@@ -780,11 +803,12 @@ public class Player_Handler {
 			{
 				templist.add(list.get(a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;
+			if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getAssistance()){
 				templist.add(list.get(a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("turnoverField")){
 			double a[][] = new double [list.size()][2]; 
@@ -800,11 +824,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get((int)a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getTurnoverField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("turnover")){
 			int a[][] = new int [list.size()][2]; 
@@ -819,11 +843,12 @@ public class Player_Handler {
 			{
 				templist.add(list.get(a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;
+			if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getAssistance()){
 				templist.add(list.get(a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("weighted")){
 			int a[][] = new int [list.size()][2]; 
@@ -838,11 +863,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get(a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getWeighted()){
 				templist.add(list.get(a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}
 		else if(option.equals("block")){
@@ -858,11 +883,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get(a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getBlock()){
 				templist.add(list.get(a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("blockField")){
 			double a[][] = new double [list.size()][2]; 
@@ -878,11 +903,11 @@ public class Player_Handler {
 			{
 				templist.add(list.get((int)a[i][1]));
 			}
-			int i =m;if(m!=list.size())
+			int i =m;if(m!=list.size()){
 			while(a[i][0]==templist.get(m-1).getBlockField()){
 				templist.add(list.get((int)a[i][1]));
 				i++;
-			}		
+			}		}
 			return templist;
 		}else if(option.equals("steal")){
 			int a[][] = new int [list.size()][2]; 
@@ -1257,6 +1282,14 @@ public class Player_Handler {
 		return null;
 		
 	}
+	private boolean isEast(String div) {
+		return div.equals("ATLANTIC")||div.equals("CENTRAL")||div.equals("SOUTHEAST");
+	}
+
+	private boolean isWest(String div) {
+		return div.equals("SOUTHWEST")||div.equals("NORTHWEST")||div.equals("PACIFIC");
+	}
+
 	private boolean isPosition(PlayerVo temp, String position) {
 		String p = temp.getPosition();
 		if(p.length()==1)
