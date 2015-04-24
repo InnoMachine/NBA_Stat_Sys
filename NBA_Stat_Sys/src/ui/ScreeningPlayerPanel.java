@@ -44,12 +44,8 @@ public class ScreeningPlayerPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	JPanel previousPanel;
-	private String[] positions;
-	private String[] leagues;
 	private JTable table;
 	private JScrollPane scrollPane;
-	JComboBox<String> positionjcb;
-	JComboBox<String> leaguejcb;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
 	Player_BS player_BS = new Player_BL_Stub();
 	private JButton screeningCriteriabtn;
@@ -57,7 +53,28 @@ public class ScreeningPlayerPanel extends JPanel {
 	static int X;
 	static int Y;
 	JLabel bgLabel;
-
+	
+	JLabel nbaUnionSymbol;
+	JLabel westernUnionSymbol;
+	JLabel easternUnionSymbol;
+	JButton nbaUnion;
+	JButton westernUnion;
+	JButton easternUnion;
+	JButton pacific;
+	JButton southwest;
+	JButton northwest;
+	JButton southeast;
+	JButton central;
+	JButton atlantic;
+	
+	JButton allpostion;
+	JButton center;
+	JButton guard;
+	JButton foward;
+	
+	private String positionSelected="NBA联盟";
+	private String leagueSelected="所有位置";
+	
 	public ScreeningPlayerPanel(JFrame mainFrame, JPanel previousPanel) {
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
@@ -162,7 +179,39 @@ public class ScreeningPlayerPanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-
+		
+		nbaUnion=new LeagueButton("NBA联盟");
+		nbaUnion.setLocation(600,80);
+		westernUnionSymbol=new JLabel();
+		ImageIcon westernUnionIcon = new ImageIcon(new ImageIcon(
+				"Image/western.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));
+		
+		westernUnionSymbol.setIcon(westernUnionIcon);
+		westernUnionSymbol.setBounds(280, 50, 80, 80);
+		bgLabel.add(westernUnionSymbol);
+		westernUnion=new LeagueButton("西部联盟");
+		westernUnion.setLocation(400, 80);
+		easternUnionSymbol=new JLabel();
+		easternUnionSymbol.setBounds(990, 50, 80, 80);
+		ImageIcon easternUnionIcon = new ImageIcon(new ImageIcon(
+				"Image/eastern.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));
+		easternUnionSymbol.setIcon(easternUnionIcon);
+		bgLabel.add(easternUnionSymbol);
+		easternUnion=new LeagueButton("东部联盟");
+		easternUnion.setLocation(800, 80);	
+		pacific=new LeagueButton("太平洋赛区");
+		pacific.setLocation(200, 150);
+		northwest=new LeagueButton("西北赛区");
+		northwest.setLocation(350, 150);
+		southwest=new LeagueButton("西南赛区");
+		southwest.setLocation(500, 150);
+		center=new LeagueButton("中央赛区");
+		center.setLocation(700, 150);
+		southeast=new LeagueButton("东南赛区");
+		southeast.setLocation(850, 150);
+		atlantic=new LeagueButton("大西洋赛区");
+		atlantic.setLocation(1000, 150);
+		
 		JButton screeningbtn = new JButton("显示前50名");
 		screeningbtn.setForeground(Color.WHITE);
 		screeningbtn.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -179,45 +228,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		bgLabel.add(screeningbtn);
 		mainFrame.getContentPane().add(this);
 
-		MyLabel label = new MyLabel(Color.WHITE, "球员位置");
-		label.setFont(new Font("黑体", 1, 13));
-		label.setBounds(X * 265 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
-		bgLabel.add(label);
-
-		MyLabel label_1 = new MyLabel(Color.WHITE, "球员联盟");
-		label_1.setFont(new Font("黑体", 1, 13));
-		label_1.setBounds(X * 455 / 1366, Y * 66 / 768, X * 60 / 1366, X / 50);
-		bgLabel.add(label_1);
-
-		positions = new String[4];
-		positions[0] = "所有";
-		positions[1] = "前锋";
-		positions[2] = "中锋";
-		positions[3] = "后卫";
-		positionjcb = new JComboBox<String>(positions);
-
-		positionjcb.setBounds(X * 330 / 1366, Y * 66 / 768, X * 100 / 1366,
-				X / 50);
-		positionjcb.setForeground(Color.WHITE);
-		positionjcb.setBackground(Color.GRAY);
-
-		bgLabel.add(positionjcb);
-
-		leagues = new String[7];
-		leagues[0] = "所有";
-		leagues[1] = "ATLANTIC";
-		leagues[2] = "CENTRAL";
-		leagues[3] = "SOUTHEAST";
-		leagues[4] = "NORTHWEST";
-		leagues[5] = "SOUTHWEST";
-		leagues[6] = "PACIFIC";
-		leaguejcb = new JComboBox<String>(leagues);
-		leaguejcb.setBounds(X * 520 / 1366, Y * 66 / 768, X * 100 / 1366,
-				X / 50);
-		leaguejcb.setForeground(Color.WHITE);
-		leaguejcb.setBackground(Color.GRAY);
-
-		bgLabel.add(leaguejcb);
+		
 
 		bgLabel.addMouseListener(new MouseListener() {
 			@Override
@@ -255,7 +266,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		});
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		// System.out.println(screeningCriteria);
 		playerVos = player_BS.filterPlayerBy("All", "All", "scoreField");
 		if (rowData == null) {
 			rowData = new Vector<Vector<PlayerCardPanel>>();
@@ -303,8 +313,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		scrollPane = new JScrollPane(table);
 		scrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		scrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 / 1366,
-				Y * 600 / 768);
+		scrollPane.setBounds(X * 215 / 1366, Y * 300 / 768, X * 930 / 1366,
+				Y * 400 / 768);
 		scrollPane.setVisible(true);
 		scrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -331,7 +341,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			playerCriteriaPanel.setVisible(false);
 		}
 
-		switch (String.valueOf(positionjcb.getSelectedItem())) {
+		switch (positionSelected) {
 		case "前锋":
 			position = "F";
 			break;
@@ -348,27 +358,32 @@ public class ScreeningPlayerPanel extends JPanel {
 			break;
 		}
 
-		switch (String.valueOf(leaguejcb.getSelectedItem())) {
-		case "ATLANTIC":
+		switch (leagueSelected) {
+		case "大西洋赛区":
 			league = "ATLANTIC";
 			break;
-		case "CENTRAL":
+		case "中央赛区":
 			league = "CENTRAL";
 			break;
-		case "SOUTHEAST":
+		case "东南赛区":
 			league = "SOUTHEAST";
 			break;
-		case "NORTHWEST":
+		case "西北赛区":
 			league = "NORTHWEST";
 			break;
-		case "SOUTHWEST":
+		case "西南赛区":
 			league = "SOUTHWEST";
 			break;
-		case "PACIFIC":
+		case "太平洋赛区":
 			league = "PACIFIC";
 			break;
-
-		case "所有":
+		case "西部联盟":
+			league= "West";
+			break;
+		case "东部联盟":
+			league= "East";
+			break;
+		case "NBA联盟":
 			league = "All";
 			break;
 		default:
@@ -871,6 +886,26 @@ public class ScreeningPlayerPanel extends JPanel {
 		}
 	}
 
+	class LeagueButton extends JButton{
+		public LeagueButton(String s){
+			super();
+			this.setText(s);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("微软雅黑",1,15));
+			this.setSize(150, 30);
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance( this.getWidth(),this.getHeight(),
+						 Image.SCALE_SMOOTH));
+		
+			this.setIcon(buttonIcon);
+			this.setOpaque(false);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			this.addActionListener(e->leagueSelected=s);
+			bgLabel.add(this);
+		}
+	}
 	class MyRadioButton extends JRadioButton {
 		/**
 		 * 
@@ -884,4 +919,5 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setForeground(Color.WHITE);
 		}
 	}
+
 }
