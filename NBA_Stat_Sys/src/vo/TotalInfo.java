@@ -10,13 +10,26 @@ public class TotalInfo {
 	private int three;
 	private int free;
 	private int gamenum;
+	private int threeshot;
+	private int freeshot;
+	private int time;
+	private int hit;
+	private int block;
+	private int steal;
+	private int turnover;
 	private double scoreField;
 	private double reboundField;
 	private double assistanceField;
-	private double threeField;
-	private double freeField;
+	private double threeRate;
+	private double freeRate;
+	private double minute;
+	private double turnoverField;
+	private double stealField;
+	private double blockField;
 	
 	public TotalInfo(){
+		setBlockField(0);
+		setStealField(0);
 		score = 0;
 		rebound =0;
 		assistance=0;
@@ -26,10 +39,13 @@ public class TotalInfo {
 		scoreField=0;
 		reboundField =0;
 		assistanceField=0;
-		assistanceField = 0;
-		threeField =0;
-		freeField = 0;
-				
+		setThreeshot(0);
+		setFreeshot(0);
+		setThreeRate(0);
+		setFreeRate(0);
+		setMinute(0);
+		setHit(0);
+		setTime(0);
 				
 	}
 
@@ -105,33 +121,12 @@ public class TotalInfo {
 		this.assistanceField = assistanceField;
 	}
 
-	public double getThreeField() {
-		return threeField;
-	}
 	public void calcAssistanceField(){
 		b = new BigDecimal(this.assistance/this.gamenum);
 		this.assistanceField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
 	}
 
-	public void setThreeField(double threeField) {
-		this.threeField = threeField;
-	}
-
-	public void calcThreeField(){
-		b = new BigDecimal(this.three/this.gamenum);
-		this.threeField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
-	}
-	public double getFreeField() {
-		return freeField;
-	}
-
-	public void setFreeField(double freeField) {
-		this.freeField = freeField;
-	}
-	public void calcFreeField(){
-		b = new BigDecimal(this.free/this.gamenum);
-		this.freeField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
-	}
+	
 
 	public double getReboundField() {
 		return reboundField;
@@ -157,5 +152,148 @@ public class TotalInfo {
 	public void calcScoreField(){
 		b = new BigDecimal(this.score/this.gamenum);
 		this.scoreField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+	}
+
+	public int getThreeshot() {
+		return threeshot;
+	}
+
+	public void setThreeshot(int threeshot) {
+		this.threeshot = threeshot;
+	}
+	public void addThreeshot(int t){
+		this.threeshot+=t;
+	}
+	public int getFreeshot() {
+		return freeshot;
+	}
+
+	public void setFreeshot(int freeshot) {
+		this.freeshot = freeshot;
+	}
+	public void addFreeshot(int f){
+		this.freeshot+=f;
+	}
+	public int getTurnover() {
+		return turnover;
+	}
+
+	public void setTurnover(int turnover) {
+		this.turnover = turnover;
+	}
+	public void addTurnover(int t){
+		this.turnover+=t;
+	}
+	public int getBlock() {
+		return block;
+	}
+
+	public void setBlock(int block) {
+		this.block = block;
+	}
+	public void addBlock(int b){
+		this.block+=b;
+	}
+	public int getSteal() {
+		return steal;
+	}
+
+	public void setSteal(int steal) {
+		this.steal = steal;
+	}
+	public void addSteal(int s){
+		this.steal+=s;
+	}
+
+	public int getHit() {
+		return hit;
+	}
+
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public void addHit(int h){
+		this.hit+=h;
+	}
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+	public void addTime(int t){
+		this.time+=t;
+	}
+
+	public double getThreeRate() {
+		return threeRate;
+	}
+
+	public void setThreeRate(double threeRate) {
+		this.threeRate = threeRate;
+	}
+
+	public void calcThreeRate(){
+		b = new BigDecimal(this.free/(double)this.freeshot);
+		this.threeRate  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+	}
+	public double getFreeRate() {
+		return freeRate;
+	}
+
+	public void setFreeRate(double freeRate) {
+		this.freeRate = freeRate;
+	}
+	public void calcFreeRate(){
+		b = new BigDecimal(this.free/(double)this.freeshot);
+		this.freeRate  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+	}
+
+	public double getMinute() {
+		return minute;
+	}
+
+	public void setMinute(double minute) {
+		this.minute = minute;
+	}
+	public void calcMinute(){
+		b = new BigDecimal(this.time/(60.0*this.gamenum));
+		this.minute  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+	}
+	public double getBlockField() {
+		return blockField;
+	}
+
+	public void setBlockField(double blockField) {
+		this.blockField = blockField;
+	}
+
+	public void calcBlockField(){
+		b = new BigDecimal(this.block/(double)this.gamenum);
+		this.blockField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+	}
+	public double getStealField() {
+		return stealField;
+	}
+
+	public void setStealField(double stealField) {
+		this.stealField = stealField;
+	}
+	public void calcStealField(){
+		b = new BigDecimal(this.steal/this.gamenum);
+		this.scoreField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+	}
+
+	public double getTurnoverField() {
+		return turnoverField;
+	}
+
+	public void setTurnoverField(double turnoverField) {
+		this.turnoverField = turnoverField;
+	}
+	public void calcTurnoverFied(){
+		b = new BigDecimal(this.turnover/(double)this.gamenum);
+		this.scoreField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
 	}
 }

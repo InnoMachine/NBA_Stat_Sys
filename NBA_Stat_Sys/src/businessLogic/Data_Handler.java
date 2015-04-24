@@ -87,10 +87,14 @@ public class Data_Handler {
 	
 	private void TotalCalculate() {
 		ti.calcAssistanceField();
-		ti.calcFreeField();
+		ti.calcFreeRate();
 		ti.calcReboundField();
 		ti.calcScoreField();
-		ti.calcThreeField();
+		ti.calcThreeRate();
+		ti.calcBlockField();
+		ti.calcMinute();
+		ti.calcStealField();
+		ti.calcTurnoverFied(); 
 	}
 	private void PlayerDivisionSet() {
 		for(PlayerVo temp:listvo)
@@ -641,6 +645,13 @@ public class Data_Handler {
 					ti.addRebound(temp.getReboundOverall());
 					ti.addThree(temp.getThreePointHitNum());
 					ti.addGameNum();
+					ti.addHit(temp.getHitNum());
+					ti.addBlock(temp.getBlock());
+					ti.addFreeshot(temp.getFreeThrowShotNum());
+					ti.addSteal(temp.getSteal());
+					ti.addThreeshot(temp.getThreePointShotNum());
+					ti.addTime(temp.getTime());
+					ti.addTurnover(temp.getTurnover());
 					break;
 				}
 			}

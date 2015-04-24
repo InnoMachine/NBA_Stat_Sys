@@ -9,6 +9,7 @@ import vo.GameVo;
 import vo.PlayerCardVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
+import vo.TotalInfo;
 
 public class test {
 	
@@ -33,6 +34,8 @@ public class test {
 		for(PlayerVo temp:pv){
 			System.out.println(temp.getName());
 		}
+		TotalInfo ti = pb.getTotalInfo();
+		System.out.println(ti.getMinute());
 		
 	}
 }
