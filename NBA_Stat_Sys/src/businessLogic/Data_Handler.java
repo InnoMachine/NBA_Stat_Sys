@@ -96,6 +96,8 @@ public class Data_Handler {
 		ti.calcStealField();
 		ti.calcTurnoverFied(); 
 		ti.calcFoulField();
+		ti.calcHitField();
+		ti.setGamenumField(ti.getGamenum()/listvo.size());
 	}
 	private void PlayerDivisionSet() {
 		for(PlayerVo temp:listvo)

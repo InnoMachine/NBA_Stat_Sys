@@ -28,6 +28,8 @@ public class TotalInfo {
 	private double stealField;
 	private double blockField;
 	private double foulField;
+	private double hitField;
+	private double gamenumField;
 	public TotalInfo(){
 		setBlockField(0);
 		setStealField(0);
@@ -320,5 +322,24 @@ public class TotalInfo {
 		b = new BigDecimal(this.foul/(double)this.gamenum);
 		this.foulField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
 		
+	}
+
+	public double getHitField() {
+		return hitField;
+	}
+
+	public void setHitField(double hitField) {
+		this.hitField = hitField;
+	}
+	public void calcHitField(){
+		b = new BigDecimal(this.hit/(double)this.gamenum);
+		this.hitField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
+	}
+	public double getGamenumField() {
+		return gamenumField;
+	}
+
+	public void setGamenumField(double gamenumField) {
+		this.gamenumField = gamenumField;
 	}
 }
