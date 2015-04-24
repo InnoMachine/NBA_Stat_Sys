@@ -15,9 +15,11 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static StartPanel startPanel=null;
 	public static void main(String[] args) {
+		/*
 		Timer timer = new Timer();
 		DataUpdate du = new DataUpdate();
 		timer.schedule(du,1000,3000);
+		*/
 		MainFrame mf = new MainFrame();	
 		mf.setVisible(true);
 	}
