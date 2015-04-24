@@ -77,29 +77,25 @@ public class PlayerInfoPanel extends JPanel {
 
 	JButton historicalDataCheck;
 	JButton currentDataCheck;
-	private JTabbedPane JTP;
+	private JLabel contentlbl;
 
 	Player_BS player_BS = new Player_BL_Stub();
 
-	public PlayerInfoPanel(String PlayerName, JFrame mainFrame,
+	public PlayerInfoPanel(String playerName, JFrame mainFrame,
 			JPanel previousPanel) {
 
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
 		previousPanel.setVisible(false);
-		this.playerName = PlayerName;
+		this.playerName = playerName;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
 
-		
-		
-		System.out.println(X+"   "+Y);
-		
-		
-		
+		System.out.println(X + "   " + Y);
+
 		ImageIcon bg;
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
@@ -113,7 +109,7 @@ public class PlayerInfoPanel extends JPanel {
 		playerPortrait.setBounds(X * 90 / 1366, Y * 60 / 768, X * 130 / 1366,
 				Y * 130 / 768);
 		ImageIcon portrait = new ImageIcon(new ImageIcon(
-				"CSEdata/players/portrait/" + PlayerName + ".png").getImage()
+				"CSEdata/players/portrait/" + playerName + ".png").getImage()
 				.getScaledInstance(playerPortrait.getWidth(),
 						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
 		playerPortrait.setIcon(portrait);
@@ -141,7 +137,7 @@ public class PlayerInfoPanel extends JPanel {
 		playerAction
 				.setBounds(X * 1060 / 1366, Y * 240 / 768, X / 4, 2 * Y / 3);
 		ImageIcon action = new ImageIcon(new ImageIcon(
-				"CSEdata/players/action/" + PlayerName + ".png").getImage()
+				"CSEdata/players/action/" + playerName + ".png").getImage()
 				.getScaledInstance(playerAction.getWidth(),
 						playerAction.getHeight(), Image.SCALE_SMOOTH));
 		playerAction.setIcon(action);
@@ -217,7 +213,7 @@ public class PlayerInfoPanel extends JPanel {
 		ImageIcon freshIcon = new ImageIcon(
 				new ImageIcon("Image/freshIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		fresh.setBounds(X * 1250/ 1366, Y * 120 / 768, X / 25, X / 25);
+		fresh.setBounds(X * 1250 / 1366, Y * 120 / 768, X / 25, X / 25);
 		fresh.setIcon(freshIcon);
 		fresh.setOpaque(false);
 		fresh.setContentAreaFilled(false);
@@ -225,11 +221,51 @@ public class PlayerInfoPanel extends JPanel {
 		fresh.addActionListener(e -> fresh());
 		bgLabel.add(fresh);
 
-		PlayerRecentGames playerRecentGames = new PlayerRecentGames();
-		playerRecentGames = player_BS.getPlayerRecentPerformance(PlayerName);
-		ArrayList<PlayerPerformanceInSingleGame> fiveRecentGames = new ArrayList<PlayerPerformanceInSingleGame>();
-		fiveRecentGames = playerRecentGames.getFiveGames();
+		
 
+		// -----------------------------------------------------------------------------------------------
+		
+
+		contentlbl = new JLabel();
+		contentlbl.setBounds(X * 90 / 1366, Y * 250 / 768, X * 1000 / 1366,
+				Y * 480 / 768);
+		contentlbl.setOpaque(false);
+		
+		bgLabel.add(contentlbl);
+
+		JButton recentbtn = new JButton("近期比赛");
+		recentbtn.setBounds(X * 90 / 1366, Y * 220 / 768, X * 333 / 1366,
+				Y * 30 / 768);
+		recentbtn.setVisible(true);
+		recentbtn.addActionListener(e -> showRecentData());
+		bgLabel.add(recentbtn);
+
+		JButton historicalbtn = new JButton("过往数据");
+		historicalbtn.setBounds(X * 423 / 1366, Y * 220 / 768, X * 333 / 1366,
+				Y * 30 / 768);
+		historicalbtn.setVisible(true);
+		historicalbtn.addActionListener(e->showHistoricalData());
+		bgLabel.add(historicalbtn);
+		
+		JButton vsbtn = new JButton("对比");
+		vsbtn.setBounds(X * 756 / 1366, Y * 220 / 768, X * 333 / 1366,
+				Y * 30 / 768);
+		vsbtn.setVisible(true);
+		vsbtn.addActionListener(e->showVSData());
+		bgLabel.add(vsbtn);
+
+		addBasicInfo();
+		addBasicData();
+
+		mainFrame.getContentPane().add(this);
+	}
+
+	public void showRecentData() {
+		PlayerRecentGames recentGames = new PlayerRecentGames();
+		recentGames = player_BS.getPlayerRecentPerformance(playerName);
+        ArrayList<PlayerPerformanceInSingleGame> recentFiveGames=new ArrayList<PlayerPerformanceInSingleGame>();
+        recentFiveGames=recentGames.getFiveGames();
+		
 		if (recentGameRowData == null) {
 			recentGameRowData = new Vector<Vector<String>>();
 		} else {
@@ -255,28 +291,29 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameColumn.add("盖帽");
 		recentGameColumn.add("得分");
 
-		for (int i = 0; i < fiveRecentGames.size(); i++) {
+		for (int i = 0; i < recentFiveGames.size(); i++) {
 			Vector<String> a = new Vector<String>();
-			a.add(fiveRecentGames.get(i).getDate());
-			a.add(fiveRecentGames.get(i).getOpTeam());
-			a.add(String.valueOf(fiveRecentGames.get(i).getTime()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getHitNum()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getShotNum()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getThreePointHitNum()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getThreePointShotNum()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getFreeThrowHitNum()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getFreeThrowShotNum()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getOffensiveRebound()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getDefensiveRebound()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getReboundOverall()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getAssistance()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getFoul()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getSteal()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getTurnover()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getBlock()));
-			a.add(String.valueOf(fiveRecentGames.get(i).getScore()));
+			a.add(recentFiveGames.get(i).getDate());
+			a.add(recentFiveGames.get(i).getOpTeam());
+			a.add(String.valueOf(recentFiveGames.get(i).getTime()));
+			a.add(String.valueOf(recentFiveGames.get(i).getHitNum()));
+			a.add(String.valueOf(recentFiveGames.get(i).getShotNum()));
+			a.add(String.valueOf(recentFiveGames.get(i).getThreePointHitNum()));
+			a.add(String.valueOf(recentFiveGames.get(i).getThreePointShotNum()));
+			a.add(String.valueOf(recentFiveGames.get(i).getFreeThrowHitNum()));
+			a.add(String.valueOf(recentFiveGames.get(i).getFreeThrowShotNum()));
+			a.add(String.valueOf(recentFiveGames.get(i).getOffensiveRebound()));
+			a.add(String.valueOf(recentFiveGames.get(i).getDefensiveRebound()));
+			a.add(String.valueOf(recentFiveGames.get(i).getReboundOverall()));
+			a.add(String.valueOf(recentFiveGames.get(i).getAssistance()));
+			a.add(String.valueOf(recentFiveGames.get(i).getFoul()));
+			a.add(String.valueOf(recentFiveGames.get(i).getSteal()));
+			a.add(String.valueOf(recentFiveGames.get(i).getTurnover()));
+			a.add(String.valueOf(recentFiveGames.get(i).getBlock()));
+			a.add(String.valueOf(recentFiveGames.get(i).getScore()));
 			recentGameRowData.add(a);
 		}
+
 		if (recentGameInfoTable != null) {
 			recentGameInfoTable.setVisible(false);
 		}
@@ -284,7 +321,9 @@ public class PlayerInfoPanel extends JPanel {
 		if (recentGameInfoJSP != null) {
 			recentGameInfoJSP.setVisible(false);
 		}
-		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn) { 
+
+		recentGameInfoTable = new JTable(recentGameRowData,
+				recentGameColumn) {
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -295,32 +334,42 @@ public class PlayerInfoPanel extends JPanel {
 			}
 		};
 		/*
-		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
-		r1.setHorizontalAlignment(JLabel.CENTER);
-		recentGameInfoTable.getColumnModel().getColumn(0)
-				.setPreferredWidth(X * 100 / 1366);
-		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
-		*/
-		
+		 * DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
+		 * r2.setHorizontalAlignment(JLabel.CENTER);
+		 * recentGameInfoTable.getColumnModel().getColumn(0)
+		 * .setPreferredWidth(X * 100 / 1366);
+		 * recentGameInfoTable.setDefaultRenderer(Object.class, r2);
+		 */
 		recentGameInfoTable.setForeground(Color.WHITE);
-		MyTableRenderer r1 = new MyTableRenderer();
-		r1.setHorizontalAlignment(JLabel.CENTER);
+		MyTableRenderer r2 = new MyTableRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
-		recentGameInfoTable.setDefaultRenderer(Object.class, r1);
-//		recentGameInfoTable.setOpaque(false);
-		recentGameInfoTable.setBackground(Color.GRAY);
-		recentGameInfoTable.setRowHeight(X * 20 / 1366);
-		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
-		setSize(X * 1000 / 1366, Y * 490 / 768);
-		recentGameInfoJSP.setVisible(true);
-		recentGameInfoJSP.setBackground(Color.GRAY);
-//		recentGameInfoJSP.setOpaque(false);
-		recentGameInfoJSP.setBackground(Color.gray);
+		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
 
-		// -----------------------------------------------------------------------------------------------
+		recentGameInfoTable.setRowHeight(X * 20 / 1366);
+		// recentGameInfoTable.setOpaque(false);
+		recentGameInfoTable.setBackground(Color.gray);
+
+		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
+		recentGameInfoJSP.setSize(X * 1000 / 1366, Y * 480 / 768);
+		recentGameInfoJSP.setVisible(true);
+		recentGameInfoJSP.setBackground(Color.gray);
+		if(contentlbl!=null){
+			contentlbl.setVisible(false);
+		}
+		contentlbl=new JLabel();
+		contentlbl.setBounds(X * 90 / 1366, Y * 250 / 768, X * 1000 / 1366,
+				Y * 480 / 768);
+		contentlbl.setOpaque(false);	
+		contentlbl.add(recentGameInfoJSP);
+		bgLabel.add(contentlbl);
+		
+	}
+
+	public void showHistoricalData() {
 		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
-		historicalGames = player_BS.getPlayerPerformacne(PlayerName).getGames();
+		historicalGames = player_BS.getPlayerPerformacne(playerName).getGames();
 
 		if (historicalGameRowData == null) {
 			historicalGameRowData = new Vector<Vector<String>>();
@@ -377,9 +426,9 @@ public class PlayerInfoPanel extends JPanel {
 		if (historicalGameInfoJSP != null) {
 			historicalGameInfoJSP.setVisible(false);
 		}
-		
+
 		historicalGameInfoTable = new JTable(historicalGameRowData,
-				historicalGameColumn) { 
+				historicalGameColumn) {
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -390,46 +439,39 @@ public class PlayerInfoPanel extends JPanel {
 			}
 		};
 		/*
-		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
-		r2.setHorizontalAlignment(JLabel.CENTER);
-		historicalGameInfoTable.getColumnModel().getColumn(0)
-				.setPreferredWidth(X * 100 / 1366);
-		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
-	*/
+		 * DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
+		 * r2.setHorizontalAlignment(JLabel.CENTER);
+		 * historicalGameInfoTable.getColumnModel().getColumn(0)
+		 * .setPreferredWidth(X * 100 / 1366);
+		 * historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
+		 */
 		historicalGameInfoTable.setForeground(Color.WHITE);
 		MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
-		
+
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
-	//	historicalGameInfoTable.setOpaque(false);
+		// historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoTable.setBackground(Color.gray);
-		
+
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
-		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 490 / 768);
+		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 480 / 768);
 		historicalGameInfoJSP.setVisible(true);
-//		historicalGameInfoJSP.getViewport().setOpaque(false);
-//		historicalGameInfoJSP.setOpaque(false);
 		historicalGameInfoJSP.setBackground(Color.gray);
-		
-		JTP = new JTabbedPane();
-		JTP.setBounds(X * 90 / 1366, Y * 220 / 768, X * 1000 / 1366,
-				Y * 490 / 768);
-		JTP.addTab("currentData", recentGameInfoJSP);
-		JTP.addTab("historicalData", historicalGameInfoJSP);
-	
-		bgLabel.add(JTP);
-		JTP.setOpaque(false);
-		JTP.setBackgroundAt(0,Color.GRAY);
-		JTP.setBackgroundAt(1,Color.GRAY);
-	
+		if(contentlbl!=null){
+			contentlbl.setVisible(false);
+		}
+		contentlbl=new JLabel();
+		contentlbl.setBounds(X * 90 / 1366, Y * 250 / 768, X * 1000 / 1366,
+				Y * 480 / 768);
+		contentlbl.setOpaque(false);	
+		contentlbl.add(historicalGameInfoJSP);
+		bgLabel.add(contentlbl);
+	}
 
-		addBasicInfo();
-		addBasicData();
-
-		mainFrame.getContentPane().add(this);
+	public void showVSData() {
 	}
 
 	private void home() {
@@ -464,7 +506,7 @@ public class PlayerInfoPanel extends JPanel {
 	private void addBasicInfo() {
 
 		int tempX = 230;
-		int tempY = Y / 10+20;
+		int tempY = Y / 10 + 20;
 		int spaceX = X / 10;
 		int spaceY = Y / 24;
 
@@ -561,23 +603,21 @@ public class PlayerInfoPanel extends JPanel {
 	}
 
 	public class MyTableRenderer extends DefaultTableCellRenderer {
-	    public Component getTableCellRendererComponent(JTable table,
-	            Object value, boolean isSelected,boolean cellHasFocus,
-	            int row,int col) {
-	        
-	        if((row%2)==1)
-	              setBackground(Color.GRAY);
-	        else
-	              setBackground(Color.DARK_GRAY);
-	   
-	        setText((value == null) ? "" : value.toString());
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean cellHasFocus,
+				int row, int col) {
 
-	        return this;
-	    }
+			if ((row % 2) == 1)
+				setBackground(Color.GRAY);
+			else
+				setBackground(Color.DARK_GRAY);
+
+			setText((value == null) ? "" : value.toString());
+
+			return this;
+		}
 	}
-	
-	
-	
+
 	class MyTextField extends JTextField {
 		/**
 		 * 
