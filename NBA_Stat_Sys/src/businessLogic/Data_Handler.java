@@ -95,6 +95,7 @@ public class Data_Handler {
 		ti.calcMinute();
 		ti.calcStealField();
 		ti.calcTurnoverFied(); 
+		ti.calcFoulField();
 	}
 	private void PlayerDivisionSet() {
 		for(PlayerVo temp:listvo)
@@ -652,6 +653,7 @@ public class Data_Handler {
 					ti.addThreeshot(temp.getThreePointShotNum());
 					ti.addTime(temp.getTime());
 					ti.addTurnover(temp.getTurnover());
+					ti.addFoul(temp.getFoul());
 					break;
 				}
 			}

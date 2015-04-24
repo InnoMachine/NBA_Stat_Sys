@@ -16,6 +16,7 @@ public class TotalInfo {
 	private int hit;
 	private int block;
 	private int steal;
+	private int foul;
 	private int turnover;
 	private double scoreField;
 	private double reboundField;
@@ -26,7 +27,7 @@ public class TotalInfo {
 	private double turnoverField;
 	private double stealField;
 	private double blockField;
-	
+	private double foulField;
 	public TotalInfo(){
 		setBlockField(0);
 		setStealField(0);
@@ -295,5 +296,29 @@ public class TotalInfo {
 	public void calcTurnoverFied(){
 		b = new BigDecimal(this.turnover/(double)this.gamenum);
 		this.scoreField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
+	}
+
+	public int getFoul() {
+		return foul;
+	}
+
+	public void setFoul(int foul) {
+		this.foul = foul;
+	}
+	public void addFoul(int f){
+		this.foul+=f;
+	}
+
+	public double getFoulField() {
+		return foulField;
+	}
+
+	public void setFoulField(double foulField) {
+		this.foulField = foulField;
+	}
+	public void calcFoulField(){
+		b = new BigDecimal(this.foul/(double)this.gamenum);
+		this.foulField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
+		
 	}
 }
