@@ -19,6 +19,7 @@ import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
+import vo.TotalInfo;
 import dataService.GameDao;
 import dataService.GameDaoImpl;
 import dataService.PlayerDao;
@@ -45,6 +46,7 @@ public class Data_Handler {
 	private ArrayList<GameVo> gamevo;
 	private ArrayList<PlayerGames> listpg;
 	private SeasonTracker st;
+	private TotalInfo ti;
 	BigDecimal b;  
     
 	public static Data_Handler getInstance()
@@ -70,6 +72,7 @@ public class Data_Handler {
 		precgames = new ArrayList<PlayerRecentGames>();
 		gamevo = new ArrayList<GameVo>();
 		listpg = new ArrayList<PlayerGames>();
+		ti = new TotalInfo();
 		st = systemdao.getStById("12-13");
 		SetPlayerVo();
 		SetTeamVo();
@@ -77,10 +80,18 @@ public class Data_Handler {
 		PlayerDivisionSet();
 		playerCalculate();
 		TeamCalculate();
+		TotalCalculate();
 		
 		
 	}
 	
+	private void TotalCalculate() {
+		ti.calcAssistanceField();
+		ti.calcFreeField();
+		ti.calcReboundField();
+		ti.calcScoreField();
+		ti.calcThreeField();
+	}
 	private void PlayerDivisionSet() {
 		for(PlayerVo temp:listvo)
 		{
@@ -624,6 +635,12 @@ public class Data_Handler {
 					listvo.get(i).setOpRoundAttack(listvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
 					listvo.get(i).setOpTwoPointShotNum(listvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
 				
+					ti.addScore(temp.getScore());
+					ti.addAssistance(temp.getAssistance());
+					ti.addFree(temp.getFreeThrowHitNum());
+					ti.addRebound(temp.getReboundOverall());
+					ti.addThree(temp.getThreePointHitNum());
+					ti.addGameNum();
 					break;
 				}
 			}
@@ -854,7 +871,7 @@ public class Data_Handler {
 	}
 	public ArrayList<PlayerVo> getPlayers() {
 		
-		return listvo;
+		return sortByFamilyName();
 	}
 	
 	public ArrayList<TeamVo> getTeams()
@@ -961,6 +978,7 @@ public class Data_Handler {
 		}
 		playerCalculate();
 		TeamCalculate();
+		TotalCalculate();
 	}
 	public GameDate getDateNow(){
 		//st.setCurrentDate(new GameDate(2012,11,28));
@@ -1013,6 +1031,36 @@ public class Data_Handler {
 		}
 		return list;
 		
+	}
+	public TotalInfo getTotalInfo() {
+		return ti;
+	}
+	
+	public ArrayList<PlayerVo> sortByFamilyName(){
+		String a[][] = new String [listvo.size()][2]; 
+		for(int i=0;i<listvo.size();i++)
+		{
+			a[i][0] = getFamilyName(listvo.get(i).getName());
+			a[i][1] = i+"";
+		}
+		HeapSortByString.heapSort(a);
+		ArrayList<PlayerVo> templist = new ArrayList<PlayerVo>();
+		for(int i=0;i<listvo.size();i++)
+		{
+			templist.add(listvo.get(Integer.parseInt(a[i][1])));
+		}
+		return templist;
+		
+		
+	}
+	private String getFamilyName(String name) {
+		int index = name.indexOf(" ");
+		if(index==-1){
+			return name;
+		}
+		else{
+			return name.substring(index+1);
+		}
 	}
 }
 

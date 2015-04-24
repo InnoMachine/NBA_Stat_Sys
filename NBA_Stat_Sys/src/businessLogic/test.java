@@ -20,13 +20,18 @@ public class test {
 		for(PlayerVo temp:cv){
 			System.out.println(temp.getStealField());
 		}*/
-		Game_BS g = new Game_BL();
+		/*Game_BS g = new Game_BL();
 		GameDate gd = new GameDate(2012,11,1);
 		ArrayList<PlayerPerformanceInSingleGame> gv = g.getGameByLabel("12-13_2012-10-31_DAL-UTA");
 		ArrayList<GameVo> gl= g.getGamesByDate("2012-11-12","2012-11-15");
 		for(GameVo temp:gl){
 			System.out.println(temp.getGameLabel());
 			//System.out.println(temp.getHomeTeam());
+		}*/
+		Player_BS pb = new Player_BL();
+		ArrayList<PlayerVo> pv = pb.getAllPlayer();
+		for(PlayerVo temp:pv){
+			System.out.println(temp.getName());
 		}
 		
 	}

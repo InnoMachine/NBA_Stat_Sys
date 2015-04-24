@@ -9,6 +9,7 @@ import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
+import vo.TotalInfo;
 
 public class Player_BL_Stub implements Player_BS {
 	Player_Handler player_handler;
@@ -566,5 +567,11 @@ public class Player_BL_Stub implements Player_BS {
 		playerGames.setGames(games);
 
 		return playerGames;
+	}
+
+	@Override
+	public TotalInfo getTotalInfo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

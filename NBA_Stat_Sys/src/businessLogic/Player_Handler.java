@@ -8,6 +8,7 @@ import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
+import vo.TotalInfo;
 
 public class Player_Handler {
 	private Data_Handler data_handler;
@@ -1898,5 +1899,9 @@ public class Player_Handler {
 			String name) {
 		
 		return data_handler.getPlayerPerformacne(name);
+	}
+
+	public TotalInfo getTotalInfo() {
+		return data_handler.getTotalInfo();
 	}
 }

@@ -6,6 +6,7 @@ import vo.PlayerCardVo;
 import vo.PlayerGames;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
+import vo.TotalInfo;
 
 public class Player_BL implements Player_BS{
 	Player_Handler player_handler;
@@ -66,5 +67,9 @@ public class Player_BL implements Player_BS{
 			String name) {
 		
 		return player_handler.getPlayerPerformacne(name);
+	}
+	
+	public TotalInfo getTotalInfo() {
+		return player_handler.getTotalInfo();
 	}
 }
