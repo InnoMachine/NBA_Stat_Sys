@@ -25,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import ui.GamePanel.GameCardRenderer;
+import ui.TeamInfoPanel.MyTableRenderer;
 import vo.GameVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
@@ -37,6 +38,7 @@ import javax.swing.SwingConstants;
 import javax.swing.DropMode;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
@@ -1603,27 +1605,27 @@ public class GameInfoPanel extends JPanel {
 			guestScrollPane.setVisible(false);
 		}
 
-		guestTable = new JTable(guestRowData, guestColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-		guestTable = new JTable(guestRowData, guestColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-
+		guestTable = new JTable(guestRowData, guestColumn);
+		JTableHeader header =guestTable.getTableHeader();		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        MyTableRenderer r2 = new MyTableRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		guestTable.setDefaultRenderer(Object.class, r2);
+		
+		guestTable.setForeground(Color.WHITE);
+       /* 
 		DefaultTableCellRenderer guestTableHeaderRenderer = new DefaultTableCellRenderer();
 		guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
 		guestTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1632,19 +1634,17 @@ public class GameInfoPanel extends JPanel {
 				.setDefaultRenderer(guestTableHeaderRenderer);
 
 		guestTable.setForeground(Color.WHITE);
-		guestTable.getTableHeader().setBackground(Color.BLACK);
-		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
-		r.setHorizontalAlignment(JLabel.CENTER);
+		*/
+		
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		guestTable.setDefaultRenderer(Object.class, r);
 		guestTable.setRowHeight(70);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
-		guestTable.setOpaque(false);
+		
 		guestTable.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerRenderer("guest"));
-
+		guestTable.setOpaque(false);
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -1654,7 +1654,6 @@ public class GameInfoPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		guestScrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		guestScrollPane.getViewport().setOpaque(false);
 		guestScrollPane.setOpaque(false);
 
 		datalbl.add(guestScrollPane);
@@ -1696,41 +1695,30 @@ public class GameInfoPanel extends JPanel {
 			hostScrollPane.setVisible(false);
 		}
 
-		hostTable = new JTable(hostRowData, hostColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-
-		guestTable = new JTable(guestRowData, guestColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-
-		DefaultTableCellRenderer hostTableHeaderRenderer = new DefaultTableCellRenderer();
-		hostTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
-		hostTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTableHeaderRenderer.setOpaque(false);
-		hostTable.getTableHeader().setDefaultRenderer(hostTableHeaderRenderer);
+		hostTable = new JTable(hostRowData, hostColumn);
+		JTableHeader header1 =hostTable.getTableHeader();		
+        header1.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
+        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        MyTableRenderer r3 = new MyTableRenderer();
+		r3.setHorizontalAlignment(JLabel.CENTER);
+		hostTable.setDefaultRenderer(Object.class, r3);
+		;
 
 		hostTable.setForeground(Color.WHITE);
 		hostTable.getTableHeader().setBackground(Color.BLACK);
-		DefaultTableCellRenderer r5 = new DefaultTableCellRenderer();
-		r5.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		hostTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		hostTable.setDefaultRenderer(Object.class, r5);
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
@@ -1864,17 +1852,27 @@ public class GameInfoPanel extends JPanel {
 			guestScrollPane.setVisible(false);
 		}
 
-		guestTable = new JTable(guestRowData, guestColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-
+		guestTable = new JTable(guestRowData, guestColumn);
+		JTableHeader header =guestTable.getTableHeader();		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        MyTableRenderer r2 = new MyTableRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		guestTable.setDefaultRenderer(Object.class, r2);
+		
+		guestTable.setForeground(Color.WHITE);
+       /* 
 		DefaultTableCellRenderer guestTableHeaderRenderer = new DefaultTableCellRenderer();
 		guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
 		guestTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1883,12 +1881,10 @@ public class GameInfoPanel extends JPanel {
 				.setDefaultRenderer(guestTableHeaderRenderer);
 
 		guestTable.setForeground(Color.WHITE);
-		guestTable.getTableHeader().setBackground(Color.BLACK);
-		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
-		r.setHorizontalAlignment(JLabel.CENTER);
+		*/
+		
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		guestTable.setDefaultRenderer(Object.class, r);
 		guestTable.setRowHeight(70);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
@@ -1905,7 +1901,6 @@ public class GameInfoPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		guestScrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		guestScrollPane.getViewport().setOpaque(false);
 		guestScrollPane.setOpaque(false);
 
 		datalbl.add(guestScrollPane);
@@ -2021,41 +2016,30 @@ public class GameInfoPanel extends JPanel {
 			hostScrollPane.setVisible(false);
 		}
 
-		hostTable = new JTable(hostRowData, hostColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-
-		guestTable = new JTable(guestRowData, guestColumn) {
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-
-		DefaultTableCellRenderer hostTableHeaderRenderer = new DefaultTableCellRenderer();
-		hostTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
-		hostTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTableHeaderRenderer.setOpaque(false);
-		hostTable.getTableHeader().setDefaultRenderer(hostTableHeaderRenderer);
+		hostTable = new JTable(hostRowData, hostColumn);
+		JTableHeader header1 =hostTable.getTableHeader();		
+        header1.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
+        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        MyTableRenderer r3 = new MyTableRenderer();
+		r3.setHorizontalAlignment(JLabel.CENTER);
+		hostTable.setDefaultRenderer(Object.class, r3);
+		;
 
 		hostTable.setForeground(Color.WHITE);
 		hostTable.getTableHeader().setBackground(Color.BLACK);
-		DefaultTableCellRenderer r = new DefaultTableCellRenderer();
-		r.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		hostTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		hostTable.setDefaultRenderer(Object.class, r);
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
@@ -2227,6 +2211,22 @@ public class GameInfoPanel extends JPanel {
 
 	}
 
+	public class MyTableRenderer extends DefaultTableCellRenderer {
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean cellHasFocus,
+				int row, int col) {
+
+			if ((row % 2) == 1)
+				setBackground(Color.GRAY);
+			else
+				setBackground(Color.LIGHT_GRAY);
+
+			setText((value == null) ? "" : value.toString());
+
+			return this;
+		}
+	}
+	
 	class MyButton extends JButton {
 		/**
 		 * 

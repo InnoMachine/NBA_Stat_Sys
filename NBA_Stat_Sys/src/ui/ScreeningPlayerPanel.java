@@ -232,7 +232,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		});
 		
 		screeningCriteriabtn = new JButton("筛选依据");
-		screeningCriteriabtn.setBounds(750, 160,213,30);
+		screeningCriteriabtn.setBounds(X*750/1366, Y*160/768,X*213/1366,Y*30/768);
+		screeningCriteriabtn.setFont(new Font("微软雅黑",1,15));
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance(
 				X * 213 / 1366,30, Image.SCALE_SMOOTH));
@@ -250,6 +251,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningbtn.setHorizontalTextPosition(SwingConstants.CENTER);
 		screeningbtn.setBounds(X * 1000 / 1366, Y * 160 / 768, X * 150 / 1366,
 				30);
+		screeningbtn.setFont(new Font("微软雅黑",1,15));
 		ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance(
 				X * 150 / 1366, 30, Image.SCALE_SMOOTH));

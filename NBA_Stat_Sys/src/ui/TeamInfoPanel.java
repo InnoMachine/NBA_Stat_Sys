@@ -27,9 +27,11 @@ import javax.swing.SwingConstants;
 import javax.swing.event.CellEditorListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import ui.PlayerInfoPanel.MyTableRenderer;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
@@ -191,7 +193,7 @@ public class TeamInfoPanel extends JPanel {
 		bgLabel.add(TeamBadge);
 
 		playersInfoButton=new MyButton("球员列表⊙");
-		playersInfoButton.setLocation(200, 200);
+		playersInfoButton.setLocation(X*200/1366, Y*200/768);
 		playersInfoButton.addActionListener(e->{
 			playersInfoJSP.setVisible(true);
 			recentGameInfoJSP.setVisible(false);
@@ -202,7 +204,7 @@ public class TeamInfoPanel extends JPanel {
 		});
 		
 		recentGameButton=new MyButton("最近比赛");
-		recentGameButton.setLocation(350, 200);
+		recentGameButton.setLocation(X*350/1366, Y*200/768);
 		recentGameButton.addActionListener(e->{
 			playersInfoJSP.setVisible(false);
 			recentGameInfoJSP.setVisible(true);
@@ -213,7 +215,7 @@ public class TeamInfoPanel extends JPanel {
 		});
 		
 		historicalGameButton=new MyButton("历史比赛");
-		historicalGameButton.setLocation(500, 200);
+		historicalGameButton.setLocation(X*500/1366, Y*200/768);
 		historicalGameButton.addActionListener(e->{
 			playersInfoJSP.setVisible(false);
 			recentGameInfoJSP.setVisible(false);
@@ -295,31 +297,35 @@ public class TeamInfoPanel extends JPanel {
 				return false;
 			}
 		};
-		playersInfoTable = new JTable(playersInfoDTM){ 
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-		DefaultTableCellRenderer r1 = new DefaultTableCellRenderer();
-		r1.setHorizontalAlignment(JLabel.CENTER);
-		
-		playersInfoTable.setBackground(Color.gray);
+		playersInfoTable = new JTable(playersInfoDTM);
+		JTableHeader header =playersInfoTable.getTableHeader();		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        MyTableRenderer r2 = new MyTableRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		playersInfoTable.setDefaultRenderer(Object.class, r2);
+        playersInfoTable.setForeground(Color.WHITE);
 		
 		playersInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
-		playersInfoTable.setDefaultRenderer(Object.class, r1);
+		
 		playersInfoTable.getColumnModel().getColumn(17)
 				.setCellRenderer(new MyButtonRenderer());
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
-		playersInfoJSP.setBounds(200,230 , 1000, 500);
+		playersInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
 		playersInfoJSP.setBackground(Color.GRAY);
-		playersInfoJSP.setVisible(false);
+		playersInfoJSP.setVisible(true);
 		bgLabel.add(playersInfoJSP);
 	}
 
@@ -387,29 +393,31 @@ public class TeamInfoPanel extends JPanel {
 				return false;
 			}
 		};
-		recentGameInfoTable = new JTable(recentGameDTM){ 
-			public Component prepareRenderer(TableCellRenderer renderer,
-					int row, int column) {
-				Component c = super.prepareRenderer(renderer, row, column);
-				if (c instanceof JComponent) {
-					((JComponent) c).setOpaque(false);
-				}
-				return c;
-			}
-		};
-		DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
+		recentGameInfoTable = new JTable(recentGameDTM);
+		JTableHeader header =recentGameInfoTable.getTableHeader();		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+		
+        MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
-		
-		recentGameInfoTable.setBackground(Color.gray);
-		
+		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
+        recentGameInfoTable.setForeground(Color.WHITE);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
-		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
+		recentGameInfoTable.setOpaque(false);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
-		recentGameInfoJSP.setBounds(200,230 , 1000, 500);
+		recentGameInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
 		recentGameInfoJSP.setBackground(Color.GRAY);
-		recentGameInfoJSP.setVisible(false);
+		recentGameInfoJSP.setVisible(true);
 		bgLabel.add(recentGameInfoJSP);
 	}
 
@@ -479,21 +487,30 @@ public class TeamInfoPanel extends JPanel {
 			}
 		};
 		historicalGameInfoTable = new JTable(historicalGameDTM);
+		JTableHeader header =historicalGameInfoTable.getTableHeader();		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){     	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        
+        MyTableRenderer r2 = new MyTableRenderer();
+		r2.setHorizontalAlignment(JLabel.CENTER);
+		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
 		
-		
-		historicalGameInfoTable.setBackground(Color.gray);
-		
-		
-		DefaultTableCellRenderer r3 = new DefaultTableCellRenderer();
-		r3.setHorizontalAlignment(JLabel.CENTER);
+        historicalGameInfoTable.setForeground(Color.WHITE);
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
-		historicalGameInfoTable.setDefaultRenderer(Object.class, r3);
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
-		historicalGameInfoJSP.setBounds(200,230 , 1000, 500);
-		historicalGameInfoJSP.setVisible(false);
+		historicalGameInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
+		historicalGameInfoJSP.setVisible(true);
 		historicalGameInfoJSP.setBackground(Color.GRAY);
 		bgLabel.add(historicalGameInfoJSP);
 	}
@@ -639,7 +656,21 @@ public class TeamInfoPanel extends JPanel {
 		}
 
 	}
+	public class MyTableRenderer extends DefaultTableCellRenderer {
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean cellHasFocus,
+				int row, int col) {
 
+			if ((row % 2) == 1)
+				setBackground(Color.GRAY);
+			else
+				setBackground(Color.LIGHT_GRAY);
+
+			setText((value == null) ? "" : value.toString());
+
+			return this;
+		}
+	}
 	class MyTextField extends JTextField {
 		/**
 		 * 
@@ -671,7 +702,7 @@ public class TeamInfoPanel extends JPanel {
 			this.setHorizontalTextPosition(SwingConstants.CENTER);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑",1,15));
-			this.setSize(150, 30);
+			this.setSize(X*150/1366, Y*30/768);
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(this.getWidth(), this.getHeight(),
 							 Image.SCALE_SMOOTH));
