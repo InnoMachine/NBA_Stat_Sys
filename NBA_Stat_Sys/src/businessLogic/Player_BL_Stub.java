@@ -23,9 +23,9 @@ public class Player_BL_Stub implements Player_BS {
 		playerVo.setAge(25);
 		playerVo.setDivision(Division.ATLANTIC);
 		playerVo.setNumber("19");
-		
+		playerVo.setReboundOverallField(4.1);
 		playerVo.setGameNum(10);
-		playerVo.setTime(1201);
+		playerVo.setTimeField(1201);
 		playerVo.setAssistanceField(7.11);
 		playerVo.setScoreField(18.2);
 		playerVo.setHitNumField(5.2);
@@ -592,6 +592,7 @@ public class Player_BL_Stub implements Player_BS {
 		totalInfo.setAssistanceField(7.11);
 		totalInfo.setScoreField(18.2);
 		totalInfo.setHitField(7.0);
+		totalInfo.setReboundField(4.9);
 		totalInfo.setThreeRate(0.389);
 		totalInfo.setFreeRate(0.793);
 		totalInfo.setStealField(10.3);

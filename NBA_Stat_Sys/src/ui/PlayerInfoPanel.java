@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -500,35 +501,58 @@ public class PlayerInfoPanel extends JPanel {
 		contentlbl.setBounds(X * 90 / 1366, Y * 250 / 768, X * 1000 / 1366,
 				Y * 480 / 768);
 		contentlbl.setOpaque(false);
+		
+		DecimalFormat df = new DecimalFormat(".00");
 
 		TotalInfo aveInfo = new TotalInfo();
 		aveInfo = player_BS.getTotalInfo();
 		PlayerVo playerInfo = new PlayerVo();
 		playerInfo = player_BS.getPlayerByName(playerName);
 
-		JLabel namelbl = new JLabel();
+		MyLabel namelbl = new MyLabel();
 		namelbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		namelbl.setBounds(0, 0, X * 450 / 1366, Y * 35 / 768);
-		namelbl.setText(playerName);
+		namelbl.setText(playerName+"  ");
+		namelbl.setBackground(Color.DARK_GRAY);
+		namelbl.setOpaque(true);
+		namelbl.setFont(new Font("黑体", 1, 20));
 		contentlbl.add(namelbl);
-
-		JLabel vslbl = new JLabel("VS");
-		vslbl.setHorizontalAlignment(SwingConstants.CENTER);
-		vslbl.setBounds(X * 450 / 1366, 0, X * 100 / 1366, Y * 50 / 768);
-		contentlbl.add(vslbl);
-
-		JLabel nAtlbl = new JLabel("号码/球队");
+		
+		MyLabel nAtlbl = new MyLabel("号码/球队");
 		nAtlbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		nAtlbl.setBounds(0, Y * 35 / 768, X * 450 / 1366, Y * 15 / 768);
 		nAtlbl.setText(player_BS.getPlayerByName(playerName).getNumber() + "/"
-				+ player_BS.getPlayerByName(playerName).getTeam());
+				+ player_BS.getPlayerByName(playerName).getTeam()+"   ");
+		nAtlbl.setBackground(Color.DARK_GRAY);
+		nAtlbl.setOpaque(true);
+		nAtlbl.setFont(new Font("黑体", 0, 13));
 		contentlbl.add(nAtlbl);
 
-		JLabel nbaAvelbl = new JLabel("NBA联盟平均数据");
-		nbaAvelbl.setBounds(X * 550 / 1366, 0, X * 450 / 1366, Y * 35 / 768);
-		contentlbl.add(nbaAvelbl);
+		MyLabel vslbl = new MyLabel("VS");
+		vslbl.setHorizontalAlignment(SwingConstants.CENTER);
+		vslbl.setBounds(X * 450 / 1366, 0, X * 100 / 1366, Y * 50 / 768);
+		vslbl.setBackground(Color.LIGHT_GRAY);
+		vslbl.setOpaque(true);
+		vslbl.setFont(new Font("黑体", 1, 24));
+		contentlbl.add(vslbl);
 
-		JLabel seasonDatalbl = new JLabel("赛季数据");
+		
+		MyLabel nbaAvelbl = new MyLabel("  NBA联盟平均数据");
+		nbaAvelbl.setBounds(X * 550 / 1366, 0, X * 450 / 1366, Y * 35 / 768);
+		nbaAvelbl.setBackground(Color.DARK_GRAY);
+		nbaAvelbl.setOpaque(true);
+		nbaAvelbl.setFont(new Font("黑体", 1, 20));
+		contentlbl.add(nbaAvelbl);
+		
+		MyLabel nonelbl = new MyLabel();
+		nonelbl.setHorizontalAlignment(SwingConstants.RIGHT);
+		nonelbl.setBounds(X * 550 / 1366, Y * 35 / 768, X * 450 / 1366, Y * 15 / 768);
+		nonelbl.setBackground(Color.DARK_GRAY);
+		nonelbl.setOpaque(true);
+		nonelbl.setFont(new Font("黑体", 0, 13));
+		contentlbl.add(nonelbl);
+
+		MyLabel seasonDatalbl = new MyLabel("赛季数据");
 		seasonDatalbl.setHorizontalAlignment(SwingConstants.CENTER);
 		seasonDatalbl.setBounds(0, Y * 50 / 768, X * 1000 / 1366, Y * 20 / 768);
 		seasonDatalbl.setBackground(Color.GRAY);
@@ -536,73 +560,73 @@ public class PlayerInfoPanel extends JPanel {
 		seasonDatalbl.setOpaque(true);
 		contentlbl.add(seasonDatalbl);
 
-		JLabel gameNumlbl = new JLabel("参赛场数");
+		MyLabel gameNumlbl = new MyLabel("参赛场数");
 		gameNumlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		gameNumlbl.setBounds(X * 425 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(gameNumlbl);
 
-		JLabel minutelbl = new JLabel("分钟");
+		MyLabel minutelbl = new MyLabel("分钟");
 		minutelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		minutelbl.setBounds(X * 425 / 1366, Y * 104 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(minutelbl);
 
-		JLabel scoreFieldlbl = new JLabel("场均得分");
+		MyLabel scoreFieldlbl = new MyLabel("场均得分");
 		scoreFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreFieldlbl.setBounds(X * 425 / 1366, Y * 138 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(scoreFieldlbl);
 
-		JLabel assistanceFieldlbl = new JLabel("场均助攻");
+		MyLabel assistanceFieldlbl = new MyLabel("场均助攻");
 		assistanceFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		assistanceFieldlbl.setBounds(X * 425 / 1366, Y * 172 / 768,
 				X * 150 / 1366, Y * 34 / 768);
 		contentlbl.add(assistanceFieldlbl);
 
-		JLabel reboundFieldlbl = new JLabel("场均篮板");
+		MyLabel reboundFieldlbl = new MyLabel("场均篮板");
 		reboundFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		reboundFieldlbl.setBounds(X * 425 / 1366, Y * 206 / 768,
 				X * 150 / 1366, Y * 34 / 768);
 		contentlbl.add(reboundFieldlbl);
 
-		JLabel hitlbl = new JLabel("投篮命中数");
+		MyLabel hitlbl = new MyLabel("投篮命中数");
 		hitlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		hitlbl.setBounds(X * 425 / 1366, Y * 240 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(hitlbl);
 
-		JLabel tpHitRatelbl = new JLabel("三分命中率");
+		MyLabel tpHitRatelbl = new MyLabel("三分命中率");
 		tpHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		tpHitRatelbl.setBounds(X * 425 / 1366, Y * 274 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(tpHitRatelbl);
 
-		JLabel ftHitRatelbl = new JLabel("罚球命中率");
+		MyLabel ftHitRatelbl = new MyLabel("罚球命中率");
 		ftHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		ftHitRatelbl.setBounds(X * 425 / 1366, Y * 308 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(ftHitRatelbl);
 
-		JLabel stealFieldlbl = new JLabel("场均抢断");
+		MyLabel stealFieldlbl = new MyLabel("场均抢断");
 		stealFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		stealFieldlbl.setBounds(X * 425 / 1366, Y * 342 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(stealFieldlbl);
 
-		JLabel blockFieldlbl = new JLabel("场均盖帽");
+		MyLabel blockFieldlbl = new MyLabel("场均盖帽");
 		blockFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		blockFieldlbl.setBounds(X * 425 / 1366, Y * 376 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(blockFieldlbl);
 
-		JLabel turnoverlbl = new JLabel("失误");
+		MyLabel turnoverlbl = new MyLabel("失误");
 		turnoverlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		turnoverlbl.setBounds(X * 425 / 1366, Y * 410 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		contentlbl.add(turnoverlbl);
 
-		JLabel foullbl = new JLabel("犯规");
+		MyLabel foullbl = new MyLabel("犯规");
 		foullbl.setHorizontalAlignment(SwingConstants.CENTER);
 		foullbl.setBounds(X * 425 / 1366, Y * 444 / 768, X * 150 / 1366,
 				Y * 34 / 768);
@@ -613,20 +637,30 @@ public class PlayerInfoPanel extends JPanel {
 		lblPlayergamenum.setBounds(X * (425 - playerInfo.getGameNum() * 3)
 				/ 1366, Y * 75 / 768, X * (playerInfo.getGameNum() * 3) / 1366,
 				Y * 24 / 768);
+		if(playerInfo.getGameNum()>=aveInfo.getGamenumField()){
 		lblPlayergamenum.setBackground(Color.BLUE);
+		}else{
+			lblPlayergamenum.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayergamenum.setOpaque(true);
 		contentlbl.add(lblPlayergamenum);
-
+		
 		JLabel lblPlayerminute = new JLabel();
 		lblPlayerminute.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayerminute.setBounds(X
-				* (425 - Integer
-						.parseInt(new java.text.DecimalFormat("0").format(playerInfo.getTimeField() / 60)) * 3)/1366,
-				Y * 109 / 768, X*((int) playerInfo.getTimeField() / 60 * 3)/1366, Y * 24 / 768);
-		lblPlayerminute.setBackground(Color.BLUE);
+				* (425 - (int) (playerInfo.getTimeField() / 60.0 * 3))/1366,
+				Y * 109 / 768, X*((int) (playerInfo.getTimeField() / 60.0) * 3)/1366, Y * 24 / 768);
+		if(playerInfo.getTimeField()>=aveInfo.getTime()){
+			lblPlayerminute.setBackground(Color.BLUE);
+			}else{
+				lblPlayerminute.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerminute.setOpaque(true);
 		contentlbl.add(lblPlayerminute);
+		
 
+		
+		
 		JLabel lblPlayerscorefield = new JLabel();
 		lblPlayerscorefield.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayerscorefield.setBounds(
@@ -639,7 +673,11 @@ public class PlayerInfoPanel extends JPanel {
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getScoreField())) * 3)
 						/ 1366, Y * 24 / 768);
-		lblPlayerscorefield.setBackground(Color.BLUE);
+		if(playerInfo.getScoreField()>=aveInfo.getScoreField()){
+			lblPlayerscorefield.setBackground(Color.BLUE);
+			}else{
+				lblPlayerscorefield.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerscorefield.setOpaque(true);
 		contentlbl.add(lblPlayerscorefield);
 
@@ -660,7 +698,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getAssistanceField())) * 3)
 								/ 1366, Y * 24 / 768);
-		lblPlayerassistancefield.setBackground(Color.BLUE);
+		if(playerInfo.getAssistanceField()>=aveInfo.getAssistanceField()){
+			lblPlayerassistancefield.setBackground(Color.BLUE);
+			}else{
+				lblPlayerassistancefield.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerassistancefield.setOpaque(true);
 		contentlbl.add(lblPlayerassistancefield);
 
@@ -681,7 +723,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getReboundOverallField())) * 3)
 								/ 1366, Y * 24 / 768);
-		lblPlayerreboundfield.setBackground(Color.BLUE);
+		if(playerInfo.getReboundOverallField()>=aveInfo.getReboundField()){
+			lblPlayerreboundfield.setBackground(Color.BLUE);
+			}else{
+				lblPlayerreboundfield.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerreboundfield.setOpaque(true);
 		contentlbl.add(lblPlayerreboundfield);
 
@@ -697,7 +743,11 @@ public class PlayerInfoPanel extends JPanel {
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getHitNumField())) * 3)
 						/ 1366, Y*24/768);
-		lblPlayerhitnum.setBackground(Color.BLUE);
+		if(playerInfo.getHitNumField()>=aveInfo.getHitField()){
+			lblPlayerhitnum.setBackground(Color.BLUE);
+			}else{
+				lblPlayerhitnum.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerhitnum.setOpaque(true);
 		contentlbl.add(lblPlayerhitnum);
 
@@ -718,7 +768,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getThreePointHitRate()* 100))  * 3)
 								/ 1366,Y* 24/768);
-		lblPlayer3prate.setBackground(Color.BLUE);
+		if(playerInfo.getThreePointHitRate()>=aveInfo.getThreeRate()){
+			lblPlayer3prate.setBackground(Color.BLUE);
+			}else{
+				lblPlayer3prate.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayer3prate.setOpaque(true);
 		contentlbl.add(lblPlayer3prate);
 
@@ -739,7 +793,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getFreeThrowRate()* 100))  * 3)
 								/ 1366, Y*24/768);
-		lblPlayerfreethrowrate.setBackground(Color.BLUE);
+		if(playerInfo.getFreeThrowRate()>=aveInfo.getFreeRate()){
+			lblPlayerfreethrowrate.setBackground(Color.BLUE);
+			}else{
+				lblPlayerfreethrowrate.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerfreethrowrate.setOpaque(true);
 		contentlbl.add(lblPlayerfreethrowrate);
 
@@ -755,7 +813,11 @@ public class PlayerInfoPanel extends JPanel {
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getStealField())) * 3)
 						/ 1366, Y*24/768);
-		lblPlayersteal.setBackground(Color.BLUE);
+		if(playerInfo.getStealField()>=aveInfo.getStealField()){
+			lblPlayersteal.setBackground(Color.BLUE);
+			}else{
+				lblPlayersteal.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayersteal.setOpaque(true);
 		contentlbl.add(lblPlayersteal);
 
@@ -771,7 +833,11 @@ public class PlayerInfoPanel extends JPanel {
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getBlockField())) * 3)
 						/ 1366, Y*24/768);
-		lblPlayerblock.setBackground(Color.BLUE);
+		if(playerInfo.getBlockField()>=aveInfo.getBlockField()){
+			lblPlayerblock.setBackground(Color.BLUE);
+			}else{
+				lblPlayerblock.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerblock.setOpaque(true);
 		contentlbl.add(lblPlayerblock);
 
@@ -792,7 +858,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getTurnoverField())) * 3)
 								/ 1366, Y*24/768);
-		lblPlayerturnover.setBackground(Color.BLUE);
+		if(playerInfo.getTurnoverField()>=aveInfo.getTurnoverField()){
+			lblPlayerturnover.setBackground(Color.BLUE);
+			}else{
+				lblPlayerturnover.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerturnover.setOpaque(true);
 		contentlbl.add(lblPlayerturnover);
 
@@ -812,7 +882,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getFoulField())) * 3) / 1366,
 						Y*24/768);
-		lblPlayerfoul.setBackground(Color.BLUE);
+		if(playerInfo.getFoulField()>=aveInfo.getFoulField()){
+			lblPlayerfoul.setBackground(Color.BLUE);
+			}else{
+				lblPlayerfoul.setBackground(Color.LIGHT_GRAY);
+			}
 		lblPlayerfoul.setOpaque(true);
 		contentlbl.add(lblPlayerfoul);
 
@@ -821,23 +895,38 @@ public class PlayerInfoPanel extends JPanel {
 		lblAvegamenum.setBounds(X*575/1366, Y*75/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getGamenumField())) * 3)/1366, Y*24/768);
-		lblAvegamenum.setBackground(Color.GRAY);
+		if(playerInfo.getGameNum()>=aveInfo.getGamenumField()){
+			lblAvegamenum.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvegamenum.setBackground(Color.BLUE);
+			}
 		lblAvegamenum.setOpaque(true);
 		contentlbl.add(lblAvegamenum);
 
 		JLabel lblAveminute = new JLabel();
 		lblAveminute.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAveminute.setBounds(X*575/1366, Y*109/768, X*((int) aveInfo.getTime() / 60 * 3)/1366, Y*24/768);
-		lblAveminute.setBackground(Color.GRAY);
+		lblAveminute.setBounds(X*575/1366, Y*109/768, X*((int)( aveInfo.getTime() / 60.0 * 3))/1366, Y*24/768);
+		if(playerInfo.getTimeField()>=aveInfo.getTime()){
+			lblAveminute.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAveminute.setBackground(Color.BLUE);
+			}
 		lblAveminute.setOpaque(true);
 		contentlbl.add(lblAveminute);
+		
+		
+		
 
 		JLabel lblAvescorefield = new JLabel();
 		lblAvescorefield.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvescorefield.setBounds(X*575/1366, Y*143/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getScoreField())) * 3)/1366, Y*24/768);
-		lblAvescorefield.setBackground(Color.GRAY);
+		if(playerInfo.getScoreField()>=aveInfo.getScoreField()){
+			lblAvescorefield.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvescorefield.setBackground(Color.BLUE);
+			}
 		lblAvescorefield.setOpaque(true);
 		contentlbl.add(lblAvescorefield);
 
@@ -846,7 +935,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAveassistancefield.setBounds(X*575/1366, Y*177/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getAssistanceField())) * 3)/1366, Y*24/768);
-		lblAveassistancefield.setBackground(Color.GRAY);
+		if(playerInfo.getAssistanceField()>=aveInfo.getAssistanceField()){
+			lblAveassistancefield.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAveassistancefield.setBackground(Color.BLUE);
+			}
 		lblAveassistancefield.setOpaque(true);
 		contentlbl.add(lblAveassistancefield);
 
@@ -855,7 +948,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAvereboundfield.setBounds(X*575/1366, Y*211/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getReboundField())) * 3)/1366, Y*24/768);
-		lblAvereboundfield.setBackground(Color.GRAY);
+		if(playerInfo.getReboundOverallField()>=aveInfo.getReboundField()){
+			lblAvereboundfield.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvereboundfield.setBackground(Color.BLUE);
+			}
 		lblAvereboundfield.setOpaque(true);
 		contentlbl.add(lblAvereboundfield);
 
@@ -864,7 +961,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAvehitnum.setBounds(X*575/1366, Y*245/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getHitField())) * 3)/1366, Y*24/768);
-		lblAvehitnum.setBackground(Color.GRAY);
+		if(playerInfo.getHitNumField()>=aveInfo.getHitField()){
+			lblAvehitnum.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvehitnum.setBackground(Color.BLUE);
+			}
 		lblAvehitnum.setOpaque(true);
 		contentlbl.add(lblAvehitnum);
 
@@ -873,7 +974,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAve3prate.setBounds(X*575/1366, Y*279/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getThreeRate()* 100))  * 3)/1366, Y*24/768);
-		lblAve3prate.setBackground(Color.GRAY);
+		if(playerInfo.getThreePointHitRate()>=aveInfo.getThreeRate()){
+			lblAve3prate.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAve3prate.setBackground(Color.BLUE);
+			}
 		lblAve3prate.setOpaque(true);
 		contentlbl.add(lblAve3prate);
 
@@ -882,7 +987,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAvefreethrowrate.setBounds(X*575/1366, Y*313/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getFreeRate()* 100))  * 3)/1366, Y*24/768);
-		lblAvefreethrowrate.setBackground(Color.GRAY);
+		if(playerInfo.getFreeThrowRate()>=aveInfo.getFreeRate()){
+			lblAvefreethrowrate.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvefreethrowrate.setBackground(Color.BLUE);
+			}
 		lblAvefreethrowrate.setOpaque(true);
 		contentlbl.add(lblAvefreethrowrate);
 
@@ -891,7 +1000,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAvesteal.setBounds(X*575/1366, Y*347/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getStealField())) * 3)/1366, Y*24/768);
-		lblAvesteal.setBackground(Color.GRAY);
+		if(playerInfo.getStealField()>=aveInfo.getStealField()){
+			lblAvesteal.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvesteal.setBackground(Color.BLUE);
+			}
 		lblAvesteal.setOpaque(true);
 		contentlbl.add(lblAvesteal);
 
@@ -900,7 +1013,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAveblock.setBounds(X*575/1366, Y*381/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getBlockField())) * 3)/1366, Y*24/768);
-		lblAveblock.setBackground(Color.GRAY);
+		if(playerInfo.getBlockField()>=aveInfo.getBlockField()){
+			lblAveblock.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAveblock.setBackground(Color.BLUE);
+			}
 		lblAveblock.setOpaque(true);
 		contentlbl.add(lblAveblock);
 
@@ -909,7 +1026,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAveturnover.setBounds(X*575/1366, Y*415/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getTurnoverField())) * 3)/1366, Y*24/768);
-		lblAveturnover.setBackground(Color.GRAY);
+		if(playerInfo.getTurnoverField()>=aveInfo.getTurnoverField()){
+			lblAveturnover.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAveturnover.setBackground(Color.BLUE);
+			}
 		lblAveturnover.setOpaque(true);
 		contentlbl.add(lblAveturnover);
 
@@ -918,7 +1039,11 @@ public class PlayerInfoPanel extends JPanel {
 		lblAvefoul.setBounds(X*575/1366, Y*449/768,X*(Integer
 				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
 						.getFoulField())) * 3)/1366, Y*24/768);
-		lblAvefoul.setBackground(Color.GRAY);
+		if(playerInfo.getFoulField()>=aveInfo.getFoulField()){
+			lblAvefoul.setBackground(Color.LIGHT_GRAY);
+			}else{
+				lblAvefoul.setBackground(Color.BLUE);
+			}
 		lblAvefoul.setOpaque(true);
 		contentlbl.add(lblAvefoul);
 
@@ -937,9 +1062,9 @@ public class PlayerInfoPanel extends JPanel {
 		txtPminute.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPminute.setColumns(Y*10/768);
 		txtPminute.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo.getTimeField() / 60)) * 3)/1366,
+				.parseInt(new java.text.DecimalFormat("0").format(playerInfo.getTimeField() / 60.0)) * 3)/1366,
 				Y*109/768, X*60/1366, Y*24/768);
-		txtPminute.setText(String.valueOf(playerInfo.getTime() / 60));
+		txtPminute.setText(String.valueOf(df.format(playerInfo.getTimeField() / 60.0)));
 		txtPminute.setOpaque(false);
 		txtPminute.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPminute);
@@ -1081,9 +1206,9 @@ public class PlayerInfoPanel extends JPanel {
 		txtAminute.setText("aMinute");
 		txtAminute.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAminute.setColumns(Y*10/768);
-		txtAminute.setBounds(X*(585 + (int) aveInfo.getTime() / 60 * 3)/1366, Y*109/768, X*60/1366,
+		txtAminute.setBounds(X*(585 + (int) (aveInfo.getTime() / 60.0) * 3)/1366, Y*109/768, X*60/1366,
 				Y*24/768);
-		txtAminute.setText(String.valueOf(aveInfo.getTime() / 60));
+		txtAminute.setText(String.valueOf(df.format(aveInfo.getTime() / 60.0)));
 		txtAminute.setOpaque(false);
 		txtAminute.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAminute);
@@ -1368,6 +1493,46 @@ public class PlayerInfoPanel extends JPanel {
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 			this.setOpaque(false);
+		}
+	}
+	class MyLabel extends JLabel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyLabel() {
+			super();
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 13));
+
+		}
+
+		public MyLabel(Color textColor) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setFont(new Font("黑体", 1, 13));
+
+		}
+		
+		public MyLabel(String text) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
+			this.setText(text);
+			this.setFont(new Font("黑体", 1, 14));
+
+		}
+
+		public MyLabel(Color textColor, String text) {
+			super();
+			this.setOpaque(false);
+			this.setForeground(textColor);
+			this.setText(text);
+			this.setFont(new Font("黑体", 1, 11));
+
 		}
 	}
 }
