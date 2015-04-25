@@ -237,8 +237,6 @@ public class PlayerInfoPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-		// -----------------------------------------------------------------------------------------------
-
 		contentlbl = new JLabel();
 		contentlbl.setBounds(X * 90 / 1366, Y * 250 / 768, X * 1000 / 1366,
 				Y * 480 / 768);
@@ -246,20 +244,35 @@ public class PlayerInfoPanel extends JPanel {
 
 		bgLabel.add(contentlbl);
 
-		recentbtn = new MyButton("近期比赛<==");
+		recentbtn = new MyButton("近期比赛⊙");
 		recentbtn.setBounds(X * 90 / 1366, Y * 220 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		recentbtn.addActionListener(e -> {showRecentData();recentbtn.setText("近期比赛<==");historicalbtn.setText("过往数据");vsbtn.setText("数据对比");});
+		recentbtn.addActionListener(e -> {
+			showRecentData();
+			recentbtn.setText("近期比赛⊙");
+			historicalbtn.setText("过往数据");
+			vsbtn.setText("数据对比");
+		});
 
 		historicalbtn = new MyButton("过往数据");
-		historicalbtn.setBounds(X *240  / 1366, Y * 220 / 768, X * 150 / 1366,
+		historicalbtn.setBounds(X * 240 / 1366, Y * 220 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		historicalbtn.addActionListener(e -> {showHistoricalData();recentbtn.setText("近期比赛");historicalbtn.setText("过往数据<==");vsbtn.setText("数据对比");});
+		historicalbtn.addActionListener(e -> {
+			showHistoricalData();
+			recentbtn.setText("近期比赛");
+			historicalbtn.setText("过往数据⊙");
+			vsbtn.setText("数据对比");
+		});
 
 		vsbtn = new MyButton("数据对比");
 		vsbtn.setBounds(X * 390 / 1366, Y * 220 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		vsbtn.addActionListener(e ->{showVSData();recentbtn.setText("近期比赛");historicalbtn.setText("过往数据");vsbtn.setText("数据对比<==");});
+		vsbtn.addActionListener(e -> {
+			showVSData();
+			recentbtn.setText("近期比赛");
+			historicalbtn.setText("过往数据");
+			vsbtn.setText("数据对比⊙");
+		});
 
 		addBasicInfo();
 		addBasicData();

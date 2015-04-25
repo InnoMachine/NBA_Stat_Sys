@@ -198,14 +198,38 @@ public class ScreeningPlayerPanel extends JPanel {
 		atlantic=new LeagueButton("大西洋赛区");
 		atlantic.setLocation(1000, 110);
 		
-		allposition=new PositionButton("所有位置");
+		allposition=new PositionButton("所有位置⊙");
 		allposition.setLocation(200, 160);
+		allposition.addActionListener(e->{
+			allposition.setText("所有位置⊙");
+			forward.setText("前锋");
+			center.setText("中锋");
+			guard.setText("后卫");
+		});
 		forward=new PositionButton("前锋");
 		forward.setLocation(320, 160);
+		forward.addActionListener(e->{
+			allposition.setText("所有位置");
+			forward.setText("前锋⊙");
+			center.setText("中锋");
+			guard.setText("后卫");
+		});
 		center=new PositionButton("中锋");
 		center.setLocation(440, 160);
+		center.addActionListener(e->{
+			allposition.setText("所有位置");
+			forward.setText("前锋");
+			center.setText("中锋⊙");
+			guard.setText("后卫");
+		});
 		guard=new PositionButton("后卫");
 		guard.setLocation(560, 160);
+		guard.addActionListener(e->{
+			allposition.setText("所有位置");
+			forward.setText("前锋");
+			center.setText("中锋");
+			guard.setText("后卫⊙");
+		});
 		
 		screeningCriteriabtn = new JButton("筛选依据");
 		screeningCriteriabtn.setBounds(750, 160,213,30);

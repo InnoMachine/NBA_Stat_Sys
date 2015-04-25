@@ -66,20 +66,26 @@ public class TeamInfoPanel extends JPanel {
 	private JTextField textField_15;
 	private JTextField textField_16;
 
-	private JTabbedPane JTP;
-
 	Vector<Vector<String>> playersRowData;
 	Vector<String> playersColumn;
+	private DefaultTableModel playersInfoDTM;
 	private JTable playersInfoTable;
 	private JScrollPane playersInfoJSP;
+	private JButton playersInfoButton;
+	
 	Vector<Vector<String>> recentGameRowData;
 	Vector<String> recentGameColumn;
+	private DefaultTableModel recentGameDTM;
 	private JTable recentGameInfoTable;
 	private JScrollPane recentGameInfoJSP;
+	private JButton recentGameButton;
+	
 	Vector<Vector<String>> historicalGameRowData;
 	Vector<String> historicalGameColumn;
+	private DefaultTableModel historicalGameDTM;
 	private JTable historicalGameInfoTable;
 	private JScrollPane historicalGameInfoJSP;
+	private JButton historicalGameButton;
 
 	private JLabel TeamBadge;
 
@@ -184,10 +190,52 @@ public class TeamInfoPanel extends JPanel {
 		TeamBadge.setIcon(portrait);
 		bgLabel.add(TeamBadge);
 
-		// -----------------------------------------------------------------------------
+		playersInfoButton=new MyButton("球员列表⊙");
+		playersInfoButton.setLocation(200, 200);
+		playersInfoButton.addActionListener(e->{
+			playersInfoJSP.setVisible(true);
+			recentGameInfoJSP.setVisible(false);
+			historicalGameInfoJSP.setVisible(false);
+			playersInfoButton.setText("球员列表⊙");
+			recentGameButton.setText("最近比赛");
+			historicalGameButton.setText("历史比赛");
+		});
+		
+		recentGameButton=new MyButton("最近比赛");
+		recentGameButton.setLocation(350, 200);
+		recentGameButton.addActionListener(e->{
+			playersInfoJSP.setVisible(false);
+			recentGameInfoJSP.setVisible(true);
+			historicalGameInfoJSP.setVisible(false);
+			playersInfoButton.setText("球员列表");
+			recentGameButton.setText("最近比赛⊙");
+			historicalGameButton.setText("历史比赛");
+		});
+		
+		historicalGameButton=new MyButton("历史比赛");
+		historicalGameButton.setLocation(500, 200);
+		historicalGameButton.addActionListener(e->{
+			playersInfoJSP.setVisible(false);
+			recentGameInfoJSP.setVisible(false);
+			historicalGameInfoJSP.setVisible(true);
+			playersInfoButton.setText("球员列表");
+			recentGameButton.setText("最近比赛");
+			historicalGameButton.setText("历史比赛⊙");
+		});
+		
+		addBasicInfo();
+		addBasicData();
+		createPlayerInfoJSP();
+		createRecentDataJSP();
+		createHistoricalDataJSP();
+		playersInfoJSP.setVisible(true);
 
+		mainFrame.getContentPane().add(this);
+	}
+	
+	private void createPlayerInfoJSP(){
 		ArrayList<PlayerVo> players = new ArrayList<PlayerVo>();
-		players = team_BS.getPlayers(abbr);
+		players = team_BS.getPlayers(teamABBR);
 
 		if (playersRowData == null) {
 			playersRowData = new Vector<Vector<String>>();
@@ -242,7 +290,12 @@ public class TeamInfoPanel extends JPanel {
 		if (playersInfoJSP != null) {
 			playersInfoJSP.setVisible(false);
 		}
-		playersInfoTable = new JTable(playersRowData, playersColumn){ 
+		playersInfoDTM=new DefaultTableModel(playersRowData, playersColumn){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		playersInfoTable = new JTable(playersInfoDTM){ 
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -264,13 +317,15 @@ public class TeamInfoPanel extends JPanel {
 				.setCellRenderer(new MyButtonRenderer());
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
-		setSize(X * 1000 / 1366, Y * 510 / 768);
+		playersInfoJSP.setBounds(200,230 , 1000, 500);
 		playersInfoJSP.setBackground(Color.GRAY);
-		playersInfoJSP.setVisible(true);
+		playersInfoJSP.setVisible(false);
+		bgLabel.add(playersInfoJSP);
+	}
 
-		// ------------------------------------------------------------------------------
+	private void createRecentDataJSP(){
 		TeamRecentGames teamRecentGames = new TeamRecentGames();
-		teamRecentGames = team_BS.getTeamRecentPerformance(abbr);
+		teamRecentGames = team_BS.getTeamRecentPerformance(teamABBR);
 		ArrayList<TeamPerformanceInSingleGame> fiveRecentGames = new ArrayList<TeamPerformanceInSingleGame>();
 		fiveRecentGames = teamRecentGames.getFiveGames();
 
@@ -327,7 +382,12 @@ public class TeamInfoPanel extends JPanel {
 		if (recentGameInfoJSP != null) {
 			recentGameInfoJSP.setVisible(false);
 		}
-		recentGameInfoTable = new JTable(recentGameRowData, recentGameColumn){ 
+		recentGameDTM=new DefaultTableModel(recentGameRowData, recentGameColumn){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		recentGameInfoTable = new JTable(recentGameDTM){ 
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -347,14 +407,16 @@ public class TeamInfoPanel extends JPanel {
 		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
-		setSize(X * 1000 / 1366, Y * 510 / 768);
+		recentGameInfoJSP.setBounds(200,230 , 1000, 500);
 		recentGameInfoJSP.setBackground(Color.GRAY);
-		recentGameInfoJSP.setVisible(true);
+		recentGameInfoJSP.setVisible(false);
+		bgLabel.add(recentGameInfoJSP);
+	}
 
-		// ------------------------------------------------------------------------------
+	private void createHistoricalDataJSP(){
 
 		ArrayList<TeamPerformanceInSingleGame> historicalGames = new ArrayList<TeamPerformanceInSingleGame>();
-		historicalGames = team_BS.getTeamPerformance(abbr);
+		historicalGames = team_BS.getTeamPerformance(teamABBR);
 
 		if (historicalGameRowData == null) {
 			historicalGameRowData = new Vector<Vector<String>>();
@@ -409,8 +471,14 @@ public class TeamInfoPanel extends JPanel {
 		if (historicalGameInfoJSP != null) {
 			historicalGameInfoJSP.setVisible(false);
 		}
-		historicalGameInfoTable = new JTable(historicalGameRowData,
-				historicalGameColumn);
+		
+		historicalGameDTM=new DefaultTableModel(historicalGameRowData,
+				historicalGameColumn){
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		historicalGameInfoTable = new JTable(historicalGameDTM);
 		
 		
 		historicalGameInfoTable.setBackground(Color.gray);
@@ -424,26 +492,13 @@ public class TeamInfoPanel extends JPanel {
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
-		setSize(X * 1000 / 1366, Y * 510 / 768);
-		historicalGameInfoJSP.setVisible(true);
+		historicalGameInfoJSP.setBounds(200,230 , 1000, 500);
+		historicalGameInfoJSP.setVisible(false);
 		historicalGameInfoJSP.setBackground(Color.GRAY);
-		// --------------------------------------------------------------------------------------------
-		JTP = new JTabbedPane();
-		JTP.addTab("teamPlayers", playersInfoJSP);
-		JTP.addTab("currentMatches", recentGameInfoJSP);
-		JTP.addTab("historicalMatches", historicalGameInfoJSP);
-		JTP.setBounds(X * 183 / 1366, Y * 220 / 768, X * 1000 / 1366,
-				Y * 510 / 768);
-		JTP.setBackground(Color.GRAY);
-		bgLabel.add(JTP);
-
-		addBasicInfo();
-		addBasicData();
-
-		mainFrame.getContentPane().add(this);
+		bgLabel.add(historicalGameInfoJSP);
 	}
-
-	private void home() {
+	
+ 	private void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
@@ -453,10 +508,6 @@ public class TeamInfoPanel extends JPanel {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
-	}
-
-	public void fresh() {
-
 	}
 
 	private void addBasicData() {
@@ -555,18 +606,6 @@ public class TeamInfoPanel extends JPanel {
 		textField_16.setBounds(tempX + 7 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		bgLabel.add(textField_16);
-		
-		JButton fresh = new JButton();
-		ImageIcon freshIcon = new ImageIcon(
-				new ImageIcon("Image/freshIcon.png").getImage()
-						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		fresh.setBounds(tempX + 950, tempY + spaceY/2, X / 25, X / 25);
-		fresh.setIcon(freshIcon);
-		fresh.setOpaque(false);
-		fresh.setContentAreaFilled(false);
-		fresh.setBorderPainted(false);
-		fresh.addActionListener(e -> fresh());
-		bgLabel.add(fresh);
 
 	}
 	
@@ -617,6 +656,31 @@ public class TeamInfoPanel extends JPanel {
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 			this.setOpaque(false);
+		}
+	}
+	
+	class MyButton extends JButton{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyButton(String function){
+			super();
+			this.setText(function);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("微软雅黑",1,15));
+			this.setSize(150, 30);
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(this.getWidth(), this.getHeight(),
+							 Image.SCALE_SMOOTH));
+			
+			this.setIcon(buttonIcon);
+			this.setOpaque(false);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			bgLabel.add(this);
 		}
 	}
 }
