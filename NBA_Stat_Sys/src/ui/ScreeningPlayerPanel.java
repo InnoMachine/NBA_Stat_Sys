@@ -67,14 +67,15 @@ public class ScreeningPlayerPanel extends JPanel {
 	JButton central;
 	JButton atlantic;
 	
-	JButton allpostion;
+	JButton allposition;
 	JButton center;
 	JButton guard;
-	JButton foward;
+	JButton forward;
 	
 	private String positionSelected="NBA联盟";
 	private String leagueSelected="所有位置";
-	
+	private String criteriaSelected="得分";
+	private JLabel showSelected;
 	public ScreeningPlayerPanel(JFrame mainFrame, JPanel previousPanel) {
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
@@ -92,27 +93,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.add(bgLabel);
 		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
 		playerCriteriaPanel.setVisible(false);
-
-		MyLabel screeninglbl = new MyLabel(Color.WHITE, "筛选依据");
-		screeninglbl.setFont(new Font("黑体", 1, 13));
-		screeninglbl.setBounds(X * 640 / 1366, Y * 66 / 768, X * 60 / 1366,
-				X / 50);
-		bgLabel.add(screeninglbl);
-
-		screeningCriteriabtn = new JButton("");
-		screeningCriteriabtn.setBounds(X * 715 / 1366, Y * 66 / 768,
-				X * 213 / 1366, X / 50);
-		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/mainButton.png").getImage().getScaledInstance(
-				X * 213 / 1366, X / 50, Image.SCALE_SMOOTH));
-		screeningCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
-		screeningCriteriabtn.setForeground(Color.WHITE);
-		screeningCriteriabtn.setIcon(buttonIcon);
-		screeningCriteriabtn.setOpaque(false);
-		screeningCriteriabtn.setContentAreaFilled(false);
-		screeningCriteriabtn.setBorderPainted(false);
-		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
-		bgLabel.add(screeningCriteriabtn);
 
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
@@ -180,46 +160,75 @@ public class ScreeningPlayerPanel extends JPanel {
 		});
 		bgLabel.add(close);
 		
+		showSelected=new JLabel();
+		showSelected.setBounds(200, 210, 1000, 30);
+		showSelected.setFont(new Font("微软雅黑",1,20));
+		showSelected.setForeground(Color.WHITE);
+		showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);
+		bgLabel.add(showSelected);
+		
 		nbaUnion=new LeagueButton("NBA联盟");
-		nbaUnion.setLocation(600,80);
+		nbaUnion.setLocation(600,50);
 		westernUnionSymbol=new JLabel();
 		ImageIcon westernUnionIcon = new ImageIcon(new ImageIcon(
-				"Image/western.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));
-		
+				"Image/western.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));	
 		westernUnionSymbol.setIcon(westernUnionIcon);
-		westernUnionSymbol.setBounds(280, 50, 80, 80);
+		westernUnionSymbol.setBounds(280, 20, 80, 80);
 		bgLabel.add(westernUnionSymbol);
 		westernUnion=new LeagueButton("西部联盟");
-		westernUnion.setLocation(400, 80);
+		westernUnion.setLocation(400, 50);
 		easternUnionSymbol=new JLabel();
-		easternUnionSymbol.setBounds(990, 50, 80, 80);
+		easternUnionSymbol.setBounds(990, 20, 80, 80);
 		ImageIcon easternUnionIcon = new ImageIcon(new ImageIcon(
 				"Image/eastern.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));
 		easternUnionSymbol.setIcon(easternUnionIcon);
 		bgLabel.add(easternUnionSymbol);
 		easternUnion=new LeagueButton("东部联盟");
-		easternUnion.setLocation(800, 80);	
+		easternUnion.setLocation(800, 50);	
 		pacific=new LeagueButton("太平洋赛区");
-		pacific.setLocation(200, 150);
+		pacific.setLocation(200, 110);
 		northwest=new LeagueButton("西北赛区");
-		northwest.setLocation(350, 150);
+		northwest.setLocation(350, 110);
 		southwest=new LeagueButton("西南赛区");
-		southwest.setLocation(500, 150);
+		southwest.setLocation(500, 110);
 		center=new LeagueButton("中央赛区");
-		center.setLocation(700, 150);
+		center.setLocation(700, 110);
 		southeast=new LeagueButton("东南赛区");
-		southeast.setLocation(850, 150);
+		southeast.setLocation(850, 110);
 		atlantic=new LeagueButton("大西洋赛区");
-		atlantic.setLocation(1000, 150);
+		atlantic.setLocation(1000, 110);
+		
+		allposition=new PositionButton("所有位置");
+		allposition.setLocation(200, 160);
+		forward=new PositionButton("前锋");
+		forward.setLocation(320, 160);
+		center=new PositionButton("中锋");
+		center.setLocation(440, 160);
+		guard=new PositionButton("后卫");
+		guard.setLocation(560, 160);
+		
+		screeningCriteriabtn = new JButton("筛选依据");
+		screeningCriteriabtn.setBounds(750, 160,213,30);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 213 / 1366,30, Image.SCALE_SMOOTH));
+		screeningCriteriabtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		screeningCriteriabtn.setForeground(Color.WHITE);
+		screeningCriteriabtn.setIcon(buttonIcon);
+		screeningCriteriabtn.setOpaque(false);
+		screeningCriteriabtn.setContentAreaFilled(false);
+		screeningCriteriabtn.setBorderPainted(false);
+		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
+		bgLabel.add(screeningCriteriabtn);
 		
 		JButton screeningbtn = new JButton("显示前50名");
 		screeningbtn.setForeground(Color.WHITE);
 		screeningbtn.setHorizontalTextPosition(SwingConstants.CENTER);
-		screeningbtn.setBounds(X * 990 / 1366, Y * 66 / 768, X * 100 / 1366,
-				X / 50);
+		screeningbtn.setBounds(X * 1000 / 1366, Y * 160 / 768, X * 150 / 1366,
+				30);
 		ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance(
-				X * 100 / 1366, X / 50, Image.SCALE_SMOOTH));
+				X * 150 / 1366, 30, Image.SCALE_SMOOTH));
 		screeningbtn.setIcon(buttonIcon2);
 		screeningbtn.setOpaque(false);
 		screeningbtn.setContentAreaFilled(false);
@@ -313,8 +322,8 @@ public class ScreeningPlayerPanel extends JPanel {
 		scrollPane = new JScrollPane(table);
 		scrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		scrollPane.setBounds(X * 215 / 1366, Y * 300 / 768, X * 930 / 1366,
-				Y * 400 / 768);
+		scrollPane.setBounds(X * 200/ 1366, Y * 250 / 768, X * 940 / 1366,
+				Y * 480 / 768);
 		scrollPane.setVisible(true);
 		scrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -571,8 +580,8 @@ public class ScreeningPlayerPanel extends JPanel {
 			scrollPane = new JScrollPane(table);
 			scrollPane.getVerticalScrollBar().setUI(
 					new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-			scrollPane.setBounds(X * 215 / 1366, Y * 120 / 768, X * 930 / 1366,
-					Y * 600 / 768);
+			scrollPane.setBounds(X * 200 / 1366, Y *250/ 768, X * 940 / 1366,
+					Y * 480 / 768);
 			scrollPane.setVisible(true);
 			scrollPane
 					.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -609,12 +618,12 @@ public class ScreeningPlayerPanel extends JPanel {
 				ScreeningPlayerPanel screeningPlayerPanel) {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 715 / 1366, Y * 66 / 768 + X / 50,
+			this.setBounds(X * 750 / 1366, 190,
 					X * 213 / 1366, X * 108 / 1366);
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 			JLabel bglabel = new JLabel();
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningPlayerPanel.png").getImage()
+					"Image/screeningcriteria.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
@@ -745,6 +754,8 @@ public class ScreeningPlayerPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			criteriaSelected=criteria;
+			showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);
 			switch (criteria) {
 			case "得分":
 				screeningCriteriabtn.setText("得分");
@@ -902,10 +913,32 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
-			this.addActionListener(e->leagueSelected=s);
+			this.addActionListener(e->{leagueSelected=s;showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);});
 			bgLabel.add(this);
 		}
 	}
+	
+	class PositionButton extends JButton{
+		public PositionButton(String s){
+			super();
+			this.setText(s);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("微软雅黑",1,15));
+			this.setSize(120, 30);
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance( this.getWidth(),this.getHeight(),
+						 Image.SCALE_SMOOTH));
+		
+			this.setIcon(buttonIcon);
+			this.setOpaque(false);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			this.addActionListener(e->{positionSelected=s;showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);});
+			bgLabel.add(this);
+		}
+	}
+	
 	class MyRadioButton extends JRadioButton {
 		/**
 		 * 
