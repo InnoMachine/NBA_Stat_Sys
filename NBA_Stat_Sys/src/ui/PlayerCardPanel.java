@@ -3,6 +3,8 @@ package ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.File;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -85,9 +87,21 @@ public class PlayerCardPanel extends JPanel {
 		playerButton.setOpaque(false);
 		add(playerButton);
 		
-		ImageIcon playerPortrait = new ImageIcon(new ImageIcon("CSEdata/players/portrait/"
-				+ playerInfo.getName() + ".png").getImage().getScaledInstance(X * 134 / 1366,
-						Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
+		
+		ImageIcon playerPortrait;
+		if (hasPortrait(playerInfo.getName() + ".png")) {
+			playerPortrait = new ImageIcon(new ImageIcon(
+					"CSEdata/players/portrait/" + playerInfo.getName() + ".png").getImage().getScaledInstance(
+							X * 134 / 1366,
+							Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
+		} else {
+			playerPortrait = new ImageIcon(new ImageIcon(
+					"CSEdata/players/portrait/" + "DefaultPortrait" + ".png")
+					.getImage().getScaledInstance(X * 134 / 1366,
+							Y * 108 / 768,
+							Image.SCALE_AREA_AVERAGING));
+		}
+		
 
 		playerButton.setIcon(playerPortrait);
 		
@@ -252,7 +266,33 @@ public class PlayerCardPanel extends JPanel {
 	public String getCriteriaValue() {
 		return criteriaValue;
 	}
+	public boolean hasAction(String actionPath) {
+		boolean hasAction = false;
+		File actionFile = new File("CSEdata/players/action//");
+		String action[];
+		action = actionFile.list();
+		for (int i = 0; i < action.length; i++) {
+			if (actionPath.equals(action[i])) {
+				hasAction = true;
+				break;
+			}
+		}
+		return hasAction;
+	}
 
+	public boolean hasPortrait(String portraitPath) {
+		boolean hasPortrait = false;
+		File portraitFile = new File("CSEdata/players/portrait//");
+		String portrait[];
+		portrait = portraitFile.list();
+		for (int i = 0; i < portrait.length; i++) {
+			if (portraitPath.equals(portrait[i])) {
+				hasPortrait = true;
+				break;
+			}
+		}
+		return hasPortrait;
+	}
 	class MyTextField extends JTextField {
 		/**
 		 * 

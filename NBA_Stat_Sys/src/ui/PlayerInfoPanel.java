@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -24,11 +25,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
+import businessLogic.test;
 import ui.ShowPanel.MyTextField;
 import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
@@ -136,11 +139,21 @@ public class PlayerInfoPanel extends JPanel {
 		playerPortrait = new JLabel();
 		playerPortrait.setBounds(X * 90 / 1366, Y * 60 / 768, X * 130 / 1366,
 				Y * 130 / 768);
-		ImageIcon portrait = new ImageIcon(new ImageIcon(
-				"CSEdata/players/portrait/" + playerName + ".png").getImage()
-				.getScaledInstance(playerPortrait.getWidth(),
-						playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+	
+		ImageIcon portrait;
+		if (hasPortrait( playerName + ".png")) {
+			portrait = new ImageIcon(new ImageIcon(
+					"CSEdata/players/portrait/" + playerName + ".png").getImage()
+					.getScaledInstance(playerPortrait.getWidth(),
+							playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+		} else {
+			portrait = new ImageIcon(new ImageIcon(
+					"CSEdata/players/portrait/" + "DefaultPortrait" + ".png").getImage()
+					.getScaledInstance(playerPortrait.getWidth(),
+							playerPortrait.getHeight(), Image.SCALE_SMOOTH));
+		}
 		playerPortrait.setIcon(portrait);
+		
 		bgLabel.add(playerPortrait);
 
 		teambtn = new JButton();
@@ -164,10 +177,20 @@ public class PlayerInfoPanel extends JPanel {
 		playerAction = new JLabel();
 		playerAction
 				.setBounds(X * 1060 / 1366, Y * 240 / 768, X / 4, 2 * Y / 3);
-		ImageIcon action = new ImageIcon(new ImageIcon(
-				"CSEdata/players/action/" + playerName + ".png").getImage()
-				.getScaledInstance(playerAction.getWidth(),
-						playerAction.getHeight(), Image.SCALE_SMOOTH));
+		
+		ImageIcon action;
+		if (hasAction(playerName + ".png")) {
+			action = new ImageIcon(new ImageIcon(
+					"CSEdata/players/action/" + playerName + ".png").getImage()
+					.getScaledInstance(playerAction.getWidth(),
+							playerAction.getHeight(), Image.SCALE_SMOOTH));
+		} else {
+			action = new ImageIcon(new ImageIcon(
+					"CSEdata/players/action/" + "DefaultAction" + ".png").getImage()
+					.getScaledInstance(playerAction.getWidth(),
+							playerAction.getHeight(), Image.SCALE_SMOOTH));
+		}
+	
 		playerAction.setIcon(action);
 		bgLabel.add(playerAction);
 
@@ -352,7 +375,22 @@ public class PlayerInfoPanel extends JPanel {
 				return c;
 			}
 		};
-		/*
+		JTableHeader header = recentGameInfoTable.getTableHeader();
+		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+		
+		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer() {
 
 			public Component getTableCellRendererComponent(JTable table,
@@ -369,7 +407,7 @@ public class PlayerInfoPanel extends JPanel {
 
 		tcr.setHorizontalAlignment(JLabel.CENTER);// 居中
 		recentGameInfoTable.setDefaultRenderer(Object.class, tcr);
-
+/*
 		for (int i = 0; i < recentGameInfoTable.getColumnCount(); i++) {
 			recentGameInfoTable.getColumn(recentGameInfoTable.getColumnName(i))
 					.setCellRenderer(tcr);
@@ -468,6 +506,22 @@ public class PlayerInfoPanel extends JPanel {
 				return c;
 			}
 		};
+		
+		
+JTableHeader header = historicalGameInfoTable.getTableHeader();
+		
+        header.setDefaultRenderer(new DefaultTableCellRenderer(){
+        
+        	
+             public Component getTableCellRendererComponent(JTable table, Object value,
+                     boolean isSelected, boolean hasFocus, int row, int column) {
+                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                     cell.setBackground(Color.DARK_GRAY);
+                 return cell;
+             }
+          
+        });
+        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 		/*
 		 * DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
 		 * r2.setHorizontalAlignment(JLabel.CENTER);
@@ -1605,6 +1659,37 @@ public class PlayerInfoPanel extends JPanel {
 		}
 	}
 
+	public boolean hasAction(String actionPath) {
+		boolean hasAction = false;
+		File actionFile = new File("CSEdata/players/action//");
+		String action[];
+		action = actionFile.list();
+		for (int i = 0; i < action.length; i++) {
+			if (actionPath.equals(action[i])) {
+				hasAction = true;
+				break;
+			}
+		}
+		return hasAction;
+	}
+
+	public boolean hasPortrait(String portraitPath) {
+		boolean hasPortrait = false;
+		File portraitFile = new File("CSEdata/players/portrait//");
+		String portrait[];
+		portrait = portraitFile.list();
+		for (int i = 0; i < portrait.length; i++) {
+			if (portraitPath.equals(portrait[i])) {
+				hasPortrait = true;
+				break;
+			}
+		}
+		
+		return hasPortrait;
+	}
+
+	
+	
 	class MyTextField extends JTextField {
 		/**
 		 * 
