@@ -67,7 +67,10 @@ public class PlayerInfoPanel extends JPanel {
 	private JLabel playerPortrait;
 	private JLabel playerAction;
 	private JButton teambtn;
-
+	private JButton recentbtn;
+	private JButton historicalbtn;
+	private JButton vsbtn;
+	
 	private JLabel contentlbl;
 
 	Vector<Vector<String>> recentGameRowData;
@@ -234,18 +237,6 @@ public class PlayerInfoPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-		JButton fresh = new JButton();
-		ImageIcon freshIcon = new ImageIcon(
-				new ImageIcon("Image/freshIcon.png").getImage()
-						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		fresh.setBounds(X * 1250 / 1366, Y * 120 / 768, X / 25, X / 25);
-		fresh.setIcon(freshIcon);
-		fresh.setOpaque(false);
-		fresh.setContentAreaFilled(false);
-		fresh.setBorderPainted(false);
-		fresh.addActionListener(e -> fresh());
-		bgLabel.add(fresh);
-
 		// -----------------------------------------------------------------------------------------------
 
 		contentlbl = new JLabel();
@@ -255,38 +246,20 @@ public class PlayerInfoPanel extends JPanel {
 
 		bgLabel.add(contentlbl);
 
-		JButton recentbtn = new JButton("近期比赛");
-		recentbtn.setBounds(X * 90 / 1366, Y * 220 / 768, X * 333 / 1366,
+		recentbtn = new MyButton("近期比赛<==");
+		recentbtn.setBounds(X * 90 / 1366, Y * 220 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		ImageIcon recentIcon = new ImageIcon(
-				new ImageIcon("Image/recentIcon.png").getImage()
-						.getScaledInstance(X*333 /1366 , Y*30/ 768, Image.SCALE_SMOOTH));
-		recentbtn.setIcon(recentIcon);
-		recentbtn.setVisible(true);
-		recentbtn.addActionListener(e -> showRecentData());
-		bgLabel.add(recentbtn);
+		recentbtn.addActionListener(e -> {showRecentData();recentbtn.setText("近期比赛<==");historicalbtn.setText("过往数据");vsbtn.setText("数据对比");});
 
-		JButton historicalbtn = new JButton("过往数据");
-		historicalbtn.setBounds(X * 423 / 1366, Y * 220 / 768, X * 333 / 1366,
+		historicalbtn = new MyButton("过往数据");
+		historicalbtn.setBounds(X *240  / 1366, Y * 220 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		ImageIcon historicalIcon = new ImageIcon(
-				new ImageIcon("Image/historicalIcon.png").getImage()
-						.getScaledInstance(X*333 /1366 , Y*30/ 768, Image.SCALE_SMOOTH));
-		historicalbtn.setIcon(historicalIcon);
-		historicalbtn.setVisible(true);
-		historicalbtn.addActionListener(e -> showHistoricalData());
-		bgLabel.add(historicalbtn);
+		historicalbtn.addActionListener(e -> {showHistoricalData();recentbtn.setText("近期比赛");historicalbtn.setText("过往数据<==");vsbtn.setText("数据对比");});
 
-		JButton vsbtn = new JButton("对比");
-		vsbtn.setBounds(X * 756 / 1366, Y * 220 / 768, X * 333 / 1366,
+		vsbtn = new MyButton("数据对比");
+		vsbtn.setBounds(X * 390 / 1366, Y * 220 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		ImageIcon vsIcon = new ImageIcon(
-				new ImageIcon("Image/vsIcon.png").getImage()
-						.getScaledInstance(X*333 /1366 , Y*30/ 768, Image.SCALE_SMOOTH));
-		vsbtn.setIcon(vsIcon);
-		vsbtn.setVisible(true);
-		vsbtn.addActionListener(e -> showVSData());
-		bgLabel.add(vsbtn);
+		vsbtn.addActionListener(e ->{showVSData();recentbtn.setText("近期比赛");historicalbtn.setText("过往数据");vsbtn.setText("数据对比<==");});
 
 		addBasicInfo();
 		addBasicData();
@@ -1491,10 +1464,6 @@ public class PlayerInfoPanel extends JPanel {
 		mainFrame.add(previousPanel);
 	}
 
-	public void fresh() {
-
-	}
-
 	private void addBasicData() {
 		PlayerVo one = player_BS.getPlayerByName(playerName);
 		textField_2.setText(one.getName());
@@ -1698,6 +1667,30 @@ public class PlayerInfoPanel extends JPanel {
 			this.setText(text);
 			this.setFont(new Font("黑体", 1, 11));
 
+		}
+	}
+
+	class MyButton extends JButton{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyButton(String function){
+			super();
+			this.setText(function);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("微软雅黑",1,15));
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(  X*150/1366, Y*30/768,
+							 Image.SCALE_SMOOTH));
+			
+			this.setIcon(buttonIcon);
+			this.setOpaque(false);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+			bgLabel.add(this);
 		}
 	}
 }
