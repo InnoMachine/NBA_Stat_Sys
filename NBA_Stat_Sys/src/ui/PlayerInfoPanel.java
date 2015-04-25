@@ -258,6 +258,10 @@ public class PlayerInfoPanel extends JPanel {
 		JButton recentbtn = new JButton("近期比赛");
 		recentbtn.setBounds(X * 90 / 1366, Y * 220 / 768, X * 333 / 1366,
 				Y * 30 / 768);
+		ImageIcon recentIcon = new ImageIcon(
+				new ImageIcon("Image/recentIcon.png").getImage()
+						.getScaledInstance(X*333 /1366 , Y*30/ 768, Image.SCALE_SMOOTH));
+		recentbtn.setIcon(recentIcon);
 		recentbtn.setVisible(true);
 		recentbtn.addActionListener(e -> showRecentData());
 		bgLabel.add(recentbtn);
@@ -265,6 +269,10 @@ public class PlayerInfoPanel extends JPanel {
 		JButton historicalbtn = new JButton("过往数据");
 		historicalbtn.setBounds(X * 423 / 1366, Y * 220 / 768, X * 333 / 1366,
 				Y * 30 / 768);
+		ImageIcon historicalIcon = new ImageIcon(
+				new ImageIcon("Image/historicalIcon.png").getImage()
+						.getScaledInstance(X*333 /1366 , Y*30/ 768, Image.SCALE_SMOOTH));
+		historicalbtn.setIcon(historicalIcon);
 		historicalbtn.setVisible(true);
 		historicalbtn.addActionListener(e -> showHistoricalData());
 		bgLabel.add(historicalbtn);
@@ -272,6 +280,10 @@ public class PlayerInfoPanel extends JPanel {
 		JButton vsbtn = new JButton("对比");
 		vsbtn.setBounds(X * 756 / 1366, Y * 220 / 768, X * 333 / 1366,
 				Y * 30 / 768);
+		ImageIcon vsIcon = new ImageIcon(
+				new ImageIcon("Image/vsIcon.png").getImage()
+						.getScaledInstance(X*333 /1366 , Y*30/ 768, Image.SCALE_SMOOTH));
+		vsbtn.setIcon(vsIcon);
 		vsbtn.setVisible(true);
 		vsbtn.addActionListener(e -> showVSData());
 		bgLabel.add(vsbtn);
@@ -355,27 +367,38 @@ public class PlayerInfoPanel extends JPanel {
 			}
 		};
 		/*
-		 * DefaultTableCellRenderer r2 = new DefaultTableCellRenderer();
-		 * r2.setHorizontalAlignment(JLabel.CENTER);
-		 * recentGameInfoTable.getColumnModel().getColumn(0)
-		 * .setPreferredWidth(X * 100 / 1366);
-		 * recentGameInfoTable.setDefaultRenderer(Object.class, r2);
-		 */
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer() {
+
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				if (row % 2 == 0)
+					setBackground(Color.GRAY); // 设置奇数行底色
+				else if (row % 2 == 1)
+					setBackground(Color.LIGHT_GRAY); // 设置偶数行底色
+				return super.getTableCellRendererComponent(table, value,
+						isSelected, hasFocus, row, column);
+			}
+		};
+
+		tcr.setHorizontalAlignment(JLabel.CENTER);// 居中
+		recentGameInfoTable.setDefaultRenderer(Object.class, tcr);
+
+		for (int i = 0; i < recentGameInfoTable.getColumnCount(); i++) {
+			recentGameInfoTable.getColumn(recentGameInfoTable.getColumnName(i))
+					.setCellRenderer(tcr);
+		}
+*/
 		recentGameInfoTable.setForeground(Color.WHITE);
-		MyTableRenderer r2 = new MyTableRenderer();
-		r2.setHorizontalAlignment(JLabel.CENTER);
+
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
-		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
 
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
-		// recentGameInfoTable.setOpaque(false);
-		recentGameInfoTable.setBackground(Color.gray);
 
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		recentGameInfoJSP.setSize(X * 1000 / 1366, Y * 480 / 768);
 		recentGameInfoJSP.setVisible(true);
-		recentGameInfoJSP.setBackground(Color.gray);
 		if (contentlbl != null) {
 			contentlbl.setVisible(false);
 		}
@@ -501,7 +524,7 @@ public class PlayerInfoPanel extends JPanel {
 		contentlbl.setBounds(X * 90 / 1366, Y * 250 / 768, X * 1000 / 1366,
 				Y * 480 / 768);
 		contentlbl.setOpaque(false);
-		
+
 		DecimalFormat df = new DecimalFormat(".00");
 
 		TotalInfo aveInfo = new TotalInfo();
@@ -512,17 +535,17 @@ public class PlayerInfoPanel extends JPanel {
 		MyLabel namelbl = new MyLabel();
 		namelbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		namelbl.setBounds(0, 0, X * 450 / 1366, Y * 35 / 768);
-		namelbl.setText(playerName+"  ");
+		namelbl.setText(playerName + "  ");
 		namelbl.setBackground(Color.DARK_GRAY);
 		namelbl.setOpaque(true);
 		namelbl.setFont(new Font("黑体", 1, 20));
 		contentlbl.add(namelbl);
-		
+
 		MyLabel nAtlbl = new MyLabel("号码/球队");
 		nAtlbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		nAtlbl.setBounds(0, Y * 35 / 768, X * 450 / 1366, Y * 15 / 768);
 		nAtlbl.setText(player_BS.getPlayerByName(playerName).getNumber() + "/"
-				+ player_BS.getPlayerByName(playerName).getTeam()+"   ");
+				+ player_BS.getPlayerByName(playerName).getTeam() + "   ");
 		nAtlbl.setBackground(Color.DARK_GRAY);
 		nAtlbl.setOpaque(true);
 		nAtlbl.setFont(new Font("黑体", 0, 13));
@@ -536,17 +559,17 @@ public class PlayerInfoPanel extends JPanel {
 		vslbl.setFont(new Font("黑体", 1, 24));
 		contentlbl.add(vslbl);
 
-		
 		MyLabel nbaAvelbl = new MyLabel("  NBA联盟平均数据");
 		nbaAvelbl.setBounds(X * 550 / 1366, 0, X * 450 / 1366, Y * 35 / 768);
 		nbaAvelbl.setBackground(Color.DARK_GRAY);
 		nbaAvelbl.setOpaque(true);
 		nbaAvelbl.setFont(new Font("黑体", 1, 20));
 		contentlbl.add(nbaAvelbl);
-		
+
 		MyLabel nonelbl = new MyLabel();
 		nonelbl.setHorizontalAlignment(SwingConstants.RIGHT);
-		nonelbl.setBounds(X * 550 / 1366, Y * 35 / 768, X * 450 / 1366, Y * 15 / 768);
+		nonelbl.setBounds(X * 550 / 1366, Y * 35 / 768, X * 450 / 1366,
+				Y * 15 / 768);
 		nonelbl.setBackground(Color.DARK_GRAY);
 		nonelbl.setOpaque(true);
 		nonelbl.setFont(new Font("黑体", 0, 13));
@@ -637,30 +660,29 @@ public class PlayerInfoPanel extends JPanel {
 		lblPlayergamenum.setBounds(X * (425 - playerInfo.getGameNum() * 3)
 				/ 1366, Y * 75 / 768, X * (playerInfo.getGameNum() * 3) / 1366,
 				Y * 24 / 768);
-		if(playerInfo.getGameNum()>=aveInfo.getGamenumField()){
-		lblPlayergamenum.setBackground(Color.BLUE);
-		}else{
+		if (playerInfo.getGameNum() >= aveInfo.getGamenumField()) {
+			lblPlayergamenum.setBackground(Color.BLUE);
+		} else {
 			lblPlayergamenum.setBackground(Color.LIGHT_GRAY);
 		}
 		lblPlayergamenum.setOpaque(true);
 		contentlbl.add(lblPlayergamenum);
-		
+
 		JLabel lblPlayerminute = new JLabel();
 		lblPlayerminute.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayerminute.setBounds(X
-				* (425 - (int) (playerInfo.getTimeField() / 60.0 * 3))/1366,
-				Y * 109 / 768, X*((int) (playerInfo.getTimeField() / 60.0) * 3)/1366, Y * 24 / 768);
-		if(playerInfo.getTimeField()>=aveInfo.getTime()){
+				* (425 - (int) (playerInfo.getTimeField() / 60.0 * 3)) / 1366,
+				Y * 109 / 768,
+				X * ((int) (playerInfo.getTimeField() / 60.0) * 3) / 1366,
+				Y * 24 / 768);
+		if (playerInfo.getTimeField() >= aveInfo.getTime()) {
 			lblPlayerminute.setBackground(Color.BLUE);
-			}else{
-				lblPlayerminute.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerminute.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerminute.setOpaque(true);
 		contentlbl.add(lblPlayerminute);
-		
 
-		
-		
 		JLabel lblPlayerscorefield = new JLabel();
 		lblPlayerscorefield.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayerscorefield.setBounds(
@@ -673,11 +695,11 @@ public class PlayerInfoPanel extends JPanel {
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getScoreField())) * 3)
 						/ 1366, Y * 24 / 768);
-		if(playerInfo.getScoreField()>=aveInfo.getScoreField()){
+		if (playerInfo.getScoreField() >= aveInfo.getScoreField()) {
 			lblPlayerscorefield.setBackground(Color.BLUE);
-			}else{
-				lblPlayerscorefield.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerscorefield.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerscorefield.setOpaque(true);
 		contentlbl.add(lblPlayerscorefield);
 
@@ -698,11 +720,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getAssistanceField())) * 3)
 								/ 1366, Y * 24 / 768);
-		if(playerInfo.getAssistanceField()>=aveInfo.getAssistanceField()){
+		if (playerInfo.getAssistanceField() >= aveInfo.getAssistanceField()) {
 			lblPlayerassistancefield.setBackground(Color.BLUE);
-			}else{
-				lblPlayerassistancefield.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerassistancefield.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerassistancefield.setOpaque(true);
 		contentlbl.add(lblPlayerassistancefield);
 
@@ -723,11 +745,11 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getReboundOverallField())) * 3)
 								/ 1366, Y * 24 / 768);
-		if(playerInfo.getReboundOverallField()>=aveInfo.getReboundField()){
+		if (playerInfo.getReboundOverallField() >= aveInfo.getReboundField()) {
 			lblPlayerreboundfield.setBackground(Color.BLUE);
-			}else{
-				lblPlayerreboundfield.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerreboundfield.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerreboundfield.setOpaque(true);
 		contentlbl.add(lblPlayerreboundfield);
 
@@ -738,16 +760,16 @@ public class PlayerInfoPanel extends JPanel {
 						* (425 - Integer.parseInt(new java.text.DecimalFormat(
 								"0").format(playerInfo.getHitNumField())) * 3)
 						/ 1366,
-				Y*245/768,
+				Y * 245 / 768,
 				X
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getHitNumField())) * 3)
-						/ 1366, Y*24/768);
-		if(playerInfo.getHitNumField()>=aveInfo.getHitField()){
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getHitNumField() >= aveInfo.getHitField()) {
 			lblPlayerhitnum.setBackground(Color.BLUE);
-			}else{
-				lblPlayerhitnum.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerhitnum.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerhitnum.setOpaque(true);
 		contentlbl.add(lblPlayerhitnum);
 
@@ -761,18 +783,18 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getThreePointHitRate() * 100)) * 3)
 								/ 1366,
-						Y*279/768,
+						Y * 279 / 768,
 						X
 								* (Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getThreePointHitRate()* 100))  * 3)
-								/ 1366,Y* 24/768);
-		if(playerInfo.getThreePointHitRate()>=aveInfo.getThreeRate()){
+												.getThreePointHitRate() * 100)) * 3)
+								/ 1366, Y * 24 / 768);
+		if (playerInfo.getThreePointHitRate() >= aveInfo.getThreeRate()) {
 			lblPlayer3prate.setBackground(Color.BLUE);
-			}else{
-				lblPlayer3prate.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayer3prate.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayer3prate.setOpaque(true);
 		contentlbl.add(lblPlayer3prate);
 
@@ -784,20 +806,20 @@ public class PlayerInfoPanel extends JPanel {
 								* (425 - Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getFreeThrowRate()* 100))  * 3)
+												.getFreeThrowRate() * 100)) * 3)
 								/ 1366,
-						Y*313/768,
+						Y * 313 / 768,
 						X
 								* (Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getFreeThrowRate()* 100))  * 3)
-								/ 1366, Y*24/768);
-		if(playerInfo.getFreeThrowRate()>=aveInfo.getFreeRate()){
+												.getFreeThrowRate() * 100)) * 3)
+								/ 1366, Y * 24 / 768);
+		if (playerInfo.getFreeThrowRate() >= aveInfo.getFreeRate()) {
 			lblPlayerfreethrowrate.setBackground(Color.BLUE);
-			}else{
-				lblPlayerfreethrowrate.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerfreethrowrate.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerfreethrowrate.setOpaque(true);
 		contentlbl.add(lblPlayerfreethrowrate);
 
@@ -808,16 +830,16 @@ public class PlayerInfoPanel extends JPanel {
 						* (425 - Integer.parseInt(new java.text.DecimalFormat(
 								"0").format(playerInfo.getStealField())) * 3)
 						/ 1366,
-				Y*347/768,
+				Y * 347 / 768,
 				X
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getStealField())) * 3)
-						/ 1366, Y*24/768);
-		if(playerInfo.getStealField()>=aveInfo.getStealField()){
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getStealField() >= aveInfo.getStealField()) {
 			lblPlayersteal.setBackground(Color.BLUE);
-			}else{
-				lblPlayersteal.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayersteal.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayersteal.setOpaque(true);
 		contentlbl.add(lblPlayersteal);
 
@@ -828,16 +850,16 @@ public class PlayerInfoPanel extends JPanel {
 						* (425 - Integer.parseInt(new java.text.DecimalFormat(
 								"0").format(playerInfo.getBlockField())) * 3)
 						/ 1366,
-				Y*381/768,
+				Y * 381 / 768,
 				X
 						* (Integer.parseInt(new java.text.DecimalFormat("0")
 								.format(playerInfo.getBlockField())) * 3)
-						/ 1366, Y*24/768);
-		if(playerInfo.getBlockField()>=aveInfo.getBlockField()){
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getBlockField() >= aveInfo.getBlockField()) {
 			lblPlayerblock.setBackground(Color.BLUE);
-			}else{
-				lblPlayerblock.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerblock.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerblock.setOpaque(true);
 		contentlbl.add(lblPlayerblock);
 
@@ -851,18 +873,18 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getTurnoverField())) * 3)
 								/ 1366,
-						Y*415/768,
+						Y * 415 / 768,
 						X
 								* (Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
 												.getTurnoverField())) * 3)
-								/ 1366, Y*24/768);
-		if(playerInfo.getTurnoverField()>=aveInfo.getTurnoverField()){
+								/ 1366, Y * 24 / 768);
+		if (playerInfo.getTurnoverField() >= aveInfo.getTurnoverField()) {
 			lblPlayerturnover.setBackground(Color.BLUE);
-			}else{
-				lblPlayerturnover.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerturnover.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerturnover.setOpaque(true);
 		contentlbl.add(lblPlayerturnover);
 
@@ -875,456 +897,580 @@ public class PlayerInfoPanel extends JPanel {
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
 												.getFoulField())) * 3) / 1366,
-						Y*449/768,
+						Y * 449 / 768,
 						X
 								* (Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
 												.getFoulField())) * 3) / 1366,
-						Y*24/768);
-		if(playerInfo.getFoulField()>=aveInfo.getFoulField()){
+						Y * 24 / 768);
+		if (playerInfo.getFoulField() >= aveInfo.getFoulField()) {
 			lblPlayerfoul.setBackground(Color.BLUE);
-			}else{
-				lblPlayerfoul.setBackground(Color.LIGHT_GRAY);
-			}
+		} else {
+			lblPlayerfoul.setBackground(Color.LIGHT_GRAY);
+		}
 		lblPlayerfoul.setOpaque(true);
 		contentlbl.add(lblPlayerfoul);
 
 		JLabel lblAvegamenum = new JLabel();
 		lblAvegamenum.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvegamenum.setBounds(X*575/1366, Y*75/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getGamenumField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getGameNum()>=aveInfo.getGamenumField()){
+		lblAvegamenum
+				.setBounds(
+						X * 575 / 1366,
+						Y * 75 / 768,
+						X
+								* (Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(aveInfo
+												.getGamenumField())) * 3)
+								/ 1366, Y * 24 / 768);
+		if (playerInfo.getGameNum() >= aveInfo.getGamenumField()) {
 			lblAvegamenum.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvegamenum.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvegamenum.setBackground(Color.BLUE);
+		}
 		lblAvegamenum.setOpaque(true);
 		contentlbl.add(lblAvegamenum);
 
 		JLabel lblAveminute = new JLabel();
 		lblAveminute.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAveminute.setBounds(X*575/1366, Y*109/768, X*((int)( aveInfo.getTime() / 60.0 * 3))/1366, Y*24/768);
-		if(playerInfo.getTimeField()>=aveInfo.getTime()){
+		lblAveminute.setBounds(X * 575 / 1366, Y * 109 / 768, X
+				* ((int) (aveInfo.getTime() / 60.0 * 3)) / 1366, Y * 24 / 768);
+		if (playerInfo.getTimeField() >= aveInfo.getTime()) {
 			lblAveminute.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAveminute.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAveminute.setBackground(Color.BLUE);
+		}
 		lblAveminute.setOpaque(true);
 		contentlbl.add(lblAveminute);
-		
-		
-		
 
 		JLabel lblAvescorefield = new JLabel();
 		lblAvescorefield.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvescorefield.setBounds(X*575/1366, Y*143/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getScoreField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getScoreField()>=aveInfo.getScoreField()){
+		lblAvescorefield.setBounds(
+				X * 575 / 1366,
+				Y * 143 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getScoreField())) * 3) / 1366,
+				Y * 24 / 768);
+		if (playerInfo.getScoreField() >= aveInfo.getScoreField()) {
 			lblAvescorefield.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvescorefield.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvescorefield.setBackground(Color.BLUE);
+		}
 		lblAvescorefield.setOpaque(true);
 		contentlbl.add(lblAvescorefield);
 
 		JLabel lblAveassistancefield = new JLabel();
 		lblAveassistancefield.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAveassistancefield.setBounds(X*575/1366, Y*177/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getAssistanceField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getAssistanceField()>=aveInfo.getAssistanceField()){
+		lblAveassistancefield.setBounds(
+				X * 575 / 1366,
+				Y * 177 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getAssistanceField())) * 3)
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getAssistanceField() >= aveInfo.getAssistanceField()) {
 			lblAveassistancefield.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAveassistancefield.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAveassistancefield.setBackground(Color.BLUE);
+		}
 		lblAveassistancefield.setOpaque(true);
 		contentlbl.add(lblAveassistancefield);
 
 		JLabel lblAvereboundfield = new JLabel();
 		lblAvereboundfield.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvereboundfield.setBounds(X*575/1366, Y*211/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getReboundField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getReboundOverallField()>=aveInfo.getReboundField()){
+		lblAvereboundfield
+				.setBounds(
+						X * 575 / 1366,
+						Y * 211 / 768,
+						X
+								* (Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(aveInfo
+												.getReboundField())) * 3)
+								/ 1366, Y * 24 / 768);
+		if (playerInfo.getReboundOverallField() >= aveInfo.getReboundField()) {
 			lblAvereboundfield.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvereboundfield.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvereboundfield.setBackground(Color.BLUE);
+		}
 		lblAvereboundfield.setOpaque(true);
 		contentlbl.add(lblAvereboundfield);
 
 		JLabel lblAvehitnum = new JLabel();
 		lblAvehitnum.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvehitnum.setBounds(X*575/1366, Y*245/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getHitField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getHitNumField()>=aveInfo.getHitField()){
+		lblAvehitnum.setBounds(
+				X * 575 / 1366,
+				Y * 245 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getHitField())) * 3) / 1366,
+				Y * 24 / 768);
+		if (playerInfo.getHitNumField() >= aveInfo.getHitField()) {
 			lblAvehitnum.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvehitnum.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvehitnum.setBackground(Color.BLUE);
+		}
 		lblAvehitnum.setOpaque(true);
 		contentlbl.add(lblAvehitnum);
 
 		JLabel lblAve3prate = new JLabel();
 		lblAve3prate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAve3prate.setBounds(X*575/1366, Y*279/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getThreeRate()* 100))  * 3)/1366, Y*24/768);
-		if(playerInfo.getThreePointHitRate()>=aveInfo.getThreeRate()){
+		lblAve3prate.setBounds(
+				X * 575 / 1366,
+				Y * 279 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getThreeRate() * 100)) * 3)
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getThreePointHitRate() >= aveInfo.getThreeRate()) {
 			lblAve3prate.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAve3prate.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAve3prate.setBackground(Color.BLUE);
+		}
 		lblAve3prate.setOpaque(true);
 		contentlbl.add(lblAve3prate);
 
 		JLabel lblAvefreethrowrate = new JLabel();
 		lblAvefreethrowrate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvefreethrowrate.setBounds(X*575/1366, Y*313/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getFreeRate()* 100))  * 3)/1366, Y*24/768);
-		if(playerInfo.getFreeThrowRate()>=aveInfo.getFreeRate()){
+		lblAvefreethrowrate.setBounds(
+				X * 575 / 1366,
+				Y * 313 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getFreeRate() * 100)) * 3)
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getFreeThrowRate() >= aveInfo.getFreeRate()) {
 			lblAvefreethrowrate.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvefreethrowrate.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvefreethrowrate.setBackground(Color.BLUE);
+		}
 		lblAvefreethrowrate.setOpaque(true);
 		contentlbl.add(lblAvefreethrowrate);
 
 		JLabel lblAvesteal = new JLabel();
 		lblAvesteal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvesteal.setBounds(X*575/1366, Y*347/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getStealField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getStealField()>=aveInfo.getStealField()){
+		lblAvesteal.setBounds(
+				X * 575 / 1366,
+				Y * 347 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getStealField())) * 3) / 1366,
+				Y * 24 / 768);
+		if (playerInfo.getStealField() >= aveInfo.getStealField()) {
 			lblAvesteal.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvesteal.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvesteal.setBackground(Color.BLUE);
+		}
 		lblAvesteal.setOpaque(true);
 		contentlbl.add(lblAvesteal);
 
 		JLabel lblAveblock = new JLabel();
 		lblAveblock.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAveblock.setBounds(X*575/1366, Y*381/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getBlockField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getBlockField()>=aveInfo.getBlockField()){
+		lblAveblock.setBounds(
+				X * 575 / 1366,
+				Y * 381 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getBlockField())) * 3) / 1366,
+				Y * 24 / 768);
+		if (playerInfo.getBlockField() >= aveInfo.getBlockField()) {
 			lblAveblock.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAveblock.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAveblock.setBackground(Color.BLUE);
+		}
 		lblAveblock.setOpaque(true);
 		contentlbl.add(lblAveblock);
 
 		JLabel lblAveturnover = new JLabel();
 		lblAveturnover.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAveturnover.setBounds(X*575/1366, Y*415/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getTurnoverField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getTurnoverField()>=aveInfo.getTurnoverField()){
+		lblAveturnover.setBounds(
+				X * 575 / 1366,
+				Y * 415 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getTurnoverField())) * 3)
+						/ 1366, Y * 24 / 768);
+		if (playerInfo.getTurnoverField() >= aveInfo.getTurnoverField()) {
 			lblAveturnover.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAveturnover.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAveturnover.setBackground(Color.BLUE);
+		}
 		lblAveturnover.setOpaque(true);
 		contentlbl.add(lblAveturnover);
 
 		JLabel lblAvefoul = new JLabel();
 		lblAvefoul.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvefoul.setBounds(X*575/1366, Y*449/768,X*(Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getFoulField())) * 3)/1366, Y*24/768);
-		if(playerInfo.getFoulField()>=aveInfo.getFoulField()){
+		lblAvefoul.setBounds(
+				X * 575 / 1366,
+				Y * 449 / 768,
+				X
+						* (Integer.parseInt(new java.text.DecimalFormat("0")
+								.format(aveInfo.getFoulField())) * 3) / 1366,
+				Y * 24 / 768);
+		if (playerInfo.getFoulField() >= aveInfo.getFoulField()) {
 			lblAvefoul.setBackground(Color.LIGHT_GRAY);
-			}else{
-				lblAvefoul.setBackground(Color.BLUE);
-			}
+		} else {
+			lblAvefoul.setBackground(Color.BLUE);
+		}
 		lblAvefoul.setOpaque(true);
 		contentlbl.add(lblAvefoul);
 
-		txtPgamenum = new JTextField();
+		txtPgamenum = new MyDataTextField();
 		txtPgamenum.setText("pGameNum");
 		txtPgamenum.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPgamenum.setBounds(X*(355 - playerInfo.getGameNum() * 3)/1366, 75, X*60/1366, Y*24/768);
-		txtPgamenum.setColumns(Y*10/768);
+		txtPgamenum.setBounds(X * (355 - playerInfo.getGameNum() * 3) / 1366,
+				75, X * 60 / 1366, Y * 24 / 768);
+		txtPgamenum.setColumns(Y * 10 / 768);
 		txtPgamenum.setText(String.valueOf(playerInfo.getGameNum()));
 		txtPgamenum.setOpaque(false);
 		txtPgamenum.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPgamenum);
 
-		txtPminute = new JTextField();
+		txtPminute = new MyDataTextField();
 		txtPminute.setText("pMinute");
 		txtPminute.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPminute.setColumns(Y*10/768);
-		txtPminute.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo.getTimeField() / 60.0)) * 3)/1366,
-				Y*109/768, X*60/1366, Y*24/768);
-		txtPminute.setText(String.valueOf(df.format(playerInfo.getTimeField() / 60.0)));
+		txtPminute.setColumns(Y * 10 / 768);
+		txtPminute
+				.setBounds(
+						X
+								* (355 - Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getTimeField() / 60.0)) * 3)
+								/ 1366, Y * 109 / 768, X * 60 / 1366,
+						Y * 24 / 768);
+		txtPminute
+				.setText(String.valueOf(df.format(playerInfo.getTimeField() / 60.0)));
 		txtPminute.setOpaque(false);
 		txtPminute.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPminute);
 
-		txtPscorefield = new JTextField();
+		txtPscorefield = new MyDataTextField();
 		txtPscorefield.setText("pScoreField");
 		txtPscorefield.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPscorefield.setColumns(Y*10/768);
-		txtPscorefield.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getScoreField())) * 3)/1366, 143, X*60/1366, Y*24/768);
+		txtPscorefield.setColumns(Y * 10 / 768);
+		txtPscorefield.setBounds(
+				X
+						* (355 - Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(playerInfo.getScoreField())) * 3)
+						/ 1366, 143, X * 60 / 1366, Y * 24 / 768);
 		txtPscorefield.setText(String.valueOf(playerInfo.getScoreField()));
 		txtPscorefield.setOpaque(false);
 		txtPscorefield.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPscorefield);
 
-		txtPassistancefield = new JTextField();
+		txtPassistancefield = new MyDataTextField();
 		txtPassistancefield.setText("pAssistanceField");
 		txtPassistancefield.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPassistancefield.setColumns(Y*10/768);
-		txtPassistancefield.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getAssistanceField())) * 3)/1366, 177, X*60/1366, Y*24/768);
+		txtPassistancefield.setColumns(Y * 10 / 768);
+		txtPassistancefield
+				.setBounds(
+						X
+								* (355 - Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getAssistanceField())) * 3)
+								/ 1366, 177, X * 60 / 1366, Y * 24 / 768);
 		txtPassistancefield.setText(String.valueOf(playerInfo
 				.getAssistanceField()));
 		txtPassistancefield.setOpaque(false);
 		txtPassistancefield.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPassistancefield);
 
-		txtPreboundfield = new JTextField();
+		txtPreboundfield = new MyDataTextField();
 		txtPreboundfield.setText("pReboundField");
 		txtPreboundfield.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPreboundfield.setColumns(Y*10/768);
-		txtPreboundfield.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getReboundOverallField())) * 3)/1366, 211, X*60/1366, Y*24/768);
+		txtPreboundfield.setColumns(Y * 10 / 768);
+		txtPreboundfield
+				.setBounds(
+						X
+								* (355 - Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getReboundOverallField())) * 3)
+								/ 1366, 211, X * 60 / 1366, Y * 24 / 768);
 		txtPreboundfield.setText(String.valueOf(playerInfo
 				.getReboundOverallField()));
 		txtPreboundfield.setOpaque(false);
 		txtPreboundfield.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPreboundfield);
 
-		txtPhitnum = new JTextField();
+		txtPhitnum = new MyDataTextField();
 		txtPhitnum.setText("pHitNum");
 		txtPhitnum.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPhitnum.setColumns(Y*10/768);
-		txtPhitnum.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getHitNumField())) * 3)/1366, 245, X*60/1366, Y*24/768);
+		txtPhitnum.setColumns(Y * 10 / 768);
+		txtPhitnum.setBounds(
+				X
+						* (355 - Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(playerInfo.getHitNumField())) * 3)
+						/ 1366, 245, X * 60 / 1366, Y * 24 / 768);
 		txtPhitnum.setText(String.valueOf(playerInfo.getHitNumField()));
 		txtPhitnum.setOpaque(false);
 		txtPhitnum.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPhitnum);
 
-		txtP3prate = new JTextField();
+		txtP3prate = new MyDataTextField();
 		txtP3prate.setText("p3PRate");
 		txtP3prate.setHorizontalAlignment(SwingConstants.CENTER);
-		txtP3prate.setColumns(Y*10/768);
-		txtP3prate.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getThreePointHitRate()* 100))  * 3)/1366, 279, X*60/1366, Y*24/768);
+		txtP3prate.setColumns(Y * 10 / 768);
+		txtP3prate
+				.setBounds(
+						X
+								* (355 - Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getThreePointHitRate() * 100)) * 3)
+								/ 1366, 279, X * 60 / 1366, Y * 24 / 768);
 		txtP3prate
 				.setText(String.valueOf(playerInfo.getThreePointHitRate() * 100));
 		txtP3prate.setOpaque(false);
 		txtP3prate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtP3prate);
 
-		txtPfreethrowrate = new JTextField();
+		txtPfreethrowrate = new MyDataTextField();
 		txtPfreethrowrate.setText("pFreeThrowRate");
 		txtPfreethrowrate.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPfreethrowrate.setColumns(Y*10/768);
-		txtPfreethrowrate.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getFreeThrowRate()* 100))  * 3)/1366, 313, X*60/1366, Y*24/768);
+		txtPfreethrowrate.setColumns(Y * 10 / 768);
+		txtPfreethrowrate
+				.setBounds(
+						X
+								* (355 - Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getFreeThrowRate() * 100)) * 3)
+								/ 1366, 313, X * 60 / 1366, Y * 24 / 768);
 		txtPfreethrowrate
 				.setText(String.valueOf(playerInfo.getFreeThrowRate() * 100));
 		txtPfreethrowrate.setOpaque(false);
 		txtPfreethrowrate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPfreethrowrate);
 
-		txtPsteal = new JTextField();
+		txtPsteal = new MyDataTextField();
 		txtPsteal.setText("pSteal");
 		txtPsteal.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPsteal.setColumns(Y*10/768);
-		txtPsteal.setBounds(X*(355 - Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(playerInfo.getStealField())) * 3)/1366, 347, X*60/1366, Y*24/768);
+		txtPsteal.setColumns(Y * 10 / 768);
+		txtPsteal.setBounds(
+				X
+						* (355 - Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(playerInfo.getStealField())) * 3)
+						/ 1366, 347, X * 60 / 1366, Y * 24 / 768);
 		txtPsteal.setText(String.valueOf(playerInfo.getStealField()));
 		txtPsteal.setOpaque(false);
 		txtPsteal.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPsteal);
 
-		txtPblock = new JTextField();
+		txtPblock = new MyDataTextField();
 		txtPblock.setText("pBlock");
 		txtPblock.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPblock.setColumns(Y*10/768);
-		txtPblock.setBounds(X*(355 - Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(playerInfo.getBlockField())) * 3)/1366, 381, X*60/1366, Y*24/768);
+		txtPblock.setColumns(Y * 10 / 768);
+		txtPblock.setBounds(
+				X
+						* (355 - Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(playerInfo.getBlockField())) * 3)
+						/ 1366, 381, X * 60 / 1366, Y * 24 / 768);
 		txtPblock.setText(String.valueOf(playerInfo.getBlockField()));
 		txtPblock.setOpaque(false);
 		txtPblock.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPblock);
 
-		txtPturnover = new JTextField();
+		txtPturnover = new MyDataTextField();
 		txtPturnover.setText("pTurnOver");
 		txtPturnover.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPturnover.setColumns(Y*10/768);
-		txtPturnover.setBounds(X*(355 - Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getTurnoverField())) * 3)/1366, 415, X*60/1366, Y*24/768);
+		txtPturnover.setColumns(Y * 10 / 768);
+		txtPturnover
+				.setBounds(
+						X
+								* (355 - Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getTurnoverField())) * 3)
+								/ 1366, 415, X * 60 / 1366, Y * 24 / 768);
 		txtPturnover.setText(String.valueOf(playerInfo.getTurnoverField()));
 		txtPturnover.setOpaque(false);
 		txtPturnover.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPturnover);
 
-		txtPfoul = new JTextField();
+		txtPfoul = new MyDataTextField();
 		txtPfoul.setText("pFoul");
 		txtPfoul.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPfoul.setColumns(Y*10/768);
-		txtPfoul.setBounds(X*(355 - Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(playerInfo.getFoulField())) * 3)/1366, 449, X*60/1366, Y*24/768);
+		txtPfoul.setColumns(Y * 10 / 768);
+		txtPfoul.setBounds(
+				X
+						* (355 - Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(playerInfo.getFoulField())) * 3)
+						/ 1366, 449, X * 60 / 1366, Y * 24 / 768);
 		txtPfoul.setText(String.valueOf(playerInfo.getFoulField()));
 		txtPfoul.setOpaque(false);
 		txtPfoul.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPfoul);
 
-		txtAgamenum = new JTextField();
+		txtAgamenum = new MyDataTextField();
 		txtAgamenum.setText("aGameNum");
 		txtAgamenum.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAgamenum.setColumns(Y*10/768);
-		txtAgamenum.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getGamenumField())) * 3)/1366, Y*75/768, X*60/1366, Y*24/768);
+		txtAgamenum.setColumns(Y * 10 / 768);
+		txtAgamenum.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getGamenumField())) * 3)
+						/ 1366, Y * 75 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAgamenum.setText(String.valueOf(aveInfo.getGamenumField()));
 		txtAgamenum.setOpaque(false);
 		txtAgamenum.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAgamenum);
 
-		txtAminute = new JTextField();
+		txtAminute = new MyDataTextField();
 		txtAminute.setText("aMinute");
 		txtAminute.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAminute.setColumns(Y*10/768);
-		txtAminute.setBounds(X*(585 + (int) (aveInfo.getTime() / 60.0) * 3)/1366, Y*109/768, X*60/1366,
-				Y*24/768);
+		txtAminute.setColumns(Y * 10 / 768);
+		txtAminute.setBounds(X * (585 + (int) (aveInfo.getTime() / 60.0) * 3)
+				/ 1366, Y * 109 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAminute.setText(String.valueOf(df.format(aveInfo.getTime() / 60.0)));
 		txtAminute.setOpaque(false);
 		txtAminute.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAminute);
 
-		txtAscorefield = new JTextField();
+		txtAscorefield = new MyDataTextField();
 		txtAscorefield.setText("aScoreField");
 		txtAscorefield.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAscorefield.setColumns(Y*10/768);
-		txtAscorefield.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getScoreField())) * 3)/1366, Y*143/768, X*60/1366, Y*24/768);
+		txtAscorefield.setColumns(Y * 10 / 768);
+		txtAscorefield.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getScoreField())) * 3)
+						/ 1366, Y * 143 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAscorefield.setText(String.valueOf(aveInfo.getScoreField()));
 		txtAscorefield.setOpaque(false);
 		txtAscorefield.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAscorefield);
 
-		txtAassistancefield = new JTextField();
+		txtAassistancefield = new MyDataTextField();
 		txtAassistancefield.setText("aAssistanceField");
 		txtAassistancefield.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAassistancefield.setColumns(Y*10/768);
-		txtAassistancefield.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getAssistanceField())) * 3)/1366, Y*177/768, X*60/1366, Y*24/768);
+		txtAassistancefield.setColumns(Y * 10 / 768);
+		txtAassistancefield.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getAssistanceField())) * 3)
+						/ 1366, Y * 177 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAassistancefield
 				.setText(String.valueOf(aveInfo.getAssistanceField()));
 		txtAassistancefield.setOpaque(false);
 		txtAassistancefield.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAassistancefield);
 
-		txtAreboundfield = new JTextField();
+		txtAreboundfield = new MyDataTextField();
 		txtAreboundfield.setText("aReboundField");
 		txtAreboundfield.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAreboundfield.setColumns(Y*10/768);
-		txtAreboundfield.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getReboundField())) * 3)/1366, Y*211/768, X*60/1366, Y*24/768);
+		txtAreboundfield.setColumns(Y * 10 / 768);
+		txtAreboundfield.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getReboundField())) * 3)
+						/ 1366, Y * 211 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAreboundfield.setText(String.valueOf(aveInfo.getReboundField()));
 		txtAreboundfield.setOpaque(false);
 		txtAreboundfield.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAreboundfield);
 
-		txtAhitnum = new JTextField();
+		txtAhitnum = new MyDataTextField();
 		txtAhitnum.setText("aHitNum");
 		txtAhitnum.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAhitnum.setColumns(Y*10/768);
-		txtAhitnum.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getHit())) * 3)/1366, Y*245/768, X*60/1366, Y*24/768);
+		txtAhitnum.setColumns(Y * 10 / 768);
+		txtAhitnum.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getHit())) * 3) / 1366,
+				Y * 245 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAhitnum.setText(String.valueOf(aveInfo.getHitField()));
 		txtAhitnum.setOpaque(false);
 		txtAhitnum.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAhitnum);
 
-		txtAprate = new JTextField();
+		txtAprate = new MyDataTextField();
 		txtAprate.setText("a3PRate");
 		txtAprate.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAprate.setColumns(Y*10/768);
-		txtAprate.setBounds(X*(585 + Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(aveInfo.getThreeRate()* 100))  * 3)/1366, Y*279/768, X*60/1366, Y*24/768);
+		txtAprate.setColumns(Y * 10 / 768);
+		txtAprate.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getThreeRate() * 100)) * 3)
+						/ 1366, Y * 279 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAprate.setText(String.valueOf(aveInfo.getThreeRate() * 100));
 		txtAprate.setOpaque(false);
 		txtAprate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAprate);
 
-		txtAfreethrowrate = new JTextField();
+		txtAfreethrowrate = new MyDataTextField();
 		txtAfreethrowrate.setText("aFreeThrowRate");
 		txtAfreethrowrate.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAfreethrowrate.setColumns(Y*10/768);
-		txtAfreethrowrate.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(aveInfo
-						.getFreeRate()* 100))  * 3)/1366, Y*313/768, X*60/1366, Y*24/768);
+		txtAfreethrowrate.setColumns(Y * 10 / 768);
+		txtAfreethrowrate.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getFreeRate() * 100)) * 3)
+						/ 1366, Y * 313 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAfreethrowrate.setText(String.valueOf(aveInfo.getFreeRate() * 100));
 		txtAfreethrowrate.setOpaque(false);
 		txtAfreethrowrate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAfreethrowrate);
 
-		txtAsteal = new JTextField();
+		txtAsteal = new MyDataTextField();
 		txtAsteal.setText("aSteal");
 		txtAsteal.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAsteal.setColumns(Y*10/768);
-		txtAsteal.setBounds(X*(585 + Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(aveInfo.getStealField())) * 3)/1366, Y*347/768, X*60/1366, Y*24/768);
+		txtAsteal.setColumns(Y * 10 / 768);
+		txtAsteal.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getStealField())) * 3)
+						/ 1366, Y * 347 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAsteal.setText(String.valueOf(aveInfo.getStealField()));
 		txtAsteal.setOpaque(false);
 		txtAsteal.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAsteal);
 
-		txtAblock = new JTextField();
+		txtAblock = new MyDataTextField();
 		txtAblock.setText("aBlock");
 		txtAblock.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAblock.setColumns(Y*10/768);
-		txtAblock.setBounds(X*(585 + Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(aveInfo.getBlockField())) * 3)/1366, Y*381/768, X*60/1366, Y*24/768);
+		txtAblock.setColumns(Y * 10 / 768);
+		txtAblock.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(aveInfo.getBlockField())) * 3)
+						/ 1366, Y * 381 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAblock.setText(String.valueOf(aveInfo.getBlockField()));
 		txtAblock.setOpaque(false);
 		txtAblock.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAblock);
 
-		txtAturnover = new JTextField();
+		txtAturnover = new MyDataTextField();
 		txtAturnover.setText("aTurnOver");
 		txtAturnover.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAturnover.setColumns(Y*10/768);
-		txtAturnover.setBounds(X*(585 + Integer
-				.parseInt(new java.text.DecimalFormat("0").format(playerInfo
-						.getTurnoverField())) * 3)/1366, Y*415/768, X*60/1366, Y*24/768);
+		txtAturnover.setColumns(Y * 10 / 768);
+		txtAturnover
+				.setBounds(
+						X
+								* (585 + Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(playerInfo
+												.getTurnoverField())) * 3)
+								/ 1366, Y * 415 / 768, X * 60 / 1366,
+						Y * 24 / 768);
 		txtAturnover.setText(String.valueOf(aveInfo.getTurnoverField()));
 		txtAturnover.setOpaque(false);
 		txtAturnover.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAturnover);
 
-		txtAfoul = new JTextField();
+		txtAfoul = new MyDataTextField();
 		txtAfoul.setText("aFoul");
 		txtAfoul.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAfoul.setColumns(Y*10/768);
-		txtAfoul.setBounds(X*(585 + Integer.parseInt(new java.text.DecimalFormat(
-				"0").format(playerInfo.getFoulField())) * 3)/1366, Y*449/768, X*60/1366, Y*24/768);
+		txtAfoul.setColumns(Y * 10 / 768);
+		txtAfoul.setBounds(
+				X
+						* (585 + Integer.parseInt(new java.text.DecimalFormat(
+								"0").format(playerInfo.getFoulField())) * 3)
+						/ 1366, Y * 449 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAfoul.setText(String.valueOf(aveInfo.getFoulField()));
 		txtAfoul.setOpaque(false);
 		txtAfoul.setBorder(BorderFactory.createEmptyBorder());
@@ -1495,6 +1641,25 @@ public class PlayerInfoPanel extends JPanel {
 			this.setOpaque(false);
 		}
 	}
+
+	class MyDataTextField extends JTextField {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyDataTextField() {
+			super();
+			this.setVisible(true);
+			this.setForeground(Color.WHITE);
+			this.setFont(new Font("黑体", 1, 12));
+			this.setBorder(BorderFactory.createEmptyBorder());
+			this.setColumns(X * 10 / 1366);
+			this.setEditable(false);
+			this.setHorizontalAlignment(SwingConstants.CENTER);
+			this.setOpaque(false);
+		}
+	}
 	class MyLabel extends JLabel {
 		/**
 		 * 
@@ -1516,7 +1681,7 @@ public class PlayerInfoPanel extends JPanel {
 			this.setFont(new Font("黑体", 1, 13));
 
 		}
-		
+
 		public MyLabel(String text) {
 			super();
 			this.setOpaque(false);
