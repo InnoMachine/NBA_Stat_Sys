@@ -324,8 +324,10 @@ public class TeamInfoPanel extends JPanel {
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		playersInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
-		playersInfoJSP.setBackground(Color.GRAY);
-		playersInfoJSP.setVisible(true);
+//		playersInfoJSP.setBackground(Color.GRAY);
+		playersInfoJSP.setOpaque(false);
+		playersInfoJSP.getViewport().setOpaque(false);
+		playersInfoJSP.setVisible(false);
 		bgLabel.add(playersInfoJSP);
 	}
 
@@ -416,8 +418,9 @@ public class TeamInfoPanel extends JPanel {
 		recentGameInfoTable.setOpaque(false);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		recentGameInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
-		recentGameInfoJSP.setBackground(Color.GRAY);
-		recentGameInfoJSP.setVisible(true);
+		recentGameInfoJSP.setOpaque(false);
+		recentGameInfoJSP.getViewport().setOpaque(false);
+		recentGameInfoJSP.setVisible(false);
 		bgLabel.add(recentGameInfoJSP);
 	}
 
@@ -510,8 +513,9 @@ public class TeamInfoPanel extends JPanel {
 		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
-		historicalGameInfoJSP.setVisible(true);
-		historicalGameInfoJSP.setBackground(Color.GRAY);
+		historicalGameInfoJSP.setOpaque(false);
+		historicalGameInfoJSP.getViewport().setOpaque(false);
+		historicalGameInfoJSP.setVisible(false);
 		bgLabel.add(historicalGameInfoJSP);
 	}
 	
@@ -540,7 +544,7 @@ public class TeamInfoPanel extends JPanel {
 	}
 
 	private void addBasicInfo() {
-		int tempX = X * 220 / 1366;
+		int tempX = X * 245 / 1366;
 		int tempY = Y / 9;
 		int spaceX = X / 12;
 		int spaceY = Y / 20;
@@ -548,80 +552,96 @@ public class TeamInfoPanel extends JPanel {
 		textField_1 = new MyTextField();
 		textField_1.setText("球队全名");
 		textField_1.setBounds(tempX, tempY, spaceX, spaceY);
+		textField_1.setBackground(Color.GRAY);
 		bgLabel.add(textField_1);
 
 		textField_2 = new MyTextField();
 		textField_2.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
+		textField_2.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_2);
 
 		textField_3 = new MyTextField();
 		textField_3.setText("缩写");
 		textField_3.setBounds(tempX + 2 * spaceX, tempY, spaceX, spaceY);
+		textField_3.setBackground(Color.GRAY);
 		bgLabel.add(textField_3);
 
 		textField_4 = new MyTextField();
 		textField_4.setBounds(tempX + 3 * spaceX, tempY, spaceX, spaceY);
+		textField_4.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_4);
 
 		textField_5 = new MyTextField();
 		textField_5.setText("所在地");
 		textField_5.setBounds(tempX + 4 * spaceX, tempY, spaceX, spaceY);
+		textField_5.setBackground(Color.GRAY);
 		bgLabel.add(textField_5);
 
 		textField_6 = new MyTextField();
 		textField_6.setBounds(tempX + 5 * spaceX, tempY, spaceX, spaceY);
+		textField_6.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_6);
 
 		textField_7 = new MyTextField();
 		textField_7.setText("赛区");
 		textField_7.setBounds(tempX + 6 * spaceX, tempY, spaceX, spaceY);
+		textField_7.setBackground(Color.GRAY);
 		bgLabel.add(textField_7);
 
 		textField_8 = new MyTextField();
 		textField_8.setBounds(tempX + 7 * spaceX, tempY, spaceX, spaceY);
+		textField_8.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_8);
 
 		textField_9 = new MyTextField();
 		textField_9.setText("分区");
 		textField_9.setBounds(tempX, tempY + spaceY, spaceX, spaceY);
+		textField_9.setBackground(Color.GRAY);
 		bgLabel.add(textField_9);
 
 		textField_10 = new MyTextField();
 		textField_10.setBounds(tempX + 1 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_10.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_10);
 
 		textField_11 = new MyTextField();
 		textField_11.setText("主场");
 		textField_11.setBounds(tempX + 2 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_11.setBackground(Color.GRAY);
 		bgLabel.add(textField_11);
 
 		textField_12 = new MyTextField();
 		textField_12.setBounds(tempX + 3 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_12.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_12);
 
 		textField_13 = new MyTextField();
 		textField_13.setText("建立时间");
 		textField_13.setBounds(tempX + 4 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_13.setBackground(Color.GRAY);
 		bgLabel.add(textField_13);
 
 		textField_14 = new MyTextField();
 		textField_14.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_14.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_14);
 
 		textField_15 = new MyTextField();
 		textField_15.setText("比赛场数");
 		textField_15.setBounds(tempX + 6 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_15.setBackground(Color.GRAY);
 		bgLabel.add(textField_15);
 
 		textField_16 = new MyTextField();
 		textField_16.setBounds(tempX + 7 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
+		textField_16.setBackground(Color.DARK_GRAY);
 		bgLabel.add(textField_16);
 
 	}
@@ -686,7 +706,7 @@ public class TeamInfoPanel extends JPanel {
 			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
-			this.setOpaque(false);
+	//		this.setOpaque(false);
 		}
 	}
 	

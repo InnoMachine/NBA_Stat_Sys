@@ -168,182 +168,182 @@ public class SearchPanel extends JPanel {
 		AButton.setBounds(X * 215 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		AButton.addActionListener(e -> searchPlayer(keytF.getText(), "A"));
-		AButton.setOpaque(false);
+		AButton.setBackground(Color.GRAY);
 		AButton.setVisible(true);
 		bgLabel.add(AButton);
 		JButton BButton = new MyButton("B");
 		BButton.setBounds(X * 248 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		BButton.addActionListener(e -> searchPlayer(keytF.getText(), "B"));
-		BButton.setOpaque(false);
+		BButton.setBackground(Color.GRAY);
 		BButton.setVisible(true);
 		bgLabel.add(BButton);
 		JButton CButton = new MyButton("C");
 		CButton.setBounds(X * 281 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		CButton.addActionListener(e -> searchPlayer(keytF.getText(), "C"));
-		CButton.setOpaque(false);
+		CButton.setBackground(Color.GRAY);
 		CButton.setVisible(true);
 		bgLabel.add(CButton);
 		JButton DButton = new MyButton("D");
 		DButton.setBounds(X * 314 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		DButton.addActionListener(e -> searchPlayer(keytF.getText(), "D"));
-		DButton.setOpaque(false);
+		DButton.setBackground(Color.GRAY);
 		DButton.setVisible(true);
 		bgLabel.add(DButton);
 		JButton EButton = new MyButton("E");
 		EButton.setBounds(X * 347 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		EButton.addActionListener(e -> searchPlayer(keytF.getText(), "E"));
-		EButton.setOpaque(false);
+		EButton.setBackground(Color.GRAY);
 		EButton.setVisible(true);
 		bgLabel.add(EButton);
 		JButton FButton = new MyButton("F");
 		FButton.setBounds(X * 380 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		FButton.addActionListener(e -> searchPlayer(keytF.getText(), "F"));
-		FButton.setOpaque(false);
+		FButton.setBackground(Color.GRAY);
 		FButton.setVisible(true);
 		bgLabel.add(FButton);
 		JButton GButton = new MyButton("G");
 		GButton.setBounds(X * 413 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		GButton.addActionListener(e -> searchPlayer(keytF.getText(), "G"));
-		GButton.setOpaque(false);
+		GButton.setBackground(Color.GRAY);
 		GButton.setVisible(true);
 		bgLabel.add(GButton);
 		JButton HButton = new MyButton("H");
 		HButton.setBounds(X * 446 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		HButton.addActionListener(e -> searchPlayer(keytF.getText(), "H"));
-		HButton.setOpaque(false);
+		HButton.setBackground(Color.GRAY);
 		HButton.setVisible(true);
 		bgLabel.add(HButton);
 		JButton IButton = new MyButton("I");
 		IButton.setBounds(X * 479 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		IButton.addActionListener(e -> searchPlayer(keytF.getText(), "I"));
-		IButton.setOpaque(false);
+		IButton.setBackground(Color.GRAY);
 		IButton.setVisible(true);
 		bgLabel.add(IButton);
 		JButton JButton = new MyButton("G");
 		JButton.setBounds(X * 512 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		JButton.addActionListener(e -> searchPlayer(keytF.getText(), "J"));
-		JButton.setOpaque(false);
+		JButton.setBackground(Color.GRAY);
 		JButton.setVisible(true);
 		bgLabel.add(JButton);
 		JButton KButton = new MyButton("K");
 		KButton.setBounds(X * 545 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		KButton.addActionListener(e -> searchPlayer(keytF.getText(), "K"));
-		KButton.setOpaque(false);
+		KButton.setBackground(Color.GRAY);
 		KButton.setVisible(true);
 		bgLabel.add(KButton);
 		JButton LButton = new MyButton("L");
 		LButton.setBounds(X * 578 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		LButton.addActionListener(e -> searchPlayer(keytF.getText(), "L"));
-		LButton.setOpaque(false);
+		LButton.setBackground(Color.GRAY);
 		LButton.setVisible(true);
 		bgLabel.add(LButton);
 		JButton MButton = new MyButton("M");
 		MButton.setBounds(X * 611 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		MButton.addActionListener(e -> searchPlayer(keytF.getText(), "M"));
-		MButton.setOpaque(false);
+		MButton.setBackground(Color.GRAY);
 		MButton.setVisible(true);
 		bgLabel.add(MButton);
 		JButton NButton = new MyButton("N");
 		NButton.setBounds(X * 644 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		NButton.addActionListener(e -> searchPlayer(keytF.getText(), "N"));
-		NButton.setOpaque(false);
+		NButton.setBackground(Color.GRAY);
 		NButton.setVisible(true);
 		bgLabel.add(NButton);
 		JButton OButton = new MyButton("O");
 		OButton.setBounds(X * 677 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		OButton.addActionListener(e -> searchPlayer(keytF.getText(), "O"));
-		OButton.setOpaque(false);
+		OButton.setBackground(Color.GRAY);
 		OButton.setVisible(true);
 		bgLabel.add(OButton);
 		JButton PButton = new MyButton("P");
 		PButton.setBounds(X * 710 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		PButton.addActionListener(e -> searchPlayer(keytF.getText(), "P"));
-		PButton.setOpaque(false);
+		PButton.setBackground(Color.GRAY);
 		PButton.setVisible(true);
 		bgLabel.add(PButton);
 		JButton QButton = new MyButton("Q");
 		QButton.setBounds(X * 743 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		QButton.addActionListener(e -> searchPlayer(keytF.getText(), "Q"));
-		QButton.setOpaque(false);
+		QButton.setBackground(Color.GRAY);
 		QButton.setVisible(true);
 		bgLabel.add(QButton);
 		JButton RButton = new MyButton("R");
 		RButton.setBounds(X * 776 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		RButton.addActionListener(e -> searchPlayer(keytF.getText(), "R"));
-		RButton.setOpaque(false);
+		RButton.setBackground(Color.GRAY);
 		RButton.setVisible(true);
 		bgLabel.add(RButton);
 		JButton SButton = new MyButton("S");
 		SButton.setBounds(X * 809 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		SButton.addActionListener(e -> searchPlayer(keytF.getText(), "S"));
-		SButton.setOpaque(false);
+		SButton.setBackground(Color.GRAY);
 		SButton.setVisible(true);
 		bgLabel.add(SButton);
 		JButton TButton = new MyButton("T");
 		TButton.setBounds(X * 842 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		TButton.addActionListener(e -> searchPlayer(keytF.getText(), "T"));
-		TButton.setOpaque(false);
+		TButton.setBackground(Color.GRAY);
 		TButton.setVisible(true);
 		bgLabel.add(TButton);
 		JButton UButton = new MyButton("U");
 		UButton.setBounds(X * 875 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		UButton.addActionListener(e -> searchPlayer(keytF.getText(), "U"));
-		UButton.setOpaque(false);
+		UButton.setBackground(Color.GRAY);
 		UButton.setVisible(true);
 		bgLabel.add(UButton);
 		JButton VButton = new MyButton("V");
 		VButton.setBounds(X * 908 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		VButton.addActionListener(e -> searchPlayer(keytF.getText(), "V"));
-		VButton.setOpaque(false);
+		VButton.setBackground(Color.GRAY);
 		VButton.setVisible(true);
 		bgLabel.add(VButton);
 		JButton WButton = new MyButton("W");
 		WButton.setBounds(X * 941 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		WButton.addActionListener(e -> searchPlayer(keytF.getText(), "W"));
-		WButton.setOpaque(false);
+		WButton.setBackground(Color.GRAY);
 		WButton.setVisible(true);
 		bgLabel.add(WButton);
 		JButton XButton = new MyButton("X");
 		XButton.setBounds(X * 974 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		XButton.addActionListener(e -> searchPlayer(keytF.getText(), "X"));
-		XButton.setOpaque(false);
+		XButton.setBackground(Color.GRAY);
 		XButton.setVisible(true);
 		bgLabel.add(XButton);
 		JButton YButton = new MyButton("Y");
 		YButton.setBounds(X * 1007 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		YButton.addActionListener(e -> searchPlayer(keytF.getText(), "Y"));
-		YButton.setOpaque(false);
+		YButton.setBackground(Color.GRAY);
 		YButton.setVisible(true);
 		bgLabel.add(YButton);
 		JButton ZButton = new MyButton("Z");
 		ZButton.setBounds(X * 1040 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		ZButton.addActionListener(e -> searchPlayer(keytF.getText(), "Z"));
-		ZButton.setOpaque(false);
+		ZButton.setBackground(Color.GRAY);
 		ZButton.setVisible(true);
 		bgLabel.add(ZButton);
 		JButton AllButton = new MyButton("All");
@@ -351,6 +351,7 @@ public class SearchPanel extends JPanel {
 				Y * 33 / 768);
 		AllButton.addActionListener(e -> searchPlayer(keytF.getText(), "All"));
 		AllButton.setOpaque(false);
+		AllButton.setBackground(Color.GRAY);
 		AllButton.setVisible(true);
 		bgLabel.add(AllButton);
 

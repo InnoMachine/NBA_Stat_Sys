@@ -269,11 +269,11 @@ public class GameInfoPanel extends JPanel {
 		guestTeambtn = new JButton();
 		guestTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
 
-		guestTeambtn.setBounds(X * 250 / 1366, Y * 60 / 768, X * 150 / 1366,
-				Y * 150 / 768);
+		guestTeambtn.setBounds(X * 230 / 1366, Y * 55 / 768, X * 160 / 1366,
+				Y * 160 / 768);
 		ImageIcon teamImg1 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
 				+ gameVo.getGuestTeam() + ".png").getImage().getScaledInstance(
-				X * 150 / 1366, Y * 150 / 768, Image.SCALE_AREA_AVERAGING));
+				X * 160 / 1366, Y * 160 / 768, Image.SCALE_AREA_AVERAGING));
 		guestTeambtn.setIcon(teamImg1);
 		guestTeambtn.setContentAreaFilled(false);
 		guestTeambtn.setBorderPainted(false);
@@ -288,11 +288,11 @@ public class GameInfoPanel extends JPanel {
 		hostTeambtn = new JButton();
 		hostTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
 		hostTeambtn.setText(gameVo.getHomeTeam());
-		hostTeambtn.setBounds(X * 950 / 1366, Y * 60 / 768, X * 150 / 1366,
-				Y * 150 / 768);
+		hostTeambtn.setBounds(X * 970 / 1366, Y * 55 / 768, X * 160 / 1366,
+				Y * 160 / 768);
 		ImageIcon teamImg2 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
 				+ gameVo.getHomeTeam() + ".png").getImage().getScaledInstance(
-				X * 150 / 1366, Y * 150 / 768, Image.SCALE_AREA_AVERAGING));
+				X * 160 / 1366, Y * 160 / 768, Image.SCALE_AREA_AVERAGING));
 		hostTeambtn.setIcon(teamImg2);
 		hostTeambtn.setContentAreaFilled(false);
 		hostTeambtn.setBorderPainted(false);
@@ -335,6 +335,8 @@ public class GameInfoPanel extends JPanel {
 		textField.setText("球队");
 		textField.setBounds(X * 596 / 1366, Y * 60 / 768, X * 55 / 1366,
 				Y * 20 / 768);
+		textField.setBackground(Color.GRAY);
+		textField.setOpaque(true);
 		bgLabel.add(textField);
 		textField.setColumns(X * 10 / 1366);
 
@@ -343,6 +345,8 @@ public class GameInfoPanel extends JPanel {
 		textField_1.setText("1");
 		textField_1.setBounds(X * 651 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
+		textField_1.setBackground(Color.GRAY);
+		textField_1.setOpaque(true);
 		bgLabel.add(textField_1);
 		textField_1.setColumns(X * 10 / 1366);
 
@@ -352,6 +356,8 @@ public class GameInfoPanel extends JPanel {
 		textField_2.setColumns(X * 10 / 1366);
 		textField_2.setBounds(X * 672 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
+		textField_2.setBackground(Color.GRAY);
+		textField_2.setOpaque(true);
 		bgLabel.add(textField_2);
 
 		textField_3 = new MyTextField();
@@ -360,6 +366,8 @@ public class GameInfoPanel extends JPanel {
 		textField_3.setColumns(X * 10 / 1366);
 		textField_3.setBounds(X * 693 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
+		textField_3.setBackground(Color.GRAY);
+		textField_3.setOpaque(true);
 		bgLabel.add(textField_3);
 
 		textField_4 = new MyTextField();
@@ -368,6 +376,8 @@ public class GameInfoPanel extends JPanel {
 		textField_4.setColumns(X * 10 / 1366);
 		textField_4.setBounds(X * 714 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
+		textField_4.setBackground(Color.GRAY);
+		textField_4.setOpaque(true);
 		bgLabel.add(textField_4);
 
 		textField_5 = new MyTextField();
@@ -376,6 +386,8 @@ public class GameInfoPanel extends JPanel {
 		textField_5.setColumns(X * 10 / 1366);
 		textField_5.setBounds(X * 735 / 1366, Y * 60 / 768, X * 35 / 1366,
 				Y * 20 / 768);
+		textField_5.setBackground(Color.GRAY);
+		textField_5.setOpaque(true);
 		bgLabel.add(textField_5);
 
 		guestTeamtF = new MyTextField();
@@ -384,11 +396,18 @@ public class GameInfoPanel extends JPanel {
 		guestTeamtF.setColumns(X * 10 / 1366);
 		guestTeamtF.setBounds(X * 596 / 1366, Y * 80 / 768, X * 55 / 1366,
 				Y * 20 / 768);
+		guestTeamtF.setBackground(Color.GRAY);
+		guestTeamtF.setOpaque(true);
 		bgLabel.add(guestTeamtF);
 
 		guestTeam1 = new MyTextField();
 		guestTeam1
 				.setText(String.valueOf(gameVo.getScore1st().getGuestScore()));
+		if (gameVo.getScore1st().getGuestScore() >= gameVo.getScore1st()
+				.getHomeScore()) {
+			guestTeam1.setBackground(Color.LIGHT_GRAY);
+			guestTeam1.setOpaque(true);
+		}
 		guestTeam1.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam1.setColumns(X * 10 / 1366);
 		guestTeam1.setBounds(X * 651 / 1366, Y * 80 / 768, X * 21 / 1366,
@@ -398,6 +417,11 @@ public class GameInfoPanel extends JPanel {
 		guestTeam2 = new MyTextField();
 		guestTeam2
 				.setText(String.valueOf(gameVo.getScore2nd().getGuestScore()));
+		if (gameVo.getScore2nd().getGuestScore() >= gameVo.getScore2nd()
+				.getHomeScore()) {
+			guestTeam2.setBackground(Color.LIGHT_GRAY);
+			guestTeam2.setOpaque(true);
+		}
 		guestTeam2.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam2.setColumns(X * 10 / 1366);
 		guestTeam2.setBounds(X * 672 / 1366, Y * 80 / 768, X * 21 / 1366,
@@ -407,6 +431,11 @@ public class GameInfoPanel extends JPanel {
 		guestTeam3 = new MyTextField();
 		guestTeam3
 				.setText(String.valueOf(gameVo.getScore3rd().getGuestScore()));
+		if (gameVo.getScore3rd().getGuestScore() >= gameVo.getScore3rd()
+				.getHomeScore()) {
+			guestTeam3.setBackground(Color.LIGHT_GRAY);
+			guestTeam3.setOpaque(true);
+		}
 		guestTeam3.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam3.setColumns(X * 10 / 1366);
 		guestTeam3.setBounds(X * 693 / 1366, Y * 80 / 768, X * 21 / 1366,
@@ -416,6 +445,11 @@ public class GameInfoPanel extends JPanel {
 		guestTeam4 = new MyTextField();
 		guestTeam4
 				.setText(String.valueOf(gameVo.getScore4th().getGuestScore()));
+		if (gameVo.getScore4th().getGuestScore() >= gameVo.getScore4th()
+				.getHomeScore()) {
+			guestTeam4.setBackground(Color.LIGHT_GRAY);
+			guestTeam4.setOpaque(true);
+		}
 		guestTeam4.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam4.setColumns(X * 10 / 1366);
 		guestTeam4.setBounds(X * 714 / 1366, Y * 80 / 768, X * 21 / 1366,
@@ -425,6 +459,11 @@ public class GameInfoPanel extends JPanel {
 		guestScoreSum = new MyTextField();
 		guestScoreSum.setText(String.valueOf(gameVo.getScoreOverall()
 				.getGuestScore()));
+		if (gameVo.getScoreOverall().getGuestScore() >=gameVo.getScoreOverall()
+				.getHomeScore()) {
+			guestScoreSum.setBackground(Color.LIGHT_GRAY);
+			guestScoreSum.setOpaque(true);
+		}
 		guestScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
 		guestScoreSum.setColumns(X * 10 / 1366);
 		guestScoreSum.setBounds(X * 735 / 1366, Y * 80 / 768, X * 35 / 1366,
@@ -437,10 +476,17 @@ public class GameInfoPanel extends JPanel {
 		hostTeamtF.setColumns(X * 10 / 1366);
 		hostTeamtF.setBounds(X * 596 / 1366, Y * 100 / 768, X * 55 / 1366,
 				Y * 20 / 768);
+		hostTeamtF.setBackground(Color.GRAY);
+		hostTeamtF.setOpaque(true);
 		bgLabel.add(hostTeamtF);
 
 		hostScore1 = new MyTextField();
 		hostScore1.setText(String.valueOf(gameVo.getScore1st().getHomeScore()));
+		if (gameVo.getScore1st().getGuestScore() < gameVo.getScore1st()
+				.getHomeScore()) {
+		hostScore1.setBackground(Color.LIGHT_GRAY);
+		hostScore1.setOpaque(true);
+		}
 		hostScore1.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore1.setColumns(X * 10 / 1366);
 		hostScore1.setBounds(X * 651 / 1366, Y * 100 / 768, X * 21 / 1366,
@@ -449,6 +495,11 @@ public class GameInfoPanel extends JPanel {
 
 		hostScore2 = new MyTextField();
 		hostScore2.setText(String.valueOf(gameVo.getScore2nd().getHomeScore()));
+		if (gameVo.getScore2nd().getGuestScore() < gameVo.getScore2nd()
+				.getHomeScore()) {
+		hostScore2.setBackground(Color.LIGHT_GRAY);
+		hostScore2.setOpaque(true);
+		}
 		hostScore2.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore2.setColumns(X * 10 / 1366);
 		hostScore2.setBounds(X * 672 / 1366, Y * 100 / 768, X * 21 / 1366,
@@ -457,6 +508,11 @@ public class GameInfoPanel extends JPanel {
 
 		hostScore3 = new MyTextField();
 		hostScore3.setText(String.valueOf(gameVo.getScore3rd().getHomeScore()));
+		if (gameVo.getScore3rd().getGuestScore() < gameVo.getScore3rd()
+				.getHomeScore()) {
+		hostScore3.setBackground(Color.LIGHT_GRAY);
+		hostScore3.setOpaque(true);
+		}
 		hostScore3.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore3.setColumns(X * 10 / 1366);
 		hostScore3.setBounds(X * 693 / 1366, Y * 100 / 768, X * 21 / 1366,
@@ -465,6 +521,11 @@ public class GameInfoPanel extends JPanel {
 
 		hostScore4 = new MyTextField();
 		hostScore4.setText(String.valueOf(gameVo.getScore4th().getHomeScore()));
+		if (gameVo.getScore4th().getGuestScore() < gameVo.getScore4th()
+				.getHomeScore()) {
+		hostScore4.setBackground(Color.LIGHT_GRAY);
+		hostScore4.setOpaque(true);
+		}
 		hostScore4.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore4.setColumns(X * 10 / 1366);
 		hostScore4.setBounds(X * 714 / 1366, Y * 100 / 768, X * 21 / 1366,
@@ -474,6 +535,11 @@ public class GameInfoPanel extends JPanel {
 		hostScoreSum = new MyTextField();
 		hostScoreSum.setText(String.valueOf(gameVo.getScoreOverall()
 				.getHomeScore()));
+		if (gameVo.getScoreOverall().getGuestScore() < gameVo.getScoreOverall()
+				.getHomeScore()) {
+		hostScoreSum.setBackground(Color.LIGHT_GRAY);
+		hostScoreSum.setOpaque(true);
+		}
 		hostScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScoreSum.setColumns(X * 10 / 1366);
 		hostScoreSum.setBounds(X * 735 / 1366, Y * 100 / 768, X * 35 / 1366,
@@ -1606,42 +1672,47 @@ public class GameInfoPanel extends JPanel {
 		}
 
 		guestTable = new JTable(guestRowData, guestColumn);
-		JTableHeader header =guestTable.getTableHeader();		
-        header.setDefaultRenderer(new DefaultTableCellRenderer(){
-        
-        	
-             public Component getTableCellRendererComponent(JTable table, Object value,
-                     boolean isSelected, boolean hasFocus, int row, int column) {
-                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                     cell.setBackground(Color.DARK_GRAY);
-                 return cell;
-             }
-          
-        });
-        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
-        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        MyTableRenderer r2 = new MyTableRenderer();
+		JTableHeader header = guestTable.getTableHeader();
+		header.setDefaultRenderer(new DefaultTableCellRenderer() {
+
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				Component cell = super.getTableCellRendererComponent(table,
+						value, isSelected, hasFocus, row, column);
+				cell.setBackground(Color.DARK_GRAY);
+				return cell;
+			}
+
+		});
+		((DefaultTableCellRenderer) header.getDefaultRenderer())
+				.setPreferredSize(new Dimension(550, 50));
+		((DefaultTableCellRenderer) header.getDefaultRenderer())
+				.setHorizontalAlignment(JLabel.CENTER);
+		MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		guestTable.setDefaultRenderer(Object.class, r2);
-		
-		guestTable.setForeground(Color.WHITE);
-       /* 
-		DefaultTableCellRenderer guestTableHeaderRenderer = new DefaultTableCellRenderer();
-		guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
-		guestTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTableHeaderRenderer.setOpaque(false);
-		guestTable.getTableHeader()
-				.setDefaultRenderer(guestTableHeaderRenderer);
 
 		guestTable.setForeground(Color.WHITE);
-		*/
-		
+		/*
+		 * DefaultTableCellRenderer guestTableHeaderRenderer = new
+		 * DefaultTableCellRenderer();
+		 * guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
+		 * guestTableHeaderRenderer
+		 * .setHorizontalAlignment(SwingConstants.CENTER);
+		 * guestTableHeaderRenderer.setOpaque(false);
+		 * guestTable.getTableHeader()
+		 * .setDefaultRenderer(guestTableHeaderRenderer);
+		 * 
+		 * guestTable.setForeground(Color.WHITE);
+		 */
+
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
 		guestTable.setRowHeight(70);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
-		
+
 		guestTable.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerRenderer("guest"));
 		guestTable.setOpaque(false);
@@ -1696,21 +1767,24 @@ public class GameInfoPanel extends JPanel {
 		}
 
 		hostTable = new JTable(hostRowData, hostColumn);
-		JTableHeader header1 =hostTable.getTableHeader();		
-        header1.setDefaultRenderer(new DefaultTableCellRenderer(){
-        
-        	
-             public Component getTableCellRendererComponent(JTable table, Object value,
-                     boolean isSelected, boolean hasFocus, int row, int column) {
-                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                     cell.setBackground(Color.DARK_GRAY);
-                 return cell;
-             }
-          
-        });
-        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
-        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        MyTableRenderer r3 = new MyTableRenderer();
+		JTableHeader header1 = hostTable.getTableHeader();
+		header1.setDefaultRenderer(new DefaultTableCellRenderer() {
+
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				Component cell = super.getTableCellRendererComponent(table,
+						value, isSelected, hasFocus, row, column);
+				cell.setBackground(Color.DARK_GRAY);
+				return cell;
+			}
+
+		});
+		((DefaultTableCellRenderer) header1.getDefaultRenderer())
+				.setPreferredSize(new Dimension(550, 50));
+		((DefaultTableCellRenderer) header1.getDefaultRenderer())
+				.setHorizontalAlignment(JLabel.CENTER);
+		MyTableRenderer r3 = new MyTableRenderer();
 		r3.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.setDefaultRenderer(Object.class, r3);
 		;
@@ -1853,36 +1927,41 @@ public class GameInfoPanel extends JPanel {
 		}
 
 		guestTable = new JTable(guestRowData, guestColumn);
-		JTableHeader header =guestTable.getTableHeader();		
-        header.setDefaultRenderer(new DefaultTableCellRenderer(){
-        
-        	
-             public Component getTableCellRendererComponent(JTable table, Object value,
-                     boolean isSelected, boolean hasFocus, int row, int column) {
-                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                     cell.setBackground(Color.DARK_GRAY);
-                 return cell;
-             }
-          
-        });
-        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
-        ((DefaultTableCellRenderer)header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        MyTableRenderer r2 = new MyTableRenderer();
+		JTableHeader header = guestTable.getTableHeader();
+		header.setDefaultRenderer(new DefaultTableCellRenderer() {
+
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				Component cell = super.getTableCellRendererComponent(table,
+						value, isSelected, hasFocus, row, column);
+				cell.setBackground(Color.DARK_GRAY);
+				return cell;
+			}
+
+		});
+		((DefaultTableCellRenderer) header.getDefaultRenderer())
+				.setPreferredSize(new Dimension(550, 50));
+		((DefaultTableCellRenderer) header.getDefaultRenderer())
+				.setHorizontalAlignment(JLabel.CENTER);
+		MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		guestTable.setDefaultRenderer(Object.class, r2);
-		
-		guestTable.setForeground(Color.WHITE);
-       /* 
-		DefaultTableCellRenderer guestTableHeaderRenderer = new DefaultTableCellRenderer();
-		guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
-		guestTableHeaderRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTableHeaderRenderer.setOpaque(false);
-		guestTable.getTableHeader()
-				.setDefaultRenderer(guestTableHeaderRenderer);
 
 		guestTable.setForeground(Color.WHITE);
-		*/
-		
+		/*
+		 * DefaultTableCellRenderer guestTableHeaderRenderer = new
+		 * DefaultTableCellRenderer();
+		 * guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
+		 * guestTableHeaderRenderer
+		 * .setHorizontalAlignment(SwingConstants.CENTER);
+		 * guestTableHeaderRenderer.setOpaque(false);
+		 * guestTable.getTableHeader()
+		 * .setDefaultRenderer(guestTableHeaderRenderer);
+		 * 
+		 * guestTable.setForeground(Color.WHITE);
+		 */
+
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
 		guestTable.setRowHeight(70);
@@ -2017,21 +2096,24 @@ public class GameInfoPanel extends JPanel {
 		}
 
 		hostTable = new JTable(hostRowData, hostColumn);
-		JTableHeader header1 =hostTable.getTableHeader();		
-        header1.setDefaultRenderer(new DefaultTableCellRenderer(){
-        
-        	
-             public Component getTableCellRendererComponent(JTable table, Object value,
-                     boolean isSelected, boolean hasFocus, int row, int column) {
-                 Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                     cell.setBackground(Color.DARK_GRAY);
-                 return cell;
-             }
-          
-        });
-        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setPreferredSize(new Dimension(550, 50));
-        ((DefaultTableCellRenderer)header1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-        MyTableRenderer r3 = new MyTableRenderer();
+		JTableHeader header1 = hostTable.getTableHeader();
+		header1.setDefaultRenderer(new DefaultTableCellRenderer() {
+
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				Component cell = super.getTableCellRendererComponent(table,
+						value, isSelected, hasFocus, row, column);
+				cell.setBackground(Color.DARK_GRAY);
+				return cell;
+			}
+
+		});
+		((DefaultTableCellRenderer) header1.getDefaultRenderer())
+				.setPreferredSize(new Dimension(550, 50));
+		((DefaultTableCellRenderer) header1.getDefaultRenderer())
+				.setHorizontalAlignment(JLabel.CENTER);
+		MyTableRenderer r3 = new MyTableRenderer();
 		r3.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.setDefaultRenderer(Object.class, r3);
 		;
@@ -2226,7 +2308,7 @@ public class GameInfoPanel extends JPanel {
 			return this;
 		}
 	}
-	
+
 	class MyButton extends JButton {
 		/**
 		 * 
