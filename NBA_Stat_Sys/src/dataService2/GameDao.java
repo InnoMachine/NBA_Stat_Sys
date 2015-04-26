@@ -5,6 +5,24 @@
  */
 package dataService2;
 
-public interface GameDao {
+import java.util.ArrayList;
 
+import po.GamePO;
+
+public interface GameDao {
+	
+	public void add(GamePO game);
+	
+	public void update(GamePO game);
+	
+	public void deleteGameByLabel(String label);
+	
+	public GamePO getGameByLabel(String label);
+	
+	public ArrayList<GamePO> getAllGames();
+	
+	public ArrayList<GamePO> getNewGamePOs();
+	
+	public void add(ArrayList<GamePO> gameList);
+	
 }
