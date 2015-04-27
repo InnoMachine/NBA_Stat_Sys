@@ -96,7 +96,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 		JLabel  secondPart=new JLabel();
 		secondPart.setBounds(X * 483 / 1366, Y * 17 / 768, X * 484 / 1366,
 				Y * 46 / 768);
-		secondPart.setBackground(Color.LIGHT_GRAY);
+		secondPart.setBackground(Color.GRAY);
 		secondPart.setOpaque(true);
 		add(secondPart);
 		
@@ -175,7 +175,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 		JLabel  fourthPart=new JLabel();
 	    fourthPart.setBounds(X * 483 / 1366, Y * 129 / 768, X * 484 / 1366,
 				Y * 46 / 768);
-		fourthPart.setBackground(Color.LIGHT_GRAY);
+		fourthPart.setBackground(Color.GRAY);
 		fourthPart.setOpaque(true);
 		add(fourthPart);
 		
