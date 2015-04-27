@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import org.apache.tools.ant.taskdefs.Sleep;
+
 public class StartPanel extends JPanel {
 
 	/**

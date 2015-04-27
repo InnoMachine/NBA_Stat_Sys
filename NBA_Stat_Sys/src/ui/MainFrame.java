@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
 		this.setBounds(bounds);
         startPanel=new StartPanel(this);
         this.getContentPane().add(startPanel);
- 
+// this.getContentPane()
         
 	}
 	

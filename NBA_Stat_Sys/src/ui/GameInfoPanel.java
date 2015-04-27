@@ -1861,16 +1861,17 @@ public class GameInfoPanel extends JPanel {
 		 * 
 		 * guestTable.setForeground(Color.WHITE);
 		 */
-
+//guestTable.setShowVerticalLines(false);
+	guestTable.setIntercellSpacing(new Dimension(0, 0));
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
 		guestTable.setRowHeight(70);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
-
+		guestTable.setOpaque(false);
 		guestTable.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerRenderer("guest"));
-		guestTable.setOpaque(false);
+		
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -1880,8 +1881,9 @@ public class GameInfoPanel extends JPanel {
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		guestScrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		guestScrollPane.getViewport().setOpaque(false);
 		guestScrollPane.setOpaque(false);
-
+		
 		datalbl.add(guestScrollPane);
 
 		ArrayList<PlayerPerformanceInSingleGame> hostPlayerVos = new ArrayList<PlayerPerformanceInSingleGame>();
@@ -1942,10 +1944,11 @@ public class GameInfoPanel extends JPanel {
 		MyTableRenderer r3 = new MyTableRenderer();
 		r3.setHorizontalAlignment(JLabel.CENTER);
 		hostTable.setDefaultRenderer(Object.class, r3);
-		;
+		
 
 		hostTable.setForeground(Color.WHITE);
-		hostTable.getTableHeader().setBackground(Color.BLACK);
+//		hostTable.getTableHeader().setBackground(Color.BLACK);
+		hostTable.setIntercellSpacing(new Dimension(0,0));
 		hostTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		hostTable.getColumnModel().getColumn(1).setPreferredWidth(120);
 		hostTable.setRowHeight(70);

@@ -54,6 +54,7 @@ public class PlayerPanel extends JPanel {
 	JFrame mainFrame;
 
 	Player_BS player_BS = new Player_BL_Stub();
+
 	static int X;
 	static int Y;
 	JLabel bgLabel;
@@ -571,6 +572,16 @@ public class PlayerPanel extends JPanel {
 		// playerCriteriaPanel.setVisible(false);
 	}
 
+	
+	public void refresh(JPanel panel){
+		player_BS=new Player_BL_Stub();
+		
+		panel.setVisible(false);
+  	    panel=new PlayerPanel(mainFrame);
+	}
+	
+	
+	
 	class MyTextField extends JTextField {
 		/**
 			 * 
