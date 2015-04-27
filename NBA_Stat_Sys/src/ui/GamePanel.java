@@ -43,7 +43,10 @@ public class GamePanel extends JPanel {
 	static int X;
 	static int Y;
 
-	JLabel bgLabel;
+	JLabel bgLabel; 
+	
+	private JButton leftButton;
+	private JButton rightButton;
 
 	public GamePanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -110,18 +113,6 @@ public class GamePanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-
-		JButton fresh = new JButton();
-		ImageIcon freshIcon = new ImageIcon(new ImageIcon("Image/freshIcon.png")
-				.getImage().getScaledInstance(X / 30, X / 30,
-						Image.SCALE_SMOOTH));
-		fresh.setBounds( X*1070/ 1366, Y * 66/ 768, X / 30, X / 30);
-		fresh.setIcon(freshIcon);
-		fresh.setOpaque(false);
-		fresh.setContentAreaFilled(false);
-		fresh.setBorderPainted(false);
-		fresh.addActionListener(e -> fresh());
-		bgLabel.add(fresh);
 		
 		
 		mainFrame.getContentPane().add(this);
@@ -177,6 +168,34 @@ public class GamePanel extends JPanel {
 		searchbtn.setForeground(Color.WHITE);
 		bgLabel.add(searchbtn);
 
+		leftButton=new JButton();
+		leftButton.setBounds(50, 500,100,100);
+		ImageIcon leftButtonIcon=new ImageIcon(new ImageIcon(
+				"Image/leftButtonIcon.png").getImage().getScaledInstance(100,
+						100, Image.SCALE_SMOOTH));
+		leftButton.setIcon(leftButtonIcon);
+		leftButton.setBorderPainted(false);
+		leftButton.setOpaque(false);
+		leftButton.setContentAreaFilled(false);
+		leftButton.addActionListener(e->{
+			
+		});
+		bgLabel.add(leftButton);
+		
+		rightButton=new JButton();
+		rightButton.setBounds(1200, 500, 100,100);
+		ImageIcon rightButtonIcon=new ImageIcon(new ImageIcon(
+				"Image/rightButtonIcon.png").getImage().getScaledInstance(100,
+						100, Image.SCALE_SMOOTH));
+		rightButton.setIcon(rightButtonIcon);
+		rightButton.setBorderPainted(false);
+		rightButton.setOpaque(false);
+		rightButton.setContentAreaFilled(false);
+		rightButton.addActionListener(e->{
+			
+		});
+		bgLabel.add(rightButton);
+		
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
 		for(int i=0;i<10;i++){
 		gameVos.add(game_BS.getAllGames().get(i));
@@ -304,11 +323,6 @@ public class GamePanel extends JPanel {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
-
-	}
-	public void fresh(){
-	
-		
 
 	}
 	

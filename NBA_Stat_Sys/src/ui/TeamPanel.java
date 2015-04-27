@@ -115,7 +115,7 @@ public class TeamPanel extends JPanel{
 				X * 160/ 1366, Y * 50 / 768, Image.SCALE_SMOOTH));
 		sortTeambtn.setHorizontalTextPosition(SwingConstants.CENTER);
 		sortTeambtn.setForeground(Color.WHITE);
-		sortTeambtn.setFont(new Font("微软雅黑",1,20));
+		sortTeambtn.setFont(new Font("微软雅黑",1,15));
 		sortTeambtn.setIcon(buttonIcon);
 		sortTeambtn.setOpaque(false);
 		sortTeambtn.setContentAreaFilled(false);
