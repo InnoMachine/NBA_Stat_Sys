@@ -1,14 +1,21 @@
 package ui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Shape;
+import java.awt.Stroke;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -41,6 +48,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
+
+import jxl.format.Border;
 
 public class GameInfoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -141,10 +150,7 @@ public class GameInfoPanel extends JPanel {
 	private JLabel datalbl;
 	private JLabel guestTeamDatalbl;
 	private JLabel hostTeamDatalbl;
-	private String[] guestCriterias;
-	private String[] hostCriterias;
-	JComboBox<String> guestCriteriajcb;
-	JComboBox<String> hostCriteriajcb;
+	private String[] compareCriterias;
 
 	Vector<Vector<String>> guestRowData;
 	Vector<String> guestColumn;
@@ -165,6 +171,11 @@ public class GameInfoPanel extends JPanel {
 	PlayerBasicInfoPanel playerH4Panel;
 	PlayerBasicInfoPanel playerH5Panel;
 
+	private ChooseButton basicButton;
+	private ChooseButton shootingButton;
+	private ChooseButton reboundsButton;
+	private ChooseButton XfactorButton;
+	
 	public GameInfoPanel(GameVo gameVo, JFrame mainFrame, JPanel previousPanel) {
 		previousPanel.setVisible(false);
 		this.mainFrame = mainFrame;
@@ -252,18 +263,6 @@ public class GameInfoPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-		JButton fresh = new JButton();
-		ImageIcon freshIcon = new ImageIcon(
-				new ImageIcon("Image/freshIcon.png").getImage()
-						.getScaledInstance(X / 40, X / 40, Image.SCALE_SMOOTH));
-		fresh.setBounds(X * 930 / 1366, Y * 150 / 768, X / 40, X / 40);
-		fresh.setIcon(freshIcon);
-		fresh.setOpaque(false);
-		fresh.setContentAreaFilled(false);
-		fresh.setBorderPainted(false);
-		fresh.addActionListener(e -> fresh());
-		bgLabel.add(fresh);
-
 		mainFrame.getContentPane().add(this);
 
 		guestTeambtn = new JButton();
@@ -307,58 +306,54 @@ public class GameInfoPanel extends JPanel {
 		txtGTPoint = new MyTextField();
 		txtGTPoint.setText(String.valueOf(gameVo.getGuestTP().getScore()));
 		txtGTPoint.setHorizontalAlignment(SwingConstants.CENTER);
-		txtGTPoint.setBounds(X * 449 / 1366, Y * 67 / 768, X * 100 / 1366,
+		txtGTPoint.setBounds(X * 430 / 1366, Y * 67 / 768, X * 120 / 1366,
 				Y * 60 / 768);
-		txtGTPoint.setFont(new Font("微软雅黑", 1, 30));
+		txtGTPoint.setFont(new Font("微软雅黑", 1, 40));
+		txtGTPoint.setBorder(null);
 		bgLabel.add(txtGTPoint);
-		txtGTPoint.setColumns(X * 10 / 1366);
 
 		txtHTPoint = new MyTextField();
 		txtHTPoint.setHorizontalAlignment(SwingConstants.CENTER);
 		txtHTPoint.setText(String.valueOf(gameVo.getHomeTP().getScore()));
-		txtHTPoint.setBounds(X * 816 / 1366, Y * 67 / 768, X * 100 / 1366,
+		txtHTPoint.setBounds(X * 830 / 1366, Y * 67 / 768, X * 120 / 1366,
 				Y * 60 / 768);
-		txtHTPoint.setFont(new Font("微软雅黑", 1, 30));
+		txtHTPoint.setFont(new Font("微软雅黑", 1, 40));
+		txtHTPoint.setBorder(null);
 		bgLabel.add(txtHTPoint);
-		txtHTPoint.setColumns(X * 10 / 1366);
 
 		txtState = new MyTextField();
-		txtState.setText("结束");
+		txtState.setText("已结束");
 		txtState.setHorizontalAlignment(SwingConstants.CENTER);
-		txtState.setBounds(X * 651 / 1366, Y * 20 / 768, X * 66 / 1366,
+		txtState.setBounds(X * 651 / 1366, Y * 25 / 768, X * 66 / 1366,
 				Y * 25 / 768);
+		txtState.setFont(new Font("幼圆",1,15));
+		txtState.setBorder(null);
 		bgLabel.add(txtState);
-		txtState.setColumns(X * 10 / 1366);
-
+		
+		int spaceX=565;
+		int spaceY=50;
+		int tempX=30;
+		int tempY=25;
 		textField = new MyTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setText("球队");
-		textField.setBounds(X * 596 / 1366, Y * 60 / 768, X * 55 / 1366,
-				Y * 20 / 768);
-		// textField.setBackground(Color.GRAY);
+		textField.setBounds(spaceX,spaceY, 60 ,tempY );
 		textField.setOpaque(false);
 		textField.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField);
-		textField.setColumns(X * 10 / 1366);
 
 		textField_1 = new MyTextField();
 		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_1.setText("1");
-		textField_1.setBounds(X * 651 / 1366, Y * 60 / 768, X * 21 / 1366,
-				Y * 20 / 768);
-		// textField_1.setBackground(Color.GRAY);
+		textField_1.setBounds(spaceX+60,spaceY,tempX,tempY);
 		textField_1.setOpaque(false);
 		textField_1.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_1);
-		textField_1.setColumns(X * 10 / 1366);
 
 		textField_2 = new MyTextField();
 		textField_2.setText("2");
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setColumns(X * 10 / 1366);
-		textField_2.setBounds(X * 672 / 1366, Y * 60 / 768, X * 21 / 1366,
-				Y * 20 / 768);
-		// textField_2.setBackground(Color.GRAY);
+		textField_2.setBounds(spaceX+60+tempX,spaceY,tempX,tempY);
 		textField_2.setOpaque(false);
 		textField_2.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_2);
@@ -366,10 +361,7 @@ public class GameInfoPanel extends JPanel {
 		textField_3 = new MyTextField();
 		textField_3.setText("3");
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_3.setColumns(X * 10 / 1366);
-		textField_3.setBounds(X * 693 / 1366, Y * 60 / 768, X * 21 / 1366,
-				Y * 20 / 768);
-		// textField_3.setBackground(Color.GRAY);
+		textField_3.setBounds(spaceX+60+2*tempX,spaceY,tempX,tempY);
 		textField_3.setOpaque(false);
 		textField_3.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_3);
@@ -377,10 +369,7 @@ public class GameInfoPanel extends JPanel {
 		textField_4 = new MyTextField();
 		textField_4.setText("4");
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_4.setColumns(X * 10 / 1366);
-		textField_4.setBounds(X * 714 / 1366, Y * 60 / 768, X * 21 / 1366,
-				Y * 20 / 768);
-		// textField_4.setBackground(Color.GRAY);
+		textField_4.setBounds(spaceX+60+3*tempX,spaceY,tempX,tempY);
 		textField_4.setOpaque(false);
 		textField_4.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_4);
@@ -388,10 +377,7 @@ public class GameInfoPanel extends JPanel {
 		textField_5 = new MyTextField();
 		textField_5.setText("总分");
 		textField_5.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_5.setColumns(X * 10 / 1366);
-		textField_5.setBounds(X * 735 / 1366, Y * 60 / 768, X * 35 / 1366,
-				Y * 20 / 768);
-		// textField_5.setBackground(Color.GRAY);
+		textField_5.setBounds(spaceX+60+4*tempX,spaceY,60,tempY);
 		textField_5.setOpaque(false);
 		textField_5.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_5);
@@ -400,8 +386,7 @@ public class GameInfoPanel extends JPanel {
 		guestTeamtF.setText(gameVo.getGuestTeam());
 		guestTeamtF.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeamtF.setColumns(X * 10 / 1366);
-		guestTeamtF.setBounds(X * 596 / 1366, Y * 80 / 768, X * 55 / 1366,
-				Y * 20 / 768);
+		guestTeamtF.setBounds(spaceX,spaceY+tempY, 60 ,tempY);
 		if (gameVo.getScoreOverall().getGuestScore() >= gameVo
 				.getScoreOverall().getHomeScore()) {
 			guestTeamtF.setBackground(Color.DARK_GRAY);
@@ -424,9 +409,7 @@ public class GameInfoPanel extends JPanel {
 			guestTeam1.setOpaque(true);
 		}
 		guestTeam1.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam1.setColumns(X * 10 / 1366);
-		guestTeam1.setBounds(X * 651 / 1366, Y * 80 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		guestTeam1.setBounds(spaceX+60,spaceY+tempY,tempX,tempY);
 		bgLabel.add(guestTeam1);
 
 		guestTeam2 = new MyTextField();
@@ -441,9 +424,7 @@ public class GameInfoPanel extends JPanel {
 			guestTeam2.setOpaque(true);
 		}
 		guestTeam2.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam2.setColumns(X * 10 / 1366);
-		guestTeam2.setBounds(X * 672 / 1366, Y * 80 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		guestTeam2.setBounds(spaceX+60+tempX,spaceY+tempY,tempX,tempY);
 		bgLabel.add(guestTeam2);
 
 		guestTeam3 = new MyTextField();
@@ -458,9 +439,7 @@ public class GameInfoPanel extends JPanel {
 			guestTeam3.setOpaque(true);
 		}
 		guestTeam3.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam3.setColumns(X * 10 / 1366);
-		guestTeam3.setBounds(X * 693 / 1366, Y * 80 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		guestTeam3.setBounds(spaceX+60+2*tempX,spaceY+tempY,tempX,tempY);
 		bgLabel.add(guestTeam3);
 
 		guestTeam4 = new MyTextField();
@@ -475,9 +454,7 @@ public class GameInfoPanel extends JPanel {
 			guestTeam4.setOpaque(true);
 		}
 		guestTeam4.setHorizontalAlignment(SwingConstants.CENTER);
-		guestTeam4.setColumns(X * 10 / 1366);
-		guestTeam4.setBounds(X * 714 / 1366, Y * 80 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		guestTeam4.setBounds(spaceX+60+3*tempX,spaceY+tempY,tempX,tempY);
 		bgLabel.add(guestTeam4);
 
 		guestScoreSum = new MyTextField();
@@ -492,17 +469,13 @@ public class GameInfoPanel extends JPanel {
 			guestScoreSum.setOpaque(true);
 		}
 		guestScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
-		guestScoreSum.setColumns(X * 10 / 1366);
-		guestScoreSum.setBounds(X * 735 / 1366, Y * 80 / 768, X * 35 / 1366,
-				Y * 20 / 768);
+		guestScoreSum.setBounds(spaceX+60+4*tempX,spaceY+tempY,60,tempY);
 		bgLabel.add(guestScoreSum);
 
 		hostTeamtF = new MyTextField();
 		hostTeamtF.setText(gameVo.getHomeTeam());
 		hostTeamtF.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTeamtF.setColumns(X * 10 / 1366);
-		hostTeamtF.setBounds(X * 596 / 1366, Y * 100 / 768, X * 55 / 1366,
-				Y * 20 / 768);
+		hostTeamtF.setBounds(spaceX,spaceY+2*tempY,60,tempY);
 		if (gameVo.getScoreOverall().getHomeScore() > gameVo.getScoreOverall()
 				.getGuestScore()) {
 			hostTeamtF.setBackground(Color.DARK_GRAY);
@@ -524,9 +497,7 @@ public class GameInfoPanel extends JPanel {
 			hostScore1.setOpaque(true);
 		}
 		hostScore1.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore1.setColumns(X * 10 / 1366);
-		hostScore1.setBounds(X * 651 / 1366, Y * 100 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		hostScore1.setBounds(spaceX+60,spaceY+2*tempY,tempX,tempY);
 		bgLabel.add(hostScore1);
 
 		hostScore2 = new MyTextField();
@@ -540,9 +511,7 @@ public class GameInfoPanel extends JPanel {
 			hostScore2.setOpaque(true);
 		}
 		hostScore2.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore2.setColumns(X * 10 / 1366);
-		hostScore2.setBounds(X * 672 / 1366, Y * 100 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		hostScore2.setBounds(spaceX+60+tempX,spaceY+2*tempY,tempX,tempY);
 		bgLabel.add(hostScore2);
 
 		hostScore3 = new MyTextField();
@@ -556,9 +525,7 @@ public class GameInfoPanel extends JPanel {
 			hostScore3.setOpaque(true);
 		}
 		hostScore3.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore3.setColumns(X * 10 / 1366);
-		hostScore3.setBounds(X * 693 / 1366, Y * 100 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		hostScore3.setBounds(spaceX+60+2*tempX,spaceY+2*tempY,tempX,tempY);
 		bgLabel.add(hostScore3);
 
 		hostScore4 = new MyTextField();
@@ -572,9 +539,7 @@ public class GameInfoPanel extends JPanel {
 			hostScore4.setOpaque(true);
 		}
 		hostScore4.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScore4.setColumns(X * 10 / 1366);
-		hostScore4.setBounds(X * 714 / 1366, Y * 100 / 768, X * 21 / 1366,
-				Y * 20 / 768);
+		hostScore4.setBounds(spaceX+60+3*tempX,spaceY+2*tempY,tempX,tempY);
 		bgLabel.add(hostScore4);
 
 		hostScoreSum = new MyTextField();
@@ -589,26 +554,24 @@ public class GameInfoPanel extends JPanel {
 			hostScoreSum.setOpaque(true);
 		}
 		hostScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
-		hostScoreSum.setColumns(X * 10 / 1366);
-		hostScoreSum.setBounds(X * 735 / 1366, Y * 100 / 768, X * 35 / 1366,
-				Y * 20 / 768);
+		hostScoreSum.setBounds(spaceX+60+4*tempX,spaceY+2*tempY,60,tempY);
 		bgLabel.add(hostScoreSum);
 
-		JButton startingbtn = new MyButton("首发");
+		JButton startingbtn = new ChooseButton("首发");
 		startingbtn.setBounds(X * 450 / 1366, Y * 155 / 768, X * 155 / 1366,
-				Y * 23 / 768);
+				Y * 30 / 768);
 		startingbtn.addActionListener(e -> starting());
 		bgLabel.add(startingbtn);
 
-		JButton summarybtn = new MyButton("赛后总结");
+		JButton summarybtn = new ChooseButton("赛后总结");
 		summarybtn.setBounds(X * 605 / 1366, Y * 155 / 768, X * 155 / 1366,
-				Y * 23 / 768);
+				Y * 30 / 768);
 		summarybtn.addActionListener(e -> summary());
 		bgLabel.add(summarybtn);
 
-		JButton databtn = new MyButton("数据");
+		JButton databtn = new ChooseButton("数据");
 		databtn.setBounds(X * 760 / 1366, Y * 155 / 768, X * 155 / 1366,
-				Y * 23 / 768);
+				Y * 30 / 768);
 		databtn.addActionListener(e -> showData());
 		bgLabel.add(databtn);
 
@@ -643,7 +606,6 @@ public class GameInfoPanel extends JPanel {
 						Image.SCALE_SMOOTH));
 
 		courtlbl.setIcon(buttonIcon);
-		courtlbl.setBackground(Color.blue);
 
 		playerG1Panel = new PlayerBasicInfoPanel(guestFirstPlayerList.get(0),
 				X * 445 / 1366, Y * 175 / 768);
@@ -692,8 +654,8 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG1 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(0).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
-						Image.SCALE_AREA_AVERAGING));
+				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+						Image.SCALE_SMOOTH));
 		btnG1.setOpaque(false);
 		btnG1.setIcon(playerPortraitG1);
 		btnG1.addMouseListener(new MouseListener() {
@@ -743,7 +705,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG2 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(1).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 70 / 768,
+				.getImage().getScaledInstance(X * 50/ 1366, Y * 50/ 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG2.setIcon(playerPortraitG2);
 		btnG2.setOpaque(false);
@@ -793,7 +755,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG3 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(2).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG3.setIcon(playerPortraitG3);
 		btnG3.setOpaque(false);
@@ -843,7 +805,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG4 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(3).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 50/ 1366, Y * 50 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG4.setIcon(playerPortraitG4);
 		btnG4.setOpaque(false);
@@ -893,7 +855,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG5 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(4).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X *50/ 1366, Y * 50 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG5.setIcon(playerPortraitG5);
 		btnG5.setOpaque(false);
@@ -943,7 +905,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH1 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(0).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH1.setIcon(playerPortraitH1);
 		btnH1.setOpaque(false);
@@ -993,7 +955,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH2 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(1).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 50 / 1366, Y * 50/ 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH2.setIcon(playerPortraitH2);
 		btnH2.setOpaque(false);
@@ -1043,7 +1005,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH3 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(2).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 70 / 768,
+				.getImage().getScaledInstance(X * 50/ 1366, Y * 50/ 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH3.setIcon(playerPortraitH3);
 		btnH3.addActionListener(e -> {
@@ -1096,7 +1058,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH4 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(3).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 50/ 1366, Y * 50 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH4.setIcon(playerPortraitH4);
 		btnH4.setOpaque(false);
@@ -1146,10 +1108,9 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH5 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(4).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH5.setIcon(playerPortraitH5);
-		btnH5.setOpaque(false);
 		btnH5.addMouseListener(new MouseListener() {
 
 			@Override
@@ -1764,27 +1725,63 @@ public class GameInfoPanel extends JPanel {
 		datalbl.setHorizontalAlignment(SwingConstants.CENTER);
 		datalbl.setBounds(131, 194, 1100, 500);
 		datalbl.setBackground(Color.blue);
+		
+		compareCriterias = new String[4];
+		compareCriterias[0] = "BASIC";
+		compareCriterias[1] = "SHOOTING";
+		compareCriterias[2] = "REBOUNDS";
+		compareCriterias[3] = "X-FACTOR";
 
+		basicButton=new ChooseButton("基本数据⊙");
+		basicButton.setLocation(0, 70);
+		basicButton.addActionListener(e->{
+			basicButton.setText("基本数据⊙");
+			shootingButton.setText("投篮数据");
+			reboundsButton.setText("篮板数据");
+			XfactorButton.setText("X-因素");
+			guestCriteriaSelected("BASIC");
+			hostCriteriaSelected("BASIC");
+		});
+		datalbl.add(basicButton);
+		shootingButton=new ChooseButton("投篮数据");
+		shootingButton.setLocation(155, 70);
+		shootingButton.addActionListener(e->{
+			basicButton.setText("基本数据");
+			shootingButton.setText("投篮数据⊙");
+			reboundsButton.setText("篮板数据");
+			XfactorButton.setText("X-因素");
+			guestCriteriaSelected("SHOOTING");
+			hostCriteriaSelected("SHOOTING");
+		});
+		datalbl.add(shootingButton);
+		reboundsButton=new ChooseButton("篮板数据");
+		reboundsButton.setLocation(310, 70);
+		reboundsButton.addActionListener(e->{
+			basicButton.setText("基本数据");
+			shootingButton.setText("投篮数据");
+			reboundsButton.setText("篮板数据⊙");
+			XfactorButton.setText("X-因素");
+			guestCriteriaSelected("REBOUNDS");
+			hostCriteriaSelected("REBOUNDS");
+		});
+		datalbl.add(reboundsButton);
+		XfactorButton=new ChooseButton("X-因素");
+		XfactorButton.setLocation(465, 70);
+		XfactorButton.addActionListener(e->{
+			basicButton.setText("基本数据");
+			shootingButton.setText("投篮数据");
+			reboundsButton.setText("篮板数据");
+			XfactorButton.setText("X-因素⊙");
+			guestCriteriaSelected("X-FACTOR");
+			hostCriteriaSelected("X-FACTOR");
+		});
+		datalbl.add(XfactorButton);
+		
 		guestTeamDatalbl = new JLabel();
 		guestTeamDatalbl.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeamDatalbl.setBounds(0, 0, 550, 100);
 		guestTeamDatalbl.setBackground(Color.blue);
 		datalbl.add(guestTeamDatalbl);
-
-		guestCriterias = new String[4];
-		guestCriterias[0] = "BASIC";
-		guestCriterias[1] = "SHOOTING";
-		guestCriterias[2] = "REBOUNDS";
-		guestCriterias[3] = "X-FACTOR";
-		guestCriteriajcb = new JComboBox<String>(guestCriterias);
-
-		guestCriteriajcb.setBounds(400, 50, 100, 30);
-		guestCriteriajcb.setForeground(Color.WHITE);
-		guestCriteriajcb.setBackground(Color.GRAY);
-		guestCriteriajcb
-				.addItemListener(e -> guestCriteriaSelected(guestCriteriajcb
-						.getSelectedItem().toString()));
-		guestTeamDatalbl.add(guestCriteriajcb);
 
 		hostTeamDatalbl = new JLabel();
 		hostTeamDatalbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1792,20 +1789,6 @@ public class GameInfoPanel extends JPanel {
 		hostTeamDatalbl.setBackground(Color.blue);
 		datalbl.add(hostTeamDatalbl);
 
-		hostCriterias = new String[4];
-		hostCriterias[0] = "BASIC";
-		hostCriterias[1] = "SHOOTING";
-		hostCriterias[2] = "REBOUNDS";
-		hostCriterias[3] = "X-FACTOR";
-		hostCriteriajcb = new JComboBox<String>(hostCriterias);
-
-		hostCriteriajcb.setBounds(400, 50, 100, 30);
-		hostCriteriajcb.setForeground(Color.WHITE);
-		hostCriteriajcb.setBackground(Color.GRAY);
-		hostCriteriajcb
-				.addItemListener(e -> hostCriteriaSelected(hostCriteriajcb
-						.getSelectedItem().toString()));
-		hostTeamDatalbl.add(hostCriteriajcb);
 
 		ArrayList<PlayerPerformanceInSingleGame> guestPlayerVos = new ArrayList<PlayerPerformanceInSingleGame>();
 		TeamPerformanceInSingleGame guestTeamPerformanceInSingleGame = gameVo
@@ -2329,10 +2312,6 @@ public class GameInfoPanel extends JPanel {
 		mainFrame.add(previousPanel);
 	}
 
-	public void fresh() {
-
-	}
-
 	public void selfClose() {
 		this.setVisible(false);
 	}
@@ -2485,37 +2464,56 @@ public class GameInfoPanel extends JPanel {
 		/**
 		 * 
 		 */
+		Shape shape;
 		private static final long serialVersionUID = 1L;
 
 		public MyButton() {
 			super();
 			this.setHorizontalTextPosition(SwingConstants.CENTER);
-			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑", 1, 15));
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
-
 		}
 
 		public MyButton(String s) {
 			super();
 			this.setText(s);
 			this.setHorizontalTextPosition(SwingConstants.CENTER);
+			this.setFont(new Font("微软雅黑", 1, 15));
+			this.setOpaque(false);
+			this.setContentAreaFilled(false);
+			this.setBorderPainted(false);
+		}
+		
+		protected void paintComponent(Graphics g){
+			Image oval=new ImageIcon("Image/Oval.png").getImage();
+			oval.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+			g.drawImage(oval, 0, 0, 80, 80,null);
+			super.paintComponent(g);
+		}
+	}
+
+	class ChooseButton extends JButton{
+		public ChooseButton(String s) {
+			super();
+			this.setText(s);
+			this.setHorizontalTextPosition(SwingConstants.CENTER);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑", 1, 15));
+			this.setSize(155, 30);
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(
-					X * 155 / 1366, Y * 23 / 768, Image.SCALE_SMOOTH));
+					X * 155 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
 
 			this.setIcon(buttonIcon);
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
-
 		}
+		
 	}
-
+	
 	class MyTextField extends JTextField {
 		/**
 		 * 
@@ -2526,7 +2524,7 @@ public class GameInfoPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
-			this.setFont(new Font("黑体", 1, 13));
+			this.setFont(new Font("黑体", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
@@ -2534,7 +2532,7 @@ public class GameInfoPanel extends JPanel {
 			super();
 			this.setOpaque(false);
 			this.setForeground(textColor);
-			this.setFont(new Font("黑体", 1, 13));
+			this.setFont(new Font("黑体", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		}
 
