@@ -156,7 +156,7 @@ public class PlayerBasicInfoCardPanel extends JPanel {
 		ImageIcon playerImg;
 		if (hasPortrait( playerVo.getName() + ".png")) {
 			playerImg = new ImageIcon(new ImageIcon(
-					"CSEdata/players/,portrait/" + playerVo.getName() + ".png")
+					"CSEdata/players/portrait/" + playerVo.getName() + ".png")
 			.getImage().getScaledInstance(X * 100 / 1366, Y * 100 / 768,
 					Image.SCALE_AREA_AVERAGING));
 		} else {

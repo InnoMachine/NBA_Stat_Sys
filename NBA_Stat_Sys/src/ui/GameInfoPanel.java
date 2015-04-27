@@ -335,8 +335,9 @@ public class GameInfoPanel extends JPanel {
 		textField.setText("球队");
 		textField.setBounds(X * 596 / 1366, Y * 60 / 768, X * 55 / 1366,
 				Y * 20 / 768);
-		textField.setBackground(Color.GRAY);
-		textField.setOpaque(true);
+		// textField.setBackground(Color.GRAY);
+		textField.setOpaque(false);
+		textField.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField);
 		textField.setColumns(X * 10 / 1366);
 
@@ -345,8 +346,9 @@ public class GameInfoPanel extends JPanel {
 		textField_1.setText("1");
 		textField_1.setBounds(X * 651 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
-		textField_1.setBackground(Color.GRAY);
-		textField_1.setOpaque(true);
+		// textField_1.setBackground(Color.GRAY);
+		textField_1.setOpaque(false);
+		textField_1.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_1);
 		textField_1.setColumns(X * 10 / 1366);
 
@@ -356,8 +358,9 @@ public class GameInfoPanel extends JPanel {
 		textField_2.setColumns(X * 10 / 1366);
 		textField_2.setBounds(X * 672 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
-		textField_2.setBackground(Color.GRAY);
-		textField_2.setOpaque(true);
+		// textField_2.setBackground(Color.GRAY);
+		textField_2.setOpaque(false);
+		textField_2.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_2);
 
 		textField_3 = new MyTextField();
@@ -366,8 +369,9 @@ public class GameInfoPanel extends JPanel {
 		textField_3.setColumns(X * 10 / 1366);
 		textField_3.setBounds(X * 693 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
-		textField_3.setBackground(Color.GRAY);
-		textField_3.setOpaque(true);
+		// textField_3.setBackground(Color.GRAY);
+		textField_3.setOpaque(false);
+		textField_3.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_3);
 
 		textField_4 = new MyTextField();
@@ -376,8 +380,9 @@ public class GameInfoPanel extends JPanel {
 		textField_4.setColumns(X * 10 / 1366);
 		textField_4.setBounds(X * 714 / 1366, Y * 60 / 768, X * 21 / 1366,
 				Y * 20 / 768);
-		textField_4.setBackground(Color.GRAY);
-		textField_4.setOpaque(true);
+		// textField_4.setBackground(Color.GRAY);
+		textField_4.setOpaque(false);
+		textField_4.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_4);
 
 		textField_5 = new MyTextField();
@@ -386,8 +391,9 @@ public class GameInfoPanel extends JPanel {
 		textField_5.setColumns(X * 10 / 1366);
 		textField_5.setBounds(X * 735 / 1366, Y * 60 / 768, X * 35 / 1366,
 				Y * 20 / 768);
-		textField_5.setBackground(Color.GRAY);
-		textField_5.setOpaque(true);
+		// textField_5.setBackground(Color.GRAY);
+		textField_5.setOpaque(false);
+		textField_5.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_5);
 
 		guestTeamtF = new MyTextField();
@@ -396,8 +402,14 @@ public class GameInfoPanel extends JPanel {
 		guestTeamtF.setColumns(X * 10 / 1366);
 		guestTeamtF.setBounds(X * 596 / 1366, Y * 80 / 768, X * 55 / 1366,
 				Y * 20 / 768);
-		guestTeamtF.setBackground(Color.GRAY);
-		guestTeamtF.setOpaque(true);
+		if (gameVo.getScoreOverall().getGuestScore() >= gameVo
+				.getScoreOverall().getHomeScore()) {
+			guestTeamtF.setBackground(Color.DARK_GRAY);
+			guestTeamtF.setOpaque(true);
+		} else {
+			guestTeamtF.setBackground(Color.LIGHT_GRAY);
+			guestTeamtF.setOpaque(true);
+		}
 		bgLabel.add(guestTeamtF);
 
 		guestTeam1 = new MyTextField();
@@ -405,6 +417,9 @@ public class GameInfoPanel extends JPanel {
 				.setText(String.valueOf(gameVo.getScore1st().getGuestScore()));
 		if (gameVo.getScore1st().getGuestScore() >= gameVo.getScore1st()
 				.getHomeScore()) {
+			guestTeam1.setBackground(Color.DARK_GRAY);
+			guestTeam1.setOpaque(true);
+		} else {
 			guestTeam1.setBackground(Color.LIGHT_GRAY);
 			guestTeam1.setOpaque(true);
 		}
@@ -419,6 +434,9 @@ public class GameInfoPanel extends JPanel {
 				.setText(String.valueOf(gameVo.getScore2nd().getGuestScore()));
 		if (gameVo.getScore2nd().getGuestScore() >= gameVo.getScore2nd()
 				.getHomeScore()) {
+			guestTeam2.setBackground(Color.DARK_GRAY);
+			guestTeam2.setOpaque(true);
+		} else {
 			guestTeam2.setBackground(Color.LIGHT_GRAY);
 			guestTeam2.setOpaque(true);
 		}
@@ -433,6 +451,9 @@ public class GameInfoPanel extends JPanel {
 				.setText(String.valueOf(gameVo.getScore3rd().getGuestScore()));
 		if (gameVo.getScore3rd().getGuestScore() >= gameVo.getScore3rd()
 				.getHomeScore()) {
+			guestTeam3.setBackground(Color.DARK_GRAY);
+			guestTeam3.setOpaque(true);
+		} else {
 			guestTeam3.setBackground(Color.LIGHT_GRAY);
 			guestTeam3.setOpaque(true);
 		}
@@ -447,6 +468,9 @@ public class GameInfoPanel extends JPanel {
 				.setText(String.valueOf(gameVo.getScore4th().getGuestScore()));
 		if (gameVo.getScore4th().getGuestScore() >= gameVo.getScore4th()
 				.getHomeScore()) {
+			guestTeam4.setBackground(Color.DARK_GRAY);
+			guestTeam4.setOpaque(true);
+		} else {
 			guestTeam4.setBackground(Color.LIGHT_GRAY);
 			guestTeam4.setOpaque(true);
 		}
@@ -459,8 +483,11 @@ public class GameInfoPanel extends JPanel {
 		guestScoreSum = new MyTextField();
 		guestScoreSum.setText(String.valueOf(gameVo.getScoreOverall()
 				.getGuestScore()));
-		if (gameVo.getScoreOverall().getGuestScore() >=gameVo.getScoreOverall()
-				.getHomeScore()) {
+		if (gameVo.getScoreOverall().getGuestScore() >= gameVo
+				.getScoreOverall().getHomeScore()) {
+			guestScoreSum.setBackground(Color.DARK_GRAY);
+			guestScoreSum.setOpaque(true);
+		} else {
 			guestScoreSum.setBackground(Color.LIGHT_GRAY);
 			guestScoreSum.setOpaque(true);
 		}
@@ -476,16 +503,25 @@ public class GameInfoPanel extends JPanel {
 		hostTeamtF.setColumns(X * 10 / 1366);
 		hostTeamtF.setBounds(X * 596 / 1366, Y * 100 / 768, X * 55 / 1366,
 				Y * 20 / 768);
-		hostTeamtF.setBackground(Color.GRAY);
-		hostTeamtF.setOpaque(true);
+		if (gameVo.getScoreOverall().getHomeScore() > gameVo.getScoreOverall()
+				.getGuestScore()) {
+			hostTeamtF.setBackground(Color.DARK_GRAY);
+			hostTeamtF.setOpaque(true);
+		} else {
+			hostTeamtF.setBackground(Color.LIGHT_GRAY);
+			hostTeamtF.setOpaque(true);
+		}
 		bgLabel.add(hostTeamtF);
 
 		hostScore1 = new MyTextField();
 		hostScore1.setText(String.valueOf(gameVo.getScore1st().getHomeScore()));
 		if (gameVo.getScore1st().getGuestScore() < gameVo.getScore1st()
 				.getHomeScore()) {
-		hostScore1.setBackground(Color.LIGHT_GRAY);
-		hostScore1.setOpaque(true);
+			hostScore1.setBackground(Color.DARK_GRAY);
+			hostScore1.setOpaque(true);
+		} else {
+			hostScore1.setBackground(Color.LIGHT_GRAY);
+			hostScore1.setOpaque(true);
 		}
 		hostScore1.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore1.setColumns(X * 10 / 1366);
@@ -497,8 +533,11 @@ public class GameInfoPanel extends JPanel {
 		hostScore2.setText(String.valueOf(gameVo.getScore2nd().getHomeScore()));
 		if (gameVo.getScore2nd().getGuestScore() < gameVo.getScore2nd()
 				.getHomeScore()) {
-		hostScore2.setBackground(Color.LIGHT_GRAY);
-		hostScore2.setOpaque(true);
+			hostScore2.setBackground(Color.DARK_GRAY);
+			hostScore2.setOpaque(true);
+		} else {
+			hostScore2.setBackground(Color.LIGHT_GRAY);
+			hostScore2.setOpaque(true);
 		}
 		hostScore2.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore2.setColumns(X * 10 / 1366);
@@ -510,8 +549,11 @@ public class GameInfoPanel extends JPanel {
 		hostScore3.setText(String.valueOf(gameVo.getScore3rd().getHomeScore()));
 		if (gameVo.getScore3rd().getGuestScore() < gameVo.getScore3rd()
 				.getHomeScore()) {
-		hostScore3.setBackground(Color.LIGHT_GRAY);
-		hostScore3.setOpaque(true);
+			hostScore3.setBackground(Color.DARK_GRAY);
+			hostScore3.setOpaque(true);
+		} else {
+			hostScore3.setBackground(Color.LIGHT_GRAY);
+			hostScore3.setOpaque(true);
 		}
 		hostScore3.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore3.setColumns(X * 10 / 1366);
@@ -523,8 +565,11 @@ public class GameInfoPanel extends JPanel {
 		hostScore4.setText(String.valueOf(gameVo.getScore4th().getHomeScore()));
 		if (gameVo.getScore4th().getGuestScore() < gameVo.getScore4th()
 				.getHomeScore()) {
-		hostScore4.setBackground(Color.LIGHT_GRAY);
-		hostScore4.setOpaque(true);
+			hostScore4.setBackground(Color.DARK_GRAY);
+			hostScore4.setOpaque(true);
+		} else {
+			hostScore4.setBackground(Color.LIGHT_GRAY);
+			hostScore4.setOpaque(true);
 		}
 		hostScore4.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore4.setColumns(X * 10 / 1366);
@@ -537,8 +582,11 @@ public class GameInfoPanel extends JPanel {
 				.getHomeScore()));
 		if (gameVo.getScoreOverall().getGuestScore() < gameVo.getScoreOverall()
 				.getHomeScore()) {
-		hostScoreSum.setBackground(Color.LIGHT_GRAY);
-		hostScoreSum.setOpaque(true);
+			hostScoreSum.setBackground(Color.DARK_GRAY);
+			hostScoreSum.setOpaque(true);
+		} else {
+			hostScoreSum.setBackground(Color.LIGHT_GRAY);
+			hostScoreSum.setOpaque(true);
 		}
 		hostScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScoreSum.setColumns(X * 10 / 1366);
@@ -1175,6 +1223,8 @@ public class GameInfoPanel extends JPanel {
 		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_6.setBounds(X * 97 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+	//	textField_6.setBackground(Color.DARK_GRAY);
+	//	textField_6.setOpaque(true);
 		summarylbl.add(textField_6);
 		textField_6.setColumns(X * 10 / 1366);
 
@@ -1185,6 +1235,8 @@ public class GameInfoPanel extends JPanel {
 		txtGt.setColumns(X * 10 / 1366);
 		txtGt.setBounds(X * 97 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		txtGt.setBackground(Color.GRAY);
+		txtGt.setOpaque(true);
 		summarylbl.add(txtGt);
 
 		txtHt = new MyTextField();
@@ -1194,6 +1246,8 @@ public class GameInfoPanel extends JPanel {
 		txtHt.setColumns(X * 10 / 1366);
 		txtHt.setBounds(X * 97 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		txtHt.setBackground(Color.GRAY);
+		txtHt.setOpaque(true);
 		summarylbl.add(txtHt);
 
 		FGtF = new MyTextField();
@@ -1202,6 +1256,8 @@ public class GameInfoPanel extends JPanel {
 		FGtF.setHorizontalAlignment(SwingConstants.CENTER);
 		FGtF.setColumns(X * 10 / 1366);
 		FGtF.setBounds(227, Y * 70 / 768, X * 130 / 1366, Y * 40 / 768);
+		FGtF.setBackground(Color.GRAY);
+		FGtF.setOpaque(true);
 		summarylbl.add(FGtF);
 
 		FTtF = new MyTextField();
@@ -1211,6 +1267,8 @@ public class GameInfoPanel extends JPanel {
 		FTtF.setColumns(X * 10 / 1366);
 		FTtF.setBounds(X * 357 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		FTtF.setBackground(Color.GRAY);
+		FTtF.setOpaque(true);
 		summarylbl.add(FTtF);
 
 		ThreePtF = new MyTextField();
@@ -1220,6 +1278,8 @@ public class GameInfoPanel extends JPanel {
 		ThreePtF.setColumns(X * 10 / 1366);
 		ThreePtF.setBounds(X * 487 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		ThreePtF.setBackground(Color.GRAY);
+		ThreePtF.setOpaque(true);
 		summarylbl.add(ThreePtF);
 
 		ASTtF = new MyTextField();
@@ -1229,6 +1289,8 @@ public class GameInfoPanel extends JPanel {
 		ASTtF.setColumns(X * 10 / 1366);
 		ASTtF.setBounds(X * 617 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		ASTtF.setBackground(Color.GRAY);
+		ASTtF.setOpaque(true);
 		summarylbl.add(ASTtF);
 
 		REBtF = new MyTextField();
@@ -1238,6 +1300,8 @@ public class GameInfoPanel extends JPanel {
 		REBtF.setColumns(X * 10 / 1366);
 		REBtF.setBounds(X * 747 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		REBtF.setBackground(Color.GRAY);
+		REBtF.setOpaque(true);
 		summarylbl.add(REBtF);
 
 		TOtF = new MyTextField();
@@ -1247,6 +1311,8 @@ public class GameInfoPanel extends JPanel {
 		TOtF.setColumns(X * 10 / 1366);
 		TOtF.setBounds(X * 877 / 1366, Y * 70 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		TOtF.setBackground(Color.GRAY);
+		TOtF.setOpaque(true);
 		summarylbl.add(TOtF);
 
 		txtGTfg = new MyTextField();
@@ -1256,6 +1322,14 @@ public class GameInfoPanel extends JPanel {
 		txtGTfg.setColumns(X * 10 / 1366);
 		txtGTfg.setBounds(X * 227 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getHitRate() >= gameVo.getHomeTP().getHitRate()) {
+			txtGTfg.setBackground(Color.DARK_GRAY);
+			txtGTfg.setOpaque(true);
+		} else {
+
+			txtGTfg.setBackground(Color.LIGHT_GRAY);
+			txtGTfg.setOpaque(true);
+		}
 		summarylbl.add(txtGTfg);
 
 		txtHTfg = new MyTextField();
@@ -1265,6 +1339,14 @@ public class GameInfoPanel extends JPanel {
 		txtHTfg.setColumns(X * 10 / 1366);
 		txtHTfg.setBounds(X * 227 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getHitRate() < gameVo.getHomeTP().getHitRate()) {
+			txtHTfg.setBackground(Color.DARK_GRAY);
+			txtHTfg.setOpaque(true);
+		} else {
+
+			txtHTfg.setBackground(Color.LIGHT_GRAY);
+			txtHTfg.setOpaque(true);
+		}
 		summarylbl.add(txtHTfg);
 
 		txtGTft = new MyTextField();
@@ -1274,6 +1356,15 @@ public class GameInfoPanel extends JPanel {
 		txtGTft.setColumns(X * 10 / 1366);
 		txtGTft.setBounds(X * 357 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getFreeThrowRate() >= gameVo.getHomeTP()
+				.getFreeThrowRate()) {
+			txtGTft.setBackground(Color.DARK_GRAY);
+			txtGTft.setOpaque(true);
+		} else {
+
+			txtGTft.setBackground(Color.LIGHT_GRAY);
+			txtGTft.setOpaque(true);
+		}
 		summarylbl.add(txtGTft);
 
 		txtHTft = new MyTextField();
@@ -1283,6 +1374,15 @@ public class GameInfoPanel extends JPanel {
 		txtHTft.setColumns(X * 10 / 1366);
 		txtHTft.setBounds(X * 357 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getFreeThrowRate() < gameVo.getHomeTP()
+				.getFreeThrowRate()) {
+			txtHTft.setBackground(Color.DARK_GRAY);
+			txtHTft.setOpaque(true);
+		} else {
+
+			txtHTft.setBackground(Color.LIGHT_GRAY);
+			txtHTft.setOpaque(true);
+		}
 		summarylbl.add(txtHTft);
 
 		txtGT3p = new MyTextField();
@@ -1293,6 +1393,15 @@ public class GameInfoPanel extends JPanel {
 		txtGT3p.setColumns(X * 10 / 1366);
 		txtGT3p.setBounds(X * 487 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getThreePointHitRate() >= gameVo.getHomeTP()
+				.getThreePointHitRate()) {
+			txtGT3p.setBackground(Color.DARK_GRAY);
+			txtGT3p.setOpaque(true);
+		} else {
+
+			txtGT3p.setBackground(Color.LIGHT_GRAY);
+			txtGT3p.setOpaque(true);
+		}
 		summarylbl.add(txtGT3p);
 
 		txtHT3p = new MyTextField();
@@ -1303,6 +1412,15 @@ public class GameInfoPanel extends JPanel {
 		txtHT3p.setColumns(X * 10 / 1366);
 		txtHT3p.setBounds(X * 487 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getThreePointHitRate() < gameVo.getHomeTP()
+				.getThreePointHitRate()) {
+			txtHT3p.setBackground(Color.DARK_GRAY);
+			txtHT3p.setOpaque(true);
+		} else {
+
+			txtHT3p.setBackground(Color.LIGHT_GRAY);
+			txtHT3p.setOpaque(true);
+		}
 		summarylbl.add(txtHT3p);
 
 		txtGTast = new MyTextField();
@@ -1312,6 +1430,15 @@ public class GameInfoPanel extends JPanel {
 		txtGTast.setColumns(X * 10 / 1366);
 		txtGTast.setBounds(X * 617 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getAssistance() >= gameVo.getHomeTP()
+				.getAssistance()) {
+			txtGTast.setBackground(Color.DARK_GRAY);
+			txtGTast.setOpaque(true);
+		} else {
+
+			txtGTast.setBackground(Color.LIGHT_GRAY);
+			txtGTast.setOpaque(true);
+		}
 		summarylbl.add(txtGTast);
 
 		txtHTast = new MyTextField();
@@ -1321,6 +1448,15 @@ public class GameInfoPanel extends JPanel {
 		txtHTast.setColumns(X * 10 / 1366);
 		txtHTast.setBounds(X * 617 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getAssistance() < gameVo.getHomeTP()
+				.getAssistance()) {
+			txtHTast.setBackground(Color.DARK_GRAY);
+			txtHTast.setOpaque(true);
+		} else {
+
+			txtHTast.setBackground(Color.LIGHT_GRAY);
+			txtHTast.setOpaque(true);
+		}
 		summarylbl.add(txtHTast);
 
 		txtGTreb = new MyTextField();
@@ -1331,6 +1467,15 @@ public class GameInfoPanel extends JPanel {
 		txtGTreb.setColumns(X * 10 / 1366);
 		txtGTreb.setBounds(X * 747 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getReboundOverall() >= gameVo.getHomeTP()
+				.getReboundOverall()) {
+			txtGTreb.setBackground(Color.DARK_GRAY);
+			txtGTreb.setOpaque(true);
+		} else {
+
+			txtGTreb.setBackground(Color.LIGHT_GRAY);
+			txtGTreb.setOpaque(true);
+		}
 		summarylbl.add(txtGTreb);
 
 		txtHTreb = new MyTextField();
@@ -1340,6 +1485,15 @@ public class GameInfoPanel extends JPanel {
 		txtHTreb.setColumns(X * 10 / 1366);
 		txtHTreb.setBounds(X * 747 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getReboundOverall() < gameVo.getHomeTP()
+				.getReboundOverall()) {
+			txtHTreb.setBackground(Color.DARK_GRAY);
+			txtHTreb.setOpaque(true);
+		} else {
+
+			txtHTreb.setBackground(Color.LIGHT_GRAY);
+			txtHTreb.setOpaque(true);
+		}
 		summarylbl.add(txtHTreb);
 
 		txtGTto = new MyTextField();
@@ -1349,6 +1503,15 @@ public class GameInfoPanel extends JPanel {
 		txtGTto.setColumns(X * 10 / 1366);
 		txtGTto.setBounds(X * 877 / 1366, Y * 110 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getTurnover() >= gameVo.getHomeTP()
+				.getTurnover()) {
+			txtGTto.setBackground(Color.DARK_GRAY);
+			txtGTto.setOpaque(true);
+		} else {
+
+			txtGTto.setBackground(Color.LIGHT_GRAY);
+			txtGTto.setOpaque(true);
+		}
 		summarylbl.add(txtGTto);
 
 		txtHTto = new MyTextField();
@@ -1358,6 +1521,15 @@ public class GameInfoPanel extends JPanel {
 		txtHTto.setColumns(X * 10 / 1366);
 		txtHTto.setBounds(X * 877 / 1366, Y * 150 / 768, X * 130 / 1366,
 				Y * 40 / 768);
+		if (gameVo.getGuestTP().getTurnover() < gameVo.getHomeTP()
+				.getTurnover()) {
+			txtHTto.setBackground(Color.DARK_GRAY);
+			txtHTto.setOpaque(true);
+		} else {
+
+			txtHTto.setBackground(Color.LIGHT_GRAY);
+			txtHTto.setOpaque(true);
+		}
 		summarylbl.add(txtHTto);
 
 		leadinglbl = new MyLabel("数据领跑者");

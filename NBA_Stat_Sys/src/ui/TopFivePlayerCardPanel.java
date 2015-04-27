@@ -73,41 +73,13 @@ public class TopFivePlayerCardPanel extends JPanel {
 		this.previousPanel = previousPanel;
 		this.setVisible(true);
 		this.setLayout(null);
-		this.setOpaque(false);
+		this.setOpaque(true);
+		this.setBackground(Color.DARK_GRAY);
 		this.playerVos = playerVos;
 		this.criteria = criteria;
 		this.setBounds(0, 0, X * 967 / 1366, Y * 250 / 768);
 
-		MyLabel secondlbl = new MyLabel("2");
-		secondlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		secondlbl.setBounds(X * 483 / 1366, Y * 25 / 768, X * 35 / 1366,
-				Y * 35 / 768);
-		add(secondlbl);
-
-		MyLabel thirdlbl = new MyLabel("3");
-		thirdlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		thirdlbl.setBounds(X * 483 / 1366, Y * 75 / 768, X * 35 / 1366,
-				Y * 35 / 768);
-		add(thirdlbl);
-
-		MyLabel fourthlbl = new MyLabel("4");
-		fourthlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fourthlbl.setBounds(X * 483 / 1366, Y * 125 / 768, X * 35 / 1366,
-				Y * 35 / 768);
-		add(fourthlbl);
-
-		MyLabel fifthlbl = new MyLabel("5");
-		fifthlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fifthlbl.setBounds(X * 483 / 1366, Y * 175 / 768, X * 35 / 1366,
-				Y * 35 / 768);
-		add(fifthlbl);
-
-		firstPlayerbtn = new JButton();
-		firstPlayerbtn.setBounds(X * 50 / 1366, Y * 4 / 768, X * 126 / 1366,
-				Y * 200 / 768);
-		firstPlayerbtn.setContentAreaFilled(false);
-		firstPlayerbtn.setBorderPainted(false);
-		add(firstPlayerbtn);
+		
 
 		JLabel firstlbl = new JLabel("1");
 		firstlbl.setFont(new Font("黑体", Font.BOLD, 50));
@@ -116,6 +88,13 @@ public class TopFivePlayerCardPanel extends JPanel {
 		firstlbl.setBounds(X * 1 / 1366, Y * 4 / 768, X * 76 / 1366,
 				Y * 200 / 768);
 		add(firstlbl);
+		
+		firstPlayerbtn = new JButton();
+		firstPlayerbtn.setBounds(X * 50 / 1366, Y * 4 / 768, X * 126 / 1366,
+				Y * 200 / 768);
+		firstPlayerbtn.setContentAreaFilled(false);
+		firstPlayerbtn.setBorderPainted(false);
+		add(firstPlayerbtn);
 
 		firstPlayerNamelbl = new MyLabel();
 		firstPlayerNamelbl.setBounds(X * 180 / 1366, Y * 35 / 768,
@@ -142,142 +121,200 @@ public class TopFivePlayerCardPanel extends JPanel {
 		firstTeambtn.setBorderPainted(false);
 		firstTeambtn.setOpaque(false);
 		add(firstTeambtn);
+		
 
+		JLabel  secondPart=new JLabel();
+		secondPart.setBounds(X * 483 / 1366, Y * 25 / 768, X * 484 / 1366,
+				Y * 40 / 768);
+		secondPart.setBackground(Color.LIGHT_GRAY);
+		secondPart.setOpaque(true);
+		add(secondPart);
+		
+		MyLabel secondlbl = new MyLabel("2");
+		secondlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		secondlbl.setBounds(X * 0 / 1366, Y * 0 / 768, X * 35 / 1366,
+				Y * 35 / 768);
+		secondPart.add(secondlbl);
+		
 		secondPlayerbtn = new JButton();
-		secondPlayerbtn.setBounds(X * 532 / 1366, Y * 25 / 768, X * 35 / 1366,
+		secondPlayerbtn.setBounds(X * 49 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		secondPlayerbtn.setContentAreaFilled(false);
 		secondPlayerbtn.setBorderPainted(false);
 		secondPlayerbtn.setOpaque(false);
-		add(secondPlayerbtn);
+		secondPart.add(secondPlayerbtn);
 
 		secondPlayerNamelbl = new MyLabel();
 		secondPlayerNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		secondPlayerNamelbl.setBounds(X * 610 / 1366, Y * 25 / 768,
+		secondPlayerNamelbl.setBounds(X * 127 / 1366, Y * 0 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(secondPlayerNamelbl);
+		secondPart.add(secondPlayerNamelbl);
 
 		secondPlayerInfolbl = new MyLabel();
 		secondPlayerInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
-		secondPlayerInfolbl.setBounds(X * 610 / 1366, Y * 47 / 768,
+		secondPlayerInfolbl.setBounds(X * 127 / 1366, Y * 22 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(secondPlayerInfolbl);
+		secondPart.add(secondPlayerInfolbl);
 
 		secondPlayerValuelbl = new MyLabel();
 		secondPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		secondPlayerValuelbl.setBounds(X * 902 / 1366, Y * 25 / 768,
+		secondPlayerValuelbl.setBounds(X * 419 / 1366, Y * 0 / 768,
 				X * 50 / 1366, Y * 35 / 768);
-		add(secondPlayerValuelbl);
+		secondPart.add(secondPlayerValuelbl);
 
 		secondTeambtn = new JButton();
-		secondTeambtn.setBounds(X * 821 / 1366, Y * 25 / 768, X * 35 / 1366,
+		secondTeambtn.setBounds(X * 338 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		secondTeambtn.setContentAreaFilled(false);
 		secondTeambtn.setBorderPainted(false);
 		secondTeambtn.setOpaque(false);
-		add(secondTeambtn);
+		secondPart.add(secondTeambtn);
 
+		
+		
+		JLabel  thirdPart=new JLabel();
+		thirdPart.setBounds(X * 483 / 1366, Y * 75 / 768, X * 484 / 1366,
+				Y * 40 / 768);
+		thirdPart.setBackground(Color.GRAY);
+		thirdPart.setOpaque(true);
+		add(thirdPart);
+		
+		MyLabel thirdlbl = new MyLabel("3");
+		thirdlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		thirdlbl.setBounds(X * 0 / 1366, Y * 0 / 768, X * 35 / 1366,
+				Y * 35 / 768);
+		thirdPart.add(thirdlbl);
+		
 		thirdPlayerbtn = new JButton();
-		thirdPlayerbtn.setBounds(X * 532 / 1366, Y * 75 / 768, X * 35 / 1366,
+		thirdPlayerbtn.setBounds(X * 49 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		thirdPlayerbtn.setContentAreaFilled(false);
 		thirdPlayerbtn.setBorderPainted(false);
 		thirdPlayerbtn.setOpaque(false);
-		add(thirdPlayerbtn);
+		thirdPart.add(thirdPlayerbtn);
 
 		thirdPlayerNamelbl = new MyLabel();
 		thirdPlayerNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		thirdPlayerNamelbl.setBounds(X * 610 / 1366, Y * 75 / 768,
+		thirdPlayerNamelbl.setBounds(X * 127 / 1366, Y * 0 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(thirdPlayerNamelbl);
+		thirdPart.add(thirdPlayerNamelbl);
 
 		thirdPlayerInfolbl = new MyLabel();
 		thirdPlayerInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
-		thirdPlayerInfolbl.setBounds(X * 610 / 1366, Y * 97 / 768,
+		thirdPlayerInfolbl.setBounds(X * 127 / 1366, Y * 22 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(thirdPlayerInfolbl);
+		thirdPart.add(thirdPlayerInfolbl);
 
 		thirdPlayerValuelbl = new MyLabel();
 		thirdPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		thirdPlayerValuelbl.setBounds(X * 902 / 1366, Y * 75 / 768,
+		thirdPlayerValuelbl.setBounds(X * 419 / 1366, Y * 0 / 768,
 				X * 50 / 1366, Y * 35 / 768);
-		add(thirdPlayerValuelbl);
+		thirdPart.add(thirdPlayerValuelbl);
 
 		thirdTeambtn = new JButton();
-		thirdTeambtn.setBounds(X * 821 / 1366, Y * 75 / 768, X * 35 / 1366,
+		thirdTeambtn.setBounds(X * 338 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		thirdTeambtn.setContentAreaFilled(false);
 		thirdTeambtn.setBorderPainted(false);
 		thirdTeambtn.setOpaque(false);
-		add(thirdTeambtn);
+		thirdPart.add(thirdTeambtn);
 
+		
+		JLabel  fourthPart=new JLabel();
+		fourthPart.setBounds(X * 483 / 1366, Y * 125 / 768, X * 484 / 1366,
+				Y * 40 / 768);
+		fourthPart.setBackground(Color.LIGHT_GRAY);
+		fourthPart.setOpaque(true);
+		add(fourthPart);
+		
+		MyLabel fourthlbl = new MyLabel("4");
+		fourthlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		fourthlbl.setBounds(X * 0 / 1366, Y * 0 / 768, X * 35 / 1366,
+				Y * 35 / 768);
+		fourthPart.add(fourthlbl);
+		
 		fourthPlayerbtn = new JButton();
-		fourthPlayerbtn.setBounds(X * 532 / 1366, Y * 125 / 768, X * 35 / 1366,
+		fourthPlayerbtn.setBounds(X * 49 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		fourthPlayerbtn.setContentAreaFilled(false);
 		fourthPlayerbtn.setBorderPainted(false);
 		fourthPlayerbtn.setOpaque(false);
-		add(fourthPlayerbtn);
+		fourthPart.add(fourthPlayerbtn);
 
 		fourthPlayerNamelbl = new MyLabel();
 		fourthPlayerNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fourthPlayerNamelbl.setBounds(X * 610 / 1366, Y * 125 / 768,
+		fourthPlayerNamelbl.setBounds(X * 127 / 1366, Y * 0 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(fourthPlayerNamelbl);
+		fourthPart.add(fourthPlayerNamelbl);
 
 		fourthPlayerInfolbl = new MyLabel();
 		fourthPlayerInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fourthPlayerInfolbl.setBounds(X * 610 / 1366, Y * 147 / 768,
+		fourthPlayerInfolbl.setBounds(X * 127 / 1366, Y * 22 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(fourthPlayerInfolbl);
+		fourthPart.add(fourthPlayerInfolbl);
 
 		fourthPlayerValuelbl = new MyLabel();
 		fourthPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fourthPlayerValuelbl.setBounds(X * 902 / 1366, Y * 125 / 768,
+		fourthPlayerValuelbl.setBounds(X *419 / 1366, Y * 0 / 768,
 				X * 50 / 1366, Y * 35 / 768);
-		add(fourthPlayerValuelbl);
+		fourthPart.add(fourthPlayerValuelbl);
 
 		fourthTeambtn = new JButton();
-		fourthTeambtn.setBounds(X * 821 / 1366, Y * 125 / 768, X * 35 / 1366,
+		fourthTeambtn.setBounds(X * 338 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		fourthTeambtn.setContentAreaFilled(false);
 		fourthTeambtn.setBorderPainted(false);
 		fourthTeambtn.setOpaque(false);
-		add(fourthTeambtn);
+		fourthPart.add(fourthTeambtn);
 
+		
+		
+		JLabel  fifthPart=new JLabel();
+		fifthPart.setBounds(X * 483 / 1366, Y * 175 / 768, X * 484 / 1366,
+				Y * 40/ 768);
+		fifthPart.setBackground(Color.GRAY);
+		fifthPart.setOpaque(true);
+		add(fifthPart);
+		
+		MyLabel fifthlbl = new MyLabel("5");
+		fifthlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		fifthlbl.setBounds(X * 0 / 1366, Y * 0 / 768, X * 35 / 1366,
+				Y * 35 / 768);
+		fifthPart.add(fifthlbl);
+		
 		fifthPlayerbtn = new JButton();
-		fifthPlayerbtn.setBounds(X * 532 / 1366, Y * 175 / 768, X * 35 / 1366,
+		fifthPlayerbtn.setBounds(X * 49 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		fifthPlayerbtn.setContentAreaFilled(false);
 		fifthPlayerbtn.setBorderPainted(false);
 		fifthPlayerbtn.setOpaque(false);
-		add(fifthPlayerbtn);
+		fifthPart.add(fifthPlayerbtn);
 
 		fifthPlayerNamelbl = new MyLabel();
 		fifthPlayerNamelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fifthPlayerNamelbl.setBounds(X * 610 / 1366, Y * 175 / 768,
+		fifthPlayerNamelbl.setBounds(X * 127 / 1366, Y * 0 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(fifthPlayerNamelbl);
+		fifthPart.add(fifthPlayerNamelbl);
 
 		fifthPlayerInfolbl = new MyLabel();
 		fifthPlayerInfolbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fifthPlayerInfolbl.setBounds(X * 610 / 1366, Y * 197 / 768,
+		fifthPlayerInfolbl.setBounds(X * 127 / 1366, Y * 22 / 768,
 				X * 145 / 1366, Y * 20 / 768);
-		add(fifthPlayerInfolbl);
+		fifthPart.add(fifthPlayerInfolbl);
 
 		fifthPlayerValuelbl = new MyLabel();
 		fifthPlayerValuelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		fifthPlayerValuelbl.setBounds(X * 902 / 1366, Y * 175 / 768,
+		fifthPlayerValuelbl.setBounds(X * 419 / 1366, Y * 0 / 768,
 				X * 50 / 1366, Y * 35 / 768);
-		add(fifthPlayerValuelbl);
+		fifthPart.add(fifthPlayerValuelbl);
 
 		fifthTeambtn = new JButton();
-		fifthTeambtn.setBounds(X * 821 / 1366, Y * 175 / 768, X * 35 / 1366,
+		fifthTeambtn.setBounds(X * 338 / 1366, Y * 0 / 768, X * 35 / 1366,
 				Y * 35 / 768);
 		fifthTeambtn.setContentAreaFilled(false);
 		fifthTeambtn.setBorderPainted(false);
 		fifthTeambtn.setOpaque(false);
-		add(fifthTeambtn);
+		fifthPart.add(fifthTeambtn);
 
 		showTopFiveData(hotPlayers);
 

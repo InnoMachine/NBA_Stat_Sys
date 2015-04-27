@@ -52,10 +52,9 @@ public class SearchPanel extends JPanel {
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 
-	
-	public SearchPanel(JFrame mainFrame,JPanel previousPanel) {
-		this.mainFrame=mainFrame;
-		this.previousPanel=previousPanel;
+	public SearchPanel(JFrame mainFrame, JPanel previousPanel) {
+		this.mainFrame = mainFrame;
+		this.previousPanel = previousPanel;
 		mainFrame.getContentPane().add(this);
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -86,13 +85,13 @@ public class SearchPanel extends JPanel {
 
 		JButton back = new JButton();
 		back.setForeground(Color.WHITE);
-		
-		  ImageIcon backIcon = new ImageIcon(new
-		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
-		 X / 25, Image.SCALE_SMOOTH));
-		
+
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+
 		back.setBounds(17 * X / 20, Y * 20 / 768, X / 25, X / 25);
-		 back.setIcon(backIcon);
+		back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -103,7 +102,7 @@ public class SearchPanel extends JPanel {
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y * 20/ 768, X / 25, X / 25);
+		minimize.setBounds(18 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -123,7 +122,7 @@ public class SearchPanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 20/ 768, X / 25, X / 25);
+		close.setBounds(19 * X / 20, Y * 20 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -144,16 +143,15 @@ public class SearchPanel extends JPanel {
 		keytF.setVisible(true);
 		keytF.setBackground(Color.GRAY);
 		keytF.setForeground(Color.WHITE);
-		keytF.setFont(new Font("微软雅黑",1,20));
+		keytF.setFont(new Font("微软雅黑", 1, 20));
 		bgLabel.add(keytF);
 
 		JButton searchbtn = new JButton("搜索");
 		searchbtn.setBounds(X * 700 / 1366, Y * 50 / 768, X * 100 / 1366,
 				Y * 27 / 768);
-		ImageIcon searchbtnIcon = new ImageIcon(
-				new ImageIcon("Image/mainButton.png").getImage()
-						.getScaledInstance(X * 100/ 1366,
-								Y * 27 / 768, Image.SCALE_SMOOTH));
+		ImageIcon searchbtnIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 100 / 1366, Y * 27 / 768, Image.SCALE_SMOOTH));
 		searchbtn.setForeground(Color.WHITE);
 		searchbtn.setHorizontalTextPosition(SwingConstants.CENTER);
 		searchbtn.setOpaque(false);
@@ -167,197 +165,1121 @@ public class SearchPanel extends JPanel {
 		JButton AButton = new MyButton("A");
 		AButton.setBounds(X * 215 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		AButton.addActionListener(e -> searchPlayer(keytF.getText(), "A"));
+//		AButton.addActionListener(e -> searchPlayer(keytF.getText(), "A"));
+		AButton.setOpaque(true);
 		AButton.setBackground(Color.GRAY);
+		AButton.setBorderPainted(false);
+		AButton.setFocusPainted(false);
 		AButton.setVisible(true);
 		bgLabel.add(AButton);
 		JButton BButton = new MyButton("B");
 		BButton.setBounds(X * 248 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		BButton.addActionListener(e -> searchPlayer(keytF.getText(), "B"));
+		BButton.setOpaque(true);
 		BButton.setBackground(Color.GRAY);
+		BButton.setBorderPainted(false);
+		BButton.setFocusPainted(false);
 		BButton.setVisible(true);
 		bgLabel.add(BButton);
 		JButton CButton = new MyButton("C");
 		CButton.setBounds(X * 281 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		CButton.addActionListener(e -> searchPlayer(keytF.getText(), "C"));
+//		CButton.addActionListener(e -> searchPlayer(keytF.getText(), "C"));
+		CButton.setOpaque(true);
 		CButton.setBackground(Color.GRAY);
+		CButton.setBorderPainted(false);
+		CButton.setFocusPainted(false);
 		CButton.setVisible(true);
 		bgLabel.add(CButton);
 		JButton DButton = new MyButton("D");
 		DButton.setBounds(X * 314 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		DButton.addActionListener(e -> searchPlayer(keytF.getText(), "D"));
+///		DButton.addActionListener(e -> searchPlayer(keytF.getText(), "D"));
+		DButton.setOpaque(true);
 		DButton.setBackground(Color.GRAY);
+		DButton.setBorderPainted(false);
+		DButton.setFocusPainted(false);
 		DButton.setVisible(true);
 		bgLabel.add(DButton);
 		JButton EButton = new MyButton("E");
 		EButton.setBounds(X * 347 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		EButton.addActionListener(e -> searchPlayer(keytF.getText(), "E"));
+//		EButton.addActionListener(e -> searchPlayer(keytF.getText(), "E"));
+		EButton.setOpaque(true);
 		EButton.setBackground(Color.GRAY);
+		EButton.setBorderPainted(false);
+		EButton.setFocusPainted(false);
 		EButton.setVisible(true);
 		bgLabel.add(EButton);
 		JButton FButton = new MyButton("F");
 		FButton.setBounds(X * 380 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		FButton.addActionListener(e -> searchPlayer(keytF.getText(), "F"));
+//		FButton.addActionListener(e -> searchPlayer(keytF.getText(), "F"));
+		FButton.setOpaque(true);
 		FButton.setBackground(Color.GRAY);
+		FButton.setBorderPainted(false);
+		FButton.setFocusPainted(false);
 		FButton.setVisible(true);
 		bgLabel.add(FButton);
 		JButton GButton = new MyButton("G");
 		GButton.setBounds(X * 413 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		GButton.addActionListener(e -> searchPlayer(keytF.getText(), "G"));
+//		GButton.addActionListener(e -> searchPlayer(keytF.getText(), "G"));
+		GButton.setOpaque(true);
 		GButton.setBackground(Color.GRAY);
+		GButton.setBorderPainted(false);
+		GButton.setFocusPainted(false);
 		GButton.setVisible(true);
 		bgLabel.add(GButton);
 		JButton HButton = new MyButton("H");
 		HButton.setBounds(X * 446 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		HButton.addActionListener(e -> searchPlayer(keytF.getText(), "H"));
+//		HButton.addActionListener(e -> searchPlayer(keytF.getText(), "H"));
+		HButton.setOpaque(true);
 		HButton.setBackground(Color.GRAY);
+		HButton.setBorderPainted(false);
+		HButton.setFocusPainted(false);
 		HButton.setVisible(true);
 		bgLabel.add(HButton);
 		JButton IButton = new MyButton("I");
 		IButton.setBounds(X * 479 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		IButton.addActionListener(e -> searchPlayer(keytF.getText(), "I"));
+//		IButton.addActionListener(e -> searchPlayer(keytF.getText(), "I"));
+		IButton.setOpaque(true);
 		IButton.setBackground(Color.GRAY);
+		IButton.setBorderPainted(false);
+		IButton.setFocusPainted(false);
 		IButton.setVisible(true);
 		bgLabel.add(IButton);
 		JButton JButton = new MyButton("G");
 		JButton.setBounds(X * 512 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		JButton.addActionListener(e -> searchPlayer(keytF.getText(), "J"));
+//		JButton.addActionListener(e -> searchPlayer(keytF.getText(), "J"));
+		JButton.setOpaque(true);
 		JButton.setBackground(Color.GRAY);
+		JButton.setBorderPainted(false);
+		JButton.setFocusPainted(false);
 		JButton.setVisible(true);
 		bgLabel.add(JButton);
 		JButton KButton = new MyButton("K");
 		KButton.setBounds(X * 545 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		KButton.addActionListener(e -> searchPlayer(keytF.getText(), "K"));
+//		KButton.addActionListener(e -> searchPlayer(keytF.getText(), "K"));
+		KButton.setOpaque(true);
 		KButton.setBackground(Color.GRAY);
+		KButton.setBorderPainted(false);
+		KButton.setFocusPainted(false);
 		KButton.setVisible(true);
 		bgLabel.add(KButton);
 		JButton LButton = new MyButton("L");
 		LButton.setBounds(X * 578 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		LButton.addActionListener(e -> searchPlayer(keytF.getText(), "L"));
+//		LButton.addActionListener(e -> searchPlayer(keytF.getText(), "L"));
+		LButton.setOpaque(true);
 		LButton.setBackground(Color.GRAY);
+		LButton.setBorderPainted(false);
+		LButton.setFocusPainted(false);
 		LButton.setVisible(true);
 		bgLabel.add(LButton);
 		JButton MButton = new MyButton("M");
 		MButton.setBounds(X * 611 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		MButton.addActionListener(e -> searchPlayer(keytF.getText(), "M"));
+//		MButton.addActionListener(e -> searchPlayer(keytF.getText(), "M"));
+		MButton.setOpaque(true);
 		MButton.setBackground(Color.GRAY);
+		MButton.setBorderPainted(false);
+		MButton.setFocusPainted(false);
 		MButton.setVisible(true);
 		bgLabel.add(MButton);
 		JButton NButton = new MyButton("N");
 		NButton.setBounds(X * 644 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		NButton.addActionListener(e -> searchPlayer(keytF.getText(), "N"));
+//		NButton.addActionListener(e -> searchPlayer(keytF.getText(), "N"));
+		NButton.setOpaque(true);
 		NButton.setBackground(Color.GRAY);
+		NButton.setBorderPainted(false);
+		NButton.setFocusPainted(false);
 		NButton.setVisible(true);
 		bgLabel.add(NButton);
 		JButton OButton = new MyButton("O");
 		OButton.setBounds(X * 677 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		OButton.addActionListener(e -> searchPlayer(keytF.getText(), "O"));
+//		OButton.addActionListener(e -> searchPlayer(keytF.getText(), "O"));
+		OButton.setOpaque(true);
 		OButton.setBackground(Color.GRAY);
+		OButton.setBorderPainted(false);
+		OButton.setFocusPainted(false);
 		OButton.setVisible(true);
 		bgLabel.add(OButton);
 		JButton PButton = new MyButton("P");
 		PButton.setBounds(X * 710 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		PButton.addActionListener(e -> searchPlayer(keytF.getText(), "P"));
+//		PButton.addActionListener(e -> searchPlayer(keytF.getText(), "P"));
+		PButton.setOpaque(true);
 		PButton.setBackground(Color.GRAY);
+		PButton.setBorderPainted(false);
+		PButton.setFocusPainted(false);
 		PButton.setVisible(true);
 		bgLabel.add(PButton);
 		JButton QButton = new MyButton("Q");
 		QButton.setBounds(X * 743 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		QButton.addActionListener(e -> searchPlayer(keytF.getText(), "Q"));
+//		QButton.addActionListener(e -> searchPlayer(keytF.getText(), "Q"));
+		QButton.setOpaque(true);
 		QButton.setBackground(Color.GRAY);
+		QButton.setBorderPainted(false);
+		QButton.setFocusPainted(false);
 		QButton.setVisible(true);
 		bgLabel.add(QButton);
 		JButton RButton = new MyButton("R");
 		RButton.setBounds(X * 776 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		RButton.addActionListener(e -> searchPlayer(keytF.getText(), "R"));
+//		RButton.addActionListener(e -> searchPlayer(keytF.getText(), "R"));
+		RButton.setOpaque(true);
 		RButton.setBackground(Color.GRAY);
+		RButton.setBorderPainted(false);
+		RButton.setFocusPainted(false);
 		RButton.setVisible(true);
 		bgLabel.add(RButton);
 		JButton SButton = new MyButton("S");
 		SButton.setBounds(X * 809 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		SButton.addActionListener(e -> searchPlayer(keytF.getText(), "S"));
+//		SButton.addActionListener(e -> searchPlayer(keytF.getText(), "S"));
+		SButton.setOpaque(true);
 		SButton.setBackground(Color.GRAY);
+		SButton.setBorderPainted(false);
+		SButton.setFocusPainted(false);
 		SButton.setVisible(true);
 		bgLabel.add(SButton);
 		JButton TButton = new MyButton("T");
 		TButton.setBounds(X * 842 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		TButton.addActionListener(e -> searchPlayer(keytF.getText(), "T"));
+//		TButton.addActionListener(e -> searchPlayer(keytF.getText(), "T"));
+		TButton.setOpaque(true);
 		TButton.setBackground(Color.GRAY);
+		TButton.setBorderPainted(false);
+		TButton.setFocusPainted(false);
 		TButton.setVisible(true);
 		bgLabel.add(TButton);
 		JButton UButton = new MyButton("U");
 		UButton.setBounds(X * 875 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		UButton.addActionListener(e -> searchPlayer(keytF.getText(), "U"));
+//		UButton.addActionListener(e -> searchPlayer(keytF.getText(), "U"));
+		UButton.setOpaque(true);
 		UButton.setBackground(Color.GRAY);
+		UButton.setBorderPainted(false);
+		UButton.setFocusPainted(false);
 		UButton.setVisible(true);
 		bgLabel.add(UButton);
 		JButton VButton = new MyButton("V");
 		VButton.setBounds(X * 908 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		VButton.addActionListener(e -> searchPlayer(keytF.getText(), "V"));
+//		VButton.addActionListener(e -> searchPlayer(keytF.getText(), "V"));
+		VButton.setOpaque(true);
 		VButton.setBackground(Color.GRAY);
+		VButton.setBorderPainted(false);
+		VButton.setFocusPainted(false);
 		VButton.setVisible(true);
 		bgLabel.add(VButton);
 		JButton WButton = new MyButton("W");
 		WButton.setBounds(X * 941 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 		WButton.addActionListener(e -> searchPlayer(keytF.getText(), "W"));
+		WButton.setOpaque(true);
 		WButton.setBackground(Color.GRAY);
+		WButton.setBorderPainted(false);
+		WButton.setFocusPainted(false);
 		WButton.setVisible(true);
 		bgLabel.add(WButton);
 		JButton XButton = new MyButton("X");
 		XButton.setBounds(X * 974 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		XButton.addActionListener(e -> searchPlayer(keytF.getText(), "X"));
+//		XButton.addActionListener(e -> searchPlayer(keytF.getText(), "X"));
+		XButton.setOpaque(true);
 		XButton.setBackground(Color.GRAY);
+		XButton.setBorderPainted(false);
+		XButton.setFocusPainted(false);
 		XButton.setVisible(true);
 		bgLabel.add(XButton);
 		JButton YButton = new MyButton("Y");
 		YButton.setBounds(X * 1007 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		YButton.addActionListener(e -> searchPlayer(keytF.getText(), "Y"));
+//		YButton.addActionListener(e -> searchPlayer(keytF.getText(), "Y"));
+		YButton.setOpaque(true);
 		YButton.setBackground(Color.GRAY);
+		YButton.setBorderPainted(false);
+		YButton.setFocusPainted(false);
 		YButton.setVisible(true);
 		bgLabel.add(YButton);
 		JButton ZButton = new MyButton("Z");
 		ZButton.setBounds(X * 1040 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
-		ZButton.addActionListener(e -> searchPlayer(keytF.getText(), "Z"));
+//		ZButton.addActionListener(e -> searchPlayer(keytF.getText(), "Z"));
+		ZButton.setOpaque(true);
 		ZButton.setBackground(Color.GRAY);
+		ZButton.setBorderPainted(false);
+		ZButton.setFocusPainted(false);
 		ZButton.setVisible(true);
 		bgLabel.add(ZButton);
 		JButton AllButton = new MyButton("All");
 		AllButton.setBounds(X * 1073 / 1366, Y * 87 / 768, X * 70 / 1366,
 				Y * 33 / 768);
-		AllButton.addActionListener(e -> searchPlayer(keytF.getText(), "All"));
-		AllButton.setOpaque(false);
+//		AllButton.addActionListener(e -> searchPlayer(keytF.getText(), "All"));
+		AllButton.setOpaque(true);
 		AllButton.setBackground(Color.GRAY);
+		AllButton.setBorderPainted(false);
+		AllButton.setFocusPainted(false);
 		AllButton.setVisible(true);
 		bgLabel.add(AllButton);
 
+		AButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "A");
+			AButton.setBackground(Color.DARK_GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+		BButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "B");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.DARK_GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		CButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "C");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.DARK_GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		DButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "DB");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.DARK_GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		EButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "E");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.DARK_GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		FButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "F");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.DARK_GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+		GButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "G");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.DARK_GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		HButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "H");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.DARK_GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+		IButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "I");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.DARK_GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		JButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "J");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.DARK_GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		KButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "K");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.DARK_GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+		LButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "L");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.DARK_GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		MButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "M");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.DARK_GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		NButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "N");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.DARK_GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		
+		OButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "O");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.DARK_GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+		PButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "P");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.DARK_GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		QButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "Q");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.DARK_GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		RButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "R");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.DARK_GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		SButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "S");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.DARK_GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		TButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "T");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.DARK_GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+		UButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "U");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.DARK_GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		VButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "V");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.DARK_GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+		WButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "W");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.DARK_GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+
+		XButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "X");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.DARK_GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		YButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "Y");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.DARK_GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.GRAY);
+		});
+		ZButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "Z");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.DARK_GRAY);
+			AllButton.setBackground(Color.GRAY);
+
+		});
+
+		AllButton.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "All");
+			AButton.setBackground(Color.GRAY);
+			BButton.setBackground(Color.GRAY);
+			CButton.setBackground(Color.GRAY);
+			DButton.setBackground(Color.GRAY);
+			EButton.setBackground(Color.GRAY);
+			FButton.setBackground(Color.GRAY);
+			GButton.setBackground(Color.GRAY);
+			HButton.setBackground(Color.GRAY);
+			IButton.setBackground(Color.GRAY);
+			JButton.setBackground(Color.GRAY);
+			KButton.setBackground(Color.GRAY);
+			LButton.setBackground(Color.GRAY);
+			MButton.setBackground(Color.GRAY);
+			NButton.setBackground(Color.GRAY);
+			OButton.setBackground(Color.GRAY);
+			PButton.setBackground(Color.GRAY);
+			QButton.setBackground(Color.GRAY);
+			RButton.setBackground(Color.GRAY);
+			SButton.setBackground(Color.GRAY);
+			TButton.setBackground(Color.GRAY);
+			UButton.setBackground(Color.GRAY);
+			VButton.setBackground(Color.GRAY);
+			WButton.setBackground(Color.GRAY);
+			XButton.setBackground(Color.GRAY);
+			YButton.setBackground(Color.GRAY);
+			ZButton.setBackground(Color.GRAY);
+			AllButton.setBackground(Color.DARK_GRAY);
+		});
+		
+		
+		
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		for(int i=0;i<10;i++){
-		playerVos.add(player_BS.getAllPlayer().get(i));
+		for (int i = 0; i < 10; i++) {
+			playerVos.add(player_BS.getAllPlayer().get(i));
 		}
 		if (rowData == null) {
 			rowData = new Vector<Vector<PlayerBasicInfoCardPanel>>();
@@ -413,7 +1335,7 @@ public class SearchPanel extends JPanel {
 		scrollPane.setOpaque(false);
 
 		bgLabel.add(scrollPane);
-		
+
 		mainFrame.getContentPane().add(this);
 	}
 
@@ -476,15 +1398,18 @@ public class SearchPanel extends JPanel {
 		bgLabel.add(scrollPane);
 
 	}
+
 	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 		// playerCriteriaPanel.setVisible(false);
 	}
-	public void selfClose(){
+
+	public void selfClose() {
 		this.setVisible(false);
 	}
+
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
@@ -504,10 +1429,11 @@ public class SearchPanel extends JPanel {
 			renderer.setOpaque(false);
 
 			if (hasFocus) {
-				PlayerPanel ppPanel=new PlayerPanel(mainFrame);
+				PlayerPanel ppPanel = new PlayerPanel(mainFrame);
 				ppPanel.setVisible(false);
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerVo()
-						.getName(), mainFrame,new SearchPanel(mainFrame, ppPanel));
+						.getName(), mainFrame, new SearchPanel(mainFrame,
+						ppPanel));
 				selfClose();
 			}
 
