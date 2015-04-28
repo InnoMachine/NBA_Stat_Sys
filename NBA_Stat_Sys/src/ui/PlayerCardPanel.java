@@ -30,16 +30,19 @@ public class PlayerCardPanel extends JPanel {
 	private MyTextField textField_6;
 	private MyTextField textField_7;
 	private MyTextField textField_8;
+	private MyTextField textField_9;
 
 	private PlayerVo playerInfo;
-	private String criteria;
-	private String criteriaValue;
+	private String criteria1 = "";
+	private String criteriaValue1;
+	private String criteria2 = "";
+	private String criteriaValue2;
 	int X;
 	int Y;
 	int number;
 
 	public PlayerCardPanel(int number, int X, int Y, PlayerVo playerInfo,
-			String criteria, String criteriaValue) {
+			String criteria1, String criteriaValue1) {
 		this.X = X;
 		this.Y = Y;
 		this.number = number;
@@ -47,8 +50,24 @@ public class PlayerCardPanel extends JPanel {
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.playerInfo = playerInfo;
-		this.criteria = criteria;
-		this.criteriaValue = criteriaValue;
+		this.criteria1 = criteria1;
+		this.criteriaValue1 = criteriaValue1;
+	}
+
+	public PlayerCardPanel(int number, int X, int Y, PlayerVo playerInfo,
+			String criteria1, String criteriaValue1, String criteria2,
+			String criteriaValue2) {
+		this.X = X;
+		this.Y = Y;
+		this.number = number;
+		this.setVisible(true);
+		this.setLayout(null);
+		this.setOpaque(false);
+		this.playerInfo = playerInfo;
+		this.criteria1 = criteria1;
+		this.criteriaValue1 = criteriaValue1;
+		this.criteria2 = criteria2;
+		this.criteriaValue2 = criteriaValue2;
 	}
 
 	public void fillPanel() {
@@ -63,7 +82,7 @@ public class PlayerCardPanel extends JPanel {
 		} else if (number > 3) {
 			lblNumber = new JLabel(String.valueOf(number) + "th");
 		} else {
-//			System.out.println("球员名片显示中的排名Bug！！！" + number);
+			// System.out.println("球员名片显示中的排名Bug！！！" + number);
 		}
 		lblNumber.setBounds(X * 6 / 1366, Y * 6 / 768, X * 63 / 1366,
 				Y * 108 / 768);
@@ -86,28 +105,22 @@ public class PlayerCardPanel extends JPanel {
 		playerButton.setBorderPainted(false);
 		playerButton.setOpaque(false);
 		add(playerButton);
-		
-		
+
 		ImageIcon playerPortrait;
 		if (hasPortrait(playerInfo.getName() + ".png")) {
-			playerPortrait = new ImageIcon(new ImageIcon(
-					"CSEdata/players/portrait/" + playerInfo.getName() + ".png").getImage().getScaledInstance(
-							X * 134 / 1366,
-							Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
+			playerPortrait = new ImageIcon(
+					new ImageIcon("CSEdata/players/portrait/"
+							+ playerInfo.getName() + ".png").getImage()
+							.getScaledInstance(X * 134 / 1366, Y * 108 / 768,
+									Image.SCALE_AREA_AVERAGING));
 		} else {
 			playerPortrait = new ImageIcon(new ImageIcon(
 					"CSEdata/players/portrait/" + "DefaultPortrait" + ".png")
 					.getImage().getScaledInstance(X * 134 / 1366,
-							Y * 108 / 768,
-							Image.SCALE_AREA_AVERAGING));
+							Y * 108 / 768, Image.SCALE_AREA_AVERAGING));
 		}
-		
 
 		playerButton.setIcon(playerPortrait);
-		
-		
-		
-		
 
 		MyLabel label = new MyLabel(Color.WHITE, "姓名");
 		label.setBounds(X * 220 / 1366, Y * 21 / 768, X * 54 / 1366,
@@ -125,19 +138,38 @@ public class PlayerCardPanel extends JPanel {
 
 		MyLabel lblNewLabel_1 = new MyLabel(Color.WHITE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setText(criteria);
-		lblNewLabel_1.setBounds(X * 529 / 1366, Y * 21 / 768, X * 90 / 1366,
+		lblNewLabel_1.setText(criteria1);
+		lblNewLabel_1.setBounds(X * 484 / 1366, Y * 21 / 768, X * 90 / 1366,
 				Y * 15 / 768);
 		add(lblNewLabel_1);
 
 		textField_8 = new MyTextField(Color.WHITE);
 		textField_8.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_8.setText(criteriaValue);
+		textField_8.setText(criteriaValue1);
 		textField_8.setEditable(false);
-		textField_8.setBounds(X * 626 / 1366, Y * 17 / 768, X * 80 / 1366,
+		textField_8.setBounds(X * 581 / 1366, Y * 17 / 768, X * 80 / 1366,
 				Y * 23 / 768);
 		add(textField_8);
 		textField_8.setColumns(10);
+
+		if (criteria2 != "") {
+			MyLabel lblNewLabel_2 = new MyLabel(Color.WHITE);
+			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_2.setText(criteria2);
+			lblNewLabel_2.setBounds(X * 707 / 1366, Y * 21 / 768,
+					X * 90 / 1366, Y * 15 / 768);
+			add(lblNewLabel_2);
+
+			textField_9 = new MyTextField(Color.WHITE);
+			textField_9.setHorizontalAlignment(SwingConstants.CENTER);
+			textField_9.setText(criteriaValue2);
+			textField_9.setEditable(false);
+			textField_9.setBounds(X * 804 / 1366, Y * 17 / 768, X * 80 / 1366,
+					Y * 23 / 768);
+			add(textField_9);
+			textField_9.setColumns(10);
+
+		}
 
 		MyLabel label_1 = new MyLabel(Color.WHITE, "球衣号码");
 		label_1.setBounds(X * 670 / 1366, Y * 56 / 768, X * 60 / 1366,
@@ -207,7 +239,7 @@ public class PlayerCardPanel extends JPanel {
 		textField_1.setColumns(10);
 		textField_1.setBounds(X * 254 / 1366, Y * 87 / 768, X * 90 / 1366,
 				Y * 23 / 768);
-		textField_1.setFont(new Font("黑体",1,11));
+		textField_1.setFont(new Font("黑体", 1, 11));
 		add(textField_1);
 
 		MyLabel label_6 = new MyLabel(Color.WHITE, "年龄");
@@ -250,7 +282,7 @@ public class PlayerCardPanel extends JPanel {
 		textField_7.setColumns(10);
 		textField_7.setBounds(X * 728 / 1366, Y * 87 / 768, X * 160 / 1366,
 				Y * 23 / 768);
-		textField_7.setFont(new Font("黑体",1,9));
+		textField_7.setFont(new Font("黑体", 1, 9));
 		add(textField_7);
 
 	}
@@ -259,13 +291,22 @@ public class PlayerCardPanel extends JPanel {
 		return playerInfo;
 	}
 
-	public String getCriteria() {
-		return criteria;
+	public String getCriteria1() {
+		return criteria1;
 	}
 
-	public String getCriteriaValue() {
-		return criteriaValue;
+	public String getCriteriaValue1() {
+		return criteriaValue1;
 	}
+
+	public String getCriteria2() {
+		return criteria2;
+	}
+
+	public String getCriteriaValue2() {
+		return criteriaValue2;
+	}
+
 	public boolean hasAction(String actionPath) {
 		boolean hasAction = false;
 		File actionFile = new File("CSEdata/players/action//");
@@ -293,6 +334,7 @@ public class PlayerCardPanel extends JPanel {
 		}
 		return hasPortrait;
 	}
+
 	class MyTextField extends JTextField {
 		/**
 		 * 

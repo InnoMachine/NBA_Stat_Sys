@@ -116,13 +116,13 @@ public class SortPanel extends JPanel {
 
 		JButton back = new JButton();
 		back.setForeground(Color.WHITE);
-		
-		  ImageIcon backIcon = new ImageIcon(new
-		 ImageIcon("Image/backIcon.png") .getImage().getScaledInstance(X / 25,
-		 X / 25, Image.SCALE_SMOOTH));
-		
+
+		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+
 		back.setBounds(17 * X / 20, Y * 20 / 768, X / 25, X / 25);
-		 back.setIcon(backIcon);
+		back.setIcon(backIcon);
 		back.setOpaque(false);
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
@@ -416,7 +416,7 @@ public class SortPanel extends JPanel {
 					}
 				}
 			});
-			
+
 			if (table != null) {
 				table.setVisible(false);
 			}
@@ -426,9 +426,8 @@ public class SortPanel extends JPanel {
 			teamVos = team_BS.sortTeamBy("GameNum");
 			for (int i = 0; i < teamVos.size(); i++) {
 				Vector<TeamCardPanel> a = new Vector<TeamCardPanel>();
-				a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i),
-						"GameNum", String
-								.valueOf(teamVos.get(i).getGameNum())));
+				a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i), "GameNum",
+						String.valueOf(teamVos.get(i).getGameNum())));
 				teamRowData.add(a);
 			}
 
@@ -440,7 +439,6 @@ public class SortPanel extends JPanel {
 			} else {
 				makeTable("team");
 			}
-
 
 		}
 
@@ -505,7 +503,9 @@ public class SortPanel extends JPanel {
 
 		if (playerCriteria1 == "" && playerCriteria2 == "") {
 			JOptionPane.showMessageDialog(this, "请选择球员排序依据");
-		} else if (playerCriteria1 != "" && playerCriteria2 == "") {
+		}
+
+		else if (playerCriteria1 != "" && playerCriteria2 == "") {
 			playerVos = player_BS.sortPlayerBy(playerCriteria1);
 
 			if (UpOrDown == "Up") {
@@ -515,165 +515,9 @@ public class SortPanel extends JPanel {
 			for (int i = 0; i < playerVos.size(); i++) {
 
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
-				switch (playerCriteria1) {
-				case "gameNum":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getGameNum())));
-
-					break;
-				case "FirstOnNum":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getFirstOnNum())));
-					break;
-				case "reboundOverallField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getReboundOverallField())));
-					break;
-				case "assistanceField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAssistanceField())));
-					break;
-				case "timeField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String.format("%.2f",
-									(playerVos.get(i).getTimeField() / 60.0))));
-					break;
-				case "hitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getHitRate())));
-					break;
-				case "threePointHitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getThreePointHitRate())));
-					break;
-				case "freeThrowRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getFreeThrowRate())));
-					break;
-				case "attackingNumField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAttackingNumField())));
-					break;
-				case "defensiveNumField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getDefensiveNumField())));
-					break;
-				case "stealField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getStealField())));
-					break;
-				case "blockField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getBlockField())));
-					break;
-				case "turnoverField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getTurnoverField())));
-					break;
-				case "foulField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getFoulField())));
-					break;
-
-				case "scoreField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getScoreField())));
-					break;
-				case "efficiencyField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getEfficiencyField())));
-					break;
-
-				case "GmScField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getGmScField())));
-					break;
-				case "trueHitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getTrueHitRate())));
-					break;
-
-				case "hitEfficiency":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getHitEfficiency())));
-					break;
-				case "reboundOverallRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getReboundOverallRate())));
-					break;
-
-				case "offensiveReboundRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getOffensiveReboundRate())));
-					break;
-				case "defensiveReboundRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getDefensiveReboundRate())));
-					break;
-
-				case "assistanceRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAssistanceRate())));
-					break;
-				case "stealRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getStealRate())));
-					break;
-				case "blockRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getBlockRate())));
-					break;
-				case "turnOverRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(),
-							String.valueOf(playerVos.get(i).getTurnOverRate())));
-					break;
-				case "useRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getUseRate())));
-					break;
-				default:
-					break;
-
-				}
+				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+						playerCriteriabtn1.getText(), getSortValue(
+								playerVos.get(i), playerCriteriabtn1.getText())));
 				playerRowData.add(a);
 
 			}
@@ -696,165 +540,10 @@ public class SortPanel extends JPanel {
 			for (int i = 0; i < playerVos.size(); i++) {
 
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
-				switch (playerCriteria2) {
-				case "gameNum":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getGameNum())));
+				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+						playerCriteriabtn2.getText(), getSortValue(
+								playerVos.get(i), playerCriteriabtn2.getText())));
 
-					break;
-				case "FirstOnNum":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getFirstOnNum())));
-					break;
-				case "reboundOverallField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getReboundOverallField())));
-					break;
-				case "assistanceField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAssistanceField())));
-					break;
-				case "timeField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String.format("%.2f",
-									(playerVos.get(i).getTimeField() / 60.0))));
-					break;
-				case "hitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getHitRate())));
-					break;
-				case "threePointHitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getThreePointHitRate())));
-					break;
-				case "freeThrowRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getFreeThrowRate())));
-					break;
-				case "attackingNumField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAttackingNumField())));
-					break;
-				case "defensiveNumField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getDefensiveNumField())));
-					break;
-				case "stealField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getStealField())));
-					break;
-				case "blockField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getBlockField())));
-					break;
-				case "turnoverField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getTurnoverField())));
-					break;
-				case "foulField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getFoulField())));
-					break;
-
-				case "scoreField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getScoreField())));
-					break;
-				case "efficiencyField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getEfficiencyField())));
-					break;
-
-				case "GmScField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getGmScField())));
-					break;
-				case "trueHitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getTrueHitRate())));
-					break;
-
-				case "hitEfficiency":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getHitEfficiency())));
-					break;
-				case "reboundOverallRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getReboundOverallRate())));
-					break;
-
-				case "offensiveReboundRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getOffensiveReboundRate())));
-					break;
-				case "defensiveReboundRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getDefensiveReboundRate())));
-					break;
-
-				case "assistanceRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAssistanceRate())));
-					break;
-				case "stealRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getStealRate())));
-					break;
-				case "blockRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getBlockRate())));
-					break;
-				case "turnOverRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(),
-							String.valueOf(playerVos.get(i).getTurnOverRate())));
-					break;
-				case "useRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn2.getText(), String
-									.valueOf(playerVos.get(i).getUseRate())));
-					break;
-				default:
-					break;
-
-				}
 				playerRowData.add(a);
 
 			}
@@ -867,6 +556,7 @@ public class SortPanel extends JPanel {
 				makeTable("player");
 			}
 			UpOrDown = "Down"; // 恢复默认降序
+
 		} else if (playerCriteria1 != "" && playerCriteria2 != "") {
 			playerVos = player_BS
 					.sortPlayerBy(playerCriteria1, playerCriteria2);
@@ -878,165 +568,14 @@ public class SortPanel extends JPanel {
 			for (int i = 0; i < playerVos.size(); i++) {
 
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
-				switch (playerCriteria1) {
-				case "gameNum":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getGameNum())));
 
-					break;
-				case "FirstOnNum":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getFirstOnNum())));
-					break;
-				case "reboundOverallField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getReboundOverallField())));
-					break;
-				case "assistanceField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAssistanceField())));
-					break;
-				case "timeField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String.format("%.2f",
-									(playerVos.get(i).getTimeField() / 60.0))));
-					break;
-				case "hitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getHitRate())));
-					break;
-				case "threePointHitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getThreePointHitRate())));
-					break;
-				case "freeThrowRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getFreeThrowRate())));
-					break;
-				case "attackingNumField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAttackingNumField())));
-					break;
-				case "defensiveNumField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getDefensiveNumField())));
-					break;
-				case "stealField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getStealField())));
-					break;
-				case "blockField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getBlockField())));
-					break;
-				case "turnoverField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getTurnoverField())));
-					break;
-				case "foulField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getFoulField())));
-					break;
+				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
+						playerCriteriabtn1.getText(),
+						getSortValue(playerVos.get(i),
+								playerCriteriabtn1.getText()),
+						playerCriteriabtn2.getText(), getSortValue(
+								playerVos.get(i), playerCriteriabtn2.getText())));
 
-				case "scoreField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getScoreField())));
-					break;
-				case "efficiencyField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getEfficiencyField())));
-					break;
-
-				case "GmScField":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getGmScField())));
-					break;
-				case "trueHitRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getTrueHitRate())));
-					break;
-
-				case "hitEfficiency":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getHitEfficiency())));
-					break;
-				case "reboundOverallRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getReboundOverallRate())));
-					break;
-
-				case "offensiveReboundRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getOffensiveReboundRate())));
-					break;
-				case "defensiveReboundRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getDefensiveReboundRate())));
-					break;
-
-				case "assistanceRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i)
-											.getAssistanceRate())));
-					break;
-				case "stealRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getStealRate())));
-					break;
-				case "blockRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getBlockRate())));
-					break;
-				case "turnOverRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(),
-							String.valueOf(playerVos.get(i).getTurnOverRate())));
-					break;
-				case "useRate":
-					a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-							playerCriteriabtn1.getText(), String
-									.valueOf(playerVos.get(i).getUseRate())));
-					break;
-				default:
-					break;
-
-				}
 				playerRowData.add(a);
 
 			}
@@ -1051,6 +590,105 @@ public class SortPanel extends JPanel {
 			UpOrDown = "Down"; // 恢复默认降序
 		}
 
+	}
+
+	private String getSortValue(PlayerVo playerVo, String text) {
+		String sortValue = "";
+		switch (text) {
+		case "gameNum":
+			sortValue = String.valueOf(playerVo.getGameNum());
+
+			break;
+		case "FirstOnNum":
+			sortValue = String.valueOf(playerVo.getFirstOnNum());
+			break;
+		case "reboundOverallField":
+			sortValue = String.valueOf(playerVo.getReboundOverallField());
+			break;
+		case "assistanceField":
+			sortValue = String.valueOf(playerVo.getAssistanceField());
+			break;
+		case "timeField":
+			sortValue = String.valueOf(playerVo.getTimeField());
+			break;
+		case "hitRate":
+			sortValue = String.valueOf(playerVo.getHitRate());
+			break;
+		case "threePointHitRate":
+			sortValue = String.valueOf(playerVo.getThreePointHitRate());
+			break;
+		case "freeThrowRate":
+			sortValue = String.valueOf(playerVo.getFreeThrowRate());
+			break;
+		case "attackingNumField":
+			sortValue = String.valueOf(playerVo.getAttackingNumField());
+			break;
+		case "defensiveNumField":
+			sortValue = String.valueOf(playerVo.getDefensiveNumField());
+			break;
+		case "stealField":
+			sortValue = String.valueOf(playerVo.getStealField());
+			break;
+		case "blockField":
+			sortValue = String.valueOf(playerVo.getBlockField());
+			break;
+		case "turnoverField":
+			sortValue = String.valueOf(playerVo.getTurnoverField());
+			break;
+		case "foulField":
+			sortValue = String.valueOf(playerVo.getFoulField());
+			break;
+
+		case "scoreField":
+			sortValue = String.valueOf(playerVo.getScoreField());
+			break;
+		case "efficiencyField":
+			sortValue = String.valueOf(playerVo.getEfficiencyField());
+			break;
+
+		case "GmScField":
+			sortValue = String.valueOf(playerVo.getGmScField());
+			break;
+		case "trueHitRate":
+			sortValue = String.valueOf(playerVo.getTrueHitRate());
+			break;
+
+		case "hitEfficiency":
+			sortValue = String.valueOf(playerVo.getHitEfficiency());
+			break;
+		case "reboundOverallRate":
+			sortValue = String.valueOf(playerVo.getReboundOverallRate());
+			break;
+
+		case "offensiveReboundRate":
+			sortValue = String.valueOf(playerVo.getOffensiveReboundRate());
+			break;
+		case "defensiveReboundRate":
+			sortValue = String.valueOf(playerVo.getDefensiveReboundRate());
+			break;
+
+		case "assistanceRate":
+			sortValue = String.valueOf(playerVo.getAssistanceRate());
+			break;
+		case "stealRate":
+			sortValue = String.valueOf(playerVo.getStealRate());
+			break;
+		case "blockRate":
+			sortValue = String.valueOf(playerVo.getBlockRate());
+			break;
+		case "turnOverRate":
+			sortValue = String.valueOf(playerVo.getTurnOverRate());
+			break;
+		case "useRate":
+			sortValue = String.valueOf(playerVo.getUseRate());
+			break;
+		default:
+			System.out.println(text);
+			break;
+
+		}
+
+		return sortValue;
 	}
 
 	public void sortTeam(String UpOrDown) {
@@ -1837,8 +1475,10 @@ public class SortPanel extends JPanel {
 			PlayerCardPanel renderer = new PlayerCardPanel(
 					((PlayerCardPanel) value).number, X, Y,
 					((PlayerCardPanel) value).getPlayerInfo(),
-					((PlayerCardPanel) value).getCriteria(),
-					((PlayerCardPanel) value).getCriteriaValue());
+					((PlayerCardPanel) value).getCriteria1(),
+					((PlayerCardPanel) value).getCriteriaValue1(),
+					((PlayerCardPanel) value).getCriteria2(),
+					((PlayerCardPanel) value).getCriteriaValue2());
 
 			renderer.fillPanel();
 
