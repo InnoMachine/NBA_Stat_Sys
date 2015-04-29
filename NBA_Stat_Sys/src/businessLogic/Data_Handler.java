@@ -997,6 +997,7 @@ public class Data_Handler {
 	}
 	public GameDate getDateNow(){
 		//st.setCurrentDate(new GameDate(2012,11,28));
+		st = systemdao.getStById("12-13");
 		return st.getCurrentDate();
 	}
 	

@@ -11,9 +11,9 @@ public class DataUpdate extends TimerTask{
 	Data_Handler data_handler ;
 	MainFrame mf;
 	
-	public DataUpdate(){
+	public DataUpdate(MainFrame mf){
 		dateTrue = new GameDate();
-		mf = new MainFrame();
+		this.mf = mf;
 		data_handler = Data_Handler.getInstance();
 		dateui = data_handler.getDateNow();
 	}
@@ -22,6 +22,7 @@ public class DataUpdate extends TimerTask{
 		System.out.println(dateTrue.toString());
 		if(dateui.compareTo(dateTrue)!=0){
 			data_handler.updateData();
+			mf.update();
 		}
 			
 	}

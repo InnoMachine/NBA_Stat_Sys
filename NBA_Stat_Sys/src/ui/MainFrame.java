@@ -26,12 +26,12 @@ public class MainFrame extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		/*
-		 * Timer timer = new Timer(); DataUpdate du = new DataUpdate();
-		 * timer.schedule(du,1000,3000);
-		 */
+		 
 		MainFrame mf = new MainFrame();
 		mf.setVisible(true);
+		 Timer timer = new Timer(); DataUpdate du = new DataUpdate(mf);
+		 timer.schedule(du,1000,5000);
+		
 	}
 
 	public MainFrame() {
@@ -52,6 +52,14 @@ public class MainFrame extends JFrame {
 		this.getContentPane().add(startPanel);
 		// this.getContentPane()
 
+	}
+	public void update(){
+		playerPanel = new PlayerPanel(this);
+		playerPanel.setVisible(false);
+		teamPanel = new TeamPanel(this);
+		teamPanel.setVisible(false);
+		gamePanel = new GamePanel(this);
+		gamePanel.setVisible(false);
 	}
 
 }
