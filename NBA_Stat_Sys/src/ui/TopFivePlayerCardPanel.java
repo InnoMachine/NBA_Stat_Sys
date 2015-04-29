@@ -86,7 +86,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		JLabel firstlbl = new JLabel();
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/rankOne.png").getImage().getScaledInstance( firstlbl.getWidth(),firstlbl.getHeight(),
+				"Image/rankOne.png").getImage().getScaledInstance( 80,80,
 						 Image.SCALE_SMOOTH));
 		
 		firstlbl.setIcon(buttonIcon);
