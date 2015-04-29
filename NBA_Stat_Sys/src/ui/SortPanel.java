@@ -953,26 +953,29 @@ public class SortPanel extends JPanel {
 
 	public void back() {
 		this.setVisible(false);
-		previousPanel.setVisible(true);
-		if(category.equals("player")){
-		MainFrame.currentPanel="PlayerPanel";
-		}else if(category.equals("team")){
-			MainFrame.currentPanel="TeamPanel";
+		
+		if (category.equals("player")) {
+			MainFrame.playerPanel.setVisible(true);
+			MainFrame.currentPanel = "PlayerPanel";
+		} else if (category.equals("team")) {
+			MainFrame.teamPanel.setVisible(true);
+			MainFrame.currentPanel = "TeamPanel";
 		}
-		}
+	}
 
 	public void refresh() {
 		mainFrame.remove(this);
-		if (category .equals( "player")) {
-			MainFrame.sortPlayerPanel = new SortPanel("player", mainFrame, previousPanel);
+		if (category.equals("player")) {
+			MainFrame.sortPlayerPanel = new SortPanel("player", mainFrame,
+					previousPanel);
 			if (MainFrame.currentPanel == "SortPlayerPanel") {
 				MainFrame.sortPlayerPanel.setVisible(true);
 			} else {
 				MainFrame.sortPlayerPanel.setVisible(false);
 			}
 		} else if (category.equals("team")) {
-			MainFrame.sortTeamPanel = new SortPanel("team",
-					mainFrame, previousPanel);
+			MainFrame.sortTeamPanel = new SortPanel("team", mainFrame,
+					previousPanel);
 			if (MainFrame.currentPanel == "SortTeamPanel") {
 				MainFrame.sortTeamPanel.setVisible(true);
 			} else {
