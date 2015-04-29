@@ -622,7 +622,7 @@ public class ScreeningPlayerPanel extends JPanel {
 
 	public void home() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame);
+		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 		// playerCriteriaPanel.setVisible(false);
 	}
@@ -863,17 +863,16 @@ public class ScreeningPlayerPanel extends JPanel {
 			PlayerCardPanel renderer = new PlayerCardPanel(
 					((PlayerCardPanel) value).number, X, Y,
 					((PlayerCardPanel) value).getPlayerInfo(),
-					((PlayerCardPanel) value).getCriteria(),
-					((PlayerCardPanel) value).getCriteriaValue());
+					((PlayerCardPanel) value).getCriteria1(),
+					((PlayerCardPanel) value).getCriteriaValue1());
 
 			renderer.fillPanel();
 			renderer.setOpaque(false);
 			if (hasFocus) {
-				PlayerPanel ppPanel = new PlayerPanel(mainFrame);
-				ppPanel.setVisible(false);
+				MainFrame.playerPanel.setVisible(false);
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer
 						.getPlayerInfo().getName(), mainFrame,
-						new ScreeningPlayerPanel(mainFrame, ppPanel));
+						new ScreeningPlayerPanel(mainFrame, MainFrame.playerPanel));
 				selfClose();
 			}
 			// TODO Auto-generated method stub

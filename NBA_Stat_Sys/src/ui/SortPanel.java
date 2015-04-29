@@ -942,7 +942,8 @@ public class SortPanel extends JPanel {
 
 	public void home() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame);
+		StartPanel sp = new StartPanel(mainFrame, MainFrame.playerPanel,
+				MainFrame.teamPanel, MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 		sortPlayerCriteriaPanel1.setVisible(false);
 		sortPlayerCriteriaPanel2.setVisible(false);
@@ -1483,11 +1484,10 @@ public class SortPanel extends JPanel {
 			renderer.fillPanel();
 
 			if (hasFocus) {
-				PlayerPanel ppPanel = new PlayerPanel(mainFrame);
-				ppPanel.setVisible(false);
+				MainFrame.playerPanel.setVisible(false);
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer
 						.getPlayerInfo().getName(), mainFrame, new SortPanel(
-						"player", mainFrame, ppPanel));
+						"player", mainFrame, MainFrame.playerPanel));
 				selfClose();
 			}
 			// TODO Auto-generated method stub
@@ -1510,11 +1510,10 @@ public class SortPanel extends JPanel {
 					((TeamCardPanel) value).getCriteriaValue());
 			renderer.fillPanel();
 			if (hasFocus) {
-				TeamPanel ppPanel = new TeamPanel(mainFrame);
-				ppPanel.setVisible(false);
+				MainFrame.teamPanel.setVisible(false);
 				TeamInfoPanel a = new TeamInfoPanel(renderer.getTeamInfo()
 						.getAbbreviation(), mainFrame, new SortPanel("team",
-						mainFrame, ppPanel));
+						mainFrame, MainFrame.teamPanel));
 				selfClose();
 			}
 			// TODO Auto-generated method stub

@@ -26,9 +26,10 @@ public class StartPanel extends JPanel {
 	static ShowPanel searchTeamPanel;
 	static SortPanel sortTeamPanel;
 	static ScreeningPlayerPanel screeningPlayerPanel;
-	static PlayerPanel playerPanel;
-	static TeamPanel teamPanel;
-	static GamePanel gamePanel;
+	
+	PlayerPanel playerPanel;
+	TeamPanel teamPanel;
+	GamePanel gamePanel;
 
 	static JButton searchPlayerbtn;
 	static JButton sortPlayerbtn;
@@ -42,10 +43,14 @@ public class StartPanel extends JPanel {
 	int X;
 	int Y;
 
-	public StartPanel(JFrame mainFrame) {
+	public StartPanel(JFrame mainFrame,PlayerPanel playerPanel,TeamPanel teamPanel,GamePanel gamePanel) {
 		this.mainFrame = mainFrame;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
+		this.playerPanel=playerPanel;
+		this.teamPanel=teamPanel;
+		this.gamePanel=gamePanel;
+		
 		this.setBounds(0, 0, X, Y);
 		this.setLayout(null);
 		this.setVisible(true);
@@ -194,18 +199,18 @@ public class StartPanel extends JPanel {
 	
 	public void toPlayerPanel() {
 		this.setVisible(false);
-		playerPanel = new PlayerPanel(mainFrame);
+		playerPanel.setVisible(true);
 
 	}
 	
 	public void toTeamPanel() {
 		this.setVisible(false);
-		teamPanel = new TeamPanel(mainFrame);
+		teamPanel.setVisible(true);
 
 	}
 	public void toGamePanel() {
 		this.setVisible(false);
-		gamePanel = new GamePanel(mainFrame);
+		gamePanel.setVisible(true);
 
 	}
 	/*

@@ -321,7 +321,7 @@ public class GamePanel extends JPanel {
 
 	public void back() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame);
+		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 
 	}
@@ -344,7 +344,7 @@ public class GamePanel extends JPanel {
 				if (hasFocus) {
 					
 					GameInfoPanel a = new GameInfoPanel(renderer.getGameVo()
-							,mainFrame,new GamePanel(mainFrame) );
+							,mainFrame,MainFrame.gamePanel);
 					selfClose();
 				}
 
