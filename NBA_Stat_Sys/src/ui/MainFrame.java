@@ -81,16 +81,14 @@ public class MainFrame extends JFrame {
 		playerPanel.refresh();
 		teamPanel.refresh();
 		gamePanel.refresh();
-<<<<<<< HEAD
 		playerInfoPanel.refresh();
 		teamInfoPanel.refresh();
 		gameInfoPanel.refresh();
 		searchPanel.refresh();
-		sortPlayerPanel;
-		screeningPlayerPanel;
-		sortTeamPanel;
-=======
->>>>>>> origin/master
+		sortPlayerPanel.refresh();;
+		screeningPlayerPanel.refresh();;
+		sortTeamPanel.refresh();
+
 	}
 
 }
