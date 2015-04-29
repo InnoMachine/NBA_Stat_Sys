@@ -42,8 +42,7 @@ public class PrepareDB {
 		sd.add(st);
 		DataFileReader.importGamesFrom(fileNameList);
 		DataFileReader.importPlayersAndTeams();
-		DataFurtherDistributor.allDistribute();	
-		DaoFactory.getGameDaoInstence();
+		DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getAllGames());;	
 		System.out.println("initial data import finished!");
 		
 		while(true){
