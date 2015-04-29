@@ -92,7 +92,7 @@ public class TeamInfoPanel extends JPanel {
 
 	private JLabel TeamBadge;
 
-	Team_BS team_BS = new Team_BL_Stub();
+	Team_BS team_BS = new Team_BL();
 
 	public TeamInfoPanel(String abbr, JFrame mainFrame, JPanel previousPanel,String previouspanel) {
 		this.mainFrame = mainFrame;
