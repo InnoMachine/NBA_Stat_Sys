@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import org.apache.tools.ant.types.FileList;
 
 import vo.GameVo;
+import vo.TeamPerformanceInSingleGame;
 import businessLogic.DataUpdate;
 
 public class MainFrame extends JFrame {
@@ -59,7 +60,10 @@ public class MainFrame extends JFrame {
 		playerInfoPanel.setVisible(false);
 		teamInfoPanel = new TeamInfoPanel("ATL", this,teamPanel, "TeamPanel");
 		teamInfoPanel.setVisible(false);
-		gameInfoPanel = new GameInfoPanel(new GameVo(), this,gamePanel,"GamePanel");
+		GameVo gameVo=new GameVo();
+		gameVo.setGuestTP(new TeamPerformanceInSingleGame());
+		gameVo.setHomeTP(new TeamPerformanceInSingleGame());
+		gameInfoPanel = new GameInfoPanel(gameVo, this,gamePanel,"GamePanel");
 		gameInfoPanel.setVisible(false);
 		searchPanel=new SearchPanel(this, playerPanel);
 		searchPanel.setVisible(false);
