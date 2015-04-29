@@ -90,7 +90,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		add(firstlbl);
 		
 		firstPlayerbtn = new JButton();
-		firstPlayerbtn.setBounds(X * 50 / 1366, Y * 4 / 768, X * 126 / 1366,
+		firstPlayerbtn.setBounds(X * 50 / 1366, Y * 9 / 768, X * 126 / 1366,
 				Y * 200 / 768);
 		firstPlayerbtn.setContentAreaFilled(false);
 		firstPlayerbtn.setBorderPainted(false);

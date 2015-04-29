@@ -653,11 +653,20 @@ public class Player_Handler {
 							list.add(temp);
 						}		
 					}
-				}else
+				}else if(div.equals("East"))
 				{
 					for(PlayerVo temp:listvo)
 					{
 						if(isEast(temp.getDivision()+""))
+						{
+							list.add(temp);
+						}		
+					}
+				}
+				else{
+					for(PlayerVo temp:listvo)
+					{
+						if((temp.getDivision()+"").equals(div))
 						{
 							list.add(temp);
 						}		
@@ -674,11 +683,19 @@ public class Player_Handler {
 							list.add(temp);
 						}		
 					}
-				}else
+				}else if(div.equals("East"))
 				{
 					for(PlayerVo temp:listvo)
 					{
 						if(isEast(temp.getDivision()+"")&&isPosition(temp,position))
+						{
+							list.add(temp);
+						}		
+					}
+				}else{
+					for(PlayerVo temp:listvo)
+					{
+						if((temp.getDivision()+"").equals(div)&&isPosition(temp,position))
 						{
 							list.add(temp);
 						}		
@@ -1911,23 +1928,48 @@ public class Player_Handler {
 	}
 
 	public ArrayList<PlayerVo> searchPlayer(String key, String first) {
-		ArrayList<PlayerVo> templist = searchPlayer(key);
-		if(templist == null){
-			return null;
-		}
-		if(first.equals("All"))
-			return templist;
-		else{
+		if(key.equals("")){
 			ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
-			for(PlayerVo temp:templist){
-				if(temp.getName().substring(0, 1).equals(first)){
+			if(first.equals("All"))
+				return listvo;
+			for(PlayerVo temp:listvo){
+				if(isFirstName(temp.getName(),first)){
 					slist.add(temp);
 				}
 			}
 			return slist;
 		}
+		else{
+			ArrayList<PlayerVo> templist = searchPlayer(key);
+			if(templist == null){
+				return null;
+			}
+			if(first.equals("All"))
+				return templist;
+			else{
+				ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
+				for(PlayerVo temp:templist){
+					if(isFirstName(temp.getName(),first)){
+						slist.add(temp);
+					}
+				}
+				return slist;
+		}
+		
+		
+		}
 		
 	}
+	private boolean isFirstName(String name, String first) {
+		if(name.indexOf(" ")!=-1){
+			String s= name.substring(name.indexOf(" ")+1);
+			if(s.substring(0, 1).equals(first)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public PlayerGames getPlayerPerformacne(
 			String name) {
 		

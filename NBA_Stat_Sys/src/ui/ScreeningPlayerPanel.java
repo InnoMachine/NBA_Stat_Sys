@@ -368,9 +368,9 @@ public class ScreeningPlayerPanel extends JPanel {
 	}
 
 	public void screening() {
-		String position = "";
-		String league = "";
-		String screeningCriteria = "";
+		String position = "All";
+		String league = "All";
+		String screeningCriteria = "score";
 
 		if (playerCriteriaPanel != null) {
 			playerCriteriaPanel.setVisible(false);

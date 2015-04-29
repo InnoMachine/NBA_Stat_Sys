@@ -139,19 +139,20 @@ public class SearchPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-		JLabel keylbl=new MyLabel(Color.WHITE);
-		keylbl.setBounds(X * 480 / 1366, Y * 50 / 768, X * 40 / 1366,
+		JLabel keylbl=new MyLabel(Color.WHITE,"排序依据");
+		keylbl.setBounds(X * 540 / 1366, Y * 50 / 768, X * 60 / 1366,
 				Y * 27 / 768);
+		keylbl.setFont(new Font("微软雅黑", 1, 13));
 		keylbl.setVisible(true);
 		bgLabel.add(keylbl);
 		
 		JTextField keytF = new JTextField();
-		keytF.setBounds(X * 540 / 1366, Y * 50 / 768, X * 200 / 1366,
+		keytF.setBounds(X * 620 / 1366, Y * 50 / 768, X * 200 / 1366,
 				Y * 27 / 768);
 		keytF.setVisible(true);
 		keytF.setBackground(Color.GRAY);
 		keytF.setForeground(Color.WHITE);
-		keytF.setFont(new Font("微软雅黑", 1, 20));
+		keytF.setFont(new Font("微软雅黑", 1, 13));
 		bgLabel.add(keytF);
 /*
 		JButton searchbtn = new JButton("搜索");
