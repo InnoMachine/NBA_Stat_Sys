@@ -21,6 +21,7 @@ public class DataUpdate extends TimerTask{
 		dateTrue = data_handler.getDateNow();
 		System.out.println(dateTrue.toString());
 		if(dateui.compareTo(dateTrue)!=0){
+			dateui = dateTrue;
 			data_handler.updateData();
 			mf.update();
 		}

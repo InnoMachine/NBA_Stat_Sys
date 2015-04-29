@@ -916,6 +916,7 @@ public class Data_Handler {
 	{
 		ArrayList<PlayerPerformanceInSingleGame> pplist = new ArrayList<PlayerPerformanceInSingleGame>();
 		GameDate dn = getDateNow();
+		System.out.println(dn.toString()+"得到当日比赛");
 		for(GameVo temp:gamevo){
 			if(temp.getGameDate().compareTo(dn)==0){
 				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().getPlayerList()){
