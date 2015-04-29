@@ -239,7 +239,7 @@ public class TotalInfo {
 
 	public void calcThreeRate(){
 		b = new BigDecimal(this.three/(double)this.freeshot);
-		this.threeRate  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+		this.threeRate  = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue(); 
 	}
 	public double getFreeRate() {
 		return freeRate;
@@ -250,7 +250,7 @@ public class TotalInfo {
 	}
 	public void calcFreeRate(){
 		b = new BigDecimal(this.free/(double)this.freeshot);
-		this.freeRate  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+		this.freeRate  = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue(); 
 	}
 
 	public double getMinute() {

@@ -1324,9 +1324,9 @@ public class PlayerInfoPanel extends JPanel {
 		txtAminute.setText("aMinute");
 		txtAminute.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAminute.setColumns(Y * 10 / 768);
-		txtAminute.setBounds(X * (585 + (int) (aveInfo.getTime() / 60.0) * 3)
+		txtAminute.setBounds(X * (585 + (int) (aveInfo.getMinute() ) * 3)
 				/ 1366, Y * 109 / 768, X * 60 / 1366, Y * 24 / 768);
-		txtAminute.setText(String.valueOf(df.format(aveInfo.getTime() / 60.0)));
+		txtAminute.setText(String.valueOf(aveInfo.getMinute()));
 		txtAminute.setOpaque(false);
 		txtAminute.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAminute);
@@ -1381,7 +1381,7 @@ public class PlayerInfoPanel extends JPanel {
 		txtAhitnum.setBounds(
 				X
 						* (585 + Integer.parseInt(new java.text.DecimalFormat(
-								"0").format(aveInfo.getHit())) * 3) / 1366,
+								"0").format(aveInfo.getHitField())) * 3) / 1366,
 				Y * 245 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAhitnum.setText(String.valueOf(aveInfo.getHitField()));
 		txtAhitnum.setOpaque(false);
@@ -1397,7 +1397,8 @@ public class PlayerInfoPanel extends JPanel {
 						* (585 + Integer.parseInt(new java.text.DecimalFormat(
 								"0").format(aveInfo.getThreeRate() * 100)) * 3)
 						/ 1366, Y * 279 / 768, X * 60 / 1366, Y * 24 / 768);
-		txtAprate.setText(String.valueOf(aveInfo.getThreeRate() * 100));
+		txtAprate.setText(new java.text.DecimalFormat("#.00")
+		.format(aveInfo.getThreeRate() * 100));
 		txtAprate.setOpaque(false);
 		txtAprate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAprate);
@@ -1411,7 +1412,8 @@ public class PlayerInfoPanel extends JPanel {
 						* (585 + Integer.parseInt(new java.text.DecimalFormat(
 								"0").format(aveInfo.getFreeRate() * 100)) * 3)
 						/ 1366, Y * 313 / 768, X * 60 / 1366, Y * 24 / 768);
-		txtAfreethrowrate.setText(String.valueOf(aveInfo.getFreeRate() * 100));
+		txtAfreethrowrate.setText(new java.text.DecimalFormat("#.00")
+		.format(aveInfo.getFreeRate() * 100));
 		txtAfreethrowrate.setOpaque(false);
 		txtAfreethrowrate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAfreethrowrate);
