@@ -45,8 +45,8 @@ public class GamePanel extends JPanel {
 
 	JLabel bgLabel; 
 	
-	private JButton leftButton;
-	private JButton rightButton;
+//	private JButton leftButton;
+//	private JButton rightButton;
 
 	public GamePanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -167,7 +167,7 @@ public class GamePanel extends JPanel {
 		searchbtn.setHorizontalTextPosition(SwingConstants.CENTER);
 		searchbtn.setForeground(Color.WHITE);
 		bgLabel.add(searchbtn);
-
+/*
 		leftButton=new JButton();
 		leftButton.setBounds(50, 500,100,100);
 		ImageIcon leftButtonIcon=new ImageIcon(new ImageIcon(
@@ -195,7 +195,7 @@ public class GamePanel extends JPanel {
 			
 		});
 		bgLabel.add(rightButton);
-		
+*/		
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
 		for(int i=0;i<10;i++){
 		gameVos.add(game_BS.getAllGames().get(i));

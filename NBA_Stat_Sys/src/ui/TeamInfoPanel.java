@@ -682,7 +682,7 @@ public class TeamInfoPanel extends JPanel {
 						String.valueOf(playersInfoTable.getModel().getValueAt(
 								playersInfoTable.getSelectedRow(), 0)),
 						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
-								previousPanel,previouspanel));
+								previousPanel,previouspanel),"TeamInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 			return this;
