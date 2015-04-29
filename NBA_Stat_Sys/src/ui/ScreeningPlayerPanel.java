@@ -47,7 +47,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;

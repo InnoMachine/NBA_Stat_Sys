@@ -50,7 +50,7 @@ public class SearchPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 

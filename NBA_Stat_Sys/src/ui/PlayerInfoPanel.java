@@ -111,7 +111,7 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField txtAturnover;
 	private JTextField txtAfoul;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	public PlayerInfoPanel(String playerName, JFrame mainFrame,
 			JPanel previousPanel) {

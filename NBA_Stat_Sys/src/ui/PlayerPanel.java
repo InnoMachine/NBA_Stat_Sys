@@ -53,7 +53,7 @@ public class PlayerPanel extends JPanel {
 	
 	JFrame mainFrame;
 
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 
 	static int X;
 	static int Y;
@@ -567,7 +567,7 @@ public class PlayerPanel extends JPanel {
 
 	public void back() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
+		StartPanel sp = new StartPanel(mainFrame);
 		mainFrame.getContentPane().add(sp);
 		// playerCriteriaPanel.setVisible(false);
 	}
