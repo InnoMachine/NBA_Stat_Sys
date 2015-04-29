@@ -355,8 +355,8 @@ public class GamePanel extends JPanel {
 
 				if (hasFocus) {
 					
-					GameInfoPanel a = new GameInfoPanel(renderer.getGameVo()
-							,mainFrame,MainFrame.gamePanel);
+				MainFrame.gameInfoPanel= new GameInfoPanel(renderer.getGameVo()
+							,mainFrame,MainFrame.gamePanel,"GamePanel");
 					selfClose();
 				}
 
