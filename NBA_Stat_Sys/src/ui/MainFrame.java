@@ -22,7 +22,8 @@ public class MainFrame extends JFrame {
 	public static GamePanel gamePanel;
 	public static PlayerInfoPanel playerInfoPanel;
 	public static TeamInfoPanel teamInfoPanel;
-	public static GameInfoPanel gameInfoPanel;
+	
+	public static String currentPanel="";
 	
 	
 	public static void main(String[] args) {
@@ -47,8 +48,10 @@ public class MainFrame extends JFrame {
 		teamPanel.setVisible(false);
 		gamePanel = new GamePanel(this);
 		gamePanel.setVisible(false);
+		
 		startPanel = new StartPanel(this, playerPanel, teamPanel, gamePanel);
 		this.getContentPane().add(startPanel);
+		MainFrame.currentPanel="StartPanel";
 		// this.getContentPane()
 
 	}

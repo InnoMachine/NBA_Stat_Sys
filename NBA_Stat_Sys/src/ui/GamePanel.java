@@ -323,8 +323,20 @@ public class GamePanel extends JPanel {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
+		MainFrame.currentPanel="StartPanel";
 
 	}
+
+	public void refresh(){
+		remove(this);
+		MainFrame.gamePanel=new GamePanel(mainFrame);
+		if(MainFrame.currentPanel.equals("GamePanel")){
+			MainFrame.gamePanel.setVisible(true);
+		}else{
+			MainFrame.gamePanel.setVisible(false);
+		}
+	}
+	
 	
 	public void selfClose(){
 		this.setVisible(false);

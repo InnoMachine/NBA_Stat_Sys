@@ -47,6 +47,7 @@ public class TeamInfoPanel extends JPanel {
 	String teamABBR;
 	JFrame mainFrame;
 	JPanel previousPanel;
+	String previouspanel;
 	static int X;
 	static int Y;
 	JLabel bgLabel;
@@ -93,10 +94,11 @@ public class TeamInfoPanel extends JPanel {
 
 	Team_BS team_BS = new Team_BL_Stub();
 
-	public TeamInfoPanel(String abbr, JFrame mainFrame, JPanel previousPanel) {
+	public TeamInfoPanel(String abbr, JFrame mainFrame, JPanel previousPanel,String previouspanel) {
 		this.mainFrame = mainFrame;
 		this.teamABBR = abbr;
 		this.previousPanel = previousPanel;
+		this.previouspanel = previouspanel;
 		previousPanel.setVisible(false);
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -523,12 +525,16 @@ public class TeamInfoPanel extends JPanel {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
+		MainFrame.currentPanel="StartPanel";
 	}
 
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
+		MainFrame.currentPanel=previouspanel;
+	
+	
 	}
 
 	private void addBasicData() {
@@ -646,6 +652,13 @@ public class TeamInfoPanel extends JPanel {
 
 	}
 	
+	public void refresh(){
+		remove(this);
+		MainFrame.teamInfoPanel=new TeamInfoPanel(teamABBR, mainFrame, previousPanel,previouspanel);
+		
+	}
+	
+	
 	public void selfClose(){
 		this.setVisible(false);
 	}
@@ -669,7 +682,7 @@ public class TeamInfoPanel extends JPanel {
 						String.valueOf(playersInfoTable.getModel().getValueAt(
 								playersInfoTable.getSelectedRow(), 0)),
 						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
-								previousPanel));
+								previousPanel,previouspanel));
 				mainFrame.add(playerInfoPanel);
 			}
 			return this;
@@ -691,6 +704,8 @@ public class TeamInfoPanel extends JPanel {
 			return this;
 		}
 	}
+
+	
 	class MyTextField extends JTextField {
 		/**
 		 * 

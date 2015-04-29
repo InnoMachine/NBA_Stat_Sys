@@ -32,6 +32,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 	private String criteria;
 	JFrame mainFrame;
 	JPanel previousPanel;
+	String previouspanel;
 
 	JButton firstPlayerbtn;
 	JLabel firstPlayerNamelbl;
@@ -65,12 +66,14 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 	public TopFivePlayerCardPanel(int X, int Y,
 			ArrayList<PlayerCardVo> hotPlayers, JFrame mainFrame,
-			JPanel previousPanel) {
+			JPanel previousPanel,String previouspanel) {
 		// TODO Auto-generated constructor stub
 		this.X = X;
 		this.Y = Y;
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
+		this.previouspanel=previouspanel;
+		
 		this.setVisible(true);
 		this.setLayout(null);
 		this.setOpaque(true);
@@ -342,7 +345,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		firstPlayerbtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(hotPlayers
-					.get(0).getName(), mainFrame, previousPanel);
+					.get(0).getName(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="PlayerInfoPanel";
 		});
 
 		firstPlayerNamelbl.setText(hotPlayers.get(0).getName());
@@ -372,7 +376,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		firstTeambtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotPlayers.get(0)
-					.getTeam(), mainFrame, previousPanel);
+					.getTeam(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="TeamInfoPanel";
 		});
 
 		ImageIcon playerPortrait2;
@@ -392,7 +397,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		secondPlayerbtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(hotPlayers
-					.get(1).getName(), mainFrame, previousPanel);
+					.get(1).getName(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="PlayerInfoPanel";
 		});
 
 		secondPlayerNamelbl.setText(hotPlayers.get(1).getName());
@@ -424,7 +430,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		secondTeambtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotPlayers.get(1)
-					.getTeam(), mainFrame, previousPanel);
+					.getTeam(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="TeamInfoPanel";
 		});
 
 		ImageIcon playerPortrait3;
@@ -444,7 +451,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		thirdPlayerbtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(hotPlayers
-					.get(2).getName(), mainFrame, previousPanel);
+					.get(2).getName(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="PlayerInfoPanel";
 		});
 
 		thirdPlayerNamelbl.setText(hotPlayers.get(2).getName());
@@ -474,7 +482,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		thirdTeambtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotPlayers.get(2)
-					.getTeam(), mainFrame, previousPanel);
+					.getTeam(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="TeamInfoPanel";
 		});
 
 		ImageIcon playerPortrait4;
@@ -494,7 +503,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		fourthPlayerbtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(hotPlayers
-					.get(3).getName(), mainFrame, previousPanel);
+					.get(3).getName(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="PlayerInfoPanel";
 		});
 
 		fourthPlayerNamelbl.setText(hotPlayers.get(3).getName());
@@ -525,7 +535,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		fourthTeambtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotPlayers.get(3)
-					.getTeam(), mainFrame, previousPanel);
+					.getTeam(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="TeamInfoPanel";
 		});
 
 		ImageIcon playerPortrait5;
@@ -544,7 +555,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		fifthPlayerbtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(hotPlayers
-					.get(4).getName(), mainFrame, previousPanel);
+					.get(4).getName(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="PlayerInfoPanel";
 		});
 
 		fifthPlayerNamelbl.setText(hotPlayers.get(4).getName());
@@ -575,7 +587,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 		fifthTeambtn.addActionListener(e -> {
 			previousPanel.setVisible(false);
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotPlayers.get(4)
-					.getTeam(), mainFrame, previousPanel);
+					.getTeam(), mainFrame, previousPanel,previouspanel);
+			MainFrame.currentPanel="TeamInfoPanel";
 		});
 	}
 

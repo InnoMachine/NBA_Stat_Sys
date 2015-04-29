@@ -220,13 +220,13 @@ public class TeamPanel extends JPanel{
 		seasonHotData_FreeThrowRatebtn.setVisible(true);
 		bgLabel.add(seasonHotData_FreeThrowRatebtn);
 
-		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this);
+		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this,"TeamPanel");
 		seasonHotTeamPanel.setVisible(true);
 		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*963/1366, Y*245/768);
 		bgLabel.add(seasonHotTeamPanel);
 		
 		
-		teamButtonsPanel=new TeamButtonsPanel(X, Y,mainFrame,this);
+		teamButtonsPanel=new TeamButtonsPanel(X, Y,mainFrame,this,"TeamPanel");
 		teamButtonsPanel.setVisible(true);
 		teamButtonsPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*240/768);
 		bgLabel.add(teamButtonsPanel);	
@@ -242,7 +242,7 @@ public class TeamPanel extends JPanel{
 		}
 		
 		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,
-				team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this);
+				team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this,"TeamPanel");
 		seasonHotTeamPanel.setVisible(true);
 		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*963/1366, Y*245/768);
 		bgLabel.add(seasonHotTeamPanel);
@@ -254,12 +254,14 @@ public class TeamPanel extends JPanel{
 	public void toShowTeamPanel() {
 		this.setVisible(true);
 		searchTeamPanel = new ShowPanel("team", mainFrame,this);
+		MainFrame.currentPanel="ShowTeamPanel";
 
 	}
 
 	public void toSortTeamPanel() {
 		this.setVisible(false);
 		sortTeamPanel = new SortPanel("team", mainFrame,this);
+		MainFrame.currentPanel="SortTeamPanel";
 
 	}
 
@@ -269,7 +271,17 @@ public class TeamPanel extends JPanel{
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
-		 
+		MainFrame.currentPanel="StartPanel";
+	}
+	
+	public void refresh(){
+		remove(this);
+		MainFrame.teamPanel=new TeamPanel(mainFrame);
+		if(MainFrame.currentPanel.equals("TeamPanel")){
+			MainFrame.teamPanel.setVisible(true);
+		}else{
+			MainFrame.teamPanel.setVisible(false);
+		}
 	}
 	
 	class MyButton extends JButton{

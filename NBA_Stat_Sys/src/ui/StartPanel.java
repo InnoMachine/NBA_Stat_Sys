@@ -200,18 +200,18 @@ public class StartPanel extends JPanel {
 	public void toPlayerPanel() {
 		this.setVisible(false);
 		playerPanel.setVisible(true);
-
+        MainFrame.currentPanel="PlayerPanel";
 	}
 	
 	public void toTeamPanel() {
 		this.setVisible(false);
 		teamPanel.setVisible(true);
-
+		MainFrame.currentPanel="TeamPanel";
 	}
 	public void toGamePanel() {
 		this.setVisible(false);
 		gamePanel.setVisible(true);
-
+		MainFrame.currentPanel="GamePanel";
 	}
 	/*
 	public void toSearchPlayerPanel() {

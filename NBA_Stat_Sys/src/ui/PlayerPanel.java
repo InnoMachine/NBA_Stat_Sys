@@ -3,41 +3,21 @@ package ui;
 import javax.swing.JPanel;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Player_BL;
-import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
-import vo.PlayerVo;
 
 public class PlayerPanel extends JPanel {
 
@@ -360,7 +340,7 @@ public class PlayerPanel extends JPanel {
 		bgLabel.add(seasonHotData_FreeThrowRatebtn);
 
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
-				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this);
+				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this,"PlayerPanel");
 		dailyHotPlayerPanel.setVisible(true);
 		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
 		bgLabel.add(dailyHotPlayerPanel);
@@ -412,7 +392,7 @@ public class PlayerPanel extends JPanel {
 		bgLabel.add(seasonData_AssistanceFieldbtn);
 
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
-				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this);
+				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this,"PlayerPanel");
 		progressFastPlayerPanel.setVisible(true);
 		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
 		bgLabel.add(progressFastPlayerPanel);	
@@ -462,8 +442,6 @@ public class PlayerPanel extends JPanel {
 		dailyHotData_Stealbtn.setVisible(true);
 
 		showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
-
-		showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 	}
 
 	public void showSeasonHotComponent() {
@@ -496,8 +474,6 @@ public class PlayerPanel extends JPanel {
 		seasonHotData_FreeThrowRatebtn.setVisible(true);
 
 		showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
-
-		showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 	}
 
 	public void showDailyHotTopFivePlayer(String dailyHotPlayerCriteria) {
@@ -508,7 +484,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerPanel.setVisible(false);
 		}
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
-				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this);
+				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this,"PlayerPanel");
 		dailyHotPlayerPanel.setVisible(true);
 		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
 		bgLabel.add(dailyHotPlayerPanel);
@@ -523,7 +499,7 @@ public class PlayerPanel extends JPanel {
 			dailyHotPlayerPanel.setVisible(false);
 		}
 		seasonHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
-				player_BS.hotPlayerSeason(seasonHotPlayerCriteria),mainFrame,this);
+				player_BS.hotPlayerSeason(seasonHotPlayerCriteria),mainFrame,this,"PlayerPanel");
 		seasonHotPlayerPanel.setVisible(true);
 		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
 		bgLabel.add(seasonHotPlayerPanel);
@@ -535,7 +511,7 @@ public class PlayerPanel extends JPanel {
 		}
 		
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
-				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this);
+				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this,"PlayerPanel");
 		progressFastPlayerPanel.setVisible(true);
 		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
 		bgLabel.add(progressFastPlayerPanel);	
@@ -545,30 +521,32 @@ public class PlayerPanel extends JPanel {
 	public void toSearchPlayerPanel() {
 		this.setVisible(false);
 		searchPlayerPanel = new SearchPanel(mainFrame,this);
+		MainFrame.currentPanel="SearchPanel";
 	}
 
 	public void toShowPlayerPanel() {
 		this.setVisible(false);
 		showPlayerPanel = new ShowPanel("player", mainFrame,this);
-
+		MainFrame.currentPanel="ShowPlayerPanel";
 	}
 
 	public void toSortPlayerPanel() {
 		this.setVisible(false);
 		sortPlayerPanel = new SortPanel("player", mainFrame,this);
-
+		MainFrame.currentPanel="SortPlayerPanel";
 	}
 
 	public void toScreeningPlayerPanel() {
 		this.setVisible(false);
 		screeningPlayerPanel = new ScreeningPlayerPanel(mainFrame,this);
-
+		MainFrame.currentPanel="ScreeningPlayerPanel";
 	}
 
 	public void back() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
+		MainFrame.currentPanel="StartPanel";
 		// playerCriteriaPanel.setVisible(false);
 	}
 
@@ -576,6 +554,11 @@ public class PlayerPanel extends JPanel {
 	public void refresh(){
 		remove(this);
 		MainFrame.playerPanel=new PlayerPanel(mainFrame);
+		if(MainFrame.currentPanel.equals("PlayerPanel")){
+			MainFrame.playerPanel.setVisible(true);
+		}else{
+			MainFrame.playerPanel.setVisible(false);
+		}
 	}
 	
 	
