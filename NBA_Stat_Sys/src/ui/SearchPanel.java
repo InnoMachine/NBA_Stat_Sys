@@ -1415,7 +1415,7 @@ public class SearchPanel extends JPanel {
 		mainFrame.getContentPane().add(sp);
 		// playerCriteriaPanel.setVisible(false);
 	}
-
+	
 	public void selfClose() {
 		this.setVisible(false);
 	}

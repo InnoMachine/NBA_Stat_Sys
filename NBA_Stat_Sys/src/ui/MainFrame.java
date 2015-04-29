@@ -47,7 +47,6 @@ public class MainFrame extends JFrame {
 		teamPanel.setVisible(false);
 		gamePanel = new GamePanel(this);
 		gamePanel.setVisible(false);
-
 		startPanel = new StartPanel(this, playerPanel, teamPanel, gamePanel);
 		this.getContentPane().add(startPanel);
 		// this.getContentPane()
