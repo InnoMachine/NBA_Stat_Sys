@@ -1451,7 +1451,7 @@ public class SearchPanel extends JPanel {
 				MainFrame.playerPanel.setVisible(false);
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerVo()
 						.getName(), mainFrame, new SearchPanel(mainFrame,
-						MainFrame.playerPanel));
+						MainFrame.playerPanel),"SearchPanel");
 				selfClose();
 			}
 

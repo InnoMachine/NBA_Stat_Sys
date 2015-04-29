@@ -872,7 +872,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				MainFrame.playerPanel.setVisible(false);
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer
 						.getPlayerInfo().getName(), mainFrame,
-						new ScreeningPlayerPanel(mainFrame, MainFrame.playerPanel));
+						new ScreeningPlayerPanel(mainFrame, MainFrame.playerPanel),"ScreeningPlayerPanel");
 				selfClose();
 			}
 			// TODO Auto-generated method stub

@@ -44,6 +44,8 @@ public class PlayerInfoPanel extends JPanel {
 
 	JFrame mainFrame;
 	JPanel previousPanel;
+	String previouspanel;
+	
 	String playerName;
 	static int X;
 	static int Y;
@@ -114,11 +116,13 @@ public class PlayerInfoPanel extends JPanel {
 	Player_BS player_BS = new Player_BL();
 
 	public PlayerInfoPanel(String playerName, JFrame mainFrame,
-			JPanel previousPanel) {
+			JPanel previousPanel,String previouspanel) {
 
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
 		previousPanel.setVisible(false);
+		this.previouspanel=previouspanel;
+		
 		this.playerName = playerName;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -168,7 +172,7 @@ public class PlayerInfoPanel extends JPanel {
 		teambtn.addActionListener(e -> {
 			this.setVisible(false);
 			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(player_BS
-					.getPlayerByName(playerName).getTeam(), mainFrame, this);
+					.getPlayerByName(playerName).getTeam(), mainFrame, this,previouspanel);
 		});
 		teambtn.setOpaque(false);
 		teambtn.setContentAreaFilled(false);
@@ -1491,11 +1495,12 @@ public class PlayerInfoPanel extends JPanel {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
+		MainFrame.currentPanel=previouspanel;
 	}
 
 	public void refresh(){
 		remove(this);
-		MainFrame.playerInfoPanel=new PlayerInfoPanel(playerName, mainFrame, previousPanel);
+		MainFrame.playerInfoPanel=new PlayerInfoPanel(playerName, mainFrame, previousPanel,previouspanel);
 		
 	}
 	

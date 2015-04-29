@@ -1487,7 +1487,7 @@ public class SortPanel extends JPanel {
 				MainFrame.playerPanel.setVisible(false);
 				PlayerInfoPanel a = new PlayerInfoPanel(renderer
 						.getPlayerInfo().getName(), mainFrame, new SortPanel(
-						"player", mainFrame, MainFrame.playerPanel));
+						"player", mainFrame, MainFrame.playerPanel),"SortPlayerPanel");
 				selfClose();
 			}
 			// TODO Auto-generated method stub
@@ -1513,7 +1513,7 @@ public class SortPanel extends JPanel {
 				MainFrame.teamPanel.setVisible(false);
 				TeamInfoPanel a = new TeamInfoPanel(renderer.getTeamInfo()
 						.getAbbreviation(), mainFrame, new SortPanel("team",
-						mainFrame, MainFrame.teamPanel));
+						mainFrame, MainFrame.teamPanel),"SortTeamPanel");
 				selfClose();
 			}
 			// TODO Auto-generated method stub

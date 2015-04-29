@@ -280,7 +280,7 @@ public class GameInfoPanel extends JPanel {
 		guestTeambtn.addActionListener(e -> {
 			this.setVisible(false);
 			TeamInfoPanel a = new TeamInfoPanel(gameVo.getGuestTeam(),
-					mainFrame, this);
+					mainFrame, this,"GameInfoPanel");
 		});
 		bgLabel.add(guestTeambtn);
 
@@ -299,7 +299,7 @@ public class GameInfoPanel extends JPanel {
 		hostTeambtn.addActionListener(e -> {
 			this.setVisible(false);
 			TeamInfoPanel a = new TeamInfoPanel(gameVo.getHomeTeam(),
-					mainFrame, this);
+					mainFrame, this,"GameInfoPanel");
 		});
 		bgLabel.add(hostTeambtn);
 
@@ -692,7 +692,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(0).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -743,7 +743,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(1).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -793,7 +793,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(2).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -843,7 +843,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(3).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -893,7 +893,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(4).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -943,7 +943,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(0).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -993,7 +993,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(1).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -1046,7 +1046,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(2).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -1096,7 +1096,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(3).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -1145,7 +1145,7 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(4).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel));
+						new GameInfoPanel(gameVo, mainFrame, previousPanel),"GameInfoPanel");
 				mainFrame.add(playerInfoPanel);
 			}
 		});
@@ -2340,15 +2340,16 @@ public class GameInfoPanel extends JPanel {
 
 	public void home() {
 		this.setVisible(false);
-		
 		StartPanel sp = new StartPanel(mainFrame,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
+		MainFrame.currentPanel="StartPanel";
 	}
 
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
+		MainFrame.currentPanel="GamePanel";
 	}
 
 	public void selfClose() {
