@@ -238,7 +238,7 @@ public class TotalInfo {
 	}
 
 	public void calcThreeRate(){
-		b = new BigDecimal(this.free/(double)this.freeshot);
+		b = new BigDecimal(this.three/(double)this.freeshot);
 		this.threeRate  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
 	}
 	public double getFreeRate() {
@@ -284,8 +284,8 @@ public class TotalInfo {
 		this.stealField = stealField;
 	}
 	public void calcStealField(){
-		b = new BigDecimal(this.steal/this.gamenum);
-		this.scoreField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
+		b = new BigDecimal(this.steal/(double)this.gamenum);
+		this.stealField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 
 	}
 
 	public double getTurnoverField() {
@@ -297,7 +297,7 @@ public class TotalInfo {
 	}
 	public void calcTurnoverFied(){
 		b = new BigDecimal(this.turnover/(double)this.gamenum);
-		this.scoreField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
+		this.turnoverField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
 	}
 
 	public int getFoul() {

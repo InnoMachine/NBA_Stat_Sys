@@ -35,7 +35,7 @@ public class test {
 			System.out.println(temp.getName());
 		}
 		TotalInfo ti = pb.getTotalInfo();
-		System.out.println(ti.getMinute());
+		System.out.println(ti.getSteal());
 		
 	}
 }

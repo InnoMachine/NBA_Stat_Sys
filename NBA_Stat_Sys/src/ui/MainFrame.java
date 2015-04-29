@@ -53,12 +53,7 @@ public class MainFrame extends JFrame {
 
 	}
 	public void update(){
-		playerPanel = new PlayerPanel(this);
-		playerPanel.setVisible(false);
-		teamPanel = new TeamPanel(this);
-		teamPanel.setVisible(false);
-		gamePanel = new GamePanel(this);
-		gamePanel.setVisible(false);
+		playerPanel.refresh();
 	}
 
 }

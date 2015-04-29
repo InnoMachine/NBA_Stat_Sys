@@ -959,7 +959,7 @@ public class Data_Handler {
 	}
 
 	public void updateData() {
-		ArrayList<GamePO> ngs = new ArrayList<GamePO>();
+		ArrayList<GamePO> ngs = gamedao.getNewGamePOs();
 		for(int i=0;i<ngs.size();i++)
 		{
 			GameVo game = new GameVo();
