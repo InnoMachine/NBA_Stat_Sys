@@ -1501,6 +1501,11 @@ public class PlayerInfoPanel extends JPanel {
 	public void refresh(){
 		remove(this);
 		MainFrame.playerInfoPanel=new PlayerInfoPanel(playerName, mainFrame, previousPanel,previouspanel);
+		if(MainFrame.currentPanel=="PlayerInfoPanel"){
+			MainFrame.playerInfoPanel.setVisible(true);
+		}else{
+			MainFrame.playerInfoPanel.setVisible(false);
+		}
 		
 	}
 	

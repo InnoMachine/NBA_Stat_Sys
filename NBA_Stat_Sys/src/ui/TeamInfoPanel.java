@@ -655,6 +655,11 @@ public class TeamInfoPanel extends JPanel {
 	public void refresh(){
 		remove(this);
 		MainFrame.teamInfoPanel=new TeamInfoPanel(teamABBR, mainFrame, previousPanel,previouspanel);
+		if(MainFrame.currentPanel=="TeamInfoPanel"){
+			MainFrame.teamInfoPanel.setVisible(true);
+		}else{
+			MainFrame.teamInfoPanel.setVisible(false);
+		}
 		
 	}
 	
