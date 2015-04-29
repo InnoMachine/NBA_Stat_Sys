@@ -552,7 +552,8 @@ public class PlayerPanel extends JPanel {
 
 	
 	public void refresh(){
-		remove(this);
+      mainFrame.remove(this);
+//	this.setVisible(false);
 		MainFrame.playerPanel=new PlayerPanel(mainFrame);
 		if(MainFrame.currentPanel.equals("PlayerPanel")){
 			MainFrame.playerPanel.setVisible(true);

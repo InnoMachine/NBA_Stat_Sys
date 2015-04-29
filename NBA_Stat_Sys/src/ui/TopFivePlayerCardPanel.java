@@ -84,12 +84,14 @@ public class TopFivePlayerCardPanel extends JPanel {
 
 		
 
-		JLabel firstlbl = new JLabel("1");
-		firstlbl.setFont(new Font("黑体", Font.BOLD, 50));
-		firstlbl.setForeground(Color.RED);
-		firstlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		firstlbl.setBounds(X * 1 / 1366, Y * 4 / 768, X * 76 / 1366,
-				Y * 200 / 768);
+		JLabel firstlbl = new JLabel();
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/rankOne.png").getImage().getScaledInstance( firstlbl.getWidth(),firstlbl.getHeight(),
+						 Image.SCALE_SMOOTH));
+		
+		firstlbl.setIcon(buttonIcon);
+		firstlbl.setBounds(X * 1 / 1366, Y * 4 / 768, X * 80 / 1366,
+				Y * 80 / 768);
 		add(firstlbl);
 		
 		firstPlayerbtn = new JButton();
