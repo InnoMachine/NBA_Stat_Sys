@@ -86,18 +86,21 @@ public class Data_Handler {
 	}
 	
 	private void TotalCalculate() {
-		ti.calcAssistanceField();
-		ti.calcFreeRate();
-		ti.calcReboundField();
-		ti.calcScoreField();
-		ti.calcThreeRate();
-		ti.calcBlockField();
-		ti.calcMinute();
-		ti.calcStealField();
-		ti.calcTurnoverFied(); 
-		ti.calcFoulField();
-		ti.calcHitField();
-		ti.setGamenumField(ti.getGamenum()/listvo.size());
+		if(ti.getGamenum()!=0){
+			ti.calcAssistanceField();
+			ti.calcFreeRate();
+			ti.calcReboundField();
+			ti.calcScoreField();
+			ti.calcThreeRate();
+			ti.calcBlockField();
+			ti.calcMinute();
+			ti.calcStealField();
+			ti.calcTurnoverFied(); 
+			ti.calcFoulField();
+			ti.calcHitField();
+			ti.setGamenumField(ti.getGamenum()/listvo.size());
+		}
+		
 	}
 	private void PlayerDivisionSet() {
 		for(PlayerVo temp:listvo)

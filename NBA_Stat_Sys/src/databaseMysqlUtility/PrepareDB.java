@@ -65,7 +65,7 @@ public class PrepareDB {
 				sd.update(st);
 			}
 			System.out.println(st.getCurrentDate().toString());
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		}
 		
 //		System.out.println("**************************************");

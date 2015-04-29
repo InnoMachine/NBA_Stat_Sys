@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
 		MainFrame mf = new MainFrame();
 		mf.setVisible(true);
 		 Timer timer = new Timer(); DataUpdate du = new DataUpdate(mf);
-		 timer.schedule(du,1000,5000);
+		 timer.schedule(du,1000,2000);
 		
 	}
 
@@ -57,6 +57,8 @@ public class MainFrame extends JFrame {
 	}
 	public void update(){
 		playerPanel.refresh();
+		teamPanel.refresh();
+		gamePanel.refresh();
 	}
 
 }
