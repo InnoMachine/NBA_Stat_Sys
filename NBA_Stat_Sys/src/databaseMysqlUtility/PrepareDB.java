@@ -15,7 +15,7 @@ import po.SeasonTracker;
 
 public class PrepareDB {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		ArrayList<String> fileNameList = DataFileReader.getFileNameList("CSEdata/new");
 		while(true) {//check if any data exists, continue when there is at least 1 entry
@@ -44,23 +44,28 @@ public class PrepareDB {
 		DataFileReader.importPlayersAndTeams();
 		DataFurtherDistributor.allDistribute();	
 		DaoFactory.getGameDaoInstence();
+		System.out.println("initial data import finished!");
 		
 		while(true){
 			if(checkNew(st.getGameNumSofar())) {
+				System.out.println("new files found!!!!!!!!!!!!");//
 				ArrayList<String> nowFileNameList = DataFileReader.getFileNameList("CSEdata/new");
 				ArrayList<String> newFileNameList = getNewFileName(st.getFileNameList(), nowFileNameList);
+				System.out.println(newFileNameList.toString());//sudo
 				DataFileReader.importGamesFrom(newFileNameList);
+				
+				System.out.println(getGameLabelsFromPaths(newFileNameList));//sudo
 				st.setUpdateGameList(getGameLabelsFromPaths(newFileNameList));//new GamePOs' gamelabel
 				
+				DaoFactory.getSystemDaoInstance().setUpdateGameList(getGameLabelsFromPaths(newFileNameList));
 				st.setFileNameList(nowFileNameList);
 				st.setGameNumSofar(DataFileReader.getFileNameList("CSEdata/new").size());
 				st.setCurrentDate(filterCurrentDate(newFileNameList));
+				DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getGameByLabel(st.getUpdateGameList()));
+				sd.update(st);
 			}
-			
-			DataFurtherDistributor.allDistribute();	//improved
-			DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getGameByLabel(st.getUpdateGameList()));
-			sd.update(st);
 			System.out.println(st.getCurrentDate().toString());
+			Thread.sleep(2000);
 		}
 		
 //		System.out.println("**************************************");
@@ -101,7 +106,6 @@ public class PrepareDB {
 	public static GameDate getGamedateFromPath(String path) {
 //		path = "CSEdata/new/12-13_10-30_BOS-MIA";  --  MAC OS X
 //		path = "CSEdata\new\12-13_10-30_BOS-MIA";  --  WINDOWS
-		System.out.println(path);
 		String time = path.split("\\\\|\\/")[2];
 		return new GameDate(GameDate.appendYear(time.split("_")[0], time.split("_")[1]));
 	}
@@ -110,12 +114,11 @@ public class PrepareDB {
 	public static String getGameLabelFromPath(String path) {
 //		path = "CSEdata/new/12-13_10-30_BOS-MIA";  --  MAC OS X
 //		path = "CSEdata\new\12-13_10-30_BOS-MIA";  --  WINDOWS
-		System.out.println(path);
 		String time = path.split("\\\\|\\/")[2];
 		String seasonid = time.split("_")[0];
-		String versus = time.split("_")[1];
-		String gameDate = new GameDate(GameDate.appendYear(seasonid, versus)).toString();
-		return seasonid + "_" + versus +"_"+ gameDate;
+		String versus = time.split("_")[2];
+		String gameDate = new GameDate(GameDate.appendYear(time.split("_")[0], time.split("_")[1])).toString();
+		return seasonid + "_" + gameDate +"_"+ versus;
 	}
 	
 	public static ArrayList<String> getGameLabelsFromPaths(ArrayList<String> paths) {

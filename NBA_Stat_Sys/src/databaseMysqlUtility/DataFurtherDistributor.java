@@ -33,6 +33,7 @@ public class DataFurtherDistributor {
 	
 	public static void updateTeamAndPlayer(GamePO game) {
 		
+		System.out.println("updating" + game.getGameLabel());//sudo
 		TeamDao td= new TeamDaoImpl();
 		PlayerDao pd = new PlayerDaoImpl();
 		//guest team
