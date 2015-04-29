@@ -573,11 +573,9 @@ public class PlayerPanel extends JPanel {
 	}
 
 	
-	public void refresh(JPanel panel){
-		player_BS=new Player_BL_Stub();
-		
-		panel.setVisible(false);
-  	    panel=new PlayerPanel(mainFrame);
+	public void refresh(){
+		remove(this);
+		MainFrame.playerPanel=new PlayerPanel(mainFrame);
 	}
 	
 	
