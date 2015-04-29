@@ -516,8 +516,8 @@ public class SortPanel extends JPanel {
 
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteriabtn1.getText(), getSortValue(
-								playerVos.get(i), playerCriteriabtn1.getText())));
+						playerCriteria1, getSortValue(
+								playerVos.get(i), playerCriteria1)));
 				playerRowData.add(a);
 
 			}
@@ -541,8 +541,8 @@ public class SortPanel extends JPanel {
 
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteriabtn2.getText(), getSortValue(
-								playerVos.get(i), playerCriteriabtn2.getText())));
+						playerCriteria2, getSortValue(
+								playerVos.get(i), playerCriteria2)));
 
 				playerRowData.add(a);
 
@@ -570,11 +570,11 @@ public class SortPanel extends JPanel {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 
 				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteriabtn1.getText(),
+						playerCriteria2,
 						getSortValue(playerVos.get(i),
-								playerCriteriabtn1.getText()),
-						playerCriteriabtn2.getText(), getSortValue(
-								playerVos.get(i), playerCriteriabtn2.getText())));
+								playerCriteria2),
+						playerCriteria2, getSortValue(
+								playerVos.get(i), playerCriteria2)));
 
 				playerRowData.add(a);
 
