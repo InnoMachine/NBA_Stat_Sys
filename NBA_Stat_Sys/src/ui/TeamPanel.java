@@ -20,8 +20,7 @@ import businessLogic.Team_BS;
 public class TeamPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	static ShowPanel searchTeamPanel;
-	static SortPanel sortTeamPanel;
+	
     static TeamButtonsPanel teamButtonsPanel;
 
 	JFrame mainFrame;
@@ -250,17 +249,18 @@ public class TeamPanel extends JPanel{
 	} 
 	
 	
-	
+	/*
 	public void toShowTeamPanel() {
 		this.setVisible(true);
 		searchTeamPanel = new ShowPanel("team", mainFrame,this);
 		MainFrame.currentPanel="ShowTeamPanel";
 
 	}
-
+*/
+	
 	public void toSortTeamPanel() {
 		this.setVisible(false);
-		sortTeamPanel = new SortPanel("team", mainFrame,this);
+		MainFrame.sortTeamPanel = new SortPanel("team", mainFrame,this);
 		MainFrame.currentPanel="SortTeamPanel";
 
 	}
@@ -275,7 +275,7 @@ public class TeamPanel extends JPanel{
 	}
 	
 	public void refresh(){
-		remove(this);
+		mainFrame.remove(this);
 		MainFrame.teamPanel=new TeamPanel(mainFrame);
 		if(MainFrame.currentPanel.equals("TeamPanel")){
 			MainFrame.teamPanel.setVisible(true);

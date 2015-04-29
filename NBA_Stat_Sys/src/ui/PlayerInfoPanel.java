@@ -171,7 +171,7 @@ public class PlayerInfoPanel extends JPanel {
 		teambtn.setIcon(team);
 		teambtn.addActionListener(e -> {
 			this.setVisible(false);
-			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(player_BS
+			MainFrame.teamInfoPanel = new TeamInfoPanel(player_BS
 					.getPlayerByName(playerName).getTeam(), mainFrame, this,previouspanel);
 		});
 		teambtn.setOpaque(false);
@@ -1499,7 +1499,7 @@ public class PlayerInfoPanel extends JPanel {
 	}
 
 	public void refresh(){
-		remove(this);
+		mainFrame.remove(this);
 		MainFrame.playerInfoPanel=new PlayerInfoPanel(playerName, mainFrame, previousPanel,previouspanel);
 		if(MainFrame.currentPanel=="PlayerInfoPanel"){
 			MainFrame.playerInfoPanel.setVisible(true);

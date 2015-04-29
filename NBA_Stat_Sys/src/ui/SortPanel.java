@@ -76,11 +76,13 @@ public class SortPanel extends JPanel {
 	static int X;
 	static int Y;
 	JLabel bgLabel;
+	String category;
 
 	public SortPanel(String category, JFrame mainFrame, JPanel previousPanel) {
 
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
+		this.category = category;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
@@ -516,8 +518,8 @@ public class SortPanel extends JPanel {
 
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteria1, getSortValue(
-								playerVos.get(i), playerCriteria1)));
+						playerCriteria1, getSortValue(playerVos.get(i),
+								playerCriteria1)));
 				playerRowData.add(a);
 
 			}
@@ -570,9 +572,8 @@ public class SortPanel extends JPanel {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 
 				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteriabtn1.getText(),
-						getSortValue(playerVos.get(i),
-								playerCriteria1),
+						playerCriteriabtn1.getText(), getSortValue(
+								playerVos.get(i), playerCriteria1),
 						playerCriteriabtn2.getText(), getSortValue(
 								playerVos.get(i), playerCriteria2)));
 
@@ -953,6 +954,31 @@ public class SortPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
+		if(category.equals("player")){
+		MainFrame.currentPanel="PlayerPanel";
+		}else if(category.equals("team")){
+			MainFrame.currentPanel="TeamPanel";
+		}
+		}
+
+	public void refresh() {
+		mainFrame.remove(this);
+		if (category .equals( "player")) {
+			MainFrame.sortPlayerPanel = new SortPanel("player", mainFrame, previousPanel);
+			if (MainFrame.currentPanel == "SortPlayerPanel") {
+				MainFrame.sortPlayerPanel.setVisible(true);
+			} else {
+				MainFrame.sortPlayerPanel.setVisible(false);
+			}
+		} else if (category.equals("team")) {
+			MainFrame.sortTeamPanel = new SortPanel("team",
+					mainFrame, previousPanel);
+			if (MainFrame.currentPanel == "SortTeamPanel") {
+				MainFrame.sortTeamPanel.setVisible(true);
+			} else {
+				MainFrame.sortTeamPanel.setVisible(false);
+			}
+		}
 	}
 
 	public class SortPlayerCriteriaPanel extends JPanel {
@@ -1485,9 +1511,10 @@ public class SortPanel extends JPanel {
 
 			if (hasFocus) {
 				MainFrame.playerPanel.setVisible(false);
-				PlayerInfoPanel a = new PlayerInfoPanel(renderer
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(renderer
 						.getPlayerInfo().getName(), mainFrame, new SortPanel(
-						"player", mainFrame, MainFrame.playerPanel),"SortPlayerPanel");
+						"player", mainFrame, MainFrame.playerPanel),
+						"SortPlayerPanel");
 				selfClose();
 			}
 			// TODO Auto-generated method stub
@@ -1511,9 +1538,10 @@ public class SortPanel extends JPanel {
 			renderer.fillPanel();
 			if (hasFocus) {
 				MainFrame.teamPanel.setVisible(false);
-				TeamInfoPanel a = new TeamInfoPanel(renderer.getTeamInfo()
-						.getAbbreviation(), mainFrame, new SortPanel("team",
-						mainFrame, MainFrame.teamPanel),"SortTeamPanel");
+				MainFrame.teamInfoPanel = new TeamInfoPanel(renderer
+						.getTeamInfo().getAbbreviation(), mainFrame,
+						new SortPanel("team", mainFrame, MainFrame.teamPanel),
+						"SortTeamPanel");
 				selfClose();
 			}
 			// TODO Auto-generated method stub

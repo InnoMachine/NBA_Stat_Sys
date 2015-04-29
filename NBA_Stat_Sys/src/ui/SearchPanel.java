@@ -1432,7 +1432,17 @@ public class SearchPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
-		// playerCriteriaPanel.setVisible(false);
+		MainFrame.currentPanel="PlayerPanel";
+	}
+	public void refresh(){
+		mainFrame.remove(this);
+		MainFrame.searchPanel=new SearchPanel(mainFrame, previousPanel);
+		if(MainFrame.currentPanel=="SearchPanel"){
+			MainFrame.searchPanel.setVisible(true);
+		}else{
+			MainFrame.searchPanel.setVisible(false);
+		}
+		
 	}
 
 	// class: TableRenderer
@@ -1449,7 +1459,7 @@ public class SearchPanel extends JPanel {
 
 			if (hasFocus) {
 				MainFrame.playerPanel.setVisible(false);
-				PlayerInfoPanel a = new PlayerInfoPanel(renderer.getPlayerVo()
+				MainFrame.playerInfoPanel= new PlayerInfoPanel(renderer.getPlayerVo()
 						.getName(), mainFrame, new SearchPanel(mainFrame,
 						MainFrame.playerPanel),"SearchPanel");
 				selfClose();

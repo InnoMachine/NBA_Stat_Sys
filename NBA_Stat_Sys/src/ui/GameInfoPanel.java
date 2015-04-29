@@ -56,8 +56,9 @@ public class GameInfoPanel extends JPanel {
 	GameVo gameVo;
 	JFrame mainFrame;
 	JPanel previousPanel;
-
-	Game_BS game_BS = new Game_BL_Stub();
+	String previouspanel;
+	
+	Game_BS game_BS = new Game_BL();
 
 	static int X;
 	static int Y;
@@ -176,10 +177,11 @@ public class GameInfoPanel extends JPanel {
 	private ChooseButton reboundsButton;
 	private ChooseButton XfactorButton;
 
-	public GameInfoPanel(GameVo gameVo, JFrame mainFrame, JPanel previousPanel) {
+	public GameInfoPanel(GameVo gameVo, JFrame mainFrame, JPanel previousPanel,String previouspanel) {
 		previousPanel.setVisible(false);
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
+		this.previouspanel=previouspanel;
 		this.gameVo = gameVo;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -279,7 +281,7 @@ public class GameInfoPanel extends JPanel {
 		guestTeambtn.setOpaque(false);
 		guestTeambtn.addActionListener(e -> {
 			this.setVisible(false);
-			TeamInfoPanel a = new TeamInfoPanel(gameVo.getGuestTeam(),
+			MainFrame.teamInfoPanel = new TeamInfoPanel(gameVo.getGuestTeam(),
 					mainFrame, this, "GameInfoPanel");
 		});
 		bgLabel.add(guestTeambtn);
@@ -298,7 +300,7 @@ public class GameInfoPanel extends JPanel {
 		hostTeambtn.setOpaque(false);
 		hostTeambtn.addActionListener(e -> {
 			this.setVisible(false);
-			TeamInfoPanel a = new TeamInfoPanel(gameVo.getHomeTeam(),
+			MainFrame.teamInfoPanel = new TeamInfoPanel(gameVo.getHomeTeam(),
 					mainFrame, this, "GameInfoPanel");
 		});
 		bgLabel.add(hostTeambtn);
@@ -647,11 +649,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerG1Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(0).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 
@@ -699,11 +701,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerG2Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(1).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnG2);
@@ -750,11 +752,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerG3Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(2).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnG3);
@@ -801,11 +803,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerG4Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(3).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnG4);
@@ -852,11 +854,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerG5Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(4).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnG5);
@@ -903,11 +905,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerH1Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(0).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnH1);
@@ -954,11 +956,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerH2Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(1).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnH2);
@@ -1008,11 +1010,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerH3Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(2).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnH3);
@@ -1059,11 +1061,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerH4Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(3).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnH4);
@@ -1109,11 +1111,11 @@ public class GameInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 				playerH5Panel.setVisible(false);
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(4).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel),
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
 						"GameInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
 		courtlbl.add(btnH5);
@@ -2273,9 +2275,18 @@ public class GameInfoPanel extends JPanel {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
-		MainFrame.currentPanel = "GamePanel";
+		MainFrame.currentPanel = previouspanel;
 	}
-
+	public void refresh(){
+		mainFrame.remove(this);
+		MainFrame.gameInfoPanel=new GameInfoPanel(gameVo,mainFrame, previousPanel,previouspanel);
+		if(MainFrame.currentPanel=="PlayerInfoPanel"){
+			MainFrame.playerInfoPanel.setVisible(true);
+		}else{
+			MainFrame.playerInfoPanel.setVisible(false);
+		}
+		
+	}
 	public void selfClose() {
 		this.setVisible(false);
 	}
