@@ -935,8 +935,8 @@ public class PlayerInfoPanel extends JPanel {
 		JLabel lblAveminute = new JLabel();
 		lblAveminute.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAveminute.setBounds(X * 575 / 1366, Y * 109 / 768, X
-				* ((int) (aveInfo.getTime() / 60.0 * 3)) / 1366, Y * 24 / 768);
-		if (playerInfo.getTimeField() >= aveInfo.getTime()) {
+				* ((int) (aveInfo.getMinute() * 3)) / 1366, Y * 24 / 768);
+		if (playerInfo.getTimeField() >= aveInfo.getMinute()) {
 			lblAveminute.setBackground(Color.LIGHT_GRAY);
 		} else {
 			lblAveminute.setBackground(Color.BLUE);
@@ -1491,6 +1491,13 @@ public class PlayerInfoPanel extends JPanel {
 		mainFrame.add(previousPanel);
 	}
 
+	public void refresh(){
+		remove(this);
+		MainFrame.playerInfoPanel=new PlayerInfoPanel(playerName, mainFrame, previousPanel);
+		
+	}
+	
+	
 	private void addBasicData() {
 		PlayerVo one = player_BS.getPlayerByName(playerName);
 		textField_2.setText(one.getName());
