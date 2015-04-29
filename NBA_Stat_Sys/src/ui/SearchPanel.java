@@ -139,15 +139,21 @@ public class SearchPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
+		JLabel keylbl=new MyLabel(Color.WHITE);
+		keylbl.setBounds(X * 480 / 1366, Y * 50 / 768, X * 40 / 1366,
+				Y * 27 / 768);
+		keylbl.setVisible(true);
+		bgLabel.add(keylbl);
+		
 		JTextField keytF = new JTextField();
-		keytF.setBounds(X * 483 / 1366, Y * 50 / 768, X * 200 / 1366,
+		keytF.setBounds(X * 540 / 1366, Y * 50 / 768, X * 200 / 1366,
 				Y * 27 / 768);
 		keytF.setVisible(true);
 		keytF.setBackground(Color.GRAY);
 		keytF.setForeground(Color.WHITE);
 		keytF.setFont(new Font("微软雅黑", 1, 20));
 		bgLabel.add(keytF);
-
+/*
 		JButton searchbtn = new JButton("搜索");
 		searchbtn.setBounds(X * 700 / 1366, Y * 50 / 768, X * 100 / 1366,
 				Y * 27 / 768);
@@ -160,10 +166,12 @@ public class SearchPanel extends JPanel {
 		searchbtn.setContentAreaFilled(false);
 		searchbtn.setBorderPainted(false);
 		searchbtn.setIcon(searchbtnIcon);
-		searchbtn.addActionListener(e -> searchPlayer(keytF.getText(), "All"));
+		searchbtn.addActionListener(e -> {
+			searchPlayer(keytF.getText(), "All");
+		});
 		searchbtn.setVisible(true);
 		bgLabel.add(searchbtn);
-
+*/
 		JButton AButton = new MyButton("A");
 		AButton.setBounds(X * 215 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
@@ -253,7 +261,7 @@ public class SearchPanel extends JPanel {
 		IButton.setFocusPainted(false);
 		IButton.setVisible(true);
 		bgLabel.add(IButton);
-		JButton JButton = new MyButton("G");
+		JButton JButton = new MyButton("J");
 		JButton.setBounds(X * 512 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
 //		JButton.addActionListener(e -> searchPlayer(keytF.getText(), "J"));
