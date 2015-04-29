@@ -630,6 +630,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
+		MainFrame.currentPanel="PlayerPanel";
 		// playerCriteriaPanel.setVisible(false);
 	}
 
@@ -848,6 +849,18 @@ public class ScreeningPlayerPanel extends JPanel {
 		}
 	}
 
+	
+	public void refresh(){
+		mainFrame.remove(this);
+		MainFrame.screeningPlayerPanel=new ScreeningPlayerPanel(mainFrame, previousPanel);
+		if(MainFrame.currentPanel=="ScreeningPlayerPanel"){
+			MainFrame.screeningPlayerPanel.setVisible(true);
+		}else{
+			MainFrame.screeningPlayerPanel.setVisible(false);
+		}
+		
+	}
+	
 	public void selfClose() {
 		this.setVisible(false);
 	}
@@ -870,7 +883,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			renderer.setOpaque(false);
 			if (hasFocus) {
 				MainFrame.playerPanel.setVisible(false);
-				PlayerInfoPanel a = new PlayerInfoPanel(renderer
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(renderer
 						.getPlayerInfo().getName(), mainFrame,
 						new ScreeningPlayerPanel(mainFrame, MainFrame.playerPanel),"ScreeningPlayerPanel");
 				selfClose();

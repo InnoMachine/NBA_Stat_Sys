@@ -653,7 +653,7 @@ public class TeamInfoPanel extends JPanel {
 	}
 	
 	public void refresh(){
-		remove(this);
+		mainFrame.remove(this);
 		MainFrame.teamInfoPanel=new TeamInfoPanel(teamABBR, mainFrame, previousPanel,previouspanel);
 		if(MainFrame.currentPanel=="TeamInfoPanel"){
 			MainFrame.teamInfoPanel.setVisible(true);
@@ -683,12 +683,12 @@ public class TeamInfoPanel extends JPanel {
 
 			if (isSelected) {
 				selfClose();
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						String.valueOf(playersInfoTable.getModel().getValueAt(
 								playersInfoTable.getSelectedRow(), 0)),
 						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
 								previousPanel,previouspanel),"TeamInfoPanel");
-				mainFrame.add(playerInfoPanel);
+				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 			return this;
 		}

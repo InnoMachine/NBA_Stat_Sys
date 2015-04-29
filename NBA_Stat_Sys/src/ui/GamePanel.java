@@ -37,7 +37,7 @@ public class GamePanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 
-	Game_BS game_BS = new Game_BL_Stub();
+	Game_BS game_BS = new Game_BL();
 
 	Vector<Vector<GameCardPanel>> rowData;
 	static int X;
@@ -328,7 +328,7 @@ public class GamePanel extends JPanel {
 	}
 
 	public void refresh(){
-		remove(this);
+		mainFrame.remove(this);
 		MainFrame.gamePanel=new GamePanel(mainFrame);
 		if(MainFrame.currentPanel.equals("GamePanel")){
 			MainFrame.gamePanel.setVisible(true);
