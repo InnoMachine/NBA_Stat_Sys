@@ -59,6 +59,12 @@ public class DataFurtherDistributor {
 		
 	}
 	
+	public static void updateTeamAndPlayer(ArrayList<GamePO> games) {
+		for(GamePO game: games) {
+			updateTeamAndPlayer(game);
+		}
+	}
+	
 	public static void importSpToPlayers(){//遍历所有球员名字，再遍历所有比赛主客队的tp，如果其中包含该球员表现，加上
 		
 		GameDao gd = new GameDaoImpl();

@@ -7,6 +7,7 @@ package databaseMysqlUtility;
 
 import java.util.ArrayList;
 
+import dataService.DaoFactory;
 import dataService.SystemDao;
 import dataService.SystemDaoImpl;
 import po.GameDate;
@@ -42,17 +43,22 @@ public class PrepareDB {
 		DataFileReader.importGamesFrom(fileNameList);
 		DataFileReader.importPlayersAndTeams();
 		DataFurtherDistributor.allDistribute();	
+		DaoFactory.getGameDaoInstence();
 		
 		while(true){
 			if(checkNew(st.getGameNumSofar())) {
 				ArrayList<String> nowFileNameList = DataFileReader.getFileNameList("CSEdata/new");
 				ArrayList<String> newFileNameList = getNewFileName(st.getFileNameList(), nowFileNameList);
 				DataFileReader.importGamesFrom(newFileNameList);
+				st.setUpdateGameList(getGameLabelsFromPaths(newFileNameList));//new GamePOs' gamelabel
+				
 				st.setFileNameList(nowFileNameList);
 				st.setGameNumSofar(DataFileReader.getFileNameList("CSEdata/new").size());
 				st.setCurrentDate(filterCurrentDate(newFileNameList));
 			}
-			DataFurtherDistributor.allDistribute();	//
+			
+			DataFurtherDistributor.allDistribute();	//improved
+			DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getGameByLabel(st.getUpdateGameList()));
 			sd.update(st);
 			System.out.println(st.getCurrentDate().toString());
 		}
@@ -78,6 +84,7 @@ public class PrepareDB {
 		return result;
 	}
 	
+	
 	public static GameDate filterCurrentDate(ArrayList<String> fileNameList) {
 		
 		GameDate result = new GameDate();
@@ -98,5 +105,27 @@ public class PrepareDB {
 		String time = path.split("\\\\|\\/")[2];
 		return new GameDate(GameDate.appendYear(time.split("_")[0], time.split("_")[1]));
 	}
+	
+	
+	public static String getGameLabelFromPath(String path) {
+//		path = "CSEdata/new/12-13_10-30_BOS-MIA";  --  MAC OS X
+//		path = "CSEdata\new\12-13_10-30_BOS-MIA";  --  WINDOWS
+		System.out.println(path);
+		String time = path.split("\\\\|\\/")[2];
+		String seasonid = time.split("_")[0];
+		String versus = time.split("_")[1];
+		String gameDate = new GameDate(GameDate.appendYear(seasonid, versus)).toString();
+		return seasonid + "_" + versus +"_"+ gameDate;
+	}
+	
+	public static ArrayList<String> getGameLabelsFromPaths(ArrayList<String> paths) {
+		ArrayList<String> result = new ArrayList<String>();
+		for(String path: paths) {
+			result.add(getGameLabelFromPath(path));
+		}
+		return result;
+	}
+	
+	
 
 }

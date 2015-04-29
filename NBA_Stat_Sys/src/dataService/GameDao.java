@@ -23,4 +23,6 @@ public interface GameDao {
 	
 	public ArrayList<GamePO> getNewGamePOs();
 	
+	public ArrayList<GamePO> getGameByLabel(ArrayList<String> labels);
+	
 }

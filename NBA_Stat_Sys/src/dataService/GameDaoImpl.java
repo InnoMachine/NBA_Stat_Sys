@@ -195,8 +195,17 @@ public class GameDaoImpl implements GameDao {
 
 	@Override
 	public ArrayList<GamePO> getNewGamePOs() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return getGameByLabel(DaoFactory.getSystemDaoInstance().getUpdateGameList("12-13"));
+	}
+
+	@Override
+	public ArrayList<GamePO> getGameByLabel(ArrayList<String> labels) {
+		ArrayList<GamePO> result = new ArrayList<GamePO>();
+		for(String label: labels) {
+			result.add(getGameByLabel(label));
+		}
+		return result;
 	}
 
 }

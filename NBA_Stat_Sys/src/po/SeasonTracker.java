@@ -17,6 +17,7 @@ public class SeasonTracker {//每个赛季一个Tracker对象
 	private ArrayList<String> updatePlayerList;//当日需要更新信息的球员名单（即参赛了）
 	private int gameNumSofar;//本赛季已经进行总场次
 	private ArrayList<String> fileNameList;//记录已经处理的数据文件名列表
+	private ArrayList<String> updateGameList;
 	
 	public GameDate getCurrentDate() {
 		return currentDate;
@@ -102,6 +103,14 @@ public class SeasonTracker {//每个赛季一个Tracker对象
 
 	public void setFileNameList(ArrayList<String> fileNameList) {
 		this.fileNameList = fileNameList;
+	}
+
+	public ArrayList<String> getUpdateGameList() {
+		return updateGameList;
+	}
+
+	public void setUpdateGameList(ArrayList<String> updateGameList) {
+		this.updateGameList = updateGameList;
 	}
 	
 }

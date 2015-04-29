@@ -20,4 +20,8 @@ public interface SystemDao {
 	
 	public ArrayList<SeasonTracker> getAllSeasons();
 	
+	public void setUpdateGameList(ArrayList<String> gameList);
+	
+	public ArrayList<String> getUpdateGameList(String seasonID);
+	
 }

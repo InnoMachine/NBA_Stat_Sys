@@ -67,6 +67,7 @@ public class InitDB {
 				+ "seasonid varchar(10),"
 				+ "updateteamlist varchar(200),"
 				+ "updateplayerlist text,"
+				+ "updategamelist text,"
 				+ "gamenumsofar int,"
 				+ "filenamelist text)";
 		
