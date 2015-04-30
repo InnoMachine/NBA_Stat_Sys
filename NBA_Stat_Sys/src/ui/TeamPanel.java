@@ -275,11 +275,13 @@ public class TeamPanel extends JPanel{
 	}
 	
 	public void refresh(){
-		mainFrame.remove(this);
+		
 		MainFrame.teamPanel=new TeamPanel(mainFrame);
 		if(MainFrame.currentPanel.equals("TeamPanel")){
+			mainFrame.remove(this);
 			MainFrame.teamPanel.setVisible(true);
 		}else{
+			mainFrame.remove(this);
 			MainFrame.teamPanel.setVisible(false);
 		}
 	}
