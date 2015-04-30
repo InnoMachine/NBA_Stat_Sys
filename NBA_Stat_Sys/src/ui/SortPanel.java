@@ -225,7 +225,7 @@ public class SortPanel extends JPanel {
 					X * 212 / 1366, X / 50);
 			ImageIcon buttonIcon1 = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(
-					X * 31 / 100, X / 50, Image.SCALE_SMOOTH));
+					212, X / 50, Image.SCALE_SMOOTH));
 			playerCriteriabtn1.setHorizontalTextPosition(SwingConstants.CENTER);
 			playerCriteriabtn1.setForeground(Color.WHITE);
 			playerCriteriabtn1.setIcon(buttonIcon1);
@@ -246,7 +246,7 @@ public class SortPanel extends JPanel {
 					X * 212 / 1366, X / 50);
 			ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(
-					X * 31 / 100, X / 50, Image.SCALE_SMOOTH));
+					212, X / 50, Image.SCALE_SMOOTH));
 			playerCriteriabtn2.setHorizontalTextPosition(SwingConstants.CENTER);
 			playerCriteriabtn2.setForeground(Color.WHITE);
 			playerCriteriabtn2.setIcon(buttonIcon2);
@@ -1017,10 +1017,11 @@ public class SortPanel extends JPanel {
 
 			}
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningPlayerPanel.png").getImage()
+					"Image/screeningcriteria.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
+			bglabel.setOpaque(false);
 			bglabel.setBounds(0, 0, this.getWidth(), this.getHeight());
 			this.add(bglabel);
 

@@ -60,11 +60,16 @@ public class PlayerPanel extends JPanel {
 	String seasonHotPlayerCriteria = "scoreField";
 	String progressFastPlayerCriteria = "scoreFieldProgress";
 	
-	private String selected="每日热点球员";
+
 	private String selectedby="-得分";
+	private JLabel dailyhotIcon;
+	private JLabel seasonhotIcon;
+	private JLabel progressIcon;
 	private JLabel hotLabel;
 	private JLabel progress;
+	
 	private String progressby="-场均得分";
+	
 	
 	public PlayerPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -160,9 +165,34 @@ public class PlayerPanel extends JPanel {
 		screeningPlayerbtn.addActionListener(e -> toScreeningPlayerPanel());
 		bgLabel.add(screeningPlayerbtn);
 
+		dailyhotIcon=new JLabel();
+		dailyhotIcon.setBounds(60, 60, 160, 40);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/dailyhotplayer.png").getImage().getScaledInstance(160, 40,
+						 Image.SCALE_SMOOTH));
+		dailyhotIcon.setIcon(buttonIcon);
+		bgLabel.add(dailyhotIcon);
+		
+		seasonhotIcon=new JLabel();
+		seasonhotIcon.setBounds(60, 60, 160, 40);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/seasonhotplayer.png").getImage().getScaledInstance(160, 40,
+						 Image.SCALE_SMOOTH));
+		seasonhotIcon.setIcon(buttonIcon);
+		seasonhotIcon.setVisible(false);
+		bgLabel.add(seasonhotIcon);
+		
+		progressIcon=new JLabel();
+		progressIcon.setBounds(60, 380, 160, 40);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/progressplayer.png").getImage().getScaledInstance( 160, 40,
+						 Image.SCALE_SMOOTH));
+		progressIcon.setIcon(buttonIcon);
+		bgLabel.add(progressIcon);
+		
 		hotLabel = new JLabel();
-		hotLabel.setText(selected+selectedby);
-		hotLabel.setBounds(X*60/1366, Y*70/768, X*300/1366, Y*20/768);
+		hotLabel.setText(selectedby);
+		hotLabel.setBounds(X*220/1366, Y*70/768, X*300/1366, Y*20/768);
 		hotLabel.setForeground(Color.WHITE);
 		hotLabel.setFont(new Font("微软雅黑",1,20));
 		bgLabel.add(hotLabel);
@@ -188,7 +218,7 @@ public class PlayerPanel extends JPanel {
 			dailyHotPlayerCriteria = "score";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 			selectedby="-得分";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		dailyHotData_Scorebtn.setVisible(true);
 		bgLabel.add(dailyHotData_Scorebtn);
@@ -200,7 +230,7 @@ public class PlayerPanel extends JPanel {
 			dailyHotPlayerCriteria = "reboundOverall";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 			selectedby="-篮板";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		dailyHotData_Reboundbtn.setVisible(true);
 		bgLabel.add(dailyHotData_Reboundbtn);
@@ -212,7 +242,7 @@ public class PlayerPanel extends JPanel {
 			dailyHotPlayerCriteria = "assistance";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 			selectedby="-助攻";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		dailyHotData_Assistancebtn.setVisible(true);
 		bgLabel.add(dailyHotData_Assistancebtn);
@@ -224,7 +254,7 @@ public class PlayerPanel extends JPanel {
 			dailyHotPlayerCriteria = "block";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 			selectedby="-盖帽";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		dailyHotData_Blockbtn.setVisible(true);
 		bgLabel.add(dailyHotData_Blockbtn);
@@ -236,7 +266,7 @@ public class PlayerPanel extends JPanel {
 			dailyHotPlayerCriteria = "steal";
 			showDailyHotTopFivePlayer(dailyHotPlayerCriteria);
 			selectedby="-抢断";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		dailyHotData_Stealbtn.setVisible(true);
 		bgLabel.add(dailyHotData_Stealbtn);
@@ -256,7 +286,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "scoreField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-场均得分";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_ScoreFieldbtn.setVisible(false);
 		bgLabel.add(seasonHotData_ScoreFieldbtn);
@@ -267,7 +297,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "reboundOverallField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-场均篮板";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_ReboundFieldbtn.setVisible(false);
 		bgLabel.add(seasonHotData_ReboundFieldbtn);
@@ -278,7 +308,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "assistanceField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-场均助攻";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_AssistanceFieldbtn.setVisible(false);
 		bgLabel.add(seasonHotData_AssistanceFieldbtn);
@@ -289,7 +319,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "blockField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-场均盖帽";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_BlockFieldbtn.setVisible(false);
 		bgLabel.add(seasonHotData_BlockFieldbtn);
@@ -300,7 +330,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "stealField";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-场均抢断";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_StealFieldbtn.setVisible(false);
 		bgLabel.add(seasonHotData_StealFieldbtn);
@@ -311,7 +341,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "threePointHitRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-三分命中率";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_ThreePointHitRatebtn.setVisible(false);
 		bgLabel.add(seasonHotData_ThreePointHitRatebtn);
@@ -322,7 +352,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "hitRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-投篮命中率";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_HitRatebtn.setVisible(false);
 		bgLabel.add(seasonHotData_HitRatebtn);
@@ -333,7 +363,7 @@ public class PlayerPanel extends JPanel {
 			seasonHotPlayerCriteria = "freeThrowRate";
 			showSeasonHotTopFivePlayer(seasonHotPlayerCriteria);
 			selectedby="-罚球命中率";
-			hotLabel.setText(selected+selectedby);
+			hotLabel.setText(selectedby);
 		});
 		seasonHotData_FreeThrowRatebtn.setVisible(false);
 		bgLabel.add(seasonHotData_FreeThrowRatebtn);
@@ -348,8 +378,8 @@ public class PlayerPanel extends JPanel {
 		
 		
 		progress = new JLabel();
-		progress.setText("进步最快球员"+progressby);
-		progress.setBounds(X*60/1366, Y*390/768, X*300/1366, Y*30/768);
+		progress.setText(progressby);
+		progress.setBounds(X*220/1366, Y*390/768, X*300/1366, Y*30/768);
 		progress.setForeground(Color.WHITE);
 		progress.setFont(new Font("微软雅黑",1,20));
 		bgLabel.add(progress);
@@ -364,7 +394,7 @@ public class PlayerPanel extends JPanel {
 			progressFastPlayerCriteria = "scoreFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均得分";
-			progress.setText("进步最快球员"+progressby);
+			progress.setText(progressby);
 		});
 		bgLabel.add(seasonData_ScoreFieldbtn);
 
@@ -375,7 +405,7 @@ public class PlayerPanel extends JPanel {
 			progressFastPlayerCriteria = "reboundOverallFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均篮板";
-			progress.setText("进步最快球员"+progressby);
+			progress.setText(progressby);
 		});
 		bgLabel.add(seasonData_ReboundFieldbtn);
 
@@ -386,7 +416,7 @@ public class PlayerPanel extends JPanel {
 			progressFastPlayerCriteria = "assistanceFieldProgress";
 			showProgressFastTopFivePlayer(progressFastPlayerCriteria);
 			progressby="-场均助攻";
-			progress.setText("进步最快球员"+progressby);
+			progress.setText(progressby);
 		});
 		bgLabel.add(seasonData_AssistanceFieldbtn);
 
@@ -402,9 +432,10 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showDailyHotComponent() {
-		selected="每日热点球员";
+		dailyhotIcon.setVisible(true);
+		seasonhotIcon.setVisible(false);
 		selectedby="-得分";
-		hotLabel.setText(selected+selectedby);
+		hotLabel.setText(selectedby);
 		if (seasonHotData_ScoreFieldbtn != null) {
 			seasonHotData_ScoreFieldbtn.setVisible(false);
 		}
@@ -444,9 +475,10 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showSeasonHotComponent() {
-		selected="赛季热点球员";
+		dailyhotIcon.setVisible(false);
+		seasonhotIcon.setVisible(true);
 		selectedby="-场均得分";
-		hotLabel.setText(selected+selectedby);
+		hotLabel.setText(selectedby);
 		if (dailyHotData_Scorebtn != null) {
 			dailyHotData_Scorebtn.setVisible(false);
 		}

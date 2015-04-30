@@ -613,7 +613,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG1 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(0).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_SMOOTH));
 		btnG1.setOpaque(false);
 		btnG1.setIcon(playerPortraitG1);
@@ -665,7 +665,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG2 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(1).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG2.setIcon(playerPortraitG2);
 		btnG2.setOpaque(false);
@@ -716,7 +716,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG3 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(2).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80/ 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG3.setIcon(playerPortraitG3);
 		btnG3.setOpaque(false);
@@ -767,7 +767,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG4 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(3).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG4.setIcon(playerPortraitG4);
 		btnG4.setOpaque(false);
@@ -818,7 +818,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG5 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(4).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG5.setIcon(playerPortraitG5);
 		btnG5.setOpaque(false);
@@ -869,7 +869,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH1 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(0).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y *80/ 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH1.setIcon(playerPortraitH1);
 		btnH1.setOpaque(false);
@@ -920,7 +920,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH2 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(1).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80/ 1366, Y *80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH2.setIcon(playerPortraitH2);
 		btnH2.setOpaque(false);
@@ -971,7 +971,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH3 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(2).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y *80/ 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH3.setIcon(playerPortraitH3);
 		btnH3.addActionListener(e -> {
@@ -1025,7 +1025,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH4 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(3).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80/ 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH4.setIcon(playerPortraitH4);
 		btnH4.setOpaque(false);
@@ -1076,7 +1076,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH5 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(4).getName() + ".png")
-				.getImage().getScaledInstance(X * 50 / 1366, Y * 50 / 768,
+				.getImage().getScaledInstance(X * 80/ 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH5.setIcon(playerPortraitH5);
 		btnH5.addMouseListener(new MouseListener() {
@@ -2425,9 +2425,9 @@ public class GameInfoPanel extends JPanel {
 				int row, int col) {
 
 			if ((row % 2) == 1)
-				setBackground(Color.GRAY);
+				setOpaque(false);
 			else
-				setBackground(Color.LIGHT_GRAY);
+				setOpaque(false);
 
 			setText((value == null) ? "" : value.toString());
 

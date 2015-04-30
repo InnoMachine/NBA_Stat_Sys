@@ -90,7 +90,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 						 Image.SCALE_SMOOTH));
 		
 		firstlbl.setIcon(buttonIcon);
-		firstlbl.setBounds(X * 1 / 1366, Y * 4 / 768, X * 80 / 1366,
+		firstlbl.setBounds(0 / 1366, 0/ 768, X * 80 / 1366,
 				Y * 80 / 768);
 		add(firstlbl);
 		

@@ -72,11 +72,13 @@ String previouspanel;
 		add(firstTeambtn);
 
 		MyLabel firstlbl = new MyLabel("1");
-		firstlbl.setFont(new Font("微软雅黑", Font.PLAIN, 50));
-		firstlbl.setForeground(Color.red);
-		firstlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		firstlbl.setBounds(X * 1 / 1366, Y * 100 / 768, X * 50 / 1366,
-				Y * 50 / 768);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/rankOne.png").getImage().getScaledInstance( 80,80,
+						 Image.SCALE_SMOOTH));
+		
+		firstlbl.setIcon(buttonIcon);
+		firstlbl.setBounds(0, 0, X * 80 / 1366,
+				Y * 80 / 768);
 		add(firstlbl);
 
 		firstTeamNamelbl = new MyLabel("");
