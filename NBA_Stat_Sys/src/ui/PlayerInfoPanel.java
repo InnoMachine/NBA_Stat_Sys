@@ -1232,7 +1232,8 @@ public class PlayerInfoPanel extends JPanel {
 												.getThreePointHitRate() * 100)) * 3)
 								/ 1366, 279, X * 60 / 1366, Y * 24 / 768);
 		txtP3prate
-				.setText(String.valueOf(playerInfo.getThreePointHitRate() * 100));
+				.setText(new java.text.DecimalFormat(
+						"#.00").format(playerInfo.getThreePointHitRate() * 100));
 		txtP3prate.setOpaque(false);
 		txtP3prate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtP3prate);
@@ -1250,7 +1251,8 @@ public class PlayerInfoPanel extends JPanel {
 												.getFreeThrowRate() * 100)) * 3)
 								/ 1366, 313, X * 60 / 1366, Y * 24 / 768);
 		txtPfreethrowrate
-				.setText(String.valueOf(playerInfo.getFreeThrowRate() * 100));
+				.setText(new java.text.DecimalFormat(
+						"#.00").format(playerInfo.getFreeThrowRate() * 100));
 		txtPfreethrowrate.setOpaque(false);
 		txtPfreethrowrate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPfreethrowrate);
