@@ -198,8 +198,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		atlantic=new LeagueButton("大西洋赛区");
 		atlantic.setLocation(1000, 110);
 		
-		allposition=new PositionButton("所有位置⊙");
+		allposition=new PositionButton("所有位置");
 		allposition.setLocation(200, 160);
+		allposition.setText("所有位置⊙");
 		allposition.addActionListener(e->{
 			allposition.setText("所有位置⊙");
 			forward.setText("前锋");

@@ -22,7 +22,7 @@ import po.TeamPerformance;
 
 public class DataFurtherDistributor {
 
-	public static void allDistribute() {
+	public static void allDistribute() {//depressed
 
 		DataFurtherDistributor.importPlayersToTeams();
 		DataFurtherDistributor.importSeasontpToTeams();
@@ -33,7 +33,7 @@ public class DataFurtherDistributor {
 	
 	public static void updateTeamAndPlayer(GamePO game) {
 		
-		System.out.println("updating" + game.getGameLabel());//sudo
+		System.out.println("updating: " + game.getGameLabel());//sudo
 		TeamDao td= new TeamDaoImpl();
 		PlayerDao pd = new PlayerDaoImpl();
 		//guest team

@@ -76,7 +76,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		
 		this.setVisible(true);
 		this.setLayout(null);
-		this.setOpaque(true);
+		this.setOpaque(false);
 		this.setBackground(Color.DARK_GRAY);
 		this.playerVos = playerVos;
 		this.criteria = criteria;
@@ -90,7 +90,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 						 Image.SCALE_SMOOTH));
 		
 		firstlbl.setIcon(buttonIcon);
-		firstlbl.setBounds(X * 1 / 1366, Y * 4 / 768, X * 80 / 1366,
+		firstlbl.setBounds(0 / 1366, 0/ 768, X * 80 / 1366,
 				Y * 80 / 768);
 		add(firstlbl);
 		
@@ -132,7 +132,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		secondPart.setBounds(X * 483 / 1366, Y * 25 / 768, X * 484 / 1366,
 				Y * 40 / 768);
 		secondPart.setBackground(Color.GRAY);
-		secondPart.setOpaque(true);
+		secondPart.setOpaque(false);
 		add(secondPart);
 		
 		MyLabel secondlbl = new MyLabel("2");
@@ -181,7 +181,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		thirdPart.setBounds(X * 483 / 1366, Y * 75 / 768, X * 484 / 1366,
 				Y * 40 / 768);
 		thirdPart.setBackground(Color.GRAY);
-		thirdPart.setOpaque(true);
+		thirdPart.setOpaque(false);
 		add(thirdPart);
 		
 		MyLabel thirdlbl = new MyLabel("3");
@@ -229,7 +229,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		fourthPart.setBounds(X * 483 / 1366, Y * 125 / 768, X * 484 / 1366,
 				Y * 40 / 768);
 		fourthPart.setBackground(Color.GRAY);
-		fourthPart.setOpaque(true);
+		fourthPart.setOpaque(false);
 		add(fourthPart);
 		
 		MyLabel fourthlbl = new MyLabel("4");
@@ -278,7 +278,7 @@ public class TopFivePlayerCardPanel extends JPanel {
 		fifthPart.setBounds(X * 483 / 1366, Y * 175 / 768, X * 484 / 1366,
 				Y * 40/ 768);
 		fifthPart.setBackground(Color.GRAY);
-		fifthPart.setOpaque(true);
+		fifthPart.setOpaque(false);
 		add(fifthPart);
 		
 		MyLabel fifthlbl = new MyLabel("5");

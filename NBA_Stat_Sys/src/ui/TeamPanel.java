@@ -43,6 +43,7 @@ public class TeamPanel extends JPanel{
 	String seasonHotTeamCriteria = "scoreField";
 	private JLabel hotTeam;
 	private String selectedby="-场均得分";
+	private JLabel hotIcon;
 	
 	public TeamPanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -122,10 +123,17 @@ public class TeamPanel extends JPanel{
 		sortTeambtn.addActionListener(e -> toSortTeamPanel());
 		bgLabel.add(sortTeambtn);
 
-	
+		hotIcon=new JLabel();
+		hotIcon.setBounds(60, 60, 160, 40);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/seasonhotteam.png").getImage().getScaledInstance(160, 40,
+						 Image.SCALE_SMOOTH));
+		hotIcon.setIcon(buttonIcon);
+		bgLabel.add(hotIcon);
+		
 		hotTeam = new JLabel();
-		hotTeam.setText("热点球队"+selectedby);
-		hotTeam.setBounds(X*60/1366, Y*75/768, X*300/1366, Y*22/768);
+		hotTeam.setText(selectedby);
+		hotTeam.setBounds(X*220/1366, Y*75/768, X*300/1366, Y*22/768);
 		hotTeam.setFont(new Font("微软雅黑",1,20));
 		hotTeam.setForeground(Color.WHITE);
 		bgLabel.add(hotTeam);
@@ -137,7 +145,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "scoreField";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-场均得分";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_ScoreFieldbtn.setVisible(true);
 		bgLabel.add(seasonHotData_ScoreFieldbtn);
@@ -148,7 +156,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "reboundOverallField";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-场均篮板";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_ReboundFieldbtn.setVisible(true);
 		bgLabel.add(seasonHotData_ReboundFieldbtn);
@@ -159,7 +167,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "assistanceField";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-场均助攻";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_AssistanceFieldbtn.setVisible(true);
 		bgLabel.add(seasonHotData_AssistanceFieldbtn);
@@ -170,7 +178,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "blockField";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-场均盖帽";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_BlockFieldbtn.setVisible(true);
 		bgLabel.add(seasonHotData_BlockFieldbtn);
@@ -181,7 +189,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "stealField";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-场均抢断";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_StealFieldbtn.setVisible(true);
 		bgLabel.add(seasonHotData_StealFieldbtn);
@@ -192,7 +200,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "threePointHitRate";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-三分命中率";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_ThreePointHitRatebtn.setVisible(true);
 		bgLabel.add(seasonHotData_ThreePointHitRatebtn);
@@ -203,7 +211,7 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "hitRate";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-投篮命中率";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_HitRatebtn.setVisible(true);
 		bgLabel.add(seasonHotData_HitRatebtn);
@@ -214,14 +222,14 @@ public class TeamPanel extends JPanel{
 			seasonHotTeamCriteria = "freeThrowRate";
 			showSeasonHotTopFiveTeam(seasonHotTeamCriteria);
 			selectedby="-罚球命中率";
-			hotTeam.setText("热点球队"+selectedby);
+			hotTeam.setText(selectedby);
 		});
 		seasonHotData_FreeThrowRatebtn.setVisible(true);
 		bgLabel.add(seasonHotData_FreeThrowRatebtn);
 
 		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this,"TeamPanel");
 		seasonHotTeamPanel.setVisible(true);
-		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*963/1366, Y*245/768);
+		seasonHotTeamPanel.setBounds(X*55/1366, Y*160/768, X*963/1366, Y*245/768);
 		bgLabel.add(seasonHotTeamPanel);
 		
 		
@@ -243,7 +251,7 @@ public class TeamPanel extends JPanel{
 		seasonHotTeamPanel = new TopFiveTeamCardPanel(X,Y,
 				team_BS.hotTeamSeason(seasonHotTeamCriteria),mainFrame,this,"TeamPanel");
 		seasonHotTeamPanel.setVisible(true);
-		seasonHotTeamPanel.setBounds(X*55/1366, Y*128/768, X*963/1366, Y*245/768);
+		seasonHotTeamPanel.setBounds(X*55/1366, Y*160/768, X*963/1366, Y*245/768);
 		bgLabel.add(seasonHotTeamPanel);
 		
 	} 

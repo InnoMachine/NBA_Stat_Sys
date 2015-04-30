@@ -54,7 +54,7 @@ public class TeamButtonsPanel extends JPanel {
 		this.setBounds(0, 0, X * 967 / 1366, Y * 240 / 768);
 
 		JLabel label = new JLabel(
-				"———————————————————————东部球队————————————————————————");
+				"———————————东部球队——————————");
 		label.setFont(new Font("微软雅黑", 1, 15));
 		label.setForeground(Color.white);
 		label.setBounds(X * 47 / 1366, Y * 1 / 768, X * 420 / 1366,
@@ -62,7 +62,7 @@ public class TeamButtonsPanel extends JPanel {
 		add(label);
 
 		JLabel label_1 = new JLabel(
-				"———————————————————————西部球队————————————————————————");
+				"———————————西部球队———————————");
 		label_1.setForeground(Color.white);
 		label_1.setFont(new Font("微软雅黑", 1, 15));
 		label_1.setBounds(X * 518 / 1366, Y * 1 / 768, X * 420 / 1366,

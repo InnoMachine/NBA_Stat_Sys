@@ -225,7 +225,7 @@ public class SortPanel extends JPanel {
 					X * 212 / 1366, X / 50);
 			ImageIcon buttonIcon1 = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(
-					X * 31 / 100, X / 50, Image.SCALE_SMOOTH));
+					212, X / 50, Image.SCALE_SMOOTH));
 			playerCriteriabtn1.setHorizontalTextPosition(SwingConstants.CENTER);
 			playerCriteriabtn1.setForeground(Color.WHITE);
 			playerCriteriabtn1.setIcon(buttonIcon1);
@@ -246,7 +246,7 @@ public class SortPanel extends JPanel {
 					X * 212 / 1366, X / 50);
 			ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(
-					X * 31 / 100, X / 50, Image.SCALE_SMOOTH));
+					212, X / 50, Image.SCALE_SMOOTH));
 			playerCriteriabtn2.setHorizontalTextPosition(SwingConstants.CENTER);
 			playerCriteriabtn2.setForeground(Color.WHITE);
 			playerCriteriabtn2.setIcon(buttonIcon2);
@@ -953,26 +953,29 @@ public class SortPanel extends JPanel {
 
 	public void back() {
 		this.setVisible(false);
-		previousPanel.setVisible(true);
-		if(category.equals("player")){
-		MainFrame.currentPanel="PlayerPanel";
-		}else if(category.equals("team")){
-			MainFrame.currentPanel="TeamPanel";
+		
+		if (category.equals("player")) {
+			MainFrame.playerPanel.setVisible(true);
+			MainFrame.currentPanel = "PlayerPanel";
+		} else if (category.equals("team")) {
+			MainFrame.teamPanel.setVisible(true);
+			MainFrame.currentPanel = "TeamPanel";
 		}
-		}
+	}
 
 	public void refresh() {
 		mainFrame.remove(this);
-		if (category .equals( "player")) {
-			MainFrame.sortPlayerPanel = new SortPanel("player", mainFrame, previousPanel);
+		if (category.equals("player")) {
+			MainFrame.sortPlayerPanel = new SortPanel("player", mainFrame,
+					previousPanel);
 			if (MainFrame.currentPanel == "SortPlayerPanel") {
 				MainFrame.sortPlayerPanel.setVisible(true);
 			} else {
 				MainFrame.sortPlayerPanel.setVisible(false);
 			}
 		} else if (category.equals("team")) {
-			MainFrame.sortTeamPanel = new SortPanel("team",
-					mainFrame, previousPanel);
+			MainFrame.sortTeamPanel = new SortPanel("team", mainFrame,
+					previousPanel);
 			if (MainFrame.currentPanel == "SortTeamPanel") {
 				MainFrame.sortTeamPanel.setVisible(true);
 			} else {
@@ -1014,10 +1017,11 @@ public class SortPanel extends JPanel {
 
 			}
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningPlayerPanel.png").getImage()
+					"Image/screeningcriteria.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
+			bglabel.setOpaque(false);
 			bglabel.setBounds(0, 0, this.getWidth(), this.getHeight());
 			this.add(bglabel);
 
@@ -1266,7 +1270,7 @@ public class SortPanel extends JPanel {
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 			JLabel bglabel = new JLabel();
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningPlayerPanel.png").getImage()
+					"Image/screeningcriteria.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);

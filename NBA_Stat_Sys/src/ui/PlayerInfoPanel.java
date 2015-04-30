@@ -398,6 +398,8 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
+		recentGameInfoJSP.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		recentGameInfoJSP.setSize(X * 1000 / 1366, Y * 480 / 768);
 		recentGameInfoJSP.setOpaque(false);
 		recentGameInfoJSP.getViewport().setOpaque(false);
@@ -504,6 +506,8 @@ public class PlayerInfoPanel extends JPanel {
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
+		historicalGameInfoJSP.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		historicalGameInfoJSP.setSize(X * 1000 / 1366, Y * 480 / 768);
 		historicalGameInfoJSP.setOpaque(false);
 		historicalGameInfoJSP.getViewport().setOpaque(false);
