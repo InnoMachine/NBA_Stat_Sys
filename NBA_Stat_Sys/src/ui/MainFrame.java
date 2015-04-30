@@ -63,13 +63,8 @@ public class MainFrame extends JFrame {
 		GameVo gameVo=new GameVo();
 		gameVo.setGuestTP(new TeamPerformanceInSingleGame());
 		gameVo.setHomeTP(new TeamPerformanceInSingleGame());
-<<<<<<< HEAD
-		//gameInfoPanel = new GameInfoPanel(gameVo, this,gamePanel,"GamePanel");
-		//gameInfoPanel.setVisible(false);
-=======
 //		gameInfoPanel = new GameInfoPanel(gameVo, this,gamePanel,"GamePanel");
 //		gameInfoPanel.setVisible(false);
->>>>>>> b565bab7b107886aca2d9858f7d78beaed437af0
 		searchPanel=new SearchPanel(this, playerPanel);
 		searchPanel.setVisible(false);
 		sortPlayerPanel=new SortPanel("player", this, playerPanel);
@@ -90,16 +85,6 @@ public class MainFrame extends JFrame {
 		playerPanel.refresh();
 		teamPanel.refresh();
 		gamePanel.refresh();
-<<<<<<< HEAD
-		playerInfoPanel.refresh();
-		teamInfoPanel.refresh();
-		/*//gameInfoPanel.refresh();
-		searchPanel.refresh();
-		sortPlayerPanel.refresh();;
-		screeningPlayerPanel.refresh();;
-		sortTeamPanel.refresh();
-*/
-=======
 //		playerInfoPanel.refresh();
 //		teamInfoPanel.refresh();
 //		gameInfoPanel.refresh();
@@ -108,7 +93,6 @@ public class MainFrame extends JFrame {
 //		screeningPlayerPanel.refresh();;
 //		sortTeamPanel.refresh();
 
->>>>>>> b565bab7b107886aca2d9858f7d78beaed437af0
 	}
 
 }

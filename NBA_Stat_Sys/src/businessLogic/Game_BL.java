@@ -42,5 +42,12 @@ public class Game_BL implements Game_BS{
 	}
 
 
+	@Override
+	public GameVo getGameVoByLabel(String label) {
+	
+		return game_handler.getGameVoByLabel(label);
+	}
+
+
 	
 }

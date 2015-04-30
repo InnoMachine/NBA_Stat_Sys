@@ -350,4 +350,10 @@ public class Game_BL_Stub implements Game_BS {
 		return gameVos;
 	}
 
+	@Override
+	public GameVo getGameVoByLabel(String label) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

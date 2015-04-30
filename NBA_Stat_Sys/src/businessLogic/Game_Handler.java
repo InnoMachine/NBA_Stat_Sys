@@ -94,5 +94,14 @@ public class Game_Handler {
 		}
 		return templist;
 	}
+
+	public GameVo getGameVoByLabel(String label) {
+		for(GameVo temp:listvo){
+			if(temp.getGameLabel().equals(label)){
+				return temp;
+			}
+		}
+		return null;
+	}
 }
 

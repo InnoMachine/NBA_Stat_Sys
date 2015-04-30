@@ -38,6 +38,8 @@ import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
+import businessLogic.Game_BL;
+import businessLogic.Game_BS;
 import businessLogic.Team_BL;
 import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
@@ -93,6 +95,7 @@ public class TeamInfoPanel extends JPanel {
 	private JLabel TeamBadge;
 
 	Team_BS team_BS = new Team_BL();
+	Game_BS game_BS = new Game_BL();
 
 	ArrayList<TeamPerformanceInSingleGame> fiveRecentGames;
 	ArrayList<TeamPerformanceInSingleGame> historicalGames;
@@ -749,7 +752,7 @@ public class TeamInfoPanel extends JPanel {
 			if (isSelected) {
 				selfClose();
 				MainFrame.gameInfoPanel = new GameInfoPanel(
-			//////fiveRecentGames.get(recentGameInfoTable.getSelectedRow()).getGameLabel()//////这一句只获得了gamelabel,
+			game_BS.getGameVoByLabel(fiveRecentGames.get(recentGameInfoTable.getSelectedRow()).getGameLabel()),
 						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
 								previousPanel, previouspanel), "TeamInfoPanel");
 				mainFrame.add(MainFrame.gameInfoPanel);
@@ -776,7 +779,7 @@ public class TeamInfoPanel extends JPanel {
 			if (isSelected) {
 				selfClose();
 				MainFrame.gameInfoPanel = new GameInfoPanel(
-				//////historicalGames.get(historicalGameInfoTable.getSelectedRow()).getGameLabel()//////这一句只获得了gamelabel,
+				game_BS.getGameVoByLabel(historicalGames.get(historicalGameInfoTable.getSelectedRow()).getGameLabel()),
 						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
 								previousPanel, previouspanel), "TeamInfoPanel");
 				mainFrame.add(MainFrame.gameInfoPanel);
