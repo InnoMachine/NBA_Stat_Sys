@@ -73,19 +73,19 @@ public class StartPanel extends JPanel {
 	public void createButton() {
 		int subX=55*X/100;
 		MyButton playerInfobtn = new MyButton("球员信息");
-		playerInfobtn.setBounds(13*X/20, 11*Y/20, X/6, Y/10);
+		playerInfobtn.setBounds(3*X/20, 11*Y/20, X/6, Y/10);
 //		playerInfobtn.addActionListener(e -> playerOpe());
 		playerInfobtn.addActionListener(e -> toPlayerPanel());
 		bgLabel.add(playerInfobtn);
 
 		MyButton teamInfobtn = new MyButton("球队信息");
-		teamInfobtn.setBounds(11*X/20, 14*Y/20, X/6,  Y/10);
+		teamInfobtn.setBounds(3*X/20, 14*Y/20, X/6,  Y/10);
 		teamInfobtn.addActionListener(e -> toTeamPanel());
 		bgLabel.add(teamInfobtn);
 		
 
 		MyButton gameInfobtn = new MyButton("比赛信息");
-		gameInfobtn.setBounds(9*X/20, 17*Y/20, X/6,  Y/10);
+		gameInfobtn.setBounds(3*X/20, 17*Y/20, X/6,  Y/10);
 		gameInfobtn.addActionListener(e -> toGamePanel());
 		bgLabel.add(gameInfobtn);
 		

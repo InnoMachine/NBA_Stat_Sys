@@ -2290,6 +2290,10 @@ public class GameInfoPanel extends JPanel {
 	public void selfClose() {
 		this.setVisible(false);
 	}
+	
+	public GameInfoPanel getSelf(){
+		return this;
+	}
 
 	class PlayerRenderer extends JButton implements TableCellRenderer {
 		String name;
@@ -2324,7 +2328,7 @@ public class GameInfoPanel extends JPanel {
 			this.setBorderPainted(false);
 			if (isSelected) {
 				previousPanel.setVisible(false);
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(this.name, mainFrame, previousPanel,previouspanel);
+				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(this.name, mainFrame, getSelf(),previouspanel);
 				MainFrame.currentPanel="PlayerInfoPanel";
 				selfClose();
 			}
