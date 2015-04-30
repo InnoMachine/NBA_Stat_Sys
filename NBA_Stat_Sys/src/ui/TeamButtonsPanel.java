@@ -32,7 +32,7 @@ public class TeamButtonsPanel extends JPanel {
 	static TeamInfoPanel miaInfoPanel;
 	static TeamInfoPanel milInfoPanel;
 	static TeamInfoPanel minInfoPanel;
-	static TeamInfoPanel nopInfoPanel;
+	static TeamInfoPanel nohInfoPanel;
 	static TeamInfoPanel nykInfoPanel;
 	static TeamInfoPanel okcInfoPanel;
 	static TeamInfoPanel orlInfoPanel;
@@ -434,12 +434,12 @@ public class TeamButtonsPanel extends JPanel {
 		westTeambtn7.setBorderPainted(false);
 		westTeambtn7.setOpaque(false);
 		westTeambtn7.addActionListener(e -> {
-			nopInfoPanel = new TeamInfoPanel("NOP", mainFrame, previousPanel,previouspanel);
+			nohInfoPanel = new TeamInfoPanel("NOH", mainFrame, previousPanel,previouspanel);
 			MainFrame.currentPanel = "TeamInfoPanel";
 		});
 		add(westTeambtn7);
 		ImageIcon westTeamImg7 = new ImageIcon(new ImageIcon(
-				"CSEdata/teams_png/" + "NOP" + ".png").getImage()
+				"CSEdata/teams_png/" + "NOH" + ".png").getImage()
 				.getScaledInstance(X * 60 / 1366, Y * 60 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		westTeambtn7.setIcon(westTeamImg7);
