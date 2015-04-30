@@ -200,7 +200,7 @@ public class TeamInfoPanel extends JPanel {
 		bgLabel.add(TeamBadge);
 
 		playersInfoButton = new MyButton("球员列表⊙");
-		playersInfoButton.setLocation(X * 200 / 1366, Y * 200 / 768);
+		playersInfoButton.setLocation(X * 150 / 1366, Y * 200 / 768);
 		playersInfoButton.addActionListener(e -> {
 			playersInfoJSP.setVisible(true);
 			recentGameInfoJSP.setVisible(false);
@@ -211,7 +211,7 @@ public class TeamInfoPanel extends JPanel {
 		});
 
 		recentGameButton = new MyButton("最近比赛");
-		recentGameButton.setLocation(X * 350 / 1366, Y * 200 / 768);
+		recentGameButton.setLocation(X * 300 / 1366, Y * 200 / 768);
 		recentGameButton.addActionListener(e -> {
 			playersInfoJSP.setVisible(false);
 			recentGameInfoJSP.setVisible(true);
@@ -222,7 +222,7 @@ public class TeamInfoPanel extends JPanel {
 		});
 
 		historicalGameButton = new MyButton("历史比赛");
-		historicalGameButton.setLocation(X * 500 / 1366, Y * 200 / 768);
+		historicalGameButton.setLocation(X * 450 / 1366, Y * 200 / 768);
 		historicalGameButton.addActionListener(e -> {
 			playersInfoJSP.setVisible(false);
 			recentGameInfoJSP.setVisible(false);
@@ -324,7 +324,7 @@ public class TeamInfoPanel extends JPanel {
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		playersInfoTable.setDefaultRenderer(Object.class, r2);
 		playersInfoTable.setForeground(Color.WHITE);
-
+		playersInfoTable.setOpaque(false);
 		playersInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 
@@ -335,8 +335,8 @@ public class TeamInfoPanel extends JPanel {
 		playersInfoJSP = new JScrollPane(playersInfoTable);
 		playersInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		playersInfoJSP.setBounds(X * 200 / 1366, Y * 230 / 768,
-				X * 1000 / 1366, Y * 500 / 768);
+		playersInfoJSP.setBounds(X * 150 / 1366, Y * 230 / 768,
+				X * 1100 / 1366, Y * 500 / 768);
 		// playersInfoJSP.setBackground(Color.GRAY);
 		playersInfoJSP.setOpaque(false);
 		playersInfoJSP.getViewport().setOpaque(false);
@@ -431,7 +431,7 @@ public class TeamInfoPanel extends JPanel {
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
 		recentGameInfoTable.setForeground(Color.WHITE);
-
+		recentGameInfoTable.setOpaque(false);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 //--------------------------------------------------------------------------------------------
@@ -443,8 +443,8 @@ public class TeamInfoPanel extends JPanel {
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		recentGameInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		recentGameInfoJSP.setBounds(X * 200 / 1366, Y * 230 / 768,
-				X * 1000 / 1366, Y * 500 / 768);
+		recentGameInfoJSP.setBounds(X * 150 / 1366, Y * 230 / 768,
+				X * 1100 / 1366, Y * 500 / 768);
 		recentGameInfoJSP.setOpaque(false);
 		recentGameInfoJSP.getViewport().setOpaque(false);
 		recentGameInfoJSP.setVisible(false);
@@ -538,7 +538,7 @@ public class TeamInfoPanel extends JPanel {
 		MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
-
+		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoTable.setForeground(Color.WHITE);
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
@@ -553,8 +553,8 @@ public class TeamInfoPanel extends JPanel {
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		historicalGameInfoJSP.setBounds(X * 200 / 1366, Y * 230 / 768,
-				X * 1000 / 1366, Y * 500 / 768);
+		historicalGameInfoJSP.setBounds(X *150 / 1366, Y * 230 / 768,
+				X * 1100 / 1366, Y * 500 / 768);
 		historicalGameInfoJSP.setOpaque(false);
 		historicalGameInfoJSP.getViewport().setOpaque(false);
 		historicalGameInfoJSP.setVisible(false);
@@ -797,9 +797,9 @@ public class TeamInfoPanel extends JPanel {
 				int row, int col) {
 
 			if ((row % 2) == 1)
-				setBackground(Color.GRAY);
+				setOpaque(false);
 			else
-				setBackground(Color.LIGHT_GRAY);
+				setOpaque(false);
 
 			setText((value == null) ? "" : value.toString());
 

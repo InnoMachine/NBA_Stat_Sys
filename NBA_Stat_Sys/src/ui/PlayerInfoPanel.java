@@ -28,11 +28,15 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
+import businessLogic.Game_BL;
+import businessLogic.Game_BS;
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.test;
 import ui.ShowPanel.MyTextField;
+import ui.TeamInfoPanel.MyHistoricalGameButtonRenderer;
+import ui.TeamInfoPanel.MyRecentGameButtonRenderer;
 import ui.TeamInfoPanel.MyTableRenderer;
 import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
@@ -114,6 +118,10 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField txtAfoul;
 
 	Player_BS player_BS = new Player_BL();
+	Game_BS game_BS = new Game_BL();
+	ArrayList<PlayerPerformanceInSingleGame> recentFiveGames ;
+	ArrayList<PlayerPerformanceInSingleGame> historicalGames ;
+	
 
 	public PlayerInfoPanel(String playerName, JFrame mainFrame,
 			JPanel previousPanel,String previouspanel) {
@@ -311,7 +319,7 @@ public class PlayerInfoPanel extends JPanel {
 	public void showRecentData() {
 		PlayerRecentGames recentGames = new PlayerRecentGames();
 		recentGames = player_BS.getPlayerRecentPerformance(playerName);
-		ArrayList<PlayerPerformanceInSingleGame> recentFiveGames = new ArrayList<PlayerPerformanceInSingleGame>();
+		recentFiveGames = new ArrayList<PlayerPerformanceInSingleGame>();
 		recentFiveGames = recentGames.getFiveGames();
 
 		if (recentGameRowData == null) {
@@ -338,7 +346,7 @@ public class PlayerInfoPanel extends JPanel {
 		recentGameColumn.add("失误");
 		recentGameColumn.add("盖帽");
 		recentGameColumn.add("得分");
-
+		recentGameColumn.add("More");
 		for (int i = 0; i < recentFiveGames.size(); i++) {
 			Vector<String> a = new Vector<String>();
 			a.add(recentFiveGames.get(i).getDate());
@@ -390,13 +398,14 @@ public class PlayerInfoPanel extends JPanel {
 		MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		recentGameInfoTable.setDefaultRenderer(Object.class, r2);
-
+		recentGameInfoTable.setOpaque(false);
 		recentGameInfoTable.setForeground(Color.WHITE);
 		recentGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
-
+		recentGameInfoTable.getColumnModel().getColumn(18)
+		.setCellRenderer(new MyRecentGameButtonRenderer());
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		recentGameInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -417,7 +426,7 @@ public class PlayerInfoPanel extends JPanel {
 	}
 
 	public void showHistoricalData() {
-		ArrayList<PlayerPerformanceInSingleGame> historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
+		historicalGames = new ArrayList<PlayerPerformanceInSingleGame>();
 		historicalGames = player_BS.getPlayerPerformacne(playerName).getGames();
 
 		if (historicalGameRowData == null) {
@@ -444,7 +453,7 @@ public class PlayerInfoPanel extends JPanel {
 		historicalGameColumn.add("失误");
 		historicalGameColumn.add("盖帽");
 		historicalGameColumn.add("得分");
-
+		historicalGameColumn.add("More");
 		for (int i = 0; i < historicalGames.size(); i++) {
 			Vector<String> a = new Vector<String>();
 			a.add(historicalGames.get(i).getDate());
@@ -504,7 +513,9 @@ public class PlayerInfoPanel extends JPanel {
 		historicalGameInfoTable.getColumnModel().getColumn(0)
 				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
-
+		historicalGameInfoTable.getColumnModel().getColumn(18)
+		.setCellRenderer(new MyHistoricalGameButtonRenderer());
+		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -1643,16 +1654,22 @@ public class PlayerInfoPanel extends JPanel {
 		bgLabel.add(textField_18);
 
 	}
-
+	public void selfClose() {
+		this.setVisible(false);
+	}
+	public PlayerInfoPanel getSelf(){
+		return this;
+	}
+	
 	public class MyTableRenderer extends DefaultTableCellRenderer {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean cellHasFocus,
 				int row, int col) {
 
 			if ((row % 2) == 1)
-				setBackground(Color.GRAY);
+				setOpaque(false);
 			else
-				setBackground(Color.LIGHT_GRAY);
+				setOpaque(false);
 
 			setText((value == null) ? "" : value.toString());
 
@@ -1791,4 +1808,56 @@ public class PlayerInfoPanel extends JPanel {
 			bgLabel.add(this);
 		}
 	}
+	
+	class MyRecentGameButtonRenderer extends JButton implements TableCellRenderer {
+
+		@Override
+		public Component getTableCellRendererComponent(JTable arg0,
+				Object arg1, boolean isFocus, boolean isSelected, int arg4,
+				int arg5) {
+			// TODO Auto-generated method stub
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(
+					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
+
+			this.setIcon(buttonIcon);
+
+			if (isSelected) {
+				selfClose();
+				MainFrame.gameInfoPanel = new GameInfoPanel(
+			game_BS.getGameVoByLabel(recentFiveGames.get(recentGameInfoTable.getSelectedRow()).getGameLabel()),
+						mainFrame,getSelf(), "TeamInfoPanel");
+				mainFrame.add(MainFrame.gameInfoPanel);
+			}
+			return this;
+		}
+
+	}
+	//-------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------
+	class MyHistoricalGameButtonRenderer extends JButton implements TableCellRenderer {
+
+		@Override
+		public Component getTableCellRendererComponent(JTable arg0,
+				Object arg1, boolean isFocus, boolean isSelected, int arg4,
+				int arg5) {
+			// TODO Auto-generated method stub
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance(
+					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
+
+			this.setIcon(buttonIcon);
+
+			if (isSelected) {
+				selfClose();
+				MainFrame.gameInfoPanel = new GameInfoPanel(
+				game_BS.getGameVoByLabel(historicalGames.get(historicalGameInfoTable.getSelectedRow()).getGameLabel()),
+						mainFrame, getSelf(), "PlayerInfoPanel");
+				mainFrame.add(MainFrame.gameInfoPanel);
+			}
+			return this;
+		}
+
+	}
+
 }
