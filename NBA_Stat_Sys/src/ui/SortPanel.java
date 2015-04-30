@@ -1270,7 +1270,7 @@ public class SortPanel extends JPanel {
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 			JLabel bglabel = new JLabel();
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningPlayerPanel.png").getImage()
+					"Image/screeningcriteria.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);

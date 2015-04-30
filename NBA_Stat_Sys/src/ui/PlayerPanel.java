@@ -371,7 +371,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this,"PlayerPanel");
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*140/768, X*967/1366, Y*230/768);
 		bgLabel.add(dailyHotPlayerPanel);
 		
 		
@@ -423,7 +423,7 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this,"PlayerPanel");
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*470/768, X*967/1366, Y*230/768);
 		bgLabel.add(progressFastPlayerPanel);	
 		
 		
@@ -517,7 +517,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerDaily(dailyHotPlayerCriteria),mainFrame,this,"PlayerPanel");
 		dailyHotPlayerPanel.setVisible(true);
-		dailyHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
+		dailyHotPlayerPanel.setBounds(X*55/1366, Y*140/768, X*967/1366, Y*230/768);
 		bgLabel.add(dailyHotPlayerPanel);
 
 	}
@@ -532,7 +532,7 @@ public class PlayerPanel extends JPanel {
 		seasonHotPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.hotPlayerSeason(seasonHotPlayerCriteria),mainFrame,this,"PlayerPanel");
 		seasonHotPlayerPanel.setVisible(true);
-		seasonHotPlayerPanel.setBounds(X*55/1366, Y*128/768, X*967/1366, Y*230/768);
+		seasonHotPlayerPanel.setBounds(X*55/1366, Y*140/768, X*967/1366, Y*230/768);
 		bgLabel.add(seasonHotPlayerPanel);
 	}
 
@@ -544,7 +544,7 @@ public class PlayerPanel extends JPanel {
 		progressFastPlayerPanel = new TopFivePlayerCardPanel(X,Y,
 				player_BS.progressFastPlayer(progressFastPlayerCriteria),mainFrame,this,"PlayerPanel");
 		progressFastPlayerPanel.setVisible(true);
-		progressFastPlayerPanel.setBounds(X*55/1366, Y*455/768, X*967/1366, Y*230/768);
+		progressFastPlayerPanel.setBounds(X*55/1366, Y*470/768, X*967/1366, Y*230/768);
 		bgLabel.add(progressFastPlayerPanel);	
 	
 	}

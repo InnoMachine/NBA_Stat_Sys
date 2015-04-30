@@ -2336,7 +2336,7 @@ public class GameInfoPanel extends JPanel {
 			this.setVisible(true);
 			this.setLayout(null);
 			// this.setOpaque(false);
-			this.setBackground(Color.GRAY);
+			this.setBackground(Color.DARK_GRAY);
 			this.setBounds(x, y, X * 125 / 1366, Y * 80 / 768);
 			JLabel bgLabel = new JLabel();
 			/*
@@ -2347,8 +2347,9 @@ public class GameInfoPanel extends JPanel {
 			 * 
 			 * bgLabel.setIcon(bgIcon);
 			 */
+			bgLabel.setBackground(Color.DARK_GRAY);
 			bgLabel.setBounds(0, 0, X * 125 / 1366, Y * 80 / 768);
-			bgLabel.setBackground(Color.GRAY);
+			this.add(bgLabel);
 
 			JLabel namelbl = new MyLabel("姓名：");
 			namelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -2364,6 +2365,7 @@ public class GameInfoPanel extends JPanel {
 			nametF.setBounds(X * 35 / 1366, Y * 5 / 768, X * 90 / 1366,
 					Y * 16 / 768);
 			nametF.setFont(new Font("黑体", 1, 9));
+			nametF.setBorder(null);
 			bgLabel.add(nametF);
 
 			JLabel numberlbl = new MyLabel("号码：");
@@ -2380,6 +2382,7 @@ public class GameInfoPanel extends JPanel {
 			numbertF.setBounds(X * 37 / 1366, Y * 23 / 768, X * 90 / 1366,
 					Y * 16 / 768);
 			numbertF.setFont(new Font("黑体", 1, 10));
+			numbertF.setBorder(null);
 			bgLabel.add(numbertF);
 
 			JLabel positionlbl = new MyLabel("位置：");
@@ -2396,6 +2399,7 @@ public class GameInfoPanel extends JPanel {
 			positiontF.setBounds(X * 37 / 1366, Y * 41 / 768, X * 90 / 1366,
 					Y * 16 / 768);
 			positiontF.setFont(new Font("黑体", 1, 10));
+			positiontF.setBorder(null);
 			bgLabel.add(positiontF);
 
 			JLabel scorelbl = new MyLabel("得分：");
@@ -2412,6 +2416,7 @@ public class GameInfoPanel extends JPanel {
 			scoretF.setBounds(X * 37 / 1366, Y * 59 / 768, X * 90 / 1366,
 					Y * 16 / 768);
 			scoretF.setFont(new Font("黑体", 1, 10));
+			scoretF.setBorder(null);
 			bgLabel.add(scoretF);
 
 			this.add(bgLabel);
