@@ -325,6 +325,8 @@ public class TeamInfoPanel extends JPanel {
 				.setCellRenderer(new MyButtonRenderer());
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
+		playersInfoJSP.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		playersInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
 //		playersInfoJSP.setBackground(Color.GRAY);
 		playersInfoJSP.setOpaque(false);
@@ -419,6 +421,8 @@ public class TeamInfoPanel extends JPanel {
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoTable.setOpaque(false);
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
+		recentGameInfoJSP.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		recentGameInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
 		recentGameInfoJSP.setOpaque(false);
 		recentGameInfoJSP.getViewport().setOpaque(false);
@@ -514,6 +518,8 @@ public class TeamInfoPanel extends JPanel {
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
+		historicalGameInfoJSP.getVerticalScrollBar().setUI(
+				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		historicalGameInfoJSP.setBounds(X*200/1366,Y*230/768 , X*1000/1366, Y*500/768);
 		historicalGameInfoJSP.setOpaque(false);
 		historicalGameInfoJSP.getViewport().setOpaque(false);
