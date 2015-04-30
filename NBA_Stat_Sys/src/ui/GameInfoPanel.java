@@ -2323,7 +2323,10 @@ public class GameInfoPanel extends JPanel {
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
 			if (isSelected) {
-				System.out.println("11111");
+				previousPanel.setVisible(false);
+				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(this.name, mainFrame, previousPanel,previouspanel);
+				MainFrame.currentPanel="PlayerInfoPanel";
+				selfClose();
 			}
 			return this;
 		}

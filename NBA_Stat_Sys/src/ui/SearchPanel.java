@@ -1289,7 +1289,7 @@ public class SearchPanel extends JPanel {
 		
 		
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < playerVos.size(); i++) {
 			playerVos.add(player_BS.getAllPlayer().get(i));
 		}
 		if (rowData == null) {
