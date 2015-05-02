@@ -1763,7 +1763,7 @@ public class GameInfoPanel extends JPanel {
 		guestColumn.add("球员");
 		guestColumn.add("姓名");
 		guestColumn.add("号码");
-		guestColumn.add("分钟");
+		guestColumn.add("时间");
 		guestColumn.add("得分");
 		guestColumn.add("助攻");
 		guestColumn.add("个人犯规");
@@ -1859,7 +1859,7 @@ public class GameInfoPanel extends JPanel {
 		hostColumn.add("球员");
 		hostColumn.add("姓名");
 		hostColumn.add("号码");
-		hostColumn.add("分钟");
+		hostColumn.add("时间");
 		hostColumn.add("得分");
 		hostColumn.add("助攻");
 		hostColumn.add("个人犯规");
@@ -1949,7 +1949,7 @@ public class GameInfoPanel extends JPanel {
 			guestColumn.add("球员");
 			guestColumn.add("姓名");
 			guestColumn.add("号码");
-			guestColumn.add("分钟");
+			guestColumn.add("时间");
 			guestColumn.add("得分");
 			guestColumn.add("助攻");
 			guestColumn.add("个人犯规");
@@ -1969,7 +1969,7 @@ public class GameInfoPanel extends JPanel {
 			guestColumn.add("球员");
 			guestColumn.add("姓名");
 			guestColumn.add("号码");
-			guestColumn.add("分钟");
+			guestColumn.add("时间");
 			guestColumn.add("命中数");
 			guestColumn.add("三分命中数");
 			guestColumn.add("罚球命中数");
@@ -1992,7 +1992,7 @@ public class GameInfoPanel extends JPanel {
 			guestColumn.add("球员");
 			guestColumn.add("姓名");
 			guestColumn.add("号码");
-			guestColumn.add("分钟");
+			guestColumn.add("时间");
 			guestColumn.add("进攻篮板");
 			guestColumn.add("防守篮板");
 			guestColumn.add("总篮板数");
@@ -2015,7 +2015,7 @@ public class GameInfoPanel extends JPanel {
 			guestColumn.add("球员");
 			guestColumn.add("姓名");
 			guestColumn.add("号码");
-			guestColumn.add("分钟");
+			guestColumn.add("时间");
 			guestColumn.add("抢断");
 			guestColumn.add("盖帽");
 			guestColumn.add("失误");
@@ -2120,7 +2120,7 @@ public class GameInfoPanel extends JPanel {
 			hostColumn.add("球员");
 			hostColumn.add("姓名");
 			hostColumn.add("号码");
-			hostColumn.add("分钟");
+			hostColumn.add("时间");
 			hostColumn.add("得分");
 			hostColumn.add("助攻");
 			hostColumn.add("个人犯规");
@@ -2140,7 +2140,7 @@ public class GameInfoPanel extends JPanel {
 			hostColumn.add("球员");
 			hostColumn.add("姓名");
 			hostColumn.add("号码");
-			hostColumn.add("分钟");
+			hostColumn.add("时间");
 			hostColumn.add("命中数");
 			hostColumn.add("三分命中数");
 			hostColumn.add("罚球命中数");
@@ -2162,7 +2162,7 @@ public class GameInfoPanel extends JPanel {
 			hostColumn.add("球员");
 			hostColumn.add("姓名");
 			hostColumn.add("号码");
-			hostColumn.add("分钟");
+			hostColumn.add("时间");
 			hostColumn.add("进攻篮板");
 			hostColumn.add("防守篮板");
 			hostColumn.add("总篮板数");
@@ -2185,7 +2185,7 @@ public class GameInfoPanel extends JPanel {
 			hostColumn.add("球员");
 			hostColumn.add("姓名");
 			hostColumn.add("号码");
-			hostColumn.add("分钟");
+			hostColumn.add("时间");
 			hostColumn.add("抢断");
 			hostColumn.add("盖帽");
 			hostColumn.add("失误");
