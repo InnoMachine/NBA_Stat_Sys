@@ -37,7 +37,7 @@ public class GamePanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 
-	Game_BS game_BS = new Game_BL();
+	Game_BS game_BS = new Game_BL_Stub();
 
 	Vector<Vector<GameCardPanel>> rowData;
 	static int X;

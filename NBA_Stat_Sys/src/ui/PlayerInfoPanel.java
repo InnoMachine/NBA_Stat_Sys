@@ -29,6 +29,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import businessLogic.Game_BL;
+import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 import businessLogic.Player_BL;
 import businessLogic.Player_BL_Stub;
@@ -117,8 +118,8 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField txtAturnover;
 	private JTextField txtAfoul;
 
-	Player_BS player_BS = new Player_BL();
-	Game_BS game_BS = new Game_BL();
+	Player_BS player_BS = new Player_BL_Stub();
+	Game_BS game_BS = new Game_BL_Stub();
 	ArrayList<PlayerPerformanceInSingleGame> recentFiveGames ;
 	ArrayList<PlayerPerformanceInSingleGame> historicalGames ;
 	

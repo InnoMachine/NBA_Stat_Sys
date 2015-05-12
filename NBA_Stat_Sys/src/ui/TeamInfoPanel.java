@@ -39,6 +39,7 @@ import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
 import businessLogic.Game_BL;
+import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 import businessLogic.Team_BL;
 import businessLogic.Team_BL_Stub;
@@ -94,8 +95,8 @@ public class TeamInfoPanel extends JPanel {
 
 	private JLabel TeamBadge;
 
-	Team_BS team_BS = new Team_BL();
-	Game_BS game_BS = new Game_BL();
+	Team_BS team_BS = new Team_BL_Stub();
+	Game_BS game_BS = new Game_BL_Stub();
 
 	ArrayList<TeamPerformanceInSingleGame> fiveRecentGames;
 	ArrayList<TeamPerformanceInSingleGame> historicalGames;
