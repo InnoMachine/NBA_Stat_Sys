@@ -95,8 +95,8 @@ public class TeamInfoPanel extends JPanel {
 
 	private JLabel TeamBadge;
 
-	Team_BS team_BS = new Team_BL_Stub();
-	Game_BS game_BS = new Game_BL_Stub();
+	Team_BS team_BS = new Team_BL();
+	Game_BS game_BS = new Game_BL();
 
 	ArrayList<TeamPerformanceInSingleGame> fiveRecentGames;
 	ArrayList<TeamPerformanceInSingleGame> historicalGames;

@@ -118,8 +118,8 @@ public class PlayerInfoPanel extends JPanel {
 	private JTextField txtAturnover;
 	private JTextField txtAfoul;
 
-	Player_BS player_BS = new Player_BL_Stub();
-	Game_BS game_BS = new Game_BL_Stub();
+	Player_BS player_BS = new Player_BL();
+	Game_BS game_BS = new Game_BL();
 	ArrayList<PlayerPerformanceInSingleGame> recentFiveGames ;
 	ArrayList<PlayerPerformanceInSingleGame> historicalGames ;
 	

@@ -47,7 +47,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
-	Player_BS player_BS = new Player_BL_Stub();
+	Player_BS player_BS = new Player_BL();
 	private JButton screeningCriteriabtn;
 	Vector<Vector<PlayerCardPanel>> rowData;
 	static int X;
@@ -247,21 +247,21 @@ public class ScreeningPlayerPanel extends JPanel {
 		screeningCriteriabtn.addActionListener(e -> showScreeningCriteria());
 		bgLabel.add(screeningCriteriabtn);
 		
-		JButton screeningbtn = new JButton("显示前50名");
-		screeningbtn.setForeground(Color.WHITE);
-		screeningbtn.setHorizontalTextPosition(SwingConstants.CENTER);
-		screeningbtn.setBounds(X * 1000 / 1366, Y * 160 / 768, X * 150 / 1366,
-				30);
-		screeningbtn.setFont(new Font("微软雅黑",1,15));
-		ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
-				"Image/mainButton.png").getImage().getScaledInstance(
-				X * 150 / 1366, 30, Image.SCALE_SMOOTH));
-		screeningbtn.setIcon(buttonIcon2);
-		screeningbtn.setOpaque(false);
-		screeningbtn.setContentAreaFilled(false);
-		screeningbtn.setBorderPainted(false);
-		screeningbtn.addActionListener(e -> screening());
-		bgLabel.add(screeningbtn);
+//		JButton screeningbtn = new JButton("显示前50名");
+//		screeningbtn.setForeground(Color.WHITE);
+//		screeningbtn.setHorizontalTextPosition(SwingConstants.CENTER);
+//		screeningbtn.setBounds(X * 1000 / 1366, Y * 160 / 768, X * 150 / 1366,
+//				30);
+//		screeningbtn.setFont(new Font("微软雅黑",1,15));
+//		ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
+//				"Image/mainButton.png").getImage().getScaledInstance(
+//				X * 150 / 1366, 30, Image.SCALE_SMOOTH));
+//		screeningbtn.setIcon(buttonIcon2);
+//		screeningbtn.setOpaque(false);
+//		screeningbtn.setContentAreaFilled(false);
+//		screeningbtn.setBorderPainted(false);
+//		screeningbtn.addActionListener(e -> screening());
+//		bgLabel.add(screeningbtn);
 		mainFrame.getContentPane().add(this);
 
 		
@@ -372,7 +372,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		String position = "All";
 		String league = "All";
 		String screeningCriteria = "score";
-
+		System.out.println("add actionListening!");
 		if (playerCriteriaPanel != null) {
 			playerCriteriaPanel.setVisible(false);
 		}
@@ -952,7 +952,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
-			this.addActionListener(e->{leagueSelected=s;showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);});
+			this.addActionListener(e->{leagueSelected=s;showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);screening();});
 			bgLabel.add(this);
 		}
 	}
@@ -973,7 +973,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
-			this.addActionListener(e->{positionSelected=s;showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);});
+			this.addActionListener(e->{positionSelected=s;showSelected.setText(leagueSelected+"-"+positionSelected+"-"+criteriaSelected);screening();});
 			bgLabel.add(this);
 		}
 	}
@@ -989,6 +989,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setText(choice);
 			this.setOpaque(false);
 			this.setForeground(Color.WHITE);
+			this.addActionListener(e->screening());
 		}
 	}
 
