@@ -58,17 +58,17 @@ public class SortPanel extends JPanel {
 	private Vector<String> column;
 
 	JButton playerCriteriabtn1;
-	JButton playerCriteriabtn2;
+//	JButton playerCriteriabtn2;
 	JButton teamCriteriabtn;
 	SortPlayerCriteriaPanel sortPlayerCriteriaPanel1;
-	SortPlayerCriteriaPanel sortPlayerCriteriaPanel2;
+//	SortPlayerCriteriaPanel sortPlayerCriteriaPanel2;
 	SortTeamCriteriaPanel sortTeamCriteriaPanel;
 
 	Player_BS player_BS = new Player_BL_Stub();
 	Team_BS team_BS = new Team_BL_Stub();
 
 	String playerCriteria1 = "";
-	String playerCriteria2 = "";
+//	String playerCriteria2 = "";
 	String teamCriteria = "";
 
 	String UpOrDown = "Down";
@@ -95,8 +95,8 @@ public class SortPanel extends JPanel {
 
 		sortPlayerCriteriaPanel1 = new SortPlayerCriteriaPanel("first");
 		sortPlayerCriteriaPanel1.setVisible(false);
-		sortPlayerCriteriaPanel2 = new SortPlayerCriteriaPanel("second");
-		sortPlayerCriteriaPanel2.setVisible(false);
+//		sortPlayerCriteriaPanel2 = new SortPlayerCriteriaPanel("second");
+//		sortPlayerCriteriaPanel2.setVisible(false);
 		sortTeamCriteriaPanel = new SortTeamCriteriaPanel();
 		sortTeamCriteriaPanel.setVisible(false);
 
@@ -233,33 +233,33 @@ public class SortPanel extends JPanel {
 			playerCriteriabtn1.setContentAreaFilled(false);
 			playerCriteriabtn1.setBorderPainted(false);
 			playerCriteriabtn1.addActionListener(e -> {
-				if (sortPlayerCriteriaPanel2 != null) {
-					sortPlayerCriteriaPanel2.setVisible(false);
-				}
+//				if (sortPlayerCriteriaPanel2 != null) {
+//					sortPlayerCriteriaPanel2.setVisible(false);
+//				}
 				sortPlayerCriteriaPanel1.setVisible(true);
 
 			});
 			bgLabel.add(playerCriteriabtn1);
 
-			playerCriteriabtn2 = new JButton("");
-			playerCriteriabtn2.setBounds(X * 655 / 1366, Y * 66 / 768,
-					X * 212 / 1366, X / 50);
-			ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance(
-					212, X / 50, Image.SCALE_SMOOTH));
-			playerCriteriabtn2.setHorizontalTextPosition(SwingConstants.CENTER);
-			playerCriteriabtn2.setForeground(Color.WHITE);
-			playerCriteriabtn2.setIcon(buttonIcon2);
-			playerCriteriabtn2.setOpaque(false);
-			playerCriteriabtn2.setContentAreaFilled(false);
-			playerCriteriabtn2.setBorderPainted(false);
-			playerCriteriabtn2.addActionListener(e -> {
-				if (sortPlayerCriteriaPanel1 != null) {
-					sortPlayerCriteriaPanel1.setVisible(false);
-				}
-				sortPlayerCriteriaPanel2.setVisible(true);
-			});
-			bgLabel.add(playerCriteriabtn2);
+//			playerCriteriabtn2 = new JButton("");
+//			playerCriteriabtn2.setBounds(X * 655 / 1366, Y * 66 / 768,
+//					X * 212 / 1366, X / 50);
+//			ImageIcon buttonIcon2 = new ImageIcon(new ImageIcon(
+//					"Image/mainButton.png").getImage().getScaledInstance(
+//					212, X / 50, Image.SCALE_SMOOTH));
+//			playerCriteriabtn2.setHorizontalTextPosition(SwingConstants.CENTER);
+//			playerCriteriabtn2.setForeground(Color.WHITE);
+//			playerCriteriabtn2.setIcon(buttonIcon2);
+//			playerCriteriabtn2.setOpaque(false);
+//			playerCriteriabtn2.setContentAreaFilled(false);
+//			playerCriteriabtn2.setBorderPainted(false);
+//			playerCriteriabtn2.addActionListener(e -> {
+//				if (sortPlayerCriteriaPanel1 != null) {
+//					sortPlayerCriteriaPanel1.setVisible(false);
+//				}
+//				sortPlayerCriteriaPanel2.setVisible(true);
+//			});
+//			bgLabel.add(playerCriteriabtn2);
 
 			this.addMouseListener(new MouseListener() {
 				@Override
@@ -296,13 +296,13 @@ public class SortPanel extends JPanel {
 							&& e.getSource() != sortPlayerCriteriaPanel1) {
 						sortPlayerCriteriaPanel1.setVisible(false);
 					}
-					if (e.getSource() == playerCriteriabtn2) {
-						sortPlayerCriteriaPanel1.setVisible(true);
-					}
-					if (e.getSource() != playerCriteriabtn2
-							&& e.getSource() != sortPlayerCriteriaPanel2) {
-						sortPlayerCriteriaPanel2.setVisible(false);
-					}
+//					if (e.getSource() == playerCriteriabtn2) {
+//						sortPlayerCriteriaPanel1.setVisible(true);
+//					}
+//					if (e.getSource() != playerCriteriabtn2
+//							&& e.getSource() != sortPlayerCriteriaPanel2) {
+//						sortPlayerCriteriaPanel2.setVisible(false);
+//					}
 				}
 			});
 
@@ -496,18 +496,18 @@ public class SortPanel extends JPanel {
 		if (sortPlayerCriteriaPanel1 != null) {
 			sortPlayerCriteriaPanel1.setVisible(false);
 		}
-		if (sortPlayerCriteriaPanel2 != null) {
-			sortPlayerCriteriaPanel2.setVisible(false);
-		}
+//		if (sortPlayerCriteriaPanel2 != null) {
+//			sortPlayerCriteriaPanel2.setVisible(false);
+//		}
 		playerRowData = new Vector<Vector<PlayerCardPanel>>();
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 
-		if (playerCriteria1 == "" && playerCriteria2 == "") {
+		if (playerCriteria1 == "" ) {
 			JOptionPane.showMessageDialog(this, "请选择球员排序依据");
 		}
 
-		else if (playerCriteria1 != "" && playerCriteria2 == "") {
+		else if (playerCriteria1 != "" ) {
 			playerVos = player_BS.sortPlayerBy(playerCriteria1);
 
 			if (UpOrDown == "Up") {
@@ -532,7 +532,7 @@ public class SortPanel extends JPanel {
 				makeTable("player");
 			}
 			UpOrDown = "Down"; // 恢复默认降序
-		} else if (playerCriteria1 == "" && playerCriteria2 != "") {
+		} /*else if (playerCriteria1 == "" && playerCriteria2 != "") {
 			playerVos = player_BS.sortPlayerBy(playerCriteria2);
 
 			if (UpOrDown == "Up") {
@@ -590,7 +590,7 @@ public class SortPanel extends JPanel {
 			}
 			UpOrDown = "Down"; // 恢复默认降序
 		}
-
+*/
 	}
 
 	private String getSortValue(PlayerVo playerVo, String text) {
@@ -947,7 +947,7 @@ public class SortPanel extends JPanel {
 				MainFrame.teamPanel, MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 		sortPlayerCriteriaPanel1.setVisible(false);
-		sortPlayerCriteriaPanel2.setVisible(false);
+//		sortPlayerCriteriaPanel2.setVisible(false);
 		sortTeamCriteriaPanel.setVisible(false);
 	}
 
@@ -1706,7 +1706,7 @@ public class SortPanel extends JPanel {
 				default:
 					break;
 				}
-			} else if (priority == "second") {
+			} /*else if (priority == "second") {
 				switch (criteria) {
 				case "参赛场数":
 					playerCriteriabtn2.setText("参赛场数");
@@ -1852,7 +1852,7 @@ public class SortPanel extends JPanel {
 				default:
 					break;
 				}
-			}
+			}*/
 			sortPlayer(UpOrDown);
 		}
 	}
