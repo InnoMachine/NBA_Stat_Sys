@@ -21,8 +21,8 @@ public class TopFiveTeamCardPanel extends JPanel {
 	private String criteria;
 	JFrame mainFrame;
 	JPanel previousPanel;
-String previouspanel;
-	
+	String previouspanel;
+
 	int X;
 	int Y;
 
@@ -48,12 +48,12 @@ String previouspanel;
 	JLabel fifthTeamValuelbl;
 
 	public TopFiveTeamCardPanel(int X, int Y, ArrayList<TeamCardVo> hotTeams,
-			JFrame mainFrame, JPanel previousPanel,String previouspanel) {
+			JFrame mainFrame, JPanel previousPanel, String previouspanel) {
 		this.X = X;
 		this.Y = Y;
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
-		this.previouspanel=previouspanel;
+		this.previouspanel = previouspanel;
 
 		this.setVisible(true);
 		this.setLayout(null);
@@ -72,13 +72,11 @@ String previouspanel;
 		add(firstTeambtn);
 
 		MyLabel firstlbl = new MyLabel();
-		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/rankOne.png").getImage().getScaledInstance( 80,80,
-						 Image.SCALE_SMOOTH));
-		
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon("Image/rankOne.png")
+				.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+
 		firstlbl.setIcon(buttonIcon);
-		firstlbl.setBounds(0, 10, X * 80 / 1366,
-				Y * 80 / 768);
+		firstlbl.setBounds(0, 10, X * 80 / 1366, Y * 80 / 768);
 		add(firstlbl);
 
 		firstTeamNamelbl = new MyLabel("");
@@ -108,7 +106,7 @@ String previouspanel;
 		secondlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		secondlbl.setBounds(X * 0 / 1366, Y * 3 / 768, X * 35 / 1366,
 				Y * 35 / 768);
-		secondlbl.setFont(new Font("微软雅黑",1,25));
+		secondlbl.setFont(new Font("微软雅黑", 1, 25));
 		secondPart.add(secondlbl);
 
 		secondTeambtn = new JButton("");
@@ -148,7 +146,7 @@ String previouspanel;
 		thirdlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		thirdlbl.setBounds(X * 0 / 1366, Y * 3 / 768, X * 35 / 1366,
 				Y * 35 / 768);
-		thirdlbl.setFont(new Font("微软雅黑",1,25));
+		thirdlbl.setFont(new Font("微软雅黑", 1, 25));
 		thirdPart.add(thirdlbl);
 
 		thirdTeambtn = new JButton("");
@@ -188,7 +186,7 @@ String previouspanel;
 		fourthlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		fourthlbl.setBounds(X * 0 / 1366, Y * 3 / 768, X * 35 / 1366,
 				Y * 35 / 768);
-		fourthlbl.setFont(new Font("微软雅黑",1,25));
+		fourthlbl.setFont(new Font("微软雅黑", 1, 25));
 		fourthPart.add(fourthlbl);
 
 		fourthTeambtn = new JButton("");
@@ -228,7 +226,7 @@ String previouspanel;
 		fifthlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		fifthlbl.setBounds(X * 0 / 1366, Y * 3 / 768, X * 35 / 1366,
 				Y * 35 / 768);
-		fifthlbl.setFont(new Font("微软雅黑",1,25));
+		fifthlbl.setFont(new Font("微软雅黑", 1, 25));
 		fifthPart.add(fifthlbl);
 
 		fifthTeambtn = new JButton("");
@@ -267,12 +265,14 @@ String previouspanel;
 				.getScaledInstance(X * 160 / 1366, Y * 160 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		firstTeambtn.setIcon(teamImg1);
-		firstTeambtn.addActionListener(e -> {
-			previousPanel.setVisible(false);
-			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams.get(0)
-					.getAbbreviation(), mainFrame, previousPanel,previouspanel);
-			MainFrame.currentPanel="TeamInfoPanel";
-		});
+		firstTeambtn
+				.addActionListener(e -> {
+					previousPanel.setVisible(false);
+					TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams
+							.get(0).getAbbreviation(), mainFrame,
+							previousPanel, previouspanel);
+					MainFrame.currentPanel = "TeamInfoPanel";
+				});
 		firstTeamNamelbl.setText(hotTeams.get(0).getCity() + " "
 				+ hotTeams.get(0).getTeamName());
 		firstTeamInfolbl.setText(String
@@ -287,12 +287,14 @@ String previouspanel;
 				.getScaledInstance(X * 40 / 1366, Y * 40 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		secondTeambtn.setIcon(teamImg2);
-		secondTeambtn.addActionListener(e -> {
-			previousPanel.setVisible(false);
-			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams.get(1)
-					.getAbbreviation(), mainFrame, previousPanel,previouspanel);
-			MainFrame.currentPanel="TeamInfoPanel";
-		});
+		secondTeambtn
+				.addActionListener(e -> {
+					previousPanel.setVisible(false);
+					TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams
+							.get(1).getAbbreviation(), mainFrame,
+							previousPanel, previouspanel);
+					MainFrame.currentPanel = "TeamInfoPanel";
+				});
 		secondTeamNamelbl.setText(hotTeams.get(1).getCity() + " "
 				+ hotTeams.get(1).getTeamName());
 		secondTeamInfolbl.setText(String.valueOf(hotTeams.get(1)
@@ -307,12 +309,14 @@ String previouspanel;
 				.getScaledInstance(X * 40 / 1366, Y * 40 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		thirdTeambtn.setIcon(teamImg3);
-		thirdTeambtn.addActionListener(e -> {
-			previousPanel.setVisible(false);
-			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams.get(2)
-					.getAbbreviation(), mainFrame, previousPanel,previouspanel);
-			MainFrame.currentPanel="TeamInfoPanel";
-		});
+		thirdTeambtn
+				.addActionListener(e -> {
+					previousPanel.setVisible(false);
+					TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams
+							.get(2).getAbbreviation(), mainFrame,
+							previousPanel, previouspanel);
+					MainFrame.currentPanel = "TeamInfoPanel";
+				});
 		thirdTeamNamelbl.setText(hotTeams.get(2).getCity() + " "
 				+ hotTeams.get(2).getTeamName());
 		thirdTeamInfolbl.setText(String
@@ -327,12 +331,14 @@ String previouspanel;
 				.getScaledInstance(X * 40 / 1366, Y * 40 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		fourthTeambtn.setIcon(teamImg4);
-		fourthTeambtn.addActionListener(e -> {
-			previousPanel.setVisible(false);
-			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams.get(3)
-					.getAbbreviation(), mainFrame, previousPanel,previouspanel);
-			MainFrame.currentPanel="TeamInfoPanel";
-		});
+		fourthTeambtn
+				.addActionListener(e -> {
+					previousPanel.setVisible(false);
+					TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams
+							.get(3).getAbbreviation(), mainFrame,
+							previousPanel, previouspanel);
+					MainFrame.currentPanel = "TeamInfoPanel";
+				});
 		fourthTeamNamelbl.setText(hotTeams.get(3).getCity() + " "
 				+ hotTeams.get(3).getTeamName());
 		fourthTeamInfolbl.setText(String.valueOf(hotTeams.get(3)
@@ -347,12 +353,14 @@ String previouspanel;
 				.getScaledInstance(X * 40 / 1366, Y * 40 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		fifthTeambtn.setIcon(teamImg5);
-		fifthTeambtn.addActionListener(e -> {
-			previousPanel.setVisible(false);
-			TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams.get(4)
-					.getAbbreviation(), mainFrame, previousPanel,previouspanel);
-			MainFrame.currentPanel="TeamInfoPanel";
-		});
+		fifthTeambtn
+				.addActionListener(e -> {
+					previousPanel.setVisible(false);
+					TeamInfoPanel teamInfoPanel = new TeamInfoPanel(hotTeams
+							.get(4).getAbbreviation(), mainFrame,
+							previousPanel, previouspanel);
+					MainFrame.currentPanel = "TeamInfoPanel";
+				});
 		fifthTeamNamelbl.setText(hotTeams.get(4).getCity() + " "
 				+ hotTeams.get(4).getTeamName());
 		fifthTeamInfolbl.setText(String

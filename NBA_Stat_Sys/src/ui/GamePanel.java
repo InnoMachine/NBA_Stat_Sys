@@ -37,7 +37,7 @@ public class GamePanel extends JPanel {
 	private JTable table;
 	private JScrollPane scrollPane;
 
-	Game_BS game_BS = new Game_BL();
+	Game_BS game_BS = new Game_BL_Stub();
 
 	Vector<Vector<GameCardPanel>> rowData;
 	static int X;
@@ -155,6 +155,7 @@ public class GamePanel extends JPanel {
 		bgLabel.add(endDate);
 
 		JButton searchbtn = new JButton("搜索");
+		searchbtn.setFont(new Font("黑体", 1, 15));
 		searchbtn.setBounds(X * 850 / 1366, Y * 66 / 768, X * 240 / 1366,
 				Y*40/768);
 		searchbtn.addActionListener(e -> searchGameByDate(startDate.getText(),

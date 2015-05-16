@@ -33,7 +33,7 @@ public class PlayerPanel extends JPanel {
 	
 	JFrame mainFrame;
 
-	Player_BS player_BS = new Player_BL();
+	Player_BS player_BS = new Player_BL_Stub();
 
 	static int X;
 	static int Y;
