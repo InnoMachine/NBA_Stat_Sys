@@ -48,8 +48,11 @@ public class GameCardPanel extends JPanel {
 
 		JLabel statelbl = new MyLabel("结束");
 		statelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		statelbl.setBounds(0, 0, X * 930 / 1366, Y * 20 / 768);
+		statelbl.setBounds(X * 425 / 1366, Y * 5 / 768, X * 80 / 1366,
+				Y * 20 / 768);
 		statelbl.setFont(new Font("黑体", 1, 14));
+		statelbl.setBackground(Color.GRAY);
+		statelbl.setOpaque(true);
 		add(statelbl);
 
 		JButton teambtn1 = new JButton();
@@ -89,24 +92,28 @@ public class GameCardPanel extends JPanel {
 		score2ndlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		score2ndlbl.setBounds(X * 370 / 1366, Y * 26 / 768, X * 95 / 1366,
 				Y * 28 / 768);
+		score2ndlbl.setFont(new Font("黑体", 1, 14));
 		add(score2ndlbl);
 
 		JLabel score3rdlbl = new MyLabel("3");
 		score3rdlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		score3rdlbl.setBounds(X * 465 / 1366, Y * 26 / 768, X * 95 / 1366,
 				Y * 28 / 768);
+		score3rdlbl.setFont(new Font("黑体", 1, 14));
 		add(score3rdlbl);
 
 		JLabel score4thlbl = new MyLabel("4");
 		score4thlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		score4thlbl.setBounds(X * 560 / 1366, Y * 26 / 768, X * 95 / 1366,
 				Y * 28 / 768);
+		score4thlbl.setFont(new Font("黑体", 1, 14));
 		add(score4thlbl);
 
 		JLabel scoreSumlbl = new MyLabel("总数");
 		scoreSumlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		scoreSumlbl.setBounds(X * 655 / 1366, Y * 25 / 768, X * 95 / 1366,
 				Y * 28 / 768);
+		scoreSumlbl.setFont(new Font("黑体", 1, 14));
 		add(scoreSumlbl);
 
 		teamName1tF = new MyTextField();
