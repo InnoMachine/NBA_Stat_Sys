@@ -160,49 +160,49 @@ public class Data_Handler {
 	private void TeamSetDefensiveReboundEfficiency(TeamVo temp) {
 		double r = temp.getDefensiveRebound()/(double)(temp.getDefensiveRebound()+temp.getOpOffensiveRebound());
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setReboundEfficiency(f);
 	}
 
 	private void TeamSetOffensiveReboundEfficiency(TeamVo temp) {
 		double r = temp.getOffensiveRebound()/(double)(temp.getOffensiveRebound()+temp.getDefensiveRebound());
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setReboundEfficiency(f);
 	}
 
 	private void SetTeamRoundAttack(TeamVo temp) {
 		double r = temp.getRoundAttack();
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setRoundAttack(f);
 	}
 	
 	private void TeamSetAssistanceEfficiency(TeamVo temp) {
 		double r = temp.getAssistance()/(double)temp.getRoundAttack()*100;
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setAssistanceEfficiency(f);
 	}
 	
 	private void TeamSetStealEfficiency(TeamVo temp) {
 		double r = temp.getSteal()/(double)temp.getOpRoundAttack()*100;
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setStealEfficiency(f);
 	}
 	
 	private void TeamSetReboundEfficiency(TeamVo temp) {
 		double r = temp.getReboundOverall()/(double)(temp.getReboundOverall()+temp.getOpReboundAll());
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setReboundEfficiency(f);
 	}
 	
 	private void TeamSetDefensiveEfficiency(TeamVo temp) {
 		double r = temp.getOpScore()/(double)temp.getOpRoundAttack()*100;
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setDefensiveEfficiency(f);
 	}
 	
@@ -211,7 +211,7 @@ public class Data_Handler {
 		if(r!=0)
 		{
 			b = new BigDecimal(r);
-			double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+			double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 			temp.setAttackingEfficiency(f);
 		}
 		else
@@ -221,31 +221,31 @@ public class Data_Handler {
 	
 	private void TeamSetWinningRate(TeamVo temp) {
 		double r = temp.getWinningNum()/(double)temp.getGameNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setWinningRate(f);
 		
 	}
 	
 	private void TeamSetFreeThrowRate(TeamVo temp) {
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setFreeThrowRate(f);
 		
 	}
 	
 	private void TeamSetThreePointHitRate(TeamVo temp) {
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setThreePointHitRate(f);
 	}
 	
 	private void TeamSetHitRate(TeamVo temp) {
 		double r = temp.getHitNum()/(double)temp.getShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitRate(f);
 	}
 	
@@ -353,8 +353,8 @@ public class Data_Handler {
 		double r = (temp.getShotNum()+0.44*temp.getFreeThrowShotNum()+temp.getTurnover())
 				*(temp.getteamTime()/5)/temp.getTime()/(temp.GetteamShotNum()+
 						0.44*temp.getteamFreeThrowNum()+temp.getteamTurnOver());
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setUseRate(f);
 	}
 	
@@ -363,63 +363,63 @@ public class Data_Handler {
 		double r = 0;
 		if(g!=0)
 			r = temp.getTurnover()/g;
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTurnOverRate(f);
 	}
 	
 	private void PlayerSetBlockRate(PlayerVo temp) {
 		double r = temp.getBlock()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)temp.getOpTwoPointShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setBlockRate(f);
 	}
 	
 	private void PlayerSetStealRate(PlayerVo temp) {
 		double r = temp.getSteal()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)temp.getOpRoundAttack();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setStealRate(f);
 	}
 	
 	private void PlayerSetAssistanceRate(PlayerVo temp) {
 		double r = temp.getAssistance()/((double)temp.getTime()/((double)temp.getteamTime()/5)
 				*temp.GetteamHitNum()-temp.getHitNum());
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setAssistanceRate(f);
 	}
 	
 	private void PlayerSetDefensiveReboundRate(PlayerVo temp) {
 		double r = temp.getDefensiveNum()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)(temp.getteamDefensiveRebound()+temp.getOpDefensiveRebound());
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setDefensiveReboundRate(f);
 	}
 	
 	private void PlayerSetOffensiveReboundRate(PlayerVo temp) {
 		double r = temp.getAttackingNum()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)(temp.getteamOffensiveRebound()+temp.getOpOffensiveRebound());
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setOffensiveReboundRate(f);
 	}
 	
 	private void PlayerSetReboundOverallRate(PlayerVo temp) {
 		double r = temp.getReboundOverall()*((double)temp.getteamTime()/5)/temp.getTime()
 				/(double)(temp.getteamRebound()+temp.getOpReboundAll());
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setReboundOverallRate(f);
 	}
 	
 	private void PlayerSetHitEfficiency(PlayerVo temp) {
 		double r = (temp.getHitNum()+0.5*temp.getThreePointHitNum())/temp.getShotNum();
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitEfficiency(f);
 	}
 	
@@ -429,8 +429,8 @@ public class Data_Handler {
 		double r=0;
 		if(r!=0)
 			r = temp.getScore()/g;
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setTrueHitRate(f);
 	}
 	
@@ -440,31 +440,31 @@ public class Data_Handler {
 				+0.7*temp.getAttackingNum()+0.3*temp.getDefensiveNum()+temp.getSteal()
 				+0.7*temp.getAssistance()+0.7*temp.getBlock()-0.4*temp.getFoul()-(double)temp.getTurnover();
 		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setGmSc(f);
 		
 	}
 	
 	private void PlayerSetFreeThrowRate(PlayerVo temp) {
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setFreeThrowRate(f);
 		
 	}
 	
 	private void PlayerSetThreePointHitRate(PlayerVo temp) {
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setThreePointHitRate(f);
 		
 	}
 	
 	private void PlayerSetHitRate(PlayerVo temp) {
 		double r = temp.getHitNum()/(double)temp.getShotNum();
-		b = new BigDecimal(r);
-		double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		b = new BigDecimal(r*100);
+		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitRate(f);
 		
 	}
@@ -472,7 +472,7 @@ public class Data_Handler {
 	private double turnToTwoPoint(double d)
 	{
 		b = new BigDecimal(d);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+		double f = b.setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		return f;
 	}
 	
@@ -524,7 +524,7 @@ public class Data_Handler {
 
 	private void TGPSetFreeThrowRate(TeamPerformanceInSingleGame temp) {
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
-		b = new BigDecimal(r);
+		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setFreeThrowRate(f);
 		
@@ -532,14 +532,14 @@ public class Data_Handler {
 	
 	private void TGPSetThreePointHitRate(TeamPerformanceInSingleGame temp) {
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
-		b = new BigDecimal(r);
+		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setThreePointHitRate(f);
 	}
 	
 	private void TGPSetHitRate(TeamPerformanceInSingleGame temp) {
 		double r = temp.getHitNum()/(double)temp.getShotNum();
-		b = new BigDecimal(r);
+		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitRate(f);
 	}

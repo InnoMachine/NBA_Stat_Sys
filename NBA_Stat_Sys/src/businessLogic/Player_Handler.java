@@ -1534,7 +1534,7 @@ public class Player_Handler {
 							temp.setScoreFieldProgress(0);
 						}
 						else{
-							b = new BigDecimal(((double)s/p.size()-s1)/s1);
+							b = new BigDecimal(100*((double)s/p.size()-s1)/s1);
 							temp.setScoreFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
 						}
 						if(a1==0){
@@ -1542,14 +1542,14 @@ public class Player_Handler {
 							temp.setAssistanceFieldProgress(0);
 						}
 						else{
-							b = new BigDecimal(((double)a/p.size()-a1)/a1);
+							b = new BigDecimal(100*((double)a/p.size()-a1)/a1);
 							temp.setAssistanceFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
 						}
 						if(r1==0){
 						
 							temp.setReboundOverallFieldProgress(0);
 						}else{
-							b = new BigDecimal(((double)r/p.size()-r1)/r1);
+							b = new BigDecimal(100*((double)r/p.size()-r1)/r1);
 							temp.setReboundOverallFieldProgress(b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
 						}
 					}
@@ -1904,21 +1904,21 @@ public class Player_Handler {
 
 	private boolean isSearched(PlayerVo temp, String key) {
 		boolean is =false;
-		if((temp.getAge()+"").contains(key))
+		if((temp.getAge()+"").toLowerCase().contains(key.toLowerCase()))
 			is =true;
-		else if(temp.getBirth().contains(key))
+		else if(temp.getBirth().toLowerCase().contains(key.toLowerCase()))
 			is =true;
 		else if((temp.getExp()+"").contains(key))
 			is =true;
 		else if(temp.getHeight().contains(key))
 			is =true;
-		else if((temp.getName()+"").contains(key))
+		else if((temp.getName()+"").toLowerCase().contains(key.toLowerCase()))
 			is =true;
 		else if((temp.getNumber()+"").contains(key))
 			is =true;
 		else if((temp.getPosition()+"").contains(key))
 			is =true;
-		else if((temp.getSchool()+"").contains(key))
+		else if((temp.getSchool()+"").toLowerCase().contains(key.toLowerCase()))
 			is =true;
 		else if((temp.getWeight()+"").contains(key))
 			is=true;
@@ -1927,6 +1927,7 @@ public class Player_Handler {
 		return is;
 	}
 
+	
 	public ArrayList<PlayerVo> searchPlayer(String key, String first) {
 		if(key.equals("")){
 			ArrayList<PlayerVo> slist = new ArrayList<PlayerVo>();
