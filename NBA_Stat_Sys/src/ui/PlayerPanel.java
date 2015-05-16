@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import businessLogic.Player_BL;
+import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 
 public class PlayerPanel extends JPanel {
@@ -32,7 +33,7 @@ public class PlayerPanel extends JPanel {
 	
 	JFrame mainFrame;
 
-	Player_BS player_BS = new Player_BL();
+	Player_BS player_BS = new Player_BL_Stub();
 
 	static int X;
 	static int Y;

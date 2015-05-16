@@ -59,8 +59,8 @@ public class TopFivePlayerCardPanel extends JPanel {
 	JLabel fifthPlayerInfolbl;
 	JLabel fifthPlayerValuelbl;
 	JButton fifthTeambtn;
-	Player_BS player_BS = new Player_BL_Stub();
-	Team_BS team_BS = new Team_BL_Stub();
+	//Player_BS player_BS = new Player_BL_Stub();
+	//Team_BS team_BS = new Team_BL_Stub();
 	int X;
 	int Y;
 

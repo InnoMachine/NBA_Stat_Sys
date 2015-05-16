@@ -58,7 +58,7 @@ public class GameInfoPanel extends JPanel {
 	JPanel previousPanel;
 	String previouspanel;
 	
-	Game_BS game_BS = new Game_BL();
+	Game_BS game_BS = new Game_BL_Stub();
 
 	static int X;
 	static int Y;

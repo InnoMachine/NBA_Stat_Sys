@@ -4,11 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -50,7 +53,7 @@ public class SearchPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 
-	Player_BS player_BS = new Player_BL();
+	Player_BS player_BS = new Player_BL_Stub();
 
 	Vector<Vector<PlayerBasicInfoCardPanel>> rowData;
 
@@ -153,6 +156,16 @@ public class SearchPanel extends JPanel {
 		keytF.setBackground(Color.GRAY);
 		keytF.setForeground(Color.WHITE);
 		keytF.setFont(new Font("微软雅黑", 1, 13));
+		keytF.setFocusable(true);
+		keytF.setCaretColor(Color.WHITE);
+        keytF.addKeyListener(new KeyAdapter(){      //在文本框 ta1 中添加一个键盘监听事件
+    @Override
+    public void keyReleased(KeyEvent e){
+        if(e.getKeyCode()==Event.ENTER){    //如果检测到输入了Enter键
+        	searchPlayer(keytF.getText(), "All");
+        }
+    }
+});
 		bgLabel.add(keytF);
 /*
 		JButton searchbtn = new JButton("搜索");
@@ -1289,9 +1302,7 @@ public class SearchPanel extends JPanel {
 		
 		
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		for (int i = 0; i < playerVos.size(); i++) {
-			playerVos.add(player_BS.getAllPlayer().get(i));
-		}
+		playerVos = player_BS.getAllPlayer();
 		if (rowData == null) {
 			rowData = new Vector<Vector<PlayerBasicInfoCardPanel>>();
 		} else {
@@ -1328,7 +1339,7 @@ public class SearchPanel extends JPanel {
 		table.setCellSelectionEnabled(true);
 		table.getColumnModel().getColumn(0)
 				.setCellRenderer(new PlayerBasicInfoCardRenderer());
-//		table.setIntercellSpacing(new Dimension(2,2));
+		table.setIntercellSpacing(new Dimension(2,2));
 //		table.setShowGrid(false);
 //		table.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3));
 		table.setOpaque(false);
@@ -1348,7 +1359,6 @@ public class SearchPanel extends JPanel {
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 5));
-
 		bgLabel.add(scrollPane);
 
 		mainFrame.getContentPane().add(this);
