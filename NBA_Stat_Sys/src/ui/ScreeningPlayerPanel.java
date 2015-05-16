@@ -233,7 +233,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		});
 		
 		screeningCriteriabtn = new JButton("筛选依据");
-		screeningCriteriabtn.setBounds(X*750/1366, Y*160/768,X*213/1366,Y*30/768);
+		screeningCriteriabtn.setBounds(X*825/1366, Y*160/768,X*213/1366,Y*30/768);
 		screeningCriteriabtn.setFont(new Font("微软雅黑",1,15));
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance(
@@ -372,7 +372,6 @@ public class ScreeningPlayerPanel extends JPanel {
 		String position = "All";
 		String league = "All";
 		String screeningCriteria = "score";
-		System.out.println("add actionListening!");
 		if (playerCriteriaPanel != null) {
 			playerCriteriaPanel.setVisible(false);
 		}
@@ -425,7 +424,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		default:
 			break;
 		}
-
+		screeningCriteria = "scoreField";
 		switch (screeningCriteriabtn.getText()) {
 		case "得分":
 			screeningCriteria = "scoreField";
