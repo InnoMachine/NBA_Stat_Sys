@@ -31,6 +31,7 @@ public class Game_Handler {
 		}
 		return templist;
 	}
+	
 	public ArrayList<GameVo> getGameByDate(String date){
 		GameDate gdate = new GameDate(date);
 		ArrayList<GameVo> templist =new ArrayList<GameVo>();

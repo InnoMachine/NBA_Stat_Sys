@@ -23,6 +23,8 @@ public class GameVo {
 	private TeamPerformanceInSingleGame guestTP;
 	private TeamPerformanceInSingleGame homeTP;
 	
+	private int state; 
+	private ArrayList<liveText> liveList;
 	
 	public GameVo(){
 		
@@ -140,5 +142,21 @@ public class GameVo {
 
 	public void setSeasonId(String seasonId) {
 		this.seasonId = seasonId;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public ArrayList<liveText> getLiveList() {
+		return liveList;
+	}
+
+	public void setLiveList(ArrayList<liveText> liveList) {
+		this.liveList = liveList;
 	}
 }
