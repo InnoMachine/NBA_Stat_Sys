@@ -19,6 +19,7 @@ public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	static StartPanel startPanel = null;
+	public static LivePanel livePanel;
 	public static PlayerPanel playerPanel;
 	public static TeamPanel teamPanel;
 	public static GamePanel gamePanel;
@@ -50,6 +51,8 @@ public class MainFrame extends JFrame {
 		Rectangle bounds = new Rectangle(screenSize);
 		this.setBounds(bounds);
 
+		livePanel = new LivePanel(this);
+		livePanel.setVisible(false);
 		playerPanel = new PlayerPanel(this);
 		playerPanel.setVisible(false);
 		teamPanel = new TeamPanel(this);
@@ -75,7 +78,7 @@ public class MainFrame extends JFrame {
 		sortTeamPanel.setVisible(false);
 		
 		
-		startPanel = new StartPanel(this, playerPanel, teamPanel, gamePanel);
+		startPanel = new StartPanel(this, livePanel,playerPanel, teamPanel, gamePanel);
 		this.getContentPane().add(startPanel);
 		MainFrame.currentPanel="StartPanel";
 		// this.getContentPane()

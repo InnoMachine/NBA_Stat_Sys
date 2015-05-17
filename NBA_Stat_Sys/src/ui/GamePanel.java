@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
-
+	
 	private JTable table;
 	private JScrollPane scrollPane;
 
@@ -68,19 +68,18 @@ public class GamePanel extends JPanel {
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
 						Image.SCALE_SMOOTH));
-		home.setBounds(17 * X / 20, Y * 15 / 768, X / 25, X / 25);
+		home.setBounds(X*1180/1366, Y*20/768, X / 25, X / 25);
 		home.setIcon(homeIcon);
 		home.setOpaque(false);
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
 		home.addActionListener(e -> back());
 		bgLabel.add(home);
-		
+
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
-				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
-				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds(18 * X / 20, Y * 15 / 768, X / 25, X / 25);
+				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25, X / 25,Image.SCALE_SMOOTH));
+		minimize.setBounds(X*1240/1366, Y*20/768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -99,7 +98,7 @@ public class GamePanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 15 / 768, X / 25, X / 25);
+		close.setBounds(X*1300/1366, Y*20/768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);

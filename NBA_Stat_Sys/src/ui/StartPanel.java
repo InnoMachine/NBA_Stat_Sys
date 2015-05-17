@@ -27,9 +27,11 @@ public class StartPanel extends JPanel {
 	static SortPanel sortTeamPanel;
 	static ScreeningPlayerPanel screeningPlayerPanel;
 	
+	LivePanel livePanel;
 	PlayerPanel playerPanel;
 	TeamPanel teamPanel;
 	GamePanel gamePanel;
+	
 
 	static JButton searchPlayerbtn;
 	static JButton sortPlayerbtn;
@@ -43,10 +45,11 @@ public class StartPanel extends JPanel {
 	int X;
 	int Y;
 
-	public StartPanel(JFrame mainFrame,PlayerPanel playerPanel,TeamPanel teamPanel,GamePanel gamePanel) {
+	public StartPanel(JFrame mainFrame,LivePanel livePanel,PlayerPanel playerPanel,TeamPanel teamPanel,GamePanel gamePanel) {
 		this.mainFrame = mainFrame;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
+		this.livePanel=livePanel;
 		this.playerPanel=playerPanel;
 		this.teamPanel=teamPanel;
 		this.gamePanel=gamePanel;
@@ -72,6 +75,12 @@ public class StartPanel extends JPanel {
 
 	public void createButton() {
 		int subX=55*X/100;
+		
+		MyButton livebtn = new MyButton("今日直播");
+		livebtn.setBounds(3*X/20, 8*Y/20, X/6, Y/10);
+		livebtn.addActionListener(e -> toLivePanel());
+		bgLabel.add(livebtn);
+		
 		MyButton playerInfobtn = new MyButton("球员信息");
 		playerInfobtn.setBounds(3*X/20, 11*Y/20, X/6, Y/10);
 //		playerInfobtn.addActionListener(e -> playerOpe());
@@ -195,7 +204,11 @@ public class StartPanel extends JPanel {
 		sortTeambtn.setVisible(true);
 
 	}
-
+	public void toLivePanel() {
+		this.setVisible(false);
+		livePanel.setVisible(true);
+        MainFrame.currentPanel="livePanel";
+	}
 	
 	public void toPlayerPanel() {
 		this.setVisible(false);
