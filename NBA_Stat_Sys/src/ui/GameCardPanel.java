@@ -238,7 +238,10 @@ public class GameCardPanel extends JPanel {
 		teamName2tF.setText(gameVo.getGuestTeam());
 
 		score11tF.setText(String.valueOf(gameVo.getScore1st().getHomeScore()));
+
+		
 		score12tF.setText(String.valueOf(gameVo.getScore2nd().getHomeScore()));
+		
 		score13tF.setText(String.valueOf(gameVo.getScore3rd().getHomeScore()));
 		score14tF.setText(String.valueOf(gameVo.getScore4th().getHomeScore()));
 		score21tF.setText(String.valueOf(gameVo.getScore1st().getGuestScore()));

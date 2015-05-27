@@ -23,6 +23,7 @@ public class MainFrame extends JFrame {
 	public static PlayerPanel playerPanel;
 	public static TeamPanel teamPanel;
 	public static GamePanel gamePanel;
+	public static LiveInfoPanel liveInfoPanel;
 	public static PlayerInfoPanel playerInfoPanel;
 	public static TeamInfoPanel teamInfoPanel;
 	public static GameInfoPanel gameInfoPanel;

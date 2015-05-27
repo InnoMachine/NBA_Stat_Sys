@@ -73,6 +73,7 @@ public class StartPanel extends JPanel {
 	}
 	
 
+
 	public void createButton() {
 		int subX=55*X/100;
 		

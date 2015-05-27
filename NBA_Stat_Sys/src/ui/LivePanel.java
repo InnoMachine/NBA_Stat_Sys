@@ -19,13 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import ui.GamePanel.GameCardRenderer;
-import ui.GamePanel.MyLabel;
 import vo.GameVo;
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
@@ -49,6 +46,7 @@ public class LivePanel extends JPanel{
 //	private JButton leftButton;
 //	private JButton rightButton;
 
+	public LivePanel(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -114,88 +112,6 @@ public class LivePanel extends JPanel{
 		bgLabel.add(close);
 		
 		
-		mainFrame.getContentPane().add(this);
-
-		MyLabel label = new MyLabel(Color.WHITE, "起始日期:");
-		label.setFont(new Font("黑体", 1, 15));
-		label.setBounds(X * 300 / 1366, Y * 66 / 768, X * 80 / 1366,Y*40/768);
-		bgLabel.add(label);
-
-		DateChooserJButton startDate = new DateChooserJButton(X, Y);
-		startDate.setBounds(X * 350 / 1366, Y * 66 / 768, X * 240 / 1366,
-				Y*40/768);
-		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/mainButton.png").getImage().getScaledInstance(  X*150/1366, Y*40/768,
-						 Image.SCALE_SMOOTH));
-		
-		startDate.setIcon(buttonIcon);
-		startDate.setVisible(true);
-		startDate.setOpaque(false);
-		startDate.setContentAreaFilled(false);
-		startDate.setBorderPainted(false);
-		startDate.setHorizontalTextPosition(SwingConstants.CENTER);
-		startDate.setForeground(Color.WHITE);
-		bgLabel.add(startDate);
-
-		MyLabel label_1 = new MyLabel(Color.white, "结束日期:");
-		label_1.setFont(new Font("黑体", 1, 15));
-		label_1.setBounds(X * 600 / 1366, Y * 66 / 768, X * 80/ 1366, Y*40/768);
-		bgLabel.add(label_1);
-
-		DateChooserJButton endDate = new DateChooserJButton(X, Y);
-		endDate.setBounds(X * 650 / 1366, Y * 66 / 768, X * 240 / 1366, Y*40/768);
-		endDate.setVisible(true);
-		endDate.setIcon(buttonIcon);
-		endDate.setOpaque(false);
-		endDate.setContentAreaFilled(false);
-		endDate.setBorderPainted(false);
-		endDate.setHorizontalTextPosition(SwingConstants.CENTER);
-		endDate.setForeground(Color.WHITE);
-		bgLabel.add(endDate);
-
-		JButton searchbtn = new JButton("搜索");
-		searchbtn.setFont(new Font("黑体", 1, 15));
-		searchbtn.setBounds(X * 850 / 1366, Y * 66 / 768, X * 240 / 1366,
-				Y*40/768);
-		searchbtn.addActionListener(e -> searchGameByDate(startDate.getText(),
-				endDate.getText()));
-		searchbtn.setVisible(true);
-		searchbtn.setIcon(buttonIcon);
-		searchbtn.setOpaque(false);
-		searchbtn.setContentAreaFilled(false);
-		searchbtn.setBorderPainted(false);
-		searchbtn.setHorizontalTextPosition(SwingConstants.CENTER);
-		searchbtn.setForeground(Color.WHITE);
-		bgLabel.add(searchbtn);
-/*
-		leftButton=new JButton();
-		leftButton.setBounds(50, 500,100,100);
-		ImageIcon leftButtonIcon=new ImageIcon(new ImageIcon(
-				"Image/leftButtonIcon.png").getImage().getScaledInstance(100,
-						100, Image.SCALE_SMOOTH));
-		leftButton.setIcon(leftButtonIcon);
-		leftButton.setBorderPainted(false);
-		leftButton.setOpaque(false);
-		leftButton.setContentAreaFilled(false);
-		leftButton.addActionListener(e->{
-			
-		});
-		bgLabel.add(leftButton);
-		
-		rightButton=new JButton();
-		rightButton.setBounds(1200, 500, 100,100);
-		ImageIcon rightButtonIcon=new ImageIcon(new ImageIcon(
-				"Image/rightButtonIcon.png").getImage().getScaledInstance(100,
-						100, Image.SCALE_SMOOTH));
-		rightButton.setIcon(rightButtonIcon);
-		rightButton.setBorderPainted(false);
-		rightButton.setOpaque(false);
-		rightButton.setContentAreaFilled(false);
-		rightButton.addActionListener(e->{
-			
-		});
-		bgLabel.add(rightButton);
-*/		
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
 		for(int i=0;i<10;i++){
 		gameVos.add(game_BS.getAllGames().get(i));
@@ -321,6 +237,7 @@ public class LivePanel extends JPanel{
 
 	public void back() {
 		this.setVisible(false);
+		StartPanel sp = new StartPanel(mainFrame,MainFrame.livePanel,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 		MainFrame.currentPanel="StartPanel";
 
@@ -328,11 +245,11 @@ public class LivePanel extends JPanel{
 
 	public void refresh(){
 		mainFrame.remove(this);
-		MainFrame.gamePanel=new GamePanel(mainFrame);
-		if(MainFrame.currentPanel.equals("GamePanel")){
-			MainFrame.gamePanel.setVisible(true);
+		MainFrame.livePanel=new LivePanel(mainFrame);
+		if(MainFrame.currentPanel.equals("LivePanel")){
+			MainFrame.livePanel.setVisible(true);
 		}else{
-			MainFrame.gamePanel.setVisible(false);
+			MainFrame.livePanel.setVisible(false);
 		}
 	}
 	
@@ -354,8 +271,8 @@ public class LivePanel extends JPanel{
 
 				if (hasFocus) {
 					
-				MainFrame.gameInfoPanel= new GameInfoPanel(renderer.getGameVo()
-							,mainFrame,MainFrame.gamePanel,"GamePanel");
+				MainFrame.liveInfoPanel= new LiveInfoPanel(renderer.getGameVo()
+							,mainFrame,MainFrame.livePanel,"LivePanel");
 					selfClose();
 				}
 
