@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,9 @@ import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -48,6 +52,8 @@ public class LiveInfoPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 	String previouspanel;
+	
+	String currentState="live";
 
 	Game_BS game_BS = new Game_BL_Stub();
 
@@ -532,11 +538,15 @@ public class LiveInfoPanel extends JPanel {
 		bgLabel.add(databtn);
 
 		live();
-
+	
+		
 		mainFrame.getContentPane().add(this);
+
 	}
 
 	public void live() {
+		currentState="live";
+		System.out.println(currentState);
 		guestFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
 		guestFirstPlayerList = (gameVo.getGuestTP()).getFirstonList();
 		hostFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
@@ -653,13 +663,16 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				// playerG1Panel.setVisible(true);
-			
+              			
 
+				  
+				  
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
+
 				playerG1Panel.setVisible(false);
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
@@ -667,6 +680,7 @@ public class LiveInfoPanel extends JPanel {
 						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
 								previouspanel), "LiveInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
+				
 			}
 		});
 		courtlbl.add(btnG1);
@@ -1221,6 +1235,8 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void teamDataLive() {
+		currentState="teamDataLive";
+		System.out.println(currentState);
 		if (courtlbl != null) {
 			courtlbl.setVisible(false);
 		}
@@ -1857,6 +1873,8 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void playerDataLive() {
+		currentState="playerDataLive";
+		System.out.println(currentState);
 		if (courtlbl != null) {
 			courtlbl.setVisible(false);
 		}
@@ -2442,6 +2460,7 @@ public class LiveInfoPanel extends JPanel {
 
 	}
 
+		
 	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame, MainFrame.livePanel,
@@ -2458,13 +2477,18 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void refresh() {
-		mainFrame.remove(this);
-		MainFrame.liveInfoPanel = new LiveInfoPanel(gameVo, mainFrame,
-				previousPanel, previouspanel);
-		if (MainFrame.currentPanel == "PlayerInfoPanel") {
-			MainFrame.playerInfoPanel.setVisible(true);
-		} else {
-			MainFrame.playerInfoPanel.setVisible(false);
+		if(currentState.equals("live")){
+			playerDataLive();
+			teamDataLive();
+			live();
+		}else if(currentState.equals("playerDataLive")){
+			teamDataLive();
+			live();
+			playerDataLive();
+		}else if(currentState.equals("teamDataLive")){
+			live();
+			playerDataLive();
+			teamDataLive();
 		}
 
 	}
@@ -2630,26 +2654,7 @@ public class LiveInfoPanel extends JPanel {
 		}
 	}
 
-	/*
-	 * class LiveCardRenderer implements TableCellRenderer {
-	 * 
-	 * @Override public Component getTableCellRendererComponent(JTable table,
-	 * Object value, boolean isSelected, boolean hasFocus, int row, int column)
-	 * { // TODO Auto-generated method stub GameCardPanel renderer = new
-	 * GameCardPanel(X, Y, ((GameCardPanel) value).getGameVo());
-	 * renderer.setOpaque(false);
-	 * 
-	 * if (hasFocus) {
-	 * 
-	 * // MainFrame.liveInfoPanel= new LiveInfoPanel(renderer.getGameVo() //
-	 * ,mainFrame,MainFrame.livePanel,"LivePanel"); // selfClose(); }
-	 * 
-	 * return renderer;
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
+
 
 	class MyButton extends JButton {
 		/**

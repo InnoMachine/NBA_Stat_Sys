@@ -60,6 +60,9 @@ public class MainFrame extends JFrame {
 		teamPanel.setVisible(false);
 		gamePanel = new GamePanel(this);
 		gamePanel.setVisible(false);
+		
+//		liveInfoPanel=new LiveInfoPanel(new GameVo(), this, livePanel, "LivePanel");
+		
 		playerInfoPanel = new PlayerInfoPanel("Aaron Brooks", this, playerPanel, "PlayerPanel");
 		playerInfoPanel.setVisible(false);
 		teamInfoPanel = new TeamInfoPanel("ATL", this,teamPanel, "TeamPanel");
@@ -94,9 +97,10 @@ public class MainFrame extends JFrame {
 //		gameInfoPanel.refresh();
 		searchPanel.refresh();
 		sortPlayerPanel.refresh();;
-		screeningPlayerPanel.refresh();;
+		screeningPlayerPanel.refresh();
 		sortTeamPanel.refresh();
 
+//		liveInfoPanel.refresh();
 	}
 
 }
