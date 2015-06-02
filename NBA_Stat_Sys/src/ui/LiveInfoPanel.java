@@ -52,8 +52,8 @@ public class LiveInfoPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 	String previouspanel;
-	
-	String currentState="live";
+
+	String currentState = "live";
 
 	Game_BS game_BS = new Game_BL_Stub();
 
@@ -89,7 +89,7 @@ public class LiveInfoPanel extends JPanel {
 	private JTextField hostScore4;
 	private JTextField hostScoreSum;
 	private JLabel courtlbl;
-	private JLabel liveTextlbl;	
+	private JLabel liveTextlbl;
 	private JButton btnG1;
 	private JButton btnG2;
 	private JButton btnG3;
@@ -522,42 +522,53 @@ public class LiveInfoPanel extends JPanel {
 		JButton startingbtn = new ChooseButton("文字直播");
 		startingbtn.setBounds(X * 450 / 1366, Y * 155 / 768, X * 155 / 1366,
 				Y * 30 / 768);
-		startingbtn.addActionListener(e -> live());
+		startingbtn.addActionListener(e -> {
+			currentState = "live";
+			refresh();
+			live();
+		});
 		bgLabel.add(startingbtn);
 
 		JButton summarybtn = new ChooseButton("球队数据");
 		summarybtn.setBounds(X * 605 / 1366, Y * 155 / 768, X * 155 / 1366,
 				Y * 30 / 768);
-		summarybtn.addActionListener(e -> teamDataLive());
+		summarybtn.addActionListener(e -> {
+			currentState = "teamDataLive";
+			refresh();
+			teamDataLive();
+		});
 		bgLabel.add(summarybtn);
 
 		JButton databtn = new ChooseButton("球员数据");
 		databtn.setBounds(X * 760 / 1366, Y * 155 / 768, X * 155 / 1366,
 				Y * 30 / 768);
-		databtn.addActionListener(e -> playerDataLive());
+		databtn.addActionListener(e -> {
+			currentState = "playerDataLive";
+			refresh();
+			playerDataLive();
+		});
 		bgLabel.add(databtn);
 
 		live();
-	
-		
+
 		mainFrame.getContentPane().add(this);
+
+		refresh();
 
 	}
 
 	public void live() {
-		currentState="live";
+		currentState = "live";
 		System.out.println(currentState);
 		guestFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
 		guestFirstPlayerList = (gameVo.getGuestTP()).getFirstonList();
 		hostFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
 		hostFirstPlayerList = (gameVo.getHomeTP()).getFirstonList();
 
-		
-		
 		if (courtlbl != null) {
 			courtlbl.setVisible(false);
 		}
-		if(liveTextlbl!=null){
+		if (liveTextlbl != null) {
 			liveTextlbl.setVisible(false);
 		}
 		if (liveScrollPane != null) {
@@ -579,8 +590,8 @@ public class LiveInfoPanel extends JPanel {
 				.getScaledInstance(X * 850 / 1366, Y * 386 / 768,
 						Image.SCALE_SMOOTH));
 		courtlbl.setIcon(buttonIcon);
-		
-		liveTextlbl=new MyLabel();
+
+		liveTextlbl = new MyLabel();
 		liveTextlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		liveTextlbl.setBounds(X * 210 / 1366, Y * 670 / 768, X * 430 / 1366,
 				Y * 30 / 768);
@@ -663,10 +674,7 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				// playerG1Panel.setVisible(true);
-              			
 
-				  
-				  
 			}
 
 			@Override
@@ -680,7 +688,7 @@ public class LiveInfoPanel extends JPanel {
 						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
 								previouspanel), "LiveInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
-				
+
 			}
 		});
 		courtlbl.add(btnG1);
@@ -1204,10 +1212,14 @@ public class LiveInfoPanel extends JPanel {
 		liveTable.setDefaultRenderer(Object.class, r3);
 
 		liveTable.setRowHeight(Y * 30 / 768);
-		liveTable.getColumnModel().getColumn(0).setPreferredWidth(X*70/1366);
-		liveTable.getColumnModel().getColumn(1).setPreferredWidth(X*40/1366);
-		liveTable.getColumnModel().getColumn(2).setPreferredWidth(X*60/1366);
-		liveTable.getColumnModel().getColumn(3).setPreferredWidth(X*315/1366);
+		liveTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 70 / 1366);
+		liveTable.getColumnModel().getColumn(1)
+				.setPreferredWidth(X * 40 / 1366);
+		liveTable.getColumnModel().getColumn(2)
+				.setPreferredWidth(X * 60 / 1366);
+		liveTable.getColumnModel().getColumn(3)
+				.setPreferredWidth(X * 315 / 1366);
 		liveTable.setForeground(Color.WHITE);
 		liveTable.setVisible(true);
 		liveTable.setCellSelectionEnabled(true);
@@ -1235,12 +1247,12 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void teamDataLive() {
-		currentState="teamDataLive";
+		currentState = "teamDataLive";
 		System.out.println(currentState);
 		if (courtlbl != null) {
 			courtlbl.setVisible(false);
 		}
-		if (liveTextlbl!=null){
+		if (liveTextlbl != null) {
 			liveTextlbl.setVisible(false);
 		}
 		if (liveScrollPane != null) {
@@ -1260,7 +1272,7 @@ public class LiveInfoPanel extends JPanel {
 
 		MyLabel gameNumlbl = new MyLabel("参赛场数");
 		gameNumlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		gameNumlbl.setBounds(X *607 / 1366, Y * 70 / 768, X * 150 / 1366,
+		gameNumlbl.setBounds(X * 607 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 34 / 768);
 		summarylbl.add(gameNumlbl);
 
@@ -1873,12 +1885,12 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void playerDataLive() {
-		currentState="playerDataLive";
+		currentState = "playerDataLive";
 		System.out.println(currentState);
 		if (courtlbl != null) {
 			courtlbl.setVisible(false);
 		}
-		if (liveTextlbl!=null){
+		if (liveTextlbl != null) {
 			liveTextlbl.setVisible(false);
 		}
 		if (liveScrollPane != null) {
@@ -1893,7 +1905,8 @@ public class LiveInfoPanel extends JPanel {
 
 		datalbl = new JLabel();
 		datalbl.setHorizontalAlignment(SwingConstants.CENTER);
-		datalbl.setBounds(X*0/1366, Y*194/768, X*1231/1366, Y*500/768);
+		datalbl.setBounds(X * 0 / 1366, Y * 194 / 768, X * 1231 / 1366,
+				Y * 500 / 768);
 		datalbl.setBackground(Color.blue);
 
 		compareCriterias = new String[4];
@@ -2018,7 +2031,7 @@ public class LiveInfoPanel extends JPanel {
 		guestTable.setDefaultRenderer(Object.class, r2);
 
 		guestTable.setForeground(Color.WHITE);
-	
+
 		guestTable.setIntercellSpacing(new Dimension(0, 0));
 		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
@@ -2435,8 +2448,10 @@ public class LiveInfoPanel extends JPanel {
 
 		hostTable.setForeground(Color.WHITE);
 		hostTable.getTableHeader().setBackground(Color.BLACK);
-		hostTable.getColumnModel().getColumn(0).setPreferredWidth(X*70/1366);
-		hostTable.getColumnModel().getColumn(1).setPreferredWidth(X*120/1366);
+		hostTable.getColumnModel().getColumn(0)
+				.setPreferredWidth(X * 70 / 1366);
+		hostTable.getColumnModel().getColumn(1)
+				.setPreferredWidth(X * 120 / 1366);
 		hostTable.setRowHeight(70);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
@@ -2447,7 +2462,8 @@ public class LiveInfoPanel extends JPanel {
 		hostScrollPane = new JScrollPane(hostTable);
 		hostScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		hostScrollPane.setBounds(X*681/1366, Y*100/768, X*550/1366, 400);
+		hostScrollPane.setBounds(X * 681 / 1366, Y * 100 / 768, X * 550 / 1366,
+				400);
 		hostScrollPane.setVisible(true);
 		hostScrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -2460,7 +2476,6 @@ public class LiveInfoPanel extends JPanel {
 
 	}
 
-		
 	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame, MainFrame.livePanel,
@@ -2477,17 +2492,17 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void refresh() {
-		if(currentState.equals("live")){
-			playerDataLive();
-			teamDataLive();
+		if (currentState.equals("live")) {
+			// playerDataLive();
+			// teamDataLive();
 			live();
-		}else if(currentState.equals("playerDataLive")){
-			teamDataLive();
-			live();
+		} else if (currentState.equals("playerDataLive")) {
+			// teamDataLive();
+			// live();
 			playerDataLive();
-		}else if(currentState.equals("teamDataLive")){
-			live();
-			playerDataLive();
+		} else if (currentState.equals("teamDataLive")) {
+			// live();
+			// playerDataLive();
 			teamDataLive();
 		}
 
@@ -2653,8 +2668,6 @@ public class LiveInfoPanel extends JPanel {
 			return this;
 		}
 	}
-
-
 
 	class MyButton extends JButton {
 		/**
