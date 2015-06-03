@@ -6,13 +6,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -25,35 +26,38 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import ui.LivePanel.GameCardRenderer;
-import ui.PlayerInfoPanel.MyDataTextField;
-import ui.PlayerInfoPanel.MyLabel;
 import vo.GameVo;
 import vo.PlayerPerformanceInSingleGame;
 import vo.TeamPerformanceInSingleGame;
 import vo.liveText;
-import businessLogic.Game_BL;
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+
+import po.GamePO;
+import po.PlayerPO;
+import po.TeamPO;
 
 public class LiveInfoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	GameVo gameVo;
+	static GameVo gameVo =null;
 	JFrame mainFrame;
-	JPanel previousPanel;
-	String previouspanel;
+	// JPanel previousPanel;
+	// String previouspanel;
 
 	String currentState = "live";
+	static ArrayList<liveText> liveTextList = null;
+	static ArrayList<TeamPO> teamDataList = null;
+	static ArrayList<PlayerPO> guestPlayerDataList = null;
+	static ArrayList<PlayerPO> hostPlayerDataList = null;
+
+	TeamPO guestTeamPo = null;
+	TeamPO hostTeamPo = null;
 
 	Game_BS game_BS = new Game_BL_Stub();
 
@@ -179,13 +183,19 @@ public class LiveInfoPanel extends JPanel {
 	private ChooseButton reboundsButton;
 	private ChooseButton XfactorButton;
 
-	public LiveInfoPanel(GameVo gameVo, JFrame mainFrame, JPanel previousPanel,
-			String previouspanel) {
-		previousPanel.setVisible(false);
+	public LiveInfoPanel(JFrame mainFrame) {
+		// previousPanel.setVisible(false);
 		this.mainFrame = mainFrame;
-		this.previousPanel = previousPanel;
-		this.previouspanel = previouspanel;
-		this.gameVo = gameVo;
+		
+		
+		
+		
+		
+		gameVo=game_BS.getAllGames().get(0);
+		
+		
+		
+		
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
@@ -201,33 +211,6 @@ public class LiveInfoPanel extends JPanel {
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
 		this.add(bgLabel);
-
-		JButton home = new JButton();
-		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
-				.getImage().getScaledInstance(X / 25, X / 25,
-						Image.SCALE_SMOOTH));
-		home.setBounds(16 * X / 20, Y * 15 / 768, X / 25, X / 25);
-		home.setIcon(homeIcon);
-		home.setOpaque(false);
-		home.setContentAreaFilled(false);
-		home.setBorderPainted(false);
-		home.addActionListener(e -> home());
-		bgLabel.add(home);
-
-		JButton back = new JButton();
-		back.setForeground(Color.WHITE);
-
-		ImageIcon backIcon = new ImageIcon(new ImageIcon("Image/backIcon.png")
-				.getImage().getScaledInstance(X / 25, X / 25,
-						Image.SCALE_SMOOTH));
-
-		back.setBounds(17 * X / 20, Y * 15 / 768, X / 25, X / 25);
-		back.setIcon(backIcon);
-		back.setOpaque(false);
-		back.setContentAreaFilled(false);
-		back.setBorderPainted(false);
-		back.addActionListener(e -> back());
-		bgLabel.add(back);
 
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
@@ -269,62 +252,6 @@ public class LiveInfoPanel extends JPanel {
 		bgLabel.add(close);
 
 		mainFrame.getContentPane().add(this);
-
-		guestTeambtn = new JButton();
-		guestTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
-
-		guestTeambtn.setBounds(X * 230 / 1366, Y * 55 / 768, X * 160 / 1366,
-				Y * 160 / 768);
-		ImageIcon teamImg1 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
-				+ gameVo.getGuestTeam() + ".png").getImage().getScaledInstance(
-				X * 160 / 1366, Y * 160 / 768, Image.SCALE_AREA_AVERAGING));
-		guestTeambtn.setIcon(teamImg1);
-		guestTeambtn.setContentAreaFilled(false);
-		guestTeambtn.setBorderPainted(false);
-		guestTeambtn.setOpaque(false);
-		guestTeambtn.addActionListener(e -> {
-			this.setVisible(false);
-			MainFrame.teamInfoPanel = new TeamInfoPanel(gameVo.getGuestTeam(),
-					mainFrame, this, "LiveInfoPanel");
-		});
-		bgLabel.add(guestTeambtn);
-
-		hostTeambtn = new JButton();
-		hostTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
-		hostTeambtn.setText(gameVo.getHomeTeam());
-		hostTeambtn.setBounds(X * 970 / 1366, Y * 55 / 768, X * 160 / 1366,
-				Y * 160 / 768);
-		ImageIcon teamImg2 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
-				+ gameVo.getHomeTeam() + ".png").getImage().getScaledInstance(
-				X * 160 / 1366, Y * 160 / 768, Image.SCALE_AREA_AVERAGING));
-		hostTeambtn.setIcon(teamImg2);
-		hostTeambtn.setContentAreaFilled(false);
-		hostTeambtn.setBorderPainted(false);
-		hostTeambtn.setOpaque(false);
-		hostTeambtn.addActionListener(e -> {
-			this.setVisible(false);
-			MainFrame.teamInfoPanel = new TeamInfoPanel(gameVo.getHomeTeam(),
-					mainFrame, this, "LiveInfoPanel");
-		});
-		bgLabel.add(hostTeambtn);
-
-		txtGTPoint = new MyTextField();
-		txtGTPoint.setText(String.valueOf(gameVo.getGuestTP().getScore()));
-		txtGTPoint.setHorizontalAlignment(SwingConstants.CENTER);
-		txtGTPoint.setBounds(X * 430 / 1366, Y * 67 / 768, X * 120 / 1366,
-				Y * 60 / 768);
-		txtGTPoint.setFont(new Font("微软雅黑", 1, 40));
-		txtGTPoint.setBorder(null);
-		bgLabel.add(txtGTPoint);
-
-		txtHTPoint = new MyTextField();
-		txtHTPoint.setHorizontalAlignment(SwingConstants.CENTER);
-		txtHTPoint.setText(String.valueOf(gameVo.getHomeTP().getScore()));
-		txtHTPoint.setBounds(X * 830 / 1366, Y * 67 / 768, X * 120 / 1366,
-				Y * 60 / 768);
-		txtHTPoint.setFont(new Font("微软雅黑", 1, 40));
-		txtHTPoint.setBorder(null);
-		bgLabel.add(txtHTPoint);
 
 		txtState = new MyTextField();
 		txtState.setText("已结束");
@@ -387,6 +314,104 @@ public class LiveInfoPanel extends JPanel {
 		textField_5.setBorder(BorderFactory.createEmptyBorder());
 		bgLabel.add(textField_5);
 
+		JButton startingbtn = new ChooseButton("文字直播");
+		startingbtn.setBounds(X * 450 / 1366, Y * 155 / 768, X * 155 / 1366,
+				Y * 30 / 768);
+		startingbtn.addActionListener(e -> {
+			currentState = "live";
+			live(liveTextList);
+		});
+		bgLabel.add(startingbtn);
+
+		JButton summarybtn = new ChooseButton("球队数据");
+		summarybtn.setBounds(X * 605 / 1366, Y * 155 / 768, X * 155 / 1366,
+				Y * 30 / 768);
+		summarybtn.addActionListener(e -> {
+			currentState = "teamDataLive";
+			teamDataLive(guestTeamPo, hostTeamPo);
+		});
+		bgLabel.add(summarybtn);
+
+		JButton databtn = new ChooseButton("球员数据");
+		databtn.setBounds(X * 760 / 1366, Y * 155 / 768, X * 155 / 1366,
+				Y * 30 / 768);
+		databtn.addActionListener(e -> {
+			currentState = "playerDataLive";
+			playerDataLive(guestPlayerDataList, hostPlayerDataList);
+		});
+		bgLabel.add(databtn);
+
+		// -------------------------------获取初始GameVo---------------------------------
+		gameDataLive(game_BS.getAllGames().get(0));
+		// ------------------------------获取初始LiveText--------------------------------
+		live(liveTextList);
+
+		mainFrame.getContentPane().add(this);
+
+	}
+
+	public void gameDataLive(GameVo gameVo) {
+		int spaceX = 565;
+		int spaceY = 50;
+		int tempX = 30;
+		int tempY = 25;
+
+		guestTeambtn = new JButton();
+		guestTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
+
+		guestTeambtn.setBounds(X * 230 / 1366, Y * 34 / 768, X * 160 / 1366,
+				Y * 160 / 768);
+		ImageIcon teamImg1 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ gameVo.getGuestTeam() + ".png").getImage().getScaledInstance(
+				X * 160 / 1366, Y * 160 / 768, Image.SCALE_AREA_AVERAGING));
+		guestTeambtn.setIcon(teamImg1);
+		guestTeambtn.setContentAreaFilled(false);
+		guestTeambtn.setBorderPainted(false);
+		guestTeambtn.setOpaque(false);
+		guestTeambtn.addActionListener(e -> {
+			this.setVisible(false);
+			MainFrame.teamInfoPanel = new TeamInfoPanel(gameVo.getGuestTeam(),
+					mainFrame, this, "LiveInfoPanel");
+		});
+		bgLabel.add(guestTeambtn);
+
+		hostTeambtn = new JButton();
+		hostTeambtn.setHorizontalAlignment(SwingConstants.CENTER);
+		hostTeambtn.setText(gameVo.getHomeTeam());
+		hostTeambtn.setBounds(X * 970 / 1366, Y * 34 / 768, X * 160 / 1366,
+				Y * 160 / 768);
+		ImageIcon teamImg2 = new ImageIcon(new ImageIcon("CSEdata/teams_png/"
+				+ gameVo.getHomeTeam() + ".png").getImage().getScaledInstance(
+				X * 160 / 1366, Y * 160 / 768, Image.SCALE_AREA_AVERAGING));
+		hostTeambtn.setIcon(teamImg2);
+		hostTeambtn.setContentAreaFilled(false);
+		hostTeambtn.setBorderPainted(false);
+		hostTeambtn.setOpaque(false);
+		hostTeambtn.addActionListener(e -> {
+			this.setVisible(false);
+			MainFrame.teamInfoPanel = new TeamInfoPanel(gameVo.getHomeTeam(),
+					mainFrame, this, "LiveInfoPanel");
+		});
+		bgLabel.add(hostTeambtn);
+
+		txtGTPoint = new MyTextField();
+		txtGTPoint.setText(String.valueOf(gameVo.getGuestTP().getScore()));
+		txtGTPoint.setHorizontalAlignment(SwingConstants.CENTER);
+		txtGTPoint.setBounds(X * 430 / 1366, Y * 67 / 768, X * 120 / 1366,
+				Y * 60 / 768);
+		txtGTPoint.setFont(new Font("微软雅黑", 1, 40));
+		// txtGTPoint.setBorder(null);
+		bgLabel.add(txtGTPoint);
+
+		txtHTPoint = new MyTextField();
+		txtHTPoint.setHorizontalAlignment(SwingConstants.CENTER);
+		txtHTPoint.setText(String.valueOf(gameVo.getHomeTP().getScore()));
+		txtHTPoint.setBounds(X * 830 / 1366, Y * 67 / 768, X * 120 / 1366,
+				Y * 60 / 768);
+		txtHTPoint.setFont(new Font("微软雅黑", 1, 40));
+		// txtHTPoint.setBorder(null);
+		bgLabel.add(txtHTPoint);
+
 		guestTeamtF = new MyTextField();
 		guestTeamtF.setText(gameVo.getGuestTeam());
 		guestTeamtF.setHorizontalAlignment(SwingConstants.CENTER);
@@ -394,16 +419,13 @@ public class LiveInfoPanel extends JPanel {
 		guestTeamtF.setBounds(spaceX, spaceY + tempY, 60, tempY);
 		guestTeamtF.setBackground(Color.DARK_GRAY);
 		guestTeamtF.setOpaque(true);
-
 		bgLabel.add(guestTeamtF);
-
+		
 		guestTeam1 = new MyTextField();
 		guestTeam1
 				.setText(String.valueOf(gameVo.getScore1st().getGuestScore()));
-
 		guestTeam1.setBackground(Color.DARK_GRAY);
 		guestTeam1.setOpaque(true);
-
 		guestTeam1.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam1.setBounds(spaceX + 60, spaceY + tempY, tempX, tempY);
 		bgLabel.add(guestTeam1);
@@ -411,10 +433,8 @@ public class LiveInfoPanel extends JPanel {
 		guestTeam2 = new MyTextField();
 		guestTeam2
 				.setText(String.valueOf(gameVo.getScore2nd().getGuestScore()));
-
 		guestTeam2.setBackground(Color.DARK_GRAY);
 		guestTeam2.setOpaque(true);
-
 		guestTeam2.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam2.setBounds(spaceX + 60 + tempX, spaceY + tempY, tempX, tempY);
 		bgLabel.add(guestTeam2);
@@ -422,10 +442,8 @@ public class LiveInfoPanel extends JPanel {
 		guestTeam3 = new MyTextField();
 		guestTeam3
 				.setText(String.valueOf(gameVo.getScore3rd().getGuestScore()));
-
 		guestTeam3.setBackground(Color.DARK_GRAY);
 		guestTeam3.setOpaque(true);
-
 		guestTeam3.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam3.setBounds(spaceX + 60 + 2 * tempX, spaceY + tempY, tempX,
 				tempY);
@@ -434,10 +452,8 @@ public class LiveInfoPanel extends JPanel {
 		guestTeam4 = new MyTextField();
 		guestTeam4
 				.setText(String.valueOf(gameVo.getScore4th().getGuestScore()));
-
 		guestTeam4.setBackground(Color.DARK_GRAY);
 		guestTeam4.setOpaque(true);
-
 		guestTeam4.setHorizontalAlignment(SwingConstants.CENTER);
 		guestTeam4.setBounds(spaceX + 60 + 3 * tempX, spaceY + tempY, tempX,
 				tempY);
@@ -446,10 +462,8 @@ public class LiveInfoPanel extends JPanel {
 		guestScoreSum = new MyTextField();
 		guestScoreSum.setText(String.valueOf(gameVo.getScoreOverall()
 				.getGuestScore()));
-
 		guestScoreSum.setBackground(Color.DARK_GRAY);
 		guestScoreSum.setOpaque(true);
-
 		guestScoreSum.setHorizontalAlignment(SwingConstants.CENTER);
 		guestScoreSum.setBounds(spaceX + 60 + 4 * tempX, spaceY + tempY, 60,
 				tempY);
@@ -459,7 +473,6 @@ public class LiveInfoPanel extends JPanel {
 		hostTeamtF.setText(gameVo.getHomeTeam());
 		hostTeamtF.setHorizontalAlignment(SwingConstants.CENTER);
 		hostTeamtF.setBounds(spaceX, spaceY + 2 * tempY, 60, tempY);
-
 		hostTeamtF.setBackground(Color.GRAY);
 		hostTeamtF.setOpaque(true);
 
@@ -467,10 +480,8 @@ public class LiveInfoPanel extends JPanel {
 
 		hostScore1 = new MyTextField();
 		hostScore1.setText(String.valueOf(gameVo.getScore1st().getHomeScore()));
-
 		hostScore1.setBackground(Color.GRAY);
 		hostScore1.setOpaque(true);
-
 		hostScore1.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore1.setBounds(spaceX + 60, spaceY + 2 * tempY, tempX, tempY);
 		bgLabel.add(hostScore1);
@@ -479,7 +490,6 @@ public class LiveInfoPanel extends JPanel {
 		hostScore2.setText(String.valueOf(gameVo.getScore2nd().getHomeScore()));
 		hostScore2.setBackground(Color.GRAY);
 		hostScore2.setOpaque(true);
-
 		hostScore2.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore2.setBounds(spaceX + 60 + tempX, spaceY + 2 * tempY, tempX,
 				tempY);
@@ -487,10 +497,8 @@ public class LiveInfoPanel extends JPanel {
 
 		hostScore3 = new MyTextField();
 		hostScore3.setText(String.valueOf(gameVo.getScore3rd().getHomeScore()));
-
 		hostScore3.setBackground(Color.GRAY);
 		hostScore3.setOpaque(true);
-
 		hostScore3.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore3.setBounds(spaceX + 60 + 2 * tempX, spaceY + 2 * tempY,
 				tempX, tempY);
@@ -498,10 +506,8 @@ public class LiveInfoPanel extends JPanel {
 
 		hostScore4 = new MyTextField();
 		hostScore4.setText(String.valueOf(gameVo.getScore4th().getHomeScore()));
-
 		hostScore4.setBackground(Color.GRAY);
 		hostScore4.setOpaque(true);
-
 		hostScore4.setHorizontalAlignment(SwingConstants.CENTER);
 		hostScore4.setBounds(spaceX + 60 + 3 * tempX, spaceY + 2 * tempY,
 				tempX, tempY);
@@ -519,45 +525,10 @@ public class LiveInfoPanel extends JPanel {
 				tempY);
 		bgLabel.add(hostScoreSum);
 
-		JButton startingbtn = new ChooseButton("文字直播");
-		startingbtn.setBounds(X * 450 / 1366, Y * 155 / 768, X * 155 / 1366,
-				Y * 30 / 768);
-		startingbtn.addActionListener(e -> {
-			currentState = "live";
-			refresh();
-			live();
-		});
-		bgLabel.add(startingbtn);
-
-		JButton summarybtn = new ChooseButton("球队数据");
-		summarybtn.setBounds(X * 605 / 1366, Y * 155 / 768, X * 155 / 1366,
-				Y * 30 / 768);
-		summarybtn.addActionListener(e -> {
-			currentState = "teamDataLive";
-			refresh();
-			teamDataLive();
-		});
-		bgLabel.add(summarybtn);
-
-		JButton databtn = new ChooseButton("球员数据");
-		databtn.setBounds(X * 760 / 1366, Y * 155 / 768, X * 155 / 1366,
-				Y * 30 / 768);
-		databtn.addActionListener(e -> {
-			currentState = "playerDataLive";
-			refresh();
-			playerDataLive();
-		});
-		bgLabel.add(databtn);
-
-		live();
-
-		mainFrame.getContentPane().add(this);
-
-		refresh();
-
 	}
 
-	public void live() {
+	public void live(ArrayList<liveText> liveTextList) {
+		// public void live() {
 		currentState = "live";
 		System.out.println(currentState);
 		guestFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
@@ -595,9 +566,12 @@ public class LiveInfoPanel extends JPanel {
 		liveTextlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		liveTextlbl.setBounds(X * 210 / 1366, Y * 670 / 768, X * 430 / 1366,
 				Y * 30 / 768);
-		liveTextlbl.setOpaque(true);
-		liveTextlbl.setBackground(Color.WHITE);
+		liveTextlbl.setOpaque(false);
+		// liveTextlbl.setBackground(Color.WHITE);
 		liveTextlbl.setVisible(true);
+		if (liveTextList != null) {
+			liveTextlbl.setText(liveTextList.get(0).getEvent());
+		}
 
 		playerG1Panel = new PlayerBasicInfoPanel(guestFirstPlayerList.get(0),
 				X * 445 / 1366, Y * 175 / 768);
@@ -682,13 +656,14 @@ public class LiveInfoPanel extends JPanel {
 				// TODO Auto-generated method stub
 
 				playerG1Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						guestFirstPlayerList.get(0).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
-
+				// selfClose();
+				/*
+				 * MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * guestFirstPlayerList.get(0).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnG1);
@@ -734,12 +709,14 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerG2Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						guestFirstPlayerList.get(1).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				// selfClose();
+				/*
+				 * MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * guestFirstPlayerList.get(1).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnG2);
@@ -785,12 +762,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerG3Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						guestFirstPlayerList.get(2).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * guestFirstPlayerList.get(2).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnG3);
@@ -836,12 +814,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerG4Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						guestFirstPlayerList.get(3).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * guestFirstPlayerList.get(3).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnG4);
@@ -887,12 +866,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerG5Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						guestFirstPlayerList.get(4).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * guestFirstPlayerList.get(4).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnG5);
@@ -938,12 +918,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerH1Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						hostFirstPlayerList.get(0).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * hostFirstPlayerList.get(0).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnH1);
@@ -989,12 +970,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerH2Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						hostFirstPlayerList.get(1).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * hostFirstPlayerList.get(1).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnH2);
@@ -1043,12 +1025,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerH3Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						hostFirstPlayerList.get(2).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * hostFirstPlayerList.get(2).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnH3);
@@ -1094,12 +1077,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerH4Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						hostFirstPlayerList.get(3).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * hostFirstPlayerList.get(3).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnH4);
@@ -1144,12 +1128,13 @@ public class LiveInfoPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				playerH5Panel.setVisible(false);
-				selfClose();
-				MainFrame.playerInfoPanel = new PlayerInfoPanel(
-						hostFirstPlayerList.get(4).getName(), mainFrame,
-						new LiveInfoPanel(gameVo, mainFrame, previousPanel,
-								previouspanel), "LiveInfoPanel");
-				mainFrame.add(MainFrame.playerInfoPanel);
+				/*
+				 * selfClose(); MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				 * hostFirstPlayerList.get(4).getName(), mainFrame, new
+				 * LiveInfoPanel(gameVo, mainFrame, previousPanel,
+				 * previouspanel), "LiveInfoPanel");
+				 * mainFrame.add(MainFrame.playerInfoPanel);
+				 */
 			}
 		});
 		courtlbl.add(btnH5);
@@ -1164,15 +1149,17 @@ public class LiveInfoPanel extends JPanel {
 			liveRowData.clear();
 		}
 
-		Vector<String> a = new Vector<String>();
-
-		a.add("time");
-		a.add("team");
-		a.add("player");
-		a.add("live commentary");
-
-		liveRowData.add(a);
-
+		Vector<String> a;
+		if (liveTextList != null) {
+			for (int i = 0; i < liveTextList.size(); i++) {
+				a = new Vector<String>();
+				a.add(liveTextList.get(i).getTime());
+				a.add(liveTextList.get(i).getTeam());
+				a.add(liveTextList.get(i).getPlayer());
+				a.add(liveTextList.get(i).getEvent());
+				liveRowData.add(a);
+			}
+		}
 		Vector<String> column = new Vector<String>();
 		column.add("时间");
 		column.add("球队");
@@ -1246,7 +1233,8 @@ public class LiveInfoPanel extends JPanel {
 
 	}
 
-	public void teamDataLive() {
+	public void teamDataLive(TeamPO guestTeamPo, TeamPO hostTeamPo) {
+
 		currentState = "teamDataLive";
 		System.out.println(currentState);
 		if (courtlbl != null) {
@@ -1268,79 +1256,51 @@ public class LiveInfoPanel extends JPanel {
 		summarylbl = new MyLabel();
 		summarylbl.setHorizontalAlignment(SwingConstants.CENTER);
 		summarylbl.setBounds(X * 0 / 1366, Y * 194 / 768, X * 1231 / 1366,
-				Y * 500 / 768);
+				Y * 560 / 768);
 
-		MyLabel gameNumlbl = new MyLabel("参赛场数");
-		gameNumlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		gameNumlbl.setBounds(X * 607 / 1366, Y * 70 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(gameNumlbl);
+		MyLabel hitRatelbl = new MyLabel("命中率");
+		hitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		hitRatelbl.setBounds(X * 607 / 1366, Y * 100 / 768, X * 150 / 1366,
+				Y * 68 / 768);
+		hitRatelbl.setFont(new Font("微软雅黑", 1, 16));
+		summarylbl.add(hitRatelbl);
 
-		MyLabel minutelbl = new MyLabel("分钟");
-		minutelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		minutelbl.setBounds(X * 607 / 1366, Y * 104 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(minutelbl);
 
-		MyLabel scoreFieldlbl = new MyLabel("场均得分");
-		scoreFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreFieldlbl.setBounds(X * 607 / 1366, Y * 138 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(scoreFieldlbl);
+		MyLabel threePointHitRatelbl = new MyLabel("三分命中率");
+		threePointHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		threePointHitRatelbl.setBounds(X * 607 / 1366, Y * 168 / 768, X * 150 / 1366,
+				Y * 68 / 768);
+		threePointHitRatelbl.setFont(new Font("微软雅黑", 1, 16));
+		summarylbl.add(threePointHitRatelbl);
 
-		MyLabel assistanceFieldlbl = new MyLabel("场均助攻");
-		assistanceFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		assistanceFieldlbl.setBounds(X * 607 / 1366, Y * 172 / 768,
-				X * 150 / 1366, Y * 34 / 768);
-		summarylbl.add(assistanceFieldlbl);
+	
 
-		MyLabel reboundFieldlbl = new MyLabel("场均篮板");
-		reboundFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		reboundFieldlbl.setBounds(X * 607 / 1366, Y * 206 / 768,
-				X * 150 / 1366, Y * 34 / 768);
-		summarylbl.add(reboundFieldlbl);
+		MyLabel freeThrowHitRatelbl = new MyLabel("罚球命中率");
+		freeThrowHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		freeThrowHitRatelbl.setBounds(X * 607 / 1366, Y * 236 / 768,
+				X * 150 / 1366, Y *68 / 768);
+		freeThrowHitRatelbl.setFont(new Font("微软雅黑", 1, 16));
+		summarylbl.add(freeThrowHitRatelbl);
 
-		MyLabel hitlbl = new MyLabel("投篮命中数");
-		hitlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		hitlbl.setBounds(X * 607 / 1366, Y * 240 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(hitlbl);
+		
 
-		MyLabel tpHitRatelbl = new MyLabel("三分命中率");
-		tpHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		tpHitRatelbl.setBounds(X * 607 / 1366, Y * 274 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(tpHitRatelbl);
+		MyLabel reboundlbl = new MyLabel("篮板");
+		reboundlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		reboundlbl.setBounds(X * 607 / 1366, Y * 304 / 768, X * 150 / 1366,
+				Y * 68 / 768);
+		reboundlbl.setFont(new Font("微软雅黑", 1, 16));
+		summarylbl.add(reboundlbl);
 
-		MyLabel ftHitRatelbl = new MyLabel("罚球命中率");
-		ftHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		ftHitRatelbl.setBounds(X * 607 / 1366, Y * 308 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(ftHitRatelbl);
+		
 
-		MyLabel stealFieldlbl = new MyLabel("场均抢断");
-		stealFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		stealFieldlbl.setBounds(X * 607 / 1366, Y * 342 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(stealFieldlbl);
+		MyLabel assistancelbl = new MyLabel("助攻");
+		assistancelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		assistancelbl.setBounds(X * 607 / 1366, Y * 372 / 768, X * 150 / 1366,
+				Y * 68 / 768);
+		assistancelbl.setFont(new Font("微软雅黑", 1, 16));
+		summarylbl.add(assistancelbl);
 
-		MyLabel blockFieldlbl = new MyLabel("场均盖帽");
-		blockFieldlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		blockFieldlbl.setBounds(X * 607 / 1366, Y * 376 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(blockFieldlbl);
-
-		MyLabel turnoverlbl = new MyLabel("失误");
-		turnoverlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		turnoverlbl.setBounds(X * 607 / 1366, Y * 410 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(turnoverlbl);
-
-		MyLabel foullbl = new MyLabel("犯规");
-		foullbl.setHorizontalAlignment(SwingConstants.CENTER);
-		foullbl.setBounds(X * 607 / 1366, Y * 444 / 768, X * 150 / 1366,
-				Y * 34 / 768);
-		summarylbl.add(foullbl);
+		
 
 		/*
 		 * JLabel lblPlayergamenum = new JLabel();
@@ -1884,7 +1844,8 @@ public class LiveInfoPanel extends JPanel {
 		bgLabel.add(summarylbl);
 	}
 
-	public void playerDataLive() {
+	public void playerDataLive(ArrayList<PlayerPO> guestPlayerDataList,
+			ArrayList<PlayerPO> hostPlayerDataList) {
 		currentState = "playerDataLive";
 		System.out.println(currentState);
 		if (courtlbl != null) {
@@ -1905,8 +1866,8 @@ public class LiveInfoPanel extends JPanel {
 
 		datalbl = new JLabel();
 		datalbl.setHorizontalAlignment(SwingConstants.CENTER);
-		datalbl.setBounds(X * 0 / 1366, Y * 194 / 768, X * 1231 / 1366,
-				Y * 500 / 768);
+		datalbl.setBounds(X * 0 / 1366, Y * 194 / 768, X * 1331 / 1366,
+				Y * 560 / 768);
 		datalbl.setBackground(Color.blue);
 
 		compareCriterias = new String[4];
@@ -1915,50 +1876,6 @@ public class LiveInfoPanel extends JPanel {
 		compareCriterias[2] = "REBOUNDS";
 		compareCriterias[3] = "X-FACTOR";
 
-		basicButton = new ChooseButton("基本数据⊙");
-		basicButton.setLocation(131, 70);
-		basicButton.addActionListener(e -> {
-			basicButton.setText("基本数据⊙");
-			shootingButton.setText("投篮数据");
-			reboundsButton.setText("篮板数据");
-			XfactorButton.setText("X-因素");
-			guestCriteriaSelected("BASIC");
-			hostCriteriaSelected("BASIC");
-		});
-		datalbl.add(basicButton);
-		shootingButton = new ChooseButton("投篮数据");
-		shootingButton.setLocation(286, 70);
-		shootingButton.addActionListener(e -> {
-			basicButton.setText("基本数据");
-			shootingButton.setText("投篮数据⊙");
-			reboundsButton.setText("篮板数据");
-			XfactorButton.setText("X-因素");
-			guestCriteriaSelected("SHOOTING");
-			hostCriteriaSelected("SHOOTING");
-		});
-		datalbl.add(shootingButton);
-		reboundsButton = new ChooseButton("篮板数据");
-		reboundsButton.setLocation(441, 70);
-		reboundsButton.addActionListener(e -> {
-			basicButton.setText("基本数据");
-			shootingButton.setText("投篮数据");
-			reboundsButton.setText("篮板数据⊙");
-			XfactorButton.setText("X-因素");
-			guestCriteriaSelected("REBOUNDS");
-			hostCriteriaSelected("REBOUNDS");
-		});
-		datalbl.add(reboundsButton);
-		XfactorButton = new ChooseButton("X-因素");
-		XfactorButton.setLocation(596, 70);
-		XfactorButton.addActionListener(e -> {
-			basicButton.setText("基本数据");
-			shootingButton.setText("投篮数据");
-			reboundsButton.setText("篮板数据");
-			XfactorButton.setText("X-因素⊙");
-			guestCriteriaSelected("X-FACTOR");
-			hostCriteriaSelected("X-FACTOR");
-		});
-		datalbl.add(XfactorButton);
 
 		guestTeamDatalbl = new JLabel();
 		guestTeamDatalbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1972,10 +1889,13 @@ public class LiveInfoPanel extends JPanel {
 		hostTeamDatalbl.setBackground(Color.blue);
 		datalbl.add(hostTeamDatalbl);
 
-		ArrayList<PlayerPerformanceInSingleGame> guestPlayerVos = new ArrayList<PlayerPerformanceInSingleGame>();
-		TeamPerformanceInSingleGame guestTeamPerformanceInSingleGame = gameVo
-				.getGuestTP();
-		guestPlayerVos = guestTeamPerformanceInSingleGame.getPlayerList();
+		/*
+		 * ArrayList<PlayerPerformanceInSingleGame> guestPlayerVos = new
+		 * ArrayList<PlayerPerformanceInSingleGame>();
+		 * TeamPerformanceInSingleGame guestTeamPerformanceInSingleGame = gameVo
+		 * .getGuestTP(); guestPlayerVos =
+		 * guestTeamPerformanceInSingleGame.getPlayerList();
+		 */
 		if (guestRowData == null) {
 			guestRowData = new Vector<Vector<String>>();
 		} else {
@@ -1984,22 +1904,94 @@ public class LiveInfoPanel extends JPanel {
 		guestColumn = new Vector<String>();
 		guestColumn.add("球员");
 		guestColumn.add("姓名");
-		guestColumn.add("号码");
-		guestColumn.add("时间");
-		guestColumn.add("得分");
+		guestColumn.add("位置");
+		guestColumn.add("分钟");
+		guestColumn.add("命中率");
+		guestColumn.add("命中");
+		guestColumn.add("出手");
+		guestColumn.add("三分%");
+		guestColumn.add("三分命中");
+		guestColumn.add("三分出手");
+		guestColumn.add("罚球%");
+		guestColumn.add("罚球命中");
+		guestColumn.add("罚球出手");		
+		guestColumn.add("进攻");
+		guestColumn.add("防守");
+		guestColumn.add("篮板");
 		guestColumn.add("助攻");
-		guestColumn.add("个人犯规");
-		for (int i = 0; i < guestPlayerVos.size(); i++) {
+		guestColumn.add("犯规");
+		guestColumn.add("抢断");	
+		guestColumn.add("失误");
+		guestColumn.add("盖帽");
+		guestColumn.add("得分");
+		if (guestPlayerDataList != null) {
+			for (int i = 0; i < guestPlayerDataList.size(); i++) {
+				// -------------------steven Jin------------------
+				Vector<String> a = new Vector<String>();
+				a.add("");
+				a.add(guestPlayerDataList.get(i).getName());
+				a.add(guestPlayerDataList.get(i).getPosition());
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				// ------------------------------------------------
+				/*
+				 * a.add(String.valueOf(guestPlayerDataList.get(i).getName()));
+				 * a.add("#" +
+				 * String.valueOf(guestPlayerDataList.get(i).getNumber()));
+				 * a.add(String.valueOf(guestPlayerDataList.get(i).getTime()));
+				 * a.add(String.valueOf(guestPlayerDataList.get(i).getScore()));
+				 * a
+				 * .add(String.valueOf(guestPlayerDataList.get(i).getAssistance(
+				 * )));
+				 * a.add(String.valueOf(guestPlayerDataList.get(i).getFoul()));
+				 */
+				guestRowData.add(a);
+			}
+		}else{
 			Vector<String> a = new Vector<String>();
 			a.add("");
-			a.add(String.valueOf(guestPlayerVos.get(i).getName()));
-			a.add("#" + String.valueOf(guestPlayerVos.get(i).getNumber()));
-			a.add(String.valueOf(guestPlayerVos.get(i).getTime()));
-			a.add(String.valueOf(guestPlayerVos.get(i).getScore()));
-			a.add(String.valueOf(guestPlayerVos.get(i).getAssistance()));
-			a.add(String.valueOf(guestPlayerVos.get(i).getFoul()));
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
 			guestRowData.add(a);
+
 		}
+
 		if (guestTable != null) {
 			guestTable.setVisible(false);
 		}
@@ -2023,7 +2015,7 @@ public class LiveInfoPanel extends JPanel {
 
 		});
 		((DefaultTableCellRenderer) header.getDefaultRenderer())
-				.setPreferredSize(new Dimension(550, 50));
+				.setPreferredSize(new Dimension(550, 20));
 		((DefaultTableCellRenderer) header.getDefaultRenderer())
 				.setHorizontalAlignment(JLabel.CENTER);
 		MyTableRenderer r2 = new MyTableRenderer();
@@ -2033,9 +2025,9 @@ public class LiveInfoPanel extends JPanel {
 		guestTable.setForeground(Color.WHITE);
 
 		guestTable.setIntercellSpacing(new Dimension(0, 0));
-		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
+		guestTable.getColumnModel().getColumn(0).setPreferredWidth(65);
 		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		guestTable.setRowHeight(70);
+		guestTable.setRowHeight(48);
 		guestTable.setVisible(true);
 		guestTable.setCellSelectionEnabled(true);
 		guestTable.setOpaque(false);
@@ -2045,7 +2037,7 @@ public class LiveInfoPanel extends JPanel {
 		guestScrollPane = new JScrollPane(guestTable);
 		guestScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		guestScrollPane.setBounds(131, 100, 550, 400);
+		guestScrollPane.setBounds(81, 20, 1200, 260);
 		guestScrollPane.setVisible(true);
 		guestScrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -2055,11 +2047,14 @@ public class LiveInfoPanel extends JPanel {
 		guestScrollPane.setOpaque(false);
 
 		datalbl.add(guestScrollPane);
-
-		ArrayList<PlayerPerformanceInSingleGame> hostPlayerVos = new ArrayList<PlayerPerformanceInSingleGame>();
-		TeamPerformanceInSingleGame hostTeamPerformanceInSingleGame = gameVo
-				.getHomeTP();
-		hostPlayerVos = hostTeamPerformanceInSingleGame.getPlayerList();
+                                                                                                      
+		/*
+		 * ArrayList<PlayerPerformanceInSingleGame> hostPlayerVos = new
+		 * ArrayList<PlayerPerformanceInSingleGame>();
+		 * TeamPerformanceInSingleGame hostTeamPerformanceInSingleGame = gameVo
+		 * .getHomeTP(); hostPlayerVos =
+		 * hostTeamPerformanceInSingleGame.getPlayerList();
+		 */
 		if (hostRowData == null) {
 			hostRowData = new Vector<Vector<String>>();
 		} else {
@@ -2068,20 +2063,88 @@ public class LiveInfoPanel extends JPanel {
 		hostColumn = new Vector<String>();
 		hostColumn.add("球员");
 		hostColumn.add("姓名");
-		hostColumn.add("号码");
-		hostColumn.add("时间");
-		hostColumn.add("得分");
+		hostColumn.add("位置");
+		hostColumn.add("分钟");
+		hostColumn.add("命中率");
+		hostColumn.add("命中");
+		hostColumn.add("出手");
+		hostColumn.add("三分%");
+		hostColumn.add("三分命中");
+		hostColumn.add("三分出手");
+		hostColumn.add("罚球%");
+		hostColumn.add("罚球命中");
+		hostColumn.add("罚球出手");		
+		hostColumn.add("进攻");
+		hostColumn.add("防守");
+		hostColumn.add("篮板");
 		hostColumn.add("助攻");
-		hostColumn.add("个人犯规");
-		for (int i = 0; i < hostPlayerVos.size(); i++) {
+		hostColumn.add("犯规");
+		hostColumn.add("抢断");	
+		hostColumn.add("失误");
+		hostColumn.add("盖帽");
+		hostColumn.add("得分");
+		if (hostPlayerDataList != null) {
+			for (int i = 0; i < hostPlayerDataList.size(); i++) {
+				Vector<String> a = new Vector<String>();
+				// -------------------steven Jin------------------
+				a.add("");
+				a.add(hostPlayerDataList.get(i).getName());
+				a.add(hostPlayerDataList.get(i).getPosition());
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				a.add("");
+				// -----------------------------------------------
+				/*
+				 * a.add(String.valueOf(hostPlayerVos.get(i).getName()));
+				 * a.add("#" +
+				 * String.valueOf(hostPlayerVos.get(i).getNumber()));
+				 * a.add(String.valueOf(hostPlayerVos.get(i).getTime()));
+				 * a.add(String.valueOf(hostPlayerVos.get(i).getScore()));
+				 * a.add(String.valueOf(hostPlayerVos.get(i).getAssistance()));
+				 * a.add(String.valueOf(hostPlayerVos.get(i).getFoul()));
+				 */
+				hostRowData.add(a);
+			}
+		}else{
 			Vector<String> a = new Vector<String>();
 			a.add("");
-			a.add(String.valueOf(hostPlayerVos.get(i).getName()));
-			a.add("#" + String.valueOf(hostPlayerVos.get(i).getNumber()));
-			a.add(String.valueOf(hostPlayerVos.get(i).getTime()));
-			a.add(String.valueOf(hostPlayerVos.get(i).getScore()));
-			a.add(String.valueOf(hostPlayerVos.get(i).getAssistance()));
-			a.add(String.valueOf(hostPlayerVos.get(i).getFoul()));
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
+			a.add("");
 			hostRowData.add(a);
 		}
 
@@ -2108,7 +2171,7 @@ public class LiveInfoPanel extends JPanel {
 
 		});
 		((DefaultTableCellRenderer) header1.getDefaultRenderer())
-				.setPreferredSize(new Dimension(550, 50));
+				.setPreferredSize(new Dimension(550, 20));
 		((DefaultTableCellRenderer) header1.getDefaultRenderer())
 				.setHorizontalAlignment(JLabel.CENTER);
 		MyTableRenderer r3 = new MyTableRenderer();
@@ -2116,11 +2179,10 @@ public class LiveInfoPanel extends JPanel {
 		hostTable.setDefaultRenderer(Object.class, r3);
 
 		hostTable.setForeground(Color.WHITE);
-		// hostTable.getTableHeader().setBackground(Color.BLACK);
 		hostTable.setIntercellSpacing(new Dimension(0, 0));
-		hostTable.getColumnModel().getColumn(0).setPreferredWidth(70);
+		hostTable.getColumnModel().getColumn(0).setPreferredWidth(65);
 		hostTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		hostTable.setRowHeight(70);
+		hostTable.setRowHeight(48);
 		hostTable.setVisible(true);
 		hostTable.setCellSelectionEnabled(true);
 		hostTable.setOpaque(false);
@@ -2130,7 +2192,7 @@ public class LiveInfoPanel extends JPanel {
 		hostScrollPane = new JScrollPane(hostTable);
 		hostScrollPane.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		hostScrollPane.setBounds(681, 100, 550, 400);
+		hostScrollPane.setBounds(81, 300, 1200, 260);
 		hostScrollPane.setVisible(true);
 		hostScrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -2144,374 +2206,9 @@ public class LiveInfoPanel extends JPanel {
 		bgLabel.add(datalbl);
 	}
 
-	public void guestCriteriaSelected(String guestDataCriteria) {
-		ArrayList<PlayerPerformanceInSingleGame> guestPlayerVos = new ArrayList<PlayerPerformanceInSingleGame>();
-		TeamPerformanceInSingleGame guestTeamPerformanceInSingleGame = gameVo
-				.getGuestTP();
-		guestPlayerVos = guestTeamPerformanceInSingleGame.getPlayerList();
-		if (guestRowData == null) {
-			guestRowData = new Vector<Vector<String>>();
-		} else {
-			guestRowData.clear();
-		}
-		if (guestDataCriteria == "BASIC") {
-			guestColumn = new Vector<String>();
-			guestColumn.add("球员");
-			guestColumn.add("姓名");
-			guestColumn.add("号码");
-			guestColumn.add("时间");
-			guestColumn.add("得分");
-			guestColumn.add("助攻");
-			guestColumn.add("个人犯规");
-			for (int i = 0; i < guestPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(guestPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(guestPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getScore()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getAssistance()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getFoul()));
-				guestRowData.add(a);
-			}
-		} else if (guestDataCriteria == "SHOOTING") {
-			guestColumn = new Vector<String>();
-			guestColumn.add("球员");
-			guestColumn.add("姓名");
-			guestColumn.add("号码");
-			guestColumn.add("时间");
-			guestColumn.add("命中数");
-			guestColumn.add("三分命中数");
-			guestColumn.add("罚球命中数");
-			for (int i = 0; i < guestPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(guestPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(guestPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getHitNum()));
-				a.add(String.valueOf(guestPlayerVos.get(i)
-						.getThreePointHitNum()));
-				a.add(String
-						.valueOf(guestPlayerVos.get(i).getFreeThrowHitNum()));
-				guestRowData.add(a);
-			}
-
-		} else if (guestDataCriteria == "REBOUNDS") {
-			guestColumn = new Vector<String>();
-			guestColumn.add("球员");
-			guestColumn.add("姓名");
-			guestColumn.add("号码");
-			guestColumn.add("时间");
-			guestColumn.add("进攻篮板");
-			guestColumn.add("防守篮板");
-			guestColumn.add("总篮板数");
-			for (int i = 0; i < guestPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(guestPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(guestPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(guestPlayerVos.get(i)
-						.getOffensiveRebound()));
-				a.add(String.valueOf(guestPlayerVos.get(i)
-						.getDefensiveRebound()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getReboundOverall()));
-				guestRowData.add(a);
-			}
-
-		} else if (guestDataCriteria == "X-FACTOR") {
-			guestColumn = new Vector<String>();
-			guestColumn.add("球员");
-			guestColumn.add("姓名");
-			guestColumn.add("号码");
-			guestColumn.add("时间");
-			guestColumn.add("抢断");
-			guestColumn.add("盖帽");
-			guestColumn.add("失误");
-			for (int i = 0; i < guestPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(guestPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(guestPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getSteal()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getBlock()));
-				a.add(String.valueOf(guestPlayerVos.get(i).getTurnover()));
-				guestRowData.add(a);
-			}
-
-		} else {
-			System.out.println("guestDataCriteria in LiveInfoPanel！！！");
-		}
-
-		if (guestTable != null) {
-			guestTable.setVisible(false);
-		}
-
-		if (guestScrollPane != null) {
-			guestScrollPane.setVisible(false);
-		}
-
-		guestTable = new JTable(guestRowData, guestColumn);
-		JTableHeader header = guestTable.getTableHeader();
-		header.setDefaultRenderer(new DefaultTableCellRenderer() {
-
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				Component cell = super.getTableCellRendererComponent(table,
-						value, isSelected, hasFocus, row, column);
-				cell.setBackground(Color.DARK_GRAY);
-				return cell;
-			}
-
-		});
-		((DefaultTableCellRenderer) header.getDefaultRenderer())
-				.setPreferredSize(new Dimension(550, 50));
-		((DefaultTableCellRenderer) header.getDefaultRenderer())
-				.setHorizontalAlignment(JLabel.CENTER);
-		MyTableRenderer r2 = new MyTableRenderer();
-		r2.setHorizontalAlignment(JLabel.CENTER);
-		guestTable.setDefaultRenderer(Object.class, r2);
-
-		guestTable.setForeground(Color.WHITE);
-		/*
-		 * DefaultTableCellRenderer guestTableHeaderRenderer = new
-		 * DefaultTableCellRenderer();
-		 * guestTableHeaderRenderer.setPreferredSize(new Dimension(550, 50));
-		 * guestTableHeaderRenderer
-		 * .setHorizontalAlignment(SwingConstants.CENTER);
-		 * guestTableHeaderRenderer.setOpaque(false);
-		 * guestTable.getTableHeader()
-		 * .setDefaultRenderer(guestTableHeaderRenderer);
-		 * 
-		 * guestTable.setForeground(Color.WHITE);
-		 */
-
-		guestTable.getColumnModel().getColumn(0).setPreferredWidth(70);
-		guestTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		guestTable.setRowHeight(70);
-		guestTable.setVisible(true);
-		guestTable.setCellSelectionEnabled(true);
-		guestTable.setOpaque(false);
-		guestTable.getColumnModel().getColumn(0)
-				.setCellRenderer(new PlayerRenderer("guest"));
-
-		guestScrollPane = new JScrollPane(guestTable);
-		guestScrollPane.getVerticalScrollBar().setUI(
-				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		guestScrollPane.setBounds(131, 100, 550, 400);
-		guestScrollPane.setVisible(true);
-		guestScrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		guestScrollPane
-				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		guestScrollPane.getViewport().setOpaque(false);
-		guestScrollPane.setOpaque(false);
-
-		datalbl.add(guestScrollPane);
-
-	}
-
-	public void hostCriteriaSelected(String hostDataCriteria) {
-
-		ArrayList<PlayerPerformanceInSingleGame> hostPlayerVos = new ArrayList<PlayerPerformanceInSingleGame>();
-		TeamPerformanceInSingleGame hostTeamPerformanceInSingleGame = gameVo
-				.getHomeTP();
-		hostPlayerVos = hostTeamPerformanceInSingleGame.getPlayerList();
-		if (hostRowData == null) {
-			hostRowData = new Vector<Vector<String>>();
-		} else {
-			hostRowData.clear();
-		}
-		if (hostDataCriteria == "BASIC") {
-			hostColumn = new Vector<String>();
-			hostColumn.add("球员");
-			hostColumn.add("姓名");
-			hostColumn.add("号码");
-			hostColumn.add("时间");
-			hostColumn.add("得分");
-			hostColumn.add("助攻");
-			hostColumn.add("个人犯规");
-			for (int i = 0; i < hostPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(hostPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(hostPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getScore()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getAssistance()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getFoul()));
-				hostRowData.add(a);
-			}
-		} else if (hostDataCriteria == "SHOOTING") {
-			hostColumn = new Vector<String>();
-			hostColumn.add("球员");
-			hostColumn.add("姓名");
-			hostColumn.add("号码");
-			hostColumn.add("时间");
-			hostColumn.add("命中数");
-			hostColumn.add("三分命中数");
-			hostColumn.add("罚球命中数");
-			for (int i = 0; i < hostPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(hostPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(hostPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getHitNum()));
-				a.add(String
-						.valueOf(hostPlayerVos.get(i).getThreePointHitNum()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getFreeThrowHitNum()));
-				hostRowData.add(a);
-			}
-
-		} else if (hostDataCriteria == "REBOUNDS") {
-			hostColumn = new Vector<String>();
-			hostColumn.add("球员");
-			hostColumn.add("姓名");
-			hostColumn.add("号码");
-			hostColumn.add("时间");
-			hostColumn.add("进攻篮板");
-			hostColumn.add("防守篮板");
-			hostColumn.add("总篮板数");
-			for (int i = 0; i < hostPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(hostPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(hostPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getTime()));
-				a.add(String
-						.valueOf(hostPlayerVos.get(i).getOffensiveRebound()));
-				a.add(String
-						.valueOf(hostPlayerVos.get(i).getDefensiveRebound()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getReboundOverall()));
-				hostRowData.add(a);
-			}
-
-		} else if (hostDataCriteria == "X-FACTOR") {
-			hostColumn = new Vector<String>();
-			hostColumn.add("球员");
-			hostColumn.add("姓名");
-			hostColumn.add("号码");
-			hostColumn.add("时间");
-			hostColumn.add("抢断");
-			hostColumn.add("盖帽");
-			hostColumn.add("失误");
-			for (int i = 0; i < hostPlayerVos.size(); i++) {
-				Vector<String> a = new Vector<String>();
-				a.add("");
-				a.add(String.valueOf(hostPlayerVos.get(i).getName()));
-				a.add("#" + String.valueOf(hostPlayerVos.get(i).getNumber()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getTime()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getSteal()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getBlock()));
-				a.add(String.valueOf(hostPlayerVos.get(i).getTurnover()));
-				hostRowData.add(a);
-			}
-
-		} else {
-			System.out.println("hostDataCriteria in LiveInfoPanel！！！");
-		}
-
-		if (hostTable != null) {
-			hostTable.setVisible(false);
-		}
-
-		if (hostScrollPane != null) {
-			hostScrollPane.setVisible(false);
-		}
-
-		hostTable = new JTable(hostRowData, hostColumn);
-		JTableHeader header1 = hostTable.getTableHeader();
-		header1.setDefaultRenderer(new DefaultTableCellRenderer() {
-
-			public Component getTableCellRendererComponent(JTable table,
-					Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				Component cell = super.getTableCellRendererComponent(table,
-						value, isSelected, hasFocus, row, column);
-				cell.setBackground(Color.DARK_GRAY);
-				return cell;
-			}
-
-		});
-		((DefaultTableCellRenderer) header1.getDefaultRenderer())
-				.setPreferredSize(new Dimension(550, 50));
-		((DefaultTableCellRenderer) header1.getDefaultRenderer())
-				.setHorizontalAlignment(JLabel.CENTER);
-		MyTableRenderer r3 = new MyTableRenderer();
-		r3.setHorizontalAlignment(JLabel.CENTER);
-		hostTable.setDefaultRenderer(Object.class, r3);
-		;
-
-		hostTable.setForeground(Color.WHITE);
-		hostTable.getTableHeader().setBackground(Color.BLACK);
-		hostTable.getColumnModel().getColumn(0)
-				.setPreferredWidth(X * 70 / 1366);
-		hostTable.getColumnModel().getColumn(1)
-				.setPreferredWidth(X * 120 / 1366);
-		hostTable.setRowHeight(70);
-		hostTable.setVisible(true);
-		hostTable.setCellSelectionEnabled(true);
-		hostTable.setOpaque(false);
-		hostTable.getColumnModel().getColumn(0)
-				.setCellRenderer(new PlayerRenderer("host"));
-
-		hostScrollPane = new JScrollPane(hostTable);
-		hostScrollPane.getVerticalScrollBar().setUI(
-				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
-		hostScrollPane.setBounds(X * 681 / 1366, Y * 100 / 768, X * 550 / 1366,
-				400);
-		hostScrollPane.setVisible(true);
-		hostScrollPane
-				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		hostScrollPane
-				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		hostScrollPane.getViewport().setOpaque(false);
-		hostScrollPane.setOpaque(false);
-
-		datalbl.add(hostScrollPane);
-
-	}
-
-	public void home() {
-		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame, MainFrame.livePanel,
-				MainFrame.playerPanel, MainFrame.teamPanel, MainFrame.gamePanel);
-		mainFrame.getContentPane().add(sp);
-		MainFrame.currentPanel = "StartPanel";
-	}
-
-	public void back() {
-		this.setVisible(false);
-		previousPanel.setVisible(true);
-		mainFrame.add(previousPanel);
-		MainFrame.currentPanel = previouspanel;
-	}
-
-	public void refresh() {
-		if (currentState.equals("live")) {
-			// playerDataLive();
-			// teamDataLive();
-			live();
-		} else if (currentState.equals("playerDataLive")) {
-			// teamDataLive();
-			// live();
-			playerDataLive();
-		} else if (currentState.equals("teamDataLive")) {
-			// live();
-			// playerDataLive();
-			teamDataLive();
-		}
-
-	}
-
-	public void selfClose() {
-		this.setVisible(false);
-	}
-
+	/*
+	 * public void selfClose() { this.setVisible(false); }
+	 */
 	public LiveInfoPanel getSelf() {
 		return this;
 	}
@@ -2541,18 +2238,19 @@ public class LiveInfoPanel extends JPanel {
 
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"CSEdata/players/portrait/" + this.name + ".png")
-					.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+					.getImage().getScaledInstance(48, 48, Image.SCALE_SMOOTH));
 
 			this.setIcon(buttonIcon);
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
 			if (isSelected) {
-				previousPanel.setVisible(false);
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
-						this.name, mainFrame, getSelf(), previouspanel);
-				MainFrame.currentPanel = "PlayerInfoPanel";
-				selfClose();
+				// previousPanel.setVisible(false);
+				/*
+				 * PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+				 * this.name, mainFrame, getSelf(), previouspanel);
+				 * MainFrame.currentPanel = "PlayerInfoPanel"; selfClose();
+				 */
 			}
 			return this;
 		}
@@ -2786,6 +2484,54 @@ public class LiveInfoPanel extends JPanel {
 			this.setFont(new Font("黑体", 1, 13));
 
 		}
+	}
+
+	public class GameDataObserver implements Observer {
+
+		@Override
+		public void update(Observable o, Object arg) {
+			// TODO Auto-generated method stub
+			gameVo = (GameVo) arg;
+			gameDataLive(gameVo);
+		}
+
+	}
+
+	public class LiveTextObserver implements Observer {
+
+		@Override
+		public void update(Observable o, Object arg) {
+			// TODO Auto-generated method stub
+			liveTextList = (ArrayList<liveText>) arg;
+			live(liveTextList);
+
+		}
+
+	}
+
+	public class TeamDataObserver implements Observer {
+
+		@Override
+		public void update(Observable o, Object arg) {
+			// TODO Auto-generated method stub
+			guestTeamPo = ((ArrayList<TeamPO>) arg).get(0);
+			hostTeamPo = ((ArrayList<TeamPO>) arg).get(1);
+			teamDataLive(guestTeamPo, hostTeamPo);
+
+		}
+
+	}
+
+	public class PlayerDataObserver implements Observer {
+
+		@Override
+		public void update(Observable o, Object arg) {
+			// TODO Auto-generated method stub
+			guestPlayerDataList = (ArrayList<PlayerPO>) arg;
+			hostPlayerDataList = (ArrayList<PlayerPO>) arg;
+			playerDataLive(guestPlayerDataList, hostPlayerDataList);
+		}
+
 	}
 
 }

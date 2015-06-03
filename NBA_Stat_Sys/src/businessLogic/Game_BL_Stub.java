@@ -21,20 +21,27 @@ public class Game_BL_Stub implements Game_BS {
 		Scoreboard scoreboard2 = new Scoreboard();
 		scoreboard2.setGuestScore(76);
 		scoreboard2.setHomeScore(84);
+		TeamPerformanceInSingleGame guestTP = new TeamPerformanceInSingleGame();
+		guestTP.setScore(64);
+		TeamPerformanceInSingleGame homeTP = new TeamPerformanceInSingleGame();
+		homeTP.setScore(79);
 
 		ArrayList<GameVo> gameVos = new ArrayList<GameVo>();
 		GameVo gameVo1 = new GameVo();
 		gameVo1.setHomeTeam("BKN");
 		gameVo1.setGuestTeam("CLE");
+		gameVo1.setGuestTP(guestTP);
+		gameVo1.setHomeTP(homeTP);
 		gameVo1.setScore1st(scoreboard1);
 		gameVo1.setScore2nd(scoreboard1);
 		gameVo1.setScore3rd(scoreboard1);
 		gameVo1.setScore4th(scoreboard1);
 		gameVo1.setScoreOverall(scoreboard2);
-		
-		TeamPerformanceInSingleGame tp1=new TeamPerformanceInSingleGame("CLE");
-		
-		PlayerPerformanceInSingleGame pp1=new PlayerPerformanceInSingleGame("Mike Miller");
+
+		TeamPerformanceInSingleGame tp1 = new TeamPerformanceInSingleGame("CLE");
+
+		PlayerPerformanceInSingleGame pp1 = new PlayerPerformanceInSingleGame(
+				"Mike Miller");
 		pp1.setHitNum(9);
 		pp1.setThreePointHitNum(3);
 		pp1.setFoul(3);
@@ -43,7 +50,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp1.setScore(19);
 		tp1.AddPlayerP(pp1);
 		tp1.AddFirstP(pp1);
-		PlayerPerformanceInSingleGame pp2=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		PlayerPerformanceInSingleGame pp2 = new PlayerPerformanceInSingleGame(
+				"Anderson Varejao");
 		pp2.setHitNum(0);
 		pp2.setThreePointHitNum(0);
 		pp2.setFoul(0);
@@ -51,7 +59,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp2.setReboundOverall(0);
 		pp2.setScore(0);
 		tp1.AddPlayerP(pp2);
-		PlayerPerformanceInSingleGame pp3=new PlayerPerformanceInSingleGame("Anthony Bennett");
+		PlayerPerformanceInSingleGame pp3 = new PlayerPerformanceInSingleGame(
+				"Anthony Bennett");
 		pp3.setHitNum(9);
 		pp3.setThreePointHitNum(3);
 		pp3.setFoul(3);
@@ -59,7 +68,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp3.setReboundOverall(6);
 		pp3.setScore(19);
 		tp1.AddPlayerP(pp3);
-		PlayerPerformanceInSingleGame pp4=new PlayerPerformanceInSingleGame("Andre Roberson");
+		PlayerPerformanceInSingleGame pp4 = new PlayerPerformanceInSingleGame(
+				"Andre Roberson");
 		pp4.setHitNum(0);
 		pp4.setThreePointHitNum(0);
 		pp4.setFoul(0);
@@ -67,7 +77,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp4.setReboundOverall(0);
 		pp4.setScore(0);
 		tp1.AddPlayerP(pp4);
-		PlayerPerformanceInSingleGame pp5=new PlayerPerformanceInSingleGame("Evan Turner");
+		PlayerPerformanceInSingleGame pp5 = new PlayerPerformanceInSingleGame(
+				"Evan Turner");
 		pp5.setHitNum(9);
 		pp5.setThreePointHitNum(3);
 		pp5.setFoul(3);
@@ -75,7 +86,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp5.setReboundOverall(6);
 		pp5.setScore(19);
 		tp1.AddPlayerP(pp5);
-		PlayerPerformanceInSingleGame pp6=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		PlayerPerformanceInSingleGame pp6 = new PlayerPerformanceInSingleGame(
+				"Anderson Varejao");
 		pp6.setHitNum(0);
 		pp6.setThreePointHitNum(0);
 		pp6.setFoul(0);
@@ -83,15 +95,16 @@ public class Game_BL_Stub implements Game_BS {
 		pp6.setReboundOverall(0);
 		pp6.setScore(0);
 		tp1.AddPlayerP(pp6);
-		
+
 		tp1.AddFirstP(pp2);
 		tp1.AddFirstP(pp3);
 		tp1.AddFirstP(pp4);
 		tp1.AddFirstP(pp5);
-		gameVo1.setGuestTP(tp1);	
-		
-		TeamPerformanceInSingleGame tp2=new TeamPerformanceInSingleGame("CLE");
-		PlayerPerformanceInSingleGame pp7=new PlayerPerformanceInSingleGame("Mike Miller");
+		gameVo1.setGuestTP(tp1);
+
+		TeamPerformanceInSingleGame tp2 = new TeamPerformanceInSingleGame("CLE");
+		PlayerPerformanceInSingleGame pp7 = new PlayerPerformanceInSingleGame(
+				"Mike Miller");
 		pp7.setHitNum(9);
 		pp7.setThreePointHitNum(3);
 		pp7.setFoul(3);
@@ -99,7 +112,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp7.setReboundOverall(6);
 		pp7.setScore(19);
 		tp2.AddPlayerP(pp7);
-		PlayerPerformanceInSingleGame pp8=new PlayerPerformanceInSingleGame("Anderson Varejao");
+		PlayerPerformanceInSingleGame pp8 = new PlayerPerformanceInSingleGame(
+				"Anderson Varejao");
 		pp8.setHitNum(0);
 		pp8.setThreePointHitNum(0);
 		pp8.setFoul(0);
@@ -107,7 +121,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp8.setReboundOverall(0);
 		pp8.setScore(0);
 		tp2.AddPlayerP(pp8);
-		PlayerPerformanceInSingleGame pp9=new PlayerPerformanceInSingleGame("Anthony Bennett");
+		PlayerPerformanceInSingleGame pp9 = new PlayerPerformanceInSingleGame(
+				"Anthony Bennett");
 		pp9.setHitNum(9);
 		pp9.setThreePointHitNum(3);
 		pp9.setFoul(3);
@@ -115,7 +130,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp9.setReboundOverall(6);
 		pp9.setScore(19);
 		tp2.AddPlayerP(pp9);
-		PlayerPerformanceInSingleGame pp10=new PlayerPerformanceInSingleGame("Andre Roberson");
+		PlayerPerformanceInSingleGame pp10 = new PlayerPerformanceInSingleGame(
+				"Andre Roberson");
 		pp10.setHitNum(0);
 		pp10.setThreePointHitNum(0);
 		pp10.setFoul(0);
@@ -123,7 +139,8 @@ public class Game_BL_Stub implements Game_BS {
 		pp10.setReboundOverall(0);
 		pp10.setScore(0);
 		tp2.AddPlayerP(pp10);
-		PlayerPerformanceInSingleGame pp11=new PlayerPerformanceInSingleGame("Evan Turner");
+		PlayerPerformanceInSingleGame pp11 = new PlayerPerformanceInSingleGame(
+				"Evan Turner");
 		pp11.setHitNum(0);
 		pp11.setThreePointHitNum(0);
 		pp11.setFoul(0);
@@ -135,9 +152,9 @@ public class Game_BL_Stub implements Game_BS {
 		tp2.AddFirstP(pp8);
 		tp2.AddFirstP(pp9);
 		tp2.AddFirstP(pp10);
-		tp2.AddFirstP(pp11);	
-		gameVo1.setHomeTP(tp2);	
-		
+		tp2.AddFirstP(pp11);
+		gameVo1.setHomeTP(tp2);
+
 		gameVos.add(gameVo1);
 		GameVo gameVo2 = new GameVo();
 		gameVo2.setHomeTeam("SAS");

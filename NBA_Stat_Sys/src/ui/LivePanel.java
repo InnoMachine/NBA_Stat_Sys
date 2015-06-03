@@ -30,7 +30,7 @@ import businessLogic.Game_BS;
 public class LivePanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	JFrame mainFrame;
+	JFrame liveFrame;
 	
 	private JTable table;
 	private JScrollPane scrollPane;
@@ -46,10 +46,10 @@ public class LivePanel extends JPanel{
 //	private JButton leftButton;
 //	private JButton rightButton;
 
-	public LivePanel(JFrame mainFrame) {
-		this.mainFrame = mainFrame;
-		X = mainFrame.getWidth();
-		Y = mainFrame.getHeight();
+	public LivePanel(JFrame liveFrame) {
+		this.liveFrame = liveFrame;
+		X = liveFrame.getWidth();
+		Y = liveFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
@@ -61,7 +61,7 @@ public class LivePanel extends JPanel{
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
 		this.add(bgLabel);
-
+/*
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
@@ -73,7 +73,7 @@ public class LivePanel extends JPanel{
 		home.setBorderPainted(false);
 		home.addActionListener(e -> back());
 		bgLabel.add(home);
-
+*/
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25, X / 25,Image.SCALE_SMOOTH));
@@ -87,7 +87,7 @@ public class LivePanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				mainFrame.setExtendedState(JFrame.ICONIFIED);
+				liveFrame.setExtendedState(JFrame.ICONIFIED);
 			}
 		});
 		bgLabel.add(minimize);
@@ -106,7 +106,7 @@ public class LivePanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				mainFrame.dispose();
+				liveFrame.dispose();
 			}
 		});
 		bgLabel.add(close);
@@ -171,7 +171,7 @@ public class LivePanel extends JPanel{
 		scrollPane.setOpaque(false);
 		bgLabel.add(scrollPane);
 
-		mainFrame.getContentPane().add(this);
+		liveFrame.getContentPane().add(this);
 	}
 
 	public void searchGameByDate(String startDate, String endDate) {
@@ -234,25 +234,15 @@ public class LivePanel extends JPanel{
 		bgLabel.add(scrollPane);
 
 	}
-
+/*
 	public void back() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame,MainFrame.livePanel,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
-		mainFrame.getContentPane().add(sp);
-		MainFrame.currentPanel="StartPanel";
+		StartPanel sp = new StartPanel(liveFrame,liveFrame.livePanel,liveFrame.playerPanel,liveFrame.teamPanel,liveFrame.gamePanel);
+		liveFrame.getContentPane().add(sp);
+		liveFrame.currentPanel="StartPanel";
 
 	}
-
-	public void refresh(){
-		mainFrame.remove(this);
-		MainFrame.livePanel=new LivePanel(mainFrame);
-		if(MainFrame.currentPanel.equals("LivePanel")){
-			MainFrame.livePanel.setVisible(true);
-		}else{
-			MainFrame.livePanel.setVisible(false);
-		}
-	}
-	
+*/
 	
 	public void selfClose(){
 		this.setVisible(false);
@@ -271,8 +261,7 @@ public class LivePanel extends JPanel{
 
 				if (hasFocus) {
 					
-				MainFrame.liveInfoPanel= new LiveInfoPanel(renderer.getGameVo()
-							,mainFrame,MainFrame.livePanel,"LivePanel");
+				LiveFrame.liveInfoPanel= new LiveInfoPanel(liveFrame);
 					selfClose();
 				}
 
