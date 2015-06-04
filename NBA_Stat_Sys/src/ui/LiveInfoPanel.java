@@ -190,9 +190,9 @@ public class LiveInfoPanel extends JPanel {
 		
 		
 		
-		
+	    //------------------------------初始gameVo，先用原先的桩测试-----------------------------
 		gameVo=game_BS.getAllGames().get(0);
-		
+		//------------------------------------------------------------------------------------
 		
 		
 		
@@ -254,7 +254,7 @@ public class LiveInfoPanel extends JPanel {
 		mainFrame.getContentPane().add(this);
 
 		txtState = new MyTextField();
-		txtState.setText("已结束");
+		txtState.setText("进行中");
 		txtState.setHorizontalAlignment(SwingConstants.CENTER);
 		txtState.setBounds(X * 651 / 1366, Y * 25 / 768, X * 66 / 1366,
 				Y * 25 / 768);
@@ -342,7 +342,7 @@ public class LiveInfoPanel extends JPanel {
 		bgLabel.add(databtn);
 
 		// -------------------------------获取初始GameVo---------------------------------
-		gameDataLive(game_BS.getAllGames().get(0));
+		gameDataLive(gameVo);
 		// ------------------------------获取初始LiveText--------------------------------
 		live(liveTextList);
 
@@ -528,9 +528,11 @@ public class LiveInfoPanel extends JPanel {
 	}
 
 	public void live(ArrayList<liveText> liveTextList) {
-		// public void live() {
+	
 		currentState = "live";
 		System.out.println(currentState);
+		
+		//---------------------------------------Steve Jin(在场队员）liveText里须加属性：是否为替换队员，我才能替换掉在场队员！！！--------------------------------------------
 		guestFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
 		guestFirstPlayerList = (gameVo.getGuestTP()).getFirstonList();
 		hostFirstPlayerList = new ArrayList<PlayerPerformanceInSingleGame>();
@@ -1264,7 +1266,37 @@ public class LiveInfoPanel extends JPanel {
 				Y * 68 / 768);
 		hitRatelbl.setFont(new Font("微软雅黑", 1, 16));
 		summarylbl.add(hitRatelbl);
+		
+		
+		 JLabel guestHitRatelbl = new JLabel();
+		 guestHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		 /*
+		 guestHitRatelbl.setBounds(X * (607 - guestTeamPo.get??? * 3) /
+		 1366, Y * 175 / 768, X * (playerInfo.getGameNum() * 3) / 1366, Y * 24
+		  / 768); 
+		 if (playerInfo.getGameNum() >= aveInfo.getGamenumField()) {
+			  guestHitRatelbl.setBackground(Color.BLUE); 
+			  } else {
+				  guestHitRatelbl.setBackground(Color.LIGHT_GRAY); 
+				  }*/
+		  guestHitRatelbl.setOpaque(true); 
+		  summarylbl.add(guestHitRatelbl);
 
+		  
+		  JLabel hostHitRatelbl = new JLabel();
+		  hostHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		  /*
+		  hostHitRatelbl .setBounds( X * 757 / 1366, Y * 175 / 768, X *(Integer
+			  .parseInt(new java.text.DecimalFormat( "0").format(aveInfo
+			  .getGamenumField())) * 3) / 1366, Y * 24 / 768); 
+		  if(playerInfo.getGameNum() >= aveInfo.getGamenumField()) {
+				  hostHitRatelbl.setBackground(Color.LIGHT_GRAY); 
+				  } else {
+					  hostHitRatelbl.setBackground(Color.BLUE); 
+					  }*/
+			  hostHitRatelbl.setOpaque(true); summarylbl.add(hostHitRatelbl);
+		  
+		  
 
 		MyLabel threePointHitRatelbl = new MyLabel("三分命中率");
 		threePointHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1273,7 +1305,39 @@ public class LiveInfoPanel extends JPanel {
 		threePointHitRatelbl.setFont(new Font("微软雅黑", 1, 16));
 		summarylbl.add(threePointHitRatelbl);
 
-	
+		
+		 JLabel guestThreePointHitRatelbl = new JLabel();
+		 guestThreePointHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		 /*
+		 guestThreePointHitRatelbl.setBounds( X (607 - Integer.parseInt(new
+		  java.text.DecimalFormat( "0").format(playerInfo.getScoreField())) *
+		  3) / 1366, Y * 243 / 768, X *(Integer.parseInt(new
+		  java.text.DecimalFormat("0") .format(playerInfo.getScoreField())) *
+		  3) / 1366, Y * 24 / 768); 
+		 if (playerInfo.getScoreField() >=aveInfo.getScoreField()) {
+			  guestThreePointHitRatelbl.setBackground(Color.BLUE); 
+			  } else {
+				  guestThreePointHitRatelbl.setBackground(Color.LIGHT_GRAY); 
+				  }*/
+		  guestThreePointHitRatelbl.setOpaque(true);
+		  summarylbl.add(guestThreePointHitRatelbl);
+		
+		  JLabel hostThreePointHitRatelbl = new JLabel();
+		  hostThreePointHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		  /*
+		  hostThreePointHitRatelbl.setBounds( X * 757 / 1366, Y * 243 / 768, X*(Integer.parseInt(new java.text.DecimalFormat("0")
+			 .format(aveInfo.getScoreField())) * 3) / 1366, Y * 24 / 768); 
+		  if(playerInfo.getScoreField() >= aveInfo.getScoreField()) {
+				 hostThreePointHitRatelbl.setBackground(Color.LIGHT_GRAY);
+				 } else {
+					 hostThreePointHitRatelbl.setBackground(Color.BLUE); 
+					 }*/
+			 hostThreePointHitRatelbl.setOpaque(true); summarylbl.add(hostThreePointHitRatelbl);
+			 
+		  
+		  
+		  
+		  
 
 		MyLabel freeThrowHitRatelbl = new MyLabel("罚球命中率");
 		freeThrowHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1282,6 +1346,36 @@ public class LiveInfoPanel extends JPanel {
 		freeThrowHitRatelbl.setFont(new Font("微软雅黑", 1, 16));
 		summarylbl.add(freeThrowHitRatelbl);
 
+		
+		JLabel guestFreeThrowHitRatelbl = new JLabel();
+		guestFreeThrowHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		/*
+		guestFreeThrowHitRatelbl .setBounds( X (607 - Integer .parseInt(new
+		  java.text.DecimalFormat( "0").format(playerInfo.getReboundOverallField())) * 3) / 1366, Y * 311 / 768, X *(Integer
+		  .parseInt(new java.text.DecimalFormat( "0").format(playerInfo
+		  .getReboundOverallField())) * 3) / 1366, Y * 24 / 768); 
+		if(playerInfo.getReboundOverallField() >= aveInfo.getReboundField()) {
+			  guestFreeThrowHitRatelbl.setBackground(Color.BLUE); 
+			  } else {
+				  guestFreeThrowHitRatelbl.setBackground(Color.LIGHT_GRAY); 
+				  }*/
+		  guestFreeThrowHitRatelbl.setOpaque(true);
+		  summarylbl.add(guestFreeThrowHitRatelbl);
+		 
+		   JLabel hostFreeThrowHitRatelbl = new JLabel();
+		   hostFreeThrowHitRatelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		   /*
+		   hostFreeThrowHitRatelbl .setBounds( X * 757 / 1366, Y * 311 / 768, X*(Integer .parseInt(new java.text.DecimalFormat( "0").format(aveInfo.getReboundField())) * 3) / 1366, Y * 24 / 768); 
+		   if (playerInfo.getReboundOverallField() >= aveInfo.getReboundField()) {
+				 hostFreeThrowHitRatelbl.setBackground(Color.LIGHT_GRAY); 
+				 } else {
+					 hostFreeThrowHitRatelbl.setBackground(Color.BLUE); 
+					 }*/
+			 hostFreeThrowHitRatelbl.setOpaque(true);
+			  summarylbl.add(hostFreeThrowHitRatelbl);
+		 
+		
+		
 		
 
 		MyLabel reboundlbl = new MyLabel("篮板");
@@ -1292,6 +1386,39 @@ public class LiveInfoPanel extends JPanel {
 		summarylbl.add(reboundlbl);
 
 		
+		 JLabel guestReboundlbl = new JLabel();
+		 guestReboundlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		 /*
+		 guestReboundlbl .setBounds( X (607 - Integer .parseInt(new
+		  java.text.DecimalFormat( "0").format(playerInfo
+		  .getThreePointHitRate() * 100)) * 3) / 1366, Y * 379 / 768, X*
+		  (Integer .parseInt(new java.text.DecimalFormat(
+		  "0").format(playerInfo .getThreePointHitRate() * 100)) * 3) / 1366, Y * 24 / 768); 
+		 if (playerInfo.getThreePointHitRate() >=aveInfo.getThreeRate()) { 
+			 lblPlayer3prate.setBackground(Color.BLUE);
+		  } else { 
+			  guestReboundlbl.setBackground(Color.LIGHT_GRAY); 
+			  }
+		 */
+		  guestReboundlbl.setOpaque(true); summarylbl.add(guestReboundlbl);
+		 
+		 
+		  
+		  JLabel hostReboundlbl = new JLabel();
+		  hostReboundlbl.setHorizontalAlignment(SwingConstants.CENTER);
+		  /*
+		  hostReboundlbl.setBounds( X * 757 / 1366, Y * 379 / 768, X*
+		  (Integer.parseInt(new java.text.DecimalFormat("0")
+		  .format(aveInfo.getThreeRate() * 100)) * 3) / 1366, Y * 24 / 768); 
+		  if(playerInfo.getThreePointHitRate() >= aveInfo.getThreeRate()) {
+			  hostReboundlbl.setBackground(Color.LIGHT_GRAY); 
+			  } else {
+				  hostReboundlbl.setBackground(Color.BLUE); 
+				  }
+				  */
+		  hostReboundlbl.setOpaque(true); 
+		  summarylbl.add(hostReboundlbl);
+		
 
 		MyLabel assistancelbl = new MyLabel("助攻");
 		assistancelbl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1300,114 +1427,48 @@ public class LiveInfoPanel extends JPanel {
 		assistancelbl.setFont(new Font("微软雅黑", 1, 16));
 		summarylbl.add(assistancelbl);
 
-		
+		 JLabel guestAssistancelbl = new JLabel();
+		 guestAssistancelbl.setHorizontalAlignment(SwingConstants.CENTER);
+		 /*
+		 guestAssistancelbl.setBounds( X (607 - Integer.parseInt(new
+		  java.text.DecimalFormat( "0").format(playerInfo.getStealField())) *
+		  3) / 1366, Y * 447 / 768, X *(Integer.parseInt(new
+		  java.text.DecimalFormat("0") .format(playerInfo.getStealField())) *
+		  3) / 1366, Y * 24 / 768);  
+		 if (playerInfo.getStealField() >= aveInfo.getStealField()) { guestAssistancelbl.setBackground(Color.BLUE);
+		  } else {
+			  guestAssistancelbl.setBackground(Color.LIGHT_GRAY); 
+		   }
+		   */
+		  guestAssistancelbl.setOpaque(true); 
+		  summarylbl.add(guestAssistancelbl);
 
+		 
+		 
+		  JLabel hostAssistancelbl = new JLabel();
+		  hostAssistancelbl.setHorizontalAlignment(SwingConstants.CENTER);
 		/*
-		 * JLabel lblPlayergamenum = new JLabel();
-		 * lblPlayergamenum.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayergamenum.setBounds(X * (607 - playerInfo.getGameNum() * 3) /
-		 * 1366, Y * 75 / 768, X * (playerInfo.getGameNum() * 3) / 1366, Y * 24
-		 * / 768); if (playerInfo.getGameNum() >= aveInfo.getGamenumField()) {
-		 * lblPlayergamenum.setBackground(Color.BLUE); } else {
-		 * lblPlayergamenum.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayergamenum.setOpaque(true); summarylbl.add(lblPlayergamenum);
+		  hostAssistancelbl.setBounds( X * 757 / 1366, Y * 447 / 768, X*
+		  (Integer.parseInt(new java.text.DecimalFormat("0")
+		  .format(aveInfo.getStealField())) * 3) / 1366, Y * 24 / 768);
+		  if(playerInfo.getStealField() >= aveInfo.getStealField()) {
+			  hostAssistancelbl.setBackground(Color.LIGHT_GRAY); } else {
+				  hostAssistancelbl.setBackground(Color.BLUE); 
+		  }*/
+		  hostAssistancelbl.setOpaque(true);
+		 summarylbl.add(hostAssistancelbl);
+		  
+		 
+		/*
 		 * 
-		 * JLabel lblPlayerminute = new JLabel();
-		 * lblPlayerminute.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayerminute.setBounds(X (607 - (int) (playerInfo.getTimeField() /
-		 * 60.0 * 3)) / 1366, Y * 109 / 768, X * ((int)
-		 * (playerInfo.getTimeField() / 60.0) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getTimeField() >= aveInfo.getTime()) {
-		 * lblPlayerminute.setBackground(Color.BLUE); } else {
-		 * lblPlayerminute.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayerminute.setOpaque(true); summarylbl.add(lblPlayerminute);
 		 * 
-		 * JLabel lblPlayerscorefield = new JLabel();
-		 * lblPlayerscorefield.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayerscorefield.setBounds( X (607 - Integer.parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo.getScoreField())) *
-		 * 3) / 1366, Y * 143 / 768, X (Integer.parseInt(new
-		 * java.text.DecimalFormat("0") .format(playerInfo.getScoreField())) *
-		 * 3) / 1366, Y * 24 / 768); if (playerInfo.getScoreField() >=
-		 * aveInfo.getScoreField()) {
-		 * lblPlayerscorefield.setBackground(Color.BLUE); } else {
-		 * lblPlayerscorefield.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayerscorefield.setOpaque(true);
-		 * summarylbl.add(lblPlayerscorefield);
 		 * 
-		 * JLabel lblPlayerassistancefield = new JLabel();
-		 * lblPlayerassistancefield
-		 * .setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayerassistancefield .setBounds( X (607 - Integer .parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo
-		 * .getAssistanceField())) * 3) / 1366, Y * 177 / 768, X (Integer
-		 * .parseInt(new java.text.DecimalFormat( "0").format(playerInfo
-		 * .getAssistanceField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getAssistanceField() >= aveInfo.getAssistanceField()) {
-		 * lblPlayerassistancefield.setBackground(Color.BLUE); } else {
-		 * lblPlayerassistancefield.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayerassistancefield.setOpaque(true);
-		 * summarylbl.add(lblPlayerassistancefield);
+		 
 		 * 
-		 * JLabel lblPlayerreboundfield = new JLabel();
-		 * lblPlayerreboundfield.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayerreboundfield .setBounds( X (607 - Integer .parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo
-		 * .getReboundOverallField())) * 3) / 1366, Y * 211 / 768, X (Integer
-		 * .parseInt(new java.text.DecimalFormat( "0").format(playerInfo
-		 * .getReboundOverallField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getReboundOverallField() >= aveInfo.getReboundField()) {
-		 * lblPlayerreboundfield.setBackground(Color.BLUE); } else {
-		 * lblPlayerreboundfield.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayerreboundfield.setOpaque(true);
-		 * summarylbl.add(lblPlayerreboundfield);
+		 *
+		
 		 * 
-		 * JLabel lblPlayerhitnum = new JLabel();
-		 * lblPlayerhitnum.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayerhitnum.setBounds( X (607 - Integer.parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo.getHitNumField())) *
-		 * 3) / 1366, Y * 245 / 768, X (Integer.parseInt(new
-		 * java.text.DecimalFormat("0") .format(playerInfo.getHitNumField())) *
-		 * 3) / 1366, Y * 24 / 768); if (playerInfo.getHitNumField() >=
-		 * aveInfo.getHitField()) { lblPlayerhitnum.setBackground(Color.BLUE); }
-		 * else { lblPlayerhitnum.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayerhitnum.setOpaque(true); summarylbl.add(lblPlayerhitnum);
-		 * 
-		 * JLabel lblPlayer3prate = new JLabel();
-		 * lblPlayer3prate.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayer3prate .setBounds( X (607 - Integer .parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo
-		 * .getThreePointHitRate() * 100)) * 3) / 1366, Y * 279 / 768, X
-		 * (Integer .parseInt(new java.text.DecimalFormat(
-		 * "0").format(playerInfo .getThreePointHitRate() * 100)) * 3) / 1366, Y
-		 * * 24 / 768); if (playerInfo.getThreePointHitRate() >=
-		 * aveInfo.getThreeRate()) { lblPlayer3prate.setBackground(Color.BLUE);
-		 * } else { lblPlayer3prate.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayer3prate.setOpaque(true); summarylbl.add(lblPlayer3prate);
-		 * 
-		 * JLabel lblPlayerfreethrowrate = new JLabel();
-		 * lblPlayerfreethrowrate.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayerfreethrowrate .setBounds( X (607 - Integer .parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo .getFreeThrowRate() *
-		 * 100)) * 3) / 1366, Y * 313 / 768, X (Integer .parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo .getFreeThrowRate() *
-		 * 100)) * 3) / 1366, Y * 24 / 768); if (playerInfo.getFreeThrowRate()
-		 * >= aveInfo.getFreeRate()) {
-		 * lblPlayerfreethrowrate.setBackground(Color.BLUE); } else {
-		 * lblPlayerfreethrowrate.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayerfreethrowrate.setOpaque(true);
-		 * summarylbl.add(lblPlayerfreethrowrate);
-		 * 
-		 * JLabel lblPlayersteal = new JLabel();
-		 * lblPlayersteal.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblPlayersteal.setBounds( X (607 - Integer.parseInt(new
-		 * java.text.DecimalFormat( "0").format(playerInfo.getStealField())) *
-		 * 3) / 1366, Y * 347 / 768, X (Integer.parseInt(new
-		 * java.text.DecimalFormat("0") .format(playerInfo.getStealField())) *
-		 * 3) / 1366, Y * 24 / 768); if (playerInfo.getStealField() >=
-		 * aveInfo.getStealField()) { lblPlayersteal.setBackground(Color.BLUE);
-		 * } else { lblPlayersteal.setBackground(Color.LIGHT_GRAY); }
-		 * lblPlayersteal.setOpaque(true); summarylbl.add(lblPlayersteal);
+	
 		 * 
 		 * JLabel lblPlayerblock = new JLabel();
 		 * lblPlayerblock.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1443,98 +1504,10 @@ public class LiveInfoPanel extends JPanel {
 		 * else { lblPlayerfoul.setBackground(Color.LIGHT_GRAY); }
 		 * lblPlayerfoul.setOpaque(true); summarylbl.add(lblPlayerfoul);
 		 * 
-		 * JLabel lblAvegamenum = new JLabel();
-		 * lblAvegamenum.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAvegamenum .setBounds( X * 757 / 1366, Y * 75 / 768, X (Integer
-		 * .parseInt(new java.text.DecimalFormat( "0").format(aveInfo
-		 * .getGamenumField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getGameNum() >= aveInfo.getGamenumField()) {
-		 * lblAvegamenum.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAvegamenum.setBackground(Color.BLUE); }
-		 * lblAvegamenum.setOpaque(true); summarylbl.add(lblAvegamenum);
 		 * 
-		 * JLabel lblAveminute = new JLabel();
-		 * lblAveminute.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAveminute.setBounds(X * 757 / 1366, Y * 109 / 768, X ((int)
-		 * (aveInfo.getMinute() * 3)) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getTimeField() >= aveInfo.getMinute()) {
-		 * lblAveminute.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAveminute.setBackground(Color.BLUE); }
-		 * lblAveminute.setOpaque(true); summarylbl.add(lblAveminute);
 		 * 
-		 * JLabel lblAvescorefield = new JLabel();
-		 * lblAvescorefield.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAvescorefield.setBounds( X * 757 / 1366, Y * 143 / 768, X
-		 * (Integer.parseInt(new java.text.DecimalFormat("0")
-		 * .format(aveInfo.getScoreField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getScoreField() >= aveInfo.getScoreField()) {
-		 * lblAvescorefield.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAvescorefield.setBackground(Color.BLUE); }
-		 * lblAvescorefield.setOpaque(true); summarylbl.add(lblAvescorefield);
-		 * 
-		 * JLabel lblAveassistancefield = new JLabel();
-		 * lblAveassistancefield.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAveassistancefield.setBounds( X * 757 / 1366, Y * 177 / 768, X
-		 * (Integer.parseInt(new java.text.DecimalFormat("0")
-		 * .format(aveInfo.getAssistanceField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getAssistanceField() >= aveInfo.getAssistanceField()) {
-		 * lblAveassistancefield.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAveassistancefield.setBackground(Color.BLUE); }
-		 * lblAveassistancefield.setOpaque(true);
-		 * summarylbl.add(lblAveassistancefield);
-		 * 
-		 * JLabel lblAvereboundfield = new JLabel();
-		 * lblAvereboundfield.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAvereboundfield .setBounds( X * 757 / 1366, Y * 211 / 768, X
-		 * (Integer .parseInt(new java.text.DecimalFormat( "0").format(aveInfo
-		 * .getReboundField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getReboundOverallField() >= aveInfo.getReboundField()) {
-		 * lblAvereboundfield.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAvereboundfield.setBackground(Color.BLUE); }
-		 * lblAvereboundfield.setOpaque(true);
-		 * summarylbl.add(lblAvereboundfield);
-		 * 
-		 * JLabel lblAvehitnum = new JLabel();
-		 * lblAvehitnum.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAvehitnum.setBounds( X * 757 / 1366, Y * 245 / 768, X
-		 * (Integer.parseInt(new java.text.DecimalFormat("0")
-		 * .format(aveInfo.getHitField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getHitNumField() >= aveInfo.getHitField()) {
-		 * lblAvehitnum.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAvehitnum.setBackground(Color.BLUE); }
-		 * lblAvehitnum.setOpaque(true); summarylbl.add(lblAvehitnum);
-		 * 
-		 * JLabel lblAve3prate = new JLabel();
-		 * lblAve3prate.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAve3prate.setBounds( X * 757 / 1366, Y * 279 / 768, X
-		 * (Integer.parseInt(new java.text.DecimalFormat("0")
-		 * .format(aveInfo.getThreeRate() * 100)) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getThreePointHitRate() >= aveInfo.getThreeRate()) {
-		 * lblAve3prate.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAve3prate.setBackground(Color.BLUE); }
-		 * lblAve3prate.setOpaque(true); summarylbl.add(lblAve3prate);
-		 * 
-		 * JLabel lblAvefreethrowrate = new JLabel();
-		 * lblAvefreethrowrate.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAvefreethrowrate.setBounds( X * 757 / 1366, Y * 313 / 768, X
-		 * (Integer.parseInt(new java.text.DecimalFormat("0")
-		 * .format(aveInfo.getFreeRate() * 100)) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getFreeThrowRate() >= aveInfo.getFreeRate()) {
-		 * lblAvefreethrowrate.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAvefreethrowrate.setBackground(Color.BLUE); }
-		 * lblAvefreethrowrate.setOpaque(true);
-		 * summarylbl.add(lblAvefreethrowrate);
-		 * 
-		 * JLabel lblAvesteal = new JLabel();
-		 * lblAvesteal.setHorizontalAlignment(SwingConstants.CENTER);
-		 * lblAvesteal.setBounds( X * 757 / 1366, Y * 347 / 768, X
-		 * (Integer.parseInt(new java.text.DecimalFormat("0")
-		 * .format(aveInfo.getStealField())) * 3) / 1366, Y * 24 / 768); if
-		 * (playerInfo.getStealField() >= aveInfo.getStealField()) {
-		 * lblAvesteal.setBackground(Color.LIGHT_GRAY); } else {
-		 * lblAvesteal.setBackground(Color.BLUE); } lblAvesteal.setOpaque(true);
-		 * summarylbl.add(lblAvesteal);
-		 * 
+		 *
+		 *
 		 * JLabel lblAveblock = new JLabel();
 		 * lblAveblock.setHorizontalAlignment(SwingConstants.CENTER);
 		 * lblAveblock.setBounds( X * 757 / 1366, Y * 381 / 768, X
@@ -1926,7 +1899,7 @@ public class LiveInfoPanel extends JPanel {
 		guestColumn.add("得分");
 		if (guestPlayerDataList != null) {
 			for (int i = 0; i < guestPlayerDataList.size(); i++) {
-				// -------------------steven Jin------------------
+				// -------------------steven Jin!!!------------------
 				Vector<String> a = new Vector<String>();
 				a.add("");
 				a.add(guestPlayerDataList.get(i).getName());
@@ -2086,7 +2059,7 @@ public class LiveInfoPanel extends JPanel {
 		if (hostPlayerDataList != null) {
 			for (int i = 0; i < hostPlayerDataList.size(); i++) {
 				Vector<String> a = new Vector<String>();
-				// -------------------steven Jin------------------
+				// -------------------steven Jin!!!------------------
 				a.add("");
 				a.add(hostPlayerDataList.get(i).getName());
 				a.add(hostPlayerDataList.get(i).getPosition());
