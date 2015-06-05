@@ -36,6 +36,15 @@ public class liveText {
 	public void setTeam(String team) {
 		this.team = team;
 	}
+	public String getFirstName(){
+		String aname = this.player;
+		if(aname.contains(" ")){
+			return aname.substring(0, aname.indexOf(" "));
+		}
+		else {
+			return aname;
+		}
+	}
 	
 	
 }
