@@ -27,7 +27,8 @@ public class StartPanel extends JPanel {
 	static SortPanel sortTeamPanel;
 	static ScreeningPlayerPanel screeningPlayerPanel;
 	
-	LivePanel livePanel;
+	AnalysisPanel analysisPanel;
+//	LivePanel livePanel;
 	PlayerPanel playerPanel;
 	TeamPanel teamPanel;
 	GamePanel gamePanel;
@@ -45,11 +46,12 @@ public class StartPanel extends JPanel {
 	int X;
 	int Y;
 
-	public StartPanel(JFrame mainFrame,LivePanel livePanel,PlayerPanel playerPanel,TeamPanel teamPanel,GamePanel gamePanel) {
+	public StartPanel(JFrame mainFrame,AnalysisPanel analysisPanel,PlayerPanel playerPanel,TeamPanel teamPanel,GamePanel gamePanel) {
 		this.mainFrame = mainFrame;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
-		this.livePanel=livePanel;
+		this.analysisPanel=analysisPanel;
+//		this.livePanel=livePanel;
 		this.playerPanel=playerPanel;
 		this.teamPanel=teamPanel;
 		this.gamePanel=gamePanel;
@@ -77,10 +79,10 @@ public class StartPanel extends JPanel {
 	public void createButton() {
 		int subX=55*X/100;
 		
-		MyButton livebtn = new MyButton("今日直播");
-		livebtn.setBounds(3*X/20, 8*Y/20, X/6, Y/10);
-		livebtn.addActionListener(e -> toLivePanel());
-		bgLabel.add(livebtn);
+		MyButton analysisbtn = new MyButton("数据分析");
+		analysisbtn.setBounds(3*X/20, 8*Y/20, X/6, Y/10);
+		analysisbtn.addActionListener(e -> toAnalysisPanel());
+		bgLabel.add(analysisbtn);
 		
 		MyButton playerInfobtn = new MyButton("球员信息");
 		playerInfobtn.setBounds(3*X/20, 11*Y/20, X/6, Y/10);
@@ -183,33 +185,18 @@ public class StartPanel extends JPanel {
 		
 		
 	}
-
-	public void playerOpe() {
-
-		searchTeambtn.setVisible(false);
-		sortTeambtn.setVisible(false);
-
-		searchPlayerbtn.setVisible(true);
-		sortPlayerbtn.setVisible(true);
-		screeningPlayerbtn.setVisible(true);
-
+	public void toAnalysisPanel() {
+		this.setVisible(false);
+		analysisPanel.setVisible(true);
+        MainFrame.currentPanel="analysisPanel";
 	}
-
-	public void teamOpe() {
-
-		searchPlayerbtn.setVisible(false);
-		sortPlayerbtn.setVisible(false);
-		screeningPlayerbtn.setVisible(false);
-
-		searchTeambtn.setVisible(true);
-		sortTeambtn.setVisible(true);
-
-	}
+	/*
 	public void toLivePanel() {
 		this.setVisible(false);
 		livePanel.setVisible(true);
         MainFrame.currentPanel="livePanel";
 	}
+	*/
 	
 	public void toPlayerPanel() {
 		this.setVisible(false);

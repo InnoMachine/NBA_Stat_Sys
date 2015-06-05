@@ -2251,7 +2251,7 @@ public class GameInfoPanel extends JPanel {
 
 	public void home() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame,MainFrame.livePanel,MainFrame.playerPanel,
+		StartPanel sp = new StartPanel(mainFrame,MainFrame.analysisPanel,MainFrame.playerPanel,
 				MainFrame.teamPanel, MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 		MainFrame.currentPanel = "StartPanel";
