@@ -206,14 +206,19 @@ public class ScreeningPlayerPanel extends JPanel {
 		seasons.addElement("2011-2012赛季");
 		seasons.addElement("2010-2011赛季");
 		playerScreeningSeason=new JComboBox<String>(seasons);
-		playerScreeningSeason.setBounds(X * 400 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
+		playerScreeningSeason.setBounds(X * 200 / 1366, Y * 160 / 768, X*130/1366, Y*28/768);
 		playerScreeningSeason.setSelectedItem("2013-2014赛季");
 		playerScreeningSeason.setForeground(Color.WHITE);
 		playerScreeningSeason.setBackground(Color.GRAY);
 		bgLabel.add(playerScreeningSeason);
 		
+		
+		
+		
+		
+		
 		allposition=new PositionButton("所有位置");
-		allposition.setLocation(200, 160);
+		allposition.setLocation(380, 160);
 		allposition.setText("所有位置⊙");
 		allposition.addActionListener(e->{
 			allposition.setText("所有位置⊙");
@@ -222,7 +227,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			guard.setText("后卫");
 		});
 		forward=new PositionButton("前锋");
-		forward.setLocation(320, 160);
+		forward.setLocation(500, 160);
 		forward.addActionListener(e->{
 			allposition.setText("所有位置");
 			forward.setText("前锋⊙");
@@ -230,7 +235,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			guard.setText("后卫");
 		});
 		center=new PositionButton("中锋");
-		center.setLocation(440, 160);
+		center.setLocation(620, 160);
 		center.addActionListener(e->{
 			allposition.setText("所有位置");
 			forward.setText("前锋");
@@ -238,7 +243,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			guard.setText("后卫");
 		});
 		guard=new PositionButton("后卫");
-		guard.setLocation(560, 160);
+		guard.setLocation(740, 160);
 		guard.addActionListener(e->{
 			allposition.setText("所有位置");
 			forward.setText("前锋");
@@ -247,7 +252,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		});
 		
 		screeningCriteriabtn = new JButton("筛选依据");
-		screeningCriteriabtn.setBounds(X*825/1366, Y*160/768,X*213/1366,Y*30/768);
+		screeningCriteriabtn.setBounds(X*930/1366, Y*160/768,X*213/1366,Y*30/768);
 		screeningCriteriabtn.setFont(new Font("微软雅黑",1,15));
 		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 				"Image/mainButton.png").getImage().getScaledInstance(
@@ -659,7 +664,7 @@ public class ScreeningPlayerPanel extends JPanel {
 				ScreeningPlayerPanel screeningPlayerPanel) {
 			this.setLayout(null);
 			this.setVisible(true);
-			this.setBounds(X * 750 / 1366, 190,
+			this.setBounds(X * 930 / 1366, 190,
 					X * 213 / 1366, X * 108 / 1366);
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 			JLabel bglabel = new JLabel();
