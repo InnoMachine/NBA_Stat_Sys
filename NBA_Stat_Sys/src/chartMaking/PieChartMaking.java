@@ -36,7 +36,8 @@ public class PieChartMaking {
 	}
 	
 	private void chart2PNG(JFreeChart chart) throws IOException{
-		OutputStream os = new FileOutputStream("chartPNG/"+chart.getTitle()+".png");
+	
+		OutputStream os = new FileOutputStream("ChartPNG/"+chart.getTitle()+".png");
 		ChartUtilities.writeChartAsPNG(os, chart, 500, 500);
 		os.close();
 	}

@@ -44,6 +44,7 @@ public class ScreeningPlayerPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	JPanel previousPanel;
+	JComboBox<String> playerScreeningSeason;
 	private JTable table;
 	private JScrollPane scrollPane;
 	ScreeningPlayerCriteriaPanel playerCriteriaPanel;
@@ -197,6 +198,19 @@ public class ScreeningPlayerPanel extends JPanel {
 		southeast.setLocation(850, 110);
 		atlantic=new LeagueButton("大西洋赛区");
 		atlantic.setLocation(1000, 110);
+		
+		Vector<String> seasons=new Vector<String>();
+		seasons.addElement("2014-2015赛季");
+		seasons.addElement("2013-2014赛季");
+		seasons.addElement("2012-2013赛季");
+		seasons.addElement("2011-2012赛季");
+		seasons.addElement("2010-2011赛季");
+		playerScreeningSeason=new JComboBox<String>(seasons);
+		playerScreeningSeason.setBounds(X * 400 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
+		playerScreeningSeason.setSelectedItem("2013-2014赛季");
+		playerScreeningSeason.setForeground(Color.WHITE);
+		playerScreeningSeason.setBackground(Color.GRAY);
+		bgLabel.add(playerScreeningSeason);
 		
 		allposition=new PositionButton("所有位置");
 		allposition.setLocation(200, 160);
