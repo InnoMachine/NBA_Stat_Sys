@@ -58,42 +58,61 @@ public class Player_BL_Stub implements Player_BS {
 		return playerVos;
 	}
 
-	public ArrayList<PlayerVo> sortPlayerBy(String option) {
+	public ArrayList<PlayerVo> sortPlayerBy(String option, String seasonid) {
 
-		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		PlayerVo playerVo1 = new PlayerVo();
-		playerVo1.setName("Andre Miller");
-		playerVo1.setAge(25);
-		playerVo1.setDivision(Division.ATLANTIC);
-		playerVo1.setNumber("19");
-		playerVos.add(playerVo1);
-		PlayerVo playerVo2 = new PlayerVo();
-		playerVo2.setName("David Lee");
-		playerVo2.setAge(24);
-		playerVo2.setDivision(Division.SOUTHEAST);
-		playerVo2.setNumber("6");
-		playerVos.add(playerVo2);
+		if (seasonid.equals("2013-2014赛季")) {
+			ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+			PlayerVo playerVo1 = new PlayerVo();
+			playerVo1.setName("Andre Miller");
+			playerVo1.setAge(25);
+			playerVo1.setDivision(Division.ATLANTIC);
+			playerVo1.setNumber("19");
+			playerVos.add(playerVo1);
+			PlayerVo playerVo2 = new PlayerVo();
+			playerVo2.setName("David Lee");
+			playerVo2.setAge(24);
+			playerVo2.setDivision(Division.SOUTHEAST);
+			playerVo2.setNumber("6");
+			playerVos.add(playerVo2);
+			return playerVos;
+		} else {
+			ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+			PlayerVo playerVo3 = new PlayerVo();
+			playerVo3.setName("testHotPlayerDaily3");
+			playerVo3.setTeam("DAL");
+			playerVo3.setPosition("前锋");
+			playerVos.add(playerVo3);
+			return playerVos;
+		}
 
-		return playerVos;
 	}
 
 	public ArrayList<PlayerVo> filterPlayerBy(String position, String div,
-			String option) {
-		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		PlayerVo playerVo1 = new PlayerVo();
-		playerVo1.setName("Andre Miller");
-		playerVo1.setAge(25);
-		playerVo1.setDivision(Division.ATLANTIC);
-		playerVo1.setNumber("19");
-		playerVos.add(playerVo1);
-		PlayerVo playerVo2 = new PlayerVo();
-		playerVo2.setName("David Lee");
-		playerVo2.setAge(24);
-		playerVo2.setDivision(Division.SOUTHEAST);
-		playerVo2.setNumber("6");
-		playerVos.add(playerVo2);
-
-		return playerVos;
+			String option, String seasonid) {
+		if (seasonid.equals("2013-2014赛季")) {
+			ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+			PlayerVo playerVo1 = new PlayerVo();
+			playerVo1.setName("Andre Miller");
+			playerVo1.setAge(25);
+			playerVo1.setDivision(Division.ATLANTIC);
+			playerVo1.setNumber("19");
+			playerVos.add(playerVo1);
+			PlayerVo playerVo2 = new PlayerVo();
+			playerVo2.setName("David Lee");
+			playerVo2.setAge(24);
+			playerVo2.setDivision(Division.SOUTHEAST);
+			playerVo2.setNumber("6");
+			playerVos.add(playerVo2);
+			return playerVos;
+		} else {
+			ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
+			PlayerVo playerVo3 = new PlayerVo();
+			playerVo3.setName("testHotPlayerDaily3");
+			playerVo3.setTeam("DAL");
+			playerVo3.setPosition("前锋");
+			playerVos.add(playerVo3);
+			return playerVos;
+		}
 	}
 
 	public ArrayList<PlayerVo> getPlayersByTeam(String abbr) {
@@ -412,7 +431,8 @@ public class Player_BL_Stub implements Player_BS {
 	}
 
 	@Override
-	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2) {
+	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2,
+			String seasonid) {
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		PlayerVo playerVo1 = new PlayerVo();
 		playerVo1.setName("Chris Johnson");
@@ -577,7 +597,7 @@ public class Player_BL_Stub implements Player_BS {
 		games.add(pp2);
 		games.add(pp3);
 		games.add(pp4);
-//		games.add(pp5);
+		// games.add(pp5);
 		playerGames.setGames(games);
 
 		return playerGames;
@@ -586,7 +606,7 @@ public class Player_BL_Stub implements Player_BS {
 	@Override
 	public TotalInfo getTotalInfo() {
 		// TODO Auto-generated method stub
-		TotalInfo totalInfo=new TotalInfo();
+		TotalInfo totalInfo = new TotalInfo();
 		totalInfo.setGamenumField(7);
 		totalInfo.setTime(1201);
 		totalInfo.setAssistanceField(7.11);
@@ -601,4 +621,5 @@ public class Player_BL_Stub implements Player_BS {
 		totalInfo.setFoulField(2.3);
 		return totalInfo;
 	}
+
 }

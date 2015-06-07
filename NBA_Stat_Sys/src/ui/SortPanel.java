@@ -70,9 +70,9 @@ public class SortPanel extends JPanel {
 	Player_BS player_BS = new Player_BL_Stub();
 	Team_BS team_BS = new Team_BL_Stub();
 
-	String playerCriteria1 = "";
+	String playerCriteria1 = "gameNum";
 //	String playerCriteria2 = "";
-	String teamCriteria = "";
+	String teamCriteria = "GameNum.";
 
 	String UpOrDown = "Down";
 
@@ -204,7 +204,9 @@ public class SortPanel extends JPanel {
 			playerSortSeason.setForeground(Color.WHITE);
 			playerSortSeason.setBackground(Color.GRAY);
 			bgLabel.add(playerSortSeason);
-			
+			playerSortSeason.addActionListener(e->{
+				sortPlayer(UpOrDown,String.valueOf(playerSortSeason.getSelectedItem()));
+				});
 			
 			/*
 			MyLabel criterialbl = new MyLabel(Color.WHITE, "排序依据");
@@ -238,7 +240,7 @@ public class SortPanel extends JPanel {
 			JButton upSortbtn = new JButton();
 			upSortbtn.addActionListener(e -> {
 				UpOrDown = "Up";
-				sortPlayer(UpOrDown);
+				sortPlayer(UpOrDown,String.valueOf(playerSortSeason.getSelectedItem()));
 			});
 			
 			ImageIcon UPIcon = new ImageIcon(new ImageIcon(
@@ -255,7 +257,7 @@ public class SortPanel extends JPanel {
 			JButton downSortbtn = new JButton();
 			downSortbtn.addActionListener(e -> {
 				UpOrDown = "Down";
-				sortPlayer(UpOrDown);
+				sortPlayer(UpOrDown,String.valueOf(playerSortSeason.getSelectedItem()));
 			});
 			
 			ImageIcon DownIcon = new ImageIcon(new ImageIcon(
@@ -323,7 +325,7 @@ public class SortPanel extends JPanel {
 			playerRowData = new Vector<Vector<PlayerCardPanel>>();
 
 			ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-			playerVos = player_BS.sortPlayerBy("gameNum");
+			playerVos = player_BS.sortPlayerBy("gameNum",String.valueOf(playerSortSeason.getSelectedItem()));
 			for (int i = 0; i < playerVos.size(); i++) {
 				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
 				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
@@ -351,36 +353,26 @@ public class SortPanel extends JPanel {
 			JButton upSortbtn = new JButton();
 			upSortbtn.addActionListener(e -> {
 				UpOrDown = "Up";
-				sortTeam(UpOrDown);
+				sortTeam(UpOrDown,String.valueOf(teamSortSeason.getSelectedItem()));
 			});
 
-			ImageIcon UPIcon = new ImageIcon(new ImageIcon(
-					"Image/ascending.png").getImage().getScaledInstance(X / 30,
-					X / 30, Image.SCALE_SMOOTH));
-			upSortbtn.setBounds(72 * X / 100, Y / 14, X / 30, X / 30);
-			upSortbtn.setIcon(UPIcon);
-			upSortbtn.setOpaque(false);
-			upSortbtn.setContentAreaFilled(false);
-			upSortbtn.setBorderPainted(false);
-			bgLabel.add(upSortbtn);
-
-			JButton downSortbtn = new JButton();
-			downSortbtn.addActionListener(e -> {
-				UpOrDown = "Down";
-				sortTeam(UpOrDown);
+			Vector<String> seasons=new Vector<String>();
+			seasons.addElement("2014-2015赛季");
+			seasons.addElement("2013-2014赛季");
+			seasons.addElement("2012-2013赛季");
+			seasons.addElement("2011-2012赛季");
+			seasons.addElement("2010-2011赛季");
+		    teamSortSeason=new JComboBox<String>(seasons);
+			teamSortSeason.setBounds(X * 240 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
+			teamSortSeason.setSelectedItem("2013-2014赛季");
+			teamSortSeason.setForeground(Color.WHITE);
+			teamSortSeason.setBackground(Color.GRAY);
+			bgLabel.add(teamSortSeason);
+			teamSortSeason.addActionListener(e->{
+				sortTeam(UpOrDown, String.valueOf(teamSortSeason.getSelectedItem()));
 			});
-			ImageIcon DownIcon = new ImageIcon(new ImageIcon(
-					"Image/descending.png").getImage().getScaledInstance(
-					X / 30, X / 30, Image.SCALE_SMOOTH));
-			downSortbtn.setBounds(68 * X / 100, Y / 14, X / 30, X / 30);
-			downSortbtn.setIcon(DownIcon);
-			downSortbtn.setOpaque(false);
-			downSortbtn.setContentAreaFilled(false);
-			downSortbtn.setBorderPainted(false);
-			bgLabel.add(downSortbtn);
-
-			// btnSort.addActionListener(e -> sortTeam(UpOrDown));
-			teamCriteriabtn = new JButton("");
+			
+			teamCriteriabtn = new JButton("比赛场数");
 			teamCriteriabtn.setBounds(X * 421 / 1366, Y * 66 / 768,
 					X * 500 / 1366, X / 50);
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
@@ -394,6 +386,34 @@ public class SortPanel extends JPanel {
 			teamCriteriabtn.setBorderPainted(false);
 			teamCriteriabtn.addActionListener(e -> teamCriteriaShow());
 			bgLabel.add(teamCriteriabtn);
+			
+			ImageIcon UPIcon = new ImageIcon(new ImageIcon(
+					"Image/ascending.png").getImage().getScaledInstance(X / 30,
+					X / 30, Image.SCALE_SMOOTH));
+			upSortbtn.setBounds(74 * X / 100, Y / 14, X / 30, X / 30);
+			upSortbtn.setIcon(UPIcon);
+			upSortbtn.setOpaque(false);
+			upSortbtn.setContentAreaFilled(false);
+			upSortbtn.setBorderPainted(false);
+			bgLabel.add(upSortbtn);
+
+			JButton downSortbtn = new JButton();
+			downSortbtn.addActionListener(e -> {
+				UpOrDown = "Down";
+				sortTeam(UpOrDown,String.valueOf(teamSortSeason.getSelectedItem()));
+			});
+			ImageIcon DownIcon = new ImageIcon(new ImageIcon(
+					"Image/descending.png").getImage().getScaledInstance(
+					X / 30, X / 30, Image.SCALE_SMOOTH));
+			downSortbtn.setBounds(70 * X / 100, Y / 14, X / 30, X / 30);
+			downSortbtn.setIcon(DownIcon);
+			downSortbtn.setOpaque(false);
+			downSortbtn.setContentAreaFilled(false);
+			downSortbtn.setBorderPainted(false);
+			bgLabel.add(downSortbtn);
+
+		
+		
 
 			bgLabel.addMouseListener(new MouseListener() {
 				@Override
@@ -436,10 +456,10 @@ public class SortPanel extends JPanel {
 			teamRowData = new Vector<Vector<TeamCardPanel>>();
 
 			ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
-			teamVos = team_BS.sortTeamBy("GameNum");
+			teamVos = team_BS.sortTeamBy("GameNum",String.valueOf(teamSortSeason.getSelectedItem()));
 			for (int i = 0; i < teamVos.size(); i++) {
 				Vector<TeamCardPanel> a = new Vector<TeamCardPanel>();
-				a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i), "GameNum",
+				a.add(new TeamCardPanel(i + 1, X, Y, teamVos.get(i), "比赛场数",
 						String.valueOf(teamVos.get(i).getGameNum())));
 				teamRowData.add(a);
 			}
@@ -502,7 +522,7 @@ public class SortPanel extends JPanel {
 
 	}
 
-	public void sortPlayer(String UpOrDown) {
+	public void sortPlayer(String UpOrDown,String season) {
 
 		if (sortPlayerCriteriaPanel1 != null) {
 			sortPlayerCriteriaPanel1.setVisible(false);
@@ -515,11 +535,11 @@ public class SortPanel extends JPanel {
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 
 		if (playerCriteria1 == "" ) {
-			JOptionPane.showMessageDialog(this, "请选择球员排序依据");
+			//	JOptionPane.showMessageDialog(this, "请选择球员排序依据");
 		}
 
 		else if (playerCriteria1 != "" ) {
-			playerVos = player_BS.sortPlayerBy(playerCriteria1);
+			playerVos = player_BS.sortPlayerBy(playerCriteria1,season);
 
 			if (UpOrDown == "Up") {
 				Collections.reverse(playerVos);
@@ -543,65 +563,7 @@ public class SortPanel extends JPanel {
 				makeTable("player");
 			}
 			UpOrDown = "Down"; // 恢复默认降序
-		} /*else if (playerCriteria1 == "" && playerCriteria2 != "") {
-			playerVos = player_BS.sortPlayerBy(playerCriteria2);
-
-			if (UpOrDown == "Up") {
-				Collections.reverse(playerVos);
-			}
-
-			for (int i = 0; i < playerVos.size(); i++) {
-
-				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
-				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteriabtn2.getText(), getSortValue(
-								playerVos.get(i), playerCriteria2)));
-
-				playerRowData.add(a);
-
-			}
-			dtm.setDataVector(playerRowData, column);
-			if (table != null) {
-				table.repaint();
-				table.getColumnModel().getColumn(0)
-						.setCellRenderer(new PlayerCardRenderer());
-			} else {
-				makeTable("player");
-			}
-			UpOrDown = "Down"; // 恢复默认降序
-
-		} else if (playerCriteria1 != "" && playerCriteria2 != "") {
-			playerVos = player_BS
-					.sortPlayerBy(playerCriteria1, playerCriteria2);
-
-			if (UpOrDown == "Up") {
-				Collections.reverse(playerVos);
-			}
-
-			for (int i = 0; i < playerVos.size(); i++) {
-
-				Vector<PlayerCardPanel> a = new Vector<PlayerCardPanel>();
-
-				a.add(new PlayerCardPanel(i + 1, X, Y, playerVos.get(i),
-						playerCriteriabtn1.getText(), getSortValue(
-								playerVos.get(i), playerCriteria1),
-						playerCriteriabtn2.getText(), getSortValue(
-								playerVos.get(i), playerCriteria2)));
-
-				playerRowData.add(a);
-
-			}
-			dtm.setDataVector(playerRowData, column);
-			if (table != null) {
-				table.repaint();
-				table.getColumnModel().getColumn(0)
-						.setCellRenderer(new PlayerCardRenderer());
-			} else {
-				makeTable("player");
-			}
-			UpOrDown = "Down"; // 恢复默认降序
-		}
-*/
+		} 
 	}
 
 	private String getSortValue(PlayerVo playerVo, String text) {
@@ -703,7 +665,7 @@ public class SortPanel extends JPanel {
 		return sortValue;
 	}
 
-	public void sortTeam(String UpOrDown) {
+	public void sortTeam(String UpOrDown,String season) {
 
 		if (sortTeamCriteriaPanel != null) {
 			sortTeamCriteriaPanel.setVisible(false);
@@ -715,7 +677,7 @@ public class SortPanel extends JPanel {
 			JOptionPane.showMessageDialog(this, "请选择球队排序依据");
 		} else {
 
-			teamVos = team_BS.sortTeamBy(teamCriteria);
+			teamVos = team_BS.sortTeamBy(teamCriteria,season);
 
 			if (UpOrDown == "Up") {
 				Collections.reverse(teamVos);
@@ -1864,7 +1826,7 @@ public class SortPanel extends JPanel {
 					break;
 				}
 			}*/
-			sortPlayer(UpOrDown);
+			sortPlayer(UpOrDown,String.valueOf(playerSortSeason.getSelectedItem()));
 		}
 	}
 
@@ -2012,7 +1974,7 @@ public class SortPanel extends JPanel {
 			default:
 				break;
 			}
-			sortTeam(UpOrDown);
+			sortTeam(UpOrDown,String.valueOf(teamSortSeason.getSelectedItem()));
 		}
 	}
 

@@ -105,8 +105,9 @@ public class TeamCardPanel extends JPanel {
 		txtA.setColumns(10);
 
 		MyLabel lblNewLabel_1 = new MyLabel(Color.WHITE);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setText(criteria);
-		lblNewLabel_1.setBounds(X * 480 / 1366, Y * 21 / 768, X * 80 / 1366,
+		lblNewLabel_1.setBounds(X * 470 / 1366, Y * 21 / 768, X * 80 / 1366,
 				Y * 15 / 768);
 		add(lblNewLabel_1);
 

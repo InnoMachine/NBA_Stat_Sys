@@ -56,7 +56,7 @@ public class Team_BL_Stub implements Team_BS {
 	}
 
 	@Override
-	public ArrayList<TeamVo> sortTeamBy(String option) {
+	public ArrayList<TeamVo> sortTeamBy(String option, String seasonid) {
 		// TODO Auto-generated method stub
 		ArrayList<TeamVo> teamVos = new ArrayList<TeamVo>();
 		if (option == "score") {
@@ -368,5 +368,6 @@ public class Team_BL_Stub implements Team_BS {
 		tps.add(pp5);
 		return tps;
 	}
+
 
 }

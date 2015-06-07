@@ -211,7 +211,9 @@ public class ScreeningPlayerPanel extends JPanel {
 		playerScreeningSeason.setForeground(Color.WHITE);
 		playerScreeningSeason.setBackground(Color.GRAY);
 		bgLabel.add(playerScreeningSeason);
-		
+		playerScreeningSeason.addActionListener(e->{
+		    screening();
+		});
 		
 		
 		
@@ -321,7 +323,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		});
 
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
-		playerVos = player_BS.filterPlayerBy("All", "All", "scoreField");
+		playerVos = player_BS.filterPlayerBy("All", "All", "scoreField",String.valueOf(playerScreeningSeason.getSelectedItem()));
 		if (rowData == null) {
 			rowData = new Vector<Vector<PlayerCardPanel>>();
 		} else {
@@ -498,7 +500,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		} else {
 			// System.out.println(screeningCriteria);
 			playerVos = player_BS.filterPlayerBy(position, league,
-					screeningCriteria);
+					screeningCriteria,String.valueOf(playerScreeningSeason.getSelectedItem()));
 			if (rowData == null) {
 				rowData = new Vector<Vector<PlayerCardPanel>>();
 			} else {
