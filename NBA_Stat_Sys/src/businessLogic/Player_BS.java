@@ -14,7 +14,7 @@ public interface Player_BS {
 	public ArrayList<PlayerVo> sortPlayerBy(String option,String seasonid);
 	public ArrayList<PlayerVo> filterPlayerBy(String position,String div,String option,String seasonid); 
 	public ArrayList<PlayerCardVo> hotPlayerDaily(String option);
-	public ArrayList<PlayerCardVo> hotPlayerSeason(String option,String seasonid);
+	public ArrayList<PlayerCardVo> hotPlayerSeason(String option);
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option);
 	public PlayerRecentGames getPlayerRecentPerformance(String name);
 	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2,String seasonid);

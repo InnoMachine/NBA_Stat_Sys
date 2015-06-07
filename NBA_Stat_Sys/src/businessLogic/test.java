@@ -30,7 +30,7 @@ public class test {
 			//System.out.println(temp.getHomeTeam());
 		}*/
 		Player_BS pb = new Player_BL();
-		ArrayList<PlayerVo> pv = pb.filterPlayerBy("G", "East", "score");
+		ArrayList<PlayerVo> pv = pb.filterPlayerBy("G", "East", "score","");
 		for(PlayerVo temp:pv){
 			System.out.println(temp.getName());
 		}

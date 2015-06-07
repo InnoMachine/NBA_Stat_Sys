@@ -45,7 +45,7 @@ public class Player_BL implements Player_BS{
 		return player_handler.hotPlayerDaily(option);
 	}
 	
-	public ArrayList<PlayerCardVo> hotPlayerSeason(String option,String seasonid) {
+	public ArrayList<PlayerCardVo> hotPlayerSeason(String option) {
 		return player_handler.hotPlayerSeason(option);
 	}
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option) {

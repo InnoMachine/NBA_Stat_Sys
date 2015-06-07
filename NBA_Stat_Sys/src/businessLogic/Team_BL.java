@@ -36,7 +36,7 @@ public class Team_BL implements Team_BS{
 		return player_bl.getPlayersByTeam(abbr);
 	}
 	@Override
-	public ArrayList<TeamCardVo> hotTeamSeason(String option,String seasonid) {
+	public ArrayList<TeamCardVo> hotTeamSeason(String option) {
 		return team_handler.hotTeamSeason(option);
 	}
 	@Override

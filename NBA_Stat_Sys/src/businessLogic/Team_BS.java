@@ -14,7 +14,7 @@ public interface Team_BS {
 	public ArrayList<TeamVo>  getAllTeam();
 	public ArrayList<TeamVo>  sortTeamBy(String option,String seasonid);
 	public ArrayList<PlayerVo> getPlayers(String abbr);
-	public ArrayList<TeamCardVo> hotTeamSeason(String option,String seasonid); 
+	public ArrayList<TeamCardVo> hotTeamSeason(String option); 
 	public TeamRecentGames getTeamRecentPerformance(String abbr);
 	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr);
 }

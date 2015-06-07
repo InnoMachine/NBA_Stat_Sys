@@ -16,6 +16,7 @@ import vo.PlayerGames;
 import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
+import vo.SeasonMult;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
@@ -36,6 +37,7 @@ public class Data_Handler {
 	protected GameDao gamedao;
 	protected TeamDao teamdao;
 	protected SystemDao systemdao;
+	private ArrayList<SeasonMult> seasonlist;
 	private ArrayList<PlayerPO> listpo;
 	private ArrayList<TeamPO> teamlistpo;
 	private ArrayList<PlayerVo> listvo;
