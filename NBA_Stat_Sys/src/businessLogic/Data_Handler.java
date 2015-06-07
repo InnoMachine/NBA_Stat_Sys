@@ -479,6 +479,9 @@ public class Data_Handler {
 	private void loadGames() {
 		for(int i=0;i<gamelist.size();i++)
 		{
+			if(gamelist.get(i).getGameDate()==null){
+				continue;
+			}
 			GameVo game = new GameVo();
 			TeamPerformance tpg = gamelist.get(i).getGuestTP();
 			TeamPerformance tph = gamelist.get(i).getHomeTP();
@@ -517,6 +520,9 @@ public class Data_Handler {
 	
 
 	private void TGPRateSet(TeamPerformanceInSingleGame tgp) {
+		if(tgp.getGameDate()==null){
+			return;
+		}
 		TGPSetFreeThrowRate(tgp);
 		TGPSetThreePointHitRate(tgp);
 		TGPSetHitRate(tgp);

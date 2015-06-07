@@ -23,14 +23,14 @@ public class Player_BL implements Player_BS{
 		return player_handler.getAllPlayer();
 	}
 
-	public ArrayList<PlayerVo> sortPlayerBy(String option) {
+	public ArrayList<PlayerVo> sortPlayerBy(String option,String seasonid) {
 		
 		return player_handler.sortPlayerBy(option);
 	}
-	public ArrayList<PlayerVo> sortPlayerBy(String option1,String option2){
+	public ArrayList<PlayerVo> sortPlayerBy(String option1,String option2,String seasonid){
 		return player_handler.sortPlayerBy(option1,option2);
 	}
-	public ArrayList<PlayerVo> filterPlayerBy(String position, String div, String option) {
+	public ArrayList<PlayerVo> filterPlayerBy(String position, String div, String option,String seasonid) {
 		return player_handler.filterPlayersBy(position, div, option,50);
 	}
 	
@@ -45,7 +45,7 @@ public class Player_BL implements Player_BS{
 		return player_handler.hotPlayerDaily(option);
 	}
 	
-	public ArrayList<PlayerCardVo> hotPlayerSeason(String option) {
+	public ArrayList<PlayerCardVo> hotPlayerSeason(String option,String seasonid) {
 		return player_handler.hotPlayerSeason(option);
 	}
 	public ArrayList<PlayerCardVo> progressFastPlayer(String option) {

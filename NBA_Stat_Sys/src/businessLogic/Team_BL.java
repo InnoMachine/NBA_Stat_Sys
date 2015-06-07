@@ -27,7 +27,7 @@ public class Team_BL implements Team_BS{
 	}
 
 	@Override
-	public ArrayList<TeamVo> sortTeamBy(String option) {
+	public ArrayList<TeamVo> sortTeamBy(String option,String seasonid) {
 		return team_handler.sortTeamBy(option);
 	}
 
@@ -36,7 +36,7 @@ public class Team_BL implements Team_BS{
 		return player_bl.getPlayersByTeam(abbr);
 	}
 	@Override
-	public ArrayList<TeamCardVo> hotTeamSeason(String option) {
+	public ArrayList<TeamCardVo> hotTeamSeason(String option,String seasonid) {
 		return team_handler.hotTeamSeason(option);
 	}
 	@Override
