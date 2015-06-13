@@ -13,8 +13,8 @@ public class PngFileWriter {
 	
 	public static void main(String args[]) {
 		List<String> inputFileNameList = new ArrayList<String>();
-		inputFileNameList.add("backk.png");
-		inputFileNameList.add("player.png");
+		inputFileNameList.add("CSEdata/teams_png/ATL.png");
+		inputFileNameList.add("CSEdata/players/portrait/Aaron Brooks.png");
 		String outputFileName = "hehe.png";
 		boolean isX = true;
 		new PngFileWriter().append(inputFileNameList, outputFileName, isX);
