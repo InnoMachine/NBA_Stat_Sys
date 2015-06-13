@@ -1,6 +1,5 @@
 package ui_demos;
 import java.awt.Graphics2D;
-import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,60 +12,44 @@ public class PngFileWriter {
 	
 	public static void main(String args[]) {
 		List<String> inputFileNameList = new ArrayList<String>();
-		inputFileNameList.add("backk.png");
+		inputFileNameList.add("DAL2.png");
 		inputFileNameList.add("player.png");
+
+		
 		String outputFileName = "hehe.png";
-		boolean isX = true;
-		new PngFileWriter().append(inputFileNameList, outputFileName, isX);
+		new PngFileWriter().append(inputFileNameList, outputFileName);
 	}
 
-    public void append(List<String> inputFileNameList, String outputFileName, boolean isX) {
+    public void append(List<String> inputFileNameList, String outputFileName) {
         if (inputFileNameList == null || inputFileNameList.size() == 0) {
             return;
         }
 
         try {
             boolean isFirstPng = true;
+            BufferedImage teamImg = null;
+            BufferedImage playerImg = null;
             BufferedImage outputImg = null;
             int outputImgW = 0;
             int outputImgH = 0;
             for (String pngFileName : inputFileNameList) {
                 if (isFirstPng) {
                     isFirstPng = false;
-                    outputImg = ImageIO.read(new File(pngFileName));
-                    outputImgW = outputImg.getWidth();
-                    outputImgH = outputImg.getHeight();
+                    teamImg = ImageIO.read(new File(pngFileName));
                 } else {
-                    BufferedImage appendImg = ImageIO.read(new File(pngFileName));
-                    int appendImgW = appendImg.getWidth();
-                    int appendImgH = appendImg.getHeight();
-
-                    if (isX) {
-                        outputImgW = outputImgW + appendImgW;
-                        outputImgH = outputImgH > appendImgH ? outputImgH : appendImgH;
-                    } else {
-                        outputImgW = outputImgW > appendImgW ? outputImgW : appendImgW;
-                        outputImgH = outputImgH + appendImgH;
-                    }
-
+                    playerImg = ImageIO.read(new File(pngFileName));
+                    outputImgW=playerImg.getWidth()*12/10;
+                    outputImgH=playerImg.getHeight()*12/10;
+         
                     // create basic image
-                    Graphics2D g2d = outputImg.createGraphics();
-                    BufferedImage imageNew = g2d.getDeviceConfiguration().createCompatibleImage(outputImgW, outputImgH,
-                            Transparency.TRANSLUCENT);
+                    Graphics2D g2d = teamImg.createGraphics();
+                    outputImg = g2d.getDeviceConfiguration().createCompatibleImage(outputImgW, outputImgH);
                     g2d.dispose();
-                    g2d = imageNew.createGraphics();
-                    
-                    int oldImgW = outputImg.getWidth();
-                    int oldImgH = outputImg.getHeight();
-                    g2d.drawImage(outputImg, 0, 0, oldImgW, oldImgH, null);
-                    if (isX) {
-                        g2d.drawImage(appendImg, oldImgW/3, 0, appendImgW, appendImgH, null);
-                    } else {
-                        g2d.drawImage(appendImg, 0, oldImgH/3, appendImgW, appendImgH, null);
-                    }
-                    
+                    g2d = outputImg.createGraphics();
+               
+                    g2d.drawImage(teamImg, 0, 0, outputImgW, outputImgH, null);
+                    g2d.drawImage(playerImg, (outputImgW-playerImg.getWidth()*90/100)/2,outputImgH-playerImg.getHeight()*90/100,playerImg.getWidth()*90/100, playerImg.getHeight()*90/100, null);      
                     g2d.dispose();
-                    outputImg = imageNew;
                 }
             }
             writeImageLocal(outputFileName, outputImg);
@@ -86,4 +69,3 @@ public class PngFileWriter {
         }
     }
 }
-
