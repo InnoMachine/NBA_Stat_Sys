@@ -17,9 +17,6 @@ public enum TeamAbbr {
 
 	OKC, ORL, PHI, PHX, POR,
 
-	SAC, SAS, TOR, UTA, WAS,
-	
-	
-	
+	SAC, SAS, TOR, UTA, WAS,	
 
 }

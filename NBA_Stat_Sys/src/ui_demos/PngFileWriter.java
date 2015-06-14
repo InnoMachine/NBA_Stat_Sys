@@ -13,14 +13,13 @@ public class PngFileWriter {
 	
 	public static void main(String args[]) {
 		List<String> inputFileNameList = new ArrayList<String>();
-		inputFileNameList.add("backk.png");
+		inputFileNameList.add("CHA.png");
 		inputFileNameList.add("player.png");
 		String outputFileName = "hehe.png";
-		boolean isX = true;
-		new PngFileWriter().append(inputFileNameList, outputFileName, isX);
+		new PngFileWriter().append(inputFileNameList, outputFileName);
 	}
 
-    public void append(List<String> inputFileNameList, String outputFileName, boolean isX) {
+    public void append(List<String> inputFileNameList, String outputFileName) {
         if (inputFileNameList == null || inputFileNameList.size() == 0) {
             return;
         }
@@ -41,13 +40,9 @@ public class PngFileWriter {
                     int appendImgW = appendImg.getWidth();
                     int appendImgH = appendImg.getHeight();
 
-                    if (isX) {
-                        outputImgW = outputImgW + appendImgW;
-                        outputImgH = outputImgH > appendImgH ? outputImgH : appendImgH;
-                    } else {
-                        outputImgW = outputImgW > appendImgW ? outputImgW : appendImgW;
-                        outputImgH = outputImgH + appendImgH;
-                    }
+                    outputImgW = outputImgW > appendImgW ? outputImgW : appendImgW;
+                    outputImgH = outputImgH + appendImgH;
+
 
                     // create basic image
                     Graphics2D g2d = outputImg.createGraphics();
@@ -58,12 +53,9 @@ public class PngFileWriter {
                     
                     int oldImgW = outputImg.getWidth();
                     int oldImgH = outputImg.getHeight();
-                    g2d.drawImage(outputImg, 0, 0, oldImgW, oldImgH, null);
-                    if (isX) {
-                        g2d.drawImage(appendImg, oldImgW/3, 0, appendImgW, appendImgH, null);
-                    } else {
-                        g2d.drawImage(appendImg, 0, oldImgH/3, appendImgW, appendImgH, null);
-                    }
+                    g2d.drawImage(outputImg, 0, 0, oldImgW/2, oldImgH/2, null);
+                    
+                    g2d.drawImage(appendImg, 0, 0, appendImgW, appendImgH, null);
                     
                     g2d.dispose();
                     outputImg = imageNew;

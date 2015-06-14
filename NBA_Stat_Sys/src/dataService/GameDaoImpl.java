@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 import databaseMysqlUtility.DBUtil;
 import po.GamePO;
 import po.Scoreboard;
@@ -46,6 +48,8 @@ public class GameDaoImpl implements GameDao {
 			pstmt.setString(14, game.getHomeTP().toString());
 			
 			pstmt.executeUpdate();
+		} catch (MySQLIntegrityConstraintViolationException e) {
+			System.out.println("this game already exists!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
@@ -56,7 +60,7 @@ public class GameDaoImpl implements GameDao {
 
 	@Override
 	public void update(GamePO game) {
-
+		
 		String sql = "update nba.games set gamelabel=?,seasonid=?,gamedate=?,versus=?,guestteam=?,hometeam=?,scoreoverall=?,score1st=?,score2nd=?,score3rd=?,score4th=?,extratime=?,guesttp=?,hometp=? where gamelabel=?";
 		Connection conn = DBUtil.open();
 		try {
