@@ -17,7 +17,7 @@ public class StrangeButtonTest extends JFrame {
 	}
 
 	public StrangeButtonTest() {
-		this.setBounds(0, 132, 1366, 636);
+		this.setBounds(0, 0, 1366, 768);
 		this.setVisible(true);
 		this.setLayout(null);
 		StrangeButtonPanel panel = new StrangeButtonPanel();

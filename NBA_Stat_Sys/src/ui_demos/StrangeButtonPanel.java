@@ -14,12 +14,12 @@ public class StrangeButtonPanel extends JPanel {
 	String currentTeam = "ATL";
 
 	public StrangeButtonPanel() {
-		this.setBounds(0, 0, 1366, 636);
+		this.setBounds(0, 0, 1366, 768);
 		this.setVisible(true);
 		this.setLayout(null);
 		this.setBackground(Color.DARK_GRAY);
 		JLabel label = new JLabel();
-		label.setBounds(235, 0, 1131, 636);
+		label.setBounds(235, 132, 1131, 636);
 		label.setVisible(true);
 		ImageIcon mapIcon = new ImageIcon(new ImageIcon(
 				"Image/nba-full-map.jpg").getImage().getScaledInstance(1131,
@@ -28,7 +28,7 @@ public class StrangeButtonPanel extends JPanel {
 		this.add(label);
 
 		JLabel currentTeamlbl = new JLabel();
-		currentTeamlbl.setBounds(56, 22, 132, 46);
+		currentTeamlbl.setBounds(56, 154, 132, 46);
 		// currentTeamlbl.setBackground(Color.yellow);
 		ImageIcon wordmarkIcon = new ImageIcon(new ImageIcon(
 				"Image/wordmark_png/ATL_wordmark.png").getImage()

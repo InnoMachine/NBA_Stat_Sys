@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 
 import org.apache.tools.ant.taskdefs.Sleep;
 
+import ui.analysis.AnalysisPanel;
+
 public class StartPanel extends JPanel {
 
 	/**

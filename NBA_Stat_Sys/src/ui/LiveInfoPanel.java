@@ -104,55 +104,12 @@ public class LiveInfoPanel extends JPanel {
 	private JButton btnH3;
 	private JButton btnH4;
 	private JButton btnH5;
-	private JTextField textField_6;
-	private JTextField txtGt;
-	private JTextField txtHt;
-	private JTextField FGtF;
-	private JTextField FTtF;
-	private JTextField ThreePtF;
-	private JTextField ASTtF;
-	private JTextField REBtF;
-	private JTextField TOtF;
-	private JTextField txtGTfg;
-	private JTextField txtHTfg;
-	private JTextField txtGTft;
-	private JTextField txtHTft;
-	private JTextField txtGT3p;
-	private JTextField txtHT3p;
-	private JTextField txtGTast;
-	private JTextField txtHTast;
-	private JTextField txtGTreb;
-	private JTextField txtHTreb;
-	private JTextField txtGTto;
-	private JTextField txtHTto;
+
 	ArrayList<PlayerPerformanceInSingleGame> guestFirstPlayerList;
 	ArrayList<PlayerPerformanceInSingleGame> hostFirstPlayerList;
 
 	private JLabel summarylbl;
 	JLabel gameInfolbl;
-	private JLabel leadinglbl;
-	private JTextField txtGuestTeam;
-	private JTextField txtHostTeam;
-	private JTextField txtGTscorefirst;
-	private JTextField txtGTscore;
-	private JTextField txtScore;
-	private JTextField txtHTscore;
-	private JTextField txtHTscorefirst;
-	private JTextField txtGTreboundfirst;
-	private JTextField txtGTrebound;
-	private JTextField txtRebound;
-	private JTextField txtHTrebound;
-	private JTextField txtHTreboundfirst;
-	private JTextField txtGTassistancefirst;
-	private JTextField txtGTassistance;
-	private JTextField txtAssistance;
-	private JTextField txtHTassistance;
-	private JTextField txtHTassistancefirst;
-	private JTextField txtGTblockfirst;
-	private JTextField txtGTblock;
-	private JTextField txtBlock;
-	private JTextField txtHTblock;
-	private JTextField txtHTblockfirst;
 
 	private JLabel datalbl;
 	private JLabel guestTeamDatalbl;
@@ -178,10 +135,6 @@ public class LiveInfoPanel extends JPanel {
 	PlayerBasicInfoPanel playerH4Panel;
 	PlayerBasicInfoPanel playerH5Panel;
 
-	private ChooseButton basicButton;
-	private ChooseButton shootingButton;
-	private ChooseButton reboundsButton;
-	private ChooseButton XfactorButton;
 
 	public LiveInfoPanel(JFrame mainFrame) {
 		// previousPanel.setVisible(false);
