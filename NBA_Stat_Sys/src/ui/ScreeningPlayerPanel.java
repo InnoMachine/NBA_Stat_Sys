@@ -73,8 +73,8 @@ public class ScreeningPlayerPanel extends JPanel {
 	JButton guard;
 	JButton forward;
 	
-	private String positionSelected="NBA联盟";
-	private String leagueSelected="所有位置";
+	private String leagueSelected="NBA联盟";
+	private String positionSelected="所有位置";
 	private String criteriaSelected="得分";
 	private JLabel showSelected;
 	public ScreeningPlayerPanel(JFrame mainFrame, JPanel previousPanel) {
@@ -87,11 +87,15 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setLayout(null);
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
+		/*
 		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
+		*/
+		bgLabel.setOpaque(false);
 		this.add(bgLabel);
+	    this.setBackground(Color.BLACK);
 		playerCriteriaPanel = new ScreeningPlayerCriteriaPanel(mainFrame, this);
 		playerCriteriaPanel.setVisible(false);
 

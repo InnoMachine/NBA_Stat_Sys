@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 
 import org.apache.tools.ant.types.FileList;
 
+import ui.analysis.AnalysisPanel;
+import ui_demos.StrangeButtonPanel;
 import vo.GameVo;
 import vo.TeamPerformanceInSingleGame;
 import businessLogic.DataUpdate;
@@ -20,6 +22,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	static StartPanel startPanel = null;
 	public static AnalysisPanel analysisPanel;
+//	public static StrangeButtonPanel strangeButtonPanel;
 //	public static LivePanel livePanel;
 	public static PlayerPanel playerPanel;
 	public static TeamPanel teamPanel;
@@ -55,6 +58,8 @@ public class MainFrame extends JFrame {
 
 		analysisPanel=new AnalysisPanel(this);
 		analysisPanel.setVisible(false);
+//		strangeButtonPanel=new StrangeButtonPanel();
+//		strangeButtonPanel.setVisible(false);
 //		livePanel = new LivePanel(this);
 //		livePanel.setVisible(false);
 		playerPanel = new PlayerPanel(this);

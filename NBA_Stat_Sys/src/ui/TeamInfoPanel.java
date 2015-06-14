@@ -445,7 +445,7 @@ public class TeamInfoPanel extends JPanel {
 		recentGameInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
 		recentGameInfoJSP.setBounds(X * 150 / 1366, Y * 230 / 768,
-				X * 1100 / 1366, Y * 500 / 768);
+				X * 1100 / 1366, Y * 120 / 768);
 		recentGameInfoJSP.setOpaque(false);
 		recentGameInfoJSP.getViewport().setOpaque(false);
 		recentGameInfoJSP.setVisible(false);

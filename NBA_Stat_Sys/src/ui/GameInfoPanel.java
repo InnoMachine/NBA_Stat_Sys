@@ -1,6 +1,5 @@
 package ui;
 
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -43,7 +42,7 @@ public class GameInfoPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 	String previouspanel;
-	
+
 	Game_BS game_BS = new Game_BL_Stub();
 
 	static int X;
@@ -163,11 +162,12 @@ public class GameInfoPanel extends JPanel {
 	private ChooseButton reboundsButton;
 	private ChooseButton XfactorButton;
 
-	public GameInfoPanel(GameVo gameVo, JFrame mainFrame, JPanel previousPanel,String previouspanel) {
+	public GameInfoPanel(GameVo gameVo, JFrame mainFrame, JPanel previousPanel,
+			String previouspanel) {
 		previousPanel.setVisible(false);
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
-		this.previouspanel=previouspanel;
+		this.previouspanel = previouspanel;
 		this.gameVo = gameVo;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -178,12 +178,15 @@ public class GameInfoPanel extends JPanel {
 
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
-
-		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
-				.getImage().getScaledInstance(this.getWidth(),
-						this.getHeight(), Image.SCALE_SMOOTH));
-		bgLabel.setIcon(bg);
+		/*
+		 * ImageIcon bg = new ImageIcon(new
+		 * ImageIcon("Image/screeningPlayer.png")
+		 * .getImage().getScaledInstance(this.getWidth(), this.getHeight(),
+		 * Image.SCALE_SMOOTH)); bgLabel.setIcon(bg);
+		 */
+		bgLabel.setOpaque(false);
 		this.add(bgLabel);
+		this.setBackground(Color.BLACK);
 
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
@@ -637,8 +640,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(0).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -689,8 +692,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(1).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -702,7 +705,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitG3 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ guestFirstPlayerList.get(2).getName() + ".png")
-				.getImage().getScaledInstance(X * 80/ 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnG3.setIcon(playerPortraitG3);
 		btnG3.setOpaque(false);
@@ -740,8 +743,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(2).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -791,8 +794,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(3).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -842,8 +845,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						guestFirstPlayerList.get(4).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -855,7 +858,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH1 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(0).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y *80/ 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH1.setIcon(playerPortraitH1);
 		btnH1.setOpaque(false);
@@ -893,8 +896,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(0).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -906,7 +909,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH2 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(1).getName() + ".png")
-				.getImage().getScaledInstance(X * 80/ 1366, Y *80 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH2.setIcon(playerPortraitH2);
 		btnH2.setOpaque(false);
@@ -944,8 +947,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(1).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -957,7 +960,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH3 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(2).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y *80/ 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH3.setIcon(playerPortraitH3);
 		btnH3.addActionListener(e -> {
@@ -998,8 +1001,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(2).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -1011,7 +1014,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH4 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(3).getName() + ".png")
-				.getImage().getScaledInstance(X * 80 / 1366, Y * 80/ 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH4.setIcon(playerPortraitH4);
 		btnH4.setOpaque(false);
@@ -1049,8 +1052,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(3).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -1062,7 +1065,7 @@ public class GameInfoPanel extends JPanel {
 		ImageIcon playerPortraitH5 = new ImageIcon(new ImageIcon(
 				"CSEdata/players/portrait/"
 						+ hostFirstPlayerList.get(4).getName() + ".png")
-				.getImage().getScaledInstance(X * 80/ 1366, Y * 80 / 768,
+				.getImage().getScaledInstance(X * 80 / 1366, Y * 80 / 768,
 						Image.SCALE_AREA_AVERAGING));
 		btnH5.setIcon(playerPortraitH5);
 		btnH5.addMouseListener(new MouseListener() {
@@ -1099,8 +1102,8 @@ public class GameInfoPanel extends JPanel {
 				selfClose();
 				MainFrame.playerInfoPanel = new PlayerInfoPanel(
 						hostFirstPlayerList.get(4).getName(), mainFrame,
-						new GameInfoPanel(gameVo, mainFrame, previousPanel,previouspanel),
-						"GameInfoPanel");
+						new GameInfoPanel(gameVo, mainFrame, previousPanel,
+								previouspanel), "GameInfoPanel");
 				mainFrame.add(MainFrame.playerInfoPanel);
 			}
 		});
@@ -2251,8 +2254,8 @@ public class GameInfoPanel extends JPanel {
 
 	public void home() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame,MainFrame.analysisPanel,MainFrame.playerPanel,
-				MainFrame.teamPanel, MainFrame.gamePanel);
+		StartPanel sp = new StartPanel(mainFrame, MainFrame.analysisPanel,
+				MainFrame.playerPanel, MainFrame.teamPanel, MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 		MainFrame.currentPanel = "StartPanel";
 	}
@@ -2263,21 +2266,24 @@ public class GameInfoPanel extends JPanel {
 		mainFrame.add(previousPanel);
 		MainFrame.currentPanel = previouspanel;
 	}
-	public void refresh(){
+
+	public void refresh() {
 		mainFrame.remove(this);
-		MainFrame.gameInfoPanel=new GameInfoPanel(gameVo,mainFrame, previousPanel,previouspanel);
-		if(MainFrame.currentPanel=="PlayerInfoPanel"){
+		MainFrame.gameInfoPanel = new GameInfoPanel(gameVo, mainFrame,
+				previousPanel, previouspanel);
+		if (MainFrame.currentPanel == "PlayerInfoPanel") {
 			MainFrame.playerInfoPanel.setVisible(true);
-		}else{
+		} else {
 			MainFrame.playerInfoPanel.setVisible(false);
 		}
-		
+
 	}
+
 	public void selfClose() {
 		this.setVisible(false);
 	}
-	
-	public GameInfoPanel getSelf(){
+
+	public GameInfoPanel getSelf() {
 		return this;
 	}
 
@@ -2314,8 +2320,9 @@ public class GameInfoPanel extends JPanel {
 			this.setBorderPainted(false);
 			if (isSelected) {
 				previousPanel.setVisible(false);
-				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(this.name, mainFrame, getSelf(),previouspanel);
-				MainFrame.currentPanel="PlayerInfoPanel";
+				PlayerInfoPanel playerInfoPanel = new PlayerInfoPanel(
+						this.name, mainFrame, getSelf(), previouspanel);
+				MainFrame.currentPanel = "PlayerInfoPanel";
 				selfClose();
 			}
 			return this;
