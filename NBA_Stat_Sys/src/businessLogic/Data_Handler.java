@@ -757,6 +757,11 @@ public class Data_Handler {
 				}
 			}
 		}
+		if(!tp.getGamelabel().equals("")){
+			tgp.setHitRate(tgp.getHitNum()/(double)tgp.getShotNum());
+			tgp.setThreePointHitRate(tgp.getThreePointHitNum()/(double)tgp.getThreePointShotNum());
+			tgp.setFreeThrowRate(tgp.getFreeThrowHitNum()/(double)tgp.getFreeThrowShotNum());
+		}
 		for(TeamRecentGames temp:trecgames)
 		{
 			if(temp.getAbbreviation().equals(abbr))
