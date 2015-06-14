@@ -50,7 +50,7 @@ public class PlayerInfoPanel extends JPanel {
 	JFrame mainFrame;
 	JPanel previousPanel;
 	String previouspanel;
-	
+
 	String playerName;
 	static int X;
 	static int Y;
@@ -120,18 +120,17 @@ public class PlayerInfoPanel extends JPanel {
 
 	Player_BS player_BS = new Player_BL_Stub();
 	Game_BS game_BS = new Game_BL_Stub();
-	ArrayList<PlayerPerformanceInSingleGame> recentFiveGames ;
-	ArrayList<PlayerPerformanceInSingleGame> historicalGames ;
-	
+	ArrayList<PlayerPerformanceInSingleGame> recentFiveGames;
+	ArrayList<PlayerPerformanceInSingleGame> historicalGames;
 
 	public PlayerInfoPanel(String playerName, JFrame mainFrame,
-			JPanel previousPanel,String previouspanel) {
+			JPanel previousPanel, String previouspanel) {
 
 		this.mainFrame = mainFrame;
 		this.previousPanel = previousPanel;
 		previousPanel.setVisible(false);
-		this.previouspanel=previouspanel;
-		
+		this.previouspanel = previouspanel;
+
 		this.playerName = playerName;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
@@ -181,7 +180,8 @@ public class PlayerInfoPanel extends JPanel {
 		teambtn.addActionListener(e -> {
 			this.setVisible(false);
 			MainFrame.teamInfoPanel = new TeamInfoPanel(player_BS
-					.getPlayerByName(playerName).getTeam(), mainFrame, this,previouspanel);
+					.getPlayerByName(playerName).getTeam(), mainFrame, this,
+					previouspanel);
 		});
 		teambtn.setOpaque(false);
 		teambtn.setContentAreaFilled(false);
@@ -406,7 +406,7 @@ public class PlayerInfoPanel extends JPanel {
 
 		recentGameInfoTable.setRowHeight(X * 20 / 1366);
 		recentGameInfoTable.getColumnModel().getColumn(18)
-		.setCellRenderer(new MyRecentGameButtonRenderer());
+				.setCellRenderer(new MyRecentGameButtonRenderer());
 		recentGameInfoJSP = new JScrollPane(recentGameInfoTable);
 		recentGameInfoJSP.getVerticalScrollBar().setUI(
 				new MyScrollBarUI(Color.LIGHT_GRAY, Color.GRAY));
@@ -504,8 +504,7 @@ public class PlayerInfoPanel extends JPanel {
 		});
 		((DefaultTableCellRenderer) header.getDefaultRenderer())
 				.setHorizontalAlignment(JLabel.CENTER);
-		
-		
+
 		MyTableRenderer r2 = new MyTableRenderer();
 		r2.setHorizontalAlignment(JLabel.CENTER);
 		historicalGameInfoTable.setDefaultRenderer(Object.class, r2);
@@ -515,7 +514,7 @@ public class PlayerInfoPanel extends JPanel {
 				.setPreferredWidth(X * 100 / 1366);
 		historicalGameInfoTable.setRowHeight(X * 20 / 1366);
 		historicalGameInfoTable.getColumnModel().getColumn(18)
-		.setCellRenderer(new MyHistoricalGameButtonRenderer());
+				.setCellRenderer(new MyHistoricalGameButtonRenderer());
 		historicalGameInfoTable.setOpaque(false);
 		historicalGameInfoJSP = new JScrollPane(historicalGameInfoTable);
 		historicalGameInfoJSP.getVerticalScrollBar().setUI(
@@ -1243,9 +1242,8 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getThreePointHitRate() * 100)) * 3)
 								/ 1366, 279, X * 60 / 1366, Y * 24 / 768);
-		txtP3prate
-				.setText(new java.text.DecimalFormat(
-						"#.00").format(playerInfo.getThreePointHitRate() * 100));
+		txtP3prate.setText(new java.text.DecimalFormat("#.00")
+				.format(playerInfo.getThreePointHitRate() * 100));
 		txtP3prate.setOpaque(false);
 		txtP3prate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtP3prate);
@@ -1262,9 +1260,8 @@ public class PlayerInfoPanel extends JPanel {
 												"0").format(playerInfo
 												.getFreeThrowRate() * 100)) * 3)
 								/ 1366, 313, X * 60 / 1366, Y * 24 / 768);
-		txtPfreethrowrate
-				.setText(new java.text.DecimalFormat(
-						"#.00").format(playerInfo.getFreeThrowRate() * 100));
+		txtPfreethrowrate.setText(new java.text.DecimalFormat("#.00")
+				.format(playerInfo.getFreeThrowRate() * 100));
 		txtPfreethrowrate.setOpaque(false);
 		txtPfreethrowrate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtPfreethrowrate);
@@ -1346,8 +1343,9 @@ public class PlayerInfoPanel extends JPanel {
 		txtAminute.setText("aMinute");
 		txtAminute.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAminute.setColumns(Y * 10 / 768);
-		txtAminute.setBounds(X * (585 + (int) (aveInfo.getMinute() ) * 3)
-				/ 1366, Y * 109 / 768, X * 60 / 1366, Y * 24 / 768);
+		txtAminute.setBounds(
+				X * (585 + (int) (aveInfo.getMinute()) * 3) / 1366,
+				Y * 109 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAminute.setText(String.valueOf(aveInfo.getMinute()));
 		txtAminute.setOpaque(false);
 		txtAminute.setBorder(BorderFactory.createEmptyBorder());
@@ -1400,11 +1398,14 @@ public class PlayerInfoPanel extends JPanel {
 		txtAhitnum.setText("aHitNum");
 		txtAhitnum.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAhitnum.setColumns(Y * 10 / 768);
-		txtAhitnum.setBounds(
-				X
-						* (585 + Integer.parseInt(new java.text.DecimalFormat(
-								"0").format(aveInfo.getHitField())) * 3) / 1366,
-				Y * 245 / 768, X * 60 / 1366, Y * 24 / 768);
+		txtAhitnum
+				.setBounds(
+						X
+								* (585 + Integer
+										.parseInt(new java.text.DecimalFormat(
+												"0").format(aveInfo
+												.getHitField())) * 3) / 1366,
+						Y * 245 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAhitnum.setText(String.valueOf(aveInfo.getHitField()));
 		txtAhitnum.setOpaque(false);
 		txtAhitnum.setBorder(BorderFactory.createEmptyBorder());
@@ -1419,8 +1420,8 @@ public class PlayerInfoPanel extends JPanel {
 						* (585 + Integer.parseInt(new java.text.DecimalFormat(
 								"0").format(aveInfo.getThreeRate() * 100)) * 3)
 						/ 1366, Y * 279 / 768, X * 60 / 1366, Y * 24 / 768);
-		txtAprate.setText(new java.text.DecimalFormat("#.00")
-		.format(aveInfo.getThreeRate() * 100));
+		txtAprate.setText(new java.text.DecimalFormat("#.00").format(aveInfo
+				.getThreeRate() * 100));
 		txtAprate.setOpaque(false);
 		txtAprate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAprate);
@@ -1435,7 +1436,7 @@ public class PlayerInfoPanel extends JPanel {
 								"0").format(aveInfo.getFreeRate() * 100)) * 3)
 						/ 1366, Y * 313 / 768, X * 60 / 1366, Y * 24 / 768);
 		txtAfreethrowrate.setText(new java.text.DecimalFormat("#.00")
-		.format(aveInfo.getFreeRate() * 100));
+				.format(aveInfo.getFreeRate() * 100));
 		txtAfreethrowrate.setOpaque(false);
 		txtAfreethrowrate.setBorder(BorderFactory.createEmptyBorder());
 		contentlbl.add(txtAfreethrowrate);
@@ -1505,7 +1506,8 @@ public class PlayerInfoPanel extends JPanel {
 
 	private void home() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame,MainFrame.analysisPanel,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
+		StartPanel sp = new StartPanel(mainFrame, MainFrame.analysisPanel,
+				MainFrame.playerPanel, MainFrame.teamPanel, MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 	}
 
@@ -1513,21 +1515,21 @@ public class PlayerInfoPanel extends JPanel {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
-		MainFrame.currentPanel=previouspanel;
+		MainFrame.currentPanel = previouspanel;
 	}
 
-	public void refresh(){
+	public void refresh() {
 		mainFrame.remove(this);
-		MainFrame.playerInfoPanel=new PlayerInfoPanel(playerName, mainFrame, previousPanel,previouspanel);
-		if(MainFrame.currentPanel=="PlayerInfoPanel"){
+		MainFrame.playerInfoPanel = new PlayerInfoPanel(playerName, mainFrame,
+				previousPanel, previouspanel);
+		if (MainFrame.currentPanel == "PlayerInfoPanel") {
 			MainFrame.playerInfoPanel.setVisible(true);
-		}else{
+		} else {
 			MainFrame.playerInfoPanel.setVisible(false);
 		}
-		
+
 	}
-	
-	
+
 	private void addBasicData() {
 		PlayerVo one = player_BS.getPlayerByName(playerName);
 		textField_2.setText(one.getName());
@@ -1657,23 +1659,25 @@ public class PlayerInfoPanel extends JPanel {
 		bgLabel.add(textField_18);
 
 	}
+
 	public void selfClose() {
 		this.setVisible(false);
 	}
-	public PlayerInfoPanel getSelf(){
+
+	public PlayerInfoPanel getSelf() {
 		return this;
 	}
-	
+
 	public class MyTableRenderer extends DefaultTableCellRenderer {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean cellHasFocus,
 				int row, int col) {
 
-			if ((row % 2) == 1)
-				setOpaque(false);
-			else
-				setOpaque(false);
-
+			if ((row % 2) == 1){
+				setBackground(Color.GRAY);
+			}else{
+			 setBackground(Color.LIGHT_GRAY);
+			}
 			setText((value == null) ? "" : value.toString());
 
 			return this;
@@ -1724,7 +1728,7 @@ public class PlayerInfoPanel extends JPanel {
 			this.setColumns(X * 10 / 1366);
 			this.setEditable(false);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
-//			this.setOpaque(false);
+			// this.setOpaque(false);
 		}
 	}
 
@@ -1811,8 +1815,9 @@ public class PlayerInfoPanel extends JPanel {
 			bgLabel.add(this);
 		}
 	}
-	
-	class MyRecentGameButtonRenderer extends JButton implements TableCellRenderer {
+
+	class MyRecentGameButtonRenderer extends JButton implements
+			TableCellRenderer {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable arg0,
@@ -1828,17 +1833,21 @@ public class PlayerInfoPanel extends JPanel {
 			if (isSelected) {
 				selfClose();
 				MainFrame.gameInfoPanel = new GameInfoPanel(
-			game_BS.getGameVoByLabel(recentFiveGames.get(recentGameInfoTable.getSelectedRow()).getGameLabel()),
-						mainFrame,getSelf(), "TeamInfoPanel");
+						game_BS.getGameVoByLabel(recentFiveGames.get(
+								recentGameInfoTable.getSelectedRow())
+								.getGameLabel()), mainFrame, getSelf(),
+						"TeamInfoPanel");
 				mainFrame.add(MainFrame.gameInfoPanel);
 			}
 			return this;
 		}
 
 	}
-	//-------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------
-	class MyHistoricalGameButtonRenderer extends JButton implements TableCellRenderer {
+
+	// -------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------
+	class MyHistoricalGameButtonRenderer extends JButton implements
+			TableCellRenderer {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable arg0,
@@ -1854,8 +1863,10 @@ public class PlayerInfoPanel extends JPanel {
 			if (isSelected) {
 				selfClose();
 				MainFrame.gameInfoPanel = new GameInfoPanel(
-				game_BS.getGameVoByLabel(historicalGames.get(historicalGameInfoTable.getSelectedRow()).getGameLabel()),
-						mainFrame, getSelf(), "PlayerInfoPanel");
+						game_BS.getGameVoByLabel(historicalGames.get(
+								historicalGameInfoTable.getSelectedRow())
+								.getGameLabel()), mainFrame, getSelf(),
+						"PlayerInfoPanel");
 				mainFrame.add(MainFrame.gameInfoPanel);
 			}
 			return this;

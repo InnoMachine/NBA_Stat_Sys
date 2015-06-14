@@ -36,12 +36,17 @@ public class TypicalTeamAnalysisPanel extends JPanel{
 		
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
+		/*
 		ImageIcon bg = new ImageIcon(new ImageIcon("Image/playerPanel.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
+		*/
 		this.add(bgLabel);
-
+        
+		this.setBackground(Color.BLACK);
+		
+		
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
@@ -107,6 +112,11 @@ public class TypicalTeamAnalysisPanel extends JPanel{
 			}
 		});
 		bgLabel.add(close);
+		
+		
+		
+		
+		
 				
 		
 		mainFrame.add(this);

@@ -797,11 +797,11 @@ public class TeamInfoPanel extends JPanel {
 				Object value, boolean isSelected, boolean cellHasFocus,
 				int row, int col) {
 
-			if ((row % 2) == 1)
-				setOpaque(false);
-			else
-				setOpaque(false);
-
+			if ((row % 2) == 1){
+				setBackground(Color.GRAY);
+			}else{
+			 setBackground(Color.LIGHT_GRAY);
+			}
 			setText((value == null) ? "" : value.toString());
 
 			return this;
