@@ -72,7 +72,7 @@ public class DataFurtherDistributor {
 		PlayerDao pd = new PlayerDaoImpl();
 		
 		ArrayList<SinglePerformance> spList = new ArrayList<SinglePerformance>();
-		ArrayList<GamePO> gameList = gd.getAllGames();
+		ArrayList<GamePO> gameList = gd.getAllGames("12-13");
 		
 		ArrayList<PlayerPO> allPlayerList = pd.getAllPlayers();
 		ArrayList<String> allPlayerNameList = new ArrayList<String>();
@@ -112,7 +112,7 @@ public class DataFurtherDistributor {
 		TeamDao td = new TeamDaoImpl();
 		
 		ArrayList<TeamPerformance> tpList = new ArrayList<TeamPerformance>();
-		ArrayList<GamePO> gameList = gd.getAllGames();
+		ArrayList<GamePO> gameList = gd.getAllGames("12-13");
 		
 		for(TeamAbbr teamAbbr:TeamAbbr.values()){
 			for(GamePO gamePo: gameList){
@@ -138,7 +138,7 @@ public class DataFurtherDistributor {
 		GameDao gd = new GameDaoImpl();
 		TeamDao td = new TeamDaoImpl();
 		ArrayList<String> playersNameList = new ArrayList<String>();
-		ArrayList<GamePO> gameList = gd.getAllGames();
+		ArrayList<GamePO> gameList = gd.getAllGames("12-13");
 		
 		for(TeamAbbr teamAbbr: TeamAbbr.values()){//enums
 			for(GamePO gamePo: gameList){

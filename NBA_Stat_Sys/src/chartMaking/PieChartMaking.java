@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
@@ -24,6 +25,11 @@ public class PieChartMaking {
 	}
 	
 	private JFreeChart makeChart(String chartTitle){
+		StandardChartTheme standardChartTheme = new StandardChartTheme("CN");
+	 	standardChartTheme.setExtraLargeFont(new Font("微软雅黑",Font.BOLD,15));
+	 	standardChartTheme.setRegularFont(new Font("微软雅黑",Font.BOLD,15));
+	 	standardChartTheme.setLargeFont(new Font("微软雅黑",Font.BOLD,15));
+	 	ChartFactory.setChartTheme(standardChartTheme);
 		JFreeChart chart=ChartFactory.createPieChart(chartTitle, getDataset(),true,true,false);
 		chart.setTitle(new TextTitle(chartTitle,new Font("微软雅黑",Font.BOLD,10)));
 		//set plot

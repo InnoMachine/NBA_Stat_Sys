@@ -24,7 +24,7 @@ public class testChart3 {
 		Player_BS player_bs = new Player_BL();
 		ArrayList<PlayerVo> vo = team_bs.getPlayers("LAC");
 		ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance("LAC");
-		TotalInfo ti = player_bs.getTotalInfo();
+		TotalInfo ti = player_bs.getTotalInfo("11-12");
 		PlayerVo p=vo.get(2);
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		String s=p.getName();

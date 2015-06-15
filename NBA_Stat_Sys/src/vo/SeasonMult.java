@@ -9,6 +9,7 @@ public class SeasonMult {
 	public ArrayList<TeamVo> teamlistvo;
 	public ArrayList<GameVo> gamevo;
 	public ArrayList<PlayerGames> listpg;
+	public TotalInfo ti;
 	public String getSeason() {
 		return season;
 	}
