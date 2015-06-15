@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import dataService.DataScrawl;
 import dataService.SystemDao;
 import dataService.SystemDaoImpl;
 import po.GameDate;
@@ -29,12 +30,15 @@ public class test {
 			System.out.println(temp.getGameLabel());
 			//System.out.println(temp.getHomeTeam());
 		}*/
-		Player_BS pb = new Player_BL();
+//		Player_BS pb = new Player_BL();
 //		ArrayList<PlayerVo> pv = pb.filterPlayerBy("G", "East", "score","");
 //		for(PlayerVo temp:pv){
 //			System.out.println(temp.getName());
 //		}
-		TotalInfo ti = pb.getTotalInfo("11-12");
-		System.out.println(ti.getScoreField());
+//		TotalInfo ti = pb.getTotalInfo("11-12");
+//		System.out.println(ti.getScoreField());
+		for(int i = 2000; i < 2015; i ++) {
+			DataScrawl.addGameList(i);
+		}
 	}
 }

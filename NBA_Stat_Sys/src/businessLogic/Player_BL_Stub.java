@@ -604,7 +604,7 @@ public class Player_BL_Stub implements Player_BS {
 	}
 
 	@Override
-	public TotalInfo getTotalInfo() {
+	public TotalInfo getTotalInfo(String season) {
 		// TODO Auto-generated method stub
 		TotalInfo totalInfo = new TotalInfo();
 		totalInfo.setGamenumField(7);

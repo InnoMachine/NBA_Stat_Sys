@@ -10,8 +10,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class InitDB {
+	
+	public static void main(String[] args) {
+		init();
+	}
 
 	public static void init() {
+		
 		
 		Connection conn = DBUtil.open();
 		
@@ -93,6 +98,9 @@ public class InitDB {
 		System.out.println("------------------------------");
 		System.out.println("Database tables initialized!");
 		System.out.println("------------------------------");
+	}
+	public static void main(String args[]){
+		init();
 	}
 
 }
