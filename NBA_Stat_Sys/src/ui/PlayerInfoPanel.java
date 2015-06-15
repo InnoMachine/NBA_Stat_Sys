@@ -1806,7 +1806,7 @@ public class PlayerInfoPanel extends JPanel {
 			this.setFont(new Font("微软雅黑", 1, 15));
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/mainButton.png").getImage().getScaledInstance(
-					X * 150 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
+					X * 150/ 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
 
 			this.setIcon(buttonIcon);
 			this.setOpaque(false);
@@ -1826,8 +1826,9 @@ public class PlayerInfoPanel extends JPanel {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/seeMore.png").getImage().getScaledInstance(
-					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
-
+					X * 30 / 1366, Y * 15 / 768, Image.SCALE_SMOOTH));
+			this.setBorderPainted(false);
+			this.setBackground(Color.BLACK);
 			this.setIcon(buttonIcon);
 
 			if (isSelected) {
@@ -1856,8 +1857,9 @@ public class PlayerInfoPanel extends JPanel {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/seeMore.png").getImage().getScaledInstance(
-					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
-
+					X * 30 / 1366, Y * 15 / 768, Image.SCALE_SMOOTH));
+			this.setBorderPainted(false);
+			this.setBackground(Color.BLACK);
 			this.setIcon(buttonIcon);
 
 			if (isSelected) {
