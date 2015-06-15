@@ -69,7 +69,7 @@ public class Player_BL implements Player_BS{
 		return player_handler.getPlayerPerformacne(name);
 	}
 	
-	public TotalInfo getTotalInfo() {
-		return player_handler.getTotalInfo();
+	public TotalInfo getTotalInfo(String season) {
+		return player_handler.getTotalInfo(season);
 	}
 }

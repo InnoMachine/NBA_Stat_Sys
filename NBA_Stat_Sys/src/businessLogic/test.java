@@ -30,12 +30,11 @@ public class test {
 			//System.out.println(temp.getHomeTeam());
 		}*/
 		Player_BS pb = new Player_BL();
-		ArrayList<PlayerVo> pv = pb.filterPlayerBy("G", "East", "score","");
-		for(PlayerVo temp:pv){
-			System.out.println(temp.getName());
-		}
-		TotalInfo ti = pb.getTotalInfo();
-		System.out.println(ti.getSteal());
-		
+//		ArrayList<PlayerVo> pv = pb.filterPlayerBy("G", "East", "score","");
+//		for(PlayerVo temp:pv){
+//			System.out.println(temp.getName());
+//		}
+		TotalInfo ti = pb.getTotalInfo("11-12");
+		System.out.println(ti.getScoreField());
 	}
 }

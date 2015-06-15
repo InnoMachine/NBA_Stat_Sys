@@ -1977,7 +1977,7 @@ public class Player_Handler {
 		return data_handler.getPlayerPerformacne(name);
 	}
 
-	public TotalInfo getTotalInfo() {
-		return data_handler.getTotalInfo();
+	public TotalInfo getTotalInfo(String season) {
+		return data_handler.getTotalInfo(season);
 	}
 }

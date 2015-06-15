@@ -20,5 +20,5 @@ public interface Player_BS {
 	public ArrayList<PlayerVo> sortPlayerBy(String option1, String option2,String seasonid);
 	public ArrayList<PlayerVo> searchPlayer(String key,String first) ;
 	public PlayerGames getPlayerPerformacne(String name);
-	public TotalInfo getTotalInfo();
+	public TotalInfo getTotalInfo(String season);
 }

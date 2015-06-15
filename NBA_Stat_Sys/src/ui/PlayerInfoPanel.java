@@ -547,7 +547,7 @@ public class PlayerInfoPanel extends JPanel {
 		DecimalFormat df = new DecimalFormat(".00");
 
 		TotalInfo aveInfo = new TotalInfo();
-		aveInfo = player_BS.getTotalInfo();
+		aveInfo = player_BS.getTotalInfo("13-14");
 		PlayerVo playerInfo = new PlayerVo();
 		playerInfo = player_BS.getPlayerByName(playerName);
 
@@ -1825,7 +1825,7 @@ public class PlayerInfoPanel extends JPanel {
 				int arg5) {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance(
+					"Image/seeMore.png").getImage().getScaledInstance(
 					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
 
 			this.setIcon(buttonIcon);
@@ -1855,7 +1855,7 @@ public class PlayerInfoPanel extends JPanel {
 				int arg5) {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance(
+					"Image/seeMore.png").getImage().getScaledInstance(
 					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
 
 			this.setIcon(buttonIcon);

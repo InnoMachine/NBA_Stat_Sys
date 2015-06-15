@@ -19,7 +19,7 @@ public interface GameDao {
 	
 	public GamePO getGameByLabel(String label);
 	
-	public ArrayList<GamePO> getAllGames();
+	public ArrayList<GamePO> getAllGames(String season);
 	
 	public ArrayList<GamePO> getNewGamePOs();
 	

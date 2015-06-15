@@ -153,10 +153,11 @@ public class GameDaoImpl implements GameDao {
 	}
 
 	@Override
-	public ArrayList<GamePO> getAllGames() {
+	public ArrayList<GamePO> getAllGames(String season) {
 		
 		ArrayList<GamePO> gameList = new ArrayList<GamePO>();
-		String sql = "select gamelabel,seasonid,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp from nba.games";
+		String seasonString = "'"+season+"'";
+		String sql = "select gamelabel,seasonid,gamedate,versus,guestteam,hometeam,scoreoverall,score1st,score2nd,score3rd,score4th,extratime,guesttp,hometp from nba.games where seasonid="+seasonString;
 		Connection conn = DBUtil.open();
 		try {
 			Statement stmt = conn.createStatement();

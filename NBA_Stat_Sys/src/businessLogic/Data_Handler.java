@@ -61,28 +61,50 @@ public class Data_Handler {
 	}
 	private Data_Handler()
 	{
+		seasonlist = new ArrayList<SeasonMult>();
 		playerdao = new PlayerDaoImpl();
 		gamedao = new GameDaoImpl();
 		teamdao = new TeamDaoImpl();
 		systemdao = new SystemDaoImpl();
-		listpo  = playerdao.getAllPlayers();
-		teamlistpo = teamdao.getAllTeams();
-		listvo = new ArrayList<PlayerVo>();
-		teamlistvo = new ArrayList<TeamVo>();
-		gamelist = gamedao.getAllGames();
-		trecgames = new ArrayList<TeamRecentGames>();
-		precgames = new ArrayList<PlayerRecentGames>();
-		gamevo = new ArrayList<GameVo>();
-		listpg = new ArrayList<PlayerGames>();
-		ti = new TotalInfo();
-		st = systemdao.getStById("12-13");
-		SetPlayerVo();
-		SetTeamVo();
-		loadGames();
-		PlayerDivisionSet();
-		playerCalculate();
-		TeamCalculate();
-		TotalCalculate();
+		for(int i=0;i<12;i++){
+			String season="";
+			if(i<9){
+				season="0"+i+"-"+"0"+(i+1);
+			}
+			else if(i==9){
+				season="09-10";
+			}
+			else{
+				season=i+"-"+(i+1);
+			}
+			
+			listpo  = playerdao.getAllPlayers();
+			teamlistpo = teamdao.getAllTeams();
+			listvo = new ArrayList<PlayerVo>();
+			teamlistvo = new ArrayList<TeamVo>();
+			gamelist = gamedao.getAllGames(season);
+			trecgames = new ArrayList<TeamRecentGames>();
+			precgames = new ArrayList<PlayerRecentGames>();
+			gamevo = new ArrayList<GameVo>();
+			listpg = new ArrayList<PlayerGames>();
+			ti = new TotalInfo();
+			st = systemdao.getStById("12-13");
+			SetPlayerVo();
+			SetTeamVo();
+			loadGames();
+			PlayerDivisionSet();
+			playerCalculate();
+			TeamCalculate();
+			TotalCalculate();
+			SeasonMult sm = new SeasonMult();
+			sm.setSeason(season);
+			sm.gamevo = gamevo;
+			sm.listpg = listpg;
+			sm.listvo = listvo;
+			sm.teamlistvo = teamlistvo;
+			sm.ti = ti;
+			seasonlist.add(sm);
+		}
 		
 		
 	}
@@ -100,7 +122,7 @@ public class Data_Handler {
 			ti.calcTurnoverFied(); 
 			ti.calcFoulField();
 			ti.calcHitField();
-			ti.setGamenumField(ti.getGamenum()/listvo.size());
+			ti.setGamenumField((double)ti.getGamenum()/listvo.size());
 		}
 		
 	}
@@ -163,14 +185,14 @@ public class Data_Handler {
 		double r = temp.getDefensiveRebound()/(double)(temp.getDefensiveRebound()+temp.getOpOffensiveRebound());
 		b = new BigDecimal(r);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
-		temp.setReboundEfficiency(f);
+		temp.setDefensiveReboundEfficiency(f);
 	}
 
 	private void TeamSetOffensiveReboundEfficiency(TeamVo temp) {
 		double r = temp.getOffensiveRebound()/(double)(temp.getOffensiveRebound()+temp.getDefensiveRebound());
 		b = new BigDecimal(r);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
-		temp.setReboundEfficiency(f);
+		temp.setOffensiveReboundEfficiency(f);
 	}
 
 	private void SetTeamRoundAttack(TeamVo temp) {
@@ -371,19 +393,29 @@ public class Data_Handler {
 	}
 	
 	private void PlayerSetBlockRate(PlayerVo temp) {
-		double r = temp.getBlock()*((double)temp.getteamTime()/5)/temp.getTime()
-				/(double)temp.getOpTwoPointShotNum();
-		b = new BigDecimal(r*100);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
-		temp.setBlockRate(f);
+		if(temp.getOpTwoPointShotNum()!=0){
+			double r = temp.getBlock()*((double)temp.getteamTime()/5)/temp.getTime()
+					/(double)temp.getOpTwoPointShotNum();
+			b = new BigDecimal(r*100);
+			double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+			temp.setBlockRate(f);
+		}
+		else {
+			temp.setBlockRate(0);
+		}
 	}
 	
 	private void PlayerSetStealRate(PlayerVo temp) {
-		double r = temp.getSteal()*((double)temp.getteamTime()/5)/temp.getTime()
-				/(double)temp.getOpRoundAttack();
-		b = new BigDecimal(r*100);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
-		temp.setStealRate(f);
+		if(temp.getOpRoundAttack()!=0){
+			double r = temp.getSteal()*((double)temp.getteamTime()/5)/temp.getTime()
+					/(double)temp.getOpRoundAttack();
+			b = new BigDecimal(r*100);
+			double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+			temp.setStealRate(f);
+		}
+		else {
+			temp.setStealRate(0);
+		}
 	}
 	
 	private void PlayerSetAssistanceRate(PlayerVo temp) {
@@ -403,11 +435,19 @@ public class Data_Handler {
 	}
 	
 	private void PlayerSetOffensiveReboundRate(PlayerVo temp) {
-		double r = temp.getAttackingNum()*((double)temp.getteamTime()/5)/temp.getTime()
-				/(double)(temp.getteamOffensiveRebound()+temp.getOpOffensiveRebound());
-		b = new BigDecimal(r*100);
-		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
-		temp.setOffensiveReboundRate(f);
+		double s = (double)(temp.getteamOffensiveRebound()+temp.getOpOffensiveRebound());
+		double r=0;
+		if(s!=0){
+			r = temp.getAttackingNum()*((double)temp.getteamTime()/5)/temp.getTime()
+					/s;
+			b = new BigDecimal(r*100);
+			double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
+			temp.setOffensiveReboundRate(f);
+		}
+		else{
+			temp.setOffensiveReboundRate(0);
+		}
+		
 	}
 	
 	private void PlayerSetReboundOverallRate(PlayerVo temp) {
@@ -576,7 +616,7 @@ public class Data_Handler {
 	private void teamVoPSet(TeamPerformanceInSingleGame tgp) {
 		for(int i=0;i<teamlistvo.size();i++)
 		{
-			if(tgp.getName().equals(teamlistvo.get(i).getAbbreviation()))
+			if(isTeam(tgp.getName(),teamlistvo.get(i).getAbbreviation()))
 			{
 				teamlistvo.get(i).setGameNum(teamlistvo.get(i).getGameNum()+1);
 				teamlistvo.get(i).setTime(teamlistvo.get(i).getTime()+tgp.getTime());
@@ -699,11 +739,11 @@ public class Data_Handler {
 			tgp.setFoul(tgp.getFoul()+temp.getFoul());
 			tgp.setSteal(tgp.getSteal()+temp.getSteal());
 			tgp.setScore(tgp.getScore()+temp.getScore());
-			for(int i=0;i<listvo.size();i++)
+			int i=0;
+			for(;i<listvo.size();i++)
 			{
 				if(temp.getName().equals(listvo.get(i).getName()))
 				{
-					
 					PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
 					pgp.setTeam(tgp.getName());
 					pgp.setPosition(temp.getPosition());
@@ -756,6 +796,64 @@ public class Data_Handler {
 					break;
 				}
 			}
+			if(i==listvo.size()){
+				PlayerVo vo = createNewVo(temp.getName());
+				listvo.add(vo);
+				PlayerPerformanceInSingleGame pgp = new PlayerPerformanceInSingleGame(temp.getName());
+				pgp.setTeam(tgp.getName());
+				pgp.setPosition(temp.getPosition());
+				pgp.setGameLabel(tp.getGamelabel());
+				pgp.setNumber("");
+				pgp.setTime(temp.getTimeBySeconds());
+				pgp.setHitNum(pgp.getHitNum()+temp.getHitNum());
+				pgp.setShotNum(pgp.getShotNum()+temp.getShotNum());
+				pgp.setThreePointHitNum(pgp.getThreePointHitNum()+temp.getThreePointHitNum());
+				pgp.setThreePointShotNum(pgp.getThreePointShotNum()+temp.getThreePointShotNum());
+				pgp.setFreeThrowHitNum(pgp.getFreeThrowHitNum()+temp.getFreeThrowHitNum());
+				pgp.setFreeThrowShotNum(pgp.getFreeThrowShotNum()+temp.getFreeThrowShotNum());
+				pgp.setOffensiveRebound(pgp.getOffensiveRebound()+temp.getOffensiveRebound());
+				pgp.setDefensiveRebound(pgp.getDefensiveRebound()+temp.getDefensiveRebound());
+				pgp.setReboundOverall(pgp.getReboundOverall()+temp.getReboundOverall());
+				pgp.setAssistance(pgp.getAssistance()+temp.getAssistance());
+				pgp.setSteal(pgp.getSteal()+temp.getSteal());
+				pgp.setBlock(pgp.getBlock()+temp.getBlock());
+				pgp.setTurnover(pgp.getTurnover()+temp.getTurnover());
+				pgp.setFoul(pgp.getFoul()+temp.getFoul());
+				pgp.setScore(pgp.getScore()+temp.getScore());
+				if(isTwoTen(temp)){
+					pgp.setTwoTenNum(1);
+				}
+				if(k<5)
+				{
+					pgp.setFirstOn(1);
+					k++;
+					tgp.AddFirstP(pgp);
+				}
+				if(tgp.getHighestassist()<temp.getAssistance()){
+					tgp.setHighestassist(temp.getAssistance());
+					tgp.setHighestassistPlayer(temp.getName());
+				}
+				if(tgp.getHighestScore()<temp.getScore()){
+					tgp.setHighestScore(temp.getScore());
+					tgp.setHighestScorePlayer(temp.getName());
+				}
+				if(tgp.getHighestblock()<temp.getBlock()){
+					tgp.setHighestblock(temp.getBlock());
+					tgp.setHighestblockPlayer(temp.getName());
+				}
+				if(tgp.getHighestRebound()<temp.getReboundOverall()){
+					tgp.setHighestRebound(temp.getReboundOverall());
+					tgp.setHighestReboundPlayer(temp.getName());
+				}
+				PlayerRecentGames p = new PlayerRecentGames();
+				p.setName(temp.getName());
+				PlayerGames pg = new PlayerGames(temp.getName());
+				precgames.add(p);
+				listpg.add(pg);
+				tgp.AddPlayerP(pgp);
+				precgames.get(i).AddNewGame(pgp);
+				listpg.get(i).AddGames(pgp);
+			}
 		}
 		if(!tp.getGamelabel().equals("")){
 			tgp.setHitRate(tgp.getHitNum()/(double)tgp.getShotNum());
@@ -772,7 +870,106 @@ public class Data_Handler {
 		return tgp;
 		
 	}
-	
+	private boolean isTeam(String abbr1,String abbr2){
+		if(abbr1.equals(abbr2)){
+			return true;
+		}
+		else{
+			if(abbr1.equals("SAC")||abbr1.equals("SAS")){
+				if(abbr2.equals("SAC")||abbr2.equals("SAS"))
+					return true;
+				else {
+					return false;
+				}
+			}
+			if(abbr1.equals("PHO")||abbr1.equals("PHX")){
+				if(abbr2.equals("PHO")||abbr2.equals("PHX"))
+					return true;
+				else {
+					return false;
+				}
+			}
+			if(abbr1.equals("NOH")||abbr1.equals("NOP")||abbr1.equals("NOK")){
+				if(abbr2.equals("NOH")||abbr2.equals("NOP")||abbr2.equals("NOK"))
+					return true;
+				else {
+					return false;
+				}
+			}
+			if(abbr1.equals("CHA")||abbr1.equals("CHH")){
+				if(abbr2.equals("CHA")||abbr2.equals("CHH"))
+					return true;
+				else {
+					return false;
+				}
+			}
+			if(abbr1.equals("BKN")||abbr1.equals("NJN")){
+				if(abbr2.equals("BKN")||abbr2.equals("NJN"))
+					return true;
+				else {
+					return false;
+				}
+			}
+			if(abbr1.equals("BOS")||abbr1.equals("UTA")){
+				if(abbr2.equals("BOS")||abbr2.equals("UTA"))
+					return true;
+				else {
+					return false;
+				}
+			}
+			return false;
+		}
+	}
+	private PlayerVo createNewVo(String name) {
+		PlayerVo temp = new PlayerVo();
+		temp.setName(name);
+		temp.setNumber("");
+		temp.setPosition("");
+		temp.setHeight("");
+		temp.setWeight("");
+		temp.setBirth("");
+		temp.setAge(0);
+		temp.setExp(0);
+		temp.setSchool("");
+		temp.setActionImgPath("");
+		temp.setPortraitImgPath("");
+		temp.setTeam("");
+		
+		temp.setTime(0);
+		temp.setHitNum(0);
+		temp.setShotNum(0);
+		temp.setThreePointHitNum(0);
+		temp.setThreePointShotNum(0);
+		temp.setFreeThrowHitNum(0);
+		temp.setFreeThrowShotNum(0);
+		temp.setAttackingNum(0);
+		temp.setDefensiveNum(0);
+		temp.setReboundOverall(0);
+		temp.setAssistance(0);
+		temp.setBlock(0);
+		temp.setTurnover(0);
+		temp.setFoul(0);
+		temp.setScore(0);
+		temp.setSteal(0);
+		temp.setFirstOnNum(0);
+		
+		temp.setTeamRoundAttack(0);
+		temp.setteamFreeThrowNum(0);
+		temp.setteamShotNum(0);
+		temp.setteamHitNum(0);
+		temp.setteamTime(0);
+		temp.setteamTurnOver(0);
+		temp.setteamRebound(0);
+		temp.setteamOffensiveRebound(0);
+		temp.setteamDefensiveRebound(0);
+		temp.setOpDefensiveRebound(0);
+		temp.setOpOffensiveRebound(0);
+		temp.setOpReboundAll(0);
+		temp.setOpRoundAttack(0);
+		temp.setOpTwoPointShotNum(0);
+		temp.setTwoTenNum(0);
+		return temp;
+	}
 	private boolean isTwoTen(SinglePerformance temp) {
 		int score = temp.getScore();
 		int assistance = temp.getAssistance();
@@ -1065,10 +1262,19 @@ public class Data_Handler {
 		return list;
 		
 	}
-	public TotalInfo getTotalInfo() {
-		return ti;
+	public TotalInfo getTotalInfo(String season) {
+		
+		return GetSeason(season).ti;
 	}
 	
+	private SeasonMult GetSeason(String season) {
+		for(SeasonMult temp:seasonlist){
+			if(temp.getSeason().equals(season)){
+				return temp;
+			}
+		}
+		return null;
+	}
 	public ArrayList<PlayerVo> sortByFamilyName(){
 		String a[][] = new String [listvo.size()][2]; 
 		for(int i=0;i<listvo.size();i++)
