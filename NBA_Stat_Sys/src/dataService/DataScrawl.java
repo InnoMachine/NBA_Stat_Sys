@@ -21,7 +21,11 @@ public class DataScrawl {
 
 	public static void main(String[] args) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for(int i = 1999; i < 2015; i ++) {
+=======
+		for(int i = 2009; i < 2015; i ++) {
+>>>>>>> 6b4d4e96f3e42943242de678701f9222b5eb86d2
 =======
 		for(int i = 2009; i < 2015; i ++) {
 >>>>>>> 6b4d4e96f3e42943242de678701f9222b5eb86d2
