@@ -10,8 +10,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class InitDB {
+	
+	public static void main(String[] args) {
+		init();
+	}
 
 	public static void init() {
+		
 		
 		Connection conn = DBUtil.open();
 		

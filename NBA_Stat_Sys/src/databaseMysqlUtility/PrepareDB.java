@@ -39,6 +39,7 @@ public class PrepareDB {
 //		st.setUpdateTeamList(updateTeamList);
 		
 		InitDB.init();
+		
 		sd.add(st);
 		DataFileReader.importGamesFrom(fileNameList);
 		DataFileReader.importPlayersAndTeams();

@@ -20,9 +20,7 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
-		for(int i = 2009; i < 2015; i ++) {
-			addGameList(i);
-		}
+			addGameList(2009);
 	}
 	
 	public static GamePO getGamePO(String year, String id) {
@@ -158,6 +156,9 @@ public class DataScrawl {
 	}
 	
 	public static int getTimeBySec(String timeText) {//12:24
+		if(timeText == null) {
+			return 0;
+		}
 		String[] splitedTime = timeText.split(":");
 		int timeBySec = Integer.parseInt(splitedTime[0]) * 60
 				+ Integer.parseInt(splitedTime[1]);
