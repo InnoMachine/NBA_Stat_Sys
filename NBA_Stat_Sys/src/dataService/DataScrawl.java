@@ -20,7 +20,7 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
-		for(int i = 2000; i < 2015; i ++) {
+		for(int i = 2009; i < 2015; i ++) {
 			addGameList(i);
 		}
 	}
@@ -143,15 +143,15 @@ public class DataScrawl {
 		sp.setThreePointShotNum(playerJsonArray.getIntValue(13));
 		sp.setFreeThrowHitNum(playerJsonArray.getIntValue(15));
 		sp.setFreeThrowShotNum(playerJsonArray.getIntValue(16));
-		sp.setOffensiveRebound(playerJsonArray.getIntValue(17));
-		sp.setDefensiveRebound(playerJsonArray.getIntValue(18));
-		sp.setReboundOverall(playerJsonArray.getIntValue(19));
-		sp.setAssistance(playerJsonArray.getIntValue(20));
-		sp.setSteal(playerJsonArray.getIntValue(21));
-		sp.setBlock(playerJsonArray.getIntValue(22));
-		sp.setTurnover(playerJsonArray.getIntValue(23));
-		sp.setFoul(playerJsonArray.getIntValue(24));
-		sp.setScore(playerJsonArray.getIntValue(25));
+		sp.setOffensiveRebound(playerJsonArray.getIntValue(18));
+		sp.setDefensiveRebound(playerJsonArray.getIntValue(19));
+		sp.setReboundOverall(playerJsonArray.getIntValue(20));
+		sp.setAssistance(playerJsonArray.getIntValue(21));
+		sp.setSteal(playerJsonArray.getIntValue(22));
+		sp.setBlock(playerJsonArray.getIntValue(23));
+		sp.setTurnover(playerJsonArray.getIntValue(24));
+		sp.setFoul(playerJsonArray.getIntValue(25));
+		sp.setScore(playerJsonArray.getIntValue(26));
 		return sp;
 		//"GAME_ID","TEAM_ID","TEAM_ABBREVIATION","TEAM_CITY","PLAYER_ID","PLAYER_NAME","START_POSITION","COMMENT","MIN","FGM","FGA","FG_PCT","FG3M","FG3A","FG3_PCT","FTM","FTA","FT_PCT","OREB","DREB","REB","AST","STL","BLK","TO","PF","PTS","PLUS_MINUS"
 		//["0020000001",1610612755,"PHI","Philadelphia",238,"Tyrone Hill","F","","22:07",3,5,0.600,0,0,0.000,0,0,0.000,2,2,4,0,0,2,4,3,6,17.000]
