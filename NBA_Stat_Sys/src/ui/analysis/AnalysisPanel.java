@@ -1,6 +1,7 @@
 package ui.analysis;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,8 +34,16 @@ public class AnalysisPanel extends JPanel {
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		this.setBackground(Color.DARK_GRAY);
+		this.setBackground(new Color(21,21,21));
 
+		JLabel titlelbl=new JLabel("NBA球队球风变化分析",JLabel.CENTER);
+		titlelbl.setBounds(186, 0, 994, 132);
+		titlelbl.setVisible(true);
+		titlelbl.setOpaque(false);
+		titlelbl.setFont(new Font("微软雅黑", 1, 24));
+		titlelbl.setForeground(Color.WHITE);
+		this.add(titlelbl);
+		
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
@@ -85,9 +94,7 @@ public class AnalysisPanel extends JPanel {
 		});
 		this.add(close);
 
-		teamChartPanel = new TeamChartPanel(currentTeam, currentPicCriteria);
-		teamChartPanel.setVisible(false);
-
+        /*
 		JButton pic1 = new JButton();
 		pic1.setText("场均得分变化");
 		pic1.setBounds(45, 250, 154, 45);
@@ -177,9 +184,13 @@ public class AnalysisPanel extends JPanel {
 		pic9.setForeground(Color.WHITE);
 		pic9.setContentAreaFilled(false);
 		this.add(pic9);
+        */
 
+		
+		
+		
 		JLabel label = new JLabel();
-		label.setBounds(235, 132, 1131, 636);
+		label.setBounds(117, 132, 1131, 636);
 		label.setVisible(true);
 		ImageIcon mapIcon = new ImageIcon(new ImageIcon(
 				"Image/nba-full-map.jpg").getImage().getScaledInstance(1131,
@@ -187,16 +198,15 @@ public class AnalysisPanel extends JPanel {
 		label.setIcon(mapIcon);
 
 		JLabel currentTeamlbl = new JLabel();
-		currentTeamlbl.setBounds(56, 154, 132, 46);
+		currentTeamlbl.setBounds(1100, 650, 132, 46);
 		// currentTeamlbl.setBackground(Color.yellow);
 		ImageIcon wordmarkIcon = new ImageIcon(new ImageIcon(
 				"Image/wordmark_png/ATL_wordmark.png").getImage()
 				.getScaledInstance(132, 46, Image.SCALE_SMOOTH));
 		currentTeamlbl.setIcon(wordmarkIcon);
-
 		currentTeamlbl.setVisible(true);
 
-		label.add(teamChartPanel);
+	//	label.add(teamChartPanel);
 
 		JButton MEM = new JButton();
 		MEM.setBounds(140, 0, 80, 14);
@@ -219,13 +229,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "MEM";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -235,11 +249,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		MEM.addActionListener(e->{
-			currentTeam = "MEM";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "MEM", this);
@@ -269,13 +279,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "TOR";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -285,11 +299,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		TOR1.addActionListener(e->{
-			currentTeam = "TOR";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+		
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "TOR", this);
@@ -318,13 +328,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "TOR";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -334,11 +348,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		TOR2.addActionListener(e->{
-			currentTeam = "TOR";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "TOR", this);
@@ -367,13 +377,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "TOR";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -383,11 +397,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		TOR3.addActionListener(e->{
-			currentTeam = "TOR";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "TOR", this);
@@ -417,13 +427,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "MIN";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -433,11 +447,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		MIN1.addActionListener(e->{
-			currentTeam = "MIN";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "MIN", this);
@@ -465,13 +475,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+				//teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "MIN";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -481,11 +495,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		MIN2.addActionListener(e->{
-			currentTeam = "MIN";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+		
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "MIN", this);
@@ -514,13 +524,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "POR";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -530,11 +544,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		POR.addActionListener(e->{
-			currentTeam = "POR";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+		
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "POR", this);
@@ -563,13 +573,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "MIL";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -579,11 +593,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		MIL.addActionListener(e->{
-			currentTeam = "MIL";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "MIL", this);
@@ -612,13 +622,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "DET";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -628,11 +642,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		DET.addActionListener(e->{
-			currentTeam = "DET";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "DET", this);
@@ -661,13 +671,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "NYK";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -677,11 +691,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		NYK.addActionListener(e->{
-			currentTeam = "NYK";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "NYK", this);
@@ -710,13 +720,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "BOS";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -726,11 +740,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		BOS1.addActionListener(e->{
-			currentTeam = "BOS";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "BOS", this);
@@ -759,13 +769,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "BOS";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -775,11 +789,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		BOS2.addActionListener(e->{
-			currentTeam = "BOS";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "BOS", this);
@@ -808,13 +818,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "GSW";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -824,11 +838,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		GSW.addActionListener(e->{
-			currentTeam = "GSW";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "GSW", this);
@@ -857,13 +867,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+		//		teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "SAC";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -873,11 +887,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		SAC.addActionListener(e->{
-			currentTeam = "SAC";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "SAC", this);
@@ -906,13 +916,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+		//		teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "UTA";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -922,11 +936,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		UTA.addActionListener(e->{
-			currentTeam = "UTA";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "UTA", this);
@@ -955,13 +965,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "LAL";
+				currentTeamlbl
+						.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
+								+ currentTeam + "_wordmark.png").getImage()
+								.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -971,11 +985,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		LAL1.addActionListener(e -> {
-			currentTeam = "LAL";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
+		
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "LAL", this);
@@ -1005,13 +1015,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "LAL";
+				currentTeamlbl
+						.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
+								+ currentTeam + "_wordmark.png").getImage()
+								.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1021,11 +1035,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		LAL2.addActionListener(e -> {
-			currentTeam = "LAL";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "LAL", this);
@@ -1054,13 +1064,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "LAC";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1070,11 +1084,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		LAC.addActionListener(e->{
-			currentTeam = "LAC";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "LAC", this);
@@ -1103,13 +1113,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "DEN";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1119,11 +1133,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		DEN1.addActionListener(e->{
-			currentTeam = "DEN";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "DEN", this);
@@ -1152,13 +1162,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "DEN";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1168,11 +1182,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		DEN2.addActionListener(e->{
-			currentTeam = "DEN";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "DEN", this);
@@ -1184,12 +1194,43 @@ public class AnalysisPanel extends JPanel {
 		DEN3.setBounds(359, 347, 83, 43);
 		DEN3.setContentAreaFilled(false);
 		DEN3.setBorderPainted(false);
+		DEN2.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+			//	teamChartPanel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				currentTeam = "DEN";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			
+			}
+		});
 		DEN3.addActionListener(e -> {
-			currentTeam = "DEN";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "DEN", this);
@@ -1218,13 +1259,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "OKC";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1234,11 +1279,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		OKC.addActionListener(e->{
-			currentTeam = "OKC";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "OKC", this);
@@ -1267,13 +1308,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "CHI";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1283,11 +1328,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		CHI.addActionListener(e->{
-			currentTeam = "CHI";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "CHI", this);
@@ -1316,13 +1357,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "IND";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1332,11 +1377,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		IND.addActionListener(e->{
-			currentTeam = "IND";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "IND", this);
@@ -1365,13 +1406,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "CLE";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1381,11 +1426,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		CLE.addActionListener(e->{
-			currentTeam = "CLE";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "CLE", this);
@@ -1414,13 +1455,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "PHI";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1430,11 +1475,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		PHI.addActionListener(e->{
-			currentTeam = "PHI";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "PHI", this);
@@ -1463,13 +1504,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "WAS";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1479,11 +1524,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		WAS.addActionListener(e->{
-			currentTeam = "WAS";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "WAS", this);
@@ -1512,13 +1553,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "PHX";
+				currentTeamlbl
+						.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
+								+ currentTeam + "_wordmark.png").getImage()
+								.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1527,11 +1572,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		PHX1.addActionListener(e -> {
-			currentTeam = "PHX";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "PHX", this);
@@ -1560,13 +1601,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "PHX";
+				currentTeamlbl
+						.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
+								+ currentTeam + "_wordmark.png").getImage()
+								.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1575,11 +1620,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		PHX2.addActionListener(e -> {
-			currentTeam = "PHX";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "PHX", this);
@@ -1608,13 +1649,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "CHA";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1623,11 +1668,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		CHA.addActionListener(e->{
-			currentTeam = "CHA";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "CHA", this);
@@ -1656,13 +1697,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "MEM";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1672,11 +1717,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		MEM2.addActionListener(e->{
-			currentTeam = "MEM";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "MEM", this);
@@ -1705,13 +1746,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "ATL";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1721,11 +1766,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		ATL.addActionListener(e->{
-			currentTeam = "ATL";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "ATL", this);
@@ -1754,13 +1795,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "NOH";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + "NOP" + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1770,11 +1815,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		NOH.addActionListener(e->{
-			currentTeam = "NOH";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "NOH", this);
@@ -1803,13 +1844,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "HOU";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1819,11 +1864,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		HOU.addActionListener(e->{
-			currentTeam = "HOU";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "HOU", this);
@@ -1852,13 +1893,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "SAS";
+				currentTeamlbl
+						.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
+								+ currentTeam + "_wordmark.png").getImage()
+								.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1867,11 +1912,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		SAS1.addActionListener(e -> {
-			currentTeam = "SAS";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "SAS", this);
@@ -1900,13 +1941,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "SAS";
+				currentTeamlbl
+						.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
+								+ currentTeam + "_wordmark.png").getImage()
+								.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1916,11 +1961,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		SAS2.addActionListener(e -> {
-			currentTeam = "SAS";
-			currentTeamlbl
-					.setIcon(new ImageIcon(new ImageIcon("Image/wordmark_png/"
-							+ currentTeam + "_wordmark.png").getImage()
-							.getScaledInstance(132, 46, Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "SAS", this);
@@ -1949,13 +1990,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "ORL";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -1965,11 +2010,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		ORL1.addActionListener(e->{
-			currentTeam = "ORL";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "ORL", this);
@@ -1998,13 +2039,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "ORL";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -2014,11 +2059,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		ORL2.addActionListener(e->{
-			currentTeam = "ORL";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "ORL", this);
@@ -2047,13 +2088,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "MIA";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -2063,11 +2108,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		MIA.addActionListener(e->{
-			currentTeam = "MIA";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "MIA", this);
@@ -2096,13 +2137,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "DAL";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -2112,11 +2157,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		DAL1.addActionListener(e->{
-			currentTeam = "DAL";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "DAL", this);
@@ -2145,13 +2186,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "DAL";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -2161,11 +2206,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		DAL2.addActionListener(e->{
-			currentTeam = "DAL";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "DAL", this);
@@ -2194,13 +2235,17 @@ public class AnalysisPanel extends JPanel {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				teamChartPanel.setVisible(false);
+			//	teamChartPanel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-
+				currentTeam = "BKN";
+				currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
+						"Image/wordmark_png/" + currentTeam + "_wordmark.png")
+						.getImage().getScaledInstance(132, 46,
+								Image.SCALE_SMOOTH)));
 			}
 
 			@Override
@@ -2210,11 +2255,7 @@ public class AnalysisPanel extends JPanel {
 			}
 		});
 		BKN.addActionListener(e->{
-			currentTeam = "BKN";
-			currentTeamlbl.setIcon(new ImageIcon(new ImageIcon(
-					"Image/wordmark_png/" + currentTeam + "_wordmark.png")
-					.getImage().getScaledInstance(132, 46,
-							Image.SCALE_SMOOTH)));
+			
 			selfClose();
 			TypicalTeamAnalysisPanel ttap = new TypicalTeamAnalysisPanel(
 					mainFrame, "BKN", this);
@@ -2240,7 +2281,7 @@ public class AnalysisPanel extends JPanel {
 		MainFrame.currentPanel = "StartPanel";
 		// playerCriteriaPanel.setVisible(false);
 	}
-
+    /*
 	public void addPicture(String team, String criteria) {
 		JLabel bg = new JLabel();
 		bg.setBounds(0, 0, 700, 432);
@@ -2250,4 +2291,5 @@ public class AnalysisPanel extends JPanel {
 		teamChartPanel.add(bg);
 
 	}
+	*/
 }
