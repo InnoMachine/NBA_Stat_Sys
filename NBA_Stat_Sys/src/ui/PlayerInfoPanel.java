@@ -547,7 +547,7 @@ public class PlayerInfoPanel extends JPanel {
 		DecimalFormat df = new DecimalFormat(".00");
 
 		TotalInfo aveInfo = new TotalInfo();
-		aveInfo = player_BS.getTotalInfo();
+		aveInfo = player_BS.getTotalInfo("13-14");
 		PlayerVo playerInfo = new PlayerVo();
 		playerInfo = player_BS.getPlayerByName(playerName);
 
