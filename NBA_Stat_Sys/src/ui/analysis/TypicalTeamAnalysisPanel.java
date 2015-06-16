@@ -38,7 +38,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	String team;
 	String currentPicCriteria = "";
 	ChartPanelMake cpm=new ChartPanelMake();
-	JPanel chartPanel;
+	JPanel firstChartPanel;
+	JPanel secondChartPanel;
 
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
 			JPanel previousPanel) {
@@ -174,105 +175,88 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		ButtonGroup bg = new ButtonGroup();
 
-		MyRadioButton pic1 = new MyRadioButton("场均得分变化");
+		MyRadioButton pic1 = new MyRadioButton("场均得分");
 		pic1.setBounds(6, 70, 110, 23);
 		pic1.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
-			if(chartPanel!=null){
-				chartPanel.setVisible(false);
-			}
-			chartPanel=new JPanel();
-			chartPanel=cpm.getLineChartPanel(1, team);
-			chartPanel.setBounds(150,50 , 700, 450);			
-			picturelbl.add(chartPanel);		
-
+			createChart(1);
 		});
 		picturelbl.add(pic1);
 		bg.add(pic1);
 
-		MyRadioButton pic2 = new MyRadioButton("");
+		MyRadioButton pic2 = new MyRadioButton("进攻回合数");
 		pic2.setBounds(X * 6 / 1366, Y * 105 / 768, X * 100 / 1366, Y * 23 / 768);
 		pic2.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
-			if(chartPanel!=null){
-				chartPanel.setVisible(false);
-			}
-			chartPanel=new JPanel();
-			chartPanel.setBounds(150,50 , 700, 450);
-			chartPanel.setBackground(Color.GREEN);
-			picturelbl.add(chartPanel);
-			
+			createChart(2);		
 		});
 		picturelbl.add(pic2);
 		bg.add(pic2);
 
-		MyRadioButton pic3 = new MyRadioButton("");
+		MyRadioButton pic3 = new MyRadioButton("场均助攻");
 		pic3.setBounds(X * 6 / 1366, Y * 140 / 768, X * 100 / 1366, Y * 23 / 768);
 		pic3.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(3);
 		});
 		picturelbl.add(pic3);
 		bg.add(pic3);
 
-		MyRadioButton pic4 = new MyRadioButton("");
+		MyRadioButton pic4 = new MyRadioButton("场均罚球数");
 		pic4.setBounds(X * 6 / 1366, Y * 175 / 768, X * 100 / 1366,
 				Y * 23 / 768);
 		pic4.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(4);
 		});
 		picturelbl.add(pic4);
 		bg.add(pic4);
 
-		MyRadioButton pic5 = new MyRadioButton("");
+		MyRadioButton pic5 = new MyRadioButton("三分占得分比");
 		pic5.setBounds(X * 6 / 1366, Y * 210 / 768, X * 51 / 1366, Y * 23 / 768);
 		pic5.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(5);
 
 		});
 		picturelbl.add(pic5);
 		bg.add(pic5);
 
-		MyRadioButton pic6 = new MyRadioButton("");
+		MyRadioButton pic6 = new MyRadioButton("助攻出手比");
 		pic6.setBounds(X * 6 / 1366, Y * 245 / 768, X * 51 / 1366, Y * 23 / 768);
 		pic6.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(6);
 		});
 		picturelbl.add(pic6);
 		bg.add(pic6);
 
-		MyRadioButton pic7 = new MyRadioButton("");
+		MyRadioButton pic7 = new MyRadioButton("首发得分方差");
 		pic7.setBounds(X * 6 / 1366, Y *280 / 768, X * 51 / 1366, Y * 23 / 768);
 		pic7.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(7);
 		});
 		picturelbl.add(pic7);
 		bg.add(pic7);
 
-		MyRadioButton pic8 = new MyRadioButton("");
+		MyRadioButton pic8 = new MyRadioButton("胜率变化");
 		pic8.setBounds(X * 6 / 1366, Y * 315 / 768, X * 51 / 1366, Y * 23 / 768);
 		pic8.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(8);
 		});
 		picturelbl.add(pic8);
 		bg.add(pic8);
 
-		MyRadioButton pic9 = new MyRadioButton("");
+		MyRadioButton pic9 = new MyRadioButton("进攻效率");
 		pic9.setBounds(X * 6 / 1366, Y * 350 / 768, X * 51 / 1366, Y * 23 / 768);
 		pic9.addActionListener(e -> {
-			currentPicCriteria = "";
-			createChart(team, currentPicCriteria, "");
+			createChart(9);
 		});
 		picturelbl.add(pic9);
 		bg.add(pic9);
 
+		MyRadioButton pic10 = new MyRadioButton("防守效率");
+		pic10.setBounds(X * 6 / 1366, Y * 385 / 768, X * 51 / 1366, Y * 23 / 768);
+		pic10.addActionListener(e -> {
+			createChart(10);
+		});
+		picturelbl.add(pic10);
+		bg.add(pic10);
+		
 	}
 
 	public void showTable() {
@@ -287,15 +271,15 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		
 	}
 
-	public void createChart(String team, String currentPicCriteria, String type) {
+	public void createChart(int i) {
 
-		
-		
-		//数据！！
-		
-		
-		
-		
+		if(firstChartPanel!=null){
+			firstChartPanel.setVisible(false);
+		}
+		firstChartPanel=new JPanel();
+		firstChartPanel=cpm.getLineChartPanel(i, team);
+		firstChartPanel.setBounds(170,50 , 700, 450);			
+		picturelbl.add(firstChartPanel);		
 		
 	}
 
