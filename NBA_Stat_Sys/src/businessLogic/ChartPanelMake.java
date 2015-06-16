@@ -22,7 +22,7 @@ public class ChartPanelMake {
 		return lcm.makeChart(dataset);
 	}
 	
-	public ChartPanel getScatterChartPanel(int number,String abbr,String season,int n){
+	public ChartPanel getScatterChartPanel(int number,String abbr,String season,String n){
 		ScatterPlotChartMaking spcm = new ScatterPlotChartMaking();
 		DefaultXYDataset dataset = new DefaultXYDataset();
 		//dataset = dataset1();
