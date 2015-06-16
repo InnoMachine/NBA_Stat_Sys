@@ -30,6 +30,5 @@
 	<classpathentry kind="lib" path="lib/sac-1.3.jar"/>
 	<classpathentry kind="lib" path="lib/svg-dom-java-1.1.jar"/>
 	<classpathentry kind="lib" path="testData.jar"/>
-	<classpathentry kind="lib" path="F:/软件工程与计算3/NBA_Stat_Sys/NBA_Stat_Sys/fastjson-1.2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
