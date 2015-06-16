@@ -20,6 +20,7 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
+
 //		gameID: 0021201214
 //		json1 empty
 //		id: 1214error! this game will be ignored!

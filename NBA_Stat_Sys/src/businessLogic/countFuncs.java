@@ -1,7 +1,9 @@
 package businessLogic;
 
 import java.awt.Font;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFrame;
@@ -23,17 +25,20 @@ import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 
-public class testChart2 {
+public class countFuncs {
+	BigDecimal b; 
 	static Team_BS team_bs = new Team_BL();
 	static Player_BS player_bs = new Player_BL();
+	
 	public static void main(String[] args)
     {
-	
+		Random rand = new Random();
 	 ArrayList<PlayerVo> vo = team_bs.getPlayers("CLE");
 	 ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance("LAC");
 	 ArrayList<TeamVo>teamlist=team_bs.getAllTeam();
 	 ArrayList<PlayerVo> vl = player_bs.filterPlayerBy("F", "All", "threePointShotNumField", "");
-//	 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	 int i =0;
+	 //	 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 //	 for(TeamVo temp:teamlist){
 //		 dataset.setValue(temp.getScoreField(),  "score",temp.getAbbreviation());
 //		 dataset.setValue(temp.getAssistanceField(),  "assist",temp.getAbbreviation());
@@ -47,7 +52,7 @@ public class testChart2 {
 		
 		DefaultXYDataset xy = new DefaultXYDataset();
 		double data[][] = new double[2][tp.size()];
-		int i =0;
+		
 		for(TeamPerformanceInSingleGame temp:tp){
 			data[1][i] = temp.getHitNum();
 			data[0][i] = temp.getThreePointHitNum();
@@ -56,7 +61,7 @@ public class testChart2 {
 		xy.addSeries("", data);
 		
 		
-		JFreeChart chart =ChartFactory.createScatterPlot("数据折线 ", "姓名", "产量", xy, PlotOrientation.VERTICAL, true, true, true);
+		JFreeChart chart =ChartFactory.createScatterPlot("数据点图 ", "姓名", "产量", xy, PlotOrientation.VERTICAL, true, true, true);
         StandardChartTheme standardChartTheme=new StandardChartTheme("CN");         //设置标题字体
         standardChartTheme.setExtraLargeFont(new Font("隶书",Font.BOLD,20));         //设置图例的字体
         standardChartTheme.setRegularFont(new Font("宋书",Font.PLAIN,15));         //设置轴向的字体
@@ -71,28 +76,63 @@ public class testChart2 {
 	 /*for(PlayerVo temp:vo){
 		 showMeanAndVar(temp.getName());
 	 }*/
-	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
-	 PlayerVo v1 = vo.get(2);
-	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
-	 double b[]=new double [pg.getGames().size()];
-	 i=0;
+//	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
+//	 PlayerVo v1 = vo.get(2);
+//	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
+//	 double b[]=new double [pg.getGames().size()];
+//	 i=0;
 //	 for(PlayerPerformanceInSingleGame temp:pg.getGames()){
 //		 b[i] = temp.getScore();
 //		 i++;
 //	 }
-	 double t[] = new double[tp.size()];
-	 double g[] = new double[tp.size()];
-	 for(TeamPerformanceInSingleGame temp:tp){
-		t[i]=temp.getHitNum();
-		g[i]=temp.getThreePointHitNum();
-		i++;
-	 }
+//	 interval_estimation3(b);
+//	 double t[] = new double[20];
+//	 double g[] = new double[20];
+//	 for(i=0;i<20;i++){
+//		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+//		 t[i]=temp.getHitNum();
+//		 g[i]=temp.getThreePointHitNum();
+//	 }
+//	 leastSquare(g,t);
 //	 System.out.println(correlationCoefficient(t, g));
 //	 System.out.println(pearson_r(t, g));
-	 leastSquare(g,t);
+	
 	
         
     }
+	
+	public static void Single_factor_analysis_of_variance(double xij[][],int m,int r){
+		double xi[] = new double[m],x=0;
+		double xim[] = new double[m];
+		for(int i=0;i<m;i++){
+			for(int j=0;j<r;j++){
+				xi[i]+=xij[i][j];
+			}
+			xim[i]=xi[i]/r;
+			x+=xi[i];
+		}
+		double xm=x/(m*r);
+		
+		double SA=0,Se=0,ST=0;
+		for(int i=0;i<m;i++){
+			SA+=Math.pow((xim[i]-xm), 2);
+		}
+		SA=r*SA;
+		for(int i=0;i<m;i++){
+			for(int j=0;j<r;j++){
+				Se+=Math.pow(xij[i][j]-xim[i], 2);
+			}
+		}
+		ST=SA+Se;
+		int fA=m-1,fT=m*r-1,fe=m*r-m;
+		double VA = SA/(m-1);
+		double Ve = Se/(m*r-m);
+		double FA = VA/Ve;
+		double F5 = F_square_distribution_table4("0.05",m*r-m);
+		double F1 = F_square_distribution_table4("0.01", m*r-m);
+		
+	}
+
 	public static void showMeanAndVar(String name){
 		PlayerGames games=player_bs.getPlayerPerformacne(name);
 		 ArrayList<PlayerPerformanceInSingleGame> ppg=games.getGames();
@@ -106,6 +146,97 @@ public class testChart2 {
 		 System.out.print(meanValue(a)+"         ");
 		 System.out.println(samplevariance(a));
 	}
+	
+	public double Standard_normal_distribution_table(double x){
+		if(x>0){
+			double v=NormalDistribution(0,1,0,x)+0.5;
+			b = new BigDecimal(v);
+			double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+			return f;
+		}
+		else if(x<0){
+			double v=NormalDistribution(0,1,x,0);
+			b = new BigDecimal(v);
+			double f = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+			return f;
+		}
+		else {
+			return 0.5000;
+		}
+	}
+	public static double F_square_distribution_table1(String alpha,int n){
+		double F [][] =new double [2][20];
+		F[0][0]=161.448;F[0][1]=18.513;F[0][2]=10.128;F[0][3]=7.709;F[0][4]=6.608;
+		F[0][5]=5.987;F[0][6]=5.591;F[0][7]=5.318;F[0][8]=5.117;F[0][9]=4.965;
+		F[0][10]=4.844;F[0][11]=4.747;F[0][12]=4.667;F[0][13]=4.600;F[0][14]=4.543;
+		F[0][15]=4.494;F[0][16]=4.451;F[0][17]=4.414;F[0][18]=4.381;F[0][19]=4.351;
+		
+		F[1][0]=4051.181;F[1][1]=98.503;F[1][2]=34.116;F[1][3]=21.198;F[1][4]=16.258;
+		F[1][5]=13.745;F[1][6]=12.246;F[1][7]=11.259;F[1][8]=10.561;F[1][9]=10.044;
+		F[1][10]=9.646;F[1][11]=9.330;F[1][12]=9.074;F[1][13]=8.862;F[1][14]=8.683;
+		F[1][15]=8.531;F[1][16]=8.400;F[1][17]=8.285;F[1][18]=8.185;F[1][19]=8.096;
+		
+		switch (alpha) {
+		case "0.05":return F[0][n-1];
+		case "0.01":return F[1][n-1];
+		default:
+		return 0;
+		}
+	}
+	public static double F_square_distribution_table4(String alpha,int n){
+		double F [][] =new double [2][20];
+		F[0][0]=224.583;F[0][1]=19.247;F[0][2]=9.117;F[0][3]=6.388;F[0][4]=5.192;
+		F[0][5]=4.534;F[0][6]=4.120;F[0][7]=3.838;F[0][8]=3.633;F[0][9]=3.478;
+		F[0][10]=3.357;F[0][11]=3.259;F[0][12]=3.179;F[0][13]=3.112;F[0][14]=3.056;
+		F[0][15]=3.007;F[0][16]=2.965;F[0][17]=2.928;F[0][18]=2.895;F[0][19]=2.866;
+		
+		F[1][0]=5624.583;F[1][1]=99.249;F[1][2]=28.710;F[1][3]=15.977;F[1][4]=11.392;
+		F[1][5]=9.148;F[1][6]=7.847;F[1][7]=7.006;F[1][8]=6.422;F[1][9]=5.994;
+		F[1][10]=5.668;F[1][11]=5.412;F[1][12]=5.205;F[1][13]=5.035;F[1][14]=4.893;
+		F[1][15]=4.773;F[1][16]=4.669;F[1][17]=4.579;F[1][18]=4.500;F[1][19]=4.431;
+		
+		switch (alpha) {
+		case "0.05":return F[0][n-1];
+		case "0.01":return F[1][n-1];
+		default:
+		return 0;
+		}
+	}
+	public static double Chi_square_distribution_table(String alpha,int n){
+		double chi[][] = new double[80][12];
+		chi[0][0]=2.7055;chi[0][1]=3.8415;chi[0][2]=5.0239;chi[0][3]=6.6349;
+		chi[0][4]=7.8794;chi[0][5]=10.8276;chi[0][6]=0.0158;chi[0][7]=0.0039;
+		chi[0][8]=0.0010;chi[0][9]=0.0002;chi[0][10]=0.0000;chi[0][11]=0.0000;
+		
+		chi[1][0]=4.6052;chi[1][1]=5.9915;chi[1][2]=7.3778;chi[1][3]=9.2103;
+		chi[1][4]=10.5966;chi[1][5]=16.2662;chi[1][6]=0.2107;chi[1][7]=0.1026;
+		chi[1][8]=0.0506;chi[1][9]=0.0201;chi[1][10]=0.0100;chi[1][11]=0.0020;
+		
+		
+		
+		chi[79][0]=96.5782;chi[79][1]=101.8795;chi[79][2]=106.6286;chi[79][3]=112.3288;
+		chi[79][4]=116.3211;chi[79][5]=124.8392;chi[79][6]=64.2778;chi[79][7]=60.3915;
+		chi[79][8]=57.1532;chi[79][9]=53.5401;chi[79][10]=51.1719;chi[79][11]=46.5199;
+		
+		switch (alpha) {
+		case "0.1":return chi[n-1][0];
+		case "0.05":return chi[n-1][1];
+		case "0025":return chi[n-1][2];
+		case "0.01":return chi[n-1][3];
+		case "0.005":return chi[n-1][4];
+		case "0.001":return chi[n-1][5];
+		case "0.9":return chi[n-1][6];
+		case "0.95":return chi[n-1][7];
+		case "0.975":return chi[n-1][8];
+		case "0.99":return chi[n-1][9];
+		case "0.995":return chi[n-1][10];
+		case "0.999":return chi[n-1][11];
+		default:
+			return 0;
+		}
+	}
+
+	
 	//均值
 	public static double meanValue(double a[]){
 		int n=a.length;
@@ -304,7 +435,8 @@ public class testChart2 {
 		double Sy=Math.sqrt(Se/(n-2));
 		double F =SR/(Se/(n-2));
 		System.out.println("F值："+F);
-		System.out.println("Fα(80)："+101.5782);
+		System.out.println("F0.01(1,n-2)："+F_square_distribution_table1("0.01", n-2));
+		System.out.println("F0.05(1,n-2)："+F_square_distribution_table1("0.05", n-2));
 		System.out.println("决定系数："+r2);
 		System.out.println("标准残差："+Sy);
 	}
@@ -354,7 +486,7 @@ public class testChart2 {
 	}
 
 	//指数模型y=ae^(bx)
-public static void leastSquare_exponent(double x[],double y[]){
+ public static void leastSquare_exponent(double x[],double y[]){
 		int n =x.length;
 		double y0[]=new double[n];
 		for(int i=0;i<n;i++){
@@ -396,4 +528,13 @@ public static void leastSquare_exponent(double x[],double y[]){
 		System.out.println("决定系数："+r2);
 		System.out.println("标准残差："+Sy);
 	}
+ public static void interval_estimation3(double a[]){
+	 double xm = meanValue(a);
+	 double n=a.length;
+	 double S = Math.sqrt(variance(a));
+	 System.out.println("("+(xm-1.96*S/Math.sqrt(n))+","+(xm+1.96*S/Math.sqrt(n))+")");
+	 
+ }
+
+
 }

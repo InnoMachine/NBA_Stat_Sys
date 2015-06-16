@@ -33,6 +33,7 @@ public class DataFileReader {
 
 	private static Scanner scanner;
 
+	 
 	public static void importPlayersAndTeams() {
 
 		DataFileReader.importPlayersFrom("CSEdata/players/info");

@@ -202,7 +202,7 @@ public class SortPanel extends JPanel {
 			playerSortSeason.setBounds(X * 400 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
 			playerSortSeason.setSelectedItem("2013-2014赛季");
 			playerSortSeason.setForeground(Color.WHITE);
-			playerSortSeason.setBackground(Color.GRAY);
+			playerSortSeason.setBackground(Color.DARK_GRAY);
 			bgLabel.add(playerSortSeason);
 			playerSortSeason.addActionListener(e->{
 				sortPlayer(UpOrDown,String.valueOf(playerSortSeason.getSelectedItem()));
@@ -366,7 +366,7 @@ public class SortPanel extends JPanel {
 			teamSortSeason.setBounds(X * 240 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
 			teamSortSeason.setSelectedItem("2013-2014赛季");
 			teamSortSeason.setForeground(Color.WHITE);
-			teamSortSeason.setBackground(Color.GRAY);
+			teamSortSeason.setBackground(Color.DARK_GRAY);
 			bgLabel.add(teamSortSeason);
 			teamSortSeason.addActionListener(e->{
 				sortTeam(UpOrDown, String.valueOf(teamSortSeason.getSelectedItem()));
@@ -990,7 +990,7 @@ public class SortPanel extends JPanel {
 
 			}
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningcriteria.png").getImage()
+					"Image/choosePanel.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
@@ -1243,7 +1243,7 @@ public class SortPanel extends JPanel {
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 			JLabel bglabel = new JLabel();
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningcriteria.png").getImage()
+					"Image/choosePanel.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
@@ -1679,153 +1679,7 @@ public class SortPanel extends JPanel {
 				default:
 					break;
 				}
-			} /*else if (priority == "second") {
-				switch (criteria) {
-				case "参赛场数":
-					playerCriteriabtn2.setText("参赛场数");
-					playerCriteria2 = "gameNum";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "先发场数":
-					playerCriteriabtn2.setText("先发场数");
-					playerCriteria2 = "FirstOnNum";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "篮板数":
-					playerCriteriabtn2.setText("篮板数");
-					playerCriteria2 = "reboundOverallField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "助攻数":
-					playerCriteriabtn2.setText("助攻数");
-					playerCriteria2 = "assistanceField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "在场时间":
-					playerCriteriabtn2.setText("在场时间");
-					playerCriteria2 = "timeField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "投篮命中率":
-					playerCriteriabtn2.setText("投篮命中率");
-					playerCriteria2 = "hitRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "三分命中率":
-					playerCriteriabtn2.setText("三分命中率");
-					playerCriteria2 = "threePointHitRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "罚球命中率":
-					playerCriteriabtn2.setText("罚球命中率");
-					playerCriteria2 = "freeThrowRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "进攻数":
-					playerCriteriabtn2.setText("进攻数");
-					playerCriteria2 = "attackingNumField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "防守数":
-					playerCriteriabtn2.setText("防守数");
-					playerCriteria2 = "defensiveNumField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "抢断数":
-					playerCriteriabtn2.setText("抢断数");
-					playerCriteria2 = "stealField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "盖帽数":
-					playerCriteriabtn2.setText("盖帽数");
-					playerCriteria2 = "blockField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "失误数":
-					playerCriteriabtn2.setText("失误数");
-					playerCriteria2 = "turnoverField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "犯规数":
-					playerCriteriabtn2.setText("犯规数");
-					playerCriteria2 = "foulField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "得分":
-					playerCriteriabtn2.setText("得分");
-					playerCriteria2 = "scoreField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "效率":
-					playerCriteriabtn2.setText("效率");
-					playerCriteria2 = "efficiencyField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "GmSc效率值":
-					playerCriteriabtn2.setText("GmSc效率值");
-					playerCriteria2 = "GmScField";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "真实命中率":
-					playerCriteriabtn2.setText("真实命中率");
-					playerCriteria2 = "trueHitRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "投篮效率":
-					playerCriteriabtn2.setText("投篮效率");
-					playerCriteria2 = "hitEfficiency";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "篮板率":
-					playerCriteriabtn2.setText("篮板率");
-					playerCriteria2 = "reboundOverallRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "进攻篮板率":
-					playerCriteriabtn2.setText("进攻篮球率");
-					playerCriteria2 = "offensiveReboundRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "防守篮板率":
-					playerCriteriabtn2.setText("防守篮板率");
-					playerCriteria2 = "defensiveReboundRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "助攻率":
-					playerCriteriabtn2.setText("助攻率");
-					playerCriteria2 = "assistanceRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-
-				case "抢断率":
-					playerCriteriabtn2.setText("抢断率");
-					playerCriteria2 = "stealRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "盖帽率":
-					playerCriteriabtn2.setText("盖帽率");
-					playerCriteria2 = "blockRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "失误率":
-					playerCriteriabtn2.setText("失误率");
-					playerCriteria2 = "turnOverRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "使用率":
-					playerCriteriabtn2.setText("使用率");
-					playerCriteria2 = "useRate";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				case "ALL":
-					playerCriteriabtn2.setText("");
-					playerCriteria2 = "";
-					sortPlayerCriteriaPanel2.setVisible(false);
-					break;
-				default:
-					break;
-				}
-			}*/
+			} 
 			sortPlayer(UpOrDown,String.valueOf(playerSortSeason.getSelectedItem()));
 		}
 	}

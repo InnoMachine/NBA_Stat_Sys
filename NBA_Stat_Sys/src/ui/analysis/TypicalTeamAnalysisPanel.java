@@ -1,52 +1,58 @@
 package ui.analysis;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 
 import ui.MainFrame;
 import ui.StartPanel;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 
-public class TypicalTeamAnalysisPanel extends JPanel{
+public class TypicalTeamAnalysisPanel extends JPanel {
 	JFrame mainFrame;
 
 	static int X;
 	static int Y;
 	JLabel bgLabel;
 	JPanel previousPanel;
-	
-	public TypicalTeamAnalysisPanel(JFrame mainFrame,String team,JPanel previousPanel){
-		
+	JButton picturebtn;
+	JButton tablebtn;
+	JLabel picturelbl;
+	JLabel chartlbl;
+	JLabel tablelbl;
+	String team;
+	String currentPicCriteria = "";
+
+	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
+			JPanel previousPanel) {
+
 		this.mainFrame = mainFrame;
-		this.previousPanel=previousPanel;
+		this.team = team;
+		this.previousPanel = previousPanel;
 		X = mainFrame.getWidth();
 		Y = mainFrame.getHeight();
 		this.setBounds(0, 0, X, Y);
 		this.setVisible(true);
 		this.setLayout(null);
-		
-		bgLabel = new JLabel();
-		bgLabel.setBounds(0, 0, X, Y);
 		/*
-		ImageIcon bg = new ImageIcon(new ImageIcon("Image/playerPanel.png")
-				.getImage().getScaledInstance(this.getWidth(),
-						this.getHeight(), Image.SCALE_SMOOTH));
-		bgLabel.setIcon(bg);
-		*/
-		this.add(bgLabel);
-        
+		 * bgLabel = new JLabel(); bgLabel.setBounds(0, 0, X, Y);
+		 * 
+		 * this.add(bgLabel);
+		 */
 		this.setBackground(Color.BLACK);
-		
-		
+
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
 				.getImage().getScaledInstance(X / 25, X / 25,
@@ -57,7 +63,7 @@ public class TypicalTeamAnalysisPanel extends JPanel{
 		home.setContentAreaFilled(false);
 		home.setBorderPainted(false);
 		home.addActionListener(e -> home());
-		bgLabel.add(home);
+		this.add(home);
 
 		JButton back = new JButton();
 		back.setForeground(Color.WHITE);
@@ -72,7 +78,7 @@ public class TypicalTeamAnalysisPanel extends JPanel{
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
 		back.addActionListener(e -> back());
-		bgLabel.add(back);
+		this.add(back);
 
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
@@ -92,7 +98,7 @@ public class TypicalTeamAnalysisPanel extends JPanel{
 			}
 		});
 
-		bgLabel.add(minimize);
+		this.add(minimize);
 
 		JButton close = new JButton();
 		ImageIcon closeIcon = new ImageIcon(
@@ -111,28 +117,214 @@ public class TypicalTeamAnalysisPanel extends JPanel{
 				mainFrame.dispose();
 			}
 		});
-		bgLabel.add(close);
+		this.add(close);
+
+		JLabel teamlbl = new JLabel();
+		teamlbl.setBounds(0, 670, 1366, 80);
+		teamlbl.setVisible(true);
+		
+		  ImageIcon teamIcon = new ImageIcon(new
+		  ImageIcon("Image/teamstrip/"+team+".png") .getImage().getScaledInstance(1366,
+		  80, Image.SCALE_SMOOTH)); teamlbl.setIcon(teamIcon);
+		 
+//		teamlbl.setBackground(Color.BLUE);
+		teamlbl.setOpaque(true);
+		this.add(teamlbl);
+
+		picturelbl = new JLabel();
+		picturelbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
+				Y * 550 / 768);
+		picturelbl.setVisible(false);
+        this.add(picturelbl);
+		
+		tablelbl = new JLabel();
+		tablelbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
+				Y * 550 / 768);
+		tablelbl.setVisible(false);
+		this.add(tablelbl);
+
+		picturebtn = new MyButton("数据变化");	
+		picturebtn.setBounds(X * 183 / 1366, Y * 70 / 768, X * 150 / 1366,
+				Y * 30 / 768);
+		picturebtn.addActionListener(e -> {
+			showPicture();
+		});
+        this.add(picturebtn);
 		
 		
-		
-		
-		
-				
+		tablebtn = new MyButton("");
+		tablebtn.setBounds(X * 333 / 1366, Y * 70 / 768, X * 150 / 1366,
+				Y * 30 / 768);
+		tablebtn.addActionListener(e -> {
+			showTable();
+		});
+        this.add(tablebtn);
 		
 		mainFrame.add(this);
 	}
-	
-	
-	public void home(){
+
+	public void showPicture() {
+		tablelbl.setVisible(false);
+		picturelbl.setVisible(true);
+
+		ButtonGroup bg = new ButtonGroup();
+
+		MyRadioButton pic1 = new MyRadioButton("场均得分变化");
+		pic1.setBounds(6, 70, 110, 23);
+		pic1.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+
+		});
+		picturelbl.add(pic1);
+		bg.add(pic1);
+
+		MyRadioButton pic2 = new MyRadioButton("");
+		pic2.setBounds(X * 6 / 1366, Y * 105 / 768, X * 100 / 1366, Y * 23 / 768);
+		pic2.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic2);
+		bg.add(pic2);
+
+		MyRadioButton pic3 = new MyRadioButton("");
+		pic3.setBounds(X * 6 / 1366, Y * 140 / 768, X * 100 / 1366, Y * 23 / 768);
+		pic3.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic3);
+		bg.add(pic3);
+
+		MyRadioButton pic4 = new MyRadioButton("");
+		pic4.setBounds(X * 6 / 1366, Y * 175 / 768, X * 100 / 1366,
+				Y * 23 / 768);
+		pic4.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic4);
+		bg.add(pic4);
+
+		MyRadioButton pic5 = new MyRadioButton("");
+		pic5.setBounds(X * 6 / 1366, Y * 210 / 768, X * 51 / 1366, Y * 23 / 768);
+		pic5.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+
+		});
+		picturelbl.add(pic5);
+		bg.add(pic5);
+
+		MyRadioButton pic6 = new MyRadioButton("");
+		pic6.setBounds(X * 6 / 1366, Y * 245 / 768, X * 51 / 1366, Y * 23 / 768);
+		pic6.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic6);
+		bg.add(pic6);
+
+		MyRadioButton pic7 = new MyRadioButton("");
+		pic7.setBounds(X * 6 / 1366, Y *280 / 768, X * 51 / 1366, Y * 23 / 768);
+		pic7.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic7);
+		bg.add(pic7);
+
+		MyRadioButton pic8 = new MyRadioButton("");
+		pic8.setBounds(X * 6 / 1366, Y * 315 / 768, X * 51 / 1366, Y * 23 / 768);
+		pic8.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic8);
+		bg.add(pic8);
+
+		MyRadioButton pic9 = new MyRadioButton("");
+		pic9.setBounds(X * 6 / 1366, Y * 350 / 768, X * 51 / 1366, Y * 23 / 768);
+		pic9.addActionListener(e -> {
+			currentPicCriteria = "";
+			createChart(team, currentPicCriteria, "");
+		});
+		picturelbl.add(pic9);
+		bg.add(pic9);
+
+	}
+
+	public void showTable() {
+		picturelbl.setVisible(false);
+		tablelbl.setVisible(true);
+
+		
+		
+		
+		
+		
+		
+	}
+
+	public void createChart(String team, String currentPicCriteria, String type) {
+
+		
+		
+		//数据！！
+		
+		
+		
+		
+		
+	}
+
+	public void home() {
 		this.setVisible(false);
-		StartPanel sp = new StartPanel(mainFrame,MainFrame.analysisPanel,MainFrame.playerPanel,MainFrame.teamPanel,MainFrame.gamePanel);
+		StartPanel sp = new StartPanel(mainFrame, MainFrame.analysisPanel,
+				MainFrame.playerPanel, MainFrame.teamPanel, MainFrame.gamePanel);
 		mainFrame.getContentPane().add(sp);
 	}
-	
+
 	public void back() {
 		this.setVisible(false);
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
 	}
+	class MyButton extends JButton {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+	public MyButton(String function) {
+		super();
+		this.setText(function);
+		this.setHorizontalTextPosition(SwingConstants.CENTER);
+		this.setForeground(Color.WHITE);
+		this.setFont(new Font("微软雅黑", 1, 15));
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 150/ 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
+
+		this.setIcon(buttonIcon);
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		this.setBorderPainted(false);
+	}
+}
 	
+	class MyRadioButton extends JRadioButton {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public MyRadioButton(String choice) {
+			super();
+			this.setText(choice);
+			this.setOpaque(false);
+			this.setForeground(Color.WHITE);
+		}
+	}
 }

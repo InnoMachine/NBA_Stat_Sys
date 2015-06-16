@@ -69,6 +69,8 @@ public class TeamVo {
 	private int opTwoPointShotNum;   //对手两分球出手
 	private int opScore;
 	
+	private int freeThrowShotNumhHome;
+	private int freeThrowShotNumhGuest;
 	public String getTeamName(){
 		return teamName;
 	}
@@ -429,5 +431,17 @@ public class TeamVo {
 	}
 	public void setDefensiveReboundEfficiency(double defensiveReboundEfficiency) {
 		this.defensiveReboundEfficiency = defensiveReboundEfficiency;
+	}
+	public int getFreeThrowShotNumhHome() {
+		return freeThrowShotNumhHome;
+	}
+	public void setFreeThrowShotNumhHome(int freeThrowShotNumhHome) {
+		this.freeThrowShotNumhHome = freeThrowShotNumhHome;
+	}
+	public int getFreeThrowShotNumhGuest() {
+		return freeThrowShotNumhGuest;
+	}
+	public void setFreeThrowShotNumhGuest(int freeThrowShotNumhGuest) {
+		this.freeThrowShotNumhGuest = freeThrowShotNumhGuest;
 	}
 }

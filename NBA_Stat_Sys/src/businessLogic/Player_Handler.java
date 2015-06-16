@@ -1313,6 +1313,9 @@ public class Player_Handler {
 		{
 			return p.equals(position);
 		}
+		else if(p.equals("")){
+			return false;
+		}
 		else{
 			String first = p.substring(0, 1);
 			String right = p.substring(2, 3);

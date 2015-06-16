@@ -9,9 +9,11 @@ import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
 import vo.TeamCardVo;
+import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
+import vo.TotalInfo;
 
 public class Team_BL_Stub implements Team_BS {
 
@@ -367,6 +369,24 @@ public class Team_BL_Stub implements Team_BS {
 		tps.add(pp4);
 		tps.add(pp5);
 		return tps;
+	}
+
+	@Override
+	public ArrayList<TeamVo> getTeamByAbbrA(String abbr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<TotalInfo> getTeamTotalInfos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<TeamGames> getTeamGames(String abbr) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
