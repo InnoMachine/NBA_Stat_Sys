@@ -24,6 +24,7 @@ import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
+import vo.chiquareout;
 
 public class countFuncs {
 	BigDecimal b; 
@@ -79,12 +80,16 @@ public class countFuncs {
 //	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
 //	 PlayerVo v1 = vo.get(2);
 //	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
-	 double b[]=new double [tp.size()];
+	 double b[]=new double [60];
 	 i=0;
-	 for(TeamPerformanceInSingleGame temp:tp){
-		 b[i] = temp.getScore();
+	 for(int k=0;k<60;k++){
+		 b[i]=tp.get(rand.nextInt(60)).getScore();
 		 i++;
 	 }
+//	 for(TeamPerformanceInSingleGame temp:tp){
+//		 b[i] = temp.getScore();
+//		 i++;
+//	 }
 	 chisquare(b,5);
 //	 interval_estimation3(b);
 //	 double t[] = new double[20];
@@ -282,7 +287,7 @@ public class countFuncs {
 		return b;
 	}
 	//卡方非参检验值
-	public static double chisquare(double a[],int step){
+	public static chiquareout chisquare(double a[],int step){
 		double miu=meanValue(a);
 		double sigma2=variance(a);
 		int i=0;
@@ -301,8 +306,10 @@ public class countFuncs {
 			}
 		}
 		int ni[]=new int[i];
+		int qj[]=new int[i];
 		for(int k=0;k<i;k++){
 			ni[k]=0;
+			qj[k]=k;
 		}
 		double pi[]=new double[i];
 		for(int k=0;k<i;k++){
@@ -312,9 +319,10 @@ public class countFuncs {
 		for(int k=0;k<i;k++){
 			ni[n]+=c[k];
 			pi[n]+=NormalDistribution(miu,sigma2,step*k,step*(k+1));
-			if(ni[n]>=5)
+			if(ni[n]>=5){
 				n++;
-			
+				qj[n] =k;
+			}
 		}
 		if(ni[n]<5){
 			ni[n-1]+=ni[n];
@@ -328,12 +336,41 @@ public class countFuncs {
 			x[k]=0;
 		}
 		double kf = 0;
+		double zuihou[] = new double [n+1];
 		for(int k=0;k<n+1;k++){
-			x[k]+=Math.pow(ni[k], 2)/(a.length*pi[k]);
+			zuihou[k] = Math.pow(ni[k], 2)/(a.length*pi[k]);
+			x[k]+=zuihou[k];
 			kf+=x[k];
 		}
 		kf-=a.length;
-		return kf;
+		
+		
+		//
+		String fengzu[] = new String[n+1];
+		String qujian[] = new String[n+1];
+		for(int k=0;k<n;k++){
+			qujian[k] = "["+(""+qj[k]*step)+","+(""+qj[k+1]*step)+"]";
+			fengzu[k] = (""+(qj[k]+1))+"-"+(""+(qj[k+1]));
+		}
+		fengzu[n] = (""+(qj[n]+1))+"-"+(""+(i));
+		qujian[n] = "["+(""+qj[n]*step)+","+(""+i*step)+"]";
+		double nii[] = new double[n+1];
+		double pii[] = new double[n+1];
+		double npii[] = new double [n+1];
+		for(int k=0;k<n+1;k++){
+			nii[k] = ni[k];
+			pii[k] = pi[k];
+			npii[k] = ni[k]*pi[k];
+		}
+		chiquareout co = new chiquareout();
+		co.fengzu = fengzu;
+		co.qujian = qujian;
+		co.ni = nii;
+		co.pi = pii;
+		co.npi = npii;
+		co.zuihou = zuihou;
+		co.kafang = kf;
+		return co;
 	}
 	//积分
 	public static double  integration (double a,double b){
