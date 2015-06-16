@@ -213,7 +213,7 @@ public class ScreeningPlayerPanel extends JPanel {
 		playerScreeningSeason.setBounds(X * 200 / 1366, Y * 160 / 768, X*130/1366, Y*28/768);
 		playerScreeningSeason.setSelectedItem("2013-2014赛季");
 		playerScreeningSeason.setForeground(Color.WHITE);
-		playerScreeningSeason.setBackground(Color.GRAY);
+		playerScreeningSeason.setBackground(Color.DARK_GRAY);
 		bgLabel.add(playerScreeningSeason);
 		playerScreeningSeason.addActionListener(e->{
 		    screening();
@@ -675,7 +675,7 @@ public class ScreeningPlayerPanel extends JPanel {
 			this.setBorder(new TitledBorder(new EtchedBorder()));
 			JLabel bglabel = new JLabel();
 			ImageIcon bgPanel = new ImageIcon(new ImageIcon(
-					"Image/screeningcriteria.png").getImage()
+					"Image/choosePanel.png").getImage()
 					.getScaledInstance(this.getWidth(), this.getHeight(),
 							Image.SCALE_SMOOTH));
 			bglabel.setIcon(bgPanel);
