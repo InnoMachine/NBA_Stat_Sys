@@ -16,22 +16,18 @@ import org.jfree.data.general.DefaultPieDataset;
 
 public class PieChartMaking {
 	
-	public static void main(String[] args) throws IOException{
-		PieChartMaking making = new PieChartMaking("Pie Chart Test!");
+
+	public PieChartMaking(){
+		   
 	}
 	
-	public PieChartMaking(String chartTitle) throws IOException{
-		chart2PNG(makeChart(chartTitle));    
-	}
-	
-	private JFreeChart makeChart(String chartTitle){
+	private JFreeChart makeChart(){
 		StandardChartTheme standardChartTheme = new StandardChartTheme("CN");
 	 	standardChartTheme.setExtraLargeFont(new Font("微软雅黑",Font.BOLD,15));
 	 	standardChartTheme.setRegularFont(new Font("微软雅黑",Font.BOLD,15));
 	 	standardChartTheme.setLargeFont(new Font("微软雅黑",Font.BOLD,15));
 	 	ChartFactory.setChartTheme(standardChartTheme);
-		JFreeChart chart=ChartFactory.createPieChart(chartTitle, getDataset(),true,true,false);
-		chart.setTitle(new TextTitle(chartTitle,new Font("微软雅黑",Font.BOLD,10)));
+		JFreeChart chart=ChartFactory.createPieChart(null, getDataset(),true,true,false);
 		//set plot
 		PiePlot plot=(PiePlot) chart.getPlot();
 		plot.setLabelFont(new Font("微软雅黑",Font.BOLD,10));
