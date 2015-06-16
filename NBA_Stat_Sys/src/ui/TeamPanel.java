@@ -25,7 +25,7 @@ public class TeamPanel extends JPanel {
 
 	JFrame mainFrame;
 
-	Team_BS team_BS = new Team_BL_Stub();
+	Team_BS team_BS = new Team_BL();
 	static int X;
 	static int Y;
 	JLabel bgLabel;

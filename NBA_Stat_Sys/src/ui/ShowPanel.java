@@ -42,8 +42,8 @@ public class ShowPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JFrame mainFrame;
 	JPanel previousPanel;
-	Player_BS player_BS = new Player_BL_Stub();
-	Team_BS team_BS = new Team_BL_Stub();
+	Player_BS player_BS = new Player_BL();
+	Team_BS team_BS = new Team_BL();
 
 	JLabel bgLabel;
 	String category = "player";
