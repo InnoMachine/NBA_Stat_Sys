@@ -174,6 +174,17 @@ public class StartPanel extends JPanel {
 		});
 		bgLabel.add(close);
 		
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(16 * X / 20, Y * 20 / 768, X / 25, X / 25);
+		home.setIcon(homeIcon);
+		home.setOpaque(false);
+		home.setContentAreaFilled(false);
+		home.setBorderPainted(false);
+		bgLabel.add(home);
+		
 	}
 	public void toAnalysisPanel() {
 		this.setVisible(false);
