@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.axis.CategoryAxis;
@@ -23,7 +24,7 @@ public class LineChartMaking {
 		
 	}
 	
-	public JFreeChart makeChart(DefaultCategoryDataset getDataset){
+	public ChartPanel makeChart(DefaultCategoryDataset getDataset){
 		DefaultCategoryDataset linedataset =getDataset;
 		StandardChartTheme standardChartTheme = new StandardChartTheme("CN");
 		standardChartTheme.setExtraLargeFont(new Font("微软雅黑",Font.BOLD,15));
@@ -108,7 +109,7 @@ public class LineChartMaking {
 		plot.setNoDataMessage("无对应的数据，请重新查询。");  
 		// plot.setNoDataMessageFont(titleFont);//字体的大小  
 		plot.setNoDataMessagePaint(Color.RED);//字体颜色 
-		return chart;
+		return new ChartPanel(chart);
 	}
 	
 }
