@@ -22,4 +22,5 @@ public interface Team_BS {
 	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr);
 	public ArrayList<TotalInfo> getTeamTotalInfos();
 	public ArrayList<TeamGames> getTeamGames(String abbr);
+	public ArrayList<String> getTeamAbbrs();
 }

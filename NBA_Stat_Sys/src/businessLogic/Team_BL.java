@@ -30,9 +30,8 @@ public class Team_BL implements Team_BS{
 
 	@Override
 	public ArrayList<TeamVo> sortTeamBy(String option,String seasonid) {
-		return team_handler.sortTeamBy(option);
+		return team_handler.sortTeamBy(option,seasonid);
 	}
-
 	@Override
 	public ArrayList<PlayerVo> getPlayers(String abbr) {
 		return player_bl.getPlayersByTeam(abbr);
@@ -62,6 +61,11 @@ public class Team_BL implements Team_BS{
 	public ArrayList<TeamGames> getTeamGames(String abbr) {
 		
 		return team_handler.getTeamGames(abbr);
+	}
+	@Override
+	public ArrayList<String> getTeamAbbrs() {
+		// TODO Auto-generated method stub
+		return team_handler.getTeamAbbrs();
 	}
 
 }

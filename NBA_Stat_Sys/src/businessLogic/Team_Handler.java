@@ -2,6 +2,8 @@ package businessLogic;
 
 import java.util.ArrayList;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+
 import vo.TeamCardVo;
 import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
@@ -39,8 +41,8 @@ public class Team_Handler {
 		return teamlistvo;
 	}
 
-	public ArrayList<TeamVo> sortTeamBy(String option) {
-		
+	public ArrayList<TeamVo> sortTeamBy(String option, String seasonid) {
+		teamlistvo = data_handler.getTeamlist(seasonid);
 		if(option.equals("teamName")){
 			String a[][] = new String [teamlistvo.size()][2]; 
 			for(int i=0;i<teamlistvo.size();i++)
@@ -60,6 +62,21 @@ public class Team_Handler {
 			for(int i=0;i<teamlistvo.size();i++)
 			{
 				a[i][0] = teamlistvo.get(i).getGameNum();
+				a[i][1] = i;
+			}
+			HeapSortByInt.heapSort(a);
+			ArrayList<TeamVo> templist = new ArrayList<TeamVo>();
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				templist.add(teamlistvo.get(a[i][1]));
+			}
+			return templist;
+		}
+		else if(option.equals("winningNum")){
+			int a[][] = new int [teamlistvo.size()][2]; 
+			for(int i=0;i<teamlistvo.size();i++)
+			{
+				a[i][0] = teamlistvo.get(i).getWinningNum();
 				a[i][1] = i;
 			}
 			HeapSortByInt.heapSort(a);
@@ -669,7 +686,7 @@ public class Team_Handler {
 	}
 	
 	public ArrayList<TeamCardVo> hotTeamSeason(String option) {
-		ArrayList<TeamVo> list = sortTeamBy(option);
+		ArrayList<TeamVo> list = sortTeamBy(option,"13-14");
 		ArrayList<TeamCardVo> templist = new ArrayList<TeamCardVo>();
 		for(int i=0;i<5;i++)
 		{
@@ -696,5 +713,14 @@ public class Team_Handler {
 	public ArrayList<TeamGames> getTeamGames(String abbr) {
 		
 		return data_handler.getTeamGames(abbr);
+	}
+
+
+	public ArrayList<String> getTeamAbbrs() {
+		ArrayList<String> abbrs =new ArrayList<String>();
+		for(TeamVo temp:teamlistvo){
+			abbrs.add(temp.getAbbreviation());
+		}
+		return abbrs;
 	}
 }

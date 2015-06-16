@@ -551,6 +551,8 @@ public class Data_Handler {
 			TeamPerformance tph = gamelist.get(i).getHomeTP();
 			TeamPerformanceInSingleGame tgpg=setPerformance(tpg);
 			TeamPerformanceInSingleGame tgph=setPerformance(tph);
+			tgph.setIshome(true);
+			tgpg.setIshome(false);
 			tgph.setOpTeam(tgpg.getName());
 			tgpg.setOpTeam(tgph.getName());
 			tgph.setOpTeamP(tgpg.getName());
@@ -665,7 +667,12 @@ public class Data_Handler {
 				teamlistvo.get(i).setOpRoundAttack(teamlistvo.get(i).getOpRoundAttack()+tgp.getOpRoundAttack());
 				teamlistvo.get(i).setOpScore(teamlistvo.get(i).getOpScore()+tgp.getOpScore());
 				teamlistvo.get(i).setOpTwoPointShotNum(teamlistvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
-				
+				if(tgp.isIshome()){
+					teamlistvo.get(i).setFreeThrowShotNumhHome(teamlistvo.get(i).getFreeThrowShotNumhHome()+tgp.getFreeThrowShotNum());
+				}
+				else {
+					teamlistvo.get(i).setFreeThrowShotNumhGuest(teamlistvo.get(i).getFreeThrowShotNumhGuest()+tgp.getFreeThrowShotNum());
+				}
 				
 				teamti.addScore(tgp.getScore());
 				teamti.addAssistance(tgp.getAssistance());
@@ -918,13 +925,6 @@ public class Data_Handler {
 			return true;
 		}
 		else{
-			if(abbr1.equals("SAC")||abbr1.equals("SAS")){
-				if(abbr2.equals("SAC")||abbr2.equals("SAS"))
-					return true;
-				else {
-					return false;
-				}
-			}
 			if(abbr1.equals("PHO")||abbr1.equals("PHX")){
 				if(abbr2.equals("PHO")||abbr2.equals("PHX"))
 					return true;
@@ -948,13 +948,6 @@ public class Data_Handler {
 			}
 			if(abbr1.equals("BKN")||abbr1.equals("NJN")){
 				if(abbr2.equals("BKN")||abbr2.equals("NJN"))
-					return true;
-				else {
-					return false;
-				}
-			}
-			if(abbr1.equals("BOS")||abbr1.equals("UTA")){
-				if(abbr2.equals("BOS")||abbr2.equals("UTA"))
 					return true;
 				else {
 					return false;
@@ -1070,6 +1063,8 @@ public class Data_Handler {
 			temp.setOpRoundAttack(0);
 			temp.setOpScore(0);
 			temp.setOpTwoPointShotNum(0);
+			temp.setFreeThrowShotNumhGuest(0);
+			temp.setFreeThrowShotNumhHome(0);
 			teamlistvo.add(temp);
 			
 			TeamRecentGames p = new TeamRecentGames();
@@ -1375,6 +1370,15 @@ public class Data_Handler {
 			}
 		}
 		return tgs;
+	}
+	public ArrayList<TeamVo> getTeamlist(String seasonid) {
+		ArrayList<TeamVo> vos = new ArrayList<TeamVo>();
+		for(SeasonMult temp:seasonlist){
+			if(temp.getSeason().equals(seasonid)){
+				vos = temp.teamlistvo;
+			}
+		}
+		return vos;
 	}
 	
 }

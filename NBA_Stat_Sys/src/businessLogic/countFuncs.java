@@ -25,7 +25,7 @@ import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 
-public class testChart2 {
+public class countFuncs {
 	BigDecimal b; 
 	static Team_BS team_bs = new Team_BL();
 	static Player_BS player_bs = new Player_BL();
@@ -50,7 +50,7 @@ public class testChart2 {
 //		CategoryPlot cpp = chart.getCategoryPlot();
 	 
 		
-/*		DefaultXYDataset xy = new DefaultXYDataset();
+		DefaultXYDataset xy = new DefaultXYDataset();
 		double data[][] = new double[2][tp.size()];
 		
 		for(TeamPerformanceInSingleGame temp:tp){
@@ -72,28 +72,28 @@ public class testChart2 {
         //chart要放在Java容器组件中，ChartFrame继承自java的Jframe类。该第一个参数的数据是放在窗口左上角的，不是正中间的标题。
         chartFrame.pack(); //以合适的大小展现图形
         chartFrame.setVisible(true);//图形是否可见
-     */   
+        
 	 /*for(PlayerVo temp:vo){
 		 showMeanAndVar(temp.getName());
 	 }*/
-	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
-	 PlayerVo v1 = vo.get(2);
-	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
-	 double b[]=new double [pg.getGames().size()];
-	 i=0;
-	 for(PlayerPerformanceInSingleGame temp:pg.getGames()){
-		 b[i] = temp.getScore();
-		 i++;
-	 }
-	 interval_estimation3(b);
-	 double t[] = new double[20];
-	 double g[] = new double[20];
-	 for(;i<20;i++){
-		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-		 t[i]=temp.getHitNum();
-		 g[i]=temp.getThreePointHitNum();
-	 }
-	 leastSquare(g,t);
+//	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
+//	 PlayerVo v1 = vo.get(2);
+//	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
+//	 double b[]=new double [pg.getGames().size()];
+//	 i=0;
+//	 for(PlayerPerformanceInSingleGame temp:pg.getGames()){
+//		 b[i] = temp.getScore();
+//		 i++;
+//	 }
+//	 interval_estimation3(b);
+//	 double t[] = new double[20];
+//	 double g[] = new double[20];
+//	 for(i=0;i<20;i++){
+//		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+//		 t[i]=temp.getHitNum();
+//		 g[i]=temp.getThreePointHitNum();
+//	 }
+//	 leastSquare(g,t);
 //	 System.out.println(correlationCoefficient(t, g));
 //	 System.out.println(pearson_r(t, g));
 	

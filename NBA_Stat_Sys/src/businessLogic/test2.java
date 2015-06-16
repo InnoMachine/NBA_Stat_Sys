@@ -53,7 +53,7 @@ public class test2 {
 			for(TeamPerformanceInSingleGame tp:temp.getGames()){
 				s[i]=tp.getScore();
 			}
-			value[k] = testChart2.variance(s);
+			value[k] = countFuncs.variance(s);
 			k++;
 		}
 		// 曲线名称
@@ -91,7 +91,7 @@ public class test2 {
 			for(TeamPerformanceInSingleGame tp:temp.getGames()){
 				s[i]=tp.getScore();
 			}
-			value[k] = testChart2.variance(s);
+			value[k] = countFuncs.variance(s);
 			k++;
 		}
 		// 曲线名称
@@ -116,12 +116,12 @@ public class test2 {
 	}
 	public static DefaultCategoryDataset dataset3(){
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		ArrayList<TeamVo> vos = team_bs.getTeamByAbbrA("LAL");
+		ArrayList<TeamVo> vos = team_bs.getTeamByAbbrA("SAS");
 		ArrayList<TotalInfo> tis = team_bs.getTeamTotalInfos();
 		
 		// 曲线名称
 		String All = "All";
-        String Teamabbr = "LAL";  // series指的就是报表里的那条数据线 
+        String Teamabbr = "SAS";  // series指的就是报表里的那条数据线 
                         //因此 对数据线的相关设置就需要联系到serise
                         //比如说setSeriesPaint 设置数据线的颜色
         // 横轴名称(列名称)  
@@ -134,9 +134,82 @@ public class test2 {
         }
         
         for (int i = 0; i < 15; i++) {
-            dataset.addValue(vos.get(i).getRoundAttackField(),Teamabbr,time[i]);
-            dataset.addValue(tis.get(i).getRoundAttackField(),All,time[i]);
+            //dataset.addValue((double)vos.get(i).getAssistanceField()/(vos.get(i).getShotNumField()-vos.get(i).getAssistanceField()),Teamabbr,time[i]);
+            dataset.addValue(vos.get(i).getOffensiveReboundField()/vos.get(i).getDefensiveReboundField(), Teamabbr, time[i]);
+        	// dataset.addValue((double)tis.get(i).getAssistanceField()/tis.get(i).get,All,time[i]);
      }
+        return dataset;
+	}
+	public static DefaultCategoryDataset dataset4(){
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		// 曲线名称
+		ArrayList<String> abbrs = team_bs.getTeamAbbrs();
+		String All = "All";
+        String Teamabbr = "SAS";  // series指的就是报表里的那条数据线 
+                        //因此 对数据线的相关设置就需要联系到serise
+                        //比如说setSeriesPaint 设置数据线的颜色
+        // 横轴名称(列名称)  
+        String[] time = new String[15];
+        String[] timeValue = { "00-01", "01-02", "02-03", "03-04", "04-05", "05-06",
+                      "06-07", "07-08", "08-09", "09-10", "10-11", "11-12", "12-13",
+                      "13-14", "14-15" };
+        for (int i = 0; i < 15; i++) {
+            time[i] = timeValue[i];
+            }
+        ArrayList<TeamGames> vos = team_bs.getTeamGames("SAS");
+		for(int i=0;i<15;i++){
+			ArrayList<TeamPerformanceInSingleGame> tps = vos.get(i).getGames();
+			double vm[] = new double[tps.size()]; 
+			int p=0;
+			for(TeamPerformanceInSingleGame temp:tps){
+				double v[]=new double[5];
+				for(int k=0;k<5;k++){
+					v[k] = temp.getFirstonList().get(k).getScore();
+				}
+				vm[p]=countFuncs.variance(v);
+				p++;
+			}
+			dataset.addValue(countFuncs.meanValue(vm),Teamabbr,time[i]);
+		}
+		 vos = team_bs.getTeamGames("LAL");
+		 Teamabbr = "LAL";
+			for(int i=0;i<15;i++){
+				ArrayList<TeamPerformanceInSingleGame> tps = vos.get(i).getGames();
+				double vm[] = new double[tps.size()]; 
+				int p=0;
+				for(TeamPerformanceInSingleGame temp:tps){
+					double v[]=new double[5];
+					for(int k=0;k<5;k++){
+						v[k] = temp.getFirstonList().get(k).getScore();
+					}
+					vm[p]=countFuncs.variance(v);
+					p++;
+				}
+				dataset.addValue(countFuncs.meanValue(vm),Teamabbr,time[i]);
+			}
+			for(int i=0;i<15;i++){
+				double pm[] = new double[30];
+				 for(int p=0;p<30;p++){
+					 vos = team_bs.getTeamGames(abbrs.get(p));
+					 ArrayList<TeamPerformanceInSingleGame> tps = vos.get(i).getGames();
+						double vm[] = new double[tps.size()]; 
+						int g=0;
+						for(TeamPerformanceInSingleGame temp:tps){
+							double v[]=new double[5];
+							for(int k=0;k<5;k++){
+								v[k] = temp.getFirstonList().get(k).getScore();
+							}
+							vm[g]=countFuncs.variance(v);
+							g++;
+						}
+						pm[p] = countFuncs.meanValue(vm);
+			        }
+				
+				dataset.addValue(countFuncs.meanValue(pm),All,time[i]);
+			}
+       
+
         return dataset;
 	}
 }

@@ -45,6 +45,7 @@ public class TeamPerformanceInSingleGame {
 	private int highestRebound;
 	private int highestassist;
 	private int highestblock;
+	private boolean ishome;
 	
 	public ArrayList <PlayerPerformanceInSingleGame> playerlist;
 	public ArrayList<PlayerPerformanceInSingleGame> firstonlist;
@@ -352,6 +353,12 @@ public class TeamPerformanceInSingleGame {
 		for(PlayerPerformanceInSingleGame pp:this.firstonlist){
 			pp.setOpTeam(name2);
 		}
+	}
+	public boolean isIshome() {
+		return ishome;
+	}
+	public void setIshome(boolean ishome) {
+		this.ishome = ishome;
 	}
 	
 }
