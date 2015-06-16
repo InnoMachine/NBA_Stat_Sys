@@ -1,5 +1,7 @@
 package vo;
 
+import org.jfree.chart.ChartPanel;
+
 public class chiquareout {
 	public String fengzu[];
 	public String qujian[];
@@ -9,6 +11,8 @@ public class chiquareout {
 	public double zuihou[];
 	public double kafang;
 	public double biaozhi;
+	
+	public ChartPanel cp;
 	
 	public chiquareout(){
 		biaozhi = 96.5782;

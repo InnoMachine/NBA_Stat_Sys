@@ -25,6 +25,8 @@ import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 import vo.chiquareout;
+import vo.regAnalysisout;
+import vo.varAnakysisout;
 
 public class countFuncs {
 	BigDecimal b; 
@@ -80,34 +82,34 @@ public class countFuncs {
 //	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
 //	 PlayerVo v1 = vo.get(2);
 //	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
-	 double b[]=new double [60];
-	 i=0;
-	 for(int k=0;k<60;k++){
-		 b[i]=tp.get(rand.nextInt(60)).getScore();
-		 i++;
-	 }
-//	 for(TeamPerformanceInSingleGame temp:tp){
-//		 b[i] = temp.getScore();
+//	 double b[]=new double [60];
+//	 i=0;
+//	 for(int k=0;k<60;k++){
+//		 b[i]=tp.get(rand.nextInt(60)).getScore();
 //		 i++;
 //	 }
-	 chisquare(b,5);
+////	 for(TeamPerformanceInSingleGame temp:tp){
+////		 b[i] = temp.getScore();
+////		 i++;
+////	 }
+//	 chisquare(b,5);
 //	 interval_estimation3(b);
-//	 double t[] = new double[20];
-//	 double g[] = new double[20];
-//	 for(i=0;i<20;i++){
-//		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-//		 t[i]=temp.getHitNum();
-//		 g[i]=temp.getThreePointHitNum();
-//	 }
-//	 leastSquare(g,t);
+	 double t[] = new double[20];
+	 double g[] = new double[20];
+	 for(i=0;i<20;i++){
+		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+		 t[i]=temp.getScore();
+		 g[i]=temp.getHitRate();
+	 }
+	 leastSquare(g,t);
 //	 System.out.println(correlationCoefficient(t, g));
 //	 System.out.println(pearson_r(t, g));
 	
 	
         
     }
-	
-	public static void Single_factor_analysis_of_variance(double xij[][],int m,int r){
+	//单因素方差检验
+	public static varAnakysisout Single_factor_analysis_of_variance(double xij[][],int m,int r){
 		double xi[] = new double[m],x=0;
 		double xim[] = new double[m];
 		for(int i=0;i<m;i++){
@@ -136,7 +138,17 @@ public class countFuncs {
 		double FA = VA/Ve;
 		double F5 = F_square_distribution_table4("0.05",m*r-m);
 		double F1 = F_square_distribution_table4("0.01", m*r-m);
-		
+		varAnakysisout rao = new varAnakysisout();
+		rao.F = F;
+		rao.F1 = F_square_distribution_table1("0.01", n-2);
+		rao.F5 = F_square_distribution_table1("0.05", n-2);
+		rao.pearson_r = pearson_r(x, y);
+		rao.SR = SR;
+		rao.Se = Se;
+		rao.ST = ST;
+		rao.VR = SR;
+		rao.Ve = Se/(n-2);
+		rao.ρ = correlationCoefficient(x, y);
 	}
 
 	public static void showMeanAndVar(String name){
@@ -442,7 +454,7 @@ public class countFuncs {
 		return covxy/(Math.sqrt(variance(x)*variance(y)));
 	}
 	//最小二乘y=a+bx
-	public static void leastSquare(double x[],double y[]){
+	public static regAnalysisout leastSquare(double x[],double y[]){
 		int n =x.length;
 		double nxy=0,nx=0,ny=0;
 		double nx2=0;
@@ -472,11 +484,24 @@ public class countFuncs {
 		double r2=SR/ST;
 		double Sy=Math.sqrt(Se/(n-2));
 		double F =SR/(Se/(n-2));
-		System.out.println("F值："+F);
-		System.out.println("F0.01(1,n-2)："+F_square_distribution_table1("0.01", n-2));
-		System.out.println("F0.05(1,n-2)："+F_square_distribution_table1("0.05", n-2));
-		System.out.println("决定系数："+r2);
-		System.out.println("标准残差："+Sy);
+		regAnalysisout rao = new regAnalysisout();
+		rao.F = F;
+		rao.F1 = F_square_distribution_table1("0.01", n-2);
+		rao.F5 = F_square_distribution_table1("0.05", n-2);
+		rao.pearson_r = pearson_r(x, y);
+		rao.SR = SR;
+		rao.Se = Se;
+		rao.ST = ST;
+		rao.VR = SR;
+		rao.Ve = Se/(n-2);
+		rao.ρ = correlationCoefficient(x, y);
+		
+		return rao;
+//		System.out.println("F值："+F);
+//		System.out.println("F0.01(1,n-2)："+F_square_distribution_table1("0.01", n-2));
+//		System.out.println("F0.05(1,n-2)："+F_square_distribution_table1("0.05", n-2));
+//		System.out.println("决定系数："+r2);
+//		System.out.println("标准残差："+Sy);
 	}
 	//双曲线模型1/y=a+b*1/x
 	public static void leastSquare_hyperbolic(double x[],double y[]){

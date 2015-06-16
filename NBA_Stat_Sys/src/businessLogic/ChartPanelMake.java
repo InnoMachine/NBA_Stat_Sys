@@ -1,12 +1,12 @@
 package businessLogic;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.DefaultXYDataset;
-
-import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 import vo.TotalInfo;
@@ -14,6 +14,8 @@ import chartMaking.LineChartMaking;
 import chartMaking.ScatterPlotChartMaking;
 
 public class ChartPanelMake {
+	BigDecimal b; 
+	Random rand = new Random();
 	static Team_BS team_bs = new Team_BL();
 	public ChartPanel getLineChartPanel(int number,String abbr){
 		LineChartMaking lcm = new LineChartMaking();
@@ -22,10 +24,25 @@ public class ChartPanelMake {
 		return lcm.makeChart(dataset);
 	}
 	
-	public ChartPanel getScatterChartPanel(int number,String abbr,String season,String n){
+	public ChartPanel getScatterChartPanel(int number,String abbr,String season){
 		ScatterPlotChartMaking spcm = new ScatterPlotChartMaking();
 		DefaultXYDataset dataset = new DefaultXYDataset();
-		//dataset = dataset1();
+		ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance(abbr,season);
+		int num=tp.size();
+		 double b[]=new double [num];
+		 int i=0;
+		 for(int k=0;k<num;k++){
+			 int t =rand.nextInt(num);
+			 b[i]=tp.get(t).getScore();
+			 i++;
+		 }
+		 double data[][] = new double[2][num];
+			for(TeamPerformanceInSingleGame temp:tp){
+				data[1][i] = temp.getHitNum();
+				data[0][i] = temp.getThreePointHitNum();
+				i++;
+			}
+			dataset.addSeries("", data);
 		return spcm.makeChart(dataset);
 	}
 	
@@ -57,6 +74,7 @@ public class ChartPanelMake {
 	}
 	
 	public static DefaultCategoryDataset xydataset1(){
+		
 		return null;
 	}
 	
