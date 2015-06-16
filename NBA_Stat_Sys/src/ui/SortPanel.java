@@ -193,14 +193,14 @@ public class SortPanel extends JPanel {
 			bgLabel.setIcon(bg);
 			
 			Vector<String> seasons=new Vector<String>();
-			seasons.addElement("2014-2015赛季");
-			seasons.addElement("2013-2014赛季");
-			seasons.addElement("2012-2013赛季");
-			seasons.addElement("2011-2012赛季");
-			seasons.addElement("2010-2011赛季");
+			seasons.addElement("14-15");
+			seasons.addElement("13-14");
+			seasons.addElement("12-13");
+			seasons.addElement("11-12");
+			seasons.addElement("10-11");
 			playerSortSeason=new JComboBox<String>(seasons);
 			playerSortSeason.setBounds(X * 400 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
-			playerSortSeason.setSelectedItem("2013-2014赛季");
+			playerSortSeason.setSelectedItem("13-14");
 			playerSortSeason.setForeground(Color.WHITE);
 			playerSortSeason.setBackground(Color.DARK_GRAY);
 			bgLabel.add(playerSortSeason);
@@ -357,14 +357,14 @@ public class SortPanel extends JPanel {
 			});
 
 			Vector<String> seasons=new Vector<String>();
-			seasons.addElement("2014-2015赛季");
-			seasons.addElement("2013-2014赛季");
-			seasons.addElement("2012-2013赛季");
-			seasons.addElement("2011-2012赛季");
-			seasons.addElement("2010-2011赛季");
+			seasons.addElement("14-15");
+			seasons.addElement("13-14");
+			seasons.addElement("12-13");
+			seasons.addElement("11-12");
+			seasons.addElement("10-11");
 		    teamSortSeason=new JComboBox<String>(seasons);
 			teamSortSeason.setBounds(X * 240 / 1366, Y * 66 / 768, X*130/1366, Y*28/768);
-			teamSortSeason.setSelectedItem("2013-2014赛季");
+			teamSortSeason.setSelectedItem("13-14");
 			teamSortSeason.setForeground(Color.WHITE);
 			teamSortSeason.setBackground(Color.DARK_GRAY);
 			bgLabel.add(teamSortSeason);

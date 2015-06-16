@@ -204,14 +204,14 @@ public class ScreeningPlayerPanel extends JPanel {
 		atlantic.setLocation(1000, 110);
 		
 		Vector<String> seasons=new Vector<String>();
-		seasons.addElement("2014-2015赛季");
-		seasons.addElement("2013-2014赛季");
-		seasons.addElement("2012-2013赛季");
-		seasons.addElement("2011-2012赛季");
-		seasons.addElement("2010-2011赛季");
+		seasons.addElement("14-15");
+		seasons.addElement("13-14");
+		seasons.addElement("12-13");
+		seasons.addElement("11-12");
+		seasons.addElement("10-11");
 		playerScreeningSeason=new JComboBox<String>(seasons);
 		playerScreeningSeason.setBounds(X * 200 / 1366, Y * 160 / 768, X*130/1366, Y*28/768);
-		playerScreeningSeason.setSelectedItem("2013-2014赛季");
+		playerScreeningSeason.setSelectedItem("13-14");
 		playerScreeningSeason.setForeground(Color.WHITE);
 		playerScreeningSeason.setBackground(Color.DARK_GRAY);
 		bgLabel.add(playerScreeningSeason);
