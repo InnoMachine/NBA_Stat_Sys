@@ -34,7 +34,7 @@ public class countFuncs {
     {
 		Random rand = new Random();
 	 ArrayList<PlayerVo> vo = team_bs.getPlayers("CLE");
-	 ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance("LAC");
+	 ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance("LAC","13-14");
 	 ArrayList<TeamVo>teamlist=team_bs.getAllTeam();
 	 ArrayList<PlayerVo> vl = player_bs.filterPlayerBy("F", "All", "threePointShotNumField", "");
 	 int i =0;
@@ -50,7 +50,7 @@ public class countFuncs {
 //		CategoryPlot cpp = chart.getCategoryPlot();
 	 
 		
-		DefaultXYDataset xy = new DefaultXYDataset();
+/*		DefaultXYDataset xy = new DefaultXYDataset();
 		double data[][] = new double[2][tp.size()];
 		
 		for(TeamPerformanceInSingleGame temp:tp){
@@ -72,19 +72,20 @@ public class countFuncs {
         //chart要放在Java容器组件中，ChartFrame继承自java的Jframe类。该第一个参数的数据是放在窗口左上角的，不是正中间的标题。
         chartFrame.pack(); //以合适的大小展现图形
         chartFrame.setVisible(true);//图形是否可见
-        
+        */
 	 /*for(PlayerVo temp:vo){
 		 showMeanAndVar(temp.getName());
 	 }*/
 //	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
 //	 PlayerVo v1 = vo.get(2);
 //	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
-//	 double b[]=new double [pg.getGames().size()];
-//	 i=0;
-//	 for(PlayerPerformanceInSingleGame temp:pg.getGames()){
-//		 b[i] = temp.getScore();
-//		 i++;
-//	 }
+	 double b[]=new double [tp.size()];
+	 i=0;
+	 for(TeamPerformanceInSingleGame temp:tp){
+		 b[i] = temp.getScore();
+		 i++;
+	 }
+	 chisquare(b,5);
 //	 interval_estimation3(b);
 //	 double t[] = new double[20];
 //	 double g[] = new double[20];

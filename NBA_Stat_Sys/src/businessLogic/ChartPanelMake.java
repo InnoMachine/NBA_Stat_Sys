@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.DefaultXYDataset;
 
 import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 import vo.TotalInfo;
 import chartMaking.LineChartMaking;
+import chartMaking.ScatterPlotChartMaking;
 
 public class ChartPanelMake {
 	static Team_BS team_bs = new Team_BL();
@@ -18,6 +20,13 @@ public class ChartPanelMake {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		dataset = dataset1();
 		return lcm.makeChart(dataset);
+	}
+	
+	public ChartPanel getScatterChartPanel(int number,String abbr){
+		ScatterPlotChartMaking spcm = new ScatterPlotChartMaking();
+		DefaultXYDataset dataset = new DefaultXYDataset();
+		//dataset = dataset1();
+		return spcm.makeChart(dataset);
 	}
 	
 	

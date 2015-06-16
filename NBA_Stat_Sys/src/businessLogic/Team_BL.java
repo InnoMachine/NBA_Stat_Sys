@@ -48,6 +48,9 @@ public class Team_BL implements Team_BS{
 	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr){
 		return team_handler.getTeamPerformance(abbr);
 	}
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr,String season){
+		return team_handler.getTeamPerformance(abbr,season);
+	}
 	@Override
 	public ArrayList<TeamVo> getTeamByAbbrA(String abbr) {
 		return team_handler.getTeamByAbbrA(abbr);

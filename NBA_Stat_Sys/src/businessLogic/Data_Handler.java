@@ -1308,6 +1308,21 @@ public class Data_Handler {
 		return list;
 		
 	}
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr,String season)
+	{
+		ArrayList<TeamPerformanceInSingleGame> tp = new ArrayList<TeamPerformanceInSingleGame>();
+		for(SeasonMult sm:seasonlist){
+			if(sm.getSeason().equals(season)){
+				for(TeamGames temp:sm.listtg){
+					if(isTeam(temp.getName(), abbr)){
+						tp = temp.getGames();
+					}
+				}
+			}
+		}
+		return tp;
+		
+	}
 	public TotalInfo getTotalInfo(String season) {
 		
 		return GetSeason(season).ti;

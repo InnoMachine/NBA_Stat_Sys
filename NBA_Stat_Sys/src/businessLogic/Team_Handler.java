@@ -697,7 +697,9 @@ public class Team_Handler {
 	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr){
 		return data_handler.getTeamPerformance(abbr);
 	}
-
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr,String season){
+		return data_handler.getTeamPerformance(abbr,season);
+	}
 
 	public ArrayList<TeamVo> getTeamByAbbrA(String abbr) {
 		return data_handler.getTeamByAbbrA(abbr);

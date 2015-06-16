@@ -20,6 +20,7 @@ public interface Team_BS {
 	public ArrayList<TeamCardVo> hotTeamSeason(String option); 
 	public TeamRecentGames getTeamRecentPerformance(String abbr);
 	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr);
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr,String season);
 	public ArrayList<TotalInfo> getTeamTotalInfos();
 	public ArrayList<TeamGames> getTeamGames(String abbr);
 	public ArrayList<String> getTeamAbbrs();
