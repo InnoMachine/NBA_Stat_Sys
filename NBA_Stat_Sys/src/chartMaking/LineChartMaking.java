@@ -23,13 +23,14 @@ public class LineChartMaking {
 		
 	}
 	
-	public static	JFreeChart makeChart(){
+	public JFreeChart makeChart(DefaultCategoryDataset getDataset){
+		DefaultCategoryDataset linedataset =getDataset;
 		StandardChartTheme standardChartTheme = new StandardChartTheme("CN");
 		standardChartTheme.setExtraLargeFont(new Font("微软雅黑",Font.BOLD,15));
 		standardChartTheme.setRegularFont(new Font("微软雅黑",Font.BOLD,15));
 		standardChartTheme.setLargeFont(new Font("微软雅黑",Font.BOLD,15));
 		ChartFactory.setChartTheme(standardChartTheme);
-		JFreeChart  chart = ChartFactory.createLineChart("图表标题", "X轴标题", "Y轴标题",  getDataset(),  
+		JFreeChart  chart = ChartFactory.createLineChart(null, "年份", "Y轴标题",  linedataset,  
 				PlotOrientation.VERTICAL, // 绘制方向  
 				true, // 显示图例  
 				true, // 采用标准生成器  
@@ -37,7 +38,7 @@ public class LineChartMaking {
 				);  
 	// chart.getTitle().setFont(titleFont); // 设置标题字体  
 // chart.getLegend().setItemFont(font);// 设置图例类别字体  
-// chart.setBackgroundPaint(bgColor);// 设置背景色   
+		chart.setBackgroundPaint(Color.GRAY);// 设置背景色   
  //获取绘图区对象  
 		CategoryPlot plot = chart.getCategoryPlot();  
 		plot.setBackgroundPaint(Color.LIGHT_GRAY); // 设置绘图区背景色  
@@ -45,7 +46,7 @@ public class LineChartMaking {
 		plot.setRangeGridlinesVisible(true);// 设置是否显示水平方向背景线,默认值为true  
 		plot.setDomainGridlinePaint(Color.WHITE); // 设置垂直方向背景线颜色  
 		plot.setDomainGridlinesVisible(true); // 设置是否显示垂直方向背景线,默认值为false  
-   
+
 	
 		CategoryAxis domainAxis = plot.getDomainAxis();     
 // domainAxis.setLabelFont(font); // 设置横轴字体  
@@ -63,7 +64,29 @@ public class LineChartMaking {
 		rangeAxis.setAutoRange(false);   //不自动分配Y轴数据  
 		rangeAxis.setTickMarkStroke(new BasicStroke(1.6f));     // 设置坐标标记大小  
 		rangeAxis.setTickMarkPaint(Color.BLACK);     // 设置坐标标记颜色  
-
+		NumberAxis numberAxis=(NumberAxis) plot.getRangeAxis();
+		     numberAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+		     numberAxis.setAutoRangeIncludesZero(true); //自动生成
+		     numberAxis.setUpperMargin(0.20);
+		     numberAxis.setLabelAngle(Math.PI / 2.0); 
+		     numberAxis.setAutoRange(false);
+		     double max=0;
+		     for(int i=0;i<linedataset.getColumnCount();i++){
+		    	 Double temp= (Double) linedataset.getValue(0, i);
+		    	 if(temp>max){
+		    		 max=temp;
+		    	 }
+		     }
+		     double min=max;
+		     for(int i=0;i<linedataset.getColumnCount();i++){
+		    	 Double temp= (Double) linedataset.getValue(0, i);
+		    	 if(temp<min){
+		    		 min=temp;
+		    	 }
+		     }
+		     max=max*11/10;
+		     min=min*10/12;
+		     numberAxis.setRange(min, max);
    
    
 // 获取折线对象  
@@ -75,7 +98,7 @@ public class LineChartMaking {
 				BasicStroke.CAP_ROUND, // 端点风格  
 				BasicStroke.JOIN_ROUND, // 折点风格  
 				8f, dashes, 0.6f);   
-		for (int i = 0; i < getDataset().getRowCount(); i++) {  
+		for (int i = 0; i < linedataset.getRowCount(); i++) {  
 			if (i % 2 == 0)  
 				renderer.setSeriesStroke(i, realLine); // 利用实线绘制  
 			else  
@@ -88,10 +111,5 @@ public class LineChartMaking {
 		return chart;
 	}
 	
-	private static  DefaultCategoryDataset getDataset(){
-		 DefaultCategoryDataset linedataset = new DefaultCategoryDataset();
-		 return linedataset;
-	}
-
 }
 
