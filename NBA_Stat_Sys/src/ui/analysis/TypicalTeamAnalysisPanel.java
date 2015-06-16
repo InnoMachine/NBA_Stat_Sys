@@ -29,6 +29,7 @@ import javax.swing.table.TableColumn;
 import ui.MainFrame;
 import ui.StartPanel;
 import vo.chiquareout;
+import vo.regAnalysisout;
 import businessLogic.ChartPanelMake;
 import businessLogic.TableGet;
 
@@ -40,7 +41,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	JLabel bgLabel;
 	JPanel previousPanel;
 	JButton picturebtn;
-	JButton tablebtn;
+	JButton kfTablebtn;
+	JButton regTablebtn;
+	JButton varTablebtn;
 	JLabel picturelbl;
 	JLabel chartlbl;
 	JLabel tablelbl;
@@ -49,8 +52,10 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	ChartPanelMake cpm = new ChartPanelMake();
 	TableGet tg = new TableGet();
 	chiquareout kfdatas = new chiquareout();
+	regAnalysisout regdatas=new regAnalysisout();
 	JPanel firstChartPanel;
 	JPanel secondChartPanel;
+	JPanel thirdChartPanel;
 	JComboBox<String> seasonjcb;
 	String season = "";
 	JComboBox<String> sampleNumjcb;
@@ -173,13 +178,29 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(picturebtn);
 
-		tablebtn = new MyButton("");
-		tablebtn.setBounds(X * 333 / 1366, Y * 70 / 768, X * 150 / 1366,
+		kfTablebtn = new MyButton("");
+		kfTablebtn.setBounds(X * 333 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
-		tablebtn.addActionListener(e -> {
-			showTable();
+		kfTablebtn.addActionListener(e -> {
+			showkfTable();
 		});
-		this.add(tablebtn);
+		this.add(kfTablebtn);
+		
+		regTablebtn = new MyButton("");
+		regTablebtn.setBounds(X * 483 / 1366, Y * 70 / 768, X * 150 / 1366,
+				Y * 30 / 768);
+		regTablebtn.addActionListener(e -> {
+			showkfTable();
+		});
+		this.add(regTablebtn);
+		
+		varTablebtn = new MyButton("");
+		varTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
+				Y * 30 / 768);
+		varTablebtn.addActionListener(e -> {
+			showkfTable();
+		});
+		this.add(varTablebtn);
 
 		mainFrame.add(this);
 	}
@@ -282,7 +303,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 	}
 
-	public void showTable() {
+	public void showkfTable() {
 		picturelbl.setVisible(false);
 		tablelbl.setVisible(true);
 
@@ -335,12 +356,14 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		sampleNumjcb.setBackground(Color.DARK_GRAY);
 		sampleNumjcb.addActionListener(e -> {
 			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
+			createChart2(1);
 
 		});
 		tablelbl.add(sampleNumjcb);
 
 	}
 
+	
 	public void createChart1(int i) {
 
 		if (firstChartPanel != null) {
@@ -363,7 +386,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		secondChartPanel = kfdatas.cp;
 		secondChartPanel.setBounds(200, 10, 700, 350);
 		tablelbl.add(secondChartPanel);
-		
+		/*
 		JTable kfTable = new JTable(kfdatas.ni.length + 1, 6) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
@@ -412,19 +435,20 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setOpaque(false);
 		kfTable.setVisible(true);
 		tablelbl.add(kfTable);
+		*/
 	}
-/*
+
 	public void createChart3(int i) {
-		kfdatas = tg.getChiquareout(1, team, season, sampleNum);
-		if (secondChartPanel != null) {
-			secondChartPanel.setVisible(false);
+		regdatas = tg.getRegAnalysisout(1, team, season);
+		if (thirdChartPanel != null) {
+			thirdChartPanel.setVisible(false);
 		}
-		secondChartPanel = new JPanel();
-		secondChartPanel = kfdatas.cp;
-		secondChartPanel.setBounds(200, 10, 700, 350);
-		tablelbl.add(secondChartPanel);
+		thirdChartPanel = new JPanel();
+		thirdChartPanel = kfdatas.cp;
+		thirdChartPanel.setBounds(200, 10, 700, 350);
+		tablelbl.add(thirdChartPanel);
 		
-		JTable kfTable = new JTable(kfdatas.ni.length + 1, 6) { // 设置jtable的单元格为透明的
+		JTable kfTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -435,7 +459,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			}
 		};
 		;
-		kfTable.setRowHeight(120 / 5);
+		kfTable.setRowHeight(120 / 4);
 
 		DefaultTableModel model = new DefaultTableModel();
 		Vector<String> columnName = new Vector<String>();
@@ -473,7 +497,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setVisible(true);
 		tablelbl.add(kfTable);
 	}
-	*/
+	
 	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame, MainFrame.analysisPanel,
