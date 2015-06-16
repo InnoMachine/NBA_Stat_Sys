@@ -41,6 +41,8 @@ import vo.TeamVo;
 import businessLogic.Game_BL;
 import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
+import businessLogic.Player_BL_Stub;
+import businessLogic.Player_BS;
 import businessLogic.Team_BL;
 import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
@@ -95,9 +97,11 @@ public class TeamInfoPanel extends JPanel {
 
 	private JLabel TeamBadge;
 
+	Player_BS player_BS=new Player_BL_Stub();
 	Team_BS team_BS = new Team_BL_Stub();
 	Game_BS game_BS = new Game_BL_Stub();
 
+	ArrayList<PlayerVo> players;
 	ArrayList<TeamPerformanceInSingleGame> fiveRecentGames;
 	ArrayList<TeamPerformanceInSingleGame> historicalGames;
 	
@@ -244,7 +248,7 @@ public class TeamInfoPanel extends JPanel {
 	}
 
 	private void createPlayerInfoJSP() {
-		ArrayList<PlayerVo> players = new ArrayList<PlayerVo>();
+		players = new ArrayList<PlayerVo>();
 		players = team_BS.getPlayers(teamABBR);
 
 		if (playersRowData == null) {
@@ -330,7 +334,7 @@ public class TeamInfoPanel extends JPanel {
 				.setPreferredWidth(X * 100 / 1366);
 
 		playersInfoTable.getColumnModel().getColumn(17)
-				.setCellRenderer(new MyButtonRenderer());
+				.setCellRenderer(new MyPlayerDataRenderer());
 
 		playersInfoTable.setRowHeight(X * 20 / 1366);
 		playersInfoJSP = new JScrollPane(playersInfoTable);
@@ -746,8 +750,9 @@ public class TeamInfoPanel extends JPanel {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/seeMore.png").getImage().getScaledInstance(
-					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
-
+					X * 30 / 1366, Y * 15 / 768, Image.SCALE_SMOOTH));
+			this.setBorderPainted(false);
+			this.setBackground(Color.BLACK);
 			this.setIcon(buttonIcon);
 
 			if (isSelected) {
@@ -773,8 +778,9 @@ public class TeamInfoPanel extends JPanel {
 			// TODO Auto-generated method stub
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 					"Image/seeMore.png").getImage().getScaledInstance(
-					X * 122 / 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
-
+					X * 30 / 1366, Y * 15 / 768, Image.SCALE_SMOOTH));
+			this.setBorderPainted(false);
+			this.setBackground(Color.BLACK);
 			this.setIcon(buttonIcon);
 
 			if (isSelected) {
@@ -792,6 +798,28 @@ public class TeamInfoPanel extends JPanel {
 
 	// -------------------------------------------------------------------------------------
 
+	public class MyPlayerDataRenderer extends JButton implements TableCellRenderer {
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean cellHasFocus,
+				int row, int col) {
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/seeMore.png").getImage().getScaledInstance(
+					X * 30 / 1366, Y * 15 / 768, Image.SCALE_SMOOTH));
+			this.setBorderPainted(false);
+			this.setBackground(Color.BLACK);
+			this.setIcon(buttonIcon);
+			if (isSelected) {
+				selfClose();
+				MainFrame.playerInfoPanel = new PlayerInfoPanel(
+				player_BS.getPlayerByName(players.get(playersInfoTable.getSelectedRow()).getName()).getName(),
+						mainFrame, new TeamInfoPanel(teamABBR, mainFrame,
+								previousPanel, previouspanel), "TeamInfoPanel");
+				mainFrame.add(MainFrame.playerInfoPanel);
+			}
+			return this;
+		}
+	}
+	
 	public class MyTableRenderer extends DefaultTableCellRenderer {
 		public Component getTableCellRendererComponent(JTable table,
 				Object value, boolean isSelected, boolean cellHasFocus,
@@ -816,7 +844,6 @@ public class TeamInfoPanel extends JPanel {
 
 		public MyTextField() {
 			super();
-			this.setForeground(Color.BLACK);
 			this.setFont(new Font("微软雅黑", 1, 15));
 			this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 			this.setForeground(Color.WHITE);

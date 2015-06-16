@@ -103,44 +103,23 @@ public class StartPanel extends JPanel {
 		gameInfobtn.addActionListener(e -> toGamePanel());
 		bgLabel.add(gameInfobtn);
 		
-/*
-		searchPlayerbtn = new MyButton("球员查看");
-		searchPlayerbtn.setBounds(subX, 35*Y/100, X/6,  Y/10);
-		searchPlayerbtn.addActionListener(e -> toSearchPlayerPanel());
-		searchPlayerbtn.setVisible(false);
-		bgLabel.add(searchPlayerbtn);
-
-		sortPlayerbtn = new MyButton("球员排序");
-		sortPlayerbtn.setBounds(subX, 47*Y/100,X/6, Y/10);
-		sortPlayerbtn.addActionListener(e -> toSortPlayerPanel());
-		sortPlayerbtn.setVisible(false);
-		bgLabel.add(sortPlayerbtn);
-
-		screeningPlayerbtn = new MyButton("球员筛选");
-		screeningPlayerbtn.setBounds(subX, 59*Y/100,  X/6,  Y/10);
-		screeningPlayerbtn.addActionListener(e -> toScreeningPlayerPanel());
-		screeningPlayerbtn.setVisible(false);
-		bgLabel.add(screeningPlayerbtn);
-
-		searchTeambtn = new MyButton("球队查看");
-		searchTeambtn.setBounds(subX, 60*Y/100, X/6,  Y/10);
-		searchTeambtn.addActionListener(e -> toSearchTeamPanel());
-		searchTeambtn.setVisible(false);
-		bgLabel.add(searchTeambtn);
-
-		sortTeambtn = new MyButton("球队排序");
-		sortTeambtn.setBounds(subX, 72*Y/100, X/6,  Y/10);
-		sortTeambtn.addActionListener(e -> toSortTeamPanel());
-		sortTeambtn.setVisible(false);
-		bgLabel.add(sortTeambtn);
-*/
-	
+		
+		JButton home = new JButton();
+		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
+				.getImage().getScaledInstance(X / 25, X / 25,
+						Image.SCALE_SMOOTH));
+		home.setBounds(X * 1180 / 1366, Y * 20 / 768, X / 25, X / 25);
+		home.setIcon(homeIcon);
+		home.setOpaque(false);
+		home.setContentAreaFilled(false);
+		home.setBorderPainted(false);
+		bgLabel.add(home);
 		
 		JButton minimize = new JButton();
 		ImageIcon minimizeIcon = new ImageIcon(new ImageIcon(
 				"Image/minimizeIcon.png").getImage().getScaledInstance(X / 25,
 				X / 25, Image.SCALE_SMOOTH));
-		minimize.setBounds( X*17/ 20, Y * 20 / 768, X / 25, X / 25);
+		minimize.setBounds( X * 1240 / 1366, Y * 20 / 768, X / 25, X / 25);
 		minimize.setIcon(minimizeIcon);
 		minimize.setOpaque(false);
 		minimize.setContentAreaFilled(false);
@@ -159,7 +138,7 @@ public class StartPanel extends JPanel {
 		ImageIcon closeIcon = new ImageIcon(
 				new ImageIcon("Image/closeIcon.png").getImage()
 						.getScaledInstance(X / 25, X / 25, Image.SCALE_SMOOTH));
-		close.setBounds(19 * X / 20, Y * 20 / 768, X / 25, X / 25);
+		close.setBounds(X * 1300 / 1366, Y * 20 / 768, X / 25, X / 25);
 		close.setIcon(closeIcon);
 		close.setOpaque(false);
 		close.setContentAreaFilled(false);
@@ -173,17 +152,6 @@ public class StartPanel extends JPanel {
 			}
 		});
 		bgLabel.add(close);
-		
-		JButton home = new JButton();
-		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
-				.getImage().getScaledInstance(X / 25, X / 25,
-						Image.SCALE_SMOOTH));
-		home.setBounds(15 * X / 20, Y * 20 / 768, X / 25, X / 25);
-		home.setIcon(homeIcon);
-		home.setOpaque(false);
-		home.setContentAreaFilled(false);
-		home.setBorderPainted(false);
-		bgLabel.add(home);
 		
 	}
 	public void toAnalysisPanel() {

@@ -1,6 +1,7 @@
 package ui.analysis;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 
 import ui.MainFrame;
 import ui.StartPanel;
@@ -141,7 +143,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		tablelbl.setVisible(false);
 		this.add(tablelbl);
 
-		picturebtn = new JButton("数据变化");
+		picturebtn = new MyButton("数据变化");	
 		picturebtn.setBounds(X * 183 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		picturebtn.addActionListener(e -> {
@@ -150,7 +152,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
         this.add(picturebtn);
 		
 		
-		tablebtn = new JButton("");
+		tablebtn = new MyButton("");
 		tablebtn.setBounds(X * 333 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		tablebtn.addActionListener(e -> {
@@ -289,7 +291,29 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		previousPanel.setVisible(true);
 		mainFrame.add(previousPanel);
 	}
+	class MyButton extends JButton {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
+	public MyButton(String function) {
+		super();
+		this.setText(function);
+		this.setHorizontalTextPosition(SwingConstants.CENTER);
+		this.setForeground(Color.WHITE);
+		this.setFont(new Font("微软雅黑", 1, 15));
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/mainButton.png").getImage().getScaledInstance(
+				X * 150/ 1366, Y * 30 / 768, Image.SCALE_SMOOTH));
+
+		this.setIcon(buttonIcon);
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		this.setBorderPainted(false);
+	}
+}
+	
 	class MyRadioButton extends JRadioButton {
 		/**
 		 * 
