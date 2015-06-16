@@ -20,6 +20,11 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
+//		gameID: 0021201214
+//		json1 empty
+//		id: 1214error! this game will be ignored!
+			addGameList(2012);
+//			DaoFactory.getGameDaoInstence().add(getGamePO("12","0244"));;
 
 	}
 	
@@ -179,7 +184,8 @@ public class DataScrawl {
 		for(int i = 1; i <= id; i ++) {
 			GamePO game = getGamePO(year, getFormat4bit(i));
 			if(game == null) {
-				System.out.println("error! this game will be ignored!");
+				System.out.println("id: " + i + "error! this game will be ignored!");
+				System.exit(0);
 			}else {
 				DaoFactory.getGameDaoInstence().add(game);
 			}
