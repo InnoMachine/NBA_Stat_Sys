@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,8 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+
 import ui.MainFrame;
 import ui.StartPanel;
+import businessLogic.ChartPanelMake;
 import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 
@@ -34,6 +37,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	JLabel tablelbl;
 	String team;
 	String currentPicCriteria = "";
+	ChartPanelMake cpm=new ChartPanelMake();
+	JPanel chartPanel;
 
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
 			JPanel previousPanel) {
@@ -174,6 +179,13 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic1.addActionListener(e -> {
 			currentPicCriteria = "";
 			createChart(team, currentPicCriteria, "");
+			if(chartPanel!=null){
+				chartPanel.setVisible(false);
+			}
+			chartPanel=new JPanel();
+			chartPanel=cpm.getLineChartPanel(1, team);
+			chartPanel.setBounds(150,50 , 700, 450);			
+			picturelbl.add(chartPanel);		
 
 		});
 		picturelbl.add(pic1);
@@ -184,6 +196,14 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic2.addActionListener(e -> {
 			currentPicCriteria = "";
 			createChart(team, currentPicCriteria, "");
+			if(chartPanel!=null){
+				chartPanel.setVisible(false);
+			}
+			chartPanel=new JPanel();
+			chartPanel.setBounds(150,50 , 700, 450);
+			chartPanel.setBackground(Color.GREEN);
+			picturelbl.add(chartPanel);
+			
 		});
 		picturelbl.add(pic2);
 		bg.add(pic2);
