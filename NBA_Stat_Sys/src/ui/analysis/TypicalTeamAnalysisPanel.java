@@ -46,7 +46,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	JButton varTablebtn;
 	JLabel picturelbl;
 	JLabel chartlbl;
-	JLabel tablelbl;
+	JLabel table1lbl;
+	JLabel table2lbl;
+	JLabel table3lbl;
 	String team;
 	String currentPicCriteria = "";
 	ChartPanelMake cpm = new ChartPanelMake();
@@ -164,11 +166,23 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		picturelbl.setVisible(false);
 		this.add(picturelbl);
 
-		tablelbl = new JLabel();
-		tablelbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
+		table1lbl = new JLabel();
+		table1lbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
 				Y * 550 / 768);
-		tablelbl.setVisible(false);
-		this.add(tablelbl);
+		table1lbl.setVisible(false);
+		this.add(table1lbl);
+		
+		table2lbl = new JLabel();
+		table2lbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
+				Y * 550 / 768);
+		table2lbl.setVisible(false);
+		this.add(table2lbl);
+		
+		table3lbl = new JLabel();
+		table3lbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
+				Y * 550 / 768);
+		table3lbl.setVisible(false);
+		this.add(table3lbl);
 
 		picturebtn = new MyButton("数据变化");
 		picturebtn.setBounds(X * 183 / 1366, Y * 70 / 768, X * 150 / 1366,
@@ -190,7 +204,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		regTablebtn.setBounds(X * 483 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		regTablebtn.addActionListener(e -> {
-			showkfTable();
+			showregTable();
 		});
 		this.add(regTablebtn);
 		
@@ -198,7 +212,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		varTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		varTablebtn.addActionListener(e -> {
-			showkfTable();
+			showvarTable();
 		});
 		this.add(varTablebtn);
 
@@ -206,8 +220,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	}
 
 	public void showPicture() {
-		tablelbl.setVisible(false);
 		picturelbl.setVisible(true);
+		table1lbl.setVisible(false);
+		table2lbl.setVisible(false);
+		table3lbl.setVisible(false);
+		
 
 		ButtonGroup bg = new ButtonGroup();
 
@@ -305,11 +322,13 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 	public void showkfTable() {
 		picturelbl.setVisible(false);
-		tablelbl.setVisible(true);
+		table1lbl.setVisible(true);
+		table2lbl.setVisible(false);
+		table3lbl.setVisible(false);
 
 		JLabel seasonlbl = new MyLabel(Color.WHITE, "赛季");
 		seasonlbl.setBounds(6, 70, 70, 23);
-		tablelbl.add(seasonlbl);
+		table1lbl.add(seasonlbl);
 
 		Vector<String> seasons = new Vector<String>();
 		seasons.addElement("14-15");
@@ -338,11 +357,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			createChart2(1);
 
 		});
-		tablelbl.add(seasonjcb);
+		table1lbl.add(seasonjcb);
 
 		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
 		sampleNumlbl.setBounds(6, 160, 70, 23);
-		tablelbl.add(sampleNumlbl);
+		table1lbl.add(sampleNumlbl);
 
 		Vector<String> sampleNums = new Vector<String>();
 		sampleNums.addElement("40");
@@ -359,10 +378,135 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			createChart2(1);
 
 		});
-		tablelbl.add(sampleNumjcb);
+		table1lbl.add(sampleNumjcb);
 
 	}
 
+	
+	public void showregTable(){
+		picturelbl.setVisible(false);
+		table1lbl.setVisible(false);
+		table2lbl.setVisible(true);
+		table3lbl.setVisible(false);
+
+		JLabel seasonlbl = new MyLabel(Color.WHITE, "赛季");
+		seasonlbl.setBounds(6, 70, 70, 23);
+		table2lbl.add(seasonlbl);
+
+		Vector<String> seasons = new Vector<String>();
+		seasons.addElement("14-15");
+		seasons.addElement("13-14");
+		seasons.addElement("12-13");
+		seasons.addElement("11-12");
+		seasons.addElement("10-11");
+		seasons.addElement("09-10");
+		seasons.addElement("08-09");
+		seasons.addElement("07-08");
+		seasons.addElement("06-07");
+		seasons.addElement("05-06");
+		seasons.addElement("04-05");
+		seasons.addElement("03-04");
+		seasons.addElement("02-03");
+		seasons.addElement("01-02");
+		seasons.addElement("00-01");
+		seasonjcb = new JComboBox<String>(seasons);
+		seasonjcb.setBounds(X * 6 / 1366, Y * 100 / 768, X * 70 / 1366,
+				Y * 28 / 768);
+		seasonjcb.setSelectedItem("13-14");
+		seasonjcb.setForeground(Color.WHITE);
+		seasonjcb.setBackground(Color.DARK_GRAY);
+		seasonjcb.addActionListener(e -> {
+			season = String.valueOf(seasonjcb.getSelectedItem());
+			createChart3(1);
+
+		});
+		table2lbl.add(seasonjcb);
+
+		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
+		sampleNumlbl.setBounds(6, 160, 70, 23);
+		table2lbl.add(sampleNumlbl);
+
+		Vector<String> sampleNums = new Vector<String>();
+		sampleNums.addElement("40");
+		sampleNums.addElement("60");
+		sampleNums.addElement("All");
+		sampleNumjcb = new JComboBox<String>(sampleNums);
+		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
+				Y * 28 / 768);
+		sampleNumjcb.setSelectedItem("40");
+		sampleNumjcb.setForeground(Color.WHITE);
+		sampleNumjcb.setBackground(Color.DARK_GRAY);
+		sampleNumjcb.addActionListener(e -> {
+			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
+			createChart3(1);
+
+		});
+		table2lbl.add(sampleNumjcb);
+		
+		
+	}
+	
+	public void showvarTable(){
+		picturelbl.setVisible(false);
+		table1lbl.setVisible(false);
+		table2lbl.setVisible(false);
+		table3lbl.setVisible(true);
+
+		JLabel seasonlbl = new MyLabel(Color.WHITE, "赛季");
+		seasonlbl.setBounds(6, 70, 70, 23);
+		table3lbl.add(seasonlbl);
+
+		Vector<String> seasons = new Vector<String>();
+		seasons.addElement("14-15");
+		seasons.addElement("13-14");
+		seasons.addElement("12-13");
+		seasons.addElement("11-12");
+		seasons.addElement("10-11");
+		seasons.addElement("09-10");
+		seasons.addElement("08-09");
+		seasons.addElement("07-08");
+		seasons.addElement("06-07");
+		seasons.addElement("05-06");
+		seasons.addElement("04-05");
+		seasons.addElement("03-04");
+		seasons.addElement("02-03");
+		seasons.addElement("01-02");
+		seasons.addElement("00-01");
+		seasonjcb = new JComboBox<String>(seasons);
+		seasonjcb.setBounds(X * 6 / 1366, Y * 100 / 768, X * 70 / 1366,
+				Y * 28 / 768);
+		seasonjcb.setSelectedItem("13-14");
+		seasonjcb.setForeground(Color.WHITE);
+		seasonjcb.setBackground(Color.DARK_GRAY);
+		seasonjcb.addActionListener(e -> {
+			season = String.valueOf(seasonjcb.getSelectedItem());
+			createChart3(1);
+
+		});
+		table3lbl.add(seasonjcb);
+
+		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
+		sampleNumlbl.setBounds(6, 160, 70, 23);
+		table3lbl.add(sampleNumlbl);
+
+		Vector<String> sampleNums = new Vector<String>();
+		sampleNums.addElement("40");
+		sampleNums.addElement("60");
+		sampleNums.addElement("All");
+		sampleNumjcb = new JComboBox<String>(sampleNums);
+		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
+				Y * 28 / 768);
+		sampleNumjcb.setSelectedItem("40");
+		sampleNumjcb.setForeground(Color.WHITE);
+		sampleNumjcb.setBackground(Color.DARK_GRAY);
+		sampleNumjcb.addActionListener(e -> {
+			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
+			createChart3(1);
+
+		});
+		table3lbl.add(sampleNumjcb);
+		
+	}
 	
 	public void createChart1(int i) {
 
@@ -435,7 +579,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setEnabled(false);
 		kfTable.setOpaque(false);
 		kfTable.setVisible(true);
-		tablelbl.add(kfTable);
+		table1lbl.add(kfTable);
 		
 	}
 
@@ -447,7 +591,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		thirdChartPanel = new JPanel();
 		thirdChartPanel = kfdatas.cp;
 		thirdChartPanel.setBounds(200, 10, 700, 350);
-		tablelbl.add(thirdChartPanel);
+		table2lbl.add(thirdChartPanel);
 		
 		JTable kfTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -496,7 +640,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setEnabled(false);
 		kfTable.setOpaque(false);
 		kfTable.setVisible(true);
-		tablelbl.add(kfTable);
+		table2lbl.add(kfTable);
 	}
 	
 	public void home() {
