@@ -87,12 +87,12 @@ public class ScreeningPlayerPanel extends JPanel {
 		this.setLayout(null);
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
-		/*
-		ImageIcon bg = new ImageIcon(new ImageIcon("Image/screeningPlayer.png")
+		
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/playerPanel.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel.setIcon(bg);
-		*/
+	
 		bgLabel.setOpaque(false);
 		this.add(bgLabel);
 	    this.setBackground(Color.BLACK);
@@ -174,22 +174,22 @@ public class ScreeningPlayerPanel extends JPanel {
 		
 		nbaUnion=new LeagueButton("NBA联盟");
 		nbaUnion.setLocation(600,50);
-		westernUnionSymbol=new JLabel();
+
+		westernUnion=new LeagueButton("西部联盟");
 		ImageIcon westernUnionIcon = new ImageIcon(new ImageIcon(
 				"Image/western.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));	
-		westernUnionSymbol.setIcon(westernUnionIcon);
-		westernUnionSymbol.setBounds(280, 20, 80, 80);
-		bgLabel.add(westernUnionSymbol);
-		westernUnion=new LeagueButton("西部联盟");
-		westernUnion.setLocation(400, 50);
-		easternUnionSymbol=new JLabel();
-		easternUnionSymbol.setBounds(990, 20, 80, 80);
+		westernUnion.setLocation(380, 15);
+		westernUnion.setSize(80, 80);
+		westernUnion.setIcon(westernUnionIcon);
+		westernUnion.setText("");
+
+		easternUnion=new LeagueButton("东部联盟");
 		ImageIcon easternUnionIcon = new ImageIcon(new ImageIcon(
 				"Image/eastern.png").getImage().getScaledInstance(80,80,Image.SCALE_SMOOTH));
-		easternUnionSymbol.setIcon(easternUnionIcon);
-		bgLabel.add(easternUnionSymbol);
-		easternUnion=new LeagueButton("东部联盟");
-		easternUnion.setLocation(800, 50);	
+		easternUnion.setIcon(easternUnionIcon);
+		easternUnion.setText("");
+		easternUnion.setSize(80, 80);
+		easternUnion.setLocation(890, 15);	
 		pacific=new LeagueButton("太平洋赛区");
 		pacific.setLocation(200, 110);
 		northwest=new LeagueButton("西北赛区");

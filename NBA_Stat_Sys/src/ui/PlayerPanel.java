@@ -79,11 +79,12 @@ public class PlayerPanel extends JPanel {
 
 		bgLabel = new JLabel();
 		bgLabel.setBounds(0, 0, X, Y);
-		/*
-		 * ImageIcon bg = new ImageIcon(new ImageIcon("Image/playerPanel.png")
-		 * .getImage().getScaledInstance(this.getWidth(), this.getHeight(),
-		 * Image.SCALE_SMOOTH)); bgLabel.setIcon(bg);
-		 */
+		
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/playerPanel.png")
+		 .getImage().getScaledInstance(this.getWidth(), this.getHeight(),
+		Image.SCALE_SMOOTH)); 
+		bgLabel.setIcon(bg);
+		 
 		bgLabel.setOpaque(false);
 		this.add(bgLabel);
 		this.setBackground(Color.BLACK);
