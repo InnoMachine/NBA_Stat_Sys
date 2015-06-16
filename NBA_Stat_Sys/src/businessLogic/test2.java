@@ -26,7 +26,7 @@ public class test2 {
 		
 
         
-		JFreeChart chart =ChartFactory.createLineChart("", "season", "score", dataset, PlotOrientation.VERTICAL, true, true, true);
+		JFreeChart chart =ChartFactory.createLineChart("", "season", "", dataset, PlotOrientation.VERTICAL, true, true, true);
         StandardChartTheme standardChartTheme=new StandardChartTheme("CN");         //设置标题字体
         standardChartTheme.setExtraLargeFont(new Font("隶书",Font.BOLD,20));         //设置图例的字体
         standardChartTheme.setRegularFont(new Font("宋书",Font.PLAIN,15));         //设置轴向的字体
@@ -135,8 +135,8 @@ public class test2 {
         
         for (int i = 0; i < 15; i++) {
             //dataset.addValue((double)vos.get(i).getAssistanceField()/(vos.get(i).getShotNumField()-vos.get(i).getAssistanceField()),Teamabbr,time[i]);
-            dataset.addValue(vos.get(i).getOffensiveReboundField()/vos.get(i).getDefensiveReboundField(), Teamabbr, time[i]);
-        	// dataset.addValue((double)tis.get(i).getAssistanceField()/tis.get(i).get,All,time[i]);
+            dataset.addValue(vos.get(i).getDefensiveEfficiency(), Teamabbr, time[i]);
+        	//dataset.addValue((double)tis.get(i).,All, time[i]);
      }
         return dataset;
 	}

@@ -16,9 +16,12 @@ public class ChartPanelMake {
 	public ChartPanel getLineChartPanel(int number,String abbr){
 		LineChartMaking lcm = new LineChartMaking();
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		dataset = dataset1();
 		return lcm.makeChart(dataset);
 	}
-	public static DefaultCategoryDataset dataset3(){
+	
+	
+	public static DefaultCategoryDataset dataset1(){
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		ArrayList<TeamVo> vos = team_bs.getTeamByAbbrA("SAS");
 		ArrayList<TotalInfo> tis = team_bs.getTeamTotalInfos();

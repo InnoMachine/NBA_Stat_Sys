@@ -14,6 +14,7 @@ public class TotalInfo {
 	private int freeshot;
 	private int time;
 	private int hit;
+	private int shot;
 	private int block;
 	private int steal;
 	private int foul;
@@ -30,6 +31,7 @@ public class TotalInfo {
 	private double blockField;
 	private double foulField;
 	private double hitField;
+	private double shotField;
 	private double gamenumField;
 	private double roundAttackField;
 	public TotalInfo(){
@@ -369,5 +371,29 @@ public class TotalInfo {
 		b = new BigDecimal(this.roundAttack/(double)this.gamenum);
 		this.roundAttackField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
 		
+	}
+
+	public double getShotField() {
+		return shotField;
+	}
+
+	public void setShotField(double shotField) {
+		this.shotField = shotField;
+	}
+
+	public void calcShotField(){
+		b = new BigDecimal(this.shot/(double)this.gamenum);
+		this.shotField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
+		
+	}
+	public int getShot() {
+		return shot;
+	}
+
+	public void setShot(int shot) {
+		this.shot = shot;
+	}
+	public void addShot(int  b){
+		this.shot+=b;
 	}
 }

@@ -130,6 +130,8 @@ public class Data_Handler {
 			ti.calcFoulField();
 			ti.calcHitField();
 			ti.setGamenumField((double)ti.getGamenum()/listvo.size());
+			ti.calcShotField();
+			
 		}
 		if(teamti.getGamenum()!=0){
 			teamti.calcAssistanceField();
@@ -145,6 +147,7 @@ public class Data_Handler {
 			teamti.calcHitField();
 			teamti.setGamenumField((double)teamti.getGamenum()/listvo.size());
 			teamti.calcRoundAttackField();
+			teamti.calcShotField();
 		}
 		
 	}
@@ -266,7 +269,7 @@ public class Data_Handler {
 	}
 	
 	private void TeamSetWinningRate(TeamVo temp) {
-		double r = temp.getWinningNum()/(double)temp.getGameNum();
+		double r = (double)temp.getWinningNum()/(double)temp.getGameNum();
 		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setWinningRate(f);
@@ -689,6 +692,7 @@ public class Data_Handler {
 				teamti.addTurnover(tgp.getTurnover());
 				teamti.addFoul(tgp.getFoul());
 				teamti.addRoundAttack(tgp.getRoundAttack());
+				teamti.addShot(tgp.getShotNum());
 			}
 			
 		}
@@ -752,6 +756,7 @@ public class Data_Handler {
 					ti.addTime(temp.getTime());
 					ti.addTurnover(temp.getTurnover());
 					ti.addFoul(temp.getFoul());
+					ti.addShot(temp.getShotNum());
 					break;
 				}
 			}
