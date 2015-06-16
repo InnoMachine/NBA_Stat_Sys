@@ -56,5 +56,8 @@ public class ChartPanelMake {
         return dataset;
 	}
 	
+	public static DefaultCategoryDataset xydataset1(){
+		return null;
+	}
 	
 }
