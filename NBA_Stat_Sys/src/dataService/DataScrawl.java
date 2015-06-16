@@ -20,18 +20,9 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-		for(int i = 2000; i < 2015; i ++) {
+		for(int i = 2002; i < 2006; i ++) {
 			addGameList(i);
 		}
-		
-=======
-
->>>>>>> origin/master
-=======
-
->>>>>>> origin/master
 	}
 	
 	public static GamePO getGamePO(String year, String id) {

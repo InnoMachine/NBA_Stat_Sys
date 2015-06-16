@@ -17,6 +17,7 @@ import vo.PlayerPerformanceInSingleGame;
 import vo.PlayerRecentGames;
 import vo.PlayerVo;
 import vo.SeasonMult;
+import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
@@ -47,8 +48,10 @@ public class Data_Handler {
 	private ArrayList<PlayerRecentGames> precgames;
 	private ArrayList<GameVo> gamevo;
 	private ArrayList<PlayerGames> listpg;
+	private ArrayList<TeamGames> listtg;
 	private SeasonTracker st;
 	private TotalInfo ti;
+	private TotalInfo teamti;
 	BigDecimal b;  
     
 	public static Data_Handler getInstance()
@@ -66,7 +69,7 @@ public class Data_Handler {
 		gamedao = new GameDaoImpl();
 		teamdao = new TeamDaoImpl();
 		systemdao = new SystemDaoImpl();
-		for(int i=0;i<12;i++){
+		for(int i=0;i<15;i++){
 			String season="";
 			if(i<9){
 				season="0"+i+"-"+"0"+(i+1);
@@ -87,7 +90,9 @@ public class Data_Handler {
 			precgames = new ArrayList<PlayerRecentGames>();
 			gamevo = new ArrayList<GameVo>();
 			listpg = new ArrayList<PlayerGames>();
+			listtg = new ArrayList<TeamGames>();
 			ti = new TotalInfo();
+			teamti = new TotalInfo();
 			st = systemdao.getStById("12-13");
 			SetPlayerVo();
 			SetTeamVo();
@@ -103,6 +108,8 @@ public class Data_Handler {
 			sm.listvo = listvo;
 			sm.teamlistvo = teamlistvo;
 			sm.ti = ti;
+			sm.teamti =teamti;
+			sm.listtg = listtg;
 			seasonlist.add(sm);
 		}
 		
@@ -123,6 +130,21 @@ public class Data_Handler {
 			ti.calcFoulField();
 			ti.calcHitField();
 			ti.setGamenumField((double)ti.getGamenum()/listvo.size());
+		}
+		if(teamti.getGamenum()!=0){
+			teamti.calcAssistanceField();
+			teamti.calcFreeRate();
+			teamti.calcReboundField();
+			teamti.calcScoreField();
+			teamti.calcThreeRate();
+			teamti.calcBlockField();
+			teamti.calcMinute();
+			teamti.calcStealField();
+			teamti.calcTurnoverFied(); 
+			teamti.calcFoulField();
+			teamti.calcHitField();
+			teamti.setGamenumField((double)teamti.getGamenum()/listvo.size());
+			teamti.calcRoundAttackField();
 		}
 		
 	}
@@ -644,6 +666,22 @@ public class Data_Handler {
 				teamlistvo.get(i).setOpScore(teamlistvo.get(i).getOpScore()+tgp.getOpScore());
 				teamlistvo.get(i).setOpTwoPointShotNum(teamlistvo.get(i).getOpTwoPointShotNum()+tgp.getOpTwoPointShotNum());
 				
+				
+				teamti.addScore(tgp.getScore());
+				teamti.addAssistance(tgp.getAssistance());
+				teamti.addFree(tgp.getFreeThrowHitNum());
+				teamti.addRebound(tgp.getReboundOverall());
+				teamti.addThree(tgp.getThreePointHitNum());
+				teamti.addGameNum();
+				teamti.addHit(tgp.getHitNum());
+				teamti.addBlock(tgp.getBlock());
+				teamti.addFreeshot(tgp.getFreeThrowShotNum());
+				teamti.addSteal(tgp.getSteal());
+				teamti.addThreeshot(tgp.getThreePointShotNum());
+				teamti.addTime(tgp.getTime());
+				teamti.addTurnover(tgp.getTurnover());
+				teamti.addFoul(tgp.getFoul());
+				teamti.addRoundAttack(tgp.getRoundAttack());
 			}
 			
 		}
@@ -867,6 +905,11 @@ public class Data_Handler {
 				temp.AddNewGame(tgp);
 			}
 		}
+		for(TeamGames temp:listtg){
+			if(isTeam(temp.getName(), abbr)){
+				temp.AddGames(tgp);
+			}
+		}
 		return tgp;
 		
 	}
@@ -1033,6 +1076,9 @@ public class Data_Handler {
 			p.setName(teamlistpo.get(i).getTeamName());
 			p.setAbbreviation(teamlistpo.get(i).getAbbreviation());
 			trecgames.add(p);
+			TeamGames tg = new TeamGames(teamlistpo.get(i).getAbbreviation());
+			listtg.add(tg);
+			
 		}
 		
 	}
@@ -1301,5 +1347,35 @@ public class Data_Handler {
 			return name.substring(index+1);
 		}
 	}
+	public ArrayList<TeamVo> getTeamByAbbrA(String abbr) {
+		ArrayList<TeamVo> vos = new ArrayList<TeamVo>();
+		for(SeasonMult temp:seasonlist){
+			for(TeamVo t:temp.teamlistvo){
+				if(isTeam(t.getAbbreviation(), abbr)){
+					vos.add(t);
+				}
+			}
+		}
+		return vos;
+	}
+	public ArrayList<TotalInfo> getTeamTotalInfos() {
+		ArrayList<TotalInfo> vos = new ArrayList<TotalInfo>();
+		for(SeasonMult temp:seasonlist){
+			vos.add(temp.teamti);
+		}
+		return vos;
+	}
+	public ArrayList<TeamGames> getTeamGames(String abbr){
+		ArrayList<TeamGames> tgs = new ArrayList<TeamGames>();
+		for(SeasonMult temp:seasonlist){
+			for(TeamGames t:temp.listtg){
+				if(isTeam(t.getName(), abbr)){
+					tgs.add(t);
+				}
+			}
+		}
+		return tgs;
+	}
+	
 }
 

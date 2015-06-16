@@ -18,6 +18,7 @@ public class TotalInfo {
 	private int steal;
 	private int foul;
 	private int turnover;
+	private double roundAttack;
 	private double scoreField;
 	private double reboundField;
 	private double assistanceField;
@@ -30,6 +31,7 @@ public class TotalInfo {
 	private double foulField;
 	private double hitField;
 	private double gamenumField;
+	private double roundAttackField;
 	public TotalInfo(){
 		setBlockField(0);
 		setStealField(0);
@@ -42,6 +44,7 @@ public class TotalInfo {
 		scoreField=0;
 		reboundField =0;
 		assistanceField=0;
+		roundAttack =0;
 		setThreeshot(0);
 		setFreeshot(0);
 		setThreeRate(0);
@@ -49,6 +52,7 @@ public class TotalInfo {
 		setMinute(0);
 		setHit(0);
 		setTime(0);
+		roundAttackField =0;
 				
 	}
 
@@ -341,5 +345,29 @@ public class TotalInfo {
 
 	public void setGamenumField(double gamenumField) {
 		this.gamenumField = gamenumField;
+	}
+
+	public double getRoundAttackField() {
+		return roundAttackField;
+	}
+
+	public void setRoundAttackField(double roundAttackField) {
+		this.roundAttackField = roundAttackField;
+	}
+
+	public double getRoundAttack() {
+		return roundAttack;
+	}
+
+	public void setRoundAttack(double roundAttack) {
+		this.roundAttack = roundAttack;
+	}
+	public void addRoundAttack(double  b){
+		this.roundAttack+=b;
+	}
+	public void calcRoundAttackField(){
+		b = new BigDecimal(this.roundAttack/(double)this.gamenum);
+		this.roundAttackField  = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(); 	
+		
 	}
 }

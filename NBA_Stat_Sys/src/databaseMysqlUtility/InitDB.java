@@ -99,8 +99,5 @@ public class InitDB {
 		System.out.println("Database tables initialized!");
 		System.out.println("------------------------------");
 	}
-	public static void main(String args[]){
-		init();
-	}
 
 }

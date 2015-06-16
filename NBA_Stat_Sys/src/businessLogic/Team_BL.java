@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import vo.PlayerVo;
 import vo.TeamCardVo;
+import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
+import vo.TotalInfo;
 
 public class Team_BL implements Team_BS{
 	Team_Handler team_handler;
@@ -46,6 +48,20 @@ public class Team_BL implements Team_BS{
 	}
 	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(String abbr){
 		return team_handler.getTeamPerformance(abbr);
+	}
+	@Override
+	public ArrayList<TeamVo> getTeamByAbbrA(String abbr) {
+		return team_handler.getTeamByAbbrA(abbr);
+	}
+	@Override
+	public ArrayList<TotalInfo> getTeamTotalInfos() {
+		
+		return team_handler.getTeamTotalInfos();
+	}
+	@Override
+	public ArrayList<TeamGames> getTeamGames(String abbr) {
+		
+		return team_handler.getTeamGames(abbr);
 	}
 
 }
