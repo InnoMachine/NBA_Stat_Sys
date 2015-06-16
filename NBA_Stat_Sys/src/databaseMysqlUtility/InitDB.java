@@ -66,15 +66,6 @@ public class InitDB {
 				+ " guesttp text,"
 				+ " hometp text)";
 		
-		String sql4 = "create table if not exists nba.system("
-				+ "seasonrecord text,"
-				+ "currentdate varchar(20),"
-				+ "seasonid varchar(10),"
-				+ "updateteamlist varchar(200),"
-				+ "updateplayerlist text,"
-				+ "updategamelist text,"
-				+ "gamenumsofar int,"
-				+ "filenamelist text)";
 		
 		Statement stmt = null;
 		try {
@@ -89,7 +80,6 @@ public class InitDB {
 			stmt.execute(sql1);
 			stmt.execute(sql2);
 			stmt.execute(sql3);
-			stmt.execute(sql4);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

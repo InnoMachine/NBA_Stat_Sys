@@ -17,56 +17,56 @@ public class PrepareDB {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		ArrayList<String> fileNameList = DataFileReader.getFileNameList("CSEdata/new");
-		while(true) {//check if any data exists, continue when there is at least 1 entry
-			fileNameList = DataFileReader.getFileNameList("CSEdata/new");
-			System.out.println("当前数据目录加下数据文件数量为" + fileNameList.size());
-			if(fileNameList.size() != 0) {
-				break;
-			}
-		}
-		
-		SystemDao sd = new SystemDaoImpl();
-		SeasonTracker st = new SeasonTracker();
-		st.setCurrentDate(filterCurrentDate(fileNameList));
-		st.setFileNameList(fileNameList);
-		st.setGameNumSofar(fileNameList.size());
-		st.setSeasonId("12-13");
+//		ArrayList<String> fileNameList = DataFileReader.getFileNameList("CSEdata/new");
+//		while(true) {//check if any data exists, continue when there is at least 1 entry
+//			fileNameList = DataFileReader.getFileNameList("CSEdata/new");
+//			System.out.println("当前数据目录加下数据文件数量为" + fileNameList.size());
+//			if(fileNameList.size() != 0) {
+//				break;
+//			}
+//		}
+//		
+//		SystemDao sd = new SystemDaoImpl();
+//		SeasonTracker st = new SeasonTracker();
+//		st.setCurrentDate(filterCurrentDate(fileNameList));
+//		st.setFileNameList(fileNameList);
+//		st.setGameNumSofar(fileNameList.size());
+//		st.setSeasonId("12-13");
 		
 		
 //		st.setSeasonRecord(seasonRecord);
 //		st.setUpdatePlayerList(updatePlayerList);
 //		st.setUpdateTeamList(updateTeamList);
 		
-		InitDB.init();
+//		InitDB.init();
 		
-		sd.add(st);
-		DataFileReader.importGamesFrom(fileNameList);
+//		sd.add(st);
+//		DataFileReader.importGamesFrom(fileNameList);
 		DataFileReader.importPlayersAndTeams();
-		DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getAllGames("12-13"));;	
+//		DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getAllGames("12-13"));;	
 		System.out.println("initial data import finished!");
 		
-		while(true){
-			if(checkNew(st.getGameNumSofar())) {
-				System.out.println("new files found!!!!!!!!!!!!");//
-				ArrayList<String> nowFileNameList = DataFileReader.getFileNameList("CSEdata/new");
-				ArrayList<String> newFileNameList = getNewFileName(st.getFileNameList(), nowFileNameList);
-				System.out.println(newFileNameList.toString());//sudo
-				DataFileReader.importGamesFrom(newFileNameList);
-				
-				System.out.println(getGameLabelsFromPaths(newFileNameList));//sudo
-				st.setUpdateGameList(getGameLabelsFromPaths(newFileNameList));//new GamePOs' gamelabel
-				
-				DaoFactory.getSystemDaoInstance().setUpdateGameList(getGameLabelsFromPaths(newFileNameList));
-				st.setFileNameList(nowFileNameList);
-				st.setGameNumSofar(DataFileReader.getFileNameList("CSEdata/new").size());
-				st.setCurrentDate(filterCurrentDate(newFileNameList));
-				DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getGameByLabel(st.getUpdateGameList()));
-				sd.update(st);
-			}
-			System.out.println(st.getCurrentDate().toString());
-			Thread.sleep(3000);
-		}
+//		while(true){
+//			if(checkNew(st.getGameNumSofar())) {
+//				System.out.println("new files found!!!!!!!!!!!!");//
+//				ArrayList<String> nowFileNameList = DataFileReader.getFileNameList("CSEdata/new");
+//				ArrayList<String> newFileNameList = getNewFileName(st.getFileNameList(), nowFileNameList);
+//				System.out.println(newFileNameList.toString());//sudo
+//				DataFileReader.importGamesFrom(newFileNameList);
+//				
+//				System.out.println(getGameLabelsFromPaths(newFileNameList));//sudo
+//				st.setUpdateGameList(getGameLabelsFromPaths(newFileNameList));//new GamePOs' gamelabel
+//				
+//				DaoFactory.getSystemDaoInstance().setUpdateGameList(getGameLabelsFromPaths(newFileNameList));
+//				st.setFileNameList(nowFileNameList);
+//				st.setGameNumSofar(DataFileReader.getFileNameList("CSEdata/new").size());
+//				st.setCurrentDate(filterCurrentDate(newFileNameList));
+//				DataFurtherDistributor.updateTeamAndPlayer(DaoFactory.getGameDaoInstence().getGameByLabel(st.getUpdateGameList()));
+//				sd.update(st);
+//			}
+//			System.out.println(st.getCurrentDate().toString());
+//			Thread.sleep(3000);
+//		}
 		
 //		System.out.println("**************************************");
 //		System.out.println("Database fully prepared now! :p");
