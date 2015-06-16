@@ -17,7 +17,7 @@ public class PieChartMaking {
 		   
 	}
 	
-	private ChartPanel makeChart(DefaultPieDataset getDataset){
+	public ChartPanel makeChart(DefaultPieDataset getDataset){
 		StandardChartTheme standardChartTheme = new StandardChartTheme("CN");
 	 	standardChartTheme.setExtraLargeFont(new Font("微软雅黑",Font.BOLD,15));
 	 	standardChartTheme.setRegularFont(new Font("微软雅黑",Font.BOLD,15));
