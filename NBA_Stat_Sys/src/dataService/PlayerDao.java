@@ -25,4 +25,6 @@ public interface PlayerDao {
 	
 	public void addSinglePerformance(String playerName, SinglePerformance sp);
 	
+	public SinglePerformance getSinglePerformanceByGamelabel(String playerName, String Gamelabel);
+	
 }

@@ -6,6 +6,8 @@
 package dataService;
 
 import java.util.ArrayList;
+
+import po.SinglePerformance;
 import po.TeamPO;
 import po.TeamPerformance;
 
@@ -28,5 +30,7 @@ public interface TeamDao {
 	public void playerTrans(String playerName, String fromTeamAbbr, String toTeamAbbr);
 	
 	public void changeTeamName(String teamAbbr, TeamPO newTeam);
+	
+	public TeamPerformance getTeamPerformanceByGamelabel(String abbr, String Gamelabel);
 
 }

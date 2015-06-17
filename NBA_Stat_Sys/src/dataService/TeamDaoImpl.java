@@ -12,9 +12,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Locale;
+
 import databaseMysqlUtility.DBUtil;
 import enums.Conference;
 import enums.Division;
+import po.GamePO;
+import po.SinglePerformance;
 import po.TeamPO;
 import po.TeamPerformance;
 
@@ -248,6 +251,21 @@ public class TeamDaoImpl implements TeamDao {
 	public void changeTeamName(String teamAbbr, TeamPO newTeam) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public TeamPerformance getTeamPerformanceByGamelabel(String abbr,
+			String Gamelabel) {
+		GamePO game = DaoFactory.getGameDaoInstence().getGameByLabel(Gamelabel);
+		TeamPerformance guesttp = game.getGuestTP();
+		TeamPerformance hometp = game.getHomeTP();
+		if(guesttp.getTeamNameAbbr().equals(abbr)) {
+			return guesttp;
+		}
+		if(hometp.getTeamNameAbbr().equals(abbr)) {
+			return hometp;
+		}
+		return null;
 	}
 
 }

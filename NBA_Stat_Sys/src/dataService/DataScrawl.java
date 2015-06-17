@@ -20,10 +20,18 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
-
-			for(int i = 1986; i < 2014; i ++) {
-				addGameList(i);
-			}
+		
+//		addGameList(1987);
+//			for(int i = 1986; i < 2014; i ++) {
+//				addGameList(i);
+//			}
+		
+		
+		System.out.println(DaoFactory.getGameDaoInstence().getGameByLabel("87-88_1987-11-06_DAL-UTH").getGuestTP().getPlayerNameList());
+		System.out.println("------------------------");
+		System.out.println(DaoFactory.getTeamDaoInstance().getTeamPerformanceByGamelabel("DAL", "87-88_1987-11-06_DAL-UTH"));
+		System.out.println("------------------------");
+		System.out.println(DaoFactory.getPlayerDaoInstance().getSinglePerformanceByGamelabel("Derek Harper", "87-88_1987-11-06_DAL-UTH").getScore());
 	}
 	
 	public static GamePO getGamePO(String year, String id) {
@@ -40,7 +48,7 @@ public class DataScrawl {
 			myseasonid = "1999-00";
 		}else {
 			if(Integer.parseInt(year) > 40) {
-				myseasonid = "19" + year + "-" + (year+1);
+				myseasonid = "19" + year + "-" + (Integer.parseInt(year)+1);
 			}else {
 				if (Integer.parseInt(year) < 9) {
 					myseasonid = "20" + year + "-0" + (Integer.parseInt(year)+1);

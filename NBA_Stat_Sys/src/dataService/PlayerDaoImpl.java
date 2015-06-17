@@ -11,9 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import databaseMysqlUtility.DBUtil;
+import po.GamePO;
 import po.PlayerPO;
 import po.SinglePerformance;
+import po.TeamPerformance;
 
 public class PlayerDaoImpl implements PlayerDao {
 
@@ -202,6 +205,25 @@ public class PlayerDaoImpl implements PlayerDao {
 	public void addSinglePerformance(String playerName, SinglePerformance sp) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public SinglePerformance getSinglePerformanceByGamelabel(String playerName,
+			String Gamelabel) {
+		GamePO game = DaoFactory.getGameDaoInstence().getGameByLabel(Gamelabel);
+		TeamPerformance guesttp = game.getGuestTP();
+		TeamPerformance hometp = game.getHomeTP();
+		for(SinglePerformance singletp: guesttp.getSpList()) {
+			if(singletp.getName().equals(playerName)) {
+				return singletp;
+			}
+		}
+		for(SinglePerformance singletp: hometp.getSpList()) {
+			if(singletp.getName().equals(playerName)) {
+				return singletp;
+			}
+		}
+		return null;
 	}
 
 }
