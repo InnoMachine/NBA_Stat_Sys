@@ -532,7 +532,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		secondChartPanel = new JPanel();
 		secondChartPanel = kfdatas.cp;
 		secondChartPanel.setBounds(200, 10, 700, 350);
-		table2lbl.add(secondChartPanel);
+		table1lbl.add(secondChartPanel);
 		
 		
 		if(kfTable!=null){
@@ -565,12 +565,12 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		for (int j = 0; j < kfdatas.ni.length; j++) {
 			Vector<String> a = new Vector<String>();
 
-			a.add(kfdatas.fengzu[i]);
-			a.add(kfdatas.qujian[i]);
-			a.add(String.valueOf(kfdatas.ni[i]));
-			a.add(String.valueOf(kfdatas.pi[i]));
-			a.add(String.valueOf(kfdatas.npi[i]));
-			a.add(String.valueOf(kfdatas.zuihou[i]));
+			a.add(kfdatas.fengzu[j]);
+			a.add(kfdatas.qujian[j]);
+			a.add(String.valueOf(kfdatas.ni[j]));
+			a.add(String.valueOf(kfdatas.pi[j]));
+			a.add(String.valueOf(kfdatas.npi[j]));
+			a.add(String.valueOf(kfdatas.zuihou[j]));
 
 			rowData.add(a);
 		}
@@ -594,11 +594,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			thirdChartPanel.setVisible(false);
 		}
 		thirdChartPanel = new JPanel();
-		thirdChartPanel = kfdatas.cp;
+		thirdChartPanel = regdatas.cp;
 		thirdChartPanel.setBounds(200, 10, 700, 350);
 		table2lbl.add(thirdChartPanel);
 		
-		JTable kfTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
+		JTable regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -609,7 +609,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			}
 		};
 		;
-		kfTable.setRowHeight(120 / 4);
+		regTable.setRowHeight(120 / 4);
 
 		DefaultTableModel model = new DefaultTableModel();
 		Vector<String> columnName = new Vector<String>();
@@ -625,12 +625,12 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		for (int j = 0; j < kfdatas.ni.length; j++) {
 			Vector<String> a = new Vector<String>();
 
-			a.add(kfdatas.fengzu[i]);
-			a.add(kfdatas.qujian[i]);
-			a.add(String.valueOf(kfdatas.ni[i]));
-			a.add(String.valueOf(kfdatas.pi[i]));
-			a.add(String.valueOf(kfdatas.npi[i]));
-			a.add(String.valueOf(kfdatas.zuihou[i]));
+			a.add(kfdatas.fengzu[j]);
+			a.add(kfdatas.qujian[j]);
+			a.add(String.valueOf(kfdatas.ni[j]));
+			a.add(String.valueOf(kfdatas.pi[j]));
+			a.add(String.valueOf(kfdatas.npi[j]));
+			a.add(String.valueOf(kfdatas.zuihou[j]));
 
 			rowData.add(a);
 		}
