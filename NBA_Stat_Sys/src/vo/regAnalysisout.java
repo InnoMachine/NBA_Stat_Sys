@@ -11,6 +11,7 @@ public class regAnalysisout {
 	public double ρ;//相关系数
 	public double r2;
 	public double Sy;
+	public double n;
 	
 	public ChartPanel cp;
 	

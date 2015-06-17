@@ -52,6 +52,7 @@ public class Data_Handler {
 	private SeasonTracker st;
 	private TotalInfo ti;
 	private TotalInfo teamti;
+	private String seasonid = "";
 	BigDecimal b;  
     
 	public static Data_Handler getInstance()
@@ -80,7 +81,7 @@ public class Data_Handler {
 			else{
 				season=i+"-"+(i+1);
 			}
-			
+			seasonid = season;
 			listpo  = playerdao.getAllPlayers();
 			teamlistpo = teamdao.getAllTeams();
 			listvo = new ArrayList<PlayerVo>();
@@ -110,6 +111,8 @@ public class Data_Handler {
 			sm.ti = ti;
 			sm.teamti =teamti;
 			sm.listtg = listtg;
+			sm.trecgames = trecgames;
+			sm.precgames = precgames;
 			seasonlist.add(sm);
 		}
 		SeasonMult sm = seasonlist.get(13);
@@ -120,8 +123,8 @@ public class Data_Handler {
 		teamlistvo = sm.teamlistvo;
 		ti = sm.ti;
 		teamti = sm.teamti;
-		
-		
+		trecgames = sm.trecgames;
+		precgames = sm.precgames;
 	}
 	
 	private void TotalCalculate() {
@@ -137,7 +140,8 @@ public class Data_Handler {
 			ti.calcTurnoverFied(); 
 			ti.calcFoulField();
 			ti.calcHitField();
-			ti.setGamenumField((double)ti.getGamenum()/listvo.size());
+			ti.setGamenumField(new BigDecimal((double)ti.getGamenum()/listvo.size()).
+					setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
 			ti.calcShotField();
 			
 		}
@@ -597,34 +601,49 @@ public class Data_Handler {
 	
 
 	private void TGPRateSet(TeamPerformanceInSingleGame tgp) {
-		if(tgp.getGameDate()==null){
-			return;
-		}
+//		if(tgp.getGameDate()==null){
+//			return;
+//		}
 		TGPSetFreeThrowRate(tgp);
 		TGPSetThreePointHitRate(tgp);
 		TGPSetHitRate(tgp);
 	}
 
 	private void TGPSetFreeThrowRate(TeamPerformanceInSingleGame temp) {
+		if(temp.getFreeThrowShotNum()!=0){
 		double r = temp.getFreeThrowHitNum()/(double)temp.getFreeThrowShotNum();
 		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setFreeThrowRate(f);
+		}
+		else {
+			temp.setFreeThrowRate(0);
+		}
 		
 	}
 	
 	private void TGPSetThreePointHitRate(TeamPerformanceInSingleGame temp) {
+		if(temp.getThreePointShotNum()!=0){
 		double r = temp.getThreePointHitNum()/(double)temp.getThreePointShotNum();
 		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setThreePointHitRate(f);
+		}
+		else {
+			temp.setThreePointHitRate(0);
+		}
 	}
 	
 	private void TGPSetHitRate(TeamPerformanceInSingleGame temp) {
+		if(temp.getShotNum()!=0){
 		double r = temp.getHitNum()/(double)temp.getShotNum();
 		b = new BigDecimal(r*100);
 		double f = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();  
 		temp.setHitRate(f);
+		}
+		else {
+			temp.setHitRate(0);
+		}
 	}
 	private void CreateGameVo(GameVo vo, TeamPerformanceInSingleGame tgpg,
 			TeamPerformanceInSingleGame tgph, GamePO po) {
@@ -850,6 +869,7 @@ public class Data_Handler {
 					}
 					tgp.AddPlayerP(pgp);
 					precgames.get(i).AddNewGame(pgp);
+					
 					listpg.get(i).AddGames(pgp);
 					break;
 				}
@@ -906,10 +926,11 @@ public class Data_Handler {
 				PlayerRecentGames p = new PlayerRecentGames();
 				p.setName(temp.getName());
 				PlayerGames pg = new PlayerGames(temp.getName());
-				precgames.add(p);
 				listpg.add(pg);
 				tgp.AddPlayerP(pgp);
+				precgames.add(p);
 				precgames.get(i).AddNewGame(pgp);
+				
 				listpg.get(i).AddGames(pgp);
 			}
 		}
@@ -925,6 +946,7 @@ public class Data_Handler {
 				temp.AddNewGame(tgp);
 			}
 		}
+		
 		for(TeamGames temp:listtg){
 			if(isTeam(temp.getName(), abbr)){
 				temp.AddGames(tgp);

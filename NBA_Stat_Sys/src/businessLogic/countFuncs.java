@@ -504,7 +504,7 @@ public class countFuncs {
 		rao.ρ = correlationCoefficient(x, y);
 		rao.r2 = r2;
 		rao.Sy = Sy;
-		
+		rao.n = n;
 		return rao;
 //		System.out.println("F值："+F);
 //		System.out.println("F0.01(1,n-2)："+F_square_distribution_table1("0.01", n-2));

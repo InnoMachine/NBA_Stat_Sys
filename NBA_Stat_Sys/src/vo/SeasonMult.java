@@ -12,6 +12,8 @@ public class SeasonMult {
 	public ArrayList<TeamGames> listtg;
 	public TotalInfo ti;
 	public TotalInfo teamti;
+	public ArrayList<TeamRecentGames> trecgames;
+	public ArrayList<PlayerRecentGames> precgames;
 	public String getSeason() {
 		return season;
 	}
