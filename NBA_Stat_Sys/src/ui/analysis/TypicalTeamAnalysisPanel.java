@@ -739,7 +739,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	    a24.add("");
 		rowData2.add(a24);
 		
-		model2.setDataVector(rowData, columnName);
+		model2.setDataVector(rowData2, columnName2);
 
 		varTable2.setModel(model2);
 		varTable2.setDefaultRenderer(Object.class, tcr);
