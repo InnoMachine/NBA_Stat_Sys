@@ -589,11 +589,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setVisible(true);
 		table1lbl.add(kfTable);
 
-		JLabel callbl1 = new JLabel();
+		JLabel callbl1 = new JLabel("X^2=" + df.format(kfdatas.kafang)
+				+ "    查表值：" + df.format(kfdatas.biaozhi) + "    均值："
+				+ df.format(kfdatas.mean) + "    方差：" + df.format(kfdatas.var),
+				JLabel.CENTER);
 		callbl1.setBounds(200, 480, 700, 20);
-		callbl1.setText("X^2=" + df.format(kfdatas.kafang) + "  查表值："
-				+ df.format(kfdatas.biaozhi) + "  均值："
-				+ df.format(kfdatas.mean) + "  方差：" + df.format(kfdatas.var));
 		callbl1.setOpaque(false);
 		callbl1.setForeground(Color.WHITE);
 		callbl1.setVisible(true);
@@ -614,7 +614,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		}
 		fourthChartPanel = new JPanel();
 		fourthChartPanel = regdatas.cp;
-		fourthChartPanel.setBounds(200, 10, 700, 350);
+		fourthChartPanel.setBounds(200, 5, 700, 350);
 		table3lbl.add(fourthChartPanel);
 
 		if (regTable != null) {
@@ -687,37 +687,22 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
 		regTable.setDefaultRenderer(Object.class, tcr);
-		regTable.setBounds(150, 380, 700, 120);
+		regTable.setBounds(200, 355, 700, 120);
 		regTable.setForeground(Color.WHITE);
 		regTable.setEnabled(false);
 		regTable.setOpaque(false);
 		regTable.setVisible(true);
 		table3lbl.add(regTable);
 
-		JLabel callbl1 = new JLabel();
-		callbl1.setBounds(870, 200, 100, 30);
-		callbl1.setText("y=" + df.format(regdatas.a) + "+"
-				+ df.format(regdatas.b) + "x");
-		callbl1.setOpaque(false);
-		callbl1.setForeground(Color.WHITE);
-		callbl1.setVisible(true);
-		table3lbl.add(callbl1);
-
-		JLabel callbl2 = new JLabel();
-		callbl2.setBounds(870, 240, 100, 30);
-		callbl2.setText("r^2=" + df.format(regdatas.r2));
-		callbl2.setOpaque(false);
-		callbl2.setForeground(Color.WHITE);
-		callbl2.setVisible(true);
-		table3lbl.add(callbl2);
-
-		JLabel callbl3 = new JLabel();
-		callbl3.setBounds(870, 280, 100, 30);
-		callbl3.setText("Sy=" + df.format(regdatas.Sy));
-		callbl2.setOpaque(false);
-		callbl2.setForeground(Color.WHITE);
-		callbl3.setVisible(true);
-		table3lbl.add(callbl3);
+		JLabel callbl = new JLabel("y=" + df.format(regdatas.a) + "+"
+				+ df.format(regdatas.b) + "x" + "    r^2="
+				+ df.format(regdatas.r2) + "    Sy=" + df.format(regdatas.Sy),
+				JLabel.CENTER);
+		callbl.setBounds(200, 480, 700, 20);
+		callbl.setOpaque(false);
+		callbl.setForeground(Color.WHITE);
+		callbl.setVisible(true);
+		table3lbl.add(callbl);
 
 	}
 
