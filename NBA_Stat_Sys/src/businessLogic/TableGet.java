@@ -23,6 +23,7 @@ public class TableGet {
 		BarChartMaking bcm = new BarChartMaking();
 		ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance(abbr,season);
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		System.out.println(n);
 		int num=tp.size();
 		switch (n) {
 		case "40":num=40;
@@ -90,22 +91,22 @@ public class TableGet {
 		tp= team_bs.getTeamPerformance(abbr,"03-04");
 		for(int i=0;i<4;i++){
 			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-			data[0][i]=temp.getScore();
+			data[1][i]=temp.getScore();
 		}
 		tp= team_bs.getTeamPerformance(abbr,"06-07");
 		for(int i=0;i<4;i++){
 			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-			data[0][i]=temp.getScore();
+			data[2][i]=temp.getScore();
 		}
 		tp= team_bs.getTeamPerformance(abbr,"09-10");
 		for(int i=0;i<4;i++){
 			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-			data[0][i]=temp.getScore();
+			data[3][i]=temp.getScore();
 		}
 		tp= team_bs.getTeamPerformance(abbr,"13-14");
 		for(int i=0;i<4;i++){
 			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-			data[0][i]=temp.getScore();
+			data[4][i]=temp.getScore();
 		}
 		varAnakysisout vao=countFuncs.Single_factor_analysis_of_variance(data, 5, 4);
 		

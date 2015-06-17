@@ -245,6 +245,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic1.addActionListener(e -> {
 			createChart1(1);
 		});
+		pic1.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic1);
 		bg.add(pic1);
 
@@ -254,6 +255,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic2.addActionListener(e -> {
 			createChart1(2);
 		});
+		pic2.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic2);
 		bg.add(pic2);
 
@@ -263,6 +265,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic3.addActionListener(e -> {
 			createChart1(3);
 		});
+		pic3.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic3);
 		bg.add(pic3);
 
@@ -272,6 +275,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic4.addActionListener(e -> {
 			createChart1(4);
 		});
+		pic4.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic4);
 		bg.add(pic4);
 
@@ -282,6 +286,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			createChart1(5);
 
 		});
+		pic5.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic5);
 		bg.add(pic5);
 
@@ -291,6 +296,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic6.addActionListener(e -> {
 			createChart1(6);
 		});
+		pic6.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic6);
 		bg.add(pic6);
 
@@ -300,6 +306,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic7.addActionListener(e -> {
 			createChart1(7);
 		});
+		pic7.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic7);
 		bg.add(pic7);
 
@@ -309,6 +316,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic8.addActionListener(e -> {
 			createChart1(8);
 		});
+		pic8.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic8);
 		bg.add(pic8);
 
@@ -318,6 +326,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic9.addActionListener(e -> {
 			createChart1(9);
 		});
+		pic9.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic9);
 		bg.add(pic9);
 
@@ -327,6 +336,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		pic10.addActionListener(e -> {
 			createChart1(10);
 		});
+		pic10.setFont(new Font("微软雅黑", 1, 14));
 		picturelbl.add(pic10);
 		bg.add(pic10);
 
@@ -573,6 +583,10 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		vardatas = tg.getVarAnakysisout(1, team);
 
+		if(varTable1!=null){
+			varTable1.setVisible(false);
+		}
+		
 		varTable1 = new JTable(6, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
@@ -670,6 +684,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		varTable1.setVisible(true);
 		table2lbl.add(varTable1);
 		
+		if(varTable2!=null){
+			varTable2.setVisible(false);
+		}
+		
+		
 		varTable2 = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
@@ -739,7 +758,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	    a24.add("");
 		rowData2.add(a24);
 		
-		model2.setDataVector(rowData, columnName);
+		model2.setDataVector(rowData2, columnName2);
 
 		varTable2.setModel(model2);
 		varTable2.setDefaultRenderer(Object.class, tcr);
@@ -849,7 +868,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		}
 		callbl3 = new JLabel("y=" + df.format(regdatas.a) + "+"
 				+ df.format(regdatas.b) + "x" + "   r^2="
-				+ df.format(regdatas.r2) + "   Sy=" + df.format(regdatas.Sy)+"   ρ="+df.format(regdatas.ρ+"   r="+df.format(regdatas.pearson_r)),
+				+ df.format(regdatas.r2) + "   Sy=" + df.format(regdatas.Sy),
 				JLabel.CENTER);
 		callbl3.setBounds(200, 480, 700, 20);
 		callbl3.setOpaque(false);
