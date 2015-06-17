@@ -596,13 +596,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	public void createChart3(int i){
 		
 		vardatas=tg.getVarAnakysisout(1, team);
-		if (thirdChartPanel != null) {
-			thirdChartPanel.setVisible(false);
-		}
-		thirdChartPanel = new JPanel();
-		thirdChartPanel = vardatas.cp;
-		thirdChartPanel.setBounds(200, 10, 700, 350);
-		table2lbl.add(thirdChartPanel);
 		
 		
 		
