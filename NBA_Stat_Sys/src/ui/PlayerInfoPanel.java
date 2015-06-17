@@ -1559,6 +1559,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_2 = new MyTextField();
 		textField_2.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
 		textField_2.setBackground(Color.DARK_GRAY);
+		textField_2.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_2);
 
 		textField_3 = new MyTextField();
@@ -1570,6 +1571,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_4 = new MyTextField();
 		textField_4.setBounds(tempX + 3 * spaceX, tempY, spaceX, spaceY);
 		textField_4.setBackground(Color.DARK_GRAY);
+		textField_4.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_4);
 
 		textField_5 = new MyTextField();
@@ -1581,6 +1583,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_6 = new MyTextField();
 		textField_6.setBounds(tempX + 5 * spaceX, tempY, spaceX, spaceY);
 		textField_6.setBackground(Color.DARK_GRAY);
+		textField_6.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_6);
 
 		textField_7 = new MyTextField();
@@ -1592,6 +1595,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_8 = new MyTextField();
 		textField_8.setBounds(tempX + spaceX, tempY + spaceY, spaceX, spaceY);
 		textField_8.setBackground(Color.DARK_GRAY);
+		textField_8.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_8);
 
 		textField_9 = new MyTextField();
@@ -1605,6 +1609,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_10.setBounds(tempX + 3 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		textField_10.setBackground(Color.DARK_GRAY);
+		textField_10.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_10);
 
 		textField_11 = new MyTextField();
@@ -1618,6 +1623,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_12.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		textField_12.setBackground(Color.DARK_GRAY);
+		textField_12.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_12);
 
 		textField_13 = new MyTextField();
@@ -1630,6 +1636,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_14.setBounds(tempX + spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		textField_14.setBackground(Color.DARK_GRAY);
+		textField_14.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_14);
 
 		textField_15 = new MyTextField();
@@ -1643,6 +1650,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_16.setBounds(tempX + 3 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		textField_16.setBackground(Color.DARK_GRAY);
+		textField_16.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_16);
 
 		textField_17 = new MyTextField();
@@ -1656,6 +1664,7 @@ public class PlayerInfoPanel extends JPanel {
 		textField_18.setBounds(tempX + 5 * spaceX, tempY + 2 * spaceY, spaceX,
 				spaceY);
 		textField_18.setBackground(Color.DARK_GRAY);
+		textField_18.setFont(new Font("黑体", 1, 12));
 		bgLabel.add(textField_18);
 
 	}

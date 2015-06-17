@@ -7,49 +7,40 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.EventObject;
 import java.util.Vector;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.event.CellEditorListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
-import ui.PlayerInfoPanel.MyTableRenderer;
-import vo.PlayerPerformanceInSingleGame;
-import vo.PlayerRecentGames;
 import vo.PlayerVo;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamRecentGames;
 import vo.TeamVo;
 import businessLogic.Game_BL;
-import businessLogic.Game_BL_Stub;
 import businessLogic.Game_BS;
 import businessLogic.Player_BL;
-import businessLogic.Player_BL_Stub;
 import businessLogic.Player_BS;
 import businessLogic.Team_BL;
-import businessLogic.Team_BL_Stub;
 import businessLogic.Team_BS;
 
 public class TeamInfoPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String teamABBR;
 	JFrame mainFrame;
 	JPanel previousPanel;
@@ -306,6 +297,11 @@ public class TeamInfoPanel extends JPanel {
 			playersInfoJSP.setVisible(false);
 		}
 		playersInfoDTM = new DefaultTableModel(playersRowData, playersColumn) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -610,6 +606,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_2 = new MyTextField();
 		textField_2.setBounds(tempX + spaceX, tempY, spaceX, spaceY);
 		textField_2.setBackground(Color.DARK_GRAY);
+		textField_2.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_2);
 
 		textField_3 = new MyTextField();
@@ -621,6 +618,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_4 = new MyTextField();
 		textField_4.setBounds(tempX + 3 * spaceX, tempY, spaceX, spaceY);
 		textField_4.setBackground(Color.DARK_GRAY);
+		textField_4.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_4);
 
 		textField_5 = new MyTextField();
@@ -632,6 +630,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_6 = new MyTextField();
 		textField_6.setBounds(tempX + 5 * spaceX, tempY, spaceX, spaceY);
 		textField_6.setBackground(Color.DARK_GRAY);
+		textField_6.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_6);
 
 		textField_7 = new MyTextField();
@@ -643,6 +642,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_8 = new MyTextField();
 		textField_8.setBounds(tempX + 7 * spaceX, tempY, spaceX, spaceY);
 		textField_8.setBackground(Color.DARK_GRAY);
+		textField_8.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_8);
 
 		textField_9 = new MyTextField();
@@ -655,6 +655,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_10.setBounds(tempX + 1 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		textField_10.setBackground(Color.DARK_GRAY);
+		textField_10.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_10);
 
 		textField_11 = new MyTextField();
@@ -668,6 +669,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_12.setBounds(tempX + 3 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		textField_12.setBackground(Color.DARK_GRAY);
+		textField_12.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_12);
 
 		textField_13 = new MyTextField();
@@ -681,6 +683,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_14.setBounds(tempX + 5 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		textField_14.setBackground(Color.DARK_GRAY);
+		textField_14.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_14);
 
 		textField_15 = new MyTextField();
@@ -694,6 +697,7 @@ public class TeamInfoPanel extends JPanel {
 		textField_16.setBounds(tempX + 7 * spaceX, tempY + spaceY, spaceX,
 				spaceY);
 		textField_16.setBackground(Color.DARK_GRAY);
+		textField_16.setFont(new Font("微软雅黑", 1, 12));
 		bgLabel.add(textField_16);
 
 	}
@@ -768,9 +772,13 @@ public class TeamInfoPanel extends JPanel {
 		}
 
 	}
-	//-------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------
+
 	class MyHistoricalGameButtonRenderer extends JButton implements TableCellRenderer {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
 		@Override
 		public Component getTableCellRendererComponent(JTable arg0,
@@ -797,7 +805,6 @@ public class TeamInfoPanel extends JPanel {
 
 	}
 
-	// -------------------------------------------------------------------------------------
 
 	public class MyPlayerDataRenderer extends JButton implements TableCellRenderer {
 		public Component getTableCellRendererComponent(JTable table,
