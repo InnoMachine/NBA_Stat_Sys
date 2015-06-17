@@ -24,7 +24,7 @@ public class DataScrawl {
 //		gameID: 0021201214
 //		json1 empty
 //		id: 1214error! this game will be ignored!
-			addGameList(2000);
+			addGameList(2014);
 //			DaoFactory.getGameDaoInstence().add(getGamePO("12","0244"));;
 			
 //			gameID: 0020700609

@@ -81,7 +81,12 @@ public class StartPanel extends JPanel {
 	public void createButton() {
 		int subX=55*X/100;
 		
-		MyButton analysisbtn = new MyButton("数据分析");
+		MyButton analysisbtn = new MyButton("");
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/shujufenxi.png").getImage().getScaledInstance( X/6,  Y/10,
+						 Image.SCALE_SMOOTH));
+		
+		analysisbtn.setIcon(buttonIcon);
 		analysisbtn.setBounds(3*X/20, 8*Y/20, X/6, Y/10);
 		analysisbtn.addActionListener(e -> toAnalysisPanel());
 		bgLabel.add(analysisbtn);
