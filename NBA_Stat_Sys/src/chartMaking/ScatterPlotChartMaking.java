@@ -17,7 +17,7 @@ public class ScatterPlotChartMaking {
 		standardChartTheme.setRegularFont(new Font("微软雅黑",Font.BOLD,15));
 		standardChartTheme.setLargeFont(new Font("微软雅黑",Font.BOLD,15));
 		ChartFactory.setChartTheme(standardChartTheme);
-		JFreeChart  chart = ChartFactory.createScatterPlot("散点图", "待更改", "待更改",  xydataset,  
+		JFreeChart  chart = ChartFactory.createScatterPlot(null, null, null,  xydataset,  
 				PlotOrientation.VERTICAL, // 绘制方向  
 				true, // 显示图例  
 				true, // 采用标准生成器  

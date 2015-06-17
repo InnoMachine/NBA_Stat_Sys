@@ -20,6 +20,7 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
+
 			for(int i = 1986; i < 2014; i ++) {
 				addGameList(i);
 			}

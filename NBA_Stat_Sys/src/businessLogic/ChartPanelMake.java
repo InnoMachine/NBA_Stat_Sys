@@ -93,7 +93,7 @@ public class ChartPanelMake {
         else if(number==5){
         	for (int i = 0; i < 15; i++) {
                 dataset.addValue(vos.get(i).getThreePointHitNumField()*3/vos.get(i).getScoreField(), Teamabbr, time[i]);
-                dataset.addValue(tis.get(i).getThree()*3/tis.get(i).getScore(), All, time[i]);
+                dataset.addValue((double)tis.get(i).getThree()*3/tis.get(i).getScore(), All, time[i]);
                 }
         }
         else if(number==6){

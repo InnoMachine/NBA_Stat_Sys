@@ -31,7 +31,7 @@ public class LineChartMaking {
 		standardChartTheme.setRegularFont(new Font("微软雅黑",Font.BOLD,15));
 		standardChartTheme.setLargeFont(new Font("微软雅黑",Font.BOLD,15));
 		ChartFactory.setChartTheme(standardChartTheme);
-		JFreeChart  chart = ChartFactory.createLineChart(null, "年份", "Y轴标题",  linedataset,  
+		JFreeChart  chart = ChartFactory.createLineChart(null, null, null,  linedataset,  
 				PlotOrientation.VERTICAL, // 绘制方向  
 				true, // 显示图例  
 				true, // 采用标准生成器  
