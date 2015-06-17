@@ -274,7 +274,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 					MainFrame.currentPanel = "TeamInfoPanel";
 				});
 		firstTeamNamelbl.setText(hotTeams.get(0).getCity() + " "
-				+ hotTeams.get(0).getTeamName());
+				+ hotTeams.get(0).getAbbreviation());
 		firstTeamInfolbl.setText(String
 				.valueOf(hotTeams.get(0).getConference())
 				+ " "
@@ -296,7 +296,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 					MainFrame.currentPanel = "TeamInfoPanel";
 				});
 		secondTeamNamelbl.setText(hotTeams.get(1).getCity() + " "
-				+ hotTeams.get(1).getTeamName());
+				+ hotTeams.get(1).getAbbreviation());
 		secondTeamInfolbl.setText(String.valueOf(hotTeams.get(1)
 				.getConference())
 				+ " "
@@ -318,7 +318,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 					MainFrame.currentPanel = "TeamInfoPanel";
 				});
 		thirdTeamNamelbl.setText(hotTeams.get(2).getCity() + " "
-				+ hotTeams.get(2).getTeamName());
+				+ hotTeams.get(2).getAbbreviation());
 		thirdTeamInfolbl.setText(String
 				.valueOf(hotTeams.get(2).getConference())
 				+ " "
@@ -340,7 +340,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 					MainFrame.currentPanel = "TeamInfoPanel";
 				});
 		fourthTeamNamelbl.setText(hotTeams.get(3).getCity() + " "
-				+ hotTeams.get(3).getTeamName());
+				+ hotTeams.get(3).getAbbreviation());
 		fourthTeamInfolbl.setText(String.valueOf(hotTeams.get(3)
 				.getConference())
 				+ " "
@@ -362,7 +362,7 @@ public class TopFiveTeamCardPanel extends JPanel {
 					MainFrame.currentPanel = "TeamInfoPanel";
 				});
 		fifthTeamNamelbl.setText(hotTeams.get(4).getCity() + " "
-				+ hotTeams.get(4).getTeamName());
+				+ hotTeams.get(4).getAbbreviation());
 		fifthTeamInfolbl.setText(String
 				.valueOf(hotTeams.get(4).getConference())
 				+ " "

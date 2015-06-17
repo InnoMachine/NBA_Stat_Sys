@@ -62,6 +62,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	String season = "";
 	JComboBox<String> sampleNumjcb;
 	String sampleNum = "40";
+	JTable kfTable;
 
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
 			JPanel previousPanel) {
@@ -522,17 +523,22 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 	
 	public void createChart2(int i) {
+		
 		kfdatas = tg.getChiquareout(1, team, season, sampleNum);
-		/*
+		
 		if (secondChartPanel != null) {
 			secondChartPanel.setVisible(false);
 		}
 		secondChartPanel = new JPanel();
 		secondChartPanel = kfdatas.cp;
 		secondChartPanel.setBounds(200, 10, 700, 350);
-		tablelbl.add(secondChartPanel);
-		*/
-		JTable kfTable = new JTable(kfdatas.ni.length + 1, 6) { // 设置jtable的单元格为透明的
+		table2lbl.add(secondChartPanel);
+		
+		
+		if(kfTable!=null){
+			kfTable.setVisible(false);
+		}
+		kfTable = new JTable(kfdatas.ni.length + 1, 6) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -580,7 +586,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setOpaque(false);
 		kfTable.setVisible(true);
 		table1lbl.add(kfTable);
-		
 	}
 
 	public void createChart3(int i) {
