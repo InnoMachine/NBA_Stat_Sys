@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import org.apache.tools.ant.taskdefs.Sleep;
-
 import ui.analysis.AnalysisPanel;
 
 public class StartPanel extends JPanel {
@@ -81,33 +79,62 @@ public class StartPanel extends JPanel {
 	public void createButton() {
 		int subX=55*X/100;
 		
-		MyButton analysisbtn = new MyButton("");
-		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/shujufenxi.png").getImage().getScaledInstance( X/6,  Y/10,
-						 Image.SCALE_SMOOTH));
-		
-		analysisbtn.setIcon(buttonIcon);
-		analysisbtn.setBounds(3*X/20, 8*Y/20, X/6, Y/10);
+		MyButton analysisbtn = new MyButton("数据分析");
+		analysisbtn.setBounds(3*X/20, 10*Y/24, X/8, Y/12);
 		analysisbtn.addActionListener(e -> toAnalysisPanel());
 		bgLabel.add(analysisbtn);
 		
+		JLabel analysisLabel=new JLabel();
+		analysisLabel.setBounds(2*X/20, 10*Y/24, Y/12, Y/12);
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/shujufenxi.png").getImage().getScaledInstance(Y/12,  Y/12,
+						 Image.SCALE_SMOOTH));
+		
+		analysisLabel.setIcon(buttonIcon);
+		bgLabel.add(analysisLabel);
+		
 		MyButton playerInfobtn = new MyButton("球员信息");
-		playerInfobtn.setBounds(3*X/20, 11*Y/20, X/6, Y/10);
+		playerInfobtn.setBounds(3*X/20, 12*Y/24, X/8, Y/12);
 //		playerInfobtn.addActionListener(e -> playerOpe());
 		playerInfobtn.addActionListener(e -> toPlayerPanel());
 		bgLabel.add(playerInfobtn);
+		
+		JLabel playerLabel=new JLabel();
+		playerLabel.setBounds(2*X/20, 12*Y/24, Y/12, Y/12);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/qiuyuanxinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
+						 Image.SCALE_SMOOTH));
+		
+		playerLabel.setIcon(buttonIcon);
+		bgLabel.add(playerLabel);
 
 		MyButton teamInfobtn = new MyButton("球队信息");
-		teamInfobtn.setBounds(3*X/20, 14*Y/20, X/6,  Y/10);
+		teamInfobtn.setBounds(3*X/20, 14*Y/24, X/8,  Y/12);
 		teamInfobtn.addActionListener(e -> toTeamPanel());
 		bgLabel.add(teamInfobtn);
 		
+		JLabel teamLabel=new JLabel();
+		teamLabel.setBounds(2*X/20, 14*Y/24, Y/12, Y/12);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/qiuduixinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
+						 Image.SCALE_SMOOTH));
+		
+		teamLabel.setIcon(buttonIcon);
+		bgLabel.add(teamLabel);
 
 		MyButton gameInfobtn = new MyButton("比赛信息");
-		gameInfobtn.setBounds(3*X/20, 17*Y/20, X/6,  Y/10);
+		gameInfobtn.setBounds(3*X/20, 16*Y/24, X/8,  Y/12);
 		gameInfobtn.addActionListener(e -> toGamePanel());
 		bgLabel.add(gameInfobtn);
 		
+		JLabel gameLabel=new JLabel();
+		gameLabel.setBounds(2*X/20, 16*Y/24, Y/12, Y/12);
+		buttonIcon = new ImageIcon(new ImageIcon(
+				"Image/bisaixinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
+						 Image.SCALE_SMOOTH));
+		
+		gameLabel.setIcon(buttonIcon);
+		bgLabel.add(gameLabel);
 		
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
@@ -232,7 +259,7 @@ public class StartPanel extends JPanel {
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑",1,20));
 			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( X/6,  Y/10,
+					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
 							 Image.SCALE_SMOOTH));
 			
 			this.setIcon(buttonIcon);
