@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -55,8 +56,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	ChartPanelMake cpm = new ChartPanelMake();
 	TableGet tg = new TableGet();
 	chiquareout kfdatas = new chiquareout();
-	varAnakysisout vardatas=new varAnakysisout();
-	regAnalysisout regdatas=new regAnalysisout();
+	varAnakysisout vardatas = new varAnakysisout();
+	regAnalysisout regdatas = new regAnalysisout();
 	JPanel firstChartPanel;
 	JPanel secondChartPanel;
 	JPanel thirdChartPanel;
@@ -66,10 +67,12 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	JComboBox<String> sampleNumjcb;
 	String sampleNum = "40";
 	JTable kfTable;
+	DecimalFormat df;
 
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
 			JPanel previousPanel) {
 
+		df = new DecimalFormat("#.0000");
 		this.mainFrame = mainFrame;
 		this.team = team;
 		this.previousPanel = previousPanel;
@@ -175,13 +178,13 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 				Y * 550 / 768);
 		table1lbl.setVisible(false);
 		this.add(table1lbl);
-		
+
 		table2lbl = new JLabel();
 		table2lbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
 				Y * 550 / 768);
 		table2lbl.setVisible(false);
 		this.add(table2lbl);
-		
+
 		table3lbl = new JLabel();
 		table3lbl.setBounds(X * 183 / 1366, Y * 100 / 768, X * 1000 / 1366,
 				Y * 550 / 768);
@@ -203,7 +206,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			showkfTable();
 		});
 		this.add(kfTablebtn);
-		
+
 		regTablebtn = new MyButton("单因素方差分析");
 		regTablebtn.setBounds(X * 483 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
@@ -211,7 +214,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			showregTable();
 		});
 		this.add(regTablebtn);
-		
+
 		varTablebtn = new MyButton("回归分析");
 		varTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
@@ -228,7 +231,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		table1lbl.setVisible(false);
 		table2lbl.setVisible(false);
 		table3lbl.setVisible(false);
-		
 
 		ButtonGroup bg = new ButtonGroup();
 
@@ -386,10 +388,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 	}
 
-	
-	
-	
-	public void showvarTable(){
+	public void showvarTable() {
 		picturelbl.setVisible(false);
 		table1lbl.setVisible(false);
 		table2lbl.setVisible(true);
@@ -448,10 +447,10 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		});
 		table2lbl.add(sampleNumjcb);
-		
+
 	}
-	
-	public void showregTable(){
+
+	public void showregTable() {
 		picturelbl.setVisible(false);
 		table1lbl.setVisible(false);
 		table2lbl.setVisible(false);
@@ -510,10 +509,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		});
 		table3lbl.add(sampleNumjcb);
-		
-		
+
 	}
-	
+
 	public void createChart1(int i) {
 
 		if (firstChartPanel != null) {
@@ -526,11 +524,10 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 	}
 
-	
 	public void createChart2(int i) {
-		
+
 		kfdatas = tg.getChiquareout(1, team, season, sampleNum);
-		
+
 		if (secondChartPanel != null) {
 			secondChartPanel.setVisible(false);
 		}
@@ -538,9 +535,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		secondChartPanel = kfdatas.cp;
 		secondChartPanel.setBounds(200, 10, 700, 350);
 		table1lbl.add(secondChartPanel);
-		
-		
-		if(kfTable!=null){
+
+		if (kfTable != null) {
 			kfTable.setVisible(false);
 		}
 		kfTable = new JTable(kfdatas.ni.length + 1, 6) { // 设置jtable的单元格为透明的
@@ -573,9 +569,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			a.add(kfdatas.fengzu[j]);
 			a.add(kfdatas.qujian[j]);
 			a.add(String.valueOf(kfdatas.ni[j]));
-			a.add(String.valueOf(kfdatas.pi[j]));
-			a.add(String.valueOf(kfdatas.npi[j]));
-			a.add(String.valueOf(kfdatas.zuihou[j]));
+			a.add(df.format(kfdatas.pi[j]));
+			a.add(df.format(kfdatas.npi[j]));
+			a.add(df.format(kfdatas.zuihou[j]));
 
 			rowData.add(a);
 		}
@@ -593,15 +589,12 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		table1lbl.add(kfTable);
 	}
 
-	public void createChart3(int i){
-		
-		vardatas=tg.getVarAnakysisout(1, team);
-		
-		
-		
-		
+	public void createChart3(int i) {
+
+		vardatas = tg.getVarAnakysisout(1, team);
+
 	}
-	
+
 	public void createChart4(int i) {
 		regdatas = tg.getRegAnalysisout(1, team, season);
 		if (fourthChartPanel != null) {
@@ -611,7 +604,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		fourthChartPanel = regdatas.cp;
 		fourthChartPanel.setBounds(200, 10, 700, 350);
 		table3lbl.add(fourthChartPanel);
-		
+
 		JTable regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
@@ -636,37 +629,43 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		columnName.add("显著性");
 		Vector<Vector> rowData = new Vector<Vector>();
 		rowData.add(columnName);
-	
-			Vector<String> a1 = new Vector<String>();
-            a1.add("回归");
-			a1.add(String.valueOf(regdatas.SR));
-			a1.add("1");
-			a1.add(String.valueOf(regdatas.VR));
-			a1.add(String.valueOf(regdatas.F));
-			a1.add(String.valueOf(regdatas.F5));
+
+		Vector<String> a1 = new Vector<String>();
+		a1.add("回归");
+		a1.add(df.format(regdatas.SR));
+		a1.add("1");
+		a1.add(df.format(regdatas.VR));
+		a1.add(df.format(regdatas.F));
+		a1.add(df.format(regdatas.F5));
+		if (regdatas.F >= regdatas.F1) {
+			a1.add("**");
+		} else if (regdatas.F >= regdatas.F5 && regdatas.F < regdatas.F1) {
+			a1.add("*");
+		} else if (regdatas.F < regdatas.F5) {
 			a1.add("");
-			rowData.add(a1);
-			
-			Vector<String> a2 = new Vector<String>();
-            a2.add("剩余");
-			a2.add(String.valueOf(regdatas.Se));
-			a2.add(String.valueOf(regdatas.n-2));
-			a2.add(String.valueOf(regdatas.Ve));
-			a2.add("");
-			a2.add(String.valueOf(regdatas.F1));
-            a2.add("");
-			rowData.add(a2);
-		
-			Vector<String> a3 = new Vector<String>();
-            a3.add("总和");
-			a3.add(String.valueOf(regdatas.ST));
-			a3.add(String.valueOf(regdatas.n-1));
-			a3.add("");
-			a3.add("");
-			a3.add("");
-			a3.add("");
-			rowData.add(a3);
-			
+		}
+		rowData.add(a1);
+
+		Vector<String> a2 = new Vector<String>();
+		a2.add("剩余");
+		a2.add(df.format(regdatas.Se));
+		a2.add(String.valueOf(regdatas.n - 2));
+		a2.add(df.format(regdatas.Ve));
+		a2.add("");
+		a2.add(df.format(regdatas.F1));
+		a2.add("");
+		rowData.add(a2);
+
+		Vector<String> a3 = new Vector<String>();
+		a3.add("总和");
+		a3.add(df.format(regdatas.ST));
+		a3.add(String.valueOf(regdatas.n - 1));
+		a3.add("");
+		a3.add("");
+		a3.add("");
+		a3.add("");
+		rowData.add(a3);
+
 		model.setDataVector(rowData, columnName);
 
 		regTable.setModel(model);
@@ -680,7 +679,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		regTable.setVisible(true);
 		table3lbl.add(regTable);
 	}
-	
+
 	public void home() {
 		this.setVisible(false);
 		StartPanel sp = new StartPanel(mainFrame, MainFrame.analysisPanel,
