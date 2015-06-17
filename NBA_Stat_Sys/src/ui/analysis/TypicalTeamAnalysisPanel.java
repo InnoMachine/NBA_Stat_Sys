@@ -30,6 +30,7 @@ import ui.MainFrame;
 import ui.StartPanel;
 import vo.chiquareout;
 import vo.regAnalysisout;
+import vo.varAnakysisout;
 import businessLogic.ChartPanelMake;
 import businessLogic.TableGet;
 
@@ -54,10 +55,12 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	ChartPanelMake cpm = new ChartPanelMake();
 	TableGet tg = new TableGet();
 	chiquareout kfdatas = new chiquareout();
+	varAnakysisout vardatas=new varAnakysisout();
 	regAnalysisout regdatas=new regAnalysisout();
 	JPanel firstChartPanel;
 	JPanel secondChartPanel;
 	JPanel thirdChartPanel;
+	JPanel fourthChartPanel;
 	JComboBox<String> seasonjcb;
 	String season = "";
 	JComboBox<String> sampleNumjcb;
@@ -384,7 +387,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	}
 
 	
-	public void showregTable(){
+	
+	
+	public void showvarTable(){
 		picturelbl.setVisible(false);
 		table1lbl.setVisible(false);
 		table2lbl.setVisible(true);
@@ -444,10 +449,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		table2lbl.add(sampleNumjcb);
 		
-		
 	}
 	
-	public void showvarTable(){
+	public void showregTable(){
 		picturelbl.setVisible(false);
 		table1lbl.setVisible(false);
 		table2lbl.setVisible(false);
@@ -481,7 +485,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		seasonjcb.setBackground(Color.DARK_GRAY);
 		seasonjcb.addActionListener(e -> {
 			season = String.valueOf(seasonjcb.getSelectedItem());
-			createChart3(1);
+			createChart4(1);
 
 		});
 		table3lbl.add(seasonjcb);
@@ -502,10 +506,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		sampleNumjcb.setBackground(Color.DARK_GRAY);
 		sampleNumjcb.addActionListener(e -> {
 			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
-			createChart3(1);
+			createChart4(1);
 
 		});
 		table3lbl.add(sampleNumjcb);
+		
 		
 	}
 	
@@ -588,8 +593,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		table1lbl.add(kfTable);
 	}
 
-	public void createChart3(int i) {
-		regdatas = tg.getRegAnalysisout(1, team, season);
+	public void createChart3(int i){
+		
+		vardatas=tg.getVarAnakysisout(1, team);
 		if (thirdChartPanel != null) {
 			thirdChartPanel.setVisible(false);
 		}
@@ -597,6 +603,21 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		thirdChartPanel = regdatas.cp;
 		thirdChartPanel.setBounds(200, 10, 700, 350);
 		table2lbl.add(thirdChartPanel);
+		
+		
+		
+		
+	}
+	
+	public void createChart4(int i) {
+		regdatas = tg.getRegAnalysisout(1, team, season);
+		if (fourthChartPanel != null) {
+			fourthChartPanel.setVisible(false);
+		}
+		fourthChartPanel = new JPanel();
+		fourthChartPanel = regdatas.cp;
+		fourthChartPanel.setBounds(200, 10, 700, 350);
+		table2lbl.add(fourthChartPanel);
 		
 		JTable regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -613,27 +634,44 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		DefaultTableModel model = new DefaultTableModel();
 		Vector<String> columnName = new Vector<String>();
-		columnName.add("分组");
-		columnName.add("区间");
-		columnName.add("ni");
-		columnName.add("pi");
-		columnName.add("npi");
-		columnName.add("ni^2/npi");
+		columnName.add("方差来源");
+		columnName.add("偏差平方和");
+		columnName.add("自由度");
+		columnName.add("方差");
+		columnName.add("F值");
+		columnName.add("Fα");
+		columnName.add("显著性");
 		Vector<Vector> rowData = new Vector<Vector>();
-
 		rowData.add(columnName);
-		for (int j = 0; j < kfdatas.ni.length; j++) {
-			Vector<String> a = new Vector<String>();
-
-			a.add(kfdatas.fengzu[j]);
-			a.add(kfdatas.qujian[j]);
-			a.add(String.valueOf(kfdatas.ni[j]));
-			a.add(String.valueOf(kfdatas.pi[j]));
-			a.add(String.valueOf(kfdatas.npi[j]));
-			a.add(String.valueOf(kfdatas.zuihou[j]));
-
-			rowData.add(a);
-		}
+	
+			Vector<String> a1 = new Vector<String>();
+            a1.add("回归");
+			a1.add(String.valueOf(regdatas.SR));
+			a1.add("1");
+			a1.add(String.valueOf(regdatas.VR));
+			a1.add(String.valueOf(regdatas.F));
+			a1.add(String.valueOf(regdatas.F5));
+			a1.add("");
+			rowData.add(a1);
+			
+			Vector<String> a2 = new Vector<String>();
+            a2.add("剩余");
+			a2.add(String.valueOf(regdatas.Se));
+			a2.add(String.valueOf(regdatas.));
+			a2.add(String.valueOf(regdatas.VR));
+			a2.add(String.valueOf(regdatas.F));
+			a2.add(String.valueOf(regdatas.F5));
+			rowData.add(a2);
+		
+			Vector<String> a3 = new Vector<String>();
+            a3.add("剩余");
+			a3.add(String.valueOf(regdatas.Se));
+			a3.add(String.valueOf(regdatas.));
+			a3.add(String.valueOf(regdatas.VR));
+			a3.add(String.valueOf(regdatas.F));
+			a3.add(String.valueOf(regdatas.F5));
+			rowData.add(a3);
+			
 		model.setDataVector(rowData, columnName);
 
 		kfTable.setModel(model);

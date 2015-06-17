@@ -800,14 +800,14 @@ public class PlayerInfoPanel extends JPanel {
 								* (425 - Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getThreePointHitRate() * 100)) * 3)
+												.getThreePointHitRate() )) * 3)
 								/ 1366,
 						Y * 279 / 768,
 						X
 								* (Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getThreePointHitRate() * 100)) * 3)
+												.getThreePointHitRate() )) * 3)
 								/ 1366, Y * 24 / 768);
 		if (playerInfo.getThreePointHitRate() >= aveInfo.getThreeRate()) {
 			lblPlayer3prate.setBackground(Color.BLUE);
@@ -825,14 +825,14 @@ public class PlayerInfoPanel extends JPanel {
 								* (425 - Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getFreeThrowRate() * 100)) * 3)
+												.getFreeThrowRate() )) * 3)
 								/ 1366,
 						Y * 313 / 768,
 						X
 								* (Integer
 										.parseInt(new java.text.DecimalFormat(
 												"0").format(playerInfo
-												.getFreeThrowRate() * 100)) * 3)
+												.getFreeThrowRate() )) * 3)
 								/ 1366, Y * 24 / 768);
 		if (playerInfo.getFreeThrowRate() >= aveInfo.getFreeRate()) {
 			lblPlayerfreethrowrate.setBackground(Color.BLUE);
