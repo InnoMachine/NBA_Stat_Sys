@@ -67,6 +67,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	JComboBox<String> sampleNumjcb;
 	String sampleNum = "40";
 	JTable kfTable;
+	JTable regTable;
 	DecimalFormat df;
 
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
@@ -207,22 +208,24 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(kfTablebtn);
 
-		regTablebtn = new MyButton("单因素方差分析");
-		regTablebtn.setBounds(X * 483 / 1366, Y * 70 / 768, X * 150 / 1366,
-				Y * 30 / 768);
-		regTablebtn.addActionListener(e -> {
-			showregTable();
-		});
-		this.add(regTablebtn);
-
-		varTablebtn = new MyButton("回归分析");
-		varTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
+		varTablebtn = new MyButton("单因素方差分析");
+		varTablebtn.setBounds(X * 483 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		varTablebtn.addActionListener(e -> {
 			showvarTable();
 		});
 		this.add(varTablebtn);
 
+		
+		regTablebtn = new MyButton("回归分析");
+		regTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
+				Y * 30 / 768);
+		regTablebtn.addActionListener(e -> {
+			showregTable();
+		});
+		this.add(regTablebtn);
+
+		
 		mainFrame.add(this);
 	}
 
@@ -605,7 +608,10 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		fourthChartPanel.setBounds(200, 10, 700, 350);
 		table3lbl.add(fourthChartPanel);
 
-		JTable regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
+		if(regTable!=null){
+		   regTable.setVisible(false);	
+		}
+		regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
