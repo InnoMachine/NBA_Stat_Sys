@@ -216,7 +216,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(varTablebtn);
 
-		
 		regTablebtn = new MyButton("回归分析");
 		regTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
@@ -225,7 +224,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(regTablebtn);
 
-		
 		mainFrame.add(this);
 	}
 
@@ -536,7 +534,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		}
 		secondChartPanel = new JPanel();
 		secondChartPanel = kfdatas.cp;
-		secondChartPanel.setBounds(200, 10, 700, 350);
+		secondChartPanel.setBounds(200, 5, 700, 350);
 		table1lbl.add(secondChartPanel);
 
 		if (kfTable != null) {
@@ -584,12 +582,23 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
 		kfTable.setDefaultRenderer(Object.class, tcr);
-		kfTable.setBounds(200, 380, 700, 120);
+		kfTable.setBounds(200, 355, 700, 120);
 		kfTable.setForeground(Color.WHITE);
 		kfTable.setEnabled(false);
 		kfTable.setOpaque(false);
 		kfTable.setVisible(true);
 		table1lbl.add(kfTable);
+
+		JLabel callbl1 = new JLabel();
+		callbl1.setBounds(200, 480, 700, 20);
+		callbl1.setText("X^2=" + df.format(kfdatas.kafang) + "  查表值："
+				+ df.format(kfdatas.biaozhi) + "  均值："
+				+ df.format(kfdatas.mean) + "  方差：" + df.format(kfdatas.var));
+		callbl1.setOpaque(false);
+		callbl1.setForeground(Color.WHITE);
+		callbl1.setVisible(true);
+		table1lbl.add(callbl1);
+
 	}
 
 	public void createChart3(int i) {
@@ -608,8 +617,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		fourthChartPanel.setBounds(200, 10, 700, 350);
 		table3lbl.add(fourthChartPanel);
 
-		if(regTable!=null){
-		   regTable.setVisible(false);	
+		if (regTable != null) {
+			regTable.setVisible(false);
 		}
 		regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -678,12 +687,38 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
 		regTable.setDefaultRenderer(Object.class, tcr);
-		regTable.setBounds(200, 380, 700, 120);
+		regTable.setBounds(150, 380, 700, 120);
 		regTable.setForeground(Color.WHITE);
 		regTable.setEnabled(false);
 		regTable.setOpaque(false);
 		regTable.setVisible(true);
 		table3lbl.add(regTable);
+
+		JLabel callbl1 = new JLabel();
+		callbl1.setBounds(870, 200, 100, 30);
+		callbl1.setText("y=" + df.format(regdatas.a) + "+"
+				+ df.format(regdatas.b) + "x");
+		callbl1.setOpaque(false);
+		callbl1.setForeground(Color.WHITE);
+		callbl1.setVisible(true);
+		table3lbl.add(callbl1);
+
+		JLabel callbl2 = new JLabel();
+		callbl2.setBounds(870, 240, 100, 30);
+		callbl2.setText("r^2=" + df.format(regdatas.r2));
+		callbl2.setOpaque(false);
+		callbl2.setForeground(Color.WHITE);
+		callbl2.setVisible(true);
+		table3lbl.add(callbl2);
+
+		JLabel callbl3 = new JLabel();
+		callbl3.setBounds(870, 280, 100, 30);
+		callbl3.setText("Sy=" + df.format(regdatas.Sy));
+		callbl2.setOpaque(false);
+		callbl2.setForeground(Color.WHITE);
+		callbl3.setVisible(true);
+		table3lbl.add(callbl3);
+
 	}
 
 	public void home() {
