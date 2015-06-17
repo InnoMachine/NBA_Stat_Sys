@@ -68,6 +68,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	String sampleNum = "40";
 	JTable kfTable;
 	JTable regTable;
+	JTable varTable1;
+	JTable varTable2;
 	DecimalFormat df;
 	JLabel callbl1;
 	JLabel callbl2;
@@ -380,7 +382,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		sampleNumjcb = new JComboBox<String>(sampleNums);
 		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
 				Y * 28 / 768);
-		sampleNumjcb.setSelectedItem("40");
 		sampleNumjcb.setForeground(Color.WHITE);
 		sampleNumjcb.setBackground(Color.DARK_GRAY);
 		sampleNumjcb.addActionListener(e -> {
@@ -431,26 +432,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		table2lbl.add(seasonjcb);
 
-		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
-		sampleNumlbl.setBounds(6, 160, 70, 23);
-		table2lbl.add(sampleNumlbl);
-
-		Vector<String> sampleNums = new Vector<String>();
-		sampleNums.addElement("40");
-		sampleNums.addElement("60");
-		sampleNums.addElement("All");
-		sampleNumjcb = new JComboBox<String>(sampleNums);
-		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
-				Y * 28 / 768);
-		sampleNumjcb.setSelectedItem("40");
-		sampleNumjcb.setForeground(Color.WHITE);
-		sampleNumjcb.setBackground(Color.DARK_GRAY);
-		sampleNumjcb.addActionListener(e -> {
-			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
-			createChart3(1);
-
-		});
-		table2lbl.add(sampleNumjcb);
 
 	}
 
@@ -492,27 +473,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		});
 		table3lbl.add(seasonjcb);
-
-		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
-		sampleNumlbl.setBounds(6, 160, 70, 23);
-		table3lbl.add(sampleNumlbl);
-
-		Vector<String> sampleNums = new Vector<String>();
-		sampleNums.addElement("40");
-		sampleNums.addElement("60");
-		sampleNums.addElement("All");
-		sampleNumjcb = new JComboBox<String>(sampleNums);
-		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
-				Y * 28 / 768);
-		sampleNumjcb.setSelectedItem("40");
-		sampleNumjcb.setForeground(Color.WHITE);
-		sampleNumjcb.setBackground(Color.DARK_GRAY);
-		sampleNumjcb.addActionListener(e -> {
-			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
-			createChart4(1);
-
-		});
-		table3lbl.add(sampleNumjcb);
 
 	}
 
@@ -602,7 +562,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		callbl1.setBounds(200, 480, 700, 20);
 		callbl1.setOpaque(false);
 		callbl1.setForeground(Color.WHITE);
-		callbl1.setFont(new Font("微软雅黑", 1, 12));
+		callbl1.setFont(new Font("微软雅黑", 1, 16));
 		callbl1.setVisible(true);
 		table1lbl.add(callbl1);
 		table1lbl.setVisible(false);
@@ -613,8 +573,197 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		vardatas = tg.getVarAnakysisout(1, team);
 
+		varTable1 = new JTable(7, 7) { // 设置jtable的单元格为透明的
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		;
+		varTable1.setRowHeight(210 / 7);
+		DefaultTableModel model = new DefaultTableModel();
+		Vector<String> columnName = new Vector<String>();
+		columnName.add("方差来源");
+		columnName.add("偏差平方和");
+		columnName.add("自由度");
+		columnName.add("方差");
+		columnName.add("F值");
+		columnName.add("Fα");
+		columnName.add("显著性");
+		Vector<Vector> rowData = new Vector<Vector>();
+		
+		Vector<String> a1 = new Vector<String>();
+		a1.add("Ai");
+		a1.add("1");
+		a1.add("2");
+		a1.add("3");
+		a1.add("4");
+		a1.add("xi");
+		a1.add("xi^2");
+		rowData.add(a1);
+
+		Vector<String> a2 = new Vector<String>();
+		a2.add("A1");
+		a2.add(df.format(vardatas.xij[0][0]));
+		a2.add(df.format(vardatas.xij[0][1]));
+		a2.add(df.format(vardatas.xij[0][2]));
+		a2.add(df.format(vardatas.xij[0][3]));
+	    a2.add(df.format(vardatas.xi[0]));	
+	    a2.add(df.format(vardatas.xi2[0]));
+		rowData.add(a2);
+		
+		Vector<String> a3 = new Vector<String>();
+		a3.add("A2");
+		a3.add(df.format(vardatas.xij[1][0]));
+		a3.add(df.format(vardatas.xij[1][1]));
+		a3.add(df.format(vardatas.xij[1][2]));
+		a3.add(df.format(vardatas.xij[1][3]));
+	    a3.add(df.format(vardatas.xi[1]));	
+	    a3.add(df.format(vardatas.xi2[1]));
+		rowData.add(a3);
+		
+		Vector<String> a4 = new Vector<String>();
+		a4.add("A3");
+		a4.add(df.format(vardatas.xij[2][0]));
+		a4.add(df.format(vardatas.xij[2][1]));
+		a4.add(df.format(vardatas.xij[2][2]));
+		a4.add(df.format(vardatas.xij[2][3]));
+	    a4.add(df.format(vardatas.xi[2]));	
+	    a4.add(df.format(vardatas.xi2[2]));
+		rowData.add(a4);
+		
+		Vector<String> a5 = new Vector<String>();
+		a5.add("A4");
+		a5.add(df.format(vardatas.xij[3][0]));
+		a5.add(df.format(vardatas.xij[3][1]));
+		a5.add(df.format(vardatas.xij[3][2]));
+		a5.add(df.format(vardatas.xij[3][3]));
+	    a5.add(df.format(vardatas.xi[3]));	
+	    a5.add(df.format(vardatas.xi2[3]));
+		rowData.add(a5);
+		
+		Vector<String> a6 = new Vector<String>();
+		a6.add("A5");
+		a6.add(df.format(vardatas.xij[4][0]));
+		a6.add(df.format(vardatas.xij[4][1]));
+		a6.add(df.format(vardatas.xij[4][2]));
+		a6.add(df.format(vardatas.xij[4][3]));
+	    a6.add(df.format(vardatas.xi[4]));	
+	    a6.add(df.format(vardatas.xi2[4]));
+		rowData.add(a6);
+		
+		Vector<String> a7 = new Vector<String>();
+		a7.add("∑i");
+		a7.add("");
+		a7.add("");
+		a7.add("");
+		a7.add("");
+	    a7.add(df.format(vardatas.xi[5]));	
+	    a7.add(df.format(vardatas.xi2[5]));
+		rowData.add(a7);
+
+		model.setDataVector(rowData, columnName);
+
+		varTable1.setModel(model);
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		varTable1.setDefaultRenderer(Object.class, tcr);
+		varTable1.setBounds(200, 60, 700, 210);
+		varTable1.setForeground(Color.WHITE);
+		varTable1.setEnabled(false);
+		varTable1.setOpaque(false);
+		varTable1.setVisible(true);
+		table3lbl.add(varTable1);
+		
+		varTable2 = new JTable(4, 7) { // 设置jtable的单元格为透明的
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		;
+		varTable2.setRowHeight(120 / 4);
+		DefaultTableModel model2 = new DefaultTableModel();
+		Vector<String> columnName2 = new Vector<String>();
+		columnName2.add("方差来源");
+		columnName2.add("偏差平方和");
+		columnName2.add("自由度");
+		columnName2.add("方差");
+		columnName2.add("F值");
+		columnName2.add("Fα");
+		columnName2.add("显著性");
+		Vector<Vector> rowData2 = new Vector<Vector>();
+
+		Vector<String> a21 = new Vector<String>();
+		a21.add("方差来源");
+		a21.add("偏差平方和");
+		a21.add("自由度");
+		a21.add("方差");
+		a21.add("F值");
+		a21.add("Fα");
+		a21.add("显著性");
+		rowData2.add(a21);
+
+		Vector<String> a22 = new Vector<String>();
+		a22.add("因素（水平间）");
+		a22.add(df.format(vardatas.SA));
+		a22.add("4");
+		a22.add(df.format(vardatas.VA));
+		a22.add(df.format(vardatas.F));
+	    a22.add(df.format(vardatas.F5));	
+	    if (vardatas.F >= vardatas.F1) {
+			a22.add("**");
+		} else if (vardatas.F >= vardatas.F5 && vardatas.F < vardatas.F1) {
+			a22.add("*");
+		} else if (vardatas.F < vardatas.F5) {
+			a22.add("");
+		}
+		rowData2.add(a22);
+		
+		Vector<String> a23 = new Vector<String>();
+		a23.add("误差（水平内）");
+		a23.add(df.format(vardatas.Se));
+		a23.add("15");
+		a23.add(df.format(vardatas.Ve));
+		a23.add("");
+	    a23.add(df.format(vardatas.F1));	
+	    a23.add("");
+		rowData2.add(a23);
+		
+		Vector<String> a24 = new Vector<String>();
+		a24.add("总和");
+		a24.add(df.format(vardatas.ST));
+		a24.add("19");
+		a24.add("");
+		a24.add("");
+	    a24.add("");	
+	    a24.add("");
+		rowData2.add(a24);
+		
+		model2.setDataVector(rowData, columnName);
+
+		varTable2.setModel(model2);
+		varTable2.setDefaultRenderer(Object.class, tcr);
+		varTable2.setBounds(200, 320, 700, 120);
+		varTable2.setForeground(Color.WHITE);
+		varTable2.setEnabled(false);
+		varTable2.setOpaque(false);
+		varTable2.setVisible(true);
+		table3lbl.add(varTable2);
+		
+		
 		table2lbl.setVisible(false);
 		table2lbl.setVisible(true);
+		
+		
 	}
 
 	public void createChart4(int i) {
@@ -714,7 +863,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		callbl3.setBounds(200, 480, 700, 20);
 		callbl3.setOpaque(false);
 		callbl3.setForeground(Color.WHITE);
-		callbl3.setFont(new Font("微软雅黑", 1, 12));
+		callbl3.setFont(new Font("微软雅黑", 1, 16));
 		callbl3.setVisible(true);
 		table3lbl.add(callbl3);
 
