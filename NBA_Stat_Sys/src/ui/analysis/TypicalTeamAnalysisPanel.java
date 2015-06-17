@@ -584,8 +584,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			}
 		};
 		;
-		varTable1.setRowHeight(120 / 7);
-
+		varTable1.setRowHeight(210 / 7);
 		DefaultTableModel model = new DefaultTableModel();
 		Vector<String> columnName = new Vector<String>();
 		columnName.add("方差来源");
@@ -596,62 +595,169 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		columnName.add("Fα");
 		columnName.add("显著性");
 		Vector<Vector> rowData = new Vector<Vector>();
-		rowData.add(columnName);
-
+		
 		Vector<String> a1 = new Vector<String>();
 		a1.add("Ai");
-		a1.add(df.format(regdatas.SR));
 		a1.add("1");
-		a1.add(df.format(regdatas.VR));
-		a1.add(df.format(regdatas.F));
-		a1.add(df.format(regdatas.F5));
-		if (regdatas.F >= regdatas.F1) {
-			a1.add("**");
-		} else if (regdatas.F >= regdatas.F5 && regdatas.F < regdatas.F1) {
-			a1.add("*");
-		} else if (regdatas.F < regdatas.F5) {
-			a1.add("");
-		}
+		a1.add("2");
+		a1.add("3");
+		a1.add("4");
+		a1.add("xi");
+		a1.add("xi^2");
 		rowData.add(a1);
 
 		Vector<String> a2 = new Vector<String>();
-		a2.add("剩余");
-		a2.add(df.format(regdatas.Se));
-		a2.add(String.valueOf(regdatas.n - 2));
-		a2.add(df.format(regdatas.Ve));
-		a2.add("");
-		a2.add(df.format(regdatas.F1));
-		a2.add("");
+		a2.add("A1");
+		a2.add(df.format(vardatas.xij[0][0]));
+		a2.add(df.format(vardatas.xij[0][1]));
+		a2.add(df.format(vardatas.xij[0][2]));
+		a2.add(df.format(vardatas.xij[0][3]));
+	    a2.add(df.format(vardatas.xi[0]));	
+	    a2.add(df.format(vardatas.xi2[0]));
 		rowData.add(a2);
-
+		
 		Vector<String> a3 = new Vector<String>();
-		a3.add("总和");
-		a3.add(df.format(regdatas.ST));
-		a3.add(String.valueOf(regdatas.n - 1));
-		a3.add("");
-		a3.add("");
-		a3.add("");
-		a3.add("");
+		a3.add("A2");
+		a3.add(df.format(vardatas.xij[1][0]));
+		a3.add(df.format(vardatas.xij[1][1]));
+		a3.add(df.format(vardatas.xij[1][2]));
+		a3.add(df.format(vardatas.xij[1][3]));
+	    a3.add(df.format(vardatas.xi[1]));	
+	    a3.add(df.format(vardatas.xi2[1]));
 		rowData.add(a3);
+		
+		Vector<String> a4 = new Vector<String>();
+		a4.add("A3");
+		a4.add(df.format(vardatas.xij[2][0]));
+		a4.add(df.format(vardatas.xij[2][1]));
+		a4.add(df.format(vardatas.xij[2][2]));
+		a4.add(df.format(vardatas.xij[2][3]));
+	    a4.add(df.format(vardatas.xi[2]));	
+	    a4.add(df.format(vardatas.xi2[2]));
+		rowData.add(a4);
+		
+		Vector<String> a5 = new Vector<String>();
+		a5.add("A4");
+		a5.add(df.format(vardatas.xij[3][0]));
+		a5.add(df.format(vardatas.xij[3][1]));
+		a5.add(df.format(vardatas.xij[3][2]));
+		a5.add(df.format(vardatas.xij[3][3]));
+	    a5.add(df.format(vardatas.xi[3]));	
+	    a5.add(df.format(vardatas.xi2[3]));
+		rowData.add(a5);
+		
+		Vector<String> a6 = new Vector<String>();
+		a6.add("A5");
+		a6.add(df.format(vardatas.xij[4][0]));
+		a6.add(df.format(vardatas.xij[4][1]));
+		a6.add(df.format(vardatas.xij[4][2]));
+		a6.add(df.format(vardatas.xij[4][3]));
+	    a6.add(df.format(vardatas.xi[4]));	
+	    a6.add(df.format(vardatas.xi2[4]));
+		rowData.add(a6);
+		
+		Vector<String> a7 = new Vector<String>();
+		a7.add("∑i");
+		a7.add("");
+		a7.add("");
+		a7.add("");
+		a7.add("");
+	    a7.add(df.format(vardatas.xi[5]));	
+	    a7.add(df.format(vardatas.xi2[5]));
+		rowData.add(a7);
 
 		model.setDataVector(rowData, columnName);
 
-		regTable.setModel(model);
+		varTable1.setModel(model);
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
-		regTable.setDefaultRenderer(Object.class, tcr);
-		regTable.setBounds(200, 355, 700, 120);
-		regTable.setForeground(Color.WHITE);
-		regTable.setEnabled(false);
-		regTable.setOpaque(false);
-		regTable.setVisible(true);
-		table3lbl.add(regTable);
+		varTable1.setDefaultRenderer(Object.class, tcr);
+		varTable1.setBounds(200, 60, 700, 210);
+		varTable1.setForeground(Color.WHITE);
+		varTable1.setEnabled(false);
+		varTable1.setOpaque(false);
+		varTable1.setVisible(true);
+		table3lbl.add(varTable1);
 		
+		varTable2 = new JTable(4, 7) { // 设置jtable的单元格为透明的
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		;
+		varTable2.setRowHeight(120 / 4);
+		DefaultTableModel model2 = new DefaultTableModel();
+		Vector<String> columnName2 = new Vector<String>();
+		columnName2.add("方差来源");
+		columnName2.add("偏差平方和");
+		columnName2.add("自由度");
+		columnName2.add("方差");
+		columnName2.add("F值");
+		columnName2.add("Fα");
+		columnName2.add("显著性");
+		Vector<Vector> rowData2 = new Vector<Vector>();
+
+		Vector<String> a21 = new Vector<String>();
+		a21.add("方差来源");
+		a21.add("偏差平方和");
+		a21.add("自由度");
+		a21.add("方差");
+		a21.add("F值");
+		a21.add("Fα");
+		a21.add("显著性");
+		rowData2.add(a21);
+
+		Vector<String> a22 = new Vector<String>();
+		a22.add("因素（水平间）");
+		a22.add(df.format(vardatas.SA));
+		a22.add("4");
+		a22.add(df.format(vardatas.VA));
+		a22.add(df.format(vardatas.F));
+	    a22.add(df.format(vardatas.F5));	
+	    if (vardatas.F >= vardatas.F1) {
+			a22.add("**");
+		} else if (vardatas.F >= vardatas.F5 && vardatas.F < vardatas.F1) {
+			a22.add("*");
+		} else if (vardatas.F < vardatas.F5) {
+			a22.add("");
+		}
+		rowData2.add(a22);
 		
+		Vector<String> a23 = new Vector<String>();
+		a23.add("误差（水平内）");
+		a23.add(df.format(vardatas.Se));
+		a23.add("15");
+		a23.add(df.format(vardatas.Ve));
+		a23.add("");
+	    a23.add(df.format(vardatas.F1));	
+	    a23.add("");
+		rowData2.add(a23);
 		
+		Vector<String> a24 = new Vector<String>();
+		a24.add("总和");
+		a24.add(df.format(vardatas.ST));
+		a24.add("19");
+		a24.add("");
+		a24.add("");
+	    a24.add("");	
+	    a24.add("");
+		rowData2.add(a24);
 		
-		
-		
+		model2.setDataVector(rowData, columnName);
+
+		varTable2.setModel(model2);
+		varTable2.setDefaultRenderer(Object.class, tcr);
+		varTable2.setBounds(200, 320, 700, 120);
+		varTable2.setForeground(Color.WHITE);
+		varTable2.setEnabled(false);
+		varTable2.setOpaque(false);
+		varTable2.setVisible(true);
+		table3lbl.add(varTable2);
 		
 		
 		table2lbl.setVisible(false);
