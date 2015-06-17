@@ -389,6 +389,8 @@ public class countFuncs {
 		co.npi = npii;
 		co.zuihou = zuihou;
 		co.kafang = kf;
+		co.mean = miu;
+		co.var = sigma2;
 		return co;
 	}
 	//积分

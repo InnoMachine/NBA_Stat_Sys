@@ -11,6 +11,8 @@ public class chiquareout {
 	public double zuihou[];
 	public double kafang;
 	public double biaozhi;
+	public double mean;
+	public double var;
 	
 	public ChartPanel cp;
 	
