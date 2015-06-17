@@ -82,26 +82,26 @@ public class countFuncs {
 //	 double a[] = {20,30,20,24,25,31,40,22,23,33,33,33,33,28,29,30,28,29,29,27};
 //	 PlayerVo v1 = vo.get(2);
 //	 PlayerGames pg = player_bs.getPlayerPerformacne(v1.getName());
-//	 double b[]=new double [60];
-//	 i=0;
-//	 for(int k=0;k<60;k++){
-//		 b[i]=tp.get(rand.nextInt(60)).getScore();
-//		 i++;
-//	 }
+	 double b[]=new double [80];
+	 i=0;
+	 for(int k=0;k<80;k++){
+		 b[i]=tp.get(k).getScore();
+		 i++;
+	 }
 ////	 for(TeamPerformanceInSingleGame temp:tp){
 ////		 b[i] = temp.getScore();
 ////		 i++;
 ////	 }
-//	 chisquare(b,5);
+	 chisquare(b,5);
 //	 interval_estimation3(b);
-	 double t[] = new double[20];
-	 double g[] = new double[20];
-	 for(i=0;i<20;i++){
-		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
-		 t[i]=temp.getScore();
-		 g[i]=temp.getHitRate();
-	 }
-	 leastSquare(g,t);
+//	 double t[] = new double[20];
+//	 double g[] = new double[20];
+//	 for(i=0;i<20;i++){
+//		 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+//		 t[i]=temp.getScore();
+//		 g[i]=temp.getHitRate();
+//	 }
+//	 leastSquare(g,t);
 //	 System.out.println(correlationCoefficient(t, g));
 //	 System.out.println(pearson_r(t, g));
 	

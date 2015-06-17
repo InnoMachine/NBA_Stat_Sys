@@ -7,6 +7,8 @@ import java.util.Random;
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.DefaultXYDataset;
+
+import vo.TeamGames;
 import vo.TeamPerformanceInSingleGame;
 import vo.TeamVo;
 import vo.TotalInfo;
@@ -20,7 +22,7 @@ public class ChartPanelMake {
 	public ChartPanel getLineChartPanel(int number,String abbr){
 		LineChartMaking lcm = new LineChartMaking();
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset = dataset1(number);
+		dataset = dataset1(number,abbr);
 		return lcm.makeChart(dataset);
 	}
 	
@@ -47,14 +49,14 @@ public class ChartPanelMake {
 	}
 	
 	
-	public static DefaultCategoryDataset dataset1(int number){
+	public static DefaultCategoryDataset dataset1(int number,String abbr){
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		ArrayList<TeamVo> vos = team_bs.getTeamByAbbrA("SAS");
+		ArrayList<TeamVo> vos = team_bs.getTeamByAbbrA(abbr);
 		ArrayList<TotalInfo> tis = team_bs.getTeamTotalInfos();
 		
 		// 曲线名称
 		String All = "All";
-        String Teamabbr = "SAS";  // series指的就是报表里的那条数据线 
+        String Teamabbr = abbr;  // series指的就是报表里的那条数据线 
                         //因此 对数据线的相关设置就需要联系到serise
                         //比如说setSeriesPaint 设置数据线的颜色
         // 横轴名称(列名称)  
@@ -99,6 +101,45 @@ public class ChartPanelMake {
                 dataset.addValue(vos.get(i).getAssistanceField()/vos.get(i).getShotNumField(), Teamabbr, time[i]);
                 dataset.addValue(tis.get(i).getAssistanceField()/tis.get(i).getShotField(), All, time[i]);
                 }
+        }
+        else if(number==7){
+        	ArrayList<String> abbrs = team_bs.getTeamAbbrs();
+        	 ArrayList<TeamGames> gms = team_bs.getTeamGames(abbr);
+        	 ArrayList<TeamPerformanceInSingleGame> tps = new ArrayList<TeamPerformanceInSingleGame> ();
+        	for(int i=0;i<15;i++){
+				tps = gms.get(i).getGames();
+				double vm[] = new double[tps.size()]; 
+				int p=0;
+				for(TeamPerformanceInSingleGame temp:tps){
+					double v[]=new double[5];
+					for(int k=0;k<5;k++){
+						v[k] = temp.getFirstonList().get(k).getScore();
+					}
+					vm[p]=countFuncs.variance(v);
+					p++;
+				}
+				dataset.addValue(countFuncs.meanValue(vm),Teamabbr,time[i]);
+			}
+        	for(int i=0;i<15;i++){
+				double pm[] = new double[30];
+				 for(int p=0;p<30;p++){
+					 gms = team_bs.getTeamGames(abbrs.get(p));
+					tps = gms.get(i).getGames();
+						double vm[] = new double[tps.size()]; 
+						int g=0;
+						for(TeamPerformanceInSingleGame temp:tps){
+							double v[]=new double[5];
+							for(int k=0;k<5;k++){
+								v[k] = temp.getFirstonList().get(k).getScore();
+							}
+							vm[g]=countFuncs.variance(v);
+							g++;
+						}
+						pm[p] = countFuncs.meanValue(vm);
+			        }
+				
+				dataset.addValue(countFuncs.meanValue(pm),All,time[i]);
+			}
         }
         
         return dataset;
