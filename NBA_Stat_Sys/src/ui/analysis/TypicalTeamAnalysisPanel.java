@@ -196,7 +196,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(picturebtn);
 
-		kfTablebtn = new MyButton("");
+		kfTablebtn = new MyButton("卡方非参检验");
 		kfTablebtn.setBounds(X * 333 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		kfTablebtn.addActionListener(e -> {
@@ -204,7 +204,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(kfTablebtn);
 		
-		regTablebtn = new MyButton("");
+		regTablebtn = new MyButton("单因素方差分析");
 		regTablebtn.setBounds(X * 483 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		regTablebtn.addActionListener(e -> {
@@ -212,7 +212,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		this.add(regTablebtn);
 		
-		varTablebtn = new MyButton("");
+		varTablebtn = new MyButton("回归分析");
 		varTablebtn.setBounds(X * 633 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		varTablebtn.addActionListener(e -> {
@@ -600,7 +600,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			thirdChartPanel.setVisible(false);
 		}
 		thirdChartPanel = new JPanel();
-		thirdChartPanel = regdatas.cp;
+		thirdChartPanel = vardatas.cp;
 		thirdChartPanel.setBounds(200, 10, 700, 350);
 		table2lbl.add(thirdChartPanel);
 		
