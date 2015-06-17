@@ -73,7 +73,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
 			JPanel previousPanel) {
 
-		df = new DecimalFormat("#.0000");
+		df = new DecimalFormat("0.0000");
 		this.mainFrame = mainFrame;
 		this.team = team;
 		this.previousPanel = previousPanel;
