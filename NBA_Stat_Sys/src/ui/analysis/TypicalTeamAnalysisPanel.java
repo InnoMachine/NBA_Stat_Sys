@@ -849,7 +849,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		}
 		callbl3 = new JLabel("y=" + df.format(regdatas.a) + "+"
 				+ df.format(regdatas.b) + "x" + "   r^2="
-				+ df.format(regdatas.r2) + "   Sy=" + df.format(regdatas.Sy)+"   ρ="+df.format(regdatas.ρ+"   r="+df.format(regdatas.pearson_r)),
+				+ df.format(regdatas.r2) + "   Sy=" + df.format(regdatas.Sy),
 				JLabel.CENTER);
 		callbl3.setBounds(200, 480, 700, 20);
 		callbl3.setOpaque(false);
