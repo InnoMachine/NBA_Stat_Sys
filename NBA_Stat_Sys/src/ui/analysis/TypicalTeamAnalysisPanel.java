@@ -668,7 +668,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		varTable1.setEnabled(false);
 		varTable1.setOpaque(false);
 		varTable1.setVisible(true);
-		table3lbl.add(varTable1);
+		table2lbl.add(varTable1);
 		
 		varTable2 = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -748,7 +748,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		varTable2.setEnabled(false);
 		varTable2.setOpaque(false);
 		varTable2.setVisible(true);
-		table3lbl.add(varTable2);
+		table2lbl.add(varTable2);
 		
 		
 		table2lbl.setVisible(false);
