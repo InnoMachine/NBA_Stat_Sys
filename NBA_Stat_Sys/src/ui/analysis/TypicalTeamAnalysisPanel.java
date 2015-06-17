@@ -69,6 +69,9 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	JTable kfTable;
 	JTable regTable;
 	DecimalFormat df;
+	JLabel callbl1;
+	JLabel callbl2;
+	JLabel callbl3;
 
 	public TypicalTeamAnalysisPanel(JFrame mainFrame, String team,
 			JPanel previousPanel) {
@@ -589,8 +592,11 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		kfTable.setVisible(true);
 		table1lbl.add(kfTable);
 
-		JLabel callbl1 = new JLabel("X^2=" + df.format(kfdatas.kafang)
-				+ "    查表值：" + df.format(kfdatas.biaozhi) + "    均值："
+		if (callbl1 != null) {
+			callbl1.setVisible(false);
+		}
+		callbl1 = new JLabel("X^2=" + df.format(kfdatas.kafang) + "    查表值："
+				+ df.format(kfdatas.biaozhi) + "    均值："
 				+ df.format(kfdatas.mean) + "    方差：" + df.format(kfdatas.var),
 				JLabel.CENTER);
 		callbl1.setBounds(200, 480, 700, 20);
@@ -607,12 +613,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		vardatas = tg.getVarAnakysisout(1, team);
 
-		
-		
-		
-		
-		
-		
 		table2lbl.setVisible(false);
 		table2lbl.setVisible(true);
 	}
@@ -704,17 +704,20 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		regTable.setVisible(true);
 		table3lbl.add(regTable);
 
-		JLabel callbl = new JLabel("y=" + df.format(regdatas.a) + "+"
+		if (callbl3 != null) {
+			callbl3.setVisible(false);
+		}
+		callbl3 = new JLabel("y=" + df.format(regdatas.a) + "+"
 				+ df.format(regdatas.b) + "x" + "    r^2="
 				+ df.format(regdatas.r2) + "    Sy=" + df.format(regdatas.Sy),
 				JLabel.CENTER);
-		callbl.setBounds(200, 480, 700, 20);
-		callbl.setOpaque(false);
-		callbl.setForeground(Color.WHITE);
-		callbl.setFont(new Font("微软雅黑", 1, 12));
-		callbl.setVisible(true);
-		table3lbl.add(callbl);
-		
+		callbl3.setBounds(200, 480, 700, 20);
+		callbl3.setOpaque(false);
+		callbl3.setForeground(Color.WHITE);
+		callbl3.setFont(new Font("微软雅黑", 1, 12));
+		callbl3.setVisible(true);
+		table3lbl.add(callbl3);
+
 		table3lbl.setVisible(false);
 		table3lbl.setVisible(true);
 	}
