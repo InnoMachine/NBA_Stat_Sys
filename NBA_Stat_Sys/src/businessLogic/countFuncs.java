@@ -144,7 +144,7 @@ public class countFuncs {
 		}
 		varAnakysisout rao = new varAnakysisout();
 		rao.xi = xi;
-		rao.xi = xi2;
+		rao.xi2 = xi2;
 		rao.xij = xij;
 		rao.F = FA;
 		rao.F1 = F1;

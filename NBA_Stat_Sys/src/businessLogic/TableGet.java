@@ -23,6 +23,7 @@ public class TableGet {
 		BarChartMaking bcm = new BarChartMaking();
 		ArrayList<TeamPerformanceInSingleGame>  tp= team_bs.getTeamPerformance(abbr,season);
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		System.out.println(n);
 		int num=tp.size();
 		switch (n) {
 		case "40":num=40;

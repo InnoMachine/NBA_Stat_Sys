@@ -389,5 +389,18 @@ public class Team_BL_Stub implements Team_BS {
 		return null;
 	}
 
+	@Override
+	public ArrayList<TeamPerformanceInSingleGame> getTeamPerformance(
+			String abbr, String season) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getTeamAbbrs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
