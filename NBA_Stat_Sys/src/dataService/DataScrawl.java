@@ -20,18 +20,9 @@ import po.TeamPerformance;
 public class DataScrawl {
 
 	public static void main(String[] args) {
-
-//		gameID: 0021201214
-//		json1 empty
-//		id: 1214error! this game will be ignored!
-			addGameList(2000);
-//			DaoFactory.getGameDaoInstence().add(getGamePO("12","0244"));;
-			
-//			gameID: 0020700609
-//			java.net.UnknownHostException: stats.nba.com
-//			{"resource":"boxscoresummary","parameters":{"GameID":"0020700609"},"resultSets":[{"name":"GameSummary","headers":["GAME_DATE_EST","GAME_SEQUENCE","GAME_ID","GAME_STATUS_ID","GAME_STATUS_TEXT","GAMECODE","HOME_TEAM_ID","VISITOR_TEAM_ID","SEASON","LIVE_PERIOD","LIVE_PC_TIME","NATL_TV_BROADCASTER_ABBREVIATION","LIVE_PERIOD_TIME_BCAST","WH_STATUS"],"rowSet":[["2008-01-22T00:00:00",2,"0020700609",3,"Final","20080122/NJNSAC",1610612758,1610612751,"2007",4," ","NBA TV","Q4   - NBA TV",1]]},{"name":"OtherStats","headers":["LEAGUE_ID","TEAM_ID","TEAM_ABBREVIATION","TEAM_CITY","PTS_PAINT","PTS_2ND_CHANCE","PTS_FB","LARGEST_LEAD","LEAD_CHANGES","TIMES_TIED"],"rowSet":[["00",1610612758,"SAC","Sacramento",46,18,14,36,0,0],["00",1610612751,"NJN","New Jersey",34,6,4,0,0,0]]},{"name":"Officials","headers":["OFFICIAL_ID","FIRST_NAME","LAST_NAME","JERSEY_NUM"],"rowSet":[[1174,"Ken","Mauer","41"],[1185,"Violet","Palmer","12"],[1664,"Gary","Zielinski","59"]]},{"name":"InactivePlayers","headers":["PLAYER_ID","FIRST_NAME","LAST_NAME","JERSEY_NUM","TEAM_ID","TEAM_CITY","TEAM_NAME","TEAM_ABBREVIATION"],"rowSet":[[949,"Shareef","Abdur-Rahim","3",1610612758,"Sacramento","Kings","SAC"],[1903,"Kenny","Thomas","9",1610612758,"Sacramento","Kings","SAC"],[2420,"Nenad","Krstic","12",1610612751,"New Jersey","Nets","NJN"]]},{"name":"GameInfo","headers":["GAME_DATE","ATTENDANCE","GAME_TIME"],"rowSet":[["TUESDAY, JANUARY 22, 2008",13232,"2:12"]]},{"name":"LineScore","headers":["GAME_DATE_EST","GAME_SEQUENCE","GAME_ID","TEAM_ID","TEAM_ABBREVIATION","TEAM_CITY_NAME","TEAM_NICKNAME","TEAM_WINS_LOSSES","PTS_QTR1","PTS_QTR2","PTS_QTR3","PTS_QTR4","PTS_OT1","PTS_OT2","PTS_OT3","PTS_OT4","PTS_OT5","PTS_OT6","PTS_OT7","PTS_OT8","PTS_OT9","PTS_OT10","PTS"],"rowSet":[["2008-01-22T00:00:00",2,"0020700609",1610612758,"SAC","Sacramento","Kings","18-22",36,28,33,31,0,0,0,0,null,null,null,null,null,null,128],["2008-01-22T00:00:00",2,"0020700609",1610612751,"NJN","New Jersey","Nets","18-23",25,22,26,21,0,0,0,0,null,null,null,null,null,null,94]]},{"name":"LastMeeting","headers":["GAME_ID","LAST_GAME_ID","LAST_GAME_DATE_EST","LAST_GAME_HOME_TEAM_ID","LAST_GAME_HOME_TEAM_CITY","LAST_GAME_HOME_TEAM_NAME","LAST_GAME_HOME_TEAM_ABBREVIATION","LAST_GAME_HOME_TEAM_POINTS","LAST_GAME_VISITOR_TEAM_ID","LAST_GAME_VISITOR_TEAM_CITY","LAST_GAME_VISITOR_TEAM_NAME","LAST_GAME_VISITOR_TEAM_CITY1","LAST_GAME_VISITOR_TEAM_POINTS"],"rowSet":[["0020700609","0020700362","2007-12-18T00:00:00",1610612758,"Sacramento","Kings","SAC",106,1610612751,"New Jersey","Nets","NJN",101]]},{"name":"SeasonSeries","headers":["GAME_ID","HOME_TEAM_ID","VISITOR_TEAM_ID","GAME_DATE_EST","HOME_TEAM_WINS","HOME_TEAM_LOSSES","SERIES_LEADER"],"rowSet":[["0020700609",1610612758,1610612751,"2008-01-22T00:00:00",2,0,"Sacramento"]]},{"name":"AvailableVideo","headers":["GAME_ID","VIDEO_AVAILABLE_FLAG","PT_AVAILABLE","PT_XYZ_AVAILABLE","WH_STATUS"],"rowSet":[["0020700609",0,0,0,1]]}]}
-//			json2 empty
-//			id: 609error! this game will be ignored!
+			for(int i = 1986; i < 2014; i ++) {
+				addGameList(i);
+			}
 	}
 	
 	public static GamePO getGamePO(String year, String id) {
@@ -44,15 +35,19 @@ public class DataScrawl {
 //		String id = "1189";//1230
 		String myfullgameid = "002"+year+"0"+id;
 		String myseasonid;
-		if(Integer.parseInt(year) > 40) {
-			myseasonid = "19" + year + "-" + (year+1);
+		if(year.equals("99")) {
+			myseasonid = "1999-00";
 		}else {
-			if (Integer.parseInt(year) < 9) {
-				myseasonid = "20" + year + "-0" + (Integer.parseInt(year)+1);
+			if(Integer.parseInt(year) > 40) {
+				myseasonid = "19" + year + "-" + (year+1);
 			}else {
-				myseasonid = "20" + year + "-" + (Integer.parseInt(year)+1);
+				if (Integer.parseInt(year) < 9) {
+					myseasonid = "20" + year + "-0" + (Integer.parseInt(year)+1);
+				}else {
+					myseasonid = "20" + year + "-" + (Integer.parseInt(year)+1);
+				}
+				
 			}
-			
 		}
 		System.out.println("-----------------------------------");
 		System.out.println("gameID: " + myfullgameid);
@@ -167,7 +162,10 @@ public class DataScrawl {
 	}
 	
 	public static int getTimeBySec(String timeText) {//12:24
-		if(timeText == null || timeText.equals("")) {
+		if(!timeText.contains(":")) {
+			return 0;
+		}
+		if(timeText == null || timeText.equals("") || timeText.equals("null")) {
 			return 0;
 		}
 		String[] splitedTime = timeText.split(":");
@@ -180,12 +178,22 @@ public class DataScrawl {
 		
 		String year = (yearFormat+"").substring(2, 4);
 		int id;
-		if(yearFormat >= 2000 && yearFormat <= 2003) {
+		if((yearFormat >= 2000 && yearFormat <= 2003) || (yearFormat >= 1995 && yearFormat <= 1998)) {
 			id = 1189;
 		}else if(yearFormat == 2011) {
 			id = 990;
-		}else {
+		}else if(yearFormat >= 2004 && yearFormat <= 2015){
 			id = 1230;
+		}else if(yearFormat == 1999) {
+			id = 725;
+		}else if(yearFormat >= 1989 && yearFormat <= 1994) {
+			id = 1107;
+		}else if(yearFormat == 1988) {
+			id = 1025;
+		}else if(yearFormat >= 1986 && yearFormat <= 1987) {
+			id = 943;
+		}else {
+			id = 0;
 		}
 		for(int i = 1; i <= id; i ++) {
 			GamePO game = getGamePO(year, getFormat4bit(i));
@@ -195,10 +203,6 @@ public class DataScrawl {
 				DaoFactory.getGameDaoInstence().add(game);
 			}
 		}
-	}
-	
-	public static String getSeasonidFromYear() {
-		return null;
 	}
 	
 	public static String getFormat4bit(int num) {//1 -> "0001"
