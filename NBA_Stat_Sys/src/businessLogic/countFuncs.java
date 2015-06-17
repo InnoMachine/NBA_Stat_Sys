@@ -502,6 +502,8 @@ public class countFuncs {
 		rao.VR = SR;
 		rao.Ve = Se/(n-2);
 		rao.ρ = correlationCoefficient(x, y);
+		rao.a = a;
+		rao.b = b;
 		rao.r2 = r2;
 		rao.Sy = Sy;
 		rao.n = n;

@@ -141,6 +141,21 @@ public class ChartPanelMake {
 				dataset.addValue(countFuncs.meanValue(pm),All,time[i]);
 			}
         }
+        else if(number==8){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getWinningRate(), Teamabbr, time[i]);
+                }
+        }
+        else if(number==9){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getAttackingEfficiency(), Teamabbr, time[i]);
+                }
+        }
+        else if(number==10){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getDefensiveEfficiency(), Teamabbr, time[i]);
+                }
+        }
         
         return dataset;
 	}
