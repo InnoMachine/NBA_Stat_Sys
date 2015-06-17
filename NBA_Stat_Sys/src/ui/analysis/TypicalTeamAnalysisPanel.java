@@ -554,7 +554,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			}
 		};
 		;
-		kfTable.setRowHeight(120 / 5);
+		kfTable.setRowHeight(120 / (kfdatas.ni.length + 1));
 
 		DefaultTableModel model = new DefaultTableModel();
 		Vector<String> columnName = new Vector<String>();
@@ -617,7 +617,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		fourthChartPanel = new JPanel();
 		fourthChartPanel = regdatas.cp;
 		fourthChartPanel.setBounds(200, 10, 700, 350);
-		table2lbl.add(fourthChartPanel);
+		table3lbl.add(fourthChartPanel);
 		
 		JTable regTable = new JTable(4, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
@@ -657,33 +657,35 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			Vector<String> a2 = new Vector<String>();
             a2.add("剩余");
 			a2.add(String.valueOf(regdatas.Se));
-			a2.add(String.valueOf(regdatas.));
-			a2.add(String.valueOf(regdatas.VR));
-			a2.add(String.valueOf(regdatas.F));
-			a2.add(String.valueOf(regdatas.F5));
+			a2.add(String.valueOf(regdatas.n-2));
+			a2.add(String.valueOf(regdatas.Ve));
+			a2.add("");
+			a2.add(String.valueOf(regdatas.F1));
+            a2.add("");
 			rowData.add(a2);
 		
 			Vector<String> a3 = new Vector<String>();
-            a3.add("剩余");
-			a3.add(String.valueOf(regdatas.Se));
-			a3.add(String.valueOf(regdatas.));
-			a3.add(String.valueOf(regdatas.VR));
-			a3.add(String.valueOf(regdatas.F));
-			a3.add(String.valueOf(regdatas.F5));
+            a3.add("总和");
+			a3.add(String.valueOf(regdatas.ST));
+			a3.add(String.valueOf(regdatas.n-1));
+			a3.add("");
+			a3.add("");
+			a3.add("");
+			a3.add("");
 			rowData.add(a3);
 			
 		model.setDataVector(rowData, columnName);
 
-		kfTable.setModel(model);
+		regTable.setModel(model);
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
-		kfTable.setDefaultRenderer(Object.class, tcr);
-		kfTable.setBounds(200, 380, 700, 120);
-		kfTable.setForeground(Color.WHITE);
-		kfTable.setEnabled(false);
-		kfTable.setOpaque(false);
-		kfTable.setVisible(true);
-		table2lbl.add(kfTable);
+		regTable.setDefaultRenderer(Object.class, tcr);
+		regTable.setBounds(200, 380, 700, 120);
+		regTable.setForeground(Color.WHITE);
+		regTable.setEnabled(false);
+		regTable.setOpaque(false);
+		regTable.setVisible(true);
+		table3lbl.add(regTable);
 	}
 	
 	public void home() {
