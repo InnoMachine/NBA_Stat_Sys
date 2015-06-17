@@ -573,7 +573,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		vardatas = tg.getVarAnakysisout(1, team);
 
-		varTable1 = new JTable(7, 7) { // 设置jtable的单元格为透明的
+		varTable1 = new JTable(6, 7) { // 设置jtable的单元格为透明的
 			public Component prepareRenderer(TableCellRenderer renderer,
 					int row, int column) {
 				Component c = super.prepareRenderer(renderer, row, column);
@@ -584,7 +584,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 			}
 		};
 		;
-		varTable1.setRowHeight(210 / 7);
+		varTable1.setRowHeight(180 / 6);
 		DefaultTableModel model = new DefaultTableModel();
 		Vector<String> columnName = new Vector<String>();
 		columnName.add("方差来源");
@@ -656,15 +656,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	    a6.add(df.format(vardatas.xi2[4]));
 		rowData.add(a6);
 		
-		Vector<String> a7 = new Vector<String>();
-		a7.add("∑i");
-		a7.add("");
-		a7.add("");
-		a7.add("");
-		a7.add("");
-	    a7.add(df.format(vardatas.xi[5]));	
-	    a7.add(df.format(vardatas.xi2[5]));
-		rowData.add(a7);
 
 		model.setDataVector(rowData, columnName);
 
@@ -672,7 +663,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
 		varTable1.setDefaultRenderer(Object.class, tcr);
-		varTable1.setBounds(200, 60, 700, 210);
+		varTable1.setBounds(200, 75, 700, 180);
 		varTable1.setForeground(Color.WHITE);
 		varTable1.setEnabled(false);
 		varTable1.setOpaque(false);
