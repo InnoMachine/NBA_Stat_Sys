@@ -596,15 +596,25 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		callbl1.setBounds(200, 480, 700, 20);
 		callbl1.setOpaque(false);
 		callbl1.setForeground(Color.WHITE);
+		callbl1.setFont(new Font("微软雅黑", 1, 12));
 		callbl1.setVisible(true);
 		table1lbl.add(callbl1);
-
+		table1lbl.setVisible(false);
+		table1lbl.setVisible(true);
 	}
 
 	public void createChart3(int i) {
 
 		vardatas = tg.getVarAnakysisout(1, team);
 
+		
+		
+		
+		
+		
+		
+		table2lbl.setVisible(false);
+		table2lbl.setVisible(true);
 	}
 
 	public void createChart4(int i) {
@@ -701,9 +711,12 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		callbl.setBounds(200, 480, 700, 20);
 		callbl.setOpaque(false);
 		callbl.setForeground(Color.WHITE);
+		callbl.setFont(new Font("微软雅黑", 1, 12));
 		callbl.setVisible(true);
 		table3lbl.add(callbl);
-
+		
+		table3lbl.setVisible(false);
+		table3lbl.setVisible(true);
 	}
 
 	public void home() {
