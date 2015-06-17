@@ -68,6 +68,8 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 	String sampleNum = "40";
 	JTable kfTable;
 	JTable regTable;
+	JTable varTable1;
+	JTable varTable2;
 	DecimalFormat df;
 	JLabel callbl1;
 	JLabel callbl2;
@@ -380,7 +382,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		sampleNumjcb = new JComboBox<String>(sampleNums);
 		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
 				Y * 28 / 768);
-		sampleNumjcb.setSelectedItem("40");
 		sampleNumjcb.setForeground(Color.WHITE);
 		sampleNumjcb.setBackground(Color.DARK_GRAY);
 		sampleNumjcb.addActionListener(e -> {
@@ -431,26 +432,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		});
 		table2lbl.add(seasonjcb);
 
-		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
-		sampleNumlbl.setBounds(6, 160, 70, 23);
-		table2lbl.add(sampleNumlbl);
-
-		Vector<String> sampleNums = new Vector<String>();
-		sampleNums.addElement("40");
-		sampleNums.addElement("60");
-		sampleNums.addElement("All");
-		sampleNumjcb = new JComboBox<String>(sampleNums);
-		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
-				Y * 28 / 768);
-		sampleNumjcb.setSelectedItem("40");
-		sampleNumjcb.setForeground(Color.WHITE);
-		sampleNumjcb.setBackground(Color.DARK_GRAY);
-		sampleNumjcb.addActionListener(e -> {
-			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
-			createChart3(1);
-
-		});
-		table2lbl.add(sampleNumjcb);
 
 	}
 
@@ -492,27 +473,6 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		});
 		table3lbl.add(seasonjcb);
-
-		JLabel sampleNumlbl = new MyLabel(Color.WHITE, "样本数");
-		sampleNumlbl.setBounds(6, 160, 70, 23);
-		table3lbl.add(sampleNumlbl);
-
-		Vector<String> sampleNums = new Vector<String>();
-		sampleNums.addElement("40");
-		sampleNums.addElement("60");
-		sampleNums.addElement("All");
-		sampleNumjcb = new JComboBox<String>(sampleNums);
-		sampleNumjcb.setBounds(X * 6 / 1366, Y * 190 / 768, X * 70 / 1366,
-				Y * 28 / 768);
-		sampleNumjcb.setSelectedItem("40");
-		sampleNumjcb.setForeground(Color.WHITE);
-		sampleNumjcb.setBackground(Color.DARK_GRAY);
-		sampleNumjcb.addActionListener(e -> {
-			sampleNum = String.valueOf(sampleNumjcb.getSelectedItem());
-			createChart4(1);
-
-		});
-		table3lbl.add(sampleNumjcb);
 
 	}
 
@@ -602,7 +562,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		callbl1.setBounds(200, 480, 700, 20);
 		callbl1.setOpaque(false);
 		callbl1.setForeground(Color.WHITE);
-		callbl1.setFont(new Font("微软雅黑", 1, 12));
+		callbl1.setFont(new Font("微软雅黑", 1, 16));
 		callbl1.setVisible(true);
 		table1lbl.add(callbl1);
 		table1lbl.setVisible(false);
@@ -613,8 +573,91 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 
 		vardatas = tg.getVarAnakysisout(1, team);
 
+		varTable1 = new JTable(7, 7) { // 设置jtable的单元格为透明的
+			public Component prepareRenderer(TableCellRenderer renderer,
+					int row, int column) {
+				Component c = super.prepareRenderer(renderer, row, column);
+				if (c instanceof JComponent) {
+					((JComponent) c).setOpaque(false);
+				}
+				return c;
+			}
+		};
+		;
+		varTable1.setRowHeight(120 / 7);
+
+		DefaultTableModel model = new DefaultTableModel();
+		Vector<String> columnName = new Vector<String>();
+		columnName.add("方差来源");
+		columnName.add("偏差平方和");
+		columnName.add("自由度");
+		columnName.add("方差");
+		columnName.add("F值");
+		columnName.add("Fα");
+		columnName.add("显著性");
+		Vector<Vector> rowData = new Vector<Vector>();
+		rowData.add(columnName);
+
+		Vector<String> a1 = new Vector<String>();
+		a1.add("Ai");
+		a1.add(df.format(regdatas.SR));
+		a1.add("1");
+		a1.add(df.format(regdatas.VR));
+		a1.add(df.format(regdatas.F));
+		a1.add(df.format(regdatas.F5));
+		if (regdatas.F >= regdatas.F1) {
+			a1.add("**");
+		} else if (regdatas.F >= regdatas.F5 && regdatas.F < regdatas.F1) {
+			a1.add("*");
+		} else if (regdatas.F < regdatas.F5) {
+			a1.add("");
+		}
+		rowData.add(a1);
+
+		Vector<String> a2 = new Vector<String>();
+		a2.add("剩余");
+		a2.add(df.format(regdatas.Se));
+		a2.add(String.valueOf(regdatas.n - 2));
+		a2.add(df.format(regdatas.Ve));
+		a2.add("");
+		a2.add(df.format(regdatas.F1));
+		a2.add("");
+		rowData.add(a2);
+
+		Vector<String> a3 = new Vector<String>();
+		a3.add("总和");
+		a3.add(df.format(regdatas.ST));
+		a3.add(String.valueOf(regdatas.n - 1));
+		a3.add("");
+		a3.add("");
+		a3.add("");
+		a3.add("");
+		rowData.add(a3);
+
+		model.setDataVector(rowData, columnName);
+
+		regTable.setModel(model);
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(SwingConstants.CENTER);// 这句和上句作用一样
+		regTable.setDefaultRenderer(Object.class, tcr);
+		regTable.setBounds(200, 355, 700, 120);
+		regTable.setForeground(Color.WHITE);
+		regTable.setEnabled(false);
+		regTable.setOpaque(false);
+		regTable.setVisible(true);
+		table3lbl.add(regTable);
+		
+		
+		
+		
+		
+		
+		
+		
 		table2lbl.setVisible(false);
 		table2lbl.setVisible(true);
+		
+		
 	}
 
 	public void createChart4(int i) {
@@ -714,7 +757,7 @@ public class TypicalTeamAnalysisPanel extends JPanel {
 		callbl3.setBounds(200, 480, 700, 20);
 		callbl3.setOpaque(false);
 		callbl3.setForeground(Color.WHITE);
-		callbl3.setFont(new Font("微软雅黑", 1, 12));
+		callbl3.setFont(new Font("微软雅黑", 1, 16));
 		callbl3.setVisible(true);
 		table3lbl.add(callbl3);
 

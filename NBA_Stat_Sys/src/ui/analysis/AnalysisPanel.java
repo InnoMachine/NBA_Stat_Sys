@@ -104,7 +104,7 @@ public class AnalysisPanel extends JPanel {
 		label.setIcon(mapIcon);
 
 		JLabel currentTeamlbl = new JLabel();
-		currentTeamlbl.setBounds(1070, 580, 200, 70);
+		currentTeamlbl.setBounds(1020, 550, 240, 84);
 		// currentTeamlbl.setBackground(Color.yellow);
 		ImageIcon wordmarkIcon = new ImageIcon(new ImageIcon(
 				"Image/wordmark_png/ATL_wordmark.png").getImage()
