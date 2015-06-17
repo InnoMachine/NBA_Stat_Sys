@@ -1529,7 +1529,7 @@ public class Player_Handler {
 						r+=pp.getReboundOverall();
 						a+=pp.getAssistance();
 					}
-					if(temp.getGameNum()>=6){
+					if(temp.getGameNum()>=6&&p.size()!=0){
 						int s1=(temp.getScore()-s)/(temp.getGameNum()-p.size());
 						int a1=(temp.getAssistance()-a)/(temp.getGameNum()-p.size());
 						int r1=(temp.getReboundOverall()-r)/(temp.getGameNum()-p.size());

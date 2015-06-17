@@ -138,17 +138,24 @@ public class countFuncs {
 		double FA = VA/Ve;
 		double F5 = F_square_distribution_table4("0.05",m*r-m);
 		double F1 = F_square_distribution_table4("0.01", m*r-m);
+		double xi2[] = new double[m];
+		for(int i=0;i<m;i++){
+			xi2[i]= Math.pow(xi[i], 2);
+		}
 		varAnakysisout rao = new varAnakysisout();
-		rao.F = F;
-		rao.F1 = F_square_distribution_table1("0.01", n-2);
-		rao.F5 = F_square_distribution_table1("0.05", n-2);
-		rao.pearson_r = pearson_r(x, y);
-		rao.SR = SR;
+		rao.xi = xi;
+		rao.xi = xi2;
+		rao.xij = xij;
+		rao.F = FA;
+		rao.F1 = F1;
+		rao.F5 = F5;
+		rao.SA = SA;
 		rao.Se = Se;
 		rao.ST = ST;
-		rao.VR = SR;
-		rao.Ve = Se/(n-2);
-		rao.ρ = correlationCoefficient(x, y);
+		rao.VA = SA/(m-1);
+		rao.Ve = Se/(m*r-m);
+		
+		return rao;
 	}
 
 	public static void showMeanAndVar(String name){
@@ -495,6 +502,8 @@ public class countFuncs {
 		rao.VR = SR;
 		rao.Ve = Se/(n-2);
 		rao.ρ = correlationCoefficient(x, y);
+		rao.r2 = r2;
+		rao.Sy = Sy;
 		
 		return rao;
 //		System.out.println("F值："+F);

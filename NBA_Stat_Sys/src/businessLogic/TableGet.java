@@ -50,7 +50,7 @@ public class TableGet {
 		else {
 			co.biaozhi = 96.5782;
 		}
-		for(int k=0;k<co.ni.length;i++){
+		for(int k=0;k<co.ni.length;k++){
 			dataset.addValue(co.ni[k], co.qujian[k], "score");
 		}
 		
@@ -80,7 +80,35 @@ public class TableGet {
 	}
 	
 	public varAnakysisout getVarAnakysisout(int number,String abbr){
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		return null;
+		double data[][] = new double[5][4];
+		ArrayList<TeamPerformanceInSingleGame>  tp;
+		tp= team_bs.getTeamPerformance(abbr,"00-01");
+		for(int i=0;i<4;i++){
+			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+			data[0][i]=temp.getScore();
+		}
+		tp= team_bs.getTeamPerformance(abbr,"03-04");
+		for(int i=0;i<4;i++){
+			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+			data[0][i]=temp.getScore();
+		}
+		tp= team_bs.getTeamPerformance(abbr,"06-07");
+		for(int i=0;i<4;i++){
+			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+			data[0][i]=temp.getScore();
+		}
+		tp= team_bs.getTeamPerformance(abbr,"09-10");
+		for(int i=0;i<4;i++){
+			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+			data[0][i]=temp.getScore();
+		}
+		tp= team_bs.getTeamPerformance(abbr,"13-14");
+		for(int i=0;i<4;i++){
+			 TeamPerformanceInSingleGame temp=tp.get(rand.nextInt(tp.size()));
+			data[0][i]=temp.getScore();
+		}
+		varAnakysisout vao=countFuncs.Single_factor_analysis_of_variance(data, 5, 4);
+		
+		return vao;
 	}
 }

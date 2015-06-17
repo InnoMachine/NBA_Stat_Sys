@@ -20,7 +20,7 @@ public class ChartPanelMake {
 	public ChartPanel getLineChartPanel(int number,String abbr){
 		LineChartMaking lcm = new LineChartMaking();
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset = dataset1();
+		dataset = dataset1(number);
 		return lcm.makeChart(dataset);
 	}
 	
@@ -47,7 +47,7 @@ public class ChartPanelMake {
 	}
 	
 	
-	public static DefaultCategoryDataset dataset1(){
+	public static DefaultCategoryDataset dataset1(int number){
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		ArrayList<TeamVo> vos = team_bs.getTeamByAbbrA("SAS");
 		ArrayList<TotalInfo> tis = team_bs.getTeamTotalInfos();
@@ -65,11 +65,42 @@ public class ChartPanelMake {
         for (int i = 0; i < 15; i++) {
                time[i] = timeValue[i];
         }
+        if(number==1){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getScoreField(), Teamabbr, time[i]);
+                dataset.addValue(tis.get(i).getScoreField(), All, time[i]);
+         }
+        }else if(number==2){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getRoundAttackField(), Teamabbr, time[i]);
+                dataset.addValue(tis.get(i).getRoundAttackField(), All, time[i]);
+                }
+        }
+        else if(number==3){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getAssistanceField(), Teamabbr, time[i]);
+                dataset.addValue(tis.get(i).getAssistanceField(), All, time[i]);
+                }
+        }
+        else if(number==4){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getFreeThrowShotNumField(), Teamabbr, time[i]);
+                dataset.addValue((double)tis.get(i).getFreeshot()/tis.get(i).getGamenum(), All, time[i]);
+                }
+        }
+        else if(number==5){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getThreePointHitNumField()*3/vos.get(i).getScoreField(), Teamabbr, time[i]);
+                dataset.addValue(tis.get(i).getThree()*3/tis.get(i).getScore(), All, time[i]);
+                }
+        }
+        else if(number==6){
+        	for (int i = 0; i < 15; i++) {
+                dataset.addValue(vos.get(i).getAssistanceField()/vos.get(i).getShotNumField(), Teamabbr, time[i]);
+                dataset.addValue(tis.get(i).getAssistanceField()/tis.get(i).getShotField(), All, time[i]);
+                }
+        }
         
-        for (int i = 0; i < 15; i++) {
-            dataset.addValue(vos.get(i).getScoreField(), Teamabbr, time[i]);
-            dataset.addValue(tis.get(i).getScoreField(), All, time[i]);
-     }
         return dataset;
 	}
 	

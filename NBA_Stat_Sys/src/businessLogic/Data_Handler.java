@@ -112,6 +112,14 @@ public class Data_Handler {
 			sm.listtg = listtg;
 			seasonlist.add(sm);
 		}
+		SeasonMult sm = seasonlist.get(13);
+		gamevo = sm.gamevo;
+		listpg = sm.listpg;
+		listvo = sm.listvo;
+		listtg = sm.listtg;
+		teamlistvo = sm.teamlistvo;
+		ti = sm.ti;
+		teamti = sm.teamti;
 		
 		
 	}
@@ -1172,7 +1180,7 @@ public class Data_Handler {
 	{
 		ArrayList<PlayerPerformanceInSingleGame> pplist = new ArrayList<PlayerPerformanceInSingleGame>();
 		GameDate dn = getDateNow();
-		System.out.println(dn.toString()+"得到当日比赛");
+		//System.out.println(dn.toString()+"得到当日比赛");
 		for(GameVo temp:gamevo){
 			if(temp.getGameDate().compareTo(dn)==0){
 				for(PlayerPerformanceInSingleGame pp:temp.getGuestTP().getPlayerList()){
@@ -1256,8 +1264,9 @@ public class Data_Handler {
 		TotalCalculate();
 	}
 	public GameDate getDateNow(){
-		//st.setCurrentDate(new GameDate(2012,11,28));
-		st = systemdao.getStById("12-13");
+		//st.setCurrentDate(new GameDate(2015,4,15));
+		st.setCurrentDate(new GameDate(2014,4,16));
+		//st = systemdao.getStById("12-13");
 		return st.getCurrentDate();
 	}
 	

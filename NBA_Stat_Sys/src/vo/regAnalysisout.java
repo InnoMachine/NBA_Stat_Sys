@@ -9,6 +9,8 @@ public class regAnalysisout {
 	public double F5,F1;//就是F0.05,F0.01
 	public double pearson_r;//Pearson相关系数
 	public double ρ;//相关系数
+	public double r2;
+	public double Sy;
 	
 	public ChartPanel cp;
 	
