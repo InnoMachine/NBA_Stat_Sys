@@ -258,11 +258,11 @@ public class StartPanel extends JPanel {
 			this.setHorizontalTextPosition(SwingConstants.CENTER);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑",1,20));
-//			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-//					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
-//							 Image.SCALE_SMOOTH));
-//			
-//			this.setIcon(buttonIcon);
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
+							 Image.SCALE_SMOOTH));
+			
+			this.setIcon(buttonIcon);
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
