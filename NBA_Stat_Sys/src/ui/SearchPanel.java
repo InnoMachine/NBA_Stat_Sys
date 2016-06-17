@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -142,15 +144,15 @@ public class SearchPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-		JLabel keylbl=new MyLabel(Color.WHITE,"排序依据");
-		keylbl.setBounds(X * 540 / 1366, Y * 50 / 768, X * 60 / 1366,
-				Y * 27 / 768);
-		keylbl.setFont(new Font("微软雅黑", 1, 13));
-		keylbl.setVisible(true);
-		bgLabel.add(keylbl);
+//		JLabel keylbl=new MyLabel(Color.WHITE,"排序依据");
+//		keylbl.setBounds(X * 540 / 1366, Y * 50 / 768, X * 60 / 1366,
+//				Y * 27 / 768);
+//		keylbl.setFont(new Font("微软雅黑", 1, 13));
+//		keylbl.setVisible(true);
+//		bgLabel.add(keylbl);
 		
 		JTextField keytF = new JTextField();
-		keytF.setBounds(X * 620 / 1366, Y * 50 / 768, X * 200 / 1366,
+		keytF.setBounds(X * 580 / 1366, Y * 50 / 768, X * 200 / 1366,
 				Y * 27 / 768);
 		keytF.setVisible(true);
 		keytF.setBackground(Color.GRAY);
