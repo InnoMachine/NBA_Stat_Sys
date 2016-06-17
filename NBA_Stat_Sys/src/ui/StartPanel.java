@@ -79,19 +79,19 @@ public class StartPanel extends JPanel {
 	public void createButton() {
 		int subX=55*X/100;
 		
-		MyButton analysisbtn = new MyButton("数据分析");
-		analysisbtn.setBounds(3*X/20, 12*Y/24, X/8, Y/12);
-		analysisbtn.addActionListener(e -> toAnalysisPanel());
-		bgLabel.add(analysisbtn);
-		
-		JLabel analysisLabel=new JLabel();
-		analysisLabel.setBounds(2*X/20, 12*Y/24, Y/12, Y/12);
-		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/shujufenxi.png").getImage().getScaledInstance(Y/12,  Y/12,
-						 Image.SCALE_SMOOTH));
-		
-		analysisLabel.setIcon(buttonIcon);
-		bgLabel.add(analysisLabel);
+//		MyButton analysisbtn = new MyButton("数据分析");
+//		analysisbtn.setBounds(3*X/20, 12*Y/24, X/8, Y/12);
+//		analysisbtn.addActionListener(e -> toAnalysisPanel());
+//		bgLabel.add(analysisbtn);
+//		
+//		JLabel analysisLabel=new JLabel();
+//		analysisLabel.setBounds(2*X/20, 12*Y/24, Y/12, Y/12);
+//		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+//				"Image/shujufenxi.png").getImage().getScaledInstance(Y/12,  Y/12,
+//						 Image.SCALE_SMOOTH));
+//		
+//		analysisLabel.setIcon(buttonIcon);
+//		bgLabel.add(analysisLabel);
 		
 		MyButton playerInfobtn = new MyButton("球员信息");
 		playerInfobtn.setBounds(3*X/20, 15*Y/24, X/8, Y/12);
@@ -101,7 +101,7 @@ public class StartPanel extends JPanel {
 		
 		JLabel playerLabel=new JLabel();
 		playerLabel.setBounds(2*X/20, 15*Y/24, Y/12, Y/12);
-		buttonIcon = new ImageIcon(new ImageIcon(
+		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
 				"Image/qiuyuanxinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
 						 Image.SCALE_SMOOTH));
 		
