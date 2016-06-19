@@ -41,6 +41,9 @@ public class PlayerPanel extends JPanel {
 	TopFivePlayerCardPanel seasonHotPlayerPanel;
 	TopFivePlayerCardPanel progressFastPlayerPanel;
 
+	JButton dailyHotDatabtn;
+	JButton seasonHotDatabtn;
+	
 	JButton dailyHotData_Scorebtn;
 	JButton dailyHotData_Reboundbtn;
 	JButton dailyHotData_Assistancebtn;
@@ -199,7 +202,7 @@ public class PlayerPanel extends JPanel {
 		hotLabel.setFont(new Font("微软雅黑", 1, 20));
 		bgLabel.add(hotLabel);
 
-		JButton dailyHotDatabtn = new MyButton("每日");
+		dailyHotDatabtn = new MyButton("每日");
 		dailyHotDatabtn.setBounds(X * 700 / 1366, Y * 70 / 768, X * 150 / 1366,
 				Y * 30 / 768);
 		buttonIcon = new ImageIcon(new ImageIcon("Image/mainButton.png")
@@ -278,7 +281,7 @@ public class PlayerPanel extends JPanel {
 		dailyHotData_Stealbtn.setVisible(true);
 		bgLabel.add(dailyHotData_Stealbtn);
 
-		JButton seasonHotDatabtn = new MyButton("赛季");
+		seasonHotDatabtn = new MyButton("赛季");
 		seasonHotDatabtn.setBounds(X * 850 / 1366, Y * 70 / 768,
 				X * 150 / 1366, Y * 30 / 768);
 		buttonIcon = new ImageIcon(new ImageIcon("Image/mainButton.png")
@@ -452,6 +455,8 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showDailyHotComponent() {
+		seasonHotDatabtn.setFont(new Font("微软雅黑", 1, 15));
+		dailyHotDatabtn.setFont(new Font("微软雅黑", 2, 15));
 		dailyhotIcon.setVisible(true);
 		seasonhotIcon.setVisible(false);
 		selectedby = "-得分";
@@ -495,6 +500,8 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showSeasonHotComponent() {
+		seasonHotDatabtn.setFont(new Font("微软雅黑", 2, 15));
+		dailyHotDatabtn.setFont(new Font("微软雅黑", 1, 15));
 		dailyhotIcon.setVisible(false);
 		seasonhotIcon.setVisible(true);
 		selectedby = "-场均得分";
@@ -545,6 +552,7 @@ public class PlayerPanel extends JPanel {
 	}
 
 	public void showSeasonHotTopFivePlayer(String seasonHotPlayerCriteria) {
+		
 		if (seasonHotPlayerPanel != null) {
 			seasonHotPlayerPanel.setVisible(false);
 		}
@@ -656,6 +664,28 @@ public class PlayerPanel extends JPanel {
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
 
+		}
+		
+		public void MouseEnter(){
+			this.setFont(new Font("微软雅黑",Font.ITALIC,20));
+		}
+		
+		public void MouseExit(){
+			this.setFont(new Font("微软雅黑",1,20));
+		}
+		
+		public void MousePressed(){
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
+							 Image.SCALE_AREA_AVERAGING));
+			this.setIcon(buttonIcon);
+		}
+		
+		public void MouseReleased(){
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
+							 Image.SCALE_SMOOTH));
+			this.setIcon(buttonIcon);
 		}
 	}
 

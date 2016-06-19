@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -97,6 +99,23 @@ public class StartPanel extends JPanel {
 		playerInfobtn.setBounds(3*X/20, 15*Y/24, X/8, Y/12);
 //		playerInfobtn.addActionListener(e -> playerOpe());
 		playerInfobtn.addActionListener(e -> toPlayerPanel());
+		playerInfobtn.addMouseListener(new MouseListener() {
+			public void mouseReleased(MouseEvent e) {
+				playerInfobtn.MouseReleased();
+			}
+			public void mousePressed(MouseEvent e) {
+				playerInfobtn.MousePressed();
+			}
+			public void mouseExited(MouseEvent e) {
+				playerInfobtn.MouseExit();
+			}
+			public void mouseEntered(MouseEvent e) {
+				playerInfobtn.MouseEnter();
+			}
+			public void mouseClicked(MouseEvent e) {
+			
+			}
+		});
 		bgLabel.add(playerInfobtn);
 		
 		JLabel playerLabel=new JLabel();
@@ -106,11 +125,29 @@ public class StartPanel extends JPanel {
 						 Image.SCALE_SMOOTH));
 		
 		playerLabel.setIcon(buttonIcon);
+		
 		bgLabel.add(playerLabel);
 
 		MyButton teamInfobtn = new MyButton("球队信息");
 		teamInfobtn.setBounds(3*X/20, 18*Y/24, X/8,  Y/12);
 		teamInfobtn.addActionListener(e -> toTeamPanel());
+		teamInfobtn.addMouseListener(new MouseListener() {
+			public void mouseReleased(MouseEvent e) {
+				teamInfobtn.MouseReleased();
+			}
+			public void mousePressed(MouseEvent e) {
+				teamInfobtn.MousePressed();
+			}
+			public void mouseExited(MouseEvent e) {
+				teamInfobtn.MouseExit();
+			}
+			public void mouseEntered(MouseEvent e) {
+				teamInfobtn.MouseEnter();
+			}
+			public void mouseClicked(MouseEvent e) {
+			
+			}
+		});
 		bgLabel.add(teamInfobtn);
 		
 		JLabel teamLabel=new JLabel();
@@ -120,11 +157,29 @@ public class StartPanel extends JPanel {
 						 Image.SCALE_SMOOTH));
 		
 		teamLabel.setIcon(buttonIcon);
+		
 		bgLabel.add(teamLabel);
 
 		MyButton gameInfobtn = new MyButton("比赛信息");
 		gameInfobtn.setBounds(3*X/20, 21*Y/24, X/8,  Y/12);
 		gameInfobtn.addActionListener(e -> toGamePanel());
+		gameInfobtn.addMouseListener(new MouseListener() {
+			public void mouseReleased(MouseEvent e) {
+				gameInfobtn.MouseReleased();
+			}
+			public void mousePressed(MouseEvent e) {
+				gameInfobtn.MousePressed();
+			}
+			public void mouseExited(MouseEvent e) {
+				gameInfobtn.MouseExit();
+			}
+			public void mouseEntered(MouseEvent e) {
+				gameInfobtn.MouseEnter();
+			}
+			public void mouseClicked(MouseEvent e) {
+			
+			}
+		});
 		bgLabel.add(gameInfobtn);
 		
 		JLabel gameLabel=new JLabel();
@@ -267,6 +322,28 @@ public class StartPanel extends JPanel {
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
 			
+		}
+		
+		public void MouseEnter(){
+			this.setFont(new Font("微软雅黑",Font.ITALIC,20));
+		}
+		
+		public void MouseExit(){
+			this.setFont(new Font("微软雅黑",1,20));
+		}
+		
+		public void MousePressed(){
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
+							 Image.SCALE_AREA_AVERAGING));
+			this.setIcon(buttonIcon);
+		}
+		
+		public void MouseReleased(){
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
+							 Image.SCALE_SMOOTH));
+			this.setIcon(buttonIcon);
 		}
 	}
 }
