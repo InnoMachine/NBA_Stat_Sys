@@ -71,38 +71,7 @@ public class StartPanel extends JPanel {
 		bgLabel.setIcon(bg);
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
-		this.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println(e.getX());
-				System.out.println(e.getY());
-			}
-		});
+		
 		createButton();
 
 

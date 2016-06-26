@@ -2510,6 +2510,37 @@ public class GameInfoPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
+			this.addMouseListener(new MouseListener() {
+				
+				public void mouseExited(MouseEvent e) {
+					MouseExit();
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					MouseEnter();
+					
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
 		}
 
 		public MyButton(String s) {
@@ -2520,6 +2551,37 @@ public class GameInfoPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
+			this.addMouseListener(new MouseListener() {
+				
+				public void mouseExited(MouseEvent e) {
+					MouseExit();
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					MouseEnter();
+					
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
 		}
 
 		protected void paintComponent(Graphics g) {
@@ -2527,6 +2589,13 @@ public class GameInfoPanel extends JPanel {
 			oval.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
 			g.drawImage(oval, 0, 0, 80, 80, null);
 			super.paintComponent(g);
+		}
+		public void MouseEnter(){
+			this.setFont(new Font("微软雅黑",Font.ITALIC,15));
+		}
+		
+		public void MouseExit(){
+			this.setFont(new Font("微软雅黑",1,15));
 		}
 	}
 
@@ -2546,6 +2615,45 @@ public class GameInfoPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
+			this.addMouseListener(new MouseListener() {
+				
+				public void mouseExited(MouseEvent e) {
+					MouseExit();
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					MouseEnter();
+					
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
+			
+		}
+		public void MouseEnter(){
+			this.setFont(new Font("微软雅黑",Font.ITALIC,15));
+		}
+		
+		public void MouseExit(){
+			this.setFont(new Font("微软雅黑",1,15));
 		}
 
 	}
