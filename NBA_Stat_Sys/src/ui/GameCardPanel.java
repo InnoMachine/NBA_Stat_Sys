@@ -44,11 +44,11 @@ public class GameCardPanel extends JPanel {
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.gameVo = gameVo;
-		this.setBounds(0, 0, X * 930 / 1366, Y * 120 / 768);
+		this.setBounds(0, 0, X * 700 / 1366, Y * 100 / 768);
 
 		JLabel statelbl = new MyLabel("结束");
 		statelbl.setHorizontalAlignment(SwingConstants.CENTER);
-		statelbl.setBounds(X * 425 / 1366, Y * 5 / 768, X * 80 / 1366,
+		statelbl.setBounds(X * 310 / 1366, Y * 5 / 768, X * 80 / 1366,
 				Y * 20 / 768);
 		statelbl.setFont(new Font("黑体", 1, 14));
 		statelbl.setBackground(Color.GRAY);
@@ -56,7 +56,7 @@ public class GameCardPanel extends JPanel {
 		add(statelbl);
 
 		JButton teambtn1 = new JButton();
-		teambtn1.setBounds(X * 35 / 1366, Y * 0 / 768, X * 130 / 1366,
+		teambtn1.setBounds(X * 10 / 1366, Y * 0 / 768, X * 130 / 1366,
 				Y * 130 / 768);
 		teambtn1.setContentAreaFilled(false);
 		teambtn1.setBorderPainted(false);
@@ -64,7 +64,7 @@ public class GameCardPanel extends JPanel {
 		add(teambtn1);
 
 		JButton teambtn2 = new JButton();
-		teambtn2.setBounds(X * 760 / 1366, Y * 0 / 768, X * 130 / 1366,
+		teambtn2.setBounds(X * 560 / 1366, Y * 0 / 768, X * 130 / 1366,
 				Y * 130 / 768);
 		teambtn2.setContentAreaFilled(false);
 		teambtn2.setBorderPainted(false);
@@ -76,42 +76,42 @@ public class GameCardPanel extends JPanel {
 		 */
 		JLabel teamlbl = new MyLabel("球队");
 		teamlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		teamlbl.setBounds(X * 180 / 1366, Y * 25 / 768, X * 95 / 1366,
+		teamlbl.setBounds(X * 155 / 1366, Y * 25 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		teamlbl.setFont(new Font("黑体", 1, 14));
 		add(teamlbl);
 
 		JLabel score1stlbl = new MyLabel("1");
 		score1stlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score1stlbl.setBounds(X * 275 / 1366, Y * 26 / 768, X * 95 / 1366,
+		score1stlbl.setBounds(X * 220 / 1366, Y * 26 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		score1stlbl.setFont(new Font("黑体", 1, 14));
 		add(score1stlbl);
 
 		JLabel score2ndlbl = new MyLabel("2");
 		score2ndlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score2ndlbl.setBounds(X * 370 / 1366, Y * 26 / 768, X * 95 / 1366,
+		score2ndlbl.setBounds(X * 285 / 1366, Y * 26 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		score2ndlbl.setFont(new Font("黑体", 1, 14));
 		add(score2ndlbl);
 
 		JLabel score3rdlbl = new MyLabel("3");
 		score3rdlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score3rdlbl.setBounds(X * 465 / 1366, Y * 26 / 768, X * 95 / 1366,
+		score3rdlbl.setBounds(X * 350 / 1366, Y * 26 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		score3rdlbl.setFont(new Font("黑体", 1, 14));
 		add(score3rdlbl);
 
 		JLabel score4thlbl = new MyLabel("4");
 		score4thlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		score4thlbl.setBounds(X * 560 / 1366, Y * 26 / 768, X * 95 / 1366,
+		score4thlbl.setBounds(X * 415 / 1366, Y * 26 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		score4thlbl.setFont(new Font("黑体", 1, 14));
 		add(score4thlbl);
 
 		JLabel scoreSumlbl = new MyLabel("总数");
 		scoreSumlbl.setHorizontalAlignment(SwingConstants.CENTER);
-		scoreSumlbl.setBounds(X * 655 / 1366, Y * 25 / 768, X * 95 / 1366,
+		scoreSumlbl.setBounds(X * 480 / 1366, Y * 25 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		scoreSumlbl.setFont(new Font("黑体", 1, 14));
 		add(scoreSumlbl);
@@ -120,7 +120,7 @@ public class GameCardPanel extends JPanel {
 		teamName1tF.setText("teamName1");
 		teamName1tF.setHorizontalAlignment(SwingConstants.CENTER);
 		teamName1tF.setEditable(false);
-		teamName1tF.setBounds(X * 180 / 1366, Y * 53 / 768, X * 95 / 1366,
+		teamName1tF.setBounds(X * 155 / 1366, Y * 53 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(teamName1tF);
 		teamName1tF.setColumns(X * 10 / 1366);
@@ -130,7 +130,7 @@ public class GameCardPanel extends JPanel {
 		score11tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score11tF.setEditable(false);
 		score11tF.setColumns(X * 10 / 1366);
-		score11tF.setBounds(X * 275 / 1366, Y * 53 / 768, X * 95 / 1366,
+		score11tF.setBounds(X * 220 / 1366, Y * 53 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score11tF);
 
@@ -139,7 +139,7 @@ public class GameCardPanel extends JPanel {
 		score12tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score12tF.setEditable(false);
 		score12tF.setColumns(X * 10 / 1366);
-		score12tF.setBounds(X * 370 / 1366, Y * 53 / 768, X * 95 / 1366,
+		score12tF.setBounds(X * 285 / 1366, Y * 53 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score12tF);
 
@@ -148,7 +148,7 @@ public class GameCardPanel extends JPanel {
 		score13tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score13tF.setEditable(false);
 		score13tF.setColumns(X * 10 / 1366);
-		score13tF.setBounds(X * 465 / 1366, Y * 53 / 768, X * 95 / 1366,
+		score13tF.setBounds(X * 350 / 1366, Y * 53 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score13tF);
 
@@ -157,7 +157,7 @@ public class GameCardPanel extends JPanel {
 		score14tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score14tF.setEditable(false);
 		score14tF.setColumns(X * 10 / 1366);
-		score14tF.setBounds(X * 560 / 1366, Y * 53 / 768, X * 95 / 1366,
+		score14tF.setBounds(X * 415 / 1366, Y * 53 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score14tF);
 
@@ -166,7 +166,7 @@ public class GameCardPanel extends JPanel {
 		scoreSumtF1.setText("scoreSum1");
 		scoreSumtF1.setEditable(false);
 		scoreSumtF1.setColumns(X * 10 / 1366);
-		scoreSumtF1.setBounds(X * 655 / 1366, Y * 53 / 768, X * 95 / 1366,
+		scoreSumtF1.setBounds(X * 480 / 1366, Y * 53 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(scoreSumtF1);
 
@@ -175,7 +175,7 @@ public class GameCardPanel extends JPanel {
 		teamName2tF.setHorizontalAlignment(SwingConstants.CENTER);
 		teamName2tF.setEditable(false);
 		teamName2tF.setColumns(X * 10 / 1366);
-		teamName2tF.setBounds(X * 180 / 1366, Y * 81 / 768, X * 95 / 1366,
+		teamName2tF.setBounds(X * 155 / 1366, Y * 81 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(teamName2tF);
 
@@ -184,7 +184,7 @@ public class GameCardPanel extends JPanel {
 		score21tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score21tF.setEditable(false);
 		score21tF.setColumns(X * 10 / 1366);
-		score21tF.setBounds(X * 275 / 1366, Y * 81 / 768, X * 95 / 1366,
+		score21tF.setBounds(X * 220 / 1366, Y * 81 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score21tF);
 
@@ -193,7 +193,7 @@ public class GameCardPanel extends JPanel {
 		score22tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score22tF.setEditable(false);
 		score22tF.setColumns(X * 10 / 1366);
-		score22tF.setBounds(X * 370 / 1366, Y * 81 / 768, X * 95 / 1366,
+		score22tF.setBounds(X * 285 / 1366, Y * 81 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score22tF);
 
@@ -202,7 +202,7 @@ public class GameCardPanel extends JPanel {
 		score23tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score23tF.setEditable(false);
 		score23tF.setColumns(X * 10 / 1366);
-		score23tF.setBounds(X * 465 / 1366, Y * 81 / 768, X * 95 / 1366,
+		score23tF.setBounds(X * 350 / 1366, Y * 81 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score23tF);
 
@@ -211,7 +211,7 @@ public class GameCardPanel extends JPanel {
 		score24tF.setHorizontalAlignment(SwingConstants.CENTER);
 		score24tF.setEditable(false);
 		score24tF.setColumns(X * 10 / 1366);
-		score24tF.setBounds(X * 560 / 1366, Y * 81 / 768, X * 95 / 1366,
+		score24tF.setBounds(X * 415 / 1366, Y * 81 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(score24tF);
 
@@ -220,7 +220,7 @@ public class GameCardPanel extends JPanel {
 		scoreSumtF2.setText("scoreSum2");
 		scoreSumtF2.setEditable(false);
 		scoreSumtF2.setColumns(X * 10 / 1366);
-		scoreSumtF2.setBounds(X * 655 / 1366, Y * 81 / 768, X * 95 / 1366,
+		scoreSumtF2.setBounds(X * 480 / 1366, Y * 81 / 768, X * 65 / 1366,
 				Y * 28 / 768);
 		add(scoreSumtF2);
 

@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -11,6 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -506,22 +510,74 @@ public class GameInfoPanel extends JPanel {
 		bgLabel.add(hostScoreSum);
 
 		JButton startingbtn = new ChooseButton("首发");
-		startingbtn.setBounds(X * 450 / 1366, Y * 155 / 768, X * 155 / 1366,
+		startingbtn.setBounds(X * 450 / 1366, Y * 155 / 768, X * 116 / 1366,
 				Y * 30 / 768);
 		startingbtn.addActionListener(e -> starting());
 		bgLabel.add(startingbtn);
 
 		JButton summarybtn = new ChooseButton("赛后总结");
-		summarybtn.setBounds(X * 605 / 1366, Y * 155 / 768, X * 155 / 1366,
+		summarybtn.setBounds(X * 566 / 1366, Y * 155 / 768, X * 116 / 1366,
 				Y * 30 / 768);
 		summarybtn.addActionListener(e -> summary());
 		bgLabel.add(summarybtn);
 
 		JButton databtn = new ChooseButton("数据");
-		databtn.setBounds(X * 760 / 1366, Y * 155 / 768, X * 155 / 1366,
+		databtn.setBounds(X * 682 / 1366, Y * 155 / 768, X * 116 / 1366,
 				Y * 30 / 768);
 		databtn.addActionListener(e -> showData());
 		bgLabel.add(databtn);
+		
+		
+		JButton videobtn = new ChooseButton("精彩视频");
+		videobtn.setBounds(X * 798 / 1366, Y * 155 / 768, X * 116 / 1366,
+				Y * 30 / 768);
+		videobtn.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				URI uri;
+
+				try {
+					uri = new URI("http://nbachina.qq.com/a/20160514/022187.htm");
+
+					Desktop dtp = Desktop.getDesktop();
+					if (Desktop.isDesktopSupported() && dtp.isSupported(Desktop.Action.BROWSE)) {
+						dtp.browse(uri);
+					}
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}});
+		bgLabel.add(videobtn);
 
 		starting();
 
