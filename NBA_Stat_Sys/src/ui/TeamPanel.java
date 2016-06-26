@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -324,7 +326,46 @@ public class TeamPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
+			this.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					MouseExit();
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					MouseEnter();
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 
+		}
+		
+		public void MouseEnter(){
+			this.setFont(new Font("微软雅黑",Font.ITALIC,15));
+		}
+		
+		public void MouseExit(){
+			this.setFont(new Font("微软雅黑",1,15));
 		}
 
 	}

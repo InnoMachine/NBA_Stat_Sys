@@ -64,13 +64,45 @@ public class StartPanel extends JPanel {
 		this.setOpaque(true);
 		// bgImage = Toolkit.getDefaultToolkit().getImage(
 		// "Image/mainImage.png").getScaledInstance(X, Y,Image.SCALE_SMOOTH);
-		ImageIcon bg = new ImageIcon(new ImageIcon("Image/startPanel.png")
+		ImageIcon bg = new ImageIcon(new ImageIcon("Image/homepage.png")
 				.getImage().getScaledInstance(this.getWidth(),
 						this.getHeight(), Image.SCALE_SMOOTH));
 		bgLabel = new JLabel();
 		bgLabel.setIcon(bg);
 		bgLabel.setBounds(0, 0, X, Y);
 		this.add(bgLabel, new Integer(Integer.MIN_VALUE));
+		this.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println(e.getX());
+				System.out.println(e.getY());
+			}
+		});
 		createButton();
 
 
@@ -95,8 +127,8 @@ public class StartPanel extends JPanel {
 //		analysisLabel.setIcon(buttonIcon);
 //		bgLabel.add(analysisLabel);
 		
-		MyButton playerInfobtn = new MyButton("球员信息");
-		playerInfobtn.setBounds(3*X/20, 15*Y/24, X/8, Y/12);
+		MyButton playerInfobtn = new MyButton("球员信息","Image/playerButton-normal.png");
+		playerInfobtn.setBounds(X*150/1366, Y*505/768, X*138/1366, Y*168/768);
 //		playerInfobtn.addActionListener(e -> playerOpe());
 		playerInfobtn.addActionListener(e -> toPlayerPanel());
 		playerInfobtn.addMouseListener(new MouseListener() {
@@ -107,10 +139,14 @@ public class StartPanel extends JPanel {
 				playerInfobtn.MousePressed();
 			}
 			public void mouseExited(MouseEvent e) {
-				playerInfobtn.MouseExit();
+				ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+						"Image/playerButton-normal.png").getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
+				playerInfobtn.setIcon(buttonIcon);
 			}
 			public void mouseEntered(MouseEvent e) {
-				playerInfobtn.MouseEnter();
+				ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+						"Image/playerButton-hovered.png").getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
+				playerInfobtn.setIcon(buttonIcon);
 			}
 			public void mouseClicked(MouseEvent e) {
 			
@@ -118,18 +154,10 @@ public class StartPanel extends JPanel {
 		});
 		bgLabel.add(playerInfobtn);
 		
-		JLabel playerLabel=new JLabel();
-		playerLabel.setBounds(2*X/20, 15*Y/24, Y/12, Y/12);
-		ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/qiuyuanxinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
-						 Image.SCALE_SMOOTH));
 		
-		playerLabel.setIcon(buttonIcon);
-		
-		bgLabel.add(playerLabel);
 
-		MyButton teamInfobtn = new MyButton("球队信息");
-		teamInfobtn.setBounds(3*X/20, 18*Y/24, X/8,  Y/12);
+		MyButton teamInfobtn = new MyButton("球队信息","Image/teamButton-normal.png");
+		teamInfobtn.setBounds(X*296/1366, Y*505/768, X*138/1366, Y*168/768);
 		teamInfobtn.addActionListener(e -> toTeamPanel());
 		teamInfobtn.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
@@ -139,10 +167,14 @@ public class StartPanel extends JPanel {
 				teamInfobtn.MousePressed();
 			}
 			public void mouseExited(MouseEvent e) {
-				teamInfobtn.MouseExit();
+				ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+						"Image/teamButton-normal.png").getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
+				teamInfobtn.setIcon(buttonIcon);
 			}
 			public void mouseEntered(MouseEvent e) {
-				teamInfobtn.MouseEnter();
+				ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+						"Image/teamButton-hovered.png").getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
+				teamInfobtn.setIcon(buttonIcon);
 			}
 			public void mouseClicked(MouseEvent e) {
 			
@@ -150,18 +182,10 @@ public class StartPanel extends JPanel {
 		});
 		bgLabel.add(teamInfobtn);
 		
-		JLabel teamLabel=new JLabel();
-		teamLabel.setBounds(2*X/20, 18*Y/24, Y/12, Y/12);
-		buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/qiuduixinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
-						 Image.SCALE_SMOOTH));
 		
-		teamLabel.setIcon(buttonIcon);
-		
-		bgLabel.add(teamLabel);
 
-		MyButton gameInfobtn = new MyButton("比赛信息");
-		gameInfobtn.setBounds(3*X/20, 21*Y/24, X/8,  Y/12);
+		MyButton gameInfobtn = new MyButton("比赛信息","Image/gameButton-normal.png");
+		gameInfobtn.setBounds(X*438/1366, Y*505/768, X*138/1366, Y*168/768);
 		gameInfobtn.addActionListener(e -> toGamePanel());
 		gameInfobtn.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
@@ -171,10 +195,14 @@ public class StartPanel extends JPanel {
 				gameInfobtn.MousePressed();
 			}
 			public void mouseExited(MouseEvent e) {
-				gameInfobtn.MouseExit();
+				ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+						"Image/gameButton-normal.png").getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
+				gameInfobtn.setIcon(buttonIcon);
 			}
 			public void mouseEntered(MouseEvent e) {
-				gameInfobtn.MouseEnter();
+				ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
+						"Image/gameButton-hovered.png").getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
+				gameInfobtn.setIcon(buttonIcon);
 			}
 			public void mouseClicked(MouseEvent e) {
 			
@@ -182,14 +210,7 @@ public class StartPanel extends JPanel {
 		});
 		bgLabel.add(gameInfobtn);
 		
-		JLabel gameLabel=new JLabel();
-		gameLabel.setBounds(2*X/20, 21*Y/24, Y/12, Y/12);
-		buttonIcon = new ImageIcon(new ImageIcon(
-				"Image/bisaixinxi.png").getImage().getScaledInstance( Y/12,  Y/12,
-						 Image.SCALE_SMOOTH));
 		
-		gameLabel.setIcon(buttonIcon);
-		bgLabel.add(gameLabel);
 		
 		JButton home = new JButton();
 		ImageIcon homeIcon = new ImageIcon(new ImageIcon("Image/homeIcon.png")
@@ -307,15 +328,14 @@ public class StartPanel extends JPanel {
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public MyButton(String function){
+		public MyButton(String function,String image){
 			super();
-			this.setText(function);
+			
 			this.setHorizontalTextPosition(SwingConstants.CENTER);
 			this.setForeground(Color.WHITE);
 			this.setFont(new Font("微软雅黑",1,20));
-			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
-							 Image.SCALE_SMOOTH));
+			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(image).
+					getImage().getScaledInstance(X*140/1366, Y*177/768, Image.SCALE_SMOOTH));
 			
 			this.setIcon(buttonIcon);
 			this.setOpaque(false);
@@ -325,25 +345,19 @@ public class StartPanel extends JPanel {
 		}
 		
 		public void MouseEnter(){
-			this.setFont(new Font("微软雅黑",Font.ITALIC,20));
+			
 		}
 		
 		public void MouseExit(){
-			this.setFont(new Font("微软雅黑",1,20));
+			
 		}
 		
 		public void MousePressed(){
-			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
-							 Image.SCALE_AREA_AVERAGING));
-			this.setIcon(buttonIcon);
+			
 		}
 		
 		public void MouseReleased(){
-			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
-							 Image.SCALE_SMOOTH));
-			this.setIcon(buttonIcon);
+			
 		}
 	}
 }

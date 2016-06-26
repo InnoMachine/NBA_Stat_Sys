@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -663,30 +665,44 @@ public class PlayerPanel extends JPanel {
 			this.setOpaque(false);
 			this.setContentAreaFilled(false);
 			this.setBorderPainted(false);
-
+			this.addMouseListener(new MouseListener() {
+				
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				public void mouseExited(MouseEvent e) {
+					MouseExit();
+					
+				}
+				
+				public void mouseEntered(MouseEvent e) {
+					MouseEnter();
+					
+				}
+				
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 		}
 		
 		public void MouseEnter(){
-			this.setFont(new Font("微软雅黑",Font.ITALIC,20));
+			this.setFont(new Font("微软雅黑",Font.ITALIC,15));
 		}
 		
 		public void MouseExit(){
-			this.setFont(new Font("微软雅黑",1,20));
+			this.setFont(new Font("微软雅黑",1,15));
 		}
 		
-		public void MousePressed(){
-			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
-							 Image.SCALE_AREA_AVERAGING));
-			this.setIcon(buttonIcon);
-		}
 		
-		public void MouseReleased(){
-			ImageIcon buttonIcon = new ImageIcon(new ImageIcon(
-					"Image/mainButton.png").getImage().getScaledInstance( X/8,  Y/12,
-							 Image.SCALE_SMOOTH));
-			this.setIcon(buttonIcon);
-		}
 	}
 
 	class MyLabel extends JLabel {

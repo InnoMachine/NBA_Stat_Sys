@@ -144,7 +144,7 @@ public class SearchPanel extends JPanel {
 		});
 		bgLabel.add(close);
 
-//		JLabel keylbl=new MyLabel(Color.WHITE,"排序依据");
+//		JLabel keylbl=new MyLabel(Color.WHITE,"搜索依据");
 //		keylbl.setBounds(X * 540 / 1366, Y * 50 / 768, X * 60 / 1366,
 //				Y * 27 / 768);
 //		keylbl.setFont(new Font("微软雅黑", 1, 13));
@@ -188,6 +188,8 @@ public class SearchPanel extends JPanel {
 		searchbtn.setVisible(true);
 		bgLabel.add(searchbtn);
 */
+		
+		/*
 		JButton AButton = new MyButton("A");
 		AButton.setBounds(X * 215 / 1366, Y * 87 / 768, X * 33 / 1366,
 				Y * 33 / 768);
@@ -1302,7 +1304,7 @@ public class SearchPanel extends JPanel {
 		});
 		
 		
-		
+		*/
 		ArrayList<PlayerVo> playerVos = new ArrayList<PlayerVo>();
 		playerVos = player_BS.getAllPlayer();
 		if (rowData == null) {
