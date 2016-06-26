@@ -203,32 +203,32 @@ public class TeamInfoPanel extends JPanel {
 		playersInfoButton.setLocation(X * 150 / 1366, Y * 200 / 768);
 		playersInfoButton.addActionListener(e -> {
 			playersInfoJSP.setVisible(true);
-			recentGameInfoJSP.setVisible(false);
+//			recentGameInfoJSP.setVisible(false);
 			historicalGameInfoJSP.setVisible(false);
 			playersInfoButton.setText("球员列表⊙");
-			recentGameButton.setText("最近比赛");
+//			recentGameButton.setText("最近比赛");
 			historicalGameButton.setText("历史比赛");
 		});
 
-		recentGameButton = new MyButton("最近比赛");
-		recentGameButton.setLocation(X * 300 / 1366, Y * 200 / 768);
-		recentGameButton.addActionListener(e -> {
-			playersInfoJSP.setVisible(false);
-			recentGameInfoJSP.setVisible(true);
-			historicalGameInfoJSP.setVisible(false);
-			playersInfoButton.setText("球员列表");
-			recentGameButton.setText("最近比赛⊙");
-			historicalGameButton.setText("历史比赛");
-		});
+//		recentGameButton = new MyButton("最近比赛");
+//		recentGameButton.setLocation(X * 300 / 1366, Y * 200 / 768);
+//		recentGameButton.addActionListener(e -> {
+//			playersInfoJSP.setVisible(false);
+//			recentGameInfoJSP.setVisible(true);
+//			historicalGameInfoJSP.setVisible(false);
+//			playersInfoButton.setText("球员列表");
+//			recentGameButton.setText("最近比赛⊙");
+//			historicalGameButton.setText("历史比赛");
+//		});
 
 		historicalGameButton = new MyButton("历史比赛");
-		historicalGameButton.setLocation(X * 450 / 1366, Y * 200 / 768);
+		historicalGameButton.setLocation(X * 300 / 1366, Y * 200 / 768);
 		historicalGameButton.addActionListener(e -> {
 			playersInfoJSP.setVisible(false);
-			recentGameInfoJSP.setVisible(false);
+//			recentGameInfoJSP.setVisible(false);
 			historicalGameInfoJSP.setVisible(true);
 			playersInfoButton.setText("球员列表");
-			recentGameButton.setText("最近比赛");
+//			recentGameButton.setText("最近比赛");
 			historicalGameButton.setText("历史比赛⊙");
 		});
 
